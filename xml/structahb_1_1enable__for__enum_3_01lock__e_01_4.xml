@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structahb_1_1enable__for__enum_3_01lock__e_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>ahb::enable_for_enum&lt; lock_e &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structahb_1_1enable__for__enum_3_01lock__e_01_4_1a9a1cb285fc4feeac4fba70a5f0627640" prot="public" static="yes" mutable="no">
+        <type>const bool</type>
+        <definition>const bool ahb::enable_for_enum&lt; lock_e &gt;::enable</definition>
+        <argsstring></argsstring>
+        <name>enable</name>
+        <qualifiedname>ahb::enable_for_enum&lt; lock_e &gt;::enable</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="130" column="52" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structahb_1_1enable__for__enum_1aa53cd83d8a0adfe5159e458b4fffb6c8" prot="public" static="yes" mutable="no">
+        <type>const bool</type>
+        <definition>const bool ahb::enable_for_enum&lt; lock_e &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>ahb::enable_for_enum&lt; lock_e &gt;::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="30" column="52" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="130" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="130" bodyend="130"/>
+    <listofallmembers>
+      <member refid="structahb_1_1enable__for__enum_3_01lock__e_01_4_1a9a1cb285fc4feeac4fba70a5f0627640" prot="public" virt="non-virtual"><scope>ahb::enable_for_enum&lt; lock_e &gt;</scope><name>enable</name></member>
+      <member refid="structahb_1_1enable__for__enum_1aa53cd83d8a0adfe5159e458b4fffb6c8" prot="public" virt="non-virtual"><scope>ahb::enable_for_enum&lt; lock_e &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

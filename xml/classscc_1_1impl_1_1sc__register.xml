@@ -1,0 +1,1039 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1impl_1_1sc__register" kind="class" language="C++" prot="public">
+    <compoundname>scc::impl::sc_register</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_object</basecompoundref>
+    <basecompoundref refid="classscc_1_1resource__access__if" prot="public" virt="non-virtual">scc::resource_access_if</basecompoundref>
+    <basecompoundref refid="structscc_1_1traceable" prot="public" virt="non-virtual">scc::traceable</basecompoundref>
+    <derivedcompoundref refid="classscc_1_1sc__register__masked" prot="public" virt="non-virtual">scc::sc_register_masked&lt; DATATYPE, WRMASK, RDMASK &gt;</derivedcompoundref>
+    <includes refid="register_8h" local="no">register.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename DATATYPE</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classscc_1_1impl_1_1sc__register_1a63853f951852d386472b1719b96fded3" prot="public" static="no">
+        <type><ref refid="classscc_1_1impl_1_1sc__register_1a673c37201da32119a56659d1056dec39" kindref="member">sc_register</ref>&lt; DATATYPE &gt;</type>
+        <definition>using scc::impl::sc_register&lt; DATATYPE &gt;::this_type =  sc_register&lt;DATATYPE&gt;</definition>
+        <argsstring></argsstring>
+        <name>this_type</name>
+        <qualifiedname>scc::impl::sc_register::this_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="80" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classscc_1_1impl_1_1sc__register_1a8dc04bf5f7dc6928126638384b213230" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; scc::impl::sc_register&lt; DATATYPE &gt;::enable_tracing</definition>
+        <argsstring></argsstring>
+        <name>enable_tracing</name>
+        <qualifiedname>scc::impl::sc_register::enable_tracing</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="82" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1impl_1_1sc__register_1a0cee1d07b2b352bfc0c65a712879a5d1" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; scc::impl::sc_register&lt; DATATYPE &gt;::enable_side_effect</definition>
+        <argsstring></argsstring>
+        <name>enable_side_effect</name>
+        <qualifiedname>scc::impl::sc_register::enable_side_effect</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="83" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1impl_1_1sc__register_1aca9d8f872440560d68d859ba9d184b66" prot="public" static="no" mutable="no">
+        <type>const DATATYPE</type>
+        <definition>const DATATYPE scc::impl::sc_register&lt; DATATYPE &gt;::res_val</definition>
+        <argsstring></argsstring>
+        <name>res_val</name>
+        <qualifiedname>scc::impl::sc_register::res_val</qualifiedname>
+        <briefdescription>
+<para>the reset value </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="331" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="331" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1impl_1_1sc__register_1ac14d6f9ebe5547ac2b31847f19f55afc" prot="public" static="no" mutable="no">
+        <type>const DATATYPE</type>
+        <definition>const DATATYPE scc::impl::sc_register&lt; DATATYPE &gt;::rdmask</definition>
+        <argsstring></argsstring>
+        <name>rdmask</name>
+        <qualifiedname>scc::impl::sc_register::rdmask</qualifiedname>
+        <briefdescription>
+<para>the SW read mask </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="333" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="333" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1impl_1_1sc__register_1a8fd3ba74745569f65b793b5abe0f335f" prot="public" static="no" mutable="no">
+        <type>const DATATYPE</type>
+        <definition>const DATATYPE scc::impl::sc_register&lt; DATATYPE &gt;::wrmask</definition>
+        <argsstring></argsstring>
+        <name>wrmask</name>
+        <qualifiedname>scc::impl::sc_register::wrmask</qualifiedname>
+        <briefdescription>
+<para>the SW write mask </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="335" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="335" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classscc_1_1impl_1_1sc__register_1a63f2a6ad816f3638a8f5fdf9343ebe40" prot="private" static="no" mutable="no">
+        <type>DATATYPE &amp;</type>
+        <definition>DATATYPE&amp; scc::impl::sc_register&lt; DATATYPE &gt;::storage</definition>
+        <argsstring></argsstring>
+        <name>storage</name>
+        <qualifiedname>scc::impl::sc_register::storage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="340" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="340" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1impl_1_1sc__register_1a5aa88ca810c5b47d430f59e1cbf35eaf" prot="private" static="no" mutable="no">
+        <type>std::function&lt; bool(const this_type &amp;, DATATYPE &amp;, sc_core::sc_time &amp;)&gt;</type>
+        <definition>std::function&lt;bool(const this_type&amp;, DATATYPE&amp;, sc_core::sc_time&amp;)&gt; scc::impl::sc_register&lt; DATATYPE &gt;::rd_cb</definition>
+        <argsstring></argsstring>
+        <name>rd_cb</name>
+        <qualifiedname>scc::impl::sc_register::rd_cb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="341" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="341" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1impl_1_1sc__register_1aaf5c5dc2a4853999fb72ee2761d7e432" prot="private" static="no" mutable="no">
+        <type>std::function&lt; bool(this_type &amp;, DATATYPE &amp;, sc_core::sc_time &amp;)&gt;</type>
+        <definition>std::function&lt;bool(this_type&amp;, DATATYPE&amp;, sc_core::sc_time&amp;)&gt; scc::impl::sc_register&lt; DATATYPE &gt;::wr_cb</definition>
+        <argsstring></argsstring>
+        <name>wr_cb</name>
+        <qualifiedname>scc::impl::sc_register::wr_cb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="342" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="342" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1impl_1_1sc__register_1a5035d41d4409f5bcc95188f4a1f54eda" prot="private" static="no" mutable="no">
+        <type><ref refid="classutil_1_1delegate" kindref="compound">util::delegate</ref>&lt; bool(const this_type &amp;, DATATYPE &amp;, sc_core::sc_time &amp;)&gt;</type>
+        <definition>util::delegate&lt;bool(const this_type&amp;, DATATYPE&amp;, sc_core::sc_time&amp;)&gt; scc::impl::sc_register&lt; DATATYPE &gt;::rd_dlgt</definition>
+        <argsstring></argsstring>
+        <name>rd_dlgt</name>
+        <qualifiedname>scc::impl::sc_register::rd_dlgt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="348" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="348" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1impl_1_1sc__register_1a4db723279f2c955e47ecebdab5ef9dd4" prot="private" static="no" mutable="no">
+        <type><ref refid="classutil_1_1delegate" kindref="compound">util::delegate</ref>&lt; bool(this_type &amp;, DATATYPE &amp;, sc_core::sc_time &amp;)&gt;</type>
+        <definition>util::delegate&lt;bool(this_type&amp;, DATATYPE&amp;, sc_core::sc_time&amp;)&gt; scc::impl::sc_register&lt; DATATYPE &gt;::wr_dlgt</definition>
+        <argsstring></argsstring>
+        <name>wr_dlgt</name>
+        <qualifiedname>scc::impl::sc_register::wr_dlgt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="349" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="349" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1a673c37201da32119a56659d1056dec39" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::impl::sc_register&lt; DATATYPE &gt;::sc_register</definition>
+        <argsstring>(sc_core::sc_module_name nm, DATATYPE &amp;storage, const DATATYPE reset_val, resetable &amp;owner, DATATYPE rdmask=get_max_uval&lt; DATATYPE &gt;(), DATATYPE wrmask=get_max_uval&lt; DATATYPE &gt;())</argsstring>
+        <name>sc_register</name>
+        <qualifiedname>scc::impl::sc_register::sc_register</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>DATATYPE &amp;</type>
+          <declname>storage</declname>
+        </param>
+        <param>
+          <type>const DATATYPE</type>
+          <declname>reset_val</declname>
+        </param>
+        <param>
+          <type><ref refid="classscc_1_1resetable" kindref="compound">resetable</ref> &amp;</type>
+          <declname>owner</declname>
+        </param>
+        <param>
+          <type>DATATYPE</type>
+          <declname>rdmask</declname>
+          <defval>get_max_uval&lt; DATATYPE &gt;()</defval>
+        </param>
+        <param>
+          <type>DATATYPE</type>
+          <declname>wrmask</declname>
+          <defval>get_max_uval&lt; DATATYPE &gt;()</defval>
+        </param>
+        <briefdescription>
+<para>the constructor </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the instance name </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>storage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the storage data structure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reset_val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the reset value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>owner</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the owning object which needs to implement the resettable interface </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rdmask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the SW read mask </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wrmask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the SW write mask </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="96" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="96" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1ab74f9ddb4519bc2cf98f636a7482c0fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::impl::sc_register&lt; DATATYPE &gt;::~sc_register</definition>
+        <argsstring>()=default</argsstring>
+        <name>~sc_register</name>
+        <qualifiedname>scc::impl::sc_register::~sc_register</qualifiedname>
+        <briefdescription>
+<para>desctructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="114" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1a66984eca71ad32bd856248091994b57b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool scc::impl::sc_register&lt; DATATYPE &gt;::is_trace_enabled</definition>
+        <argsstring>() const override</argsstring>
+        <name>is_trace_enabled</name>
+        <qualifiedname>scc::impl::sc_register::is_trace_enabled</qualifiedname>
+        <reimplements refid="structscc_1_1traceable_1a88d6b5b574c0a0714c954888836ea750">is_trace_enabled</reimplements>
+        <briefdescription>
+<para>returns of this component shall be traced </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this component shall be traced </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="121" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="121" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1abcecef76ec622d0f5e7e8f99d40bf470" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>char const *</type>
+        <definition>char const  * scc::impl::sc_register&lt; DATATYPE &gt;::full_name</definition>
+        <argsstring>() const override</argsstring>
+        <name>full_name</name>
+        <qualifiedname>scc::impl::sc_register::full_name</qualifiedname>
+        <reimplements refid="classscc_1_1resource__access__if_1ab84e9879450aa4146de9983d2245ddce">full_name</reimplements>
+        <briefdescription>
+<para>return the name of the resource </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the name </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="127" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="127" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1ae4bd59511313c06e5b91ea67ff26774a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t scc::impl::sc_register&lt; DATATYPE &gt;::size</definition>
+        <argsstring>() const override</argsstring>
+        <name>size</name>
+        <qualifiedname>scc::impl::sc_register::size</qualifiedname>
+        <reimplements refid="classscc_1_1resource__access__if_1a4b1353d979e7ce465dba34f05e10710e">size</reimplements>
+        <briefdescription>
+<para>get the size of this register in bytes </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="134" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="134" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1a04b4f9e28ccfb5f005bcf300df1152cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void scc::impl::sc_register&lt; DATATYPE &gt;::reset</definition>
+        <argsstring>() override</argsstring>
+        <name>reset</name>
+        <qualifiedname>scc::impl::sc_register::reset</qualifiedname>
+        <reimplements refid="classscc_1_1resource__access__if_1a94f5dba6b42b12379254975b72a475d6">reset</reimplements>
+        <briefdescription>
+<para>reset the register </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="140" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="140" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1ae6d2eb877d7005e3f85e47bed2058591" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::impl::sc_register&lt; DATATYPE &gt;::write</definition>
+        <argsstring>(const uint8_t *data, size_t length, uint64_t offset, sc_core::sc_time &amp;d) override</argsstring>
+        <name>write</name>
+        <qualifiedname>scc::impl::sc_register::write</qualifiedname>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>write function from <ref refid="classscc_1_1resource__access__if" kindref="compound">resource_access_if</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to be written </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of data to be written in bytes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of the write to the baseaddress of the register </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>offset of the time in a time domain wrt. the SystemC simulator time (e.g. when using loosly-timed modeling) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if access is successful </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="159" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="159" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1a2b88d767e6aebb0e484dee4f0262aba5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::impl::sc_register&lt; DATATYPE &gt;::read</definition>
+        <argsstring>(uint8_t *data, size_t length, uint64_t offset, sc_core::sc_time &amp;d) const override</argsstring>
+        <name>read</name>
+        <qualifiedname>scc::impl::sc_register::read</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>read function from <ref refid="classscc_1_1resource__access__if" kindref="compound">resource_access_if</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to be read </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of data to be written in bytes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of the write to the baseaddress of the register </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>offset of the time in a time domain wrt. the SystemC simulator time (e.g. when using loosly-timed modeling) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if access is successful </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="180" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="180" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1a50b1330e1db43b3fe1088b47311e0ef4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::impl::sc_register&lt; DATATYPE &gt;::write_dbg</definition>
+        <argsstring>(const uint8_t *data, size_t length, uint64_t offset=0) override</argsstring>
+        <name>write_dbg</name>
+        <qualifiedname>scc::impl::sc_register::write_dbg</qualifiedname>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>debug write function from <ref refid="classscc_1_1resource__access__if" kindref="compound">resource_access_if</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to be written </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of data to be written in bytes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of the write to the baseaddress of the register </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if access is successful </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="201" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="201" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1a247379d6d5f2412c33c7561ec7e04b37" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::impl::sc_register&lt; DATATYPE &gt;::read_dbg</definition>
+        <argsstring>(uint8_t *data, size_t length, uint64_t offset=0) const override</argsstring>
+        <name>read_dbg</name>
+        <qualifiedname>scc::impl::sc_register::read_dbg</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>debug read function from <ref refid="classscc_1_1resource__access__if" kindref="compound">resource_access_if</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to be read </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of data to be written in bytes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of the write to the baseaddress of the register </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if access is successful </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="222" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="222" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1a50508164da9c84f83135fb5c11e4675c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::impl::sc_register&lt; DATATYPE &gt;::operator DATATYPE</definition>
+        <argsstring>() const</argsstring>
+        <name>operator DATATYPE</name>
+        <qualifiedname>scc::impl::sc_register::operator DATATYPE</qualifiedname>
+        <briefdescription>
+<para>cast operator to get underlying storage </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="239" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="239" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1a2b1a13df7e0f33841fa77eb23c6ff594" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>DATATYPE</type>
+        <definition>DATATYPE scc::impl::sc_register&lt; DATATYPE &gt;::get</definition>
+        <argsstring>() const</argsstring>
+        <name>get</name>
+        <qualifiedname>scc::impl::sc_register::get</qualifiedname>
+        <briefdescription>
+<para>get the underlying storage </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="246" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="246" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1a2e2828b018fc0e5afcbd5ef07a7ec97e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::impl::sc_register&lt; DATATYPE &gt;::put</definition>
+        <argsstring>(DATATYPE data) const</argsstring>
+        <name>put</name>
+        <qualifiedname>scc::impl::sc_register::put</qualifiedname>
+        <param>
+          <type>DATATYPE</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>write to the underlying storage </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the new value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="253" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="253" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1ad52a521b362636613068bcfc72c1a848" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>this_type &amp;</type>
+        <definition>this_type &amp; scc::impl::sc_register&lt; DATATYPE &gt;::operator=</definition>
+        <argsstring>(DATATYPE other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::impl::sc_register::operator=</qualifiedname>
+        <param>
+          <type>DATATYPE</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>assignment operator </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the new value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>reference to this </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="261" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="261" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1a39f4b39d0bc029a3067fb8c54fe4f548" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>this_type &amp;</type>
+        <definition>this_type &amp; scc::impl::sc_register&lt; DATATYPE &gt;::operator|=</definition>
+        <argsstring>(DATATYPE other)</argsstring>
+        <name>operator|=</name>
+        <qualifiedname>scc::impl::sc_register::operator|=</qualifiedname>
+        <param>
+          <type>DATATYPE</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>unary or </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the other value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>reference to this </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="271" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="271" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1a2eabe09729d024155c1d44cc9bc2be51" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>this_type &amp;</type>
+        <definition>this_type &amp; scc::impl::sc_register&lt; DATATYPE &gt;::operator&amp;=</definition>
+        <argsstring>(DATATYPE other)</argsstring>
+        <name>operator&amp;=</name>
+        <qualifiedname>scc::impl::sc_register::operator&amp;=</qualifiedname>
+        <param>
+          <type>DATATYPE</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>unary and </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the other value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>reference to this </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="281" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="281" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1a1e93444af0116c699242d3d7bc9fbc19" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::impl::sc_register&lt; DATATYPE &gt;::set_read_cb</definition>
+        <argsstring>(std::function&lt; bool(const this_type &amp;, DATATYPE &amp;)&gt; read_cb)</argsstring>
+        <name>set_read_cb</name>
+        <qualifiedname>scc::impl::sc_register::set_read_cb</qualifiedname>
+        <param>
+          <type>std::function&lt; bool(const this_type &amp;, DATATYPE &amp;)&gt;</type>
+          <declname>read_cb</declname>
+        </param>
+        <briefdescription>
+<para>set the read callback </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The read callback is triggered upon a read request without forwarding the annotated time this is primary for backward compatibility</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>read_cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the callback functor </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="293" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="293" bodyend="295"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1a65ac98258c52d320c732db9bfd0ce0eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::impl::sc_register&lt; DATATYPE &gt;::set_read_cb</definition>
+        <argsstring>(std::function&lt; bool(const this_type &amp;, DATATYPE &amp;, sc_core::sc_time &amp;)&gt; read_cb)</argsstring>
+        <name>set_read_cb</name>
+        <qualifiedname>scc::impl::sc_register::set_read_cb</qualifiedname>
+        <param>
+          <type>std::function&lt; bool(const this_type &amp;, DATATYPE &amp;, sc_core::sc_time &amp;)&gt;</type>
+          <declname>read_cb</declname>
+        </param>
+        <briefdescription>
+<para>set the read callback </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The read callback functor triggered upon a read request.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>read_cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the callback functor </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="303" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="303" bodyend="303"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1a15695500361212b68a67d5a219fc975a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::impl::sc_register&lt; DATATYPE &gt;::set_write_cb</definition>
+        <argsstring>(std::function&lt; bool(this_type &amp;, const DATATYPE &amp;)&gt; write_cb)</argsstring>
+        <name>set_write_cb</name>
+        <qualifiedname>scc::impl::sc_register::set_write_cb</qualifiedname>
+        <param>
+          <type>std::function&lt; bool(this_type &amp;, const DATATYPE &amp;)&gt;</type>
+          <declname>write_cb</declname>
+        </param>
+        <briefdescription>
+<para>set the write callback </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The write callback functor is triggered upon a write request without forwarding the annotated time this is primary for backward compatibility</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>write_cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the callback functor </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="312" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="312" bodyend="314"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1aa3f5dd946e4544dfe034a5ada42d5f7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::impl::sc_register&lt; DATATYPE &gt;::set_write_cb</definition>
+        <argsstring>(std::function&lt; bool(this_type &amp;, const DATATYPE &amp;, sc_core::sc_time &amp;)&gt; write_cb)</argsstring>
+        <name>set_write_cb</name>
+        <qualifiedname>scc::impl::sc_register::set_write_cb</qualifiedname>
+        <param>
+          <type>std::function&lt; bool(this_type &amp;, const DATATYPE &amp;, sc_core::sc_time &amp;)&gt;</type>
+          <declname>write_cb</declname>
+        </param>
+        <briefdescription>
+<para>set the write callback triggered upon a write request </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The write callback functor is triggered upon a write request.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>write_cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the callback functor </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="322" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="322" bodyend="322"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1a5327b5a419a0355cd1a91badcb184a83" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::impl::sc_register&lt; DATATYPE &gt;::trace</definition>
+        <argsstring>(sc_core::sc_trace_file *trf) const override</argsstring>
+        <name>trace</name>
+        <qualifiedname>scc::impl::sc_register::trace</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>trf</declname>
+        </param>
+        <briefdescription>
+<para>trace the register value to the given trace file </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the trace file </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="329" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="329" bodyend="329"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classscc_1_1impl_1_1sc__register_1a2a4c9d1f8d622ba98afc5ff1a7ae89d9" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * scc::impl::sc_register&lt; DATATYPE &gt;::kind</definition>
+        <argsstring>() const override</argsstring>
+        <name>kind</name>
+        <qualifiedname>scc::impl::sc_register::kind</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="338" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="338" bodyend="338"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>a simple register implementation </para>
+    </briefdescription>
+    <detaileddescription>
+<para>A simple register implementation taking a certain data type. The <ref refid="classscc_1_1impl_1_1sc__register" kindref="compound">sc_register</ref> does not hold the value itself, the data storage needs to be provided. It only provides some resource access interface and handled callbacks for read and write accesses</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>DATATYPE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::impl::sc_register&lt; DATATYPE &gt;</label>
+        <link refid="classscc_1_1impl_1_1sc__register"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scc::resource_access_if</label>
+        <link refid="classscc_1_1resource__access__if"/>
+      </node>
+      <node id="5">
+        <label>scc::sc_register_masked&lt; DATATYPE, WRMASK, RDMASK &gt;</label>
+        <link refid="classscc_1_1sc__register__masked"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>scc::traceable</label>
+        <link refid="structscc_1_1traceable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::impl::sc_register&lt; DATATYPE &gt;</label>
+        <link refid="classscc_1_1impl_1_1sc__register"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scc::resource_access_if</label>
+        <link refid="classscc_1_1resource__access__if"/>
+      </node>
+      <node id="4">
+        <label>scc::traceable</label>
+        <link refid="structscc_1_1traceable"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="78" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="78" bodyend="351"/>
+    <listofallmembers>
+      <member refid="classscc_1_1impl_1_1sc__register_1a0cee1d07b2b352bfc0c65a712879a5d1" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>enable_side_effect</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a8dc04bf5f7dc6928126638384b213230" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>enable_tracing</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1abcecef76ec622d0f5e7e8f99d40bf470" prot="public" virt="virtual"><scope>scc::impl::sc_register</scope><name>full_name</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a2b1a13df7e0f33841fa77eb23c6ff594" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>get</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a66984eca71ad32bd856248091994b57b" prot="public" virt="virtual"><scope>scc::impl::sc_register</scope><name>is_trace_enabled</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a2a4c9d1f8d622ba98afc5ff1a7ae89d9" prot="private" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>kind</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a50508164da9c84f83135fb5c11e4675c" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>operator DATATYPE</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a2eabe09729d024155c1d44cc9bc2be51" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>operator&amp;=</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1ad52a521b362636613068bcfc72c1a848" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>operator=</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a39f4b39d0bc029a3067fb8c54fe4f548" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>operator|=</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a2e2828b018fc0e5afcbd5ef07a7ec97e" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>put</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a5aa88ca810c5b47d430f59e1cbf35eaf" prot="private" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>rd_cb</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a5035d41d4409f5bcc95188f4a1f54eda" prot="private" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>rd_dlgt</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1ac14d6f9ebe5547ac2b31847f19f55afc" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>rdmask</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a2b88d767e6aebb0e484dee4f0262aba5" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>read</name></member>
+      <member refid="classscc_1_1resource__access__if_1aff9a8c6c68d5aa91a6278b8ae3f6c30a" prot="public" virt="pure-virtual" ambiguityscope="scc::resource_access_if::"><scope>scc::impl::sc_register</scope><name>read</name></member>
+      <member refid="classscc_1_1resource__access__if_1afba178290da5121755e18cdb44a06568" prot="public" virt="non-virtual" ambiguityscope="scc::resource_access_if::"><scope>scc::impl::sc_register</scope><name>read</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a247379d6d5f2412c33c7561ec7e04b37" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>read_dbg</name></member>
+      <member refid="classscc_1_1resource__access__if_1a81f86119c44d699f70b8980e12e97717" prot="public" virt="pure-virtual" ambiguityscope="scc::resource_access_if::"><scope>scc::impl::sc_register</scope><name>read_dbg</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1aca9d8f872440560d68d859ba9d184b66" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>res_val</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a04b4f9e28ccfb5f005bcf300df1152cc" prot="public" virt="virtual"><scope>scc::impl::sc_register</scope><name>reset</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a673c37201da32119a56659d1056dec39" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>sc_register</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a1e93444af0116c699242d3d7bc9fbc19" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>set_read_cb</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a65ac98258c52d320c732db9bfd0ce0eb" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>set_read_cb</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a15695500361212b68a67d5a219fc975a" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>set_write_cb</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1aa3f5dd946e4544dfe034a5ada42d5f7a" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>set_write_cb</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1ae4bd59511313c06e5b91ea67ff26774a" prot="public" virt="virtual"><scope>scc::impl::sc_register</scope><name>size</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a63f2a6ad816f3638a8f5fdf9343ebe40" prot="private" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>storage</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a63853f951852d386472b1719b96fded3" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>this_type</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a5327b5a419a0355cd1a91badcb184a83" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>trace</name></member>
+      <member refid="structscc_1_1traceable_1afde2a0855aa2875f63b72b9db329551c" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>traceable</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1aaf5c5dc2a4853999fb72ee2761d7e432" prot="private" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>wr_cb</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a4db723279f2c955e47ecebdab5ef9dd4" prot="private" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>wr_dlgt</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1ae6d2eb877d7005e3f85e47bed2058591" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>write</name></member>
+      <member refid="classscc_1_1resource__access__if_1a422ba53aebac338f82b95969e4115e26" prot="public" virt="pure-virtual" ambiguityscope="scc::resource_access_if::"><scope>scc::impl::sc_register</scope><name>write</name></member>
+      <member refid="classscc_1_1resource__access__if_1a43d5c525222211b9b7a586a352282cdc" prot="public" virt="non-virtual" ambiguityscope="scc::resource_access_if::"><scope>scc::impl::sc_register</scope><name>write</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a50b1330e1db43b3fe1088b47311e0ef4" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>write_dbg</name></member>
+      <member refid="classscc_1_1resource__access__if_1ad9d368dd1a31310e1f147d019daa326c" prot="public" virt="pure-virtual" ambiguityscope="scc::resource_access_if::"><scope>scc::impl::sc_register</scope><name>write_dbg</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a8fd3ba74745569f65b793b5abe0f335f" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>wrmask</name></member>
+      <member refid="classscc_1_1resource__access__if_1a11e3e1ab0e5f4ccfd156149fa77a7eed" prot="public" virt="virtual"><scope>scc::impl::sc_register</scope><name>~resource_access_if</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1ab74f9ddb4519bc2cf98f636a7482c0fa" prot="public" virt="non-virtual"><scope>scc::impl::sc_register</scope><name>~sc_register</name></member>
+      <member refid="structscc_1_1traceable_1a1af8970cc881c520704bfb0440cbdbaf" prot="public" virt="virtual"><scope>scc::impl::sc_register</scope><name>~traceable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

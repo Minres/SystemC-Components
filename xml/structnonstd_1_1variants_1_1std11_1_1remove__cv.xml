@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1std11_1_1remove__cv" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::std11::remove_cv</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structnonstd_1_1variants_1_1std11_1_1remove__cv_1a307249d4d7b0fbeebafaf817e97a7c81" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1std11_1_1remove__volatile" kindref="compound">remove_volatile</ref>&lt; typenameremove_const&lt; T &gt;::type &gt;::type</type>
+        <definition>typedef remove_volatile&lt;typenameremove_const&lt;T&gt;::type&gt;::type nonstd::variants::std11::remove_cv&lt; T &gt;::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>nonstd::variants::std11::remove_cv::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="459" column="69" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="459" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="459" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="459" bodyend="459"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1std11_1_1remove__cv_1a307249d4d7b0fbeebafaf817e97a7c81" prot="public" virt="non-virtual"><scope>nonstd::variants::std11::remove_cv</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1sparse__array" kind="class" language="C++" prot="public">
+    <compoundname>util::sparse_array</compoundname>
+    <includes refid="sparse__array_8h" local="no">sparse_array.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>uint64_t</type>
+        <declname>SIZE</declname>
+        <defname>SIZE</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>PAGE_ADDR_BITS</declname>
+        <defname>PAGE_ADDR_BITS</defname>
+        <defval>24</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classutil_1_1sparse__array_1ab571fc9dff87068e9c90bdff93c1481f" prot="public" static="no">
+        <type>std::array&lt; T, 1&lt;&lt; PAGE_ADDR_BITS &gt;</type>
+        <definition>using util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt;::page_type =  std::array&lt;T, 1 &lt;&lt; PAGE_ADDR_BITS&gt;</definition>
+        <argsstring></argsstring>
+        <name>page_type</name>
+        <qualifiedname>util::sparse_array::page_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" line="49" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classutil_1_1sparse__array_1acd1263d9a6e00292eafae26083dfa8c3" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt;::page_addr_mask</definition>
+        <argsstring></argsstring>
+        <name>page_addr_mask</name>
+        <qualifiedname>util::sparse_array::page_addr_mask</qualifiedname>
+        <initializer>= (1 &lt;&lt; PAGE_ADDR_BITS) - 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" line="41" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1sparse__array_1a7803c398be0d85b87c2f2bc47df182d6" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt;::page_size</definition>
+        <argsstring></argsstring>
+        <name>page_size</name>
+        <qualifiedname>util::sparse_array::page_size</qualifiedname>
+        <initializer>= (1 &lt;&lt; PAGE_ADDR_BITS)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" line="43" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1sparse__array_1a6040b2cad6aa308d693d656c485d5e31" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt;::page_count</definition>
+        <argsstring></argsstring>
+        <name>page_count</name>
+        <qualifiedname>util::sparse_array::page_count</qualifiedname>
+        <initializer>= (SIZE + page_size - 1) / page_size</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" line="45" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1sparse__array_1a59bb6590a6dce0c69e3d999988ec4bc1" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt;::page_addr_width</definition>
+        <argsstring></argsstring>
+        <name>page_addr_width</name>
+        <qualifiedname>util::sparse_array::page_addr_width</qualifiedname>
+        <initializer>= PAGE_ADDR_BITS</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" line="47" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classutil_1_1sparse__array_1a87f4b0360c110e01e647dbe1898371b1" prot="protected" static="no" mutable="no">
+        <type>std::array&lt; page_type *, SIZE/(1&lt;&lt; PAGE_ADDR_BITS)+1 &gt;</type>
+        <definition>std::array&lt;page_type*, SIZE / (1 &lt;&lt; PAGE_ADDR_BITS) + 1&gt; util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt;::arr</definition>
+        <argsstring></argsstring>
+        <name>arr</name>
+        <qualifiedname>util::sparse_array::arr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" line="105" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classutil_1_1sparse__array_1a0b2229afb9be542d97237c5bfe5b5358" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt;::sparse_array</definition>
+        <argsstring>()</argsstring>
+        <name>sparse_array</name>
+        <qualifiedname>util::sparse_array::sparse_array</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the default constructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" line="53" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1sparse__array_1ad94d3de1943f36097a865b581840fdfc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt;::~sparse_array</definition>
+        <argsstring>()</argsstring>
+        <name>~sparse_array</name>
+        <qualifiedname>util::sparse_array::~sparse_array</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the destructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" line="57" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" bodystart="57" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1sparse__array_1aa4e18d518839d69d0feddc7a31842854" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt;::operator[]</definition>
+        <argsstring>(uint32_t addr)</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>util::sparse_array::operator[]</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>element access operator</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address to access </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the data type reference </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" line="67" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" bodystart="67" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1sparse__array_1a7cb85678198a07ce22ebefaff71371f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>page_type &amp;</type>
+        <definition>page_type &amp; util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt;::operator()</definition>
+        <argsstring>(uint32_t page_nr)</argsstring>
+        <name>operator()</name>
+        <qualifiedname>util::sparse_array::operator()</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>page_nr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>page fetch operator</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>page_nr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the page number ot fetch </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>reference to page </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" line="80" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" bodystart="80" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1sparse__array_1a3b89509639b90395d3e07eaa7c4813db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt;::is_allocated</definition>
+        <argsstring>(uint32_t addr)</argsstring>
+        <name>is_allocated</name>
+        <qualifiedname>util::sparse_array::is_allocated</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>check if page for address is allocated</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the address to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the page is allocated </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" line="92" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" bodystart="92" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1sparse__array_1a8431427620f2f2f29576c569fb96d1c4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt;::size</definition>
+        <argsstring>()</argsstring>
+        <name>size</name>
+        <qualifiedname>util::sparse_array::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the size of the array</para>
+<para><simplesect kind="return"><para>the size </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" line="102" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" bodystart="102" bodyend="102"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>a sparse array suitable for large sizes </para>
+    </briefdescription>
+    <detaileddescription>
+<para>a simple array which allocates memory in configurable chunks (size of 2^PAGE_ADDR_BITS), used for large sparse arrays. Memory is allocated on demand </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" line="37" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/sparse_array.h" bodystart="37" bodyend="106"/>
+    <listofallmembers>
+      <member refid="classutil_1_1sparse__array_1a87f4b0360c110e01e647dbe1898371b1" prot="protected" virt="non-virtual"><scope>util::sparse_array</scope><name>arr</name></member>
+      <member refid="classutil_1_1sparse__array_1a3b89509639b90395d3e07eaa7c4813db" prot="public" virt="non-virtual"><scope>util::sparse_array</scope><name>is_allocated</name></member>
+      <member refid="classutil_1_1sparse__array_1a7cb85678198a07ce22ebefaff71371f9" prot="public" virt="non-virtual"><scope>util::sparse_array</scope><name>operator()</name></member>
+      <member refid="classutil_1_1sparse__array_1aa4e18d518839d69d0feddc7a31842854" prot="public" virt="non-virtual"><scope>util::sparse_array</scope><name>operator[]</name></member>
+      <member refid="classutil_1_1sparse__array_1acd1263d9a6e00292eafae26083dfa8c3" prot="public" virt="non-virtual"><scope>util::sparse_array</scope><name>page_addr_mask</name></member>
+      <member refid="classutil_1_1sparse__array_1a59bb6590a6dce0c69e3d999988ec4bc1" prot="public" virt="non-virtual"><scope>util::sparse_array</scope><name>page_addr_width</name></member>
+      <member refid="classutil_1_1sparse__array_1a6040b2cad6aa308d693d656c485d5e31" prot="public" virt="non-virtual"><scope>util::sparse_array</scope><name>page_count</name></member>
+      <member refid="classutil_1_1sparse__array_1a7803c398be0d85b87c2f2bc47df182d6" prot="public" virt="non-virtual"><scope>util::sparse_array</scope><name>page_size</name></member>
+      <member refid="classutil_1_1sparse__array_1ab571fc9dff87068e9c90bdff93c1481f" prot="public" virt="non-virtual"><scope>util::sparse_array</scope><name>page_type</name></member>
+      <member refid="classutil_1_1sparse__array_1a8431427620f2f2f29576c569fb96d1c4" prot="public" virt="non-virtual"><scope>util::sparse_array</scope><name>size</name></member>
+      <member refid="classutil_1_1sparse__array_1a0b2229afb9be542d97237c5bfe5b5358" prot="public" virt="non-virtual"><scope>util::sparse_array</scope><name>sparse_array</name></member>
+      <member refid="classutil_1_1sparse__array_1ad94d3de1943f36097a865b581840fdfc" prot="public" virt="non-virtual"><scope>util::sparse_array</scope><name>~sparse_array</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

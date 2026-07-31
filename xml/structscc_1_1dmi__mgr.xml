@@ -1,0 +1,362 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1dmi__mgr" kind="struct" language="C++" prot="public">
+    <compoundname>scc::dmi_mgr</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_object</basecompoundref>
+    <includes refid="dmi__mgr_8h" local="no">dmi_mgr.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+        <defval>tlm::tlm_base_protocol_types</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1dmi__mgr_1ac886eb307f2387035163955f45f681d4" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; scc::dmi_mgr&lt; TYPES &gt;::disable_dmi</definition>
+        <argsstring></argsstring>
+        <name>disable_dmi</name>
+        <qualifiedname>scc::dmi_mgr::disable_dmi</qualifiedname>
+        <initializer>{&quot;disable_dmi&quot;, false}</initializer>
+        <briefdescription>
+<para>A CCI parameter to disable DMI transactions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This parameter allows the user to disable DMI transactions if needed. By default, DMI transactions are enabled. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="55" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1dmi__mgr_1a6667ee8935c5b54d82094a5f5d19a608" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; sc_core::sc_time &gt;</type>
+        <definition>cci::cci_param&lt;sc_core::sc_time&gt; scc::dmi_mgr&lt; TYPES &gt;::clk_period</definition>
+        <argsstring></argsstring>
+        <name>clk_period</name>
+        <qualifiedname>scc::dmi_mgr::clk_period</qualifiedname>
+        <initializer>{&quot;clk_period&quot;, sc_core::SC_ZERO_TIME}</initializer>
+        <briefdescription>
+<para>A CCI parameter to specify the clock period for delay calculations. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This parameter allows the user to set the clock period for the DMI transactions. By default, the clock period is set to SC_ZERO_TIME. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="62" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1dmi__mgr_1a47fbecdfd6bd00f2a1bac7034747fea7" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_port_b&lt; tlm::tlm_fw_transport_if&lt; TYPES &gt; &gt; &amp;</type>
+        <definition>sc_core::sc_port_b&lt;tlm::tlm_fw_transport_if&lt;TYPES&gt; &gt;&amp; scc::dmi_mgr&lt; TYPES &gt;::fw_if</definition>
+        <argsstring></argsstring>
+        <name>fw_if</name>
+        <qualifiedname>scc::dmi_mgr::fw_if</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="201" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1dmi__mgr_1acbe787610e63afc000e9e6130aa8e74b" prot="private" static="no" mutable="no">
+        <type><ref refid="classutil_1_1range__lut" kindref="compound">util::range_lut</ref>&lt; tlm::tlm_dmi &gt;</type>
+        <definition>util::range_lut&lt;tlm::tlm_dmi&gt; scc::dmi_mgr&lt; TYPES &gt;::read_lut</definition>
+        <argsstring></argsstring>
+        <name>read_lut</name>
+        <qualifiedname>scc::dmi_mgr::read_lut</qualifiedname>
+        <initializer>{tlm::tlm_dmi{}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="202" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" bodystart="202" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1dmi__mgr_1a67ecaea0d3c812b8b00c84a833d8125c" prot="private" static="no" mutable="no">
+        <type><ref refid="classutil_1_1range__lut" kindref="compound">util::range_lut</ref>&lt; tlm::tlm_dmi &gt;</type>
+        <definition>util::range_lut&lt;tlm::tlm_dmi&gt; scc::dmi_mgr&lt; TYPES &gt;::write_lut</definition>
+        <argsstring></argsstring>
+        <name>write_lut</name>
+        <qualifiedname>scc::dmi_mgr::write_lut</qualifiedname>
+        <initializer>{tlm::tlm_dmi{}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="202" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" bodystart="202" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1dmi__mgr_1a5fe94a29fdebf7d4d33702dd2afad9c6" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; uint8_t &gt;</type>
+        <definition>std::vector&lt;uint8_t&gt; scc::dmi_mgr&lt; TYPES &gt;::write_buf</definition>
+        <argsstring></argsstring>
+        <name>write_buf</name>
+        <qualifiedname>scc::dmi_mgr::write_buf</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="203" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1dmi__mgr_1a821e1f8f8a396d812c9c253517888dc5" prot="private" static="no" mutable="no">
+        <type>tlm_utils::tlm_quantumkeeper</type>
+        <definition>tlm_utils::tlm_quantumkeeper scc::dmi_mgr&lt; TYPES &gt;::quantum_keeper</definition>
+        <argsstring></argsstring>
+        <name>quantum_keeper</name>
+        <qualifiedname>scc::dmi_mgr::quantum_keeper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="204" column="34" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1dmi__mgr_1a6389a39d36b0b879c8b48b3aaeb85625" prot="private" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t scc::dmi_mgr&lt; TYPES &gt;::bus_clk_sycles</definition>
+        <argsstring></argsstring>
+        <name>bus_clk_sycles</name>
+        <qualifiedname>scc::dmi_mgr::bus_clk_sycles</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="205" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" bodystart="205" bodyend="205"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1dmi__mgr_1a88752a80bb552c32c2085dd4e344cf07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::dmi_mgr&lt; TYPES &gt;::dmi_mgr</definition>
+        <argsstring>(std::string const &amp;name, sc_core::sc_port_b&lt; tlm::tlm_fw_transport_if&lt; TYPES &gt; &gt; &amp;fw_if)</argsstring>
+        <name>dmi_mgr</name>
+        <qualifiedname>scc::dmi_mgr::dmi_mgr</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_port_b&lt; tlm::tlm_fw_transport_if&lt; TYPES &gt; &gt; &amp;</type>
+          <declname>fw_if</declname>
+        </param>
+        <briefdescription>
+<para>Constructor for the <ref refid="structscc_1_1dmi__mgr" kindref="compound">dmi_mgr</ref> class. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the <ref refid="structscc_1_1dmi__mgr" kindref="compound">dmi_mgr</ref> instance. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fw_if</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The TLM (Transaction Level Modeling) forward transport interface. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="70" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" bodystart="70" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1dmi__mgr_1ad3120d3231fa2594a244bfc2dd269f6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual scc::dmi_mgr&lt; TYPES &gt;::~dmi_mgr</definition>
+        <argsstring>()=default</argsstring>
+        <name>~dmi_mgr</name>
+        <qualifiedname>scc::dmi_mgr::~dmi_mgr</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor for the <ref refid="structscc_1_1dmi__mgr" kindref="compound">dmi_mgr</ref> class. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="76" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1dmi__mgr_1a38781126d957bc249eab5ccb4ed57f15" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacescc_1a55c0acbe37efa647b583451b6ef6c84f" kindref="member">dmi_status</ref></type>
+        <definition>dmi_status scc::dmi_mgr&lt; TYPES &gt;::read</definition>
+        <argsstring>(uint64_t addr, unsigned length, uint8_t *const data)</argsstring>
+        <name>read</name>
+        <qualifiedname>scc::dmi_mgr::read</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint8_t *const</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Performs a read operation on the DMI interface. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address to read from. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The length of the data to read. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the buffer where the read data will be stored.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The status of the read operation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="86" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" bodystart="86" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1dmi__mgr_1a5af095ddb94e8864a00fe356dd41014c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacescc_1a55c0acbe37efa647b583451b6ef6c84f" kindref="member">dmi_status</ref></type>
+        <definition>dmi_status scc::dmi_mgr&lt; TYPES &gt;::write</definition>
+        <argsstring>(uint64_t addr, unsigned length, const uint8_t *const data)</argsstring>
+        <name>write</name>
+        <qualifiedname>scc::dmi_mgr::write</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>const uint8_t *const</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Performs a write operation on the DMI interface. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address to write to. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The length of the data to write. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the buffer containing the data to write.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The status of the write operation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="147" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" bodystart="147" bodyend="198"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The <ref refid="structscc_1_1dmi__mgr" kindref="compound">dmi_mgr</ref> class manages Direct Memory Interface (DMI) transactions. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="structscc_1_1dmi__mgr" kindref="compound">dmi_mgr</ref> class is a template class that provides DMI management functionality. It interacts with the TLM (Transaction Level Modeling) framework to handle DMI transactions.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TYPES</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The TLM protocol types.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The <ref refid="structscc_1_1dmi__mgr" kindref="compound">dmi_mgr</ref> class is a part of the SystemC Component (SCC) library. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::dmi_mgr&lt; TYPES &gt;</label>
+        <link refid="structscc_1_1dmi__mgr"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::dmi_mgr&lt; TYPES &gt;</label>
+        <link refid="structscc_1_1dmi__mgr"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="48" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" bodystart="48" bodyend="206"/>
+    <listofallmembers>
+      <member refid="structscc_1_1dmi__mgr_1a6389a39d36b0b879c8b48b3aaeb85625" prot="private" virt="non-virtual"><scope>scc::dmi_mgr</scope><name>bus_clk_sycles</name></member>
+      <member refid="structscc_1_1dmi__mgr_1a6667ee8935c5b54d82094a5f5d19a608" prot="public" virt="non-virtual"><scope>scc::dmi_mgr</scope><name>clk_period</name></member>
+      <member refid="structscc_1_1dmi__mgr_1ac886eb307f2387035163955f45f681d4" prot="public" virt="non-virtual"><scope>scc::dmi_mgr</scope><name>disable_dmi</name></member>
+      <member refid="structscc_1_1dmi__mgr_1a88752a80bb552c32c2085dd4e344cf07" prot="public" virt="non-virtual"><scope>scc::dmi_mgr</scope><name>dmi_mgr</name></member>
+      <member refid="structscc_1_1dmi__mgr_1a47fbecdfd6bd00f2a1bac7034747fea7" prot="private" virt="non-virtual"><scope>scc::dmi_mgr</scope><name>fw_if</name></member>
+      <member refid="structscc_1_1dmi__mgr_1a821e1f8f8a396d812c9c253517888dc5" prot="private" virt="non-virtual"><scope>scc::dmi_mgr</scope><name>quantum_keeper</name></member>
+      <member refid="structscc_1_1dmi__mgr_1a38781126d957bc249eab5ccb4ed57f15" prot="public" virt="non-virtual"><scope>scc::dmi_mgr</scope><name>read</name></member>
+      <member refid="structscc_1_1dmi__mgr_1acbe787610e63afc000e9e6130aa8e74b" prot="private" virt="non-virtual"><scope>scc::dmi_mgr</scope><name>read_lut</name></member>
+      <member refid="structscc_1_1dmi__mgr_1a5af095ddb94e8864a00fe356dd41014c" prot="public" virt="non-virtual"><scope>scc::dmi_mgr</scope><name>write</name></member>
+      <member refid="structscc_1_1dmi__mgr_1a5fe94a29fdebf7d4d33702dd2afad9c6" prot="private" virt="non-virtual"><scope>scc::dmi_mgr</scope><name>write_buf</name></member>
+      <member refid="structscc_1_1dmi__mgr_1a67ecaea0d3c812b8b00c84a833d8125c" prot="private" virt="non-virtual"><scope>scc::dmi_mgr</scope><name>write_lut</name></member>
+      <member refid="structscc_1_1dmi__mgr_1ad3120d3231fa2594a244bfc2dd269f6e" prot="public" virt="virtual"><scope>scc::dmi_mgr</scope><name>~dmi_mgr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

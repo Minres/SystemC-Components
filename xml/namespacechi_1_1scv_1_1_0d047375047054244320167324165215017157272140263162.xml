@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacechi_1_1scv_1_1_0d047375047054244320167324165215017157272140263162" kind="namespace" language="C++">
+    <compoundname>chi::scv</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="45" column="1"/>
+  </compounddef>
+</doxygen>

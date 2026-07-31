@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container" kind="struct" language="C++" prot="public">
+    <compoundname>TCB_SPAN_NAMESPACE_NAME::detail::is_container</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename C</type>
+      </param>
+      <param>
+        <type>typename U</type>
+        <defval>uncvref_t&lt;C&gt;</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container_1a733b065b86c2bbbb3525ede53a813146" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool TCB_SPAN_NAMESPACE_NAME::detail::is_container&lt; C, U &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::is_container::value</qualifiedname>
+        <initializer>= !<ref refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__span" kindref="compound">is_span</ref>&lt;U&gt;::value &amp;&amp; !<ref refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__std__array" kindref="compound">is_std_array</ref>&lt;U&gt;::value &amp;&amp; !std::is_array&lt;U&gt;::value &amp;&amp; <ref refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1has__size__and__data" kindref="compound">has_size_and_data</ref>&lt;C&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="227" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="227" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="226" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="226" bodyend="228"/>
+    <listofallmembers>
+      <member refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container_1a733b065b86c2bbbb3525ede53a813146" prot="public" virt="non-virtual"><scope>TCB_SPAN_NAMESPACE_NAME::detail::is_container</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,339 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1trace_1_1gz__writer" kind="class" language="C++" prot="public">
+    <compoundname>scc::trace::gz_writer</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classscc_1_1trace_1_1gz__writer_1a7e4b705592404cd76efa335c2f9902c0" prot="public" static="no">
+        <type>std::unique_lock&lt; std::mutex &gt;</type>
+        <definition>using scc::trace::gz_writer::lock_type =  std::unique_lock&lt;std::mutex&gt;</definition>
+        <argsstring></argsstring>
+        <name>lock_type</name>
+        <qualifiedname>scc::trace::gz_writer::lock_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="68" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="68" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classscc_1_1trace_1_1gz__writer_1a24be283527b94c74de10aec4608b0146" prot="private" static="yes" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t scc::trace::gz_writer::queue_size</definition>
+        <argsstring></argsstring>
+        <name>queue_size</name>
+        <qualifiedname>scc::trace::gz_writer::queue_size</qualifiedname>
+        <initializer>= 16 * 1024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="25" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="25" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classscc_1_1trace_1_1gz__writer_1a61e39761e23f0d4e652bd3415c583042" prot="private" static="no" mutable="no">
+        <type>std::deque&lt; char * &gt;</type>
+        <definition>std::deque&lt;char*&gt; scc::trace::gz_writer::pool</definition>
+        <argsstring></argsstring>
+        <name>pool</name>
+        <qualifiedname>scc::trace::gz_writer::pool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="26" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1trace_1_1gz__writer_1a8fa8378bee143e3ab2c72a4cb4374ec5" prot="private" static="no" mutable="no">
+        <type>std::deque&lt; char * &gt;</type>
+        <definition>std::deque&lt;char*&gt; scc::trace::gz_writer::write_queue</definition>
+        <argsstring></argsstring>
+        <name>write_queue</name>
+        <qualifiedname>scc::trace::gz_writer::write_queue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="27" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1trace_1_1gz__writer_1a3c96af05ba0d764c18970d0f771d73c3" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; scc::trace::gz_writer::done</definition>
+        <argsstring></argsstring>
+        <name>done</name>
+        <qualifiedname>scc::trace::gz_writer::done</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="28" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="28" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1trace_1_1gz__writer_1ab0a970bc1380651a37d802c479c9a912" prot="private" static="no" mutable="no">
+        <type>std::condition_variable</type>
+        <definition>std::condition_variable scc::trace::gz_writer::cond</definition>
+        <argsstring></argsstring>
+        <name>cond</name>
+        <qualifiedname>scc::trace::gz_writer::cond</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="29" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1trace_1_1gz__writer_1a2cbbdb311e19f5610e070eaad1c855fb" prot="private" static="no" mutable="no">
+        <type>std::deque&lt; char * &gt;</type>
+        <definition>std::deque&lt;char*&gt; scc::trace::gz_writer::pool_buffer</definition>
+        <argsstring></argsstring>
+        <name>pool_buffer</name>
+        <qualifiedname>scc::trace::gz_writer::pool_buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="31" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1trace_1_1gz__writer_1a75ce6709aa8486f5dfcdebca0dfc61b8" prot="private" static="no" mutable="no">
+        <type>gzFile</type>
+        <definition>gzFile scc::trace::gz_writer::vcd_out</definition>
+        <argsstring></argsstring>
+        <name>vcd_out</name>
+        <qualifiedname>scc::trace::gz_writer::vcd_out</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="32" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="32" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1trace_1_1gz__writer_1ad00f203a3155bf39bd1109023c6ef483" prot="private" static="no" mutable="no">
+        <type>std::thread</type>
+        <definition>std::thread scc::trace::gz_writer::logger</definition>
+        <argsstring></argsstring>
+        <name>logger</name>
+        <qualifiedname>scc::trace::gz_writer::logger</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="33" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="33" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classscc_1_1trace_1_1gz__writer_1a809ea2298e50f0bd0f7f38b396fa36d3" prot="public" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex scc::trace::gz_writer::writer_mtx</definition>
+        <argsstring></argsstring>
+        <name>writer_mtx</name>
+        <qualifiedname>scc::trace::gz_writer::writer_mtx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="67" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="67" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classscc_1_1trace_1_1gz__writer_1a942836077bb50db0a5e6b155c26ca6bd" prot="public" static="yes" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t scc::trace::gz_writer::buffer_size</definition>
+        <argsstring></argsstring>
+        <name>buffer_size</name>
+        <qualifiedname>scc::trace::gz_writer::buffer_size</qualifiedname>
+        <initializer>= 512</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="69" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="69" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classscc_1_1trace_1_1gz__writer_1a9c112c39ea74d3812e8a7f49b87191e2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::trace::gz_writer::write_out</definition>
+        <argsstring>()</argsstring>
+        <name>write_out</name>
+        <qualifiedname>scc::trace::gz_writer::write_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="35" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="35" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1trace_1_1gz__writer_1a03b9337f46d76cc737d1701de86b4cb7" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::trace::gz_writer::log</definition>
+        <argsstring>(void)</argsstring>
+        <name>log</name>
+        <qualifiedname>scc::trace::gz_writer::log</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="46" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="46" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1trace_1_1gz__writer_1a6c259756e3f6aaa9c8e5660d98aa540d" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::trace::gz_writer::enlarge_pool</definition>
+        <argsstring>()</argsstring>
+        <name>enlarge_pool</name>
+        <qualifiedname>scc::trace::gz_writer::enlarge_pool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="57" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="57" bodyend="64"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1trace_1_1gz__writer_1a08af9a254d20286ac8783085366c9d3d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::trace::gz_writer::gz_writer</definition>
+        <argsstring>(std::string const &amp;filename)</argsstring>
+        <name>gz_writer</name>
+        <qualifiedname>scc::trace::gz_writer::gz_writer</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="70" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="70" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1trace_1_1gz__writer_1ae42eb7ffb1e8161dcf5dd9e34cb52f0f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::trace::gz_writer::~gz_writer</definition>
+        <argsstring>()</argsstring>
+        <name>~gz_writer</name>
+        <qualifiedname>scc::trace::gz_writer::~gz_writer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="76" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="76" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1trace_1_1gz__writer_1a5d954b3fbc2e519bca784ab301e90046" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::trace::gz_writer::write_single</definition>
+        <argsstring>(std::string const &amp;msg)</argsstring>
+        <name>write_single</name>
+        <qualifiedname>scc::trace::gz_writer::write_single</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="90" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="90" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1trace_1_1gz__writer_1ad0c83f9332887d1e9caf3657df439fa1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::trace::gz_writer::write</definition>
+        <argsstring>(std::string const &amp;msg)</argsstring>
+        <name>write</name>
+        <qualifiedname>scc::trace::gz_writer::write</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="99" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="99" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1trace_1_1gz__writer_1ac17c2722bbc0c2f24a4d6189829e0f30" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::trace::gz_writer::write</definition>
+        <argsstring>(char const *msg, size_t size)</argsstring>
+        <name>write</name>
+        <qualifiedname>scc::trace::gz_writer::write</qualifiedname>
+        <param>
+          <type>char const *</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="107" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="107" bodyend="114"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" line="24" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/gz_writer.hh" bodystart="24" bodyend="115"/>
+    <listofallmembers>
+      <member refid="classscc_1_1trace_1_1gz__writer_1a942836077bb50db0a5e6b155c26ca6bd" prot="public" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>buffer_size</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1ab0a970bc1380651a37d802c479c9a912" prot="private" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>cond</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1a3c96af05ba0d764c18970d0f771d73c3" prot="private" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>done</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1a6c259756e3f6aaa9c8e5660d98aa540d" prot="private" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>enlarge_pool</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1a08af9a254d20286ac8783085366c9d3d" prot="public" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>gz_writer</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1a7e4b705592404cd76efa335c2f9902c0" prot="public" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>lock_type</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1a03b9337f46d76cc737d1701de86b4cb7" prot="private" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>log</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1ad00f203a3155bf39bd1109023c6ef483" prot="private" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>logger</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1a61e39761e23f0d4e652bd3415c583042" prot="private" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>pool</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1a2cbbdb311e19f5610e070eaad1c855fb" prot="private" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>pool_buffer</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1a24be283527b94c74de10aec4608b0146" prot="private" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>queue_size</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1a75ce6709aa8486f5dfcdebca0dfc61b8" prot="private" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>vcd_out</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1ad0c83f9332887d1e9caf3657df439fa1" prot="public" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>write</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1ac17c2722bbc0c2f24a4d6189829e0f30" prot="public" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>write</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1a9c112c39ea74d3812e8a7f49b87191e2" prot="private" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>write_out</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1a8fa8378bee143e3ab2c72a4cb4374ec5" prot="private" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>write_queue</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1a5d954b3fbc2e519bca784ab301e90046" prot="public" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>write_single</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1a809ea2298e50f0bd0f7f38b396fa36d3" prot="public" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>writer_mtx</name></member>
+      <member refid="classscc_1_1trace_1_1gz__writer_1ae42eb7ffb1e8161dcf5dd9e34cb52f0f" prot="public" virt="non-virtual"><scope>scc::trace::gz_writer</scope><name>~gz_writer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

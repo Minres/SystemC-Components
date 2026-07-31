@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceapb_1_1pe" kind="namespace" language="C++">
+    <compoundname>apb::pe</compoundname>
+    <innerclass refid="classapb_1_1pe_1_1apb__initiator__b" prot="public">apb::pe::apb_initiator_b</innerclass>
+    <innerclass refid="classapb_1_1pe_1_1apb__initiator" prot="public">apb::pe::apb_initiator</innerclass>
+    <innerclass refid="classapb_1_1pe_1_1apb__target__b" prot="public">apb::pe::apb_target_b</innerclass>
+    <innerclass refid="classapb_1_1pe_1_1apb__target" prot="public">apb::pe::apb_target</innerclass>
+    <briefdescription>
+<para>protocol engine implementations </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="27" column="1"/>
+  </compounddef>
+</doxygen>

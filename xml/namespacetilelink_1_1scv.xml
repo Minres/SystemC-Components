@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacetilelink_1_1scv" kind="namespace" language="C++">
+    <compoundname>tilelink::scv</compoundname>
+    <innerclass refid="classtilelink_1_1scv_1_1tlc__recorder" prot="public">tilelink::scv::tlc_recorder</innerclass>
+    <innerclass refid="classtilelink_1_1scv_1_1tlc__recorder__module" prot="public">tilelink::scv::tlc_recorder_module</innerclass>
+    <innernamespace refid="namespacetilelink_1_1scv_1_1impl">tilelink::scv::impl</innernamespace>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="tl__tlm_8cpp_1a57a09a13a48b35160b355b0c895a127a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tilelink::scv::registered</definition>
+        <argsstring></argsstring>
+        <name>registered</name>
+        <qualifiedname>tilelink::scv::registered</qualifiedname>
+        <initializer>= register_extensions()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.cpp" line="159" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.cpp" bodystart="159" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="tlc__recorder_8h_1a2e752cfeb5ace6ddbc79ea1773929336" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tilelink::scv::register_extensions</definition>
+        <argsstring>()</argsstring>
+        <name>register_extensions</name>
+        <qualifiedname>tilelink::scv::register_extensions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.cpp" line="152" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.cpp" bodystart="152" bodyend="158" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" declline="37" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="35" column="1"/>
+  </compounddef>
+</doxygen>

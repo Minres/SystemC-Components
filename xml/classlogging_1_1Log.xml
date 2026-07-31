@@ -1,0 +1,385 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classlogging_1_1Log" kind="class" language="C++" prot="public">
+    <compoundname>logging::Log</compoundname>
+    <includes refid="logging_8h" local="no">logging.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classlogging_1_1Log_1a7066c3c3bf0a8f11d3949630562abdfa" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string logging::Log&lt; T &gt;::cat</definition>
+        <argsstring></argsstring>
+        <name>cat</name>
+        <qualifiedname>logging::Log::cat</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="222" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlogging_1_1Log_1a76c4530506876c7394d76d1fbda95fb2" prot="protected" static="no" mutable="no">
+        <type>std::ostringstream</type>
+        <definition>std::ostringstream logging::Log&lt; T &gt;::os</definition>
+        <argsstring></argsstring>
+        <name>os</name>
+        <qualifiedname>logging::Log::os</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="223" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="223" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classlogging_1_1Log_1a4c512608b6ebeaac2a45b797d488fbea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>logging::Log&lt; T &gt;::Log</definition>
+        <argsstring>()=default</argsstring>
+        <name>Log</name>
+        <qualifiedname>logging::Log::Log</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="103" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogging_1_1Log_1a858f6de39b7f7f13e95588bfc60e064c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>logging::Log&lt; T &gt;::Log</definition>
+        <argsstring>(const Log &amp;)=delete</argsstring>
+        <name>Log</name>
+        <qualifiedname>logging::Log::Log</qualifiedname>
+        <param>
+          <type>const Log &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="105" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogging_1_1Log_1aad19eee2042653aabf9ccfe6cc5b9e89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Log &amp;</type>
+        <definition>Log &amp; logging::Log&lt; T &gt;::operator=</definition>
+        <argsstring>(const Log &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>logging::Log::operator=</qualifiedname>
+        <param>
+          <type>const Log &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="107" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogging_1_1Log_1a2911f9872e2ef611d4c3eb9183bf4c5e" prot="public" static="no" const="no" explicit="no" inline="yes" noexceptexpression="false" virt="virtual">
+        <type></type>
+        <definition>virtual logging::Log&lt; T &gt;::~Log</definition>
+        <argsstring>()</argsstring>
+        <name>~Log</name>
+        <qualifiedname>logging::Log::~Log</qualifiedname>
+        <briefdescription>
+<para>the destructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="113" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="113" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogging_1_1Log_1ac48555f1ac9fd3da275812bbff2df88d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; logging::Log&lt; T &gt;::get</definition>
+        <argsstring>(log_level level=INFO, const char *category=&quot;&quot;)</argsstring>
+        <name>get</name>
+        <qualifiedname>logging::Log::get</qualifiedname>
+        <param>
+          <type><ref refid="namespacelogging_1acdebf4f4cd477e9f9c1159bfcd08249a" kindref="member">log_level</ref></type>
+          <declname>level</declname>
+          <defval>INFO</defval>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>category</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the underlying ostringstream for a certain log level and category</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the log level </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>category</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the category string </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the underlying output stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="131" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="131" bodyend="146"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classlogging_1_1Log_1a663dd7153019753d49d9986e17a590ed" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacelogging_1acdebf4f4cd477e9f9c1159bfcd08249a" kindref="member">log_level</ref></type>
+        <definition>static log_level logging::Log&lt; T &gt;::get_reporting_level</definition>
+        <argsstring>()</argsstring>
+        <name>get_reporting_level</name>
+        <qualifiedname>logging::Log::get_reporting_level</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get a reference to the configured logging level</para>
+<para><simplesect kind="return"><para>the logging level </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="152" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="152" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogging_1_1Log_1a0211fa593a633a0f9f7f7f89f842aedd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void logging::Log&lt; T &gt;::set_reporting_level</definition>
+        <argsstring>(log_level lvl)</argsstring>
+        <name>set_reporting_level</name>
+        <qualifiedname>logging::Log::set_reporting_level</qualifiedname>
+        <param>
+          <type><ref refid="namespacelogging_1acdebf4f4cd477e9f9c1159bfcd08249a" kindref="member">log_level</ref></type>
+          <declname>lvl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get a reference to the configured logging level</para>
+<para><simplesect kind="return"><para>the logging level </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="158" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="158" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogging_1_1Log_1a077a4a09c1bcfa24781f4b708cb849d5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::atomic&lt; bool &gt; &amp;</type>
+        <definition>static std::atomic&lt; bool &gt; &amp; logging::Log&lt; T &gt;::abort_on_fatal</definition>
+        <argsstring>()</argsstring>
+        <name>abort_on_fatal</name>
+        <qualifiedname>logging::Log::abort_on_fatal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get a reference to the abort on fatal flag</para>
+<para><simplesect kind="return"><para>the logging level </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="164" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="164" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogging_1_1Log_1a3349b8507039b7a90f2baedd9adaeca9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string logging::Log&lt; T &gt;::to_string</definition>
+        <argsstring>(log_level level)</argsstring>
+        <name>to_string</name>
+        <qualifiedname>logging::Log::to_string</qualifiedname>
+        <param>
+          <type><ref refid="namespacelogging_1acdebf4f4cd477e9f9c1159bfcd08249a" kindref="member">log_level</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>translate a lg level to a string</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the log level </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the string representing the log level </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="174" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="174" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogging_1_1Log_1ad5a1913e3fa6554297fe09ca5eab3f0c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacelogging_1acdebf4f4cd477e9f9c1159bfcd08249a" kindref="member">log_level</ref></type>
+        <definition>static log_level logging::Log&lt; T &gt;::from_string</definition>
+        <argsstring>(const std::string &amp;level)</argsstring>
+        <name>from_string</name>
+        <qualifiedname>logging::Log::from_string</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>parse a log level from a string</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string representing the log level </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the log level </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="181" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="181" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogging_1_1Log_1ab1291a423cd5f5c3d2446bd579d8365c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::atomic&lt; bool &gt; &amp;</type>
+        <definition>static std::atomic&lt; bool &gt; &amp; logging::Log&lt; T &gt;::print_time</definition>
+        <argsstring>()</argsstring>
+        <name>print_time</name>
+        <qualifiedname>logging::Log::print_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the reference to the flag indicating if the current host time should be part of the log</para>
+<para><simplesect kind="return"><para>the print time flag </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="193" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="193" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogging_1_1Log_1a79624610c811c9f435a50a079925a3b5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::atomic&lt; bool &gt; &amp;</type>
+        <definition>static std::atomic&lt; bool &gt; &amp; logging::Log&lt; T &gt;::print_severity</definition>
+        <argsstring>()</argsstring>
+        <name>print_severity</name>
+        <qualifiedname>logging::Log::print_severity</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the reference to the flag indicating if severity should be part of the log</para>
+<para><simplesect kind="return"><para>the print severity flag </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="202" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="202" bodyend="205"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classlogging_1_1Log_1a022ba4cb123dd5d6195f4af1f99b9a8e" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::atomic&lt; <ref refid="namespacelogging_1acdebf4f4cd477e9f9c1159bfcd08249a" kindref="member">log_level</ref> &gt; &amp;</type>
+        <definition>static std::atomic&lt; log_level &gt; &amp; logging::Log&lt; T &gt;::reporting_level</definition>
+        <argsstring>()</argsstring>
+        <name>reporting_level</name>
+        <qualifiedname>logging::Log::reporting_level</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get a reference to the configured logging level</para>
+<para><simplesect kind="return"><para>the logging level </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="213" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="213" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogging_1_1Log_1a3d141c94d892ecc12daa998522f83231" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *const *</type>
+        <definition>static const char *const  * logging::Log&lt; T &gt;::get_log_level_cstr</definition>
+        <argsstring>()</argsstring>
+        <name>get_log_level_cstr</name>
+        <qualifiedname>logging::Log::get_log_level_cstr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="221" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="221" bodyend="221"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classlogging_1_1Log_1a4a506817db3bb63eae5d4f20daeeb72b" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::atomic&lt; <ref refid="namespacelogging_1acdebf4f4cd477e9f9c1159bfcd08249a" kindref="member">log_level</ref> &gt; &amp;</type>
+        <definition>std::atomic&lt; log_level &gt; &amp; logging::Log&lt; T &gt;::get_last_log_level</definition>
+        <argsstring>()</argsstring>
+        <name>get_last_log_level</name>
+        <qualifiedname>logging::Log::get_last_log_level</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="217" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="217" bodyend="220"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>the logger class </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="101" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="101" bodyend="224"/>
+    <listofallmembers>
+      <member refid="classlogging_1_1Log_1a077a4a09c1bcfa24781f4b708cb849d5" prot="public" virt="non-virtual"><scope>logging::Log</scope><name>abort_on_fatal</name></member>
+      <member refid="classlogging_1_1Log_1a7066c3c3bf0a8f11d3949630562abdfa" prot="protected" virt="non-virtual"><scope>logging::Log</scope><name>cat</name></member>
+      <member refid="classlogging_1_1Log_1ad5a1913e3fa6554297fe09ca5eab3f0c" prot="public" virt="non-virtual"><scope>logging::Log</scope><name>from_string</name></member>
+      <member refid="classlogging_1_1Log_1ac48555f1ac9fd3da275812bbff2df88d" prot="public" virt="non-virtual"><scope>logging::Log</scope><name>get</name></member>
+      <member refid="classlogging_1_1Log_1a4a506817db3bb63eae5d4f20daeeb72b" prot="protected" virt="non-virtual"><scope>logging::Log</scope><name>get_last_log_level</name></member>
+      <member refid="classlogging_1_1Log_1a3d141c94d892ecc12daa998522f83231" prot="protected" virt="non-virtual"><scope>logging::Log</scope><name>get_log_level_cstr</name></member>
+      <member refid="classlogging_1_1Log_1a663dd7153019753d49d9986e17a590ed" prot="public" virt="non-virtual"><scope>logging::Log</scope><name>get_reporting_level</name></member>
+      <member refid="classlogging_1_1Log_1a4c512608b6ebeaac2a45b797d488fbea" prot="public" virt="non-virtual"><scope>logging::Log</scope><name>Log</name></member>
+      <member refid="classlogging_1_1Log_1a858f6de39b7f7f13e95588bfc60e064c" prot="public" virt="non-virtual"><scope>logging::Log</scope><name>Log</name></member>
+      <member refid="classlogging_1_1Log_1aad19eee2042653aabf9ccfe6cc5b9e89" prot="public" virt="non-virtual"><scope>logging::Log</scope><name>operator=</name></member>
+      <member refid="classlogging_1_1Log_1a76c4530506876c7394d76d1fbda95fb2" prot="protected" virt="non-virtual"><scope>logging::Log</scope><name>os</name></member>
+      <member refid="classlogging_1_1Log_1a79624610c811c9f435a50a079925a3b5" prot="public" virt="non-virtual"><scope>logging::Log</scope><name>print_severity</name></member>
+      <member refid="classlogging_1_1Log_1ab1291a423cd5f5c3d2446bd579d8365c" prot="public" virt="non-virtual"><scope>logging::Log</scope><name>print_time</name></member>
+      <member refid="classlogging_1_1Log_1a022ba4cb123dd5d6195f4af1f99b9a8e" prot="protected" virt="non-virtual"><scope>logging::Log</scope><name>reporting_level</name></member>
+      <member refid="classlogging_1_1Log_1a0211fa593a633a0f9f7f7f89f842aedd" prot="public" virt="non-virtual"><scope>logging::Log</scope><name>set_reporting_level</name></member>
+      <member refid="classlogging_1_1Log_1a3349b8507039b7a90f2baedd9adaeca9" prot="public" virt="non-virtual"><scope>logging::Log</scope><name>to_string</name></member>
+      <member refid="classlogging_1_1Log_1a2911f9872e2ef611d4c3eb9183bf4c5e" prot="public" virt="virtual"><scope>logging::Log</scope><name>~Log</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

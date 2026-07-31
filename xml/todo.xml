@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="todo" kind="page">
+    <compoundname>todo</compoundname>
+    <title>Todo List</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term>Member <ref refid="classahb_1_1pe_1_1ahb__target__b_1aae571201d6387648356dc363c4996451" kindref="member">ahb::pe::ahb_target_b::set_operation_cb</ref>  (std::function&lt; unsigned(payload_type &amp;trans)&gt; cb)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000001"/>refine API </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classapb_1_1pe_1_1apb__target__b_1aaeae28bc8b7e56cfc3157132323f609e" kindref="member">apb::pe::apb_target_b::set_operation_cb</ref>  (std::function&lt; unsigned(payload_type &amp;trans)&gt; cb)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000002"/>refine API </para>
+</listitem>
+<varlistentry><term>Member <ref refid="structaxi_1_1fsm_1_1fsm__handle_1afd9b5e0e1163fda5e7bac40832dc53a8" kindref="member">axi::fsm::fsm_handle::gp</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000005"/>refactor to remove this forward definitions  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="namespaceaxi_1ad48f42fa6a7b36b4928191327f2f4c94" kindref="member">axi::is_burst</ref>  (const axi::axi_protocol_types::tlm_payload_type &amp;trans)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000004"/>The calculation needs to be checked and probably fixed  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classaxi_1_1pe_1_1ace__target__pe_1a5efdb0544aea6dc9e2dd105b86480e54" kindref="member">axi::pe::ace_target_pe::set_operation_cb</ref>  (std::function&lt; unsigned(payload_type &amp;trans)&gt; cb)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000006"/>refine API </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classaxi_1_1pe_1_1axi__target__pe_1a93aac6ff0331920d75b2320dfeb87830" kindref="member">axi::pe::axi_target_pe::set_operation_cb</ref>  (std::function&lt; unsigned(payload_type &amp;trans)&gt; cb)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000007"/>refine API </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classaxi_1_1pe_1_1simple__initiator__b_1af2100b14613724cda86bb142ddaad59f" kindref="member">axi::pe::simple_initiator_b::set_snoop_cb</ref>  (std::function&lt; unsigned(payload_type &amp;trans)&gt; cb)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000008"/>refine API </para>
+<para></para>
+<para>handing in a pointer is a hack to work around a bug in gcc 4.8 not allowing to copy std::function objects and should be fixed </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classaxi_1_1pe_1_1simple__initiator__b_1a8e77c0e395dc9f9e1c631f0fabe53343" kindref="member">axi::pe::simple_initiator_b::snoop_latency</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000009"/>this is a hack and should be fixed </para>
+</listitem>
+</variablelist>
+</para>
+    </detaileddescription>
+    <location file="todo"/>
+  </compounddef>
+</doxygen>

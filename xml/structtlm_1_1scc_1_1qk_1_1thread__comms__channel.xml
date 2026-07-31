@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1qk_1_1thread__comms__channel" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::qk::thread_comms_channel</compoundname>
+    <includes refid="src_2sysc_2tlm_2scc_2qk_2types_8h" local="no">types.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1a1318acce544e554b00a379834fecb960" prot="public" static="no" mutable="no">
+        <type><ref refid="classrigtorp_1_1SPSCQueue" kindref="compound">rigtorp::SPSCQueue</ref>&lt; <ref refid="structtlm_1_1scc_1_1qk_1_1comms__entry" kindref="compound">comms_entry</ref> &gt;</type>
+        <definition>rigtorp::SPSCQueue&lt;comms_entry&gt; tlm::scc::qk::thread_comms_channel::client2time_keeper</definition>
+        <argsstring></argsstring>
+        <name>client2time_keeper</name>
+        <qualifiedname>tlm::scc::qk::thread_comms_channel::client2time_keeper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" line="57" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1a22b0670f47b6bf562d3a0e2b78d104a7" prot="public" static="no" mutable="no">
+        <type>const uint64_t</type>
+        <definition>const uint64_t tlm::scc::qk::thread_comms_channel::my_id</definition>
+        <argsstring></argsstring>
+        <name>my_id</name>
+        <qualifiedname>tlm::scc::qk::thread_comms_channel::my_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" line="59" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1a14d5d8c3563d16d99fae323f8b0840b6" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tlm::scc::qk::thread_comms_channel::waiting4sc</definition>
+        <argsstring></argsstring>
+        <name>waiting4sc</name>
+        <qualifiedname>tlm::scc::qk::thread_comms_channel::waiting4sc</qualifiedname>
+        <initializer>{true}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" line="60" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1a482fcf03d073fdc5aaee0ee28dc1d1ec" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t tlm::scc::qk::thread_comms_channel::thread_local_time</definition>
+        <argsstring></argsstring>
+        <name>thread_local_time</name>
+        <qualifiedname>tlm::scc::qk::thread_comms_channel::thread_local_time</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" line="61" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1abcfab58ffacb115fb8b4d391f987ad06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::qk::thread_comms_channel::thread_comms_channel</definition>
+        <argsstring>(uint64_t my_id)</argsstring>
+        <name>thread_comms_channel</name>
+        <qualifiedname>tlm::scc::qk::thread_comms_channel::thread_comms_channel</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>my_id</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new thread comms channel object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>my_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" line="42" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" bodystart="42" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1a725890d393e77205c85d20944e8518da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::qk::thread_comms_channel::thread_comms_channel</definition>
+        <argsstring>(thread_comms_channel const &amp;o)</argsstring>
+        <name>thread_comms_channel</name>
+        <qualifiedname>tlm::scc::qk::thread_comms_channel::thread_comms_channel</qualifiedname>
+        <param>
+          <type>thread_comms_channel const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new thread comms channel object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>o</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" line="50" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" bodystart="50" bodyend="55"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the communication channel between client threads (incl. SystemC) and the global time keeper </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>rigtorp::SPSCQueue&lt; tlm::scc::qk::comms_entry &gt;</label>
+        <link refid="classrigtorp_1_1SPSCQueue"/>
+      </node>
+      <node id="1">
+        <label>tlm::scc::qk::thread_comms_channel</label>
+        <link refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>client2time_keeper</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" line="36" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" bodystart="36" bodyend="62"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1a1318acce544e554b00a379834fecb960" prot="public" virt="non-virtual"><scope>tlm::scc::qk::thread_comms_channel</scope><name>client2time_keeper</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1a22b0670f47b6bf562d3a0e2b78d104a7" prot="public" virt="non-virtual"><scope>tlm::scc::qk::thread_comms_channel</scope><name>my_id</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1abcfab58ffacb115fb8b4d391f987ad06" prot="public" virt="non-virtual"><scope>tlm::scc::qk::thread_comms_channel</scope><name>thread_comms_channel</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1a725890d393e77205c85d20944e8518da" prot="public" virt="non-virtual"><scope>tlm::scc::qk::thread_comms_channel</scope><name>thread_comms_channel</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1a482fcf03d073fdc5aaee0ee28dc1d1ec" prot="public" virt="non-virtual"><scope>tlm::scc::qk::thread_comms_channel</scope><name>thread_local_time</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1a14d5d8c3563d16d99fae323f8b0840b6" prot="public" virt="non-virtual"><scope>tlm::scc::qk::thread_comms_channel</scope><name>waiting4sc</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

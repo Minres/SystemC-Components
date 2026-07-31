@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1hierarchy__dumper" kind="class" language="C++" prot="public">
+    <compoundname>scc::hierarchy_dumper</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <includes refid="hierarchy__dumper_8h" local="no">hierarchy_dumper.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classscc_1_1hierarchy__dumper_1a80dabe535819ab6fafa8a3a1768b1bf4" prot="public" static="no" strong="no">
+        <type></type>
+        <name>file_type</name>
+        <qualifiedname>scc::hierarchy_dumper::file_type</qualifiedname>
+        <enumvalue id="classscc_1_1hierarchy__dumper_1a80dabe535819ab6fafa8a3a1768b1bf4a98d662dac6fd652503e7b5661acf9a6d" prot="public">
+          <name>ELKT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classscc_1_1hierarchy__dumper_1a80dabe535819ab6fafa8a3a1768b1bf4adb4b84ec0d612ea92b30eb2923944597" prot="public">
+          <name>JSON</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classscc_1_1hierarchy__dumper_1a80dabe535819ab6fafa8a3a1768b1bf4ae1b143b30149ca6382814cc6fe6a33a9" prot="public">
+          <name>D3JSON</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classscc_1_1hierarchy__dumper_1a80dabe535819ab6fafa8a3a1768b1bf4a4801d9378cff5c215f9b75a0ca5640c4" prot="public">
+          <name>DBGJSON</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The supported file formats for dumping the hierarchy. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.h" line="42" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.h" bodystart="42" bodyend="42"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classscc_1_1hierarchy__dumper_1a808dfbd60cbc9842fbe1a7f9afbd448c" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string scc::hierarchy_dumper::dump_hier_file_name</definition>
+        <argsstring></argsstring>
+        <name>dump_hier_file_name</name>
+        <qualifiedname>scc::hierarchy_dumper::dump_hier_file_name</qualifiedname>
+        <initializer>{&quot;&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.h" line="56" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1hierarchy__dumper_1a8fa8f5107b87b953820b7e6ddbea9efe" prot="private" static="no" mutable="no">
+        <type><ref refid="classscc_1_1hierarchy__dumper_1a80dabe535819ab6fafa8a3a1768b1bf4" kindref="member">file_type</ref> const</type>
+        <definition>file_type const scc::hierarchy_dumper::dump_format</definition>
+        <argsstring></argsstring>
+        <name>dump_format</name>
+        <qualifiedname>scc::hierarchy_dumper::dump_format</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.h" line="63" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1hierarchy__dumper_1a4e5848cd51a9b4e4163ed7ff5178d7be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::hierarchy_dumper::hierarchy_dumper</definition>
+        <argsstring>(const std::string &amp;filename, file_type format)</argsstring>
+        <name>hierarchy_dumper</name>
+        <qualifiedname>scc::hierarchy_dumper::hierarchy_dumper</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type><ref refid="classscc_1_1hierarchy__dumper_1a80dabe535819ab6fafa8a3a1768b1bf4" kindref="member">file_type</ref></type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a <ref refid="classscc_1_1hierarchy__dumper" kindref="compound">hierarchy_dumper</ref> object with the specified file name and format. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the file where the hierarchy will be dumped. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The format in which the hierarchy will be dumped. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.h" line="49" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.cpp" bodystart="684" bodyend="687"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1hierarchy__dumper_1a11c8510b64ccb9c055b5c18308f2ba14" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>scc::hierarchy_dumper::~hierarchy_dumper</definition>
+        <argsstring>()</argsstring>
+        <name>~hierarchy_dumper</name>
+        <qualifiedname>scc::hierarchy_dumper::~hierarchy_dumper</qualifiedname>
+        <briefdescription>
+<para>Destroys the <ref refid="classscc_1_1hierarchy__dumper" kindref="compound">hierarchy_dumper</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.h" line="53" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.cpp" bodystart="689" bodyend="689"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classscc_1_1hierarchy__dumper_1aba33887f005559c73fd1166350463b03" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::hierarchy_dumper::start_of_simulation</definition>
+        <argsstring>() override</argsstring>
+        <name>start_of_simulation</name>
+        <qualifiedname>scc::hierarchy_dumper::start_of_simulation</qualifiedname>
+        <briefdescription>
+<para>Callback function that is invoked at the start of the simulation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is responsible for dumping the hierarchy of SystemC objects to the specified file. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.h" line="62" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.cpp" bodystart="691" bodyend="697"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A SystemC module for dumping the hierarchy of objects in a specified format. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classscc_1_1hierarchy__dumper" kindref="compound">hierarchy_dumper</ref> class provides a method for dumping the hierarchy of SystemC objects to a file in various formats. It can be used to visualize the structure of a SystemC design or to analyze the interactions between different components.</para>
+<para><simplesect kind="author"><para>Your Name </para>
+</simplesect>
+<simplesect kind="date"><para>YYYY-MM-DD </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::hierarchy_dumper</label>
+        <link refid="classscc_1_1hierarchy__dumper"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::hierarchy_dumper</label>
+        <link refid="classscc_1_1hierarchy__dumper"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.h" line="37" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.h" bodystart="37" bodyend="64"/>
+    <listofallmembers>
+      <member refid="classscc_1_1hierarchy__dumper_1a80dabe535819ab6fafa8a3a1768b1bf4ae1b143b30149ca6382814cc6fe6a33a9" prot="public" virt="non-virtual"><scope>scc::hierarchy_dumper</scope><name>D3JSON</name></member>
+      <member refid="classscc_1_1hierarchy__dumper_1a80dabe535819ab6fafa8a3a1768b1bf4a4801d9378cff5c215f9b75a0ca5640c4" prot="public" virt="non-virtual"><scope>scc::hierarchy_dumper</scope><name>DBGJSON</name></member>
+      <member refid="classscc_1_1hierarchy__dumper_1a8fa8f5107b87b953820b7e6ddbea9efe" prot="private" virt="non-virtual"><scope>scc::hierarchy_dumper</scope><name>dump_format</name></member>
+      <member refid="classscc_1_1hierarchy__dumper_1a808dfbd60cbc9842fbe1a7f9afbd448c" prot="private" virt="non-virtual"><scope>scc::hierarchy_dumper</scope><name>dump_hier_file_name</name></member>
+      <member refid="classscc_1_1hierarchy__dumper_1a80dabe535819ab6fafa8a3a1768b1bf4a98d662dac6fd652503e7b5661acf9a6d" prot="public" virt="non-virtual"><scope>scc::hierarchy_dumper</scope><name>ELKT</name></member>
+      <member refid="classscc_1_1hierarchy__dumper_1a80dabe535819ab6fafa8a3a1768b1bf4" prot="public" virt="non-virtual"><scope>scc::hierarchy_dumper</scope><name>file_type</name></member>
+      <member refid="classscc_1_1hierarchy__dumper_1a4e5848cd51a9b4e4163ed7ff5178d7be" prot="public" virt="non-virtual"><scope>scc::hierarchy_dumper</scope><name>hierarchy_dumper</name></member>
+      <member refid="classscc_1_1hierarchy__dumper_1a80dabe535819ab6fafa8a3a1768b1bf4adb4b84ec0d612ea92b30eb2923944597" prot="public" virt="non-virtual"><scope>scc::hierarchy_dumper</scope><name>JSON</name></member>
+      <member refid="classscc_1_1hierarchy__dumper_1aba33887f005559c73fd1166350463b03" prot="private" virt="non-virtual"><scope>scc::hierarchy_dumper</scope><name>start_of_simulation</name></member>
+      <member refid="classscc_1_1hierarchy__dumper_1a11c8510b64ccb9c055b5c18308f2ba14" prot="public" virt="virtual"><scope>scc::hierarchy_dumper</scope><name>~hierarchy_dumper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

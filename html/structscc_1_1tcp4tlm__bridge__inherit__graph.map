@@ -1,0 +1,11 @@
+<map id="scc::tcp4tlm_bridge" name="scc::tcp4tlm_bridge">
+<area shape="rect" id="Node000001" title="Bidirectional bridge for tunneling loosely timed TLM traffic over a TCP connection." alt="" coords="507,69,643,95"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="288,5,427,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="430,31,459,39,540,67,539,72,458,45,428,37"/>
+<area shape="rect" id="Node000003" href="$classscc_1_1tcp4tlm_1_1server.html" title=" " alt="" coords="256,55,459,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="473,79,506,79,506,85,473,85"/>
+<area shape="rect" id="Node000004" href="$structscc_1_1tcp4tlm_1_1i__server.html" title=" " alt="" coords="5,55,208,109"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="222,79,256,79,256,85,222,85"/>
+<area shape="rect" id="Node000005" href="$classscc_1_1tcp4tlm_1_1client.html" title=" " alt="" coords="256,133,459,188"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="446,126,537,92,539,97,447,131"/>
+</map>

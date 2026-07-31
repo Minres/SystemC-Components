@@ -1,0 +1,747 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classahb_1_1pe_1_1ahb__target__b" kind="class" language="C++" prot="public">
+    <compoundname>ahb::pe::ahb_target_b</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</basecompoundref>
+    <derivedcompoundref refid="classahb_1_1pe_1_1ahb3__target" prot="public" virt="non-virtual">ahb::pe::ahb3_target&lt; BUSWIDTH, TYPES, N, POL &gt;</derivedcompoundref>
+    <includes refid="ahb__target_8h" local="no">ahb_target.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classahb_1_1pe_1_1ahb__target__b_1a08ad031d16ee9c76b5c0b9e2d48bc4d5" prot="public" static="no">
+        <type>tlm::tlm_base_protocol_types::tlm_payload_type</type>
+        <definition>using ahb::pe::ahb_target_b::payload_type =  tlm::tlm_base_protocol_types::tlm_payload_type</definition>
+        <argsstring></argsstring>
+        <name>payload_type</name>
+        <qualifiedname>ahb::pe::ahb_target_b::payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="42" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classahb_1_1pe_1_1ahb__target__b_1abb3013778634267a50c1060009e51001" prot="public" static="no">
+        <type>tlm::tlm_base_protocol_types::tlm_phase_type</type>
+        <definition>using ahb::pe::ahb_target_b::phase_type =  tlm::tlm_base_protocol_types::tlm_phase_type</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>ahb::pe::ahb_target_b::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="43" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1ad684307f88f59d4046c8b109a9d1d027" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; ahb::pe::ahb_target_b::clk_i</definition>
+        <argsstring></argsstring>
+        <name>clk_i</name>
+        <qualifiedname>ahb::pe::ahb_target_b::clk_i</qualifiedname>
+        <initializer>{&quot;clk_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="45" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1a3998d97bf04eb873330d87f8fff8cbc0" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_attribute&lt; unsigned &gt;</type>
+        <definition>sc_core::sc_attribute&lt;unsigned&gt; ahb::pe::ahb_target_b::wr_data_accept_delay</definition>
+        <argsstring></argsstring>
+        <name>wr_data_accept_delay</name>
+        <qualifiedname>ahb::pe::ahb_target_b::wr_data_accept_delay</qualifiedname>
+        <initializer>{&quot;wr_data_accept_delay&quot;, 0}</initializer>
+        <briefdescription>
+<para>the latency between between BEGIN(_PARTIAL)_REQ and END(_PARTIAL)_REQ (AWVALID to AWREADY and WVALID to WREADY) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="50" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1acd1a1c7fe677a79e153b172916ebefa2" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_attribute&lt; unsigned &gt;</type>
+        <definition>sc_core::sc_attribute&lt;unsigned&gt; ahb::pe::ahb_target_b::rd_addr_accept_delay</definition>
+        <argsstring></argsstring>
+        <name>rd_addr_accept_delay</name>
+        <qualifiedname>ahb::pe::ahb_target_b::rd_addr_accept_delay</qualifiedname>
+        <initializer>{&quot;rd_addr_accept_delay&quot;, 0}</initializer>
+        <briefdescription>
+<para>the latency between between BEGIN_REQ and END_REQ (ARVALID to ARREADY) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="54" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="54" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1ab085bd64962fce6e82c6780c19fbfd2c" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_attribute&lt; unsigned &gt;</type>
+        <definition>sc_core::sc_attribute&lt;unsigned&gt; ahb::pe::ahb_target_b::rd_data_beat_delay</definition>
+        <argsstring></argsstring>
+        <name>rd_data_beat_delay</name>
+        <qualifiedname>ahb::pe::ahb_target_b::rd_data_beat_delay</qualifiedname>
+        <initializer>{&quot;rd_data_beat_delay&quot;, 0}</initializer>
+        <briefdescription>
+<para>the latency between between END(_PARTIAL)_RESP and BEGIN(_PARTIAL)_RESP (RREADY to RVALID) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="58" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1a510bcf84357b370c2ecdde8d1802f208" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_attribute&lt; unsigned &gt;</type>
+        <definition>sc_core::sc_attribute&lt;unsigned&gt; ahb::pe::ahb_target_b::rd_resp_delay</definition>
+        <argsstring></argsstring>
+        <name>rd_resp_delay</name>
+        <qualifiedname>ahb::pe::ahb_target_b::rd_resp_delay</qualifiedname>
+        <initializer>{&quot;rd_resp_delay&quot;, 0}</initializer>
+        <briefdescription>
+<para>the latency between request and response phase. Will be overwritten by the return of the callback function (if registered) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="63" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1ad2bce8d0b9c2312a61eb8d00f5442769" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_attribute&lt; unsigned &gt;</type>
+        <definition>sc_core::sc_attribute&lt;unsigned&gt; ahb::pe::ahb_target_b::wr_resp_delay</definition>
+        <argsstring></argsstring>
+        <name>wr_resp_delay</name>
+        <qualifiedname>ahb::pe::ahb_target_b::wr_resp_delay</qualifiedname>
+        <initializer>{&quot;wr_resp_delay&quot;, 0}</initializer>
+        <briefdescription>
+<para>the latency between request and response phase. Will be overwritten by the return of the callback function (if registered) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="68" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1aa6ba1104edaa91b9a87e177f8ef298bf" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_port_b&lt; tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt; &gt; &amp;</type>
+        <definition>sc_core::sc_port_b&lt;tlm::tlm_bw_transport_if&lt;tlm::tlm_base_protocol_types&gt; &gt;&amp; ahb::pe::ahb_target_b::socket_bw</definition>
+        <argsstring></argsstring>
+        <name>socket_bw</name>
+        <qualifiedname>ahb::pe::ahb_target_b::socket_bw</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="118" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1a7e5b3c0641ff13071136bdd386f2a4c1" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_semaphore</type>
+        <definition>sc_core::sc_semaphore ahb::pe::ahb_target_b::sn_sem</definition>
+        <argsstring></argsstring>
+        <name>sn_sem</name>
+        <qualifiedname>ahb::pe::ahb_target_b::sn_sem</qualifiedname>
+        <initializer>{1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="119" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="119" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1a8cd382ad0a941c41b0b67d028f10758e" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_mutex</type>
+        <definition>sc_core::sc_mutex ahb::pe::ahb_target_b::wr</definition>
+        <argsstring></argsstring>
+        <name>wr</name>
+        <qualifiedname>ahb::pe::ahb_target_b::wr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="120" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1ad934f8e560a446bbb2b30f8da05ef243" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_mutex</type>
+        <definition>sc_core::sc_mutex ahb::pe::ahb_target_b::rd</definition>
+        <argsstring></argsstring>
+        <name>rd</name>
+        <qualifiedname>ahb::pe::ahb_target_b::rd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="120" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1af4557d03e6052b28066706ca5f6923f7" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_mutex</type>
+        <definition>sc_core::sc_mutex ahb::pe::ahb_target_b::sn</definition>
+        <argsstring></argsstring>
+        <name>sn</name>
+        <qualifiedname>ahb::pe::ahb_target_b::sn</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="120" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1a146f7ef5d36f60b02345e725ebb1de3d" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ahb::pe::ahb_target_b::fast_resp</definition>
+        <argsstring></argsstring>
+        <name>fast_resp</name>
+        <qualifiedname>ahb::pe::ahb_target_b::fast_resp</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="121" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="121" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1a62553fe6be6e433e3e50453c06e5ed96" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ahb::pe::ahb_target_b::fast_req</definition>
+        <argsstring></argsstring>
+        <name>fast_req</name>
+        <qualifiedname>ahb::pe::ahb_target_b::fast_req</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="122" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="122" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1a8a56bf906e44bd30b9272e1f6edc0d5a" prot="protected" static="no" mutable="no">
+        <type>std::function&lt; unsigned(payload_type &amp;trans)&gt;</type>
+        <definition>std::function&lt;unsigned(payload_type&amp; trans)&gt; ahb::pe::ahb_target_b::operation_cb</definition>
+        <argsstring></argsstring>
+        <name>operation_cb</name>
+        <qualifiedname>ahb::pe::ahb_target_b::operation_cb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="123" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1a2a414fa56508428a62cd0a0ed26e6c3c" prot="protected" static="no" mutable="no">
+        <type><ref refid="classscc_1_1ordered__semaphore" kindref="compound">scc::ordered_semaphore</ref></type>
+        <definition>scc::ordered_semaphore ahb::pe::ahb_target_b::rd_resp</definition>
+        <argsstring></argsstring>
+        <name>rd_resp</name>
+        <qualifiedname>ahb::pe::ahb_target_b::rd_resp</qualifiedname>
+        <initializer>{1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="124" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="124" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1abebe7096fd9a9ffa8b887516115f5d35" prot="protected" static="no" mutable="no">
+        <type><ref refid="classscc_1_1ordered__semaphore" kindref="compound">scc::ordered_semaphore</ref></type>
+        <definition>scc::ordered_semaphore ahb::pe::ahb_target_b::wr_resp</definition>
+        <argsstring></argsstring>
+        <name>wr_resp</name>
+        <qualifiedname>ahb::pe::ahb_target_b::wr_resp</qualifiedname>
+        <initializer>{1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="124" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="124" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb__target__b_1a310c1e69b87b2d459c6ad2edbbeeda4c" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_clock *</type>
+        <definition>sc_core::sc_clock* ahb::pe::ahb_target_b::clk_if</definition>
+        <argsstring></argsstring>
+        <name>clk_if</name>
+        <qualifiedname>ahb::pe::ahb_target_b::clk_if</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="125" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="125" bodyend="125"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb__target__b_1ac2e17a809a6ba9b6f95eaaf6a3e47e35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ahb::pe::ahb_target_b::SC_HAS_PROCESS</definition>
+        <argsstring>(ahb_target_b)</argsstring>
+        <name>SC_HAS_PROCESS</name>
+        <qualifiedname>ahb::pe::ahb_target_b::SC_HAS_PROCESS</qualifiedname>
+        <param>
+          <type><ref refid="classahb_1_1pe_1_1ahb__target__b_1a60943bc698ecc88117396b0ca1f658f5" kindref="member">ahb_target_b</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="40" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb__target__b_1a891b0f434531888c5ff77914a3a1577d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb_target_b::b_transport</definition>
+        <argsstring>(payload_type &amp;trans, sc_core::sc_time &amp;t) override</argsstring>
+        <name>b_transport</name>
+        <qualifiedname>ahb::pe::ahb_target_b::b_transport</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="70" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.cpp" bodystart="47" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb__target__b_1ad82377c5ca58640722c642cbc269da7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm_sync_enum ahb_target_b::nb_transport_fw</definition>
+        <argsstring>(payload_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t) override</argsstring>
+        <name>nb_transport_fw</name>
+        <qualifiedname>ahb::pe::ahb_target_b::nb_transport_fw</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="72" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.cpp" bodystart="57" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb__target__b_1a7c448a06613914a5bf1dbd61ff8da6db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ahb_target_b::get_direct_mem_ptr</definition>
+        <argsstring>(payload_type &amp;trans, tlm::tlm_dmi &amp;dmi_data) override</argsstring>
+        <name>get_direct_mem_ptr</name>
+        <qualifiedname>ahb::pe::ahb_target_b::get_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_dmi &amp;</type>
+          <declname>dmi_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="74" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.cpp" bodystart="62" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb__target__b_1a4b2cd69f477a8e6af34ba8702c91368c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int ahb_target_b::transport_dbg</definition>
+        <argsstring>(payload_type &amp;trans) override</argsstring>
+        <name>transport_dbg</name>
+        <qualifiedname>ahb::pe::ahb_target_b::transport_dbg</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="76" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.cpp" bodystart="67" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb__target__b_1aae571201d6387648356dc363c4996451" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb::pe::ahb_target_b::set_operation_cb</definition>
+        <argsstring>(std::function&lt; unsigned(payload_type &amp;trans)&gt; cb)</argsstring>
+        <name>set_operation_cb</name>
+        <qualifiedname>ahb::pe::ahb_target_b::set_operation_cb</qualifiedname>
+        <param>
+          <type>std::function&lt; unsigned(payload_type &amp;trans)&gt;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Set the operation callback function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This callback is invoked once a transaction arrives. This function is not allowed to block and returns the latency of the operation i.e. the duration until the reponse phase starts <xrefsect id="todo_1_todo000001"><xreftitle>Todo</xreftitle><xrefdescription><para>refine API</para>
+</xrefdescription></xrefsect></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the callback function </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="87" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="87" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb__target__b_1a2ef5bb2e95d1a76c4513e6977daf9cf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb_target_b::operation_resp</definition>
+        <argsstring>(payload_type &amp;trans, bool sync=false)</argsstring>
+        <name>operation_resp</name>
+        <qualifiedname>ahb::pe::ahb_target_b::operation_resp</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>sync</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sync</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="93" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.cpp" bodystart="69" bodyend="71"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb__target__b_1a60943bc698ecc88117396b0ca1f658f5" prot="protected" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ahb::pe::ahb_target_b::ahb_target_b</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm, sc_core::sc_port_b&lt; tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt; &gt; &amp;port, size_t transfer_width)</argsstring>
+        <name>ahb_target_b</name>
+        <qualifiedname>ahb::pe::ahb_target_b::ahb_target_b</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_port_b&lt; tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt; &gt; &amp;</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>transfer_width</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the constructor. Protected as it should only be called by derived classes</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the module name </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>transfer_width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="103" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb__target__b_1aa3be1ea4697ed03ba9f398cf52284683" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ahb::pe::ahb_target_b::ahb_target_b</definition>
+        <argsstring>()=delete</argsstring>
+        <name>ahb_target_b</name>
+        <qualifiedname>ahb::pe::ahb_target_b::ahb_target_b</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="106" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb__target__b_1a0343640c64f39bc77f80c500d30f1c89" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ahb::pe::ahb_target_b::ahb_target_b</definition>
+        <argsstring>(ahb_target_b const &amp;)=delete</argsstring>
+        <name>ahb_target_b</name>
+        <qualifiedname>ahb::pe::ahb_target_b::ahb_target_b</qualifiedname>
+        <param>
+          <type>ahb_target_b const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="108" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb__target__b_1a05ee07dede02271cf9110f1eb1b6b1a9" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ahb::pe::ahb_target_b::ahb_target_b</definition>
+        <argsstring>(ahb_target_b &amp;&amp;)=delete</argsstring>
+        <name>ahb_target_b</name>
+        <qualifiedname>ahb::pe::ahb_target_b::ahb_target_b</qualifiedname>
+        <param>
+          <type>ahb_target_b &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="110" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb__target__b_1a1351eb5c2ab3e01eb373cb06c03fd24a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classahb_1_1pe_1_1ahb__target__b_1a60943bc698ecc88117396b0ca1f658f5" kindref="member">ahb_target_b</ref> &amp;</type>
+        <definition>ahb_target_b &amp; ahb::pe::ahb_target_b::operator=</definition>
+        <argsstring>(ahb_target_b const &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>ahb::pe::ahb_target_b::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classahb_1_1pe_1_1ahb__target__b_1a60943bc698ecc88117396b0ca1f658f5" kindref="member">ahb_target_b</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="112" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb__target__b_1a6c823b515f2f214ba4cbfdac89ea3d66" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classahb_1_1pe_1_1ahb__target__b_1a60943bc698ecc88117396b0ca1f658f5" kindref="member">ahb_target_b</ref> &amp;</type>
+        <definition>ahb_target_b &amp; ahb::pe::ahb_target_b::operator=</definition>
+        <argsstring>(ahb_target_b &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>ahb::pe::ahb_target_b::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classahb_1_1pe_1_1ahb__target__b_1a60943bc698ecc88117396b0ca1f658f5" kindref="member">ahb_target_b</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="114" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb__target__b_1a84ef0869d085b2647e44ab785ddaffcc" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb_target_b::send_resp_thread</definition>
+        <argsstring>()</argsstring>
+        <name>send_resp_thread</name>
+        <qualifiedname>ahb::pe::ahb_target_b::send_resp_thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="116" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.cpp" bodystart="73" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb__target__b_1a598afd243b1c941b0db075b7f597556f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb_target_b::end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_elaboration</name>
+        <qualifiedname>ahb::pe::ahb_target_b::end_of_elaboration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="126" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.cpp" bodystart="45" bodyend="45"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>the target protocol engine base class </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>ahb::pe::ahb3_target&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classahb_1_1pe_1_1ahb3__target"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ahb::pe::ahb_target_b</label>
+        <link refid="classahb_1_1pe_1_1ahb__target__b"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ahb::pe::ahb_target_b</label>
+        <link refid="classahb_1_1pe_1_1ahb__target__b"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>rd_resp</edgelabel>
+          <edgelabel>wr_resp</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="6">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="5">
+        <label>sc_core::sc_semaphore_if</label>
+      </node>
+      <node id="4">
+        <label>scc::ordered_semaphore</label>
+        <link refid="classscc_1_1ordered__semaphore"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>scc::traceable</label>
+        <link refid="structscc_1_1traceable"/>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="37" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="37" bodyend="127"/>
+    <listofallmembers>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a60943bc698ecc88117396b0ca1f658f5" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>ahb_target_b</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1aa3be1ea4697ed03ba9f398cf52284683" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>ahb_target_b</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a0343640c64f39bc77f80c500d30f1c89" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>ahb_target_b</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a05ee07dede02271cf9110f1eb1b6b1a9" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>ahb_target_b</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a891b0f434531888c5ff77914a3a1577d" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>b_transport</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1ad684307f88f59d4046c8b109a9d1d027" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>clk_i</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a310c1e69b87b2d459c6ad2edbbeeda4c" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>clk_if</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a598afd243b1c941b0db075b7f597556f" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>end_of_elaboration</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a62553fe6be6e433e3e50453c06e5ed96" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>fast_req</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a146f7ef5d36f60b02345e725ebb1de3d" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>fast_resp</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a7c448a06613914a5bf1dbd61ff8da6db" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>get_direct_mem_ptr</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1ad82377c5ca58640722c642cbc269da7c" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>nb_transport_fw</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a8a56bf906e44bd30b9272e1f6edc0d5a" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>operation_cb</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a2ef5bb2e95d1a76c4513e6977daf9cf5" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>operation_resp</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a1351eb5c2ab3e01eb373cb06c03fd24a" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>operator=</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a6c823b515f2f214ba4cbfdac89ea3d66" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>operator=</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a08ad031d16ee9c76b5c0b9e2d48bc4d5" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>payload_type</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1abb3013778634267a50c1060009e51001" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>phase_type</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1ad934f8e560a446bbb2b30f8da05ef243" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>rd</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1acd1a1c7fe677a79e153b172916ebefa2" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>rd_addr_accept_delay</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1ab085bd64962fce6e82c6780c19fbfd2c" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>rd_data_beat_delay</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a2a414fa56508428a62cd0a0ed26e6c3c" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>rd_resp</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a510bcf84357b370c2ecdde8d1802f208" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>rd_resp_delay</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1ac2e17a809a6ba9b6f95eaaf6a3e47e35" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a84ef0869d085b2647e44ab785ddaffcc" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>send_resp_thread</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1aae571201d6387648356dc363c4996451" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>set_operation_cb</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1af4557d03e6052b28066706ca5f6923f7" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>sn</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a7e5b3c0641ff13071136bdd386f2a4c1" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>sn_sem</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1aa6ba1104edaa91b9a87e177f8ef298bf" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>socket_bw</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a4b2cd69f477a8e6af34ba8702c91368c" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>transport_dbg</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a8cd382ad0a941c41b0b67d028f10758e" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>wr</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a3998d97bf04eb873330d87f8fff8cbc0" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>wr_data_accept_delay</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1abebe7096fd9a9ffa8b887516115f5d35" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>wr_resp</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1ad2bce8d0b9c2312a61eb8d00f5442769" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_target_b</scope><name>wr_resp_delay</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

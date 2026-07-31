@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1nw_1_1tlm__network__fw__transport__if" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::nw::tlm_network_fw_transport_if</compoundname>
+    <basecompoundref prot="public" virt="virtual">tlm::tlm_blocking_transport_if&lt; tlm_network_baseprotocol_types::tlm_payload_type &gt;</basecompoundref>
+    <basecompoundref prot="public" virt="virtual">tlm::tlm_fw_nonblocking_transport_if&lt; tlm_network_baseprotocol_types::tlm_payload_type &gt;</basecompoundref>
+    <basecompoundref prot="public" virt="virtual">tlm::tlm_transport_dbg_if&lt; tlm_network_baseprotocol_types::tlm_payload_type &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+        <defval><ref refid="structtlm_1_1nw_1_1tlm__network__baseprotocol__types" kindref="compound">tlm_network_baseprotocol_types</ref></defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structtlm_1_1nw_1_1tlm__network__fw__transport__if_1abc3da322c51493048e2f02b236060aaf" prot="public" static="no">
+        <type>TYPES</type>
+        <definition>typedef TYPES tlm::nw::tlm_network_fw_transport_if&lt; TYPES &gt;::protocol_types</definition>
+        <argsstring></argsstring>
+        <name>protocol_types</name>
+        <qualifiedname>tlm::nw::tlm_network_fw_transport_if::protocol_types</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="64" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::nw::tlm_network_fw_transport_if&lt; TYPES &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_blocking_transport_if&lt; tlm_network_baseprotocol_types::tlm_payload_type &gt;</label>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_fw_nonblocking_transport_if&lt; tlm_network_baseprotocol_types::tlm_payload_type &gt;</label>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_transport_dbg_if&lt; tlm_network_baseprotocol_types::tlm_payload_type &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::nw::tlm_network_fw_transport_if&lt; TYPES &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_blocking_transport_if&lt; tlm_network_baseprotocol_types::tlm_payload_type &gt;</label>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_fw_nonblocking_transport_if&lt; tlm_network_baseprotocol_types::tlm_payload_type &gt;</label>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_transport_dbg_if&lt; tlm_network_baseprotocol_types::tlm_payload_type &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="61" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" bodystart="63" bodyend="65"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if_1abc3da322c51493048e2f02b236060aaf" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_fw_transport_if</scope><name>protocol_types</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

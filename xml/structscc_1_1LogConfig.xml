@@ -1,0 +1,722 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1LogConfig" kind="struct" language="C++" prot="public">
+    <compoundname>scc::LogConfig</compoundname>
+    <includes refid="report_8h" local="no">report.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1LogConfig_1aa6acb8cb85817491f9e2b2fdc82d65e0" prot="public" static="no" mutable="no">
+        <type><ref refid="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7ca" kindref="member">log</ref></type>
+        <definition>log scc::LogConfig::level</definition>
+        <argsstring></argsstring>
+        <name>level</name>
+        <qualifiedname>scc::LogConfig::level</qualifiedname>
+        <initializer>{log::WARNING}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="166" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="166" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1LogConfig_1a08379e00ee01077ce091c95b5c16ec0a" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned scc::LogConfig::msg_type_field_width</definition>
+        <argsstring></argsstring>
+        <name>msg_type_field_width</name>
+        <qualifiedname>scc::LogConfig::msg_type_field_width</qualifiedname>
+        <initializer>{24}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="167" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="167" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1LogConfig_1a34a9f54e552b8f9914d1686959b3ec37" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::LogConfig::print_sys_time</definition>
+        <argsstring></argsstring>
+        <name>print_sys_time</name>
+        <qualifiedname>scc::LogConfig::print_sys_time</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="168" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="168" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1LogConfig_1af86733450807b0680d09ca44b2d89ed5" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::LogConfig::print_sim_time</definition>
+        <argsstring></argsstring>
+        <name>print_sim_time</name>
+        <qualifiedname>scc::LogConfig::print_sim_time</qualifiedname>
+        <initializer>{true}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="169" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="169" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1LogConfig_1a09e085c9853cb5f5cfe95e79d36634f1" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::LogConfig::print_delta</definition>
+        <argsstring></argsstring>
+        <name>print_delta</name>
+        <qualifiedname>scc::LogConfig::print_delta</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="170" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="170" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1LogConfig_1ac7b82189b7a4345fa6f85ed1c6e472a8" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::LogConfig::print_severity</definition>
+        <argsstring></argsstring>
+        <name>print_severity</name>
+        <qualifiedname>scc::LogConfig::print_severity</qualifiedname>
+        <initializer>{true}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="171" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="171" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1LogConfig_1a11d2dfc81a7dfb5e9dfd98afd7fce4ef" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::LogConfig::colored_output</definition>
+        <argsstring></argsstring>
+        <name>colored_output</name>
+        <qualifiedname>scc::LogConfig::colored_output</qualifiedname>
+        <initializer>{true}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="172" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="172" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1LogConfig_1aed74de9e2fb0ddd5440366cd9bb5aed5" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string scc::LogConfig::log_file_name</definition>
+        <argsstring></argsstring>
+        <name>log_file_name</name>
+        <qualifiedname>scc::LogConfig::log_file_name</qualifiedname>
+        <initializer>{&quot;&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="173" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="173" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1LogConfig_1adf9cb0462be4b511f2851dec45e5fc58" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string scc::LogConfig::log_filter_regex</definition>
+        <argsstring></argsstring>
+        <name>log_filter_regex</name>
+        <qualifiedname>scc::LogConfig::log_filter_regex</qualifiedname>
+        <initializer>{&quot;&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="174" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="174" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1LogConfig_1a60533d66e4d1d4f1bc91ce359bdc9d38" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::LogConfig::log_async</definition>
+        <argsstring></argsstring>
+        <name>log_async</name>
+        <qualifiedname>scc::LogConfig::log_async</qualifiedname>
+        <initializer>{true}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="175" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="175" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1LogConfig_1a50cca312238bb02ee865dd9e871f8a5f" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::LogConfig::dont_create_broker</definition>
+        <argsstring></argsstring>
+        <name>dont_create_broker</name>
+        <qualifiedname>scc::LogConfig::dont_create_broker</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="176" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="176" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1LogConfig_1a1bc9982b9ba94eef1ae8f08df34c9c15" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::LogConfig::report_only_first_error</definition>
+        <argsstring></argsstring>
+        <name>report_only_first_error</name>
+        <qualifiedname>scc::LogConfig::report_only_first_error</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="177" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="177" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1LogConfig_1a46eec923b12cbad447b79a531aacee9f" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::LogConfig::instance_based_log_levels</definition>
+        <argsstring></argsstring>
+        <name>instance_based_log_levels</name>
+        <qualifiedname>scc::LogConfig::instance_based_log_levels</qualifiedname>
+        <initializer>{true}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="178" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="178" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1LogConfig_1a5c6822d609bf25f7304a4c69645bc75c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::LogConfig::install_handler</definition>
+        <argsstring></argsstring>
+        <name>install_handler</name>
+        <qualifiedname>scc::LogConfig::install_handler</qualifiedname>
+        <initializer>{true}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="179" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="179" bodyend="179"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1LogConfig_1a9610025ca0c55f5b6eec9d1b6f0b5b01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+        <definition>auto scc::LogConfig::logLevel</definition>
+        <argsstring>(log)</argsstring>
+        <name>logLevel</name>
+        <qualifiedname>scc::LogConfig::logLevel</qualifiedname>
+        <param>
+          <type><ref refid="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7ca" kindref="member">log</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set the logging level <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>log</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>level </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>self </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="186" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="537" bodyend="540"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1LogConfig_1aa296f4dd012f22333bd62684e3d246c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+        <definition>auto scc::LogConfig::msgTypeFieldWidth</definition>
+        <argsstring>(unsigned)</argsstring>
+        <name>msgTypeFieldWidth</name>
+        <qualifiedname>scc::LogConfig::msgTypeFieldWidth</qualifiedname>
+        <param>
+          <type>unsigned</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>define the width of the message field, 0 to disable, std::numeric_limits&lt;unsigned&gt;::max() for arbitrary width <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of the message field in the log </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>self </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="192" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="542" bodyend="545"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1LogConfig_1a22baf41cee13814da7a7321d62e386a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+        <definition>auto scc::LogConfig::printSysTime</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>printSysTime</name>
+        <qualifiedname>scc::LogConfig::printSysTime</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>enable/disable printing of system time <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>self </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="198" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="547" bodyend="550"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1LogConfig_1aa82a8b5bd25dbb7746378e5140a7fdd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+        <definition>auto scc::LogConfig::printSimTime</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>printSimTime</name>
+        <qualifiedname>scc::LogConfig::printSimTime</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>enable/disable printing of simulation time <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>self </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="204" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="552" bodyend="555"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1LogConfig_1ab7cc942d1d006acd0b915d57916e83c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+        <definition>auto scc::LogConfig::printDelta</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>printDelta</name>
+        <qualifiedname>scc::LogConfig::printDelta</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>enable/disable printing delta cycles <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>self </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="210" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="557" bodyend="560"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1LogConfig_1a0c7be338b991e6650ed86c9b1589722a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+        <definition>auto scc::LogConfig::printSeverity</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>printSeverity</name>
+        <qualifiedname>scc::LogConfig::printSeverity</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>enable/disable printing of severity level <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>self </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="216" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="562" bodyend="565"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1LogConfig_1a4d1e12b367b7685f0052acfed41454cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+        <definition>auto scc::LogConfig::coloredOutput</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>coloredOutput</name>
+        <qualifiedname>scc::LogConfig::coloredOutput</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>enable/disable colored output <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>self </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="222" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="577" bodyend="580"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1LogConfig_1a5aff5b49ac06f0f5250e6e886381ac84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+        <definition>LogConfig &amp; scc::LogConfig::logFileName</definition>
+        <argsstring>(std::string &amp;&amp;)</argsstring>
+        <name>logFileName</name>
+        <qualifiedname>scc::LogConfig::logFileName</qualifiedname>
+        <param>
+          <type>std::string &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set the file name for the log output file <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of the log file to be generated </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>self </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="228" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1LogConfig_1a91e8c726b161ce4a5f56b3adab7d4ee8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+        <definition>LogConfig &amp; scc::LogConfig::logFileName</definition>
+        <argsstring>(const std::string &amp;)</argsstring>
+        <name>logFileName</name>
+        <qualifiedname>scc::LogConfig::logFileName</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set the file name for the log output file <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>self </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="234" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1LogConfig_1ada568624b7be467d3aa7297abf8ffd53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+        <definition>LogConfig &amp; scc::LogConfig::logFilterRegex</definition>
+        <argsstring>(std::string &amp;&amp;)</argsstring>
+        <name>logFilterRegex</name>
+        <qualifiedname>scc::LogConfig::logFilterRegex</qualifiedname>
+        <param>
+          <type>std::string &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set the file name for the log output file <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>self </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="240" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1LogConfig_1a707ce6c1ddc058806cdc788305395dfa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+        <definition>LogConfig &amp; scc::LogConfig::logFilterRegex</definition>
+        <argsstring>(const std::string &amp;)</argsstring>
+        <name>logFilterRegex</name>
+        <qualifiedname>scc::LogConfig::logFilterRegex</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set the regular expression to filter the output <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>containing the regex </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>self </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="246" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1LogConfig_1ab380dea6174f0b26626251554e31d326" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+        <definition>auto scc::LogConfig::logAsync</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>logAsync</name>
+        <qualifiedname>scc::LogConfig::logAsync</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>enable/disable asynchronous output (write to file in separate thread <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>self </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="252" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="592" bodyend="595"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1LogConfig_1a66bc0774442127fe1174cd540ee79499" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+        <definition>auto scc::LogConfig::dontCreateBroker</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>dontCreateBroker</name>
+        <qualifiedname>scc::LogConfig::dontCreateBroker</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>disable/enable the automatic creation of a CCI broker <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>self </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="258" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="597" bodyend="600"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1LogConfig_1a348307a7c46618c74ffde104bf59ac9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+        <definition>auto scc::LogConfig::reportOnlyFirstError</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>reportOnlyFirstError</name>
+        <qualifiedname>scc::LogConfig::reportOnlyFirstError</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>disable/enable the suppression of all error messages after the first error <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+return self </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="264" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="602" bodyend="605"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1LogConfig_1acde59cdaa05fb6cb4ba5ac22e224edb9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+        <definition>auto scc::LogConfig::instanceBasedLogLevels</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>instanceBasedLogLevels</name>
+        <qualifiedname>scc::LogConfig::instanceBasedLogLevels</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>disable/enable the suppression of all error messages after the first error <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+return self </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="270" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="606" bodyend="609"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1LogConfig_1acebefc5df5eb4d3e799e4beb2aff8e88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+        <definition>auto scc::LogConfig::installHandler</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>installHandler</name>
+        <qualifiedname>scc::LogConfig::installHandler</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>disable/enable the use of the tabular report handler <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+return self </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="276" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="610" bodyend="613"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the configuration class for the logging setup </para>
+    </briefdescription>
+    <detaileddescription>
+<para>using this class allows to configure the logging output in many aspects. The class follows the builder pattern. </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="165" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="165" bodyend="277"/>
+    <listofallmembers>
+      <member refid="structscc_1_1LogConfig_1a11d2dfc81a7dfb5e9dfd98afd7fce4ef" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>colored_output</name></member>
+      <member refid="structscc_1_1LogConfig_1a4d1e12b367b7685f0052acfed41454cf" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>coloredOutput</name></member>
+      <member refid="structscc_1_1LogConfig_1a50cca312238bb02ee865dd9e871f8a5f" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>dont_create_broker</name></member>
+      <member refid="structscc_1_1LogConfig_1a66bc0774442127fe1174cd540ee79499" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>dontCreateBroker</name></member>
+      <member refid="structscc_1_1LogConfig_1a5c6822d609bf25f7304a4c69645bc75c" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>install_handler</name></member>
+      <member refid="structscc_1_1LogConfig_1acebefc5df5eb4d3e799e4beb2aff8e88" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>installHandler</name></member>
+      <member refid="structscc_1_1LogConfig_1a46eec923b12cbad447b79a531aacee9f" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>instance_based_log_levels</name></member>
+      <member refid="structscc_1_1LogConfig_1acde59cdaa05fb6cb4ba5ac22e224edb9" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>instanceBasedLogLevels</name></member>
+      <member refid="structscc_1_1LogConfig_1aa6acb8cb85817491f9e2b2fdc82d65e0" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>level</name></member>
+      <member refid="structscc_1_1LogConfig_1a60533d66e4d1d4f1bc91ce359bdc9d38" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>log_async</name></member>
+      <member refid="structscc_1_1LogConfig_1aed74de9e2fb0ddd5440366cd9bb5aed5" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>log_file_name</name></member>
+      <member refid="structscc_1_1LogConfig_1adf9cb0462be4b511f2851dec45e5fc58" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>log_filter_regex</name></member>
+      <member refid="structscc_1_1LogConfig_1ab380dea6174f0b26626251554e31d326" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>logAsync</name></member>
+      <member refid="structscc_1_1LogConfig_1a5aff5b49ac06f0f5250e6e886381ac84" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>logFileName</name></member>
+      <member refid="structscc_1_1LogConfig_1a91e8c726b161ce4a5f56b3adab7d4ee8" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>logFileName</name></member>
+      <member refid="structscc_1_1LogConfig_1ada568624b7be467d3aa7297abf8ffd53" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>logFilterRegex</name></member>
+      <member refid="structscc_1_1LogConfig_1a707ce6c1ddc058806cdc788305395dfa" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>logFilterRegex</name></member>
+      <member refid="structscc_1_1LogConfig_1a9610025ca0c55f5b6eec9d1b6f0b5b01" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>logLevel</name></member>
+      <member refid="structscc_1_1LogConfig_1a08379e00ee01077ce091c95b5c16ec0a" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>msg_type_field_width</name></member>
+      <member refid="structscc_1_1LogConfig_1aa296f4dd012f22333bd62684e3d246c9" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>msgTypeFieldWidth</name></member>
+      <member refid="structscc_1_1LogConfig_1a09e085c9853cb5f5cfe95e79d36634f1" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>print_delta</name></member>
+      <member refid="structscc_1_1LogConfig_1ac7b82189b7a4345fa6f85ed1c6e472a8" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>print_severity</name></member>
+      <member refid="structscc_1_1LogConfig_1af86733450807b0680d09ca44b2d89ed5" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>print_sim_time</name></member>
+      <member refid="structscc_1_1LogConfig_1a34a9f54e552b8f9914d1686959b3ec37" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>print_sys_time</name></member>
+      <member refid="structscc_1_1LogConfig_1ab7cc942d1d006acd0b915d57916e83c2" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>printDelta</name></member>
+      <member refid="structscc_1_1LogConfig_1a0c7be338b991e6650ed86c9b1589722a" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>printSeverity</name></member>
+      <member refid="structscc_1_1LogConfig_1aa82a8b5bd25dbb7746378e5140a7fdd5" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>printSimTime</name></member>
+      <member refid="structscc_1_1LogConfig_1a22baf41cee13814da7a7321d62e386a0" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>printSysTime</name></member>
+      <member refid="structscc_1_1LogConfig_1a1bc9982b9ba94eef1ae8f08df34c9c15" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>report_only_first_error</name></member>
+      <member refid="structscc_1_1LogConfig_1a348307a7c46618c74ffde104bf59ac9d" prot="public" virt="non-virtual"><scope>scc::LogConfig</scope><name>reportOnlyFirstError</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

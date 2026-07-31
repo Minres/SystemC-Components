@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1enable__for__enum_3_01burst__e_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>axi::enable_for_enum&lt; burst_e &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structaxi_1_1enable__for__enum_3_01burst__e_01_4_1ab03834bee62d52c855ad887fc63cd60a" prot="public" static="yes" mutable="no">
+        <type>const bool</type>
+        <definition>const bool axi::enable_for_enum&lt; burst_e &gt;::enable</definition>
+        <argsstring></argsstring>
+        <name>enable</name>
+        <qualifiedname>axi::enable_for_enum&lt; burst_e &gt;::enable</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1246" column="52" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1246" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1enable__for__enum_1a210be8421082883405713893f50f9f95" prot="public" static="yes" mutable="no">
+        <type>const bool</type>
+        <definition>const bool axi::enable_for_enum&lt; burst_e &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>axi::enable_for_enum&lt; burst_e &gt;::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="32" column="52" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1246" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1246" bodyend="1246"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1enable__for__enum_3_01burst__e_01_4_1ab03834bee62d52c855ad887fc63cd60a" prot="public" virt="non-virtual"><scope>axi::enable_for_enum&lt; burst_e &gt;</scope><name>enable</name></member>
+      <member refid="structaxi_1_1enable__for__enum_1a210be8421082883405713893f50f9f95" prot="public" virt="non-virtual"><scope>axi::enable_for_enum&lt; burst_e &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

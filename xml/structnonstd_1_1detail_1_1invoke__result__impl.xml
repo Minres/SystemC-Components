@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1detail_1_1invoke__result__impl" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::detail::invoke_result_impl</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class F</type>
+      </param>
+      <param>
+        <type>class</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Us</declname>
+        <defname>Us</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="170" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="170" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

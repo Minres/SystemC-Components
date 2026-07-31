@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1lz4c__steambuf" kind="class" language="C++" prot="public">
+    <compoundname>util::lz4c_steambuf</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::streambuf</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classutil_1_1lz4c__steambuf_1a9ebd8d097de10399e570c20c99db649d" prot="private" static="no" mutable="no">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; util::lz4c_steambuf::sink</definition>
+        <argsstring></argsstring>
+        <name>sink</name>
+        <qualifiedname>util::lz4c_steambuf::sink</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="41" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1lz4c__steambuf_1a4ee8ec981a22e1b3a4aaadf2045d99e6" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; char &gt;</type>
+        <definition>std::vector&lt;char&gt; util::lz4c_steambuf::src_buf</definition>
+        <argsstring></argsstring>
+        <name>src_buf</name>
+        <qualifiedname>util::lz4c_steambuf::src_buf</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="42" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1lz4c__steambuf_1a154c8dde8ece5c049e668fd1ea3e894b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; char &gt;</type>
+        <definition>std::vector&lt;char&gt; util::lz4c_steambuf::dest_buf</definition>
+        <argsstring></argsstring>
+        <name>dest_buf</name>
+        <qualifiedname>util::lz4c_steambuf::dest_buf</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="43" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1lz4c__steambuf_1acbb457e9acab54dad5695e0f08f3fae8" prot="private" static="no" mutable="no">
+        <type>LZ4F_compressionContext_t</type>
+        <definition>LZ4F_compressionContext_t util::lz4c_steambuf::ctx</definition>
+        <argsstring></argsstring>
+        <name>ctx</name>
+        <qualifiedname>util::lz4c_steambuf::ctx</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="44" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1lz4c__steambuf_1a778afa6cfb6770bada122aaabec15998" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool util::lz4c_steambuf::closed</definition>
+        <argsstring></argsstring>
+        <name>closed</name>
+        <qualifiedname>util::lz4c_steambuf::closed</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="45" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classutil_1_1lz4c__steambuf_1a12849417bc109e545cc1eb3d9919e897" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::lz4c_steambuf::lz4c_steambuf</definition>
+        <argsstring>(std::ostream &amp;sink, size_t buf_size)</argsstring>
+        <name>lz4c_steambuf</name>
+        <qualifiedname>util::lz4c_steambuf::lz4c_steambuf</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>sink</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buf_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="23" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.cpp" bodystart="11" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1lz4c__steambuf_1a2e52f1f56fc983fd0f13edba5b101e7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::lz4c_steambuf::~lz4c_steambuf</definition>
+        <argsstring>()</argsstring>
+        <name>~lz4c_steambuf</name>
+        <qualifiedname>util::lz4c_steambuf::~lz4c_steambuf</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="25" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.cpp" bodystart="25" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1lz4c__steambuf_1a74780571513ec346de39cdee943cc389" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::lz4c_steambuf::close</definition>
+        <argsstring>()</argsstring>
+        <name>close</name>
+        <qualifiedname>util::lz4c_steambuf::close</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="27" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.cpp" bodystart="27" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1lz4c__steambuf_1ab8cf067c1e2cdaaa1998afb77c4d50f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::lz4c_steambuf::lz4c_steambuf</definition>
+        <argsstring>(const lz4c_steambuf &amp;)=delete</argsstring>
+        <name>lz4c_steambuf</name>
+        <qualifiedname>util::lz4c_steambuf::lz4c_steambuf</qualifiedname>
+        <param>
+          <type>const lz4c_steambuf &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="29" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1lz4c__steambuf_1ad1bfc114bea1c2b5745d4542a72359cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::lz4c_steambuf::lz4c_steambuf</definition>
+        <argsstring>(lz4c_steambuf &amp;&amp;)=delete</argsstring>
+        <name>lz4c_steambuf</name>
+        <qualifiedname>util::lz4c_steambuf::lz4c_steambuf</qualifiedname>
+        <param>
+          <type>lz4c_steambuf &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="30" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1lz4c__steambuf_1a855a94bf669ed213e97124c2a01a4e4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>lz4c_steambuf &amp;</type>
+        <definition>lz4c_steambuf &amp; util::lz4c_steambuf::operator=</definition>
+        <argsstring>(const lz4c_steambuf &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>util::lz4c_steambuf::operator=</qualifiedname>
+        <param>
+          <type>const lz4c_steambuf &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="31" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1lz4c__steambuf_1a9ef1ad5c9e7ea97cfb726f20cf698cdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>lz4c_steambuf &amp;</type>
+        <definition>lz4c_steambuf &amp; util::lz4c_steambuf::operator=</definition>
+        <argsstring>(lz4c_steambuf &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>util::lz4c_steambuf::operator=</qualifiedname>
+        <param>
+          <type>lz4c_steambuf &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="32" column="19"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classutil_1_1lz4c__steambuf_1ae3ebe9f1c689afdfad9a60df40b02ef0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int_type</type>
+        <definition>std::streambuf::int_type util::lz4c_steambuf::overflow</definition>
+        <argsstring>(int_type ch) override</argsstring>
+        <name>overflow</name>
+        <qualifiedname>util::lz4c_steambuf::overflow</qualifiedname>
+        <param>
+          <type>int_type</type>
+          <declname>ch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="35" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.cpp" bodystart="48" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1lz4c__steambuf_1a0620ea7b4b744153ec8b5b67cb69c81a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int_type</type>
+        <definition>std::streambuf::int_type util::lz4c_steambuf::sync</definition>
+        <argsstring>() override</argsstring>
+        <name>sync</name>
+        <qualifiedname>util::lz4c_steambuf::sync</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="37" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.cpp" bodystart="42" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1lz4c__steambuf_1afa7df604e126ae66b14ef762b2c6c137" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::lz4c_steambuf::compress_and_write</definition>
+        <argsstring>()</argsstring>
+        <name>compress_and_write</name>
+        <qualifiedname>util::lz4c_steambuf::compress_and_write</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="39" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.cpp" bodystart="55" bodyend="66"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>std::streambuf</label>
+      </node>
+      <node id="1">
+        <label>util::lz4c_steambuf</label>
+        <link refid="classutil_1_1lz4c__steambuf"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>std::streambuf</label>
+      </node>
+      <node id="1">
+        <label>util::lz4c_steambuf</label>
+        <link refid="classutil_1_1lz4c__steambuf"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="21" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" bodystart="21" bodyend="46"/>
+    <listofallmembers>
+      <member refid="classutil_1_1lz4c__steambuf_1a74780571513ec346de39cdee943cc389" prot="public" virt="non-virtual"><scope>util::lz4c_steambuf</scope><name>close</name></member>
+      <member refid="classutil_1_1lz4c__steambuf_1a778afa6cfb6770bada122aaabec15998" prot="private" virt="non-virtual"><scope>util::lz4c_steambuf</scope><name>closed</name></member>
+      <member refid="classutil_1_1lz4c__steambuf_1afa7df604e126ae66b14ef762b2c6c137" prot="private" virt="non-virtual"><scope>util::lz4c_steambuf</scope><name>compress_and_write</name></member>
+      <member refid="classutil_1_1lz4c__steambuf_1acbb457e9acab54dad5695e0f08f3fae8" prot="private" virt="non-virtual"><scope>util::lz4c_steambuf</scope><name>ctx</name></member>
+      <member refid="classutil_1_1lz4c__steambuf_1a154c8dde8ece5c049e668fd1ea3e894b" prot="private" virt="non-virtual"><scope>util::lz4c_steambuf</scope><name>dest_buf</name></member>
+      <member refid="classutil_1_1lz4c__steambuf_1a12849417bc109e545cc1eb3d9919e897" prot="public" virt="non-virtual"><scope>util::lz4c_steambuf</scope><name>lz4c_steambuf</name></member>
+      <member refid="classutil_1_1lz4c__steambuf_1ab8cf067c1e2cdaaa1998afb77c4d50f8" prot="public" virt="non-virtual"><scope>util::lz4c_steambuf</scope><name>lz4c_steambuf</name></member>
+      <member refid="classutil_1_1lz4c__steambuf_1ad1bfc114bea1c2b5745d4542a72359cd" prot="public" virt="non-virtual"><scope>util::lz4c_steambuf</scope><name>lz4c_steambuf</name></member>
+      <member refid="classutil_1_1lz4c__steambuf_1a855a94bf669ed213e97124c2a01a4e4e" prot="public" virt="non-virtual"><scope>util::lz4c_steambuf</scope><name>operator=</name></member>
+      <member refid="classutil_1_1lz4c__steambuf_1a9ef1ad5c9e7ea97cfb726f20cf698cdd" prot="public" virt="non-virtual"><scope>util::lz4c_steambuf</scope><name>operator=</name></member>
+      <member refid="classutil_1_1lz4c__steambuf_1ae3ebe9f1c689afdfad9a60df40b02ef0" prot="private" virt="non-virtual"><scope>util::lz4c_steambuf</scope><name>overflow</name></member>
+      <member refid="classutil_1_1lz4c__steambuf_1a9ebd8d097de10399e570c20c99db649d" prot="private" virt="non-virtual"><scope>util::lz4c_steambuf</scope><name>sink</name></member>
+      <member refid="classutil_1_1lz4c__steambuf_1a4ee8ec981a22e1b3a4aaadf2045d99e6" prot="private" virt="non-virtual"><scope>util::lz4c_steambuf</scope><name>src_buf</name></member>
+      <member refid="classutil_1_1lz4c__steambuf_1a0620ea7b4b744153ec8b5b67cb69c81a" prot="private" virt="non-virtual"><scope>util::lz4c_steambuf</scope><name>sync</name></member>
+      <member refid="classutil_1_1lz4c__steambuf_1a2e52f1f56fc983fd0f13edba5b101e7a" prot="public" virt="non-virtual"><scope>util::lz4c_steambuf</scope><name>~lz4c_steambuf</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

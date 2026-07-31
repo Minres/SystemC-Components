@@ -1,4 +1,5 @@
 <map id="/home/eyck/Projects/MINRES/SystemC&#45;Components/src/components/scc" name="/home/eyck/Projects/MINRES/SystemC&#45;Components/src/components/scc">
-<area shape="rect" id="node1" href="dir_4b4439fcc6b4628cd8783772fc9df8bf.html" title="scc" alt="" coords="41,52,84,77"/>
-<area shape="rect" id="clust1" href="dir_3c4c7c1a85608ccd561c026bec818e51.html" title="components" alt="" coords="16,16,109,88"/>
+<area shape="rect" id="node2" href="dir_c5f3a60db2d5a61d49bdf2995fbb374d.html" title="tcp4tlm" alt="" coords="38,63,103,88"/>
+<area shape="rect" id="clust2" href="dir_4b4439fcc6b4628cd8783772fc9df8bf.html" alt="" coords="27,52,181,99"/>
+<area shape="rect" id="clust1" href="dir_3c4c7c1a85608ccd561c026bec818e51.html" title="components" alt="" coords="16,16,192,109"/>
 </map>

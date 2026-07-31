@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_d648b3bed8e4186603991deced033d16" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv</compoundname>
+    <innerfile refid="tlc__recorder_8h">tlc_recorder.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/"/>
+  </compounddef>
+</doxygen>

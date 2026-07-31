@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtilelink_1_1tl__cfg" kind="struct" language="C++" prot="public">
+    <compoundname>tilelink::tl_cfg</compoundname>
+    <includes refid="tilelink_2signal__if_8h" local="no">signal_if.h</includes>
+    <templateparamlist>
+      <param>
+        <type>unsigned int</type>
+        <declname>W</declname>
+        <defname>W</defname>
+        <defval>32</defval>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>A</declname>
+        <defname>A</defname>
+        <defval>32</defval>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>Z</declname>
+        <defname>Z</defname>
+        <defval>32</defval>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>O</declname>
+        <defname>O</defname>
+        <defval>1</defval>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>I</declname>
+        <defname>I</defname>
+        <defval>3</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structtilelink_1_1tl__cfg_1a4b25563288e282733572e721c93fe4e8" prot="public" static="no">
+        <type>typename <ref refid="structtilelink_1_1select__if" kindref="compound">select_if</ref>&lt; A&lt;=64, sc_dt::sc_uint&lt; ADDRWIDTH &gt;, sc_dt::sc_biguint&lt; ADDRWIDTH &gt; &gt;::type</type>
+        <definition>using tilelink::tl_cfg&lt; W, A, Z, O, I &gt;::addr_t =  typename select_if&lt;A &lt;= 64, sc_dt::sc_uint&lt;ADDRWIDTH&gt;, sc_dt::sc_biguint&lt;ADDRWIDTH&gt;&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>addr_t</name>
+        <qualifiedname>tilelink::tl_cfg::addr_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="87" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtilelink_1_1tl__cfg_1a2864f4a41ed4936bc822f8ec6daa80c2" prot="public" static="no">
+        <type>typename <ref refid="structtilelink_1_1select__if" kindref="compound">select_if</ref>&lt; W&lt;=64, sc_dt::sc_uint&lt; MASKWIDTH &gt;, sc_dt::sc_biguint&lt; MASKWIDTH &gt; &gt;::type</type>
+        <definition>using tilelink::tl_cfg&lt; W, A, Z, O, I &gt;::mask_t =  typename select_if&lt;W &lt;= 64, sc_dt::sc_uint&lt;MASKWIDTH&gt;, sc_dt::sc_biguint&lt;MASKWIDTH&gt;&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>mask_t</name>
+        <qualifiedname>tilelink::tl_cfg::mask_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="88" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtilelink_1_1tl__cfg_1a93485fc73dd464acfb50195f3bf3bb1c" prot="public" static="no">
+        <type>typename <ref refid="structtilelink_1_1select__if" kindref="compound">select_if</ref>&lt;(8 *W)&lt;=64, sc_dt::sc_uint&lt; BUSWIDTH &gt;, sc_dt::sc_biguint&lt; BUSWIDTH &gt; &gt;::type</type>
+        <definition>using tilelink::tl_cfg&lt; W, A, Z, O, I &gt;::data_t =  typename select_if&lt;(8 * W) &lt;= 64, sc_dt::sc_uint&lt;BUSWIDTH&gt;, sc_dt::sc_biguint&lt;BUSWIDTH&gt;&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>data_t</name>
+        <qualifiedname>tilelink::tl_cfg::data_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="89" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtilelink_1_1tl__cfg_1a3d441b68abfaff5c72fa953f0467ba7c" prot="public" static="no">
+        <type><ref refid="structtilelink_1_1slave__types" kindref="compound">::tilelink::slave_types</ref></type>
+        <definition>using tilelink::tl_cfg&lt; W, A, Z, O, I &gt;::slave_types =  ::tilelink::slave_types</definition>
+        <argsstring></argsstring>
+        <name>slave_types</name>
+        <qualifiedname>tilelink::tl_cfg::slave_types</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="90" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtilelink_1_1tl__cfg_1acd9f18ee5858cba032434718e04a9a7b" prot="public" static="no">
+        <type><ref refid="structtilelink_1_1master__types" kindref="compound">::tilelink::master_types</ref></type>
+        <definition>using tilelink::tl_cfg&lt; W, A, Z, O, I &gt;::master_types =  ::tilelink::master_types</definition>
+        <argsstring></argsstring>
+        <name>master_types</name>
+        <qualifiedname>tilelink::tl_cfg::master_types</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="91" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structtilelink_1_1tl__cfg_1ab1bc04a702ff9d86f22e3f849fba1b89" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tilelink::tl_cfg&lt; W, A, Z, O, I &gt;::BUSWIDTH</definition>
+        <argsstring></argsstring>
+        <name>BUSWIDTH</name>
+        <qualifiedname>tilelink::tl_cfg::BUSWIDTH</qualifiedname>
+        <initializer>= 8 * W</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="81" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1tl__cfg_1aa324718cb38fd40fe8b6066bfa4cc323" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tilelink::tl_cfg&lt; W, A, Z, O, I &gt;::MASKWIDTH</definition>
+        <argsstring></argsstring>
+        <name>MASKWIDTH</name>
+        <qualifiedname>tilelink::tl_cfg::MASKWIDTH</qualifiedname>
+        <initializer>= W</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="82" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1tl__cfg_1a1351498eb207699cefb274bb41c898f3" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tilelink::tl_cfg&lt; W, A, Z, O, I &gt;::ADDRWIDTH</definition>
+        <argsstring></argsstring>
+        <name>ADDRWIDTH</name>
+        <qualifiedname>tilelink::tl_cfg::ADDRWIDTH</qualifiedname>
+        <initializer>= A</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="83" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1tl__cfg_1a5a9c2e0c6d42c97a7c6f21a364f3e7de" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tilelink::tl_cfg&lt; W, A, Z, O, I &gt;::SZWIDTH</definition>
+        <argsstring></argsstring>
+        <name>SZWIDTH</name>
+        <qualifiedname>tilelink::tl_cfg::SZWIDTH</qualifiedname>
+        <initializer>= Z</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="84" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1tl__cfg_1a7fbbe5408c30039662eac85779903014" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tilelink::tl_cfg&lt; W, A, Z, O, I &gt;::MIDWIDTH</definition>
+        <argsstring></argsstring>
+        <name>MIDWIDTH</name>
+        <qualifiedname>tilelink::tl_cfg::MIDWIDTH</qualifiedname>
+        <initializer>= O</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="85" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1tl__cfg_1a2b0588a14d9ba542bba18a517a20c155" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tilelink::tl_cfg&lt; W, A, Z, O, I &gt;::SIDWIDTH</definition>
+        <argsstring></argsstring>
+        <name>SIDWIDTH</name>
+        <qualifiedname>tilelink::tl_cfg::SIDWIDTH</qualifiedname>
+        <initializer>= I</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="86" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>W</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Width of the data bus in bytes. Must be a power of two. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Width of each address field in bits. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Width of each size field in bits. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>O</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bits needed to disambiguate per-link master sources. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>I</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>cacheline size in Bytes, defaults value is 64 bytes </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="68" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="68" bodyend="92"/>
+    <listofallmembers>
+      <member refid="structtilelink_1_1tl__cfg_1a4b25563288e282733572e721c93fe4e8" prot="public" virt="non-virtual"><scope>tilelink::tl_cfg</scope><name>addr_t</name></member>
+      <member refid="structtilelink_1_1tl__cfg_1a1351498eb207699cefb274bb41c898f3" prot="public" virt="non-virtual"><scope>tilelink::tl_cfg</scope><name>ADDRWIDTH</name></member>
+      <member refid="structtilelink_1_1tl__cfg_1ab1bc04a702ff9d86f22e3f849fba1b89" prot="public" virt="non-virtual"><scope>tilelink::tl_cfg</scope><name>BUSWIDTH</name></member>
+      <member refid="structtilelink_1_1tl__cfg_1a93485fc73dd464acfb50195f3bf3bb1c" prot="public" virt="non-virtual"><scope>tilelink::tl_cfg</scope><name>data_t</name></member>
+      <member refid="structtilelink_1_1tl__cfg_1a2864f4a41ed4936bc822f8ec6daa80c2" prot="public" virt="non-virtual"><scope>tilelink::tl_cfg</scope><name>mask_t</name></member>
+      <member refid="structtilelink_1_1tl__cfg_1aa324718cb38fd40fe8b6066bfa4cc323" prot="public" virt="non-virtual"><scope>tilelink::tl_cfg</scope><name>MASKWIDTH</name></member>
+      <member refid="structtilelink_1_1tl__cfg_1acd9f18ee5858cba032434718e04a9a7b" prot="public" virt="non-virtual"><scope>tilelink::tl_cfg</scope><name>master_types</name></member>
+      <member refid="structtilelink_1_1tl__cfg_1a7fbbe5408c30039662eac85779903014" prot="public" virt="non-virtual"><scope>tilelink::tl_cfg</scope><name>MIDWIDTH</name></member>
+      <member refid="structtilelink_1_1tl__cfg_1a2b0588a14d9ba542bba18a517a20c155" prot="public" virt="non-virtual"><scope>tilelink::tl_cfg</scope><name>SIDWIDTH</name></member>
+      <member refid="structtilelink_1_1tl__cfg_1a3d441b68abfaff5c72fa953f0467ba7c" prot="public" virt="non-virtual"><scope>tilelink::tl_cfg</scope><name>slave_types</name></member>
+      <member refid="structtilelink_1_1tl__cfg_1a5a9c2e0c6d42c97a7c6f21a364f3e7de" prot="public" virt="non-virtual"><scope>tilelink::tl_cfg</scope><name>SZWIDTH</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

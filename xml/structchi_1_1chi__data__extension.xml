@@ -1,0 +1,262 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structchi_1_1chi__data__extension" kind="struct" language="C++" prot="public">
+    <compoundname>chi::chi_data_extension</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_extension&lt; chi_data_extension &gt;</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structchi_1_1chi__data__extension_1aa8a96e8c0d5dee63a564ddc07a309fb0" prot="public" static="no" mutable="no">
+        <type><ref refid="structchi_1_1common" kindref="compound">common</ref></type>
+        <definition>common chi::chi_data_extension::cmn</definition>
+        <argsstring></argsstring>
+        <name>cmn</name>
+        <qualifiedname>chi::chi_data_extension::cmn</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="844" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="844" bodyend="844"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1chi__data__extension_1a0c09030e11873766f139fb2aba0c75ef" prot="public" static="no" mutable="no">
+        <type><ref refid="structchi_1_1data" kindref="compound">data</ref></type>
+        <definition>data chi::chi_data_extension::dat</definition>
+        <argsstring></argsstring>
+        <name>dat</name>
+        <qualifiedname>chi::chi_data_extension::dat</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="845" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="845" bodyend="845"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structchi_1_1chi__data__extension_1ae38acf0c9057fce29fa6828601cb96cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>chi::chi_data_extension::chi_data_extension</definition>
+        <argsstring>()=default</argsstring>
+        <name>chi_data_extension</name>
+        <qualifiedname>chi::chi_data_extension::chi_data_extension</qualifiedname>
+        <briefdescription>
+<para>the default constructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="815" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__data__extension_1a1d69cf6116eab44ecf2e7e6736bc4418" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_extension_base *</type>
+        <definition>tlm::tlm_extension_base * chi::chi_data_extension::clone</definition>
+        <argsstring>() const</argsstring>
+        <name>clone</name>
+        <qualifiedname>chi::chi_data_extension::clone</qualifiedname>
+        <briefdescription>
+<para>the copy constructor </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>extension to copy from chi_data_extension(const chi_data_extension* o) {}</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+the clone function to create deep copies of <simplesect kind="return"><para>pointer to heap-allocated extension </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="825" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="825" bodyend="825"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__data__extension_1a11b3aafcf0535876250bffa6721eb8de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::chi_data_extension::copy_from</definition>
+        <argsstring>(tlm::tlm_extension_base const &amp;ext)</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>chi::chi_data_extension::copy_from</qualifiedname>
+        <param>
+          <type>tlm::tlm_extension_base const &amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+<para>deep copy all values from ext </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ext</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="830" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="830" bodyend="830"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__data__extension_1a0754391a36d801ac2235d4d0bb047dd0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::chi_data_extension::set_txn_id</definition>
+        <argsstring>(unsigned int id)</argsstring>
+        <name>set_txn_id</name>
+        <qualifiedname>chi::chi_data_extension::set_txn_id</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="832" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="832" bodyend="832"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__data__extension_1a4bc7c1d4cea1d989d46b9f0b1024b9e5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int chi::chi_data_extension::get_txn_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_txn_id</name>
+        <qualifiedname>chi::chi_data_extension::get_txn_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="834" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="834" bodyend="834"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__data__extension_1acb35c5668249cd3a097b53deeb8fe3fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::chi_data_extension::set_src_id</definition>
+        <argsstring>(unsigned int id)</argsstring>
+        <name>set_src_id</name>
+        <qualifiedname>chi::chi_data_extension::set_src_id</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="836" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="836" bodyend="836"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__data__extension_1a9d8997bd8fb4bedbdab47ce1d0757abf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int chi::chi_data_extension::get_src_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_src_id</name>
+        <qualifiedname>chi::chi_data_extension::get_src_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="838" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="838" bodyend="838"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__data__extension_1a40084c722f4d51785c7e4ef2e5488825" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::chi_data_extension::set_qos</definition>
+        <argsstring>(uint8_t qos)</argsstring>
+        <name>set_qos</name>
+        <qualifiedname>chi::chi_data_extension::set_qos</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>qos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="840" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="840" bodyend="840"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__data__extension_1af3fff327a058e8a2cf4dbdc5d3b8685d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int chi::chi_data_extension::get_qos</definition>
+        <argsstring>() const</argsstring>
+        <name>get_qos</name>
+        <qualifiedname>chi::chi_data_extension::get_qos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="842" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="842" bodyend="842"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>chi::chi_data_extension</label>
+        <link refid="structchi_1_1chi__data__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; chi_data_extension &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>chi::chi_data_extension</label>
+        <link refid="structchi_1_1chi__data__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>cmn</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>dat</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>chi::common</label>
+        <link refid="structchi_1_1common"/>
+      </node>
+      <node id="4">
+        <label>chi::data</label>
+        <link refid="structchi_1_1data"/>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; chi_data_extension &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="811" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="811" bodyend="846"/>
+    <listofallmembers>
+      <member refid="structchi_1_1chi__data__extension_1ae38acf0c9057fce29fa6828601cb96cb" prot="public" virt="non-virtual"><scope>chi::chi_data_extension</scope><name>chi_data_extension</name></member>
+      <member refid="structchi_1_1chi__data__extension_1a1d69cf6116eab44ecf2e7e6736bc4418" prot="public" virt="non-virtual"><scope>chi::chi_data_extension</scope><name>clone</name></member>
+      <member refid="structchi_1_1chi__data__extension_1aa8a96e8c0d5dee63a564ddc07a309fb0" prot="public" virt="non-virtual"><scope>chi::chi_data_extension</scope><name>cmn</name></member>
+      <member refid="structchi_1_1chi__data__extension_1a11b3aafcf0535876250bffa6721eb8de" prot="public" virt="non-virtual"><scope>chi::chi_data_extension</scope><name>copy_from</name></member>
+      <member refid="structchi_1_1chi__data__extension_1a0c09030e11873766f139fb2aba0c75ef" prot="public" virt="non-virtual"><scope>chi::chi_data_extension</scope><name>dat</name></member>
+      <member refid="structchi_1_1chi__data__extension_1af3fff327a058e8a2cf4dbdc5d3b8685d" prot="public" virt="non-virtual"><scope>chi::chi_data_extension</scope><name>get_qos</name></member>
+      <member refid="structchi_1_1chi__data__extension_1a9d8997bd8fb4bedbdab47ce1d0757abf" prot="public" virt="non-virtual"><scope>chi::chi_data_extension</scope><name>get_src_id</name></member>
+      <member refid="structchi_1_1chi__data__extension_1a4bc7c1d4cea1d989d46b9f0b1024b9e5" prot="public" virt="non-virtual"><scope>chi::chi_data_extension</scope><name>get_txn_id</name></member>
+      <member refid="structchi_1_1chi__data__extension_1a40084c722f4d51785c7e4ef2e5488825" prot="public" virt="non-virtual"><scope>chi::chi_data_extension</scope><name>set_qos</name></member>
+      <member refid="structchi_1_1chi__data__extension_1acb35c5668249cd3a097b53deeb8fe3fb" prot="public" virt="non-virtual"><scope>chi::chi_data_extension</scope><name>set_src_id</name></member>
+      <member refid="structchi_1_1chi__data__extension_1a0754391a36d801ac2235d4d0bb047dd0" prot="public" virt="non-virtual"><scope>chi::chi_data_extension</scope><name>set_txn_id</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

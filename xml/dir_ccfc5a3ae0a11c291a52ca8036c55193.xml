@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_ccfc5a3ae0a11c291a52ca8036c55193" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp</compoundname>
+    <innerdir refid="dir_a31d4ec100309e3a6433784e8a9d9e52">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin</innerdir>
+    <innerfile refid="ocp__tlm_8cpp">ocp_tlm.cpp</innerfile>
+    <innerfile refid="ocp__tlm_8h">ocp_tlm.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/"/>
+  </compounddef>
+</doxygen>

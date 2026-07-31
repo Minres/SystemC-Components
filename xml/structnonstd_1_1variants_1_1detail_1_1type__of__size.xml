@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1detail_1_1type__of__size" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::detail::type_of_size</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename List</type>
+      </param>
+      <param>
+        <type>size_t</type>
+        <declname>N</declname>
+        <defname>N</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structnonstd_1_1variants_1_1detail_1_1type__of__size_1a826257ca0c2fd4d7b42cead419d4dccd" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1std11_1_1conditional" kindref="compound">std11::conditional</ref>&lt; N==sizeof(typenameList::head), typenameList::head, typenametype_of_size&lt; typenameList::tail, N &gt;::type &gt;::type</type>
+        <definition>typedef std11::conditional&lt;N==sizeof(typenameList::head),typenameList::head,typenametype_of_size&lt;typenameList::tail,N&gt;::type&gt;::type nonstd::variants::detail::type_of_size&lt; List, N &gt;::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>nonstd::variants::detail::type_of_size::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="903" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="903" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="901" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="901" bodyend="904"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1type__of__size_1a826257ca0c2fd4d7b42cead419d4dccd" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::type_of_size</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

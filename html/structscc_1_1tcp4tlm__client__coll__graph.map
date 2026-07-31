@@ -1,0 +1,11 @@
+<map id="scc::tcp4tlm_client" name="scc::tcp4tlm_client">
+<area shape="rect" id="Node000001" title=" " alt="" coords="845,37,977,63"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="625,5,764,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="778,28,846,38,845,43,778,33"/>
+<area shape="rect" id="Node000003" href="$classscc_1_1tcp4tlm_1_1client.html" title=" " alt="" coords="593,55,796,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="809,62,844,57,845,62,810,68"/>
+<area shape="rect" id="Node000004" href="$classscc_1_1tcp4tlm_1_1connection.html" title=" " alt="" coords="269,55,472,109"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="486,79,593,79,593,85,486,85"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,47,220,117"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="234,79,269,79,269,85,234,85"/>
+</map>

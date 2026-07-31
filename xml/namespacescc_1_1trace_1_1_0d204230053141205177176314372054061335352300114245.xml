@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacescc_1_1trace_1_1_0d204230053141205177176314372054061335352300114245" kind="namespace" language="C++">
+    <compoundname>scc::trace</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="146" column="1"/>
+  </compounddef>
+</doxygen>

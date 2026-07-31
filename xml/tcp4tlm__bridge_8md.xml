@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="tcp4tlm__bridge_8md" kind="file" language="Markdown">
+    <compoundname>tcp4tlm_bridge.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>tcp4tlm_bridge<sp/>Functionality</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`tcp4tlm_bridge`<sp/>is<sp/>a<sp/>SystemC/TLM<sp/>component<sp/>that<sp/>tunnels<sp/>loosely<sp/>timed<sp/>TLM</highlight></codeline>
+<codeline><highlight class="normal">transactions<sp/>over<sp/>a<sp/>TCP-based<sp/>tcp4tlm<sp/>connection.<sp/>It<sp/>is<sp/>implemented<sp/>in</highlight></codeline>
+<codeline><highlight class="normal">`tcp4tlm_bridge.h`<sp/>and<sp/>`tcp4tlm_bridge.cpp`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>bridge<sp/>acts<sp/>in<sp/>two<sp/>directions<sp/>at<sp/>once:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>As<sp/>a<sp/>local<sp/>TLM<sp/>target<sp/>through<sp/>`tsckt`,<sp/>it<sp/>receives<sp/>local<sp/>TLM<sp/>transactions<sp/>and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>serializes<sp/>them<sp/>into<sp/>tcp4tlm<sp/>FlatBuffer<sp/>messages<sp/>for<sp/>a<sp/>remote<sp/>peer.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>As<sp/>a<sp/>local<sp/>TLM<sp/>initiator<sp/>through<sp/>`isckt`,<sp/>it<sp/>receives<sp/>remote<sp/>tcp4tlm<sp/>messages,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>reconstructs<sp/>TLM<sp/>generic<sp/>payloads,<sp/>and<sp/>forwards<sp/>them<sp/>into<sp/>the<sp/>local<sp/>SystemC</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>model.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Two<sp/>bridge<sp/>instances<sp/>can<sp/>therefore<sp/>connect<sp/>two<sp/>SystemC<sp/>simulations<sp/>or<sp/>component</highlight></codeline>
+<codeline><highlight class="normal">hierarchies<sp/>across<sp/>a<sp/>TCP<sp/>connection.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Main<sp/>Interfaces</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>`tcp4tlm_bridge`<sp/>class<sp/>derives<sp/>from:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">sc_core::sc_module</highlight></codeline>
+<codeline><highlight class="normal">tcp4tlm::server&lt;tcp4tlm::request_message,<sp/>tcp4tlm::response_message&gt;</highlight></codeline>
+<codeline><highlight class="normal">tcp4tlm::client&lt;tcp4tlm::request_message,<sp/>tcp4tlm::response_message&gt;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">It<sp/>exposes<sp/>the<sp/>following<sp/>main<sp/>interfaces:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`tsckt`:<sp/>a<sp/>TLM<sp/>target<sp/>socket<sp/>for<sp/>incoming<sp/>local<sp/>transactions.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`isckt`:<sp/>a<sp/>TLM<sp/>initiator<sp/>socket<sp/>for<sp/>executing<sp/>remote<sp/>transactions<sp/>locally.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`signals`:<sp/>a<sp/>vector<sp/>of<sp/>`sc_out&lt;bool&gt;`<sp/>ports<sp/>for<sp/>remote<sp/>signal<sp/>updates.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>TCP<sp/>server<sp/>functionality<sp/>for<sp/>receiving<sp/>peer<sp/>requests.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>TCP<sp/>client<sp/>functionality<sp/>for<sp/>sending<sp/>requests<sp/>to<sp/>the<sp/>peer.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>most<sp/>important<sp/>configuration<sp/>parameters<sp/>are:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">is_connection_server</highlight></codeline>
+<codeline><highlight class="normal">other_host_name</highlight></codeline>
+<codeline><highlight class="normal">other_host_port</highlight></codeline>
+<codeline><highlight class="normal">this_host_port</highlight></codeline>
+<codeline><highlight class="normal">wall_time_simulation_speed</highlight></codeline>
+<codeline><highlight class="normal">write_no_response</highlight></codeline>
+<codeline><highlight class="normal">no_systemc_sync</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Connection<sp/>Setup</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">During<sp/>`end_of_elaboration()`,<sp/>the<sp/>bridge<sp/>copies<sp/>`other_host_name`<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">`other_host_port`<sp/>into<sp/>the<sp/>TCP<sp/>client<sp/>base<sp/>class.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">During<sp/>`start_of_simulation()`,<sp/>connection<sp/>setup<sp/>depends<sp/>on</highlight></codeline>
+<codeline><highlight class="normal">`is_connection_server`:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>If<sp/>`is_connection_server`<sp/>is<sp/>`true`,<sp/>the<sp/>bridge<sp/>starts<sp/>a<sp/>local<sp/>server<sp/>on</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>`this_host_port`<sp/>and<sp/>waits<sp/>for<sp/>the<sp/>peer<sp/>to<sp/>announce<sp/>its<sp/>endpoint.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>If<sp/>`is_connection_server`<sp/>is<sp/>`false`,<sp/>the<sp/>bridge<sp/>connects<sp/>to<sp/>the<sp/>configured</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>remote<sp/>endpoint,<sp/>starts<sp/>its<sp/>own<sp/>server,<sp/>sends<sp/>a<sp/>`NotifyEndpointMsg`<sp/>containing</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>its<sp/>local<sp/>listening<sp/>endpoint,<sp/>and<sp/>waits<sp/>for<sp/>an<sp/>OK<sp/>response.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">When<sp/>a<sp/>bridge<sp/>receives<sp/>`NotifyEndpointMsg`,<sp/>it<sp/>stores<sp/>the<sp/>peer<sp/>host<sp/>and<sp/>port,</highlight></codeline>
+<codeline><highlight class="normal">creates<sp/>the<sp/>reverse<sp/>client<sp/>connection,<sp/>sends<sp/>an<sp/>OK<sp/>response,<sp/>and<sp/>marks<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">connection<sp/>as<sp/>established.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>handshake<sp/>creates<sp/>a<sp/>bidirectional<sp/>link:<sp/>each<sp/>bridge<sp/>has<sp/>a<sp/>server<sp/>side<sp/>for</highlight></codeline>
+<codeline><highlight class="normal">receiving<sp/>requests<sp/>and<sp/>a<sp/>client<sp/>side<sp/>for<sp/>sending<sp/>requests.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Forwarding<sp/>Local<sp/>TLM<sp/>Transactions</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Local<sp/>TLM<sp/>transactions<sp/>enter<sp/>the<sp/>bridge<sp/>through:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">btransport_cb()</highlight></codeline>
+<codeline><highlight class="normal">transport_dbg_cb()</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Both<sp/>callbacks<sp/>delegate<sp/>to<sp/>`do_access()`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>a<sp/>read<sp/>transaction,<sp/>`do_access()`:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Creates<sp/>a<sp/>`BusOpMsg`<sp/>containing<sp/>the<sp/>current<sp/>SystemC<sp/>timestamp,<sp/>delay,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>address,<sp/>data<sp/>length,<sp/>access<sp/>type,<sp/>and<sp/>byte<sp/>enables.</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Sends<sp/>the<sp/>message<sp/>through<sp/>the<sp/>client<sp/>connection.</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Waits<sp/>for<sp/>a<sp/>`BusDataMsg`<sp/>response.</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>Verifies<sp/>that<sp/>the<sp/>response<sp/>status<sp/>is<sp/>OK<sp/>and<sp/>that<sp/>the<sp/>response<sp/>belongs<sp/>to<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>original<sp/>request.</highlight></codeline>
+<codeline><highlight class="normal">5.<sp/>Copies<sp/>the<sp/>returned<sp/>data<sp/>into<sp/>the<sp/>original<sp/>TLM<sp/>payload.</highlight></codeline>
+<codeline><highlight class="normal">6.<sp/>Sets<sp/>the<sp/>TLM<sp/>response<sp/>status<sp/>to<sp/>`TLM_OK_RESPONSE`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>a<sp/>write<sp/>transaction,<sp/>`do_access()`:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Copies<sp/>the<sp/>payload<sp/>data<sp/>into<sp/>a<sp/>`BusOpMsg`.</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Sends<sp/>the<sp/>message<sp/>through<sp/>the<sp/>client<sp/>connection.</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>If<sp/>`write_no_response`<sp/>is<sp/>enabled,<sp/>marks<sp/>the<sp/>transaction<sp/>as<sp/>successful<sp/>after</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>sending.</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>Otherwise<sp/>waits<sp/>for<sp/>a<sp/>response<sp/>and<sp/>sets<sp/>the<sp/>TLM<sp/>response<sp/>status<sp/>according<sp/>to</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>the<sp/>received<sp/>status.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Debug<sp/>transport<sp/>is<sp/>represented<sp/>as<sp/>a<sp/>`BusOpMsg`<sp/>with<sp/>debug<sp/>access<sp/>type.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Handling<sp/>Remote<sp/>Messages</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Incoming<sp/>tcp4tlm<sp/>request<sp/>messages<sp/>are<sp/>handled<sp/>by<sp/>`server_receive_completed()`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>bridge<sp/>supports<sp/>these<sp/>request<sp/>payloads:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`NotifyEndpointMsg`:<sp/>announces<sp/>the<sp/>peer<sp/>endpoint<sp/>and<sp/>completes<sp/>the<sp/>connection</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>handshake.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`BusOpMsg`:<sp/>describes<sp/>a<sp/>remote<sp/>TLM<sp/>bus<sp/>operation<sp/>to<sp/>execute<sp/>locally.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`SyncMsg`:<sp/>carries<sp/>a<sp/>peer<sp/>SystemC<sp/>timestamp<sp/>for<sp/>synchronization.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`SigOpMsg`:<sp/>updates<sp/>one<sp/>of<sp/>the<sp/>bridge&apos;s<sp/>boolean<sp/>output<sp/>signals.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`NotifyShutdownMsg`:<sp/>requests<sp/>connection<sp/>shutdown.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Unhandled<sp/>messages<sp/>are<sp/>logged<sp/>and<sp/>answered<sp/>with<sp/>a<sp/>declined<sp/>response.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Replaying<sp/>Remote<sp/>Bus<sp/>Operations<sp/>Locally</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">When<sp/>`server_receive_completed()`<sp/>receives<sp/>a<sp/>`BusOpMsg`,<sp/>it:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Converts<sp/>the<sp/>message<sp/>into<sp/>a<sp/>`tlm_generic_payload`<sp/>using<sp/>`init_gp()`.</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Builds<sp/>a<sp/>SystemC<sp/>time<sp/>point<sp/>from<sp/>the<sp/>message<sp/>timestamp.</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Places<sp/>a<sp/>callback<sp/>task<sp/>into<sp/>the<sp/>asynchronous<sp/>task<sp/>queue.</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>Schedules<sp/>the<sp/>task<sp/>for<sp/>immediate<sp/>execution<sp/>or<sp/>for<sp/>the<sp/>requested<sp/>simulation</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>time.</highlight></codeline>
+<codeline><highlight class="normal">5.<sp/>Executes<sp/>the<sp/>transaction<sp/>through<sp/>`isckt-&gt;b_transport(*gp,<sp/>delay)`.</highlight></codeline>
+<codeline><highlight class="normal">6.<sp/>Sends<sp/>a<sp/>response<sp/>back<sp/>to<sp/>the<sp/>peer.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Read<sp/>requests<sp/>return<sp/>`BusDataMsg`<sp/>with<sp/>the<sp/>data<sp/>read<sp/>from<sp/>the<sp/>local<sp/>target.</highlight></codeline>
+<codeline><highlight class="normal">Write<sp/>requests<sp/>return<sp/>an<sp/>OK<sp/>or<sp/>failure<sp/>response<sp/>unless<sp/>the<sp/>message<sp/>requested<sp/>no</highlight></codeline>
+<codeline><highlight class="normal">response.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Time<sp/>Synchronization</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>bridge<sp/>starts<sp/>three<sp/>SystemC<sp/>threads<sp/>in<sp/>its<sp/>constructor:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">timing_thread()</highlight></codeline>
+<codeline><highlight class="normal">process_task_que()</highlight></codeline>
+<codeline><highlight class="normal">process_timed_task_que()</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`timing_thread()`<sp/>coordinates<sp/>simulation<sp/>time<sp/>between<sp/>peers:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>On<sp/>the<sp/>non-server<sp/>side,<sp/>it<sp/>periodically<sp/>sends<sp/>`SyncMsg`<sp/>messages<sp/>containing</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>the<sp/>current<sp/>SystemC<sp/>timestamp.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>On<sp/>the<sp/>server<sp/>side<sp/>in<sp/>simulated-time<sp/>mode,<sp/>it<sp/>consumes<sp/>remote<sp/>timestamps<sp/>from</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>`next_time_stamp`<sp/>and<sp/>advances<sp/>local<sp/>SystemC<sp/>time<sp/>toward<sp/>them.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>On<sp/>the<sp/>server<sp/>side<sp/>in<sp/>wall-time<sp/>mode,<sp/>it<sp/>paces<sp/>simulation<sp/>against<sp/>elapsed<sp/>wall</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>clock<sp/>time.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`process_task_que()`<sp/>moves<sp/>received<sp/>network<sp/>tasks<sp/>into<sp/>SystemC<sp/>execution</highlight></codeline>
+<codeline><highlight class="normal">context.<sp/>If<sp/>`no_systemc_sync`<sp/>is<sp/>enabled,<sp/>or<sp/>if<sp/>the<sp/>requested<sp/>time<sp/>point<sp/>has</highlight></codeline>
+<codeline><highlight class="normal">already<sp/>passed,<sp/>tasks<sp/>run<sp/>immediately.<sp/>Otherwise<sp/>they<sp/>are<sp/>scheduled<sp/>through<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">payload<sp/>event<sp/>queue.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`process_timed_task_que()`<sp/>executes<sp/>tasks<sp/>when<sp/>their<sp/>scheduled<sp/>SystemC<sp/>event</highlight></codeline>
+<codeline><highlight class="normal">fires.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Signal<sp/>Messages</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`SigOpMsg`<sp/>updates<sp/>entries<sp/>in<sp/>the<sp/>`signals`<sp/>vector.<sp/>If<sp/>the<sp/>message<sp/>index<sp/>is</highlight></codeline>
+<codeline><highlight class="normal">valid,<sp/>the<sp/>bridge<sp/>schedules<sp/>a<sp/>SystemC<sp/>task<sp/>that<sp/>writes<sp/>the<sp/>requested<sp/>boolean</highlight></codeline>
+<codeline><highlight class="normal">value<sp/>and<sp/>then<sp/>sends<sp/>an<sp/>OK<sp/>response.<sp/>If<sp/>the<sp/>index<sp/>is<sp/>out<sp/>of<sp/>range,<sp/>it<sp/>sends<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">declined<sp/>response.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Shutdown</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`end_connection()`<sp/>sends<sp/>a<sp/>final<sp/>`SyncMsg`<sp/>followed<sp/>by<sp/>`NotifyShutdownMsg`<sp/>when</highlight></codeline>
+<codeline><highlight class="normal">a<sp/>remote<sp/>connection<sp/>is<sp/>active.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">When<sp/>`NotifyShutdownMsg`<sp/>is<sp/>received,<sp/>the<sp/>bridge:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Closes<sp/>the<sp/>client<sp/>socket.</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Marks<sp/>the<sp/>client<sp/>connection<sp/>as<sp/>disconnected.</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Requests<sp/>server<sp/>shutdown<sp/>if<sp/>the<sp/>server<sp/>is<sp/>still<sp/>running.</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>Notifies<sp/>`shutdown_evt`<sp/>inside<sp/>SystemC<sp/>context.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>destructor<sp/>and<sp/>`end_of_simulation()`<sp/>both<sp/>ensure<sp/>that<sp/>the<sp/>server<sp/>is<sp/>shut</highlight></codeline>
+<codeline><highlight class="normal">down<sp/>and<sp/>that<sp/>an<sp/>orderly<sp/>shutdown<sp/>message<sp/>is<sp/>sent<sp/>when<sp/>appropriate.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Summary</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`tcp4tlm_bridge`<sp/>is<sp/>a<sp/>bidirectional<sp/>TLM-over-TCP<sp/>adapter.<sp/>Local<sp/>TLM<sp/>operations</highlight></codeline>
+<codeline><highlight class="normal">are<sp/>serialized<sp/>into<sp/>tcp4tlm<sp/>messages<sp/>and<sp/>sent<sp/>to<sp/>a<sp/>peer,<sp/>while<sp/>remote<sp/>messages</highlight></codeline>
+<codeline><highlight class="normal">are<sp/>converted<sp/>back<sp/>into<sp/>local<sp/>TLM<sp/>transactions<sp/>and<sp/>executed<sp/>through<sp/>the<sp/>bridge&apos;s</highlight></codeline>
+<codeline><highlight class="normal">initiator<sp/>socket.<sp/>The<sp/>implementation<sp/>also<sp/>manages<sp/>endpoint<sp/>negotiation,</highlight></codeline>
+<codeline><highlight class="normal">response<sp/>matching,<sp/>optional<sp/>write<sp/>acknowledgments,<sp/>simulation-time</highlight></codeline>
+<codeline><highlight class="normal">synchronization,<sp/>signal<sp/>propagation,<sp/>and<sp/>orderly<sp/>shutdown.</highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.md"/>
+  </compounddef>
+</doxygen>

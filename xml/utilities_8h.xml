@@ -1,0 +1,1800 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="utilities_8h" kind="file" language="C++">
+    <compoundname>utilities.h</compoundname>
+    <includes local="no">array</includes>
+    <includes local="no">cctype</includes>
+    <includes local="no">limits</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">systemc</includes>
+    <includes local="no">cci_configuration</includes>
+    <includes local="no">locale</includes>
+    <includedby refid="memory_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h</includedby>
+    <includedby refid="register_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h</includedby>
+    <includedby refid="router_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h</includedby>
+    <includedby refid="tcp4tlm__bridge_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h</includedby>
+    <includedby refid="tcp4tlm__client_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_client.h</includedby>
+    <includedby refid="tcp4tlm__server_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h</includedby>
+    <includedby refid="tlm__target_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target.h</includedby>
+    <includedby refid="ahb_2pin_2initiator_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h</includedby>
+    <includedby refid="ahb_2pin_2target_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h</includedby>
+    <includedby refid="apb_2pin_2initiator_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pin/initiator.h</includedby>
+    <includedby refid="apb_2pin_2target_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pin/target.h</includedby>
+    <includedby refid="axi4__target_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_target.h</includedby>
+    <includedby refid="ocp_2pin_2target_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h</includedby>
+    <includedby refid="tl__uh__bfm_8cpp" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.cpp</includedby>
+    <includedby refid="configurer_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h</includedby>
+    <includedby refid="ext__attribute_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ext_attribute.h</includedby>
+    <includedby refid="fst__trace_8cpp" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp</includedby>
+    <includedby refid="hierarchy__dumper_8cpp" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.cpp</includedby>
+    <includedby refid="python4sc_8cpp" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.cpp</includedby>
+    <includedby refid="report_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h</includedby>
+    <includedby refid="sc__variable_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h</includedby>
+    <includedby refid="tick2time_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tick2time.h</includedby>
+    <includedby refid="time2tick_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time2tick.h</includedby>
+    <includedby refid="vcd__trace_8hh" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh</includedby>
+    <includedby refid="tracer_8cpp" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer.cpp</includedby>
+    <includedby refid="tracer__base_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h</includedby>
+    <includedby refid="utilities_8cpp" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.cpp</includedby>
+    <includedby refid="vcd__mt__trace_8cpp" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.cpp</includedby>
+    <includedby refid="vcd__pull__trace_8cpp" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.cpp</includedby>
+    <includedby refid="vcd__push__trace_8cpp" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_push_trace.cpp</includedby>
+    <includedby refid="scc__sysc_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc_sysc.h</includedby>
+    <includedby refid="nw_2initiator__mixin_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/initiator_mixin.h</includedby>
+    <includedby refid="nw_2target__mixin_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h</includedby>
+    <includedby refid="scc_2initiator__mixin_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/initiator_mixin.h</includedby>
+    <includedby refid="signal__initiator__mixin_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_initiator_mixin.h</includedby>
+    <includedby refid="signal__target__mixin_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h</includedby>
+    <includedby refid="tagged__initiator__mixin_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h</includedby>
+    <includedby refid="tagged__target__mixin_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h</includedby>
+    <includedby refid="scc_2target__mixin_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h</includedby>
+    <includedby refid="base_8cpp" local="no">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp</includedby>
+    <includedby refid="ace__target__pe_8cpp" local="no">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp</includedby>
+    <includedby refid="axi__target__pe_8cpp" local="no">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_target_pe.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h</label>
+        <link refid="utilities_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>array</label>
+      </node>
+      <node id="7">
+        <label>cci_configuration</label>
+      </node>
+      <node id="3">
+        <label>cctype</label>
+      </node>
+      <node id="4">
+        <label>limits</label>
+      </node>
+      <node id="8">
+        <label>locale</label>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+      <node id="6">
+        <label>systemc</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="34">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h</label>
+        <link refid="dmi__mgr_8h_source"/>
+      </node>
+      <node id="2">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h</label>
+        <link refid="memory_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h</label>
+        <link refid="register_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h</label>
+        <link refid="router_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.cpp</label>
+        <link refid="tcp4tlm__bridge_8cpp_source"/>
+      </node>
+      <node id="7">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h</label>
+        <link refid="tcp4tlm__bridge_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_client.cpp</label>
+        <link refid="tcp4tlm__client_8cpp_source"/>
+      </node>
+      <node id="9">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_client.h</label>
+        <link refid="tcp4tlm__client_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.cpp</label>
+        <link refid="tcp4tlm__server_8cpp_source"/>
+      </node>
+      <node id="11">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h</label>
+        <link refid="tcp4tlm__server_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target.h</label>
+        <link refid="tlm__target_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h</label>
+        <link refid="tlm__target__bfs_8h_source"/>
+      </node>
+      <node id="15">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h</label>
+        <link refid="tlm__target__bfs__register__base_8h_source"/>
+      </node>
+      <node id="3">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc_components.h</label>
+        <link refid="scc__components_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.cpp</label>
+        <link refid="ahb__initiator_8cpp_source"/>
+      </node>
+      <node id="57">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h</label>
+        <link refid="ahb__initiator_8h_source"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.cpp</label>
+        <link refid="ahb__target_8cpp_source"/>
+      </node>
+      <node id="58">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h</label>
+        <link refid="ahb__target_8h_source"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h</label>
+        <link refid="ahb_2pin_2initiator_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h</label>
+        <link refid="ahb_2pin_2target_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.cpp</label>
+        <link refid="apb__initiator_8cpp_source"/>
+      </node>
+      <node id="59">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h</label>
+        <link refid="apb__initiator_8h_source"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.cpp</label>
+        <link refid="apb__target_8cpp_source"/>
+      </node>
+      <node id="60">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h</label>
+        <link refid="apb__target_8h_source"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pin/initiator.h</label>
+        <link refid="apb_2pin_2initiator_8h_source"/>
+      </node>
+      <node id="20">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pin/target.h</label>
+        <link refid="apb_2pin_2target_8h_source"/>
+      </node>
+      <node id="39">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.cpp</label>
+        <link refid="src_2interfaces_2axi_2axi__initiator_8cpp_source"/>
+      </node>
+      <node id="77">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h</label>
+        <link refid="src_2interfaces_2axi_2axi__initiator_8h_source"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.cpp</label>
+        <link refid="axi__target_8cpp_source"/>
+      </node>
+      <node id="75">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h</label>
+        <link refid="axi__target_8h_source"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="99">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_initiator.h</label>
+        <link refid="ace__initiator_8h_source"/>
+      </node>
+      <node id="100">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_initiator.h</label>
+        <link refid="ace__lite__initiator_8h_source"/>
+      </node>
+      <node id="101">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h</label>
+        <link refid="ace__lite__target_8h_source"/>
+      </node>
+      <node id="102">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_target.h</label>
+        <link refid="ace__target_8h_source"/>
+      </node>
+      <node id="103">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h</label>
+        <link refid="axi4__initiator_8h_source"/>
+      </node>
+      <node id="21">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_target.h</label>
+        <link refid="axi4__target_8h_source"/>
+      </node>
+      <node id="41">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h</label>
+        <link refid="axis__tlm_8h_source"/>
+      </node>
+      <node id="43">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp</label>
+        <link refid="cxs__tlm_8cpp_source"/>
+      </node>
+      <node id="42">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h</label>
+        <link refid="cxs__tlm_8h_source"/>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/scv/tlm_recorder_module.h</label>
+        <link refid="interfaces_2cxs_2scv_2tlm__recorder__module_8h_source"/>
+      </node>
+      <node id="45">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/scv/tlm_recording.h</label>
+        <link refid="tlm__recording_8h_source"/>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.cpp</label>
+        <link refid="eth__tlm_8cpp_source"/>
+      </node>
+      <node id="46">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h</label>
+        <link refid="eth__tlm_8h_source"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h</label>
+        <link refid="obi_2pin_2target_8h_source"/>
+      </node>
+      <node id="22">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h</label>
+        <link refid="ocp_2pin_2target_8h_source"/>
+      </node>
+      <node id="17">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/scc_interfaces.h</label>
+        <link refid="scc__interfaces_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/spi/spi_tlm.h</label>
+        <link refid="spi__tlm_8h_source"/>
+      </node>
+      <node id="23">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.cpp</label>
+        <link refid="tl__uh__bfm_8cpp_source"/>
+      </node>
+      <node id="123">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h</label>
+        <link refid="tl__uh__bfm_8h_source"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/scc.h</label>
+        <link refid="scc_8h_source"/>
+      </node>
+      <node id="50">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h</label>
+        <link refid="async__thread_8h_source"/>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp</label>
+        <link refid="cci__broker_8cpp_source"/>
+      </node>
+      <node id="114">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp</label>
+        <link refid="configurable__tracer_8cpp_source"/>
+      </node>
+      <node id="113">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h</label>
+        <link refid="configurable__tracer_8h_source"/>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp</label>
+        <link refid="configurer_8cpp_source"/>
+      </node>
+      <node id="24">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h</label>
+        <link refid="configurer_8h_source"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer_nocci.cpp</label>
+        <link refid="configurer__nocci_8cpp_source"/>
+      </node>
+      <node id="27">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ext_attribute.h</label>
+        <link refid="ext__attribute_8h_source"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp</label>
+        <link refid="fst__trace_8cpp_source"/>
+      </node>
+      <node id="29">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.cpp</label>
+        <link refid="hierarchy__dumper_8cpp_source"/>
+      </node>
+      <node id="53">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.cpp</label>
+        <link refid="ordered__semaphore_8cpp_source"/>
+      </node>
+      <node id="56">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h</label>
+        <link refid="ordered__semaphore_8h_source"/>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.cpp</label>
+        <link refid="perf__estimator_8cpp_source"/>
+      </node>
+      <node id="32">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.cpp</label>
+        <link refid="python4sc_8cpp_source"/>
+      </node>
+      <node id="30">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp</label>
+        <link refid="report_8cpp_source"/>
+      </node>
+      <node id="33">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h</label>
+        <link refid="report_8h_source"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h</label>
+        <link refid="sc__variable_8h_source"/>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+      </node>
+      <node id="104">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tick2time.h</label>
+        <link refid="tick2time_8h_source"/>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="106">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time2tick.h</label>
+        <link refid="time2tick_8h_source"/>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="105">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time_n_tick.cpp</label>
+        <link refid="time__n__tick_8cpp_source"/>
+      </node>
+      <node id="107">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh</label>
+        <link refid="vcd__trace_8hh_source"/>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer.cpp</label>
+        <link refid="tracer_8cpp_source"/>
+      </node>
+      <node id="112">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer.h</label>
+        <link refid="tracer_8h_source"/>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="115">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp</label>
+        <link refid="tracer__base_8cpp_source"/>
+      </node>
+      <node id="111">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h</label>
+        <link refid="tracer__base_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="116">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.cpp</label>
+        <link refid="utilities_8cpp_source"/>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h</label>
+        <link refid="utilities_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="119" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+      </node>
+      <node id="108">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.cpp</label>
+        <link refid="vcd__mt__trace_8cpp_source"/>
+      </node>
+      <node id="109">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.cpp</label>
+        <link refid="vcd__pull__trace_8cpp_source"/>
+      </node>
+      <node id="110">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_push_trace.cpp</label>
+        <link refid="vcd__push__trace_8cpp_source"/>
+      </node>
+      <node id="28">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc_sysc.h</label>
+        <link refid="scc__sysc_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="117">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/initiator_mixin.h</label>
+        <link refid="nw_2initiator__mixin_8h_source"/>
+      </node>
+      <node id="83">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.cpp</label>
+        <link refid="nw_2scv_2tlm__recorder_8cpp_source"/>
+      </node>
+      <node id="82">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h</label>
+        <link refid="nw_2scv_2tlm__recorder_8h_source"/>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+      </node>
+      <node id="84">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder_module.h</label>
+        <link refid="sysc_2tlm_2nw_2scv_2tlm__recorder__module_8h_source"/>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+      </node>
+      <node id="118">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h</label>
+        <link refid="nw_2target__mixin_8h_source"/>
+      </node>
+      <node id="119">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/initiator_mixin.h</label>
+        <link refid="scc_2initiator__mixin_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="87">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.cpp</label>
+        <link refid="global__time__keeper_8cpp_source"/>
+      </node>
+      <node id="86">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h</label>
+        <link refid="global__time__keeper_8h_source"/>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+      </node>
+      <node id="88">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/sc_time_syncronizer.cpp</label>
+        <link refid="sc__time__syncronizer_8cpp_source"/>
+      </node>
+      <node id="89">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/sc_time_syncronizer.h</label>
+        <link refid="sc__time__syncronizer_8h_source"/>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="85">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h</label>
+        <link refid="src_2sysc_2tlm_2scc_2qk_2types_8h_source"/>
+        <childnode refid="86" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_mt.h</label>
+        <link refid="quantum__keeper__mt_8h_source"/>
+      </node>
+      <node id="92">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_initiator_mixin.h</label>
+        <link refid="signal__initiator__mixin_8h_source"/>
+      </node>
+      <node id="93">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h</label>
+        <link refid="signal__target__mixin_8h_source"/>
+      </node>
+      <node id="120">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h</label>
+        <link refid="tagged__initiator__mixin_8h_source"/>
+      </node>
+      <node id="121">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h</label>
+        <link refid="tagged__target__mixin_8h_source"/>
+      </node>
+      <node id="122">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h</label>
+        <link refid="scc_2target__mixin_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="123" relation="include">
+        </childnode>
+      </node>
+      <node id="91">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal.h</label>
+        <link refid="tlm__signal_8h_source"/>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+      </node>
+      <node id="94">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_conv.h</label>
+        <link refid="tlm__signal__conv_8h_source"/>
+      </node>
+      <node id="90">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h</label>
+        <link refid="tlm__signal__sockets_8h_source"/>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+      </node>
+      <node id="95">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.cpp</label>
+        <link refid="ace__protocol_8cpp_source"/>
+      </node>
+      <node id="96">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/axi_protocol.cpp</label>
+        <link refid="axi__protocol_8cpp_source"/>
+      </node>
+      <node id="97">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp</label>
+        <link refid="base_8cpp_source"/>
+      </node>
+      <node id="98">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h</label>
+        <link refid="base_8h_source"/>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp</label>
+        <link refid="ace__target__pe_8cpp_source"/>
+      </node>
+      <node id="61">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h</label>
+        <link refid="ace__target__pe_8h_source"/>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_initiator.cpp</label>
+        <link refid="third__party_2axi__chi_2axi_2pe_2axi__initiator_8cpp_source"/>
+      </node>
+      <node id="64">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_initiator.h</label>
+        <link refid="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source"/>
+        <childnode refid="65" relation="include">
+        </childnode>
+      </node>
+      <node id="67">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_target_pe.cpp</label>
+        <link refid="axi__target__pe_8cpp_source"/>
+      </node>
+      <node id="66">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_target_pe.h</label>
+        <link refid="axi__target__pe_8h_source"/>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.cpp</label>
+        <link refid="ordered__target_8cpp_source"/>
+      </node>
+      <node id="68">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h</label>
+        <link refid="ordered__target_8h_source"/>
+        <childnode refid="69" relation="include">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.cpp</label>
+        <link refid="reordering__target_8cpp_source"/>
+      </node>
+      <node id="70">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h</label>
+        <link refid="reordering__target_8h_source"/>
+        <childnode refid="71" relation="include">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.cpp</label>
+        <link refid="replay__target_8cpp_source"/>
+      </node>
+      <node id="72">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h</label>
+        <link refid="replay__target_8h_source"/>
+        <childnode refid="73" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_ace_target.h</label>
+        <link refid="simple__ace__target_8h_source"/>
+      </node>
+      <node id="78">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_initiator.cpp</label>
+        <link refid="simple__initiator_8cpp_source"/>
+      </node>
+      <node id="76">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_initiator.h</label>
+        <link refid="simple__initiator_8h_source"/>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_target.h</label>
+        <link refid="simple__target_8h_source"/>
+        <childnode refid="75" relation="include">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.cpp</label>
+        <link refid="chi__rn__initiator_8cpp_source"/>
+      </node>
+      <node id="79">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h</label>
+        <link refid="chi__rn__initiator_8h_source"/>
+        <childnode refid="80" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespacescc">scc</innernamespace>
+    <innernamespace refid="namespacesc__core">sc_core</innernamespace>
+    <sectiondef kind="user-defined">
+      <memberdef kind="define" id="utilities_8h_1a1df36f4b603ad253050febe82f8b5019" prot="public" static="no">
+        <name>NAMED</name>
+        <param><defname>X</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>X(#X, ##__VA_ARGS__)</initializer>
+        <briefdescription>
+<para>macros to simplify constructor lists </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="53" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="utilities_8h_1ad487f38064c38d1a484a7040ab695318" prot="public" static="no">
+        <name>NAMEDD</name>
+        <param><defname>X</defname></param>
+        <param><defname>T</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>X(scc::make_unique&lt;T&gt;(#X, ##__VA_ARGS__))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="54" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="utilities_8h_1a3a3d94c898544171f8bbe15cc230d4b9" prot="public" static="no">
+        <name>NAMEDC</name>
+        <param><defname>X</defname></param>
+        <param><defname>T</defname></param>
+        <param><defname>I</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>X(T::create&lt;I&gt;(#X, ##__VA_ARGS__))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="55" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="utilities_8h_1af80c79295859a3aa0b75a9119ff674e4" prot="public" static="no">
+        <name>TRACE_VAR</name>
+        <param><defname>F</defname></param>
+        <param><defname>X</defname></param>
+        <initializer>sc_core::sc_trace(F, X, std::string(this-&gt;name()) + &quot;.&quot; #X)</initializer>
+        <briefdescription>
+<para>macros to simplify declaration of members to trace </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="57" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="utilities_8h_1a8f5d4f668d3f94f22489a86a246ea6ed" prot="public" static="no">
+        <name>TRACE_ARR</name>
+        <param><defname>F</defname></param>
+        <param><defname>X</defname></param>
+        <param><defname>I</defname></param>
+        <initializer>sc_core::sc_trace(F, X[I], (std::string(this-&gt;name()) + &quot;.&quot; #X &quot;(&quot; + std::to_string(I) + &quot;)&quot;).c_str());</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="58" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="utilities_8h_1a19a3423a141d8d623a64910290d5fdb3" prot="public" static="no">
+        <name>TRACE_SIG</name>
+        <param><defname>F</defname></param>
+        <param><defname>X</defname></param>
+        <initializer>sc_core::sc_trace(F, X, X.name())</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="59" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1a60be0df559eb9699daf8b323a3d43076" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time operator&quot;&quot;_sec</definition>
+        <argsstring>(long double val)</argsstring>
+        <name>operator&quot;&quot;_sec</name>
+        <param>
+          <type>long double</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>UDL for second</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="106" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="106" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1a6c3a67b3687dc94b9f1736e4b58e5962" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time operator&quot;&quot;_sec</definition>
+        <argsstring>(unsigned long long val)</argsstring>
+        <name>operator&quot;&quot;_sec</name>
+        <param>
+          <type>unsigned long long</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>UDL for second</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="113" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="113" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1ad4dd844c05aacc62a292909059553a7c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time operator&quot;&quot;_ms</definition>
+        <argsstring>(long double val)</argsstring>
+        <name>operator&quot;&quot;_ms</name>
+        <param>
+          <type>long double</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>UDL for millisecond</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="120" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="120" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1a84b99eaf51fe07d8723909807abcd36f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time operator&quot;&quot;_ms</definition>
+        <argsstring>(unsigned long long val)</argsstring>
+        <name>operator&quot;&quot;_ms</name>
+        <param>
+          <type>unsigned long long</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>UDL for millisecond</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="127" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="127" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1abf8d5aa0e082927f2bda089246ad5d9c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time operator&quot;&quot;_us</definition>
+        <argsstring>(long double val)</argsstring>
+        <name>operator&quot;&quot;_us</name>
+        <param>
+          <type>long double</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>UDL for microsecond</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="134" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="134" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1abab6f2a0d31cfa33ffb7e46d5c556718" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time operator&quot;&quot;_us</definition>
+        <argsstring>(unsigned long long val)</argsstring>
+        <name>operator&quot;&quot;_us</name>
+        <param>
+          <type>unsigned long long</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>UDL for microsecond</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="141" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="141" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1ae30f3db1000176d1182c857d07db328d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time operator&quot;&quot;_ns</definition>
+        <argsstring>(long double val)</argsstring>
+        <name>operator&quot;&quot;_ns</name>
+        <param>
+          <type>long double</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>UDL for nanosecond</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="148" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="148" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1a7786e27ee87402bcf0a56180954cddbc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time operator&quot;&quot;_ns</definition>
+        <argsstring>(unsigned long long val)</argsstring>
+        <name>operator&quot;&quot;_ns</name>
+        <param>
+          <type>unsigned long long</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>UDL for nanosecond</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="155" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="155" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1a6ee1ed35215ea610c2844e5a160c3a8d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time operator&quot;&quot;_ps</definition>
+        <argsstring>(long double val)</argsstring>
+        <name>operator&quot;&quot;_ps</name>
+        <param>
+          <type>long double</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>UDL for picosecond</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="162" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="162" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1acdb9120dd9fe0783e877d8b697bf8d27" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time operator&quot;&quot;_ps</definition>
+        <argsstring>(unsigned long long val)</argsstring>
+        <name>operator&quot;&quot;_ps</name>
+        <param>
+          <type>unsigned long long</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>UDL for picosecond</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="169" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="169" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1a8e302a0b310bd7abf9c459e331b5c94c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time operator&quot;&quot;_fs</definition>
+        <argsstring>(long double val)</argsstring>
+        <name>operator&quot;&quot;_fs</name>
+        <param>
+          <type>long double</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>UDL for femtosecond</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="176" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="176" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1a4e923976b56d1d93e5fac3055f9812c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time operator&quot;&quot;_fs</definition>
+        <argsstring>(unsigned long long val)</argsstring>
+        <name>operator&quot;&quot;_fs</name>
+        <param>
+          <type>unsigned long long</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>UDL for femtosecond</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="183" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="183" bodyend="183"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="utilities_8h_1a20aa609d02b40c07f11274b267e55af2" prot="public" static="no">
+        <name>HAS_NO_TIME_TRACE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="64" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="utilities_8h_1ac9509720c122ca0c65db9e329b42cd5d" prot="public" static="no">
+        <name>declare_method_process_cl</name>
+        <param><defname>handle</defname></param>
+        <param><defname>name</defname></param>
+        <param><defname>host_tag</defname></param>
+        <param><defname>func</defname></param>
+        <initializer>    {                                                                                                                                      \
+        ::sc_core::sc_spawn_options opt;                                                                                                   \
+        opt.dont_initialize();                                                                                                             \
+        opt.spawn_method();                                                                                                                \
+        ::sc_core::sc_process_handle handle = ::sc_core::sc_spawn(func, name, &amp;opt);                                                       \
+        this-&gt;sensitive &lt;&lt; handle;                                                                                                         \
+        this-&gt;sensitive_pos &lt;&lt; handle;                                                                                                     \
+        this-&gt;sensitive_neg &lt;&lt; handle;                                                                                                     \
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="323" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="323" bodyend="332"/>
+      </memberdef>
+      <memberdef kind="define" id="utilities_8h_1a26fe9f1cf387df884be941b19a4e74b2" prot="public" static="no">
+        <name>declare_thread_process_cl</name>
+        <param><defname>handle</defname></param>
+        <param><defname>name</defname></param>
+        <param><defname>host_tag</defname></param>
+        <param><defname>func</defname></param>
+        <initializer>    {                                                                                                                                      \
+        ::sc_core::sc_spawn_options opt;                                                                                                   \
+        ::sc_core::sc_process_handle handle = ::sc_core::sc_spawn(func, name, &amp;opt);                                                       \
+        this-&gt;sensitive &lt;&lt; handle;                                                                                                         \
+        this-&gt;sensitive_pos &lt;&lt; handle;                                                                                                     \
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="334" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="334" bodyend="340"/>
+      </memberdef>
+      <memberdef kind="define" id="utilities_8h_1afba15b13d8f6c4347fbbdfaeaca3e729" prot="public" static="no">
+        <name>SC_METHOD_CL</name>
+        <param><defname>name</defname></param>
+        <param><defname>func</defname></param>
+        <initializer>declare_method_process_cl(name##_handle, #name, SC_CURRENT_USER_MODULE, func)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="342" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="342" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="utilities_8h_1a69fe6b34c617a626913ec024eea54854" prot="public" static="no">
+        <name>SC_THREAD_CL</name>
+        <param><defname>name</defname></param>
+        <param><defname>func</defname></param>
+        <initializer>declare_thread_process_cl(name##_handle, #name, SC_CURRENT_USER_MODULE, func)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="344" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="344" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2016,<sp/>2018<sp/>MINRES<sp/>Technologies<sp/>GmbH</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SYSC_UTILITIES_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SYSC_UTILITIES_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cctype&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;limits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__GNUG__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pragmas<sp/>to<sp/>disable<sp/>the<sp/>deprecated<sp/>warnings<sp/>for<sp/>SystemC<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>push</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>ignored<sp/>&quot;-Wdeprecated-declarations&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;systemc&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__GNUG__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>pop</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cci_configuration&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;locale&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacescc" kindref="compound">scc</ref><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;<sp/>std::unique_ptr&lt;T&gt;<sp/>make_unique(Args&amp;&amp;...<sp/>args)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>__cplusplus<sp/>&lt;<sp/>201402L</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;T&gt;(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>T(std::forward&lt;Args&gt;(args)...));</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_unique&lt;T&gt;(std::forward&lt;Args&gt;(args)...);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NAMED(X,<sp/>...)<sp/>X(#X,<sp/>##__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NAMEDD(X,<sp/>T,<sp/>...)<sp/>X(scc::make_unique&lt;T&gt;(#X,<sp/>##__VA_ARGS__))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NAMEDC(X,<sp/>T,<sp/>I,<sp/>...)<sp/>X(T::create&lt;I&gt;(#X,<sp/>##__VA_ARGS__))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TRACE_VAR(F,<sp/>X)<sp/>sc_core::sc_trace(F,<sp/>X,<sp/>std::string(this-&gt;name())<sp/>+<sp/>&quot;.&quot;<sp/>#X)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TRACE_ARR(F,<sp/>X,<sp/>I)<sp/>sc_core::sc_trace(F,<sp/>X[I],<sp/>(std::string(this-&gt;name())<sp/>+<sp/>&quot;.&quot;<sp/>#X<sp/>&quot;(&quot;<sp/>+<sp/>std::to_string(I)<sp/>+<sp/>&quot;)&quot;).c_str());</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TRACE_SIG(F,<sp/>X)<sp/>sc_core::sc_trace(F,<sp/>X,<sp/>X.name())</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">sc_core<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>needed<sp/>to<sp/>be<sp/>able<sp/>to<sp/>use<sp/>sc_time<sp/>as<sp/>signal<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>SC_VERSION_MAJOR<sp/>&lt;=<sp/>2<sp/>&amp;&amp;<sp/>SC_VERSION_MINOR<sp/>&lt;=<sp/>3<sp/>&amp;&amp;<sp/>SC_VERSION_PATCH<sp/>&lt;<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HAS_NO_TIME_TRACE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>NCSC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HAS_NO_TIME_TRACE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAS_NO_TIME_TRACE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>sc_trace(sc_trace_file*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sc_time&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>sc_trace(sc_core::sc_trace_file*&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sc_core::sc_event&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)<sp/>{}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>sc_trace(sc_trace_file*<sp/>tf,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sc_in&lt;sc_time&gt;&amp;<sp/>value,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>name);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>sc_trace(sc_trace_file*<sp/>tf,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sc_inout&lt;sc_time&gt;&amp;<sp/>value,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>name);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>sc_core</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/>user-defined<sp/>literals<sp/>for<sp/>easy<sp/>time<sp/>creation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/></highlight><highlight class="keyword">operator</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">_sec(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>val)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::sc_time(val,<sp/>sc_core::SC_SEC);<sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/></highlight><highlight class="keyword">operator</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">_sec(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>val)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::sc_time(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">(val),<sp/>sc_core::SC_SEC);<sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/></highlight><highlight class="keyword">operator</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">_ms(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>val)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::sc_time(val,<sp/>sc_core::SC_MS);<sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/></highlight><highlight class="keyword">operator</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">_ms(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>val)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::sc_time(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">(val),<sp/>sc_core::SC_MS);<sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/></highlight><highlight class="keyword">operator</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">_us(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>val)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::sc_time(val,<sp/>sc_core::SC_US);<sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/></highlight><highlight class="keyword">operator</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">_us(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>val)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::sc_time(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">(val),<sp/>sc_core::SC_US);<sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/></highlight><highlight class="keyword">operator</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">_ns(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>val)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::sc_time(val,<sp/>sc_core::SC_NS);<sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/></highlight><highlight class="keyword">operator</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">_ns(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>val)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::sc_time(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">(val),<sp/>sc_core::SC_NS);<sp/>}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/></highlight><highlight class="keyword">operator</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">_ps(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>val)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::sc_time(val,<sp/>sc_core::SC_PS);<sp/>}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/></highlight><highlight class="keyword">operator</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">_ps(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>val)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::sc_time(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">(val),<sp/>sc_core::SC_PS);<sp/>}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/></highlight><highlight class="keyword">operator</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">_fs(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>val)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::sc_time(val,<sp/>sc_core::SC_FS);<sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/></highlight><highlight class="keyword">operator</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">_fs(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>val)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::sc_time(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">(val),<sp/>sc_core::SC_FS);<sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacescc" kindref="compound">scc</ref><sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{<sp/>LT<sp/>=<sp/>0<sp/>};</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>legalize_name(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>name)<sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>ptr<sp/>=<sp/>name;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(*ptr)<sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(*ptr<sp/>==<sp/></highlight><highlight class="charliteral">&apos;.&apos;</highlight><highlight class="normal"><sp/>||<sp/>std::isspace(*ptr))<sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*ptr<sp/>=<sp/></highlight><highlight class="charliteral">&apos;_&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ptr++;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>name;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::string<sp/>legalize_name(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>name)<sp/>{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>ret;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>c<sp/>:<sp/>name)<sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>+=<sp/>(c<sp/>==<sp/></highlight><highlight class="charliteral">&apos;.&apos;</highlight><highlight class="normal"><sp/>||<sp/>std::isspace(c))<sp/>?<sp/></highlight><highlight class="charliteral">&apos;_&apos;</highlight><highlight class="normal"><sp/>:<sp/>c;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="214" refid="namespacescc_1a37aa0e4e0cb80c3c3eeffc491e4a2f81" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespacescc_1a37aa0e4e0cb80c3c3eeffc491e4a2f81" kindref="member">icompare</ref>(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>a,<sp/>std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>b)<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(a.length()<sp/>==<sp/>b.length())<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::equal(b.begin(),<sp/>b.end(),<sp/>a.begin(),</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>a,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>b)<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>{<sp/>return<sp/>std::tolower(a)<sp/>==<sp/>std::tolower(b);<sp/>});</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="229" refid="namespacescc_1a5df192e5fb1021968646f2212bbf6acf" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/><ref refid="namespacescc_1a5df192e5fb1021968646f2212bbf6acf" kindref="member">parse_from_string</ref>(std::string<sp/>value,<sp/>std::string<sp/>unit)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string::size_type<sp/>offs{0};</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t_val<sp/>=<sp/>std::stod(value,<sp/>&amp;offs);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(offs<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1a37aa0e4e0cb80c3c3eeffc491e4a2f81" kindref="member">icompare</ref>(unit,<sp/></highlight><highlight class="stringliteral">&quot;fs&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t_val<sp/>*<sp/>1_fs;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1a37aa0e4e0cb80c3c3eeffc491e4a2f81" kindref="member">icompare</ref>(unit,<sp/></highlight><highlight class="stringliteral">&quot;ps&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t_val<sp/>*<sp/>1_ps;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1a37aa0e4e0cb80c3c3eeffc491e4a2f81" kindref="member">icompare</ref>(unit,<sp/></highlight><highlight class="stringliteral">&quot;ns&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t_val<sp/>*<sp/>1_ns;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1a37aa0e4e0cb80c3c3eeffc491e4a2f81" kindref="member">icompare</ref>(unit,<sp/></highlight><highlight class="stringliteral">&quot;us&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t_val<sp/>*<sp/>1_us;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1a37aa0e4e0cb80c3c3eeffc491e4a2f81" kindref="member">icompare</ref>(unit,<sp/></highlight><highlight class="stringliteral">&quot;ms&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t_val<sp/>*<sp/>1_ms;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1a37aa0e4e0cb80c3c3eeffc491e4a2f81" kindref="member">icompare</ref>(unit,<sp/></highlight><highlight class="stringliteral">&quot;s&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t_val<sp/>*<sp/>1_sec;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::SC_ZERO_TIME;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="254" refid="namespacescc_1a69f13e127ccc21fca23b968019ab55c2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/><ref refid="namespacescc_1a5df192e5fb1021968646f2212bbf6acf" kindref="member">parse_from_string</ref>(std::string<sp/>value)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string::size_type<sp/>offs{0};</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t_val<sp/>=<sp/>std::stod(value,<sp/>&amp;offs);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(offs<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>unit<sp/>=<sp/>value.substr(offs);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1a37aa0e4e0cb80c3c3eeffc491e4a2f81" kindref="member">icompare</ref>(unit,<sp/></highlight><highlight class="stringliteral">&quot;fs&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t_val<sp/>*<sp/>1_fs;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1a37aa0e4e0cb80c3c3eeffc491e4a2f81" kindref="member">icompare</ref>(unit,<sp/></highlight><highlight class="stringliteral">&quot;ps&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t_val<sp/>*<sp/>1_ps;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1a37aa0e4e0cb80c3c3eeffc491e4a2f81" kindref="member">icompare</ref>(unit,<sp/></highlight><highlight class="stringliteral">&quot;ns&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t_val<sp/>*<sp/>1_ns;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1a37aa0e4e0cb80c3c3eeffc491e4a2f81" kindref="member">icompare</ref>(unit,<sp/></highlight><highlight class="stringliteral">&quot;us&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t_val<sp/>*<sp/>1_us;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1a37aa0e4e0cb80c3c3eeffc491e4a2f81" kindref="member">icompare</ref>(unit,<sp/></highlight><highlight class="stringliteral">&quot;ms&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t_val<sp/>*<sp/>1_ms;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1a37aa0e4e0cb80c3c3eeffc491e4a2f81" kindref="member">icompare</ref>(unit,<sp/></highlight><highlight class="stringliteral">&quot;s&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t_val<sp/>*<sp/>1_sec;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::SC_ZERO_TIME;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/>time_to_next_posedge(sc_core::sc_clock<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">*<sp/>clk)<sp/>{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(clk)<sp/>{</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>period<sp/>=<sp/>clk-&gt;period();</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>clk_run_time<sp/>=<sp/>sc_core::sc_time_stamp()<sp/>-<sp/>clk-&gt;start_time();</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>clk_period_point<sp/>=<sp/>clk_run_time<sp/>%<sp/>period;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(clk-&gt;posedge_first())</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>period<sp/>-<sp/>clk_period_point;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>time_to_negedge<sp/>=<sp/>period<sp/>*<sp/>clk-&gt;duty_cycle();</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>time_to_posedge<sp/>=<sp/>period<sp/>-<sp/>time_to_negedge;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(clk_period_point<sp/>&lt;<sp/>time_to_posedge)<sp/>{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>time_to_posedge<sp/>-<sp/>clk_period_point;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>period<sp/>+<sp/>time_to_posedge<sp/>-<sp/>clk_period_point;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::SC_ZERO_TIME;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>__cplusplus<sp/>&lt;<sp/>201402L</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>ilog2(uint32_t<sp/>val)<sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>ilog2(uint32_t<sp/>val)<sp/>{</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(val<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__GNUG__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(uint32_t)<sp/>*<sp/>8<sp/>-<sp/>1<sp/>-<sp/>__builtin_clz(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(val));</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(val<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(val<sp/>&gt;<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>&gt;&gt;=<sp/>1;</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++ret;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>T<sp/>get_value(sc_core::sc_attribute&lt;T&gt;&amp;<sp/>a)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>a.value;<sp/>}</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>set_value(sc_core::sc_attribute&lt;T&gt;&amp;<sp/>a,<sp/>T&amp;&amp;<sp/>value)<sp/>{<sp/>a.value<sp/>=<sp/>value;<sp/>}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>T<sp/>get_value(cci::cci_param_typed&lt;T&gt;&amp;<sp/>a)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>a.get_value();<sp/>}</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>set_value(cci::cci_param_typed&lt;T&gt;&amp;<sp/>a,<sp/>T&amp;&amp;<sp/>value)<sp/>{<sp/>a.set_value(value);<sp/>}</highlight></codeline>
+<codeline lineno="320"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scc</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>of<sp/>scc-sysc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>declare_method_process_cl(handle,<sp/>name,<sp/>host_tag,<sp/>func)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="324"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="325"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>::sc_core::sc_spawn_options<sp/>opt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="326"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opt.dont_initialize();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="327"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opt.spawn_method();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="328"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>::sc_core::sc_process_handle<sp/>handle<sp/>=<sp/>::sc_core::sc_spawn(func,<sp/>name,<sp/>&amp;opt);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="329"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;sensitive<sp/>&lt;&lt;<sp/>handle;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="330"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;sensitive_pos<sp/>&lt;&lt;<sp/>handle;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="331"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;sensitive_neg<sp/>&lt;&lt;<sp/>handle;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="332"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>declare_thread_process_cl(handle,<sp/>name,<sp/>host_tag,<sp/>func)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="335"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="336"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>::sc_core::sc_spawn_options<sp/>opt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="337"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>::sc_core::sc_process_handle<sp/>handle<sp/>=<sp/>::sc_core::sc_spawn(func,<sp/>name,<sp/>&amp;opt);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="338"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;sensitive<sp/>&lt;&lt;<sp/>handle;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="339"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;sensitive_pos<sp/>&lt;&lt;<sp/>handle;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="340"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SC_METHOD_CL(name,<sp/>func)<sp/>declare_method_process_cl(name##_handle,<sp/>#name,<sp/>SC_CURRENT_USER_MODULE,<sp/>func)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SC_THREAD_CL(name,<sp/>func)<sp/>declare_thread_process_cl(name##_handle,<sp/>#name,<sp/>SC_CURRENT_USER_MODULE,<sp/>func)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_SYSC_UTILITIES_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h"/>
+  </compounddef>
+</doxygen>

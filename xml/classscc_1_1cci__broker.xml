@@ -1,0 +1,508 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1cci__broker" kind="class" language="C++" prot="public">
+    <compoundname>scc::cci_broker</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">cci_utils::consuming_broker</basecompoundref>
+    <innerclass refid="structscc_1_1cci__broker_1_1wildcard__entry" prot="private">scc::cci_broker::wildcard_entry</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classscc_1_1cci__broker_1aaf93559e9b97e802ecf1e921f14829cb" prot="private" static="no" mutable="no">
+        <type>std::unordered_set&lt; std::string &gt;</type>
+        <definition>std::unordered_set&lt;std::string&gt; scc::cci_broker::expose</definition>
+        <argsstring></argsstring>
+        <name>expose</name>
+        <qualifiedname>scc::cci_broker::expose</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="32" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1cci__broker_1ab5994d61456b6dd7ede4875ccc9a2219" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::cci_broker::has_parent</definition>
+        <argsstring></argsstring>
+        <name>has_parent</name>
+        <qualifiedname>scc::cci_broker::has_parent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="34" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1cci__broker_1af11ecbfc8a8c4f443604cc429616cf27" prot="private" static="no" mutable="no">
+        <type>cci::cci_broker_if &amp;</type>
+        <definition>cci::cci_broker_if&amp; scc::cci_broker::m_parent</definition>
+        <argsstring></argsstring>
+        <name>m_parent</name>
+        <qualifiedname>scc::cci_broker::m_parent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="35" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1cci__broker_1a3e8d932612ea733c37809642d3af3164" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, wildcard_entry &gt;</type>
+        <definition>std::unordered_map&lt;std::string, wildcard_entry&gt; scc::cci_broker::wildcard_presets</definition>
+        <argsstring></argsstring>
+        <name>wildcard_presets</name>
+        <qualifiedname>scc::cci_broker::wildcard_presets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="57" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1cci__broker_1a0175d95931e9222bf9a0044f7b62df90" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, std::regex &gt;</type>
+        <definition>std::unordered_map&lt;std::string, std::regex&gt; scc::cci_broker::wildcard_locks</definition>
+        <argsstring></argsstring>
+        <name>wildcard_locks</name>
+        <qualifiedname>scc::cci_broker::wildcard_locks</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="58" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classscc_1_1cci__broker_1a076884e489d2b9cc1dad498c1a7146e2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>cci::cci_broker_if &amp;</type>
+        <definition>cci::cci_broker_if &amp; scc::cci_broker::get_parent_broker</definition>
+        <argsstring>()</argsstring>
+        <name>get_parent_broker</name>
+        <qualifiedname>scc::cci_broker::get_parent_broker</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="37" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" bodystart="37" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1cci__broker_1a23eff9d15729956718881a9f062b83cd" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::cci_broker::sendToParent</definition>
+        <argsstring>(const std::string &amp;parname) const</argsstring>
+        <name>sendToParent</name>
+        <qualifiedname>scc::cci_broker::sendToParent</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>parname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="48" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="34" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1cci__broker_1a3555f2d61fd6377ed8300559674751ad" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::cci_broker::insert_matching_preset_value</definition>
+        <argsstring>(const std::string &amp;parname)</argsstring>
+        <name>insert_matching_preset_value</name>
+        <qualifiedname>scc::cci_broker::insert_matching_preset_value</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>parname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="50" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="58" bodyend="73"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1cci__broker_1a7cac930e91c2a59221f73d2854970672" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cci::cci_originator</type>
+        <definition>cci_originator scc::cci_broker::get_value_origin</definition>
+        <argsstring>(const std::string &amp;parname) const override</argsstring>
+        <name>get_value_origin</name>
+        <qualifiedname>scc::cci_broker::get_value_origin</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>parname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="61" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="50" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1cci__broker_1acedcd995d37aae82d54acea4dae71b06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::cci_broker::cci_broker</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>cci_broker</name>
+        <qualifiedname>scc::cci_broker::cci_broker</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="63" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="41" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1cci__broker_1a75f505326231996f92de0987bb98a41b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::cci_broker::~cci_broker</definition>
+        <argsstring>()</argsstring>
+        <name>~cci_broker</name>
+        <qualifiedname>scc::cci_broker::~cci_broker</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="65" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1cci__broker_1a088cc5af9838fe69d051bf6403430eb3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::cci_broker::has_preset_value</definition>
+        <argsstring>(const std::string &amp;parname) const override</argsstring>
+        <name>has_preset_value</name>
+        <qualifiedname>scc::cci_broker::has_preset_value</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>parname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="67" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="75" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1cci__broker_1a9dc48723a00f8ce8fd872c192429734b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cci::cci_originator</type>
+        <definition>cci_originator scc::cci_broker::get_preset_value_origin</definition>
+        <argsstring>(const std::string &amp;parname) const override</argsstring>
+        <name>get_preset_value_origin</name>
+        <qualifiedname>scc::cci_broker::get_preset_value_origin</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>parname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="69" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="26" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1cci__broker_1a7a56df03f6009e0dc0dd7532a90e45c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cci::cci_value</type>
+        <definition>cci_value scc::cci_broker::get_preset_cci_value</definition>
+        <argsstring>(const std::string &amp;parname) const override</argsstring>
+        <name>get_preset_cci_value</name>
+        <qualifiedname>scc::cci_broker::get_preset_cci_value</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>parname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="71" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="86" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1cci__broker_1adba28e7c005447fe8278ca3364bb374d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::cci_broker::set_preset_cci_value</definition>
+        <argsstring>(const std::string &amp;parname, const cci::cci_value &amp;cci_value, const cci::cci_originator &amp;originator) override</argsstring>
+        <name>set_preset_cci_value</name>
+        <qualifiedname>scc::cci_broker::set_preset_cci_value</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>parname</declname>
+        </param>
+        <param>
+          <type>const cci::cci_value &amp;</type>
+          <declname>cci_value</declname>
+        </param>
+        <param>
+          <type>const cci::cci_originator &amp;</type>
+          <declname>originator</declname>
+        </param>
+        <briefdescription>
+<para>Set a parameter&apos;s preset value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a parameter&apos;s preset value using globbing expression or regular expression.</para>
+<para>The globbing supports ?,*,**, and character classes ([a-z] as well as [!a-z]). &apos;.&apos; acts as hierarchy delimiter and is only matched with ** Regular expression must start with a carret (&apos;^&apos;) so that it can be identified as regex.</para>
+<para>The preset value has priority to the default value being set by the owner!</para>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>cci::cci_report::set_param_failed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Setting parameter object failed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parname</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Full hierarchical parameter name. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cci_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>cci::cci_value representation of the preset value the parameter has to be set to. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>originator</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>originator reference to the originator (not applicable in case of broker handle) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="91" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="148" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1cci__broker_1a46e7cd940af3de61ec6e00b9897338a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::cci_broker::lock_preset_value</definition>
+        <argsstring>(const std::string &amp;parname) override</argsstring>
+        <name>lock_preset_value</name>
+        <qualifiedname>scc::cci_broker::lock_preset_value</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>parname</declname>
+        </param>
+        <briefdescription>
+<para>Lock a parameter&apos;s preset value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Lock so that this parameter&apos;s preset value cannot be overwritten by any subsequent set_preset_value call. This allows to emulate a hierarchical precendence since a top-level module can prevent the childs from setting preset values by locking the preset value before creating the subsystem.</para>
+<para>The globbing supports ?,*,**, and character classes ([a-z] as well as [!a-z]). &apos;.&apos; acts as hierarchy delimiter and is only matched with ** Regular expression must start with a carret (&apos;^&apos;) so that it can be identified as regex.</para>
+<para>Throws (and does not lock) if no preset value exists that can be locked or if a preset value is already locked or if the parameter is already existing as object.</para>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>cci::cci_report::set_param_failed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Locking parameter object failed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parname</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Hierarchical parameter name. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="113" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="167" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1cci__broker_1a1299647b8ffbad3f30303a79a0673216" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cci::cci_value</type>
+        <definition>cci_value scc::cci_broker::get_cci_value</definition>
+        <argsstring>(const std::string &amp;parname, const cci::cci_originator &amp;originator=cci::cci_originator()) const override</argsstring>
+        <name>get_cci_value</name>
+        <qualifiedname>scc::cci_broker::get_cci_value</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>parname</declname>
+        </param>
+        <param>
+          <type>const cci::cci_originator &amp;</type>
+          <declname>originator</declname>
+          <defval>cci::cci_originator()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="115" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="97" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1cci__broker_1a920dbd0434514d5f1cb15f1e4027deab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cci::cci_param_untyped_handle</type>
+        <definition>cci_param_untyped_handle scc::cci_broker::get_param_handle</definition>
+        <argsstring>(const std::string &amp;parname, const cci::cci_originator &amp;originator) const override</argsstring>
+        <name>get_param_handle</name>
+        <qualifiedname>scc::cci_broker::get_param_handle</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>parname</declname>
+        </param>
+        <param>
+          <type>const cci::cci_originator &amp;</type>
+          <declname>originator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="117" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="121" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1cci__broker_1a3c53de49662f033dc81c429bd0064917" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; cci::cci_param_untyped_handle &gt;</type>
+        <definition>std::vector&lt; cci_param_untyped_handle &gt; scc::cci_broker::get_param_handles</definition>
+        <argsstring>(const cci::cci_originator &amp;originator) const override</argsstring>
+        <name>get_param_handles</name>
+        <qualifiedname>scc::cci_broker::get_param_handles</qualifiedname>
+        <param>
+          <type>const cci::cci_originator &amp;</type>
+          <declname>originator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="119" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="135" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1cci__broker_1a67db9a55a0c800f3350483a8ea08e85c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::cci_broker::add_param</definition>
+        <argsstring>(cci::cci_param_if *par) override</argsstring>
+        <name>add_param</name>
+        <qualifiedname>scc::cci_broker::add_param</qualifiedname>
+        <param>
+          <type>cci::cci_param_if *</type>
+          <declname>par</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="121" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="105" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1cci__broker_1afa25a2584663a88fd59992edf43a3e2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::cci_broker::remove_param</definition>
+        <argsstring>(cci::cci_param_if *par) override</argsstring>
+        <name>remove_param</name>
+        <qualifiedname>scc::cci_broker::remove_param</qualifiedname>
+        <param>
+          <type>cci::cci_param_if *</type>
+          <declname>par</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="123" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="113" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1cci__broker_1a6d7091d341dcee021f0318e0b8f0b3e0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::cci_broker::is_global_broker</definition>
+        <argsstring>() const override</argsstring>
+        <name>is_global_broker</name>
+        <qualifiedname>scc::cci_broker::is_global_broker</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="125" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="146" bodyend="146"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>cci_utils::consuming_broker</label>
+      </node>
+      <node id="1">
+        <label>scc::cci_broker</label>
+        <link refid="classscc_1_1cci__broker"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>cci_utils::consuming_broker</label>
+      </node>
+      <node id="1">
+        <label>scc::cci_broker</label>
+        <link refid="classscc_1_1cci__broker"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="31" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" bodystart="31" bodyend="126"/>
+    <listofallmembers>
+      <member refid="classscc_1_1cci__broker_1a67db9a55a0c800f3350483a8ea08e85c" prot="public" virt="non-virtual"><scope>scc::cci_broker</scope><name>add_param</name></member>
+      <member refid="classscc_1_1cci__broker_1acedcd995d37aae82d54acea4dae71b06" prot="public" virt="non-virtual"><scope>scc::cci_broker</scope><name>cci_broker</name></member>
+      <member refid="classscc_1_1cci__broker_1aaf93559e9b97e802ecf1e921f14829cb" prot="private" virt="non-virtual"><scope>scc::cci_broker</scope><name>expose</name></member>
+      <member refid="classscc_1_1cci__broker_1a1299647b8ffbad3f30303a79a0673216" prot="public" virt="non-virtual"><scope>scc::cci_broker</scope><name>get_cci_value</name></member>
+      <member refid="classscc_1_1cci__broker_1a920dbd0434514d5f1cb15f1e4027deab" prot="public" virt="non-virtual"><scope>scc::cci_broker</scope><name>get_param_handle</name></member>
+      <member refid="classscc_1_1cci__broker_1a3c53de49662f033dc81c429bd0064917" prot="public" virt="non-virtual"><scope>scc::cci_broker</scope><name>get_param_handles</name></member>
+      <member refid="classscc_1_1cci__broker_1a076884e489d2b9cc1dad498c1a7146e2" prot="private" virt="non-virtual"><scope>scc::cci_broker</scope><name>get_parent_broker</name></member>
+      <member refid="classscc_1_1cci__broker_1a7a56df03f6009e0dc0dd7532a90e45c8" prot="public" virt="non-virtual"><scope>scc::cci_broker</scope><name>get_preset_cci_value</name></member>
+      <member refid="classscc_1_1cci__broker_1a9dc48723a00f8ce8fd872c192429734b" prot="public" virt="non-virtual"><scope>scc::cci_broker</scope><name>get_preset_value_origin</name></member>
+      <member refid="classscc_1_1cci__broker_1a7cac930e91c2a59221f73d2854970672" prot="public" virt="non-virtual"><scope>scc::cci_broker</scope><name>get_value_origin</name></member>
+      <member refid="classscc_1_1cci__broker_1ab5994d61456b6dd7ede4875ccc9a2219" prot="private" virt="non-virtual"><scope>scc::cci_broker</scope><name>has_parent</name></member>
+      <member refid="classscc_1_1cci__broker_1a088cc5af9838fe69d051bf6403430eb3" prot="public" virt="non-virtual"><scope>scc::cci_broker</scope><name>has_preset_value</name></member>
+      <member refid="classscc_1_1cci__broker_1a3555f2d61fd6377ed8300559674751ad" prot="private" virt="non-virtual"><scope>scc::cci_broker</scope><name>insert_matching_preset_value</name></member>
+      <member refid="classscc_1_1cci__broker_1a6d7091d341dcee021f0318e0b8f0b3e0" prot="public" virt="non-virtual"><scope>scc::cci_broker</scope><name>is_global_broker</name></member>
+      <member refid="classscc_1_1cci__broker_1a46e7cd940af3de61ec6e00b9897338a8" prot="public" virt="non-virtual"><scope>scc::cci_broker</scope><name>lock_preset_value</name></member>
+      <member refid="classscc_1_1cci__broker_1af11ecbfc8a8c4f443604cc429616cf27" prot="private" virt="non-virtual"><scope>scc::cci_broker</scope><name>m_parent</name></member>
+      <member refid="classscc_1_1cci__broker_1afa25a2584663a88fd59992edf43a3e2b" prot="public" virt="non-virtual"><scope>scc::cci_broker</scope><name>remove_param</name></member>
+      <member refid="classscc_1_1cci__broker_1a23eff9d15729956718881a9f062b83cd" prot="private" virt="non-virtual"><scope>scc::cci_broker</scope><name>sendToParent</name></member>
+      <member refid="classscc_1_1cci__broker_1adba28e7c005447fe8278ca3364bb374d" prot="public" virt="non-virtual"><scope>scc::cci_broker</scope><name>set_preset_cci_value</name></member>
+      <member refid="classscc_1_1cci__broker_1a0175d95931e9222bf9a0044f7b62df90" prot="private" virt="non-virtual"><scope>scc::cci_broker</scope><name>wildcard_locks</name></member>
+      <member refid="classscc_1_1cci__broker_1a3e8d932612ea733c37809642d3af3164" prot="private" virt="non-virtual"><scope>scc::cci_broker</scope><name>wildcard_presets</name></member>
+      <member refid="classscc_1_1cci__broker_1a75f505326231996f92de0987bb98a41b" prot="public" virt="non-virtual"><scope>scc::cci_broker</scope><name>~cci_broker</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

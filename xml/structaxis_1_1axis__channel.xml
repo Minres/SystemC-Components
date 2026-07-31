@@ -1,0 +1,327 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxis_1_1axis__channel" kind="struct" language="C++" prot="public">
+    <compoundname>axis::axis_channel</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if" prot="public" virt="non-virtual">tlm::nw::tlm_network_fw_transport_if&lt; axis_packet_types &gt;</basecompoundref>
+    <basecompoundref refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if" prot="public" virt="non-virtual">tlm::nw::tlm_network_bw_transport_if&lt; axis_packet_types &gt;</basecompoundref>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structaxis_1_1axis__channel_1ac1914a3e0c12415d72cf3376fd9d16ed" prot="public" static="no">
+        <type>axis_packet_types::tlm_payload_type</type>
+        <definition>using axis::axis_channel::transaction_type =  axis_packet_types::tlm_payload_type</definition>
+        <argsstring></argsstring>
+        <name>transaction_type</name>
+        <qualifiedname>axis::axis_channel::transaction_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="75" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxis_1_1axis__channel_1a83fd726241250bd8f9f59ace3027c77a" prot="public" static="no">
+        <type>axis_packet_types::tlm_phase_type</type>
+        <definition>using axis::axis_channel::phase_type =  axis_packet_types::tlm_phase_type</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>axis::axis_channel::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="76" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structaxis_1_1axis__channel_1a3ceeca4be7d9a0c3b9119f293295eb82" prot="public" static="no" mutable="no">
+        <type>axis_pkt_target_socket</type>
+        <definition>axis_pkt_target_socket axis::axis_channel::tsck</definition>
+        <argsstring></argsstring>
+        <name>tsck</name>
+        <qualifiedname>axis::axis_channel::tsck</qualifiedname>
+        <initializer>{&quot;tsck&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="78" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxis_1_1axis__channel_1ae242be6ad2aa5289dfe050d673adec8f" prot="public" static="no" mutable="no">
+        <type>axis_pkt_initiator_socket</type>
+        <definition>axis_pkt_initiator_socket axis::axis_channel::isck</definition>
+        <argsstring></argsstring>
+        <name>isck</name>
+        <qualifiedname>axis::axis_channel::isck</qualifiedname>
+        <initializer>{&quot;isck&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="80" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxis_1_1axis__channel_1a907bc6fe52f1e0c994cc20a4e5514548" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; sc_core::sc_time &gt;</type>
+        <definition>cci::cci_param&lt;sc_core::sc_time&gt; axis::axis_channel::channel_delay</definition>
+        <argsstring></argsstring>
+        <name>channel_delay</name>
+        <qualifiedname>axis::axis_channel::channel_delay</qualifiedname>
+        <initializer>{&quot;channel_delay&quot;, sc_core::SC_ZERO_TIME, &quot;delay of the AXIS channel&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="82" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" bodystart="82" bodyend="82"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxis_1_1axis__channel_1ad97f3f2a9632e19bb17a51551e6cdb8c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axis::axis_channel::axis_channel</definition>
+        <argsstring>(sc_core::sc_module_name const &amp;nm)</argsstring>
+        <name>axis_channel</name>
+        <qualifiedname>axis::axis_channel::axis_channel</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="84" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" bodystart="84" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxis_1_1axis__channel_1abe3f2f85d34bfe841ef2723fff72e0bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axis::axis_channel::b_transport</definition>
+        <argsstring>(transaction_type &amp;trans, sc_core::sc_time &amp;t) override</argsstring>
+        <name>b_transport</name>
+        <qualifiedname>axis::axis_channel::b_transport</qualifiedname>
+        <param>
+          <type>transaction_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="90" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" bodystart="90" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxis_1_1axis__channel_1ab77a371adcfcd2eeebaea085ce735b6e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum axis::axis_channel::nb_transport_fw</definition>
+        <argsstring>(transaction_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t) override</argsstring>
+        <name>nb_transport_fw</name>
+        <qualifiedname>axis::axis_channel::nb_transport_fw</qualifiedname>
+        <param>
+          <type>transaction_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="95" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" bodystart="95" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxis_1_1axis__channel_1a1095444df8e72f723679b69cc4258ea0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum axis::axis_channel::nb_transport_bw</definition>
+        <argsstring>(transaction_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t) override</argsstring>
+        <name>nb_transport_bw</name>
+        <qualifiedname>axis::axis_channel::nb_transport_bw</qualifiedname>
+        <param>
+          <type>transaction_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="111" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" bodystart="111" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxis_1_1axis__channel_1acac9f8bf4ebc4d25cdd780a73465af52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int axis::axis_channel::transport_dbg</definition>
+        <argsstring>(transaction_type &amp;trans) override</argsstring>
+        <name>transport_dbg</name>
+        <qualifiedname>axis::axis_channel::transport_dbg</qualifiedname>
+        <param>
+          <type>transaction_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="120" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" bodystart="120" bodyend="120"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axis::axis_channel</label>
+        <link refid="structaxis_1_1axis__channel"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="7">
+        <label>tlm::nw::tlm_network_bw_transport_if&lt; axis_packet_types &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::nw::tlm_network_fw_transport_if&lt; axis_packet_types &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_blocking_transport_if&lt; axis_packet_types::tlm_payload_type &gt;</label>
+      </node>
+      <node id="8">
+        <label>tlm::tlm_bw_nonblocking_transport_if&lt; axis_packet_types::tlm_payload_type &gt;</label>
+      </node>
+      <node id="5">
+        <label>tlm::tlm_fw_nonblocking_transport_if&lt; axis_packet_types::tlm_payload_type &gt;</label>
+      </node>
+      <node id="6">
+        <label>tlm::tlm_transport_dbg_if&lt; axis_packet_types::tlm_payload_type &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axis::axis_channel</label>
+        <link refid="structaxis_1_1axis__channel"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>tsck</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>isck</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="7">
+        <label>tlm::nw::tlm_network_bw_transport_if&lt; axis_packet_types &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::nw::tlm_network_fw_transport_if&lt; axis_packet_types &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>tlm::nw::tlm_network_initiator_socket&lt; N, AXIS_PKT, axis_packet_types, N &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__initiator__socket"/>
+        <childnode refid="12" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>tlm::nw::tlm_network_target_socket&lt; N, AXIS_PKT, axis_packet_types, N &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__target__socket"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>tlm::tlm_base_initiator_socket&lt; 0, tlm_network_fw_transport_if&lt; axis_packet_types &gt;, tlm_network_bw_transport_if&lt; axis_packet_types &gt;, N, sc_core::SC_ONE_OR_MORE_BOUND &gt;</label>
+      </node>
+      <node id="10">
+        <label>tlm::tlm_base_target_socket&lt; 0, tlm_network_fw_transport_if&lt; axis_packet_types &gt;, tlm_network_bw_transport_if&lt; axis_packet_types &gt;, N, sc_core::SC_ONE_OR_MORE_BOUND &gt;</label>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_blocking_transport_if&lt; axis_packet_types::tlm_payload_type &gt;</label>
+      </node>
+      <node id="8">
+        <label>tlm::tlm_bw_nonblocking_transport_if&lt; axis_packet_types::tlm_payload_type &gt;</label>
+      </node>
+      <node id="5">
+        <label>tlm::tlm_fw_nonblocking_transport_if&lt; axis_packet_types::tlm_payload_type &gt;</label>
+      </node>
+      <node id="6">
+        <label>tlm::tlm_transport_dbg_if&lt; axis_packet_types::tlm_payload_type &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="71" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" bodystart="73" bodyend="121"/>
+    <listofallmembers>
+      <member refid="structaxis_1_1axis__channel_1ad97f3f2a9632e19bb17a51551e6cdb8c" prot="public" virt="non-virtual"><scope>axis::axis_channel</scope><name>axis_channel</name></member>
+      <member refid="structaxis_1_1axis__channel_1abe3f2f85d34bfe841ef2723fff72e0bd" prot="public" virt="non-virtual"><scope>axis::axis_channel</scope><name>b_transport</name></member>
+      <member refid="structaxis_1_1axis__channel_1a907bc6fe52f1e0c994cc20a4e5514548" prot="public" virt="non-virtual"><scope>axis::axis_channel</scope><name>channel_delay</name></member>
+      <member refid="structaxis_1_1axis__channel_1ae242be6ad2aa5289dfe050d673adec8f" prot="public" virt="non-virtual"><scope>axis::axis_channel</scope><name>isck</name></member>
+      <member refid="structaxis_1_1axis__channel_1a1095444df8e72f723679b69cc4258ea0" prot="public" virt="non-virtual"><scope>axis::axis_channel</scope><name>nb_transport_bw</name></member>
+      <member refid="structaxis_1_1axis__channel_1ab77a371adcfcd2eeebaea085ce735b6e" prot="public" virt="non-virtual"><scope>axis::axis_channel</scope><name>nb_transport_fw</name></member>
+      <member refid="structaxis_1_1axis__channel_1a83fd726241250bd8f9f59ace3027c77a" prot="public" virt="non-virtual"><scope>axis::axis_channel</scope><name>phase_type</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if_1abc3da322c51493048e2f02b236060aaf" prot="public" virt="non-virtual" ambiguityscope="tlm::"><scope>axis::axis_channel</scope><name>protocol_types</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if_1a27f9ce86a8d4a18ab2e115c943717a4b" prot="public" virt="non-virtual" ambiguityscope="tlm::nw::tlm_network_bw_transport_if&lt; axis_packet_types &gt;::"><scope>axis::axis_channel</scope><name>protocol_types</name></member>
+      <member refid="structaxis_1_1axis__channel_1ac1914a3e0c12415d72cf3376fd9d16ed" prot="public" virt="non-virtual"><scope>axis::axis_channel</scope><name>transaction_type</name></member>
+      <member refid="structaxis_1_1axis__channel_1acac9f8bf4ebc4d25cdd780a73465af52" prot="public" virt="non-virtual"><scope>axis::axis_channel</scope><name>transport_dbg</name></member>
+      <member refid="structaxis_1_1axis__channel_1a3ceeca4be7d9a0c3b9119f293295eb82" prot="public" virt="non-virtual"><scope>axis::axis_channel</scope><name>tsck</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

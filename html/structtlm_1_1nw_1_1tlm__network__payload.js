@@ -13,6 +13,7 @@ var structtlm_1_1nw_1_1tlm__network__payload =
     [ "is_response_error", "structtlm_1_1nw_1_1tlm__network__payload.html#a538487c4381d5d3505ad445775b37469", null ],
     [ "is_response_ok", "structtlm_1_1nw_1_1tlm__network__payload.html#ae4be615ce910ec53c9353c8f0b29cfef", null ],
     [ "set_command", "structtlm_1_1nw_1_1tlm__network__payload.html#a8c2fb50ad5fd790b1fdceb3ae07a85a9", null ],
+    [ "set_data", "structtlm_1_1nw_1_1tlm__network__payload.html#a30abd065f6596fdc77efce838f219a7f", null ],
     [ "set_data", "structtlm_1_1nw_1_1tlm__network__payload.html#accff7d40fbb5c911fef45ba3ef41c791", null ],
     [ "set_response_status", "structtlm_1_1nw_1_1tlm__network__payload.html#aa09734c199248e19d1eab45f4f63bfe0", null ]
 ];

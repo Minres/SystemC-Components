@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::scv::tlm_recorder_module</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <includes refid="sysc_2tlm_2scc_2scv_2tlm__recorder__module_8h" local="no">tlm_recorder_module.h</includes>
+    <templateparamlist>
+      <param>
+        <type>unsigned int</type>
+        <declname>BUSWIDTH</declname>
+        <defname>BUSWIDTH</defname>
+        <defval>32</defval>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval>tlm::tlm_base_protocol_types</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a03282a2e89a025c4a293dae219ebe5e8" prot="public" static="no" mutable="no">
+        <type>tlm::tlm_target_socket&lt; BUSWIDTH, TYPES, 1 &gt;</type>
+        <definition>tlm::tlm_target_socket&lt;BUSWIDTH, TYPES, 1&gt; tlm::scc::scv::tlm_recorder_module&lt; BUSWIDTH, TYPES &gt;::ts</definition>
+        <argsstring></argsstring>
+        <name>ts</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder_module::ts</qualifiedname>
+        <initializer>{&quot;ts&quot;}</initializer>
+        <briefdescription>
+<para>The target socket of the recorder to be bound to the initiator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" line="44" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1aa5b5f9f8eb9f98521007a4c3d0c88b9f" prot="public" static="no" mutable="no">
+        <type>tlm::tlm_initiator_socket&lt; BUSWIDTH, TYPES, 1 &gt;</type>
+        <definition>tlm::tlm_initiator_socket&lt;BUSWIDTH, TYPES, 1&gt; tlm::scc::scv::tlm_recorder_module&lt; BUSWIDTH, TYPES &gt;::is</definition>
+        <argsstring></argsstring>
+        <name>is</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder_module::is</qualifiedname>
+        <initializer>{&quot;is&quot;}</initializer>
+        <briefdescription>
+<para>The initiator to be bound to the target socket. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" line="46" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a380153e88d42537d78796e2df4823419" prot="public" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder" kindref="compound">tlm_recorder</ref>&lt; TYPES &gt; &gt;</type>
+        <definition>std::unique_ptr&lt;tlm_recorder&lt;TYPES&gt; &gt; tlm::scc::scv::tlm_recorder_module&lt; BUSWIDTH, TYPES &gt;::recorder</definition>
+        <argsstring></argsstring>
+        <name>recorder</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder_module::recorder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" line="74" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1ab7fa18b297c5e2ef7d3289e6b3e77715" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::scv::tlm_recorder_module&lt; BUSWIDTH, TYPES &gt;::SC_HAS_PROCESS</definition>
+        <argsstring>(tlm_recorder_module)</argsstring>
+        <name>SC_HAS_PROCESS</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder_module::SC_HAS_PROCESS</qualifiedname>
+        <param>
+          <type><ref refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a0325bc998f75a2bb2d08bfe779235f78" kindref="member">tlm_recorder_module</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" line="42" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a0325bc998f75a2bb2d08bfe779235f78" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::scv::tlm_recorder_module&lt; BUSWIDTH, TYPES &gt;::tlm_recorder_module</definition>
+        <argsstring>(sc_core::sc_module_name name, bool recording_enabled=true, SCVNS scv_tr_db *tr_db=SCVNS scv_tr_db::get_default_db())</argsstring>
+        <name>tlm_recorder_module</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder_module::tlm_recorder_module</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>recording_enabled</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>SCVNS scv_tr_db *</type>
+          <declname>tr_db</declname>
+          <defval>SCVNS scv_tr_db::get_default_db()</defval>
+        </param>
+        <briefdescription>
+<para>The constructor of the component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the SystemC module name of the recorder </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>recording_enabled</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true the recorder is enabled after construction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tr_db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a transaction recording database. If none is provided the default one is retrieved. If this database is not initialized (e.g. by not calling scv_tr_db::set_default_db() ) recording is disabled. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" line="56" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" bodystart="56" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1ad6036e6828dda95551bc730d3efaa6d8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_attribute&lt; bool &gt;</type>
+        <definition>sc_core::sc_attribute&lt; bool &gt; tlm::scc::scv::tlm_recorder_module&lt; BUSWIDTH, TYPES &gt;::enableTimedTracing</definition>
+        <argsstring>()</argsstring>
+        <name>enableTimedTracing</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder_module::enableTimedTracing</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" line="70" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a1b7f5e5ba7a6c262006e98dbaa932b17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual tlm::scc::scv::tlm_recorder_module&lt; BUSWIDTH, TYPES &gt;::~tlm_recorder_module</definition>
+        <argsstring>()</argsstring>
+        <name>~tlm_recorder_module</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder_module::~tlm_recorder_module</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" line="72" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" bodystart="72" bodyend="72"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a1f67e5c98d2f62bcf976e596132866b0" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::scv::tlm_recorder_module&lt; BUSWIDTH, TYPES &gt;::start_of_simulation</definition>
+        <argsstring>() override</argsstring>
+        <name>start_of_simulation</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder_module::start_of_simulation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" line="77" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" bodystart="77" bodyend="77"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The TLM2 transaction recorder. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This module records all TLM transaction to a SCV transaction stream for further viewing and analysis. The handle of the created transaction is storee in an tlm_extension so that another instance of the scv_tlm_recorder e.g. further down the opath can link to it. The transaction recorder is simply bound between an existing pair of initiator and target sockets </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>tlm::scc::scv::tlm_recorder_module&lt; BUSWIDTH, TYPES &gt;</label>
+        <link refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>tlm::scc::scv::tlm_recorder_module&lt; BUSWIDTH, TYPES &gt;</label>
+        <link refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" line="40" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h" bodystart="40" bodyend="78"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1ad6036e6828dda95551bc730d3efaa6d8" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder_module</scope><name>enableTimedTracing</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1aa5b5f9f8eb9f98521007a4c3d0c88b9f" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder_module</scope><name>is</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a380153e88d42537d78796e2df4823419" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder_module</scope><name>recorder</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1ab7fa18b297c5e2ef7d3289e6b3e77715" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder_module</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a1f67e5c98d2f62bcf976e596132866b0" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder_module</scope><name>start_of_simulation</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a0325bc998f75a2bb2d08bfe779235f78" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder_module</scope><name>tlm_recorder_module</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a03282a2e89a025c4a293dae219ebe5e8" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder_module</scope><name>ts</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a1b7f5e5ba7a6c262006e98dbaa932b17" prot="public" virt="virtual"><scope>tlm::scc::scv::tlm_recorder_module</scope><name>~tlm_recorder_module</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_039154e88f9dbd64186e9904d4ca359a" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/scv</compoundname>
+    <innerfile refid="interfaces_2cxs_2scv_2tlm__recorder__module_8h">tlm_recorder_module.h</innerfile>
+    <innerfile refid="tlm__recording_8h">tlm_recording.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/scv/"/>
+  </compounddef>
+</doxygen>

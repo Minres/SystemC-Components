@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceapb" kind="namespace" language="C++">
+    <compoundname>apb</compoundname>
+    <innerclass refid="structapb_1_1apb__extension" prot="public">apb::apb_extension</innerclass>
+    <innernamespace refid="namespaceapb_1_1pe">apb::pe</innernamespace>
+    <innernamespace refid="namespaceapb_1_1pin">apb::pin</innernamespace>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceapb_1aff1edea3c7cc5fa4af01afa5482c5a8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; apb::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const tlm::tlm_generic_payload &amp;t)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>apb::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_generic_payload const &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>os</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.cpp" line="25" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.cpp" bodystart="25" bodyend="34" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" declline="33" declcolumn="1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>TLM2.0 components modeling APB. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.cpp" line="21" column="1"/>
+  </compounddef>
+</doxygen>

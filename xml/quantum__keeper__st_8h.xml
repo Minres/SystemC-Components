@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="quantum__keeper__st_8h" kind="file" language="C++">
+    <compoundname>quantum_keeper_st.h</compoundname>
+    <includes local="no">systemc</includes>
+    <includes local="no">tlm_utils/tlm_quantumkeeper.h</includes>
+    <includedby refid="quantum__keeper_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h</label>
+        <link refid="quantum__keeper__st_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>systemc</label>
+      </node>
+      <node id="3">
+        <label>tlm_utils/tlm_quantumkeeper.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper.h</label>
+        <link refid="quantum__keeper_8h_source"/>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h</label>
+        <link refid="quantum__keeper__st_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structtlm_1_1scc_1_1quantumkeeper__st" prot="public">tlm::scc::quantumkeeper_st</innerclass>
+    <innernamespace refid="namespacetlm">tlm</innernamespace>
+    <innernamespace refid="namespacetlm_1_1scc">tlm::scc</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__SCC_TLM_QUANTUMKEEPER_ST_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SCC_TLM_QUANTUMKEEPER_ST_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;systemc&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm_utils/tlm_quantumkeeper.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm" kindref="compound">tlm</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm_1_1scc" kindref="compound">scc</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="structtlm_1_1scc_1_1quantumkeeper__st" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">quantumkeeper_st<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>tlm_utils::tlm_quantumkeeper<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">base<sp/>=<sp/>tlm_utils::tlm_quantumkeeper;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>quantumkeeper_st()<sp/>{}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~quantumkeeper_st()<sp/>{}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>reset()</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/>tlm_utils::tlm_quantumkeeper::reset();<sp/>}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>reset(sc_core::sc_time<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_local_time<sp/>=<sp/>t<sp/>-<sp/>sc_core::sc_time_stamp();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_next_sync_point<sp/>=<sp/>t<sp/>+<sp/>compute_local_quantum();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>check_and_sync(sc_core::sc_time<sp/>core_inc)<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>devirtualized<sp/>inc()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_local_time<sp/>+=<sp/>core_inc;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((sc_core::sc_time_stamp()<sp/>+<sp/>m_local_time)<sp/>&gt;=<sp/>m_next_sync_point)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>devirtualized<sp/>sync()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>::sc_core::wait(m_local_time);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_local_time<sp/>=<sp/>sc_core::SC_ZERO_TIME;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_next_sync_point<sp/>=<sp/>sc_core::sc_time_stamp()<sp/>+<sp/>compute_local_quantum();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_time<sp/>get_local_absolute_time()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>base::get_current_time();<sp/>}</highlight></codeline>
+<codeline lineno="42" refid="structtlm_1_1scc_1_1quantumkeeper__st_1abf1301a73a42a66d52f579229cc8bb0d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1scc_1_1quantumkeeper__st_1abf1301a73a42a66d52f579229cc8bb0d" kindref="member">execute_on_sysc</ref>(std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)&gt;<sp/>fct)<sp/>{<sp/><ref refid="structtlm_1_1scc_1_1quantumkeeper__st_1abf1301a73a42a66d52f579229cc8bb0d" kindref="member">execute_on_sysc</ref>(fct,<sp/>sc_core::sc_time_stamp());<sp/>}</highlight></codeline>
+<codeline lineno="49" refid="structtlm_1_1scc_1_1quantumkeeper__st_1a654f3a9a8b3bbdfa2eae99e3420b18fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1scc_1_1quantumkeeper__st_1a654f3a9a8b3bbdfa2eae99e3420b18fb" kindref="member">execute_on_sysc</ref>(std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)&gt;&amp;<sp/>fct,<sp/>sc_core::sc_time<sp/>when)<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(when<sp/>&gt;<sp/>sc_core::SC_ZERO_TIME)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wait(when);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fct();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>tlm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__SCC_TLM_QUANTUMKEEPER_ST_H__</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">[![CI<sp/>C++<sp/>Std<sp/>compliance](https://github.com/Minres/SystemC-Components/actions/workflows/ci-compliance.yml/badge.svg)](https://github.com/Minres/SystemC-Components/actions/workflows/ci-compliance.yml)<sp/>[![CI<sp/>Unit<sp/>Tests](https://github.com/Minres/SystemC-Components/actions/workflows/ci-unit-tests.yml/badge.svg)](https://github.com/Minres/SystemC-Components/actions/workflows/ci-unit-tests.yml)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">SystemC-Components<sp/>(SCC)</highlight></codeline>
+<codeline><highlight class="normal">========================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">SCC<sp/>is<sp/>supposed<sp/>to<sp/>be<sp/>a<sp/>light<sp/>weight<sp/>productivity<sp/>library<sp/>for<sp/>SystemC<sp/>and<sp/>TLM<sp/>2.0<sp/>based<sp/>modeling<sp/>tasks<sp/>using<sp/>C++11.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Here<sp/>is<sp/>a<sp/>short<sp/>list<sp/>of<sp/>features.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>Extended<sp/>logging<sp/>and<sp/>log<sp/>configuration<sp/>implementation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>This<sp/>is<sp/>built<sp/>on<sp/>top<sp/>of<sp/>the<sp/>SystemC<sp/>report<sp/>implementation<sp/>and<sp/>allows<sp/>use<sp/>of<sp/>iostream<sp/>based<sp/>logging<sp/>as<sp/>well<sp/>as<sp/>instance<sp/>based<sp/>log<sp/>level<sp/>connfiguration</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Config<sp/>file<sp/>reader<sp/>and<sp/>configuration<sp/>handler</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>The<sp/>configurer<sp/>allows<sp/>to<sp/>read<sp/>a<sp/>JSON<sp/>file<sp/>and<sp/>apply<sp/>the<sp/>values<sp/>to<sp/>cci_param<sp/>as<sp/>well<sp/>as<sp/>to<sp/>sc_attributes.<sp/>This<sp/>can<sp/>be<sp/>used<sp/>for<sp/>instance-based<sp/>logging<sp/>as<sp/>well<sp/>as<sp/>instance-based<sp/>trace<sp/>configuration</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Automatic<sp/>tracer</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>The<sp/>tracer(s)<sp/>allow<sp/>to<sp/>automatically<sp/>discover<sp/>signals<sp/>and<sp/>sc_variables<sp/>(see<sp/>below)<sp/>and<sp/>register<sp/>them<sp/>with<sp/>the<sp/>trace<sp/>file.<sp/>If<sp/>the<sp/>configurer<sp/>is<sp/>being<sp/>used<sp/>the<sp/>tracing<sp/>can<sp/>be<sp/>controlled<sp/>on<sp/>an<sp/>per-instance<sp/>basis</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Various<sp/>optimized<sp/>trace<sp/>file<sp/>implementations</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>compressed<sp/>VCD</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>FST<sp/>(used<sp/>by<sp/>[GTKWave](http://gtkwave.sourceforge.net/)<sp/>and<sp/>[Surfer](https://surfer-project.org/))</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>Tracing<sp/>TLM2<sp/>Sockets</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TLM2.0<sp/>compliant<sp/>sockets<sp/>which<sp/>can<sp/>be<sp/>configured<sp/>to<sp/>trace<sp/>transactions<sp/>passing<sp/>thru<sp/>them<sp/>using<sp/>the<sp/>SCV<sp/>transaction<sp/>recording<sp/>facilities.<sp/>The<sp/>project<sp/>is<sp/>set-up<sp/>to<sp/>be<sp/>used<sp/>with<sp/>Eclipse<sp/>CDT<sp/>and<sp/>its<sp/>build<sp/>system</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>Stripped<sp/>down<sp/>version<sp/>of<sp/>SCV</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>To<sp/>reduce<sp/>the<sp/>dependency<sp/>SCC<sp/>comes<sp/>with<sp/>a<sp/>stripped<sp/>down<sp/>version<sp/>of<sp/>Accelleras<sp/>SystemC<sp/>Verification<sp/>(SCV)<sp/>library.<sp/>This<sp/>library<sp/>does<sp/>not<sp/>support<sp/>introspection<sp/>and<sp/>randomization<sp/>anymore,<sp/>its<sp/>primary<sp/>purpose<sp/>is<sp/>to<sp/>enable<sp/>transaction<sp/>recording.<sp/>Those<sp/>traces<sp/>can<sp/>be<sp/>visualized<sp/>using<sp/>[SCViewer](https://minres.github.io/SCViewer/).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>Extended<sp/>and<sp/>optimized<sp/>transaction<sp/>recording<sp/>database(s)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Aside<sp/>of<sp/>the<sp/>SCV<sp/>text<sp/>file<sp/>format<sp/>SCC<sp/>comes<sp/>with<sp/>other<sp/>file<sp/>format<sp/>writers.<sp/>scv_tr_sqlite<sp/>is<sp/>a<sp/>SQLite<sp/>based<sp/>database<sp/>back-end<sp/>for<sp/>the<sp/>SystemC<sp/>Verification<sp/>library<sp/>(SCV)<sp/>transaction<sp/>recording<sp/>infrastructure<sp/>while<sp/>scv_tr_compressed<sp/>is<sp/>a<sp/>text<sp/>base<sp/>database<sp/>back-end<sp/>with<sp/>compression<sp/>to<sp/>reduce<sp/>the<sp/>file<sp/>size.<sp/>Last<sp/>but<sp/>not<sp/>least<sp/>there<sp/>is<sp/>a<sp/>highly<sp/>compressed<sp/>streaming<sp/>data<sp/>format<sp/>called<sp/>&apos;**F**ast<sp/>**T**ransaction<sp/>**R**ecording<sp/>(FTR)&apos;<sp/>(see<sp/>also<sp/>[LWTR2SC](https://github.com/Minres/LWTR4SC)).<sp/>These<sp/>formats<sp/>are<sp/>also<sp/>supporte<sp/>by<sp/>the<sp/>[SCViewer](https://minres.github.io/SCViewer/).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>sysc::sc_variable</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>A<sp/>plain<sp/>C/C++<sp/>variable<sp/>wrapper<sp/>to<sp/>access<sp/>a<sp/>storage<sp/>location<sp/>via<sp/>the<sp/>SystemC<sp/>object<sp/>tree.<sp/>It<sp/>allows<sp/>also<sp/>to<sp/>register<sp/>value<sp/>change<sp/>observers<sp/>to<sp/>react<sp/>on<sp/>changes.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">*<sp/>sysc::sc_register</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>A<sp/>resource<sp/>wrapper<sp/>to<sp/>access<sp/>a<sp/>storage<sp/>location<sp/>via<sp/>a<sp/>TLM<sp/>2.0<sp/>socket.<sp/>It<sp/>allows<sp/>to<sp/>register<sp/>read<sp/>and<sp/>write<sp/>callback<sp/>to<sp/>implement<sp/>register<sp/>functionality<sp/>upon<sp/>reading/writing<sp/>the<sp/>register.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">*<sp/>sysc::tlm_target</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>A<sp/>component<sp/>distributing<sp/>TLM2.0<sp/>accesses<sp/>to<sp/>target<sp/>resources<sp/>e.g.<sp/>sysc::sc_register</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">*<sp/>sysc::router</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>A<sp/>simple<sp/>component<sp/>to<sp/>route<sp/>TLM2.0<sp/>accesses<sp/>of<sp/>a<sp/>set<sp/>of<sp/>masters<sp/>to<sp/>a<sp/>set<sp/>of<sp/>targets<sp/>based<sp/>on<sp/>generic<sp/>payload<sp/>addresses</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>a<sp/>set<sp/>of<sp/>bus<sp/>and<sp/>network<sp/>protocols<sp/>at<sp/>the<sp/>AT<sp/>level:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>APB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>AHB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>AXI/ACE</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>CHI</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>OBI</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>OCP</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>TileLink</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>SPI</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>UART</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>AXIStream</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>CXS</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>various<sp/>TLM2.0<sp/>AT<sp/>&lt;-&gt;<sp/>pin-level<sp/>adapters<sp/>for<sp/>common<sp/>bus<sp/>protocols<sp/>like</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>APB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>AHB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>AXI/ACE/ACE-Lite</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>OBI<sp/>(target)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>OCP<sp/>(target)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>TileLink<sp/>UH<sp/>(initiator)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>full<sp/>documentation<sp/>can<sp/>be<sp/>found<sp/>at<sp/>the<sp/>[Github<sp/>pages](https://minres.github.io/SystemC-Components/)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Build<sp/>notes</highlight></codeline>
+<codeline><highlight class="normal">=======================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>SystemC<sp/>2.x<sp/>is<sp/>build<sp/>using<sp/>cmake<sp/>with<sp/>`SC_WITH_PHASE_CALLBACK_TRACING=ON`<sp/>(which<sp/>is<sp/>the<sp/>default<sp/>for<sp/>SystemC<sp/>2.3.4),<sp/>tracing<sp/>will<sp/>not<sp/>work.</highlight></codeline>
+<codeline><highlight class="normal">Either<sp/>SystemC<sp/>is<sp/>being<sp/>installed<sp/>with<sp/>SC_WITH_PHASE_CALLBACK_TRACING=OFF<sp/>(which<sp/>is<sp/>the<sp/>prefered<sp/>way<sp/>as<sp/>this<sp/>setting<sp/>is<sp/>in<sp/>sync<sp/>with<sp/>the<sp/>automake<sp/>configure<sp/>configuration,<sp/>see<sp/>&lt;https://github.com/accellera-official/systemc/issues/24&gt;)<sp/>or<sp/>the<sp/>SCC<sp/>is<sp/>being<sp/>build<sp/>using<sp/>`SC_WITH_PHASE_CALLBACK_TRACING=ON`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Build<sp/>instructions<sp/>using<sp/>conan</highlight></codeline>
+<codeline><highlight class="normal">=======================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>repo<sp/>is<sp/>cmake<sp/>based<sp/>and<sp/>(preferably)<sp/>uses<sp/>conan.</highlight></codeline>
+<codeline><highlight class="normal">Make<sp/>sure<sp/>that<sp/>you<sp/>have<sp/>at<sp/>least<sp/>cmake<sp/>3.24<sp/>and<sp/>conan<sp/>version<sp/>&gt;2.0<sp/>installed.</highlight></codeline>
+<codeline><highlight class="normal">Other<sp/>combinations<sp/>may<sp/>work,<sp/>but<sp/>are<sp/>not<sp/>tested.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">On<sp/>Linux</highlight></codeline>
+<codeline><highlight class="normal">=======================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>suggested<sp/>build<sp/>steps<sp/>are:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>create<sp/>a<sp/>build<sp/>directory<sp/>and<sp/>enter<sp/>into<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>execute<sp/>cmake<sp/>with<sp/>applicable<sp/>options</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>execute<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>install<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>run<sp/>tests</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>example:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cmake<sp/>--preset<sp/>Release<sp/>-DCMAKE_INSTALL_PREFIX=&lt;some<sp/>install<sp/>path&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cmake<sp/>--build<sp/>build/Release<sp/>-j16<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cmake<sp/>--build<sp/>build/Release<sp/>--target<sp/>test</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cmake<sp/>--build<sp/>build/Release<sp/>--target<sp/>install</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>build/Release/examples/ace-axi/ace_axi_example</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>build/Release/examples/axi-axi/axi_axi_example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&gt;<sp/>**_NOTE:_**<sp/><sp/>**Do<sp/>not<sp/>install<sp/>SCC<sp/>in<sp/>the<sp/>same<sp/>installation<sp/>directory<sp/>as<sp/>SystemC.**</highlight></codeline>
+<codeline><highlight class="normal">SCC<sp/>follows<sp/>the<sp/>convention<sp/>of<sp/>mapping<sp/>C++<sp/>namespaces<sp/>directly<sp/>into<sp/>the<sp/>directory<sp/>hierarchy.</highlight></codeline>
+<codeline><highlight class="normal">As<sp/>many<sp/>SCC<sp/>components<sp/>are<sp/>related<sp/>to<sp/>TLM<sp/>2.0,<sp/>a<sp/>significant<sp/>portion<sp/>of<sp/>the<sp/>SCC<sp/>code<sp/>resides<sp/>in<sp/>the<sp/>`tlm`<sp/>namespace,<sp/>which<sp/>results<sp/>in<sp/>the<sp/>creation<sp/>of<sp/>a<sp/>`tlm`<sp/>directory<sp/>under<sp/>SCC&apos;s<sp/>`include`<sp/>folder.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>SystemC<sp/>itself<sp/>also<sp/>provides<sp/>a<sp/>`tlm`<sp/>header<sp/>file<sp/>(or<sp/>directory)<sp/>in<sp/>its<sp/>own<sp/>include<sp/>path.</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>SCC<sp/>and<sp/>SystemC<sp/>are<sp/>installed<sp/>into<sp/>the<sp/>same<sp/>prefix,<sp/>this<sp/>results<sp/>in<sp/>a<sp/>clash<sp/>to<sp/>create<sp/>a<sp/>directory<sp/>where<sp/>a<sp/>file<sp/>or<sp/>another<sp/>directory<sp/>already<sp/>exists—causing<sp/>installation<sp/>errors.</highlight></codeline>
+<codeline><highlight class="normal">Install<sp/>SCC<sp/>and<sp/>SystemC<sp/>into<sp/>separate<sp/>directories.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">On<sp/>Windows</highlight></codeline>
+<codeline><highlight class="normal">=======================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--preset<sp/>Release<sp/>-DBUILD_SHARED_LIBS=OFF<sp/>-DCMAKE_INSTALL_PREFIX=&lt;some<sp/>install<sp/>path&gt;</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/Release<sp/>--config<sp/>Release<sp/>--target<sp/>install</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Build<sp/>instructions<sp/>using<sp/>install<sp/>script</highlight></codeline>
+<codeline><highlight class="normal">=======================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">SCC<sp/>comes<sp/>with<sp/>an<sp/>install<sp/>script<sp/>which<sp/>installs<sp/>SCC<sp/>and<sp/>all<sp/>needed<sp/>libraries<sp/>incl.<sp/>Boost<sp/>and<sp/>SystemC<sp/>in<sp/>one<sp/>go:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">curl<sp/>-s<sp/>https://raw.githubusercontent.com/Minres/SystemC-Components/develop/contrib/install_wo_conan.sh<sp/>|<sp/>INSTALL_ROOT=&lt;install<sp/>dir&gt;<sp/>bash</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>script<sp/>can<sp/>also<sp/>be<sp/>downloaded<sp/>and<sp/>run<sp/>with<sp/>the<sp/>install<sp/>dir<sp/>as<sp/>argument:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">curl<sp/>https://raw.githubusercontent.com/Minres/SystemC-Components/develop/contrib/install_wo_conan.sh<sp/>&gt;install_wo_conan.sh</highlight></codeline>
+<codeline><highlight class="normal">bash<sp/>install_wo_conan.sh<sp/>&lt;install<sp/>dir&gt;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Building<sp/>and<sp/>installing<sp/>SCC<sp/>for<sp/>Cadence<sp/>Xcelium</highlight></codeline>
+<codeline><highlight class="normal">===============================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">You<sp/>need<sp/>to<sp/>setup<sp/>your<sp/>environment<sp/>and<sp/>make<sp/>Xcelium<sp/>available.<sp/>This<sp/>means<sp/>ncroot<sp/>and<sp/>ncsc<sp/>need<sp/>to<sp/>be<sp/>found<sp/>by<sp/>the<sp/>shell.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--preset<sp/>NCSC_RelWithDebInfo<sp/>-DCMAKE_INSTALL_PREFIX=&lt;some<sp/>install<sp/>path&gt;</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/NCSC_RelWithDebInfo<sp/>--parallel<sp/>--target<sp/>install</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>the<sp/>used<sp/>version<sp/>of<sp/>Xcelium<sp/>supports<sp/>SystemC<sp/>3.x<sp/>the<sp/>commands<sp/>become:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--preset<sp/>NCSC3_RelWithDebInfo<sp/>-DCMAKE_INSTALL_PREFIX=&lt;some<sp/>install<sp/>path&gt;</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/NCSC3_RelWithDebInfo<sp/>--parallel<sp/>--target<sp/>install</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Building<sp/>the<sp/>library<sp/>for<sp/>32bit<sp/>(the<sp/>Xcelium<sp/>default<sp/>-<sp/>sic!)<sp/>works<sp/>atm<sp/>only<sp/>for<sp/>a<sp/>standalone<sp/>build<sp/>as<sp/>there<sp/>is<sp/>no<sp/>mechanism<sp/>to<sp/>tell<sp/>conan<sp/>to<sp/>build<sp/>in<sp/>32bit.<sp/>The<sp/>following<sp/>commands<sp/>might<sp/>help<sp/>in<sp/>non-conan<sp/>builds:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">CXXFLAGS=&quot;-m32&quot;<sp/>CFLAGS=&quot;-m32&quot;<sp/>LDFLAGS=&quot;-m32&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>cmake<sp/>-S<sp/>.<sp/>-B<sp/>build/NCSC_RelWithDebInfo<sp/>-Wno-dev<sp/>-DCMAKE_INSTALL_PREFIX=&lt;scc<sp/>install<sp/>dir&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-DCMAKE_BUILD_TYPE=RelWithDebInfo<sp/>-DBUILD_SHARED_LIBS=OFF<sp/>-DBUILD_SCC_LIB_ONLY=ON<sp/>-DCMAKE_CXX_STANDARD=17<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-DBoost_NO_SYSTEM_PATHS=TRUE<sp/>-DBOOST_ROOT=&lt;boost<sp/>install<sp/>dir&gt;<sp/>-DBoost_NO_WARN_NEW_VERSIONS=ON<sp/></highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/NCSC_RelWithDebInfo<sp/>--parallel<sp/>--target<sp/>install</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/README.md"/>
+  </compounddef>
+</doxygen>

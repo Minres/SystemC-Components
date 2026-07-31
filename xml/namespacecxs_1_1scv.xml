@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacecxs_1_1scv" kind="namespace" language="C++">
+    <compoundname>cxs::scv</compoundname>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacecxs_1_1scv_1a6dc15a5c7321580672cba357c940b2e1" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>unsigned int</type>
+            <declname>FLIT_WITH</declname>
+            <defname>FLIT_WITH</defname>
+          </param>
+        </templateparamlist>
+        <type>typename <ref refid="classtlm_1_1nw_1_1scv_1_1tlm__recorder__module" kindref="compound">tlm::nw::scv::tlm_recorder_module</ref>&lt; cxs::CXS_CMD, FLIT_WITH, <ref refid="structcxs_1_1cxs__flit__types" kindref="compound">cxs::cxs_flit_types</ref> &gt;</type>
+        <definition>using cxs::scv::csx_recorder_module =  typename tlm::nw::scv::tlm_recorder_module&lt;cxs::CXS_CMD, FLIT_WITH, cxs::cxs_flit_types&gt;</definition>
+        <argsstring></argsstring>
+        <name>csx_recorder_module</name>
+        <qualifiedname>cxs::scv::csx_recorder_module</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/scv/tlm_recorder_module.h" line="27" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/scv/tlm_recorder_module.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>SCC CXS SCV classes and functions. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/scv/tlm_recorder_module.h" line="25" column="1"/>
+  </compounddef>
+</doxygen>

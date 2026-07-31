@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge" kind="page">
+    <compoundname>md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge</compoundname>
+    <title>tcp4tlm_bridge Functionality</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge_1autotoc_md0"/></para>
+<para><computeroutput>tcp4tlm_bridge</computeroutput> is a SystemC/TLM component that tunnels loosely timed TLM transactions over a TCP-based tcp4tlm connection. It is implemented in <computeroutput><ref refid="tcp4tlm__bridge_8h_source" kindref="compound">tcp4tlm_bridge.h</ref></computeroutput> and <computeroutput><ref refid="tcp4tlm__bridge_8cpp_source" kindref="compound">tcp4tlm_bridge.cpp</ref></computeroutput>.</para>
+<para>The bridge acts in two directions at once:</para>
+<para><itemizedlist>
+<listitem><para>As a local TLM target through <computeroutput>tsckt</computeroutput>, it receives local TLM transactions and serializes them into tcp4tlm FlatBuffer messages for a remote peer.</para>
+</listitem><listitem><para>As a local TLM initiator through <computeroutput>isckt</computeroutput>, it receives remote tcp4tlm messages, reconstructs TLM generic payloads, and forwards them into the local SystemC model.</para>
+</listitem></itemizedlist>
+</para>
+<para>Two bridge instances can therefore connect two SystemC simulations or component hierarchies across a TCP connection.</para>
+<sect1 id="md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge_1autotoc_md1">
+<title>Main Interfaces</title><para>The <computeroutput>tcp4tlm_bridge</computeroutput> class derives from:</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">sc_core::sc_module</highlight></codeline>
+<codeline><highlight class="normal">tcp4tlm::server&lt;tcp4tlm::request_message,<sp/>tcp4tlm::response_message&gt;</highlight></codeline>
+<codeline><highlight class="normal">tcp4tlm::client&lt;tcp4tlm::request_message,<sp/>tcp4tlm::response_message&gt;</highlight></codeline>
+</programlisting></para>
+<para>It exposes the following main interfaces:</para>
+<para><itemizedlist>
+<listitem><para><computeroutput>tsckt</computeroutput>: a TLM target socket for incoming local transactions.</para>
+</listitem><listitem><para><computeroutput>isckt</computeroutput>: a TLM initiator socket for executing remote transactions locally.</para>
+</listitem><listitem><para><computeroutput>signals</computeroutput>: a vector of <computeroutput>sc_out&lt;bool&gt;</computeroutput> ports for remote signal updates.</para>
+</listitem><listitem><para>TCP server functionality for receiving peer requests.</para>
+</listitem><listitem><para>TCP client functionality for sending requests to the peer.</para>
+</listitem></itemizedlist>
+</para>
+<para>The most important configuration parameters are:</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">is_connection_server</highlight></codeline>
+<codeline><highlight class="normal">other_host_name</highlight></codeline>
+<codeline><highlight class="normal">other_host_port</highlight></codeline>
+<codeline><highlight class="normal">this_host_port</highlight></codeline>
+<codeline><highlight class="normal">wall_time_simulation_speed</highlight></codeline>
+<codeline><highlight class="normal">write_no_response</highlight></codeline>
+<codeline><highlight class="normal">no_systemc_sync</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge_1autotoc_md2">
+<title>Connection Setup</title><para>During <computeroutput>end_of_elaboration()</computeroutput>, the bridge copies <computeroutput>other_host_name</computeroutput> and <computeroutput>other_host_port</computeroutput> into the TCP client base class.</para>
+<para>During <computeroutput>start_of_simulation()</computeroutput>, connection setup depends on <computeroutput>is_connection_server</computeroutput>:</para>
+<para><itemizedlist>
+<listitem><para>If <computeroutput>is_connection_server</computeroutput> is <computeroutput>true</computeroutput>, the bridge starts a local server on <computeroutput>this_host_port</computeroutput> and waits for the peer to announce its endpoint.</para>
+</listitem><listitem><para>If <computeroutput>is_connection_server</computeroutput> is <computeroutput>false</computeroutput>, the bridge connects to the configured remote endpoint, starts its own server, sends a <computeroutput>NotifyEndpointMsg</computeroutput> containing its local listening endpoint, and waits for an OK response.</para>
+</listitem></itemizedlist>
+</para>
+<para>When a bridge receives <computeroutput>NotifyEndpointMsg</computeroutput>, it stores the peer host and port, creates the reverse client connection, sends an OK response, and marks the connection as established.</para>
+<para>This handshake creates a bidirectional link: each bridge has a server side for receiving requests and a client side for sending requests.</para>
+</sect1>
+<sect1 id="md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge_1autotoc_md3">
+<title>Forwarding Local TLM Transactions</title><para>Local TLM transactions enter the bridge through:</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">btransport_cb()</highlight></codeline>
+<codeline><highlight class="normal">transport_dbg_cb()</highlight></codeline>
+</programlisting></para>
+<para>Both callbacks delegate to <computeroutput>do_access()</computeroutput>.</para>
+<para>For a read transaction, <computeroutput>do_access()</computeroutput>:</para>
+<para><orderedlist>
+<listitem><para>Creates a <computeroutput>BusOpMsg</computeroutput> containing the current SystemC timestamp, delay, address, data length, access type, and byte enables.</para>
+</listitem><listitem><para>Sends the message through the client connection.</para>
+</listitem><listitem><para>Waits for a <computeroutput>BusDataMsg</computeroutput> response.</para>
+</listitem><listitem><para>Verifies that the response status is OK and that the response belongs to the original request.</para>
+</listitem><listitem><para>Copies the returned data into the original TLM payload.</para>
+</listitem><listitem><para>Sets the TLM response status to <computeroutput>TLM_OK_RESPONSE</computeroutput>.</para>
+</listitem></orderedlist>
+</para>
+<para>For a write transaction, <computeroutput>do_access()</computeroutput>:</para>
+<para><orderedlist>
+<listitem><para>Copies the payload data into a <computeroutput>BusOpMsg</computeroutput>.</para>
+</listitem><listitem><para>Sends the message through the client connection.</para>
+</listitem><listitem><para>If <computeroutput>write_no_response</computeroutput> is enabled, marks the transaction as successful after sending.</para>
+</listitem><listitem><para>Otherwise waits for a response and sets the TLM response status according to the received status.</para>
+</listitem></orderedlist>
+</para>
+<para>Debug transport is represented as a <computeroutput>BusOpMsg</computeroutput> with debug access type.</para>
+</sect1>
+<sect1 id="md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge_1autotoc_md4">
+<title>Handling Remote Messages</title><para>Incoming tcp4tlm request messages are handled by <computeroutput>server_receive_completed()</computeroutput>.</para>
+<para>The bridge supports these request payloads:</para>
+<para><itemizedlist>
+<listitem><para><computeroutput>NotifyEndpointMsg</computeroutput>: announces the peer endpoint and completes the connection handshake.</para>
+</listitem><listitem><para><computeroutput>BusOpMsg</computeroutput>: describes a remote TLM bus operation to execute locally.</para>
+</listitem><listitem><para><computeroutput>SyncMsg</computeroutput>: carries a peer SystemC timestamp for synchronization.</para>
+</listitem><listitem><para><computeroutput>SigOpMsg</computeroutput>: updates one of the bridge&apos;s boolean output signals.</para>
+</listitem><listitem><para><computeroutput>NotifyShutdownMsg</computeroutput>: requests connection shutdown.</para>
+</listitem></itemizedlist>
+</para>
+<para>Unhandled messages are logged and answered with a declined response.</para>
+</sect1>
+<sect1 id="md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge_1autotoc_md5">
+<title>Replaying Remote Bus Operations Locally</title><para>When <computeroutput>server_receive_completed()</computeroutput> receives a <computeroutput>BusOpMsg</computeroutput>, it:</para>
+<para><orderedlist>
+<listitem><para>Converts the message into a <computeroutput>tlm_generic_payload</computeroutput> using <computeroutput>init_gp()</computeroutput>.</para>
+</listitem><listitem><para>Builds a SystemC time point from the message timestamp.</para>
+</listitem><listitem><para>Places a callback task into the asynchronous task queue.</para>
+</listitem><listitem><para>Schedules the task for immediate execution or for the requested simulation time.</para>
+</listitem><listitem><para>Executes the transaction through <computeroutput>isckt-&gt;b_transport(*gp, delay)</computeroutput>.</para>
+</listitem><listitem><para>Sends a response back to the peer.</para>
+</listitem></orderedlist>
+</para>
+<para>Read requests return <computeroutput>BusDataMsg</computeroutput> with the data read from the local target. Write requests return an OK or failure response unless the message requested no response.</para>
+</sect1>
+<sect1 id="md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge_1autotoc_md6">
+<title>Time Synchronization</title><para>The bridge starts three SystemC threads in its constructor:</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">timing_thread()</highlight></codeline>
+<codeline><highlight class="normal">process_task_que()</highlight></codeline>
+<codeline><highlight class="normal">process_timed_task_que()</highlight></codeline>
+</programlisting></para>
+<para><computeroutput>timing_thread()</computeroutput> coordinates simulation time between peers:</para>
+<para><itemizedlist>
+<listitem><para>On the non-server side, it periodically sends <computeroutput>SyncMsg</computeroutput> messages containing the current SystemC timestamp.</para>
+</listitem><listitem><para>On the server side in simulated-time mode, it consumes remote timestamps from <computeroutput>next_time_stamp</computeroutput> and advances local SystemC time toward them.</para>
+</listitem><listitem><para>On the server side in wall-time mode, it paces simulation against elapsed wall clock time.</para>
+</listitem></itemizedlist>
+</para>
+<para><computeroutput>process_task_que()</computeroutput> moves received network tasks into SystemC execution context. If <computeroutput>no_systemc_sync</computeroutput> is enabled, or if the requested time point has already passed, tasks run immediately. Otherwise they are scheduled through the payload event queue.</para>
+<para><computeroutput>process_timed_task_que()</computeroutput> executes tasks when their scheduled SystemC event fires.</para>
+</sect1>
+<sect1 id="md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge_1autotoc_md7">
+<title>Signal Messages</title><para><computeroutput>SigOpMsg</computeroutput> updates entries in the <computeroutput>signals</computeroutput> vector. If the message index is valid, the bridge schedules a SystemC task that writes the requested boolean value and then sends an OK response. If the index is out of range, it sends a declined response.</para>
+</sect1>
+<sect1 id="md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge_1autotoc_md8">
+<title>Shutdown</title><para><computeroutput>end_connection()</computeroutput> sends a final <computeroutput>SyncMsg</computeroutput> followed by <computeroutput>NotifyShutdownMsg</computeroutput> when a remote connection is active.</para>
+<para>When <computeroutput>NotifyShutdownMsg</computeroutput> is received, the bridge:</para>
+<para><orderedlist>
+<listitem><para>Closes the client socket.</para>
+</listitem><listitem><para>Marks the client connection as disconnected.</para>
+</listitem><listitem><para>Requests server shutdown if the server is still running.</para>
+</listitem><listitem><para>Notifies <computeroutput>shutdown_evt</computeroutput> inside SystemC context.</para>
+</listitem></orderedlist>
+</para>
+<para>The destructor and <computeroutput>end_of_simulation()</computeroutput> both ensure that the server is shut down and that an orderly shutdown message is sent when appropriate.</para>
+</sect1>
+<sect1 id="md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge_1autotoc_md9">
+<title>Summary</title><para><computeroutput>tcp4tlm_bridge</computeroutput> is a bidirectional TLM-over-TCP adapter. Local TLM operations are serialized into tcp4tlm messages and sent to a peer, while remote messages are converted back into local TLM transactions and executed through the bridge&apos;s initiator socket. The implementation also manages endpoint negotiation, response matching, optional write acknowledgments, simulation-time synchronization, signal propagation, and orderly shutdown. </para>
+</sect1>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.md"/>
+  </compounddef>
+</doxygen>

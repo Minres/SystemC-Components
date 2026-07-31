@@ -1,0 +1,601 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classaxi_1_1checker_1_1ace__protocol" kind="class" language="C++" prot="public">
+    <compoundname>axi::checker::ace_protocol</compoundname>
+    <basecompoundref refid="structaxi_1_1checker_1_1checker__if" prot="public" virt="non-virtual">axi::checker::checker_if&lt; axi::axi_protocol_types &gt;</basecompoundref>
+    <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classaxi_1_1checker_1_1ace__protocol_1a1cda58571a11df6ad1b90ab31eafe6b0" prot="private" static="no">
+        <type>axi::axi_protocol_types::tlm_payload_type</type>
+        <definition>using axi::checker::ace_protocol::payload_type =  axi::axi_protocol_types::tlm_payload_type</definition>
+        <argsstring></argsstring>
+        <name>payload_type</name>
+        <qualifiedname>axi::checker::ace_protocol::payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="31" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classaxi_1_1checker_1_1ace__protocol_1ad6a56955f414b2221ea40fa6b6f37a2e" prot="private" static="no">
+        <type>axi::axi_protocol_types::tlm_phase_type</type>
+        <definition>using axi::checker::ace_protocol::phase_type =  axi::axi_protocol_types::tlm_phase_type</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>axi::checker::ace_protocol::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="32" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classaxi_1_1checker_1_1ace__protocol_1a235a1bbb8f96600db95ab7d43ab35eed" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::checker::ace_protocol::umax</definition>
+        <argsstring></argsstring>
+        <name>umax</name>
+        <qualifiedname>axi::checker::ace_protocol::umax</qualifiedname>
+        <initializer>= std::numeric_limits&lt;unsigned&gt;::max()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="33" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classaxi_1_1checker_1_1ace__protocol_1aa25ab433d1b6d2cf0b8feb5c9707d7f8" prot="public" static="no" mutable="no">
+        <type>std::string const</type>
+        <definition>std::string const axi::checker::ace_protocol::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <qualifiedname>axi::checker::ace_protocol::name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="50" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1checker_1_1ace__protocol_1a21aae70248927d1da0d48bfbb6ce6abf" prot="public" static="no" mutable="no">
+        <type>unsigned const</type>
+        <definition>unsigned const axi::checker::ace_protocol::bw</definition>
+        <argsstring></argsstring>
+        <name>bw</name>
+        <qualifiedname>axi::checker::ace_protocol::bw</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="51" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1checker_1_1ace__protocol_1aadd3b03c258b95fc8384f49373938f5d" prot="public" static="no" mutable="no">
+        <type>unsigned const</type>
+        <definition>unsigned const axi::checker::ace_protocol::rd_response_timeout</definition>
+        <argsstring></argsstring>
+        <name>rd_response_timeout</name>
+        <qualifiedname>axi::checker::ace_protocol::rd_response_timeout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="52" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1checker_1_1ace__protocol_1ac6353bb7256b55bd8beb10ff72a6b06f" prot="public" static="no" mutable="no">
+        <type>unsigned const</type>
+        <definition>unsigned const axi::checker::ace_protocol::wr_response_timeout</definition>
+        <argsstring></argsstring>
+        <name>wr_response_timeout</name>
+        <qualifiedname>axi::checker::ace_protocol::wr_response_timeout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="53" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classaxi_1_1checker_1_1ace__protocol_1a2d5a180d471227b1683d603a3fbd44ff" prot="private" static="no" mutable="no">
+        <type>std::array&lt; phase_type, 3 &gt;</type>
+        <definition>std::array&lt;phase_type, 3&gt; axi::checker::ace_protocol::req_beat</definition>
+        <argsstring></argsstring>
+        <name>req_beat</name>
+        <qualifiedname>axi::checker::ace_protocol::req_beat</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="56" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1checker_1_1ace__protocol_1ad0fc0ba6afb766463188dce470fa467d" prot="private" static="no" mutable="no">
+        <type>std::array&lt; phase_type, 3 &gt;</type>
+        <definition>std::array&lt;phase_type, 3&gt; axi::checker::ace_protocol::resp_beat</definition>
+        <argsstring></argsstring>
+        <name>resp_beat</name>
+        <qualifiedname>axi::checker::ace_protocol::resp_beat</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="57" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1checker_1_1ace__protocol_1aa27417997bace37b48714e73cdd5526a" prot="private" static="no" mutable="no">
+        <type>phase_type</type>
+        <definition>phase_type axi::checker::ace_protocol::dataless_req</definition>
+        <argsstring></argsstring>
+        <name>dataless_req</name>
+        <qualifiedname>axi::checker::ace_protocol::dataless_req</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="58" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1checker_1_1ace__protocol_1aa71309b7c24437f86fc066203b767254" prot="private" static="no" mutable="no">
+        <type>std::array&lt; unsigned, 3 &gt;</type>
+        <definition>std::array&lt;unsigned, 3&gt; axi::checker::ace_protocol::req_id</definition>
+        <argsstring></argsstring>
+        <name>req_id</name>
+        <qualifiedname>axi::checker::ace_protocol::req_id</qualifiedname>
+        <initializer>{{umax, umax, umax}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="59" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1checker_1_1ace__protocol_1a03358cd7f6212543e7e4aa7c1e51d6a2" prot="private" static="no" mutable="no">
+        <type>std::array&lt; unsigned, 3 &gt;</type>
+        <definition>std::array&lt;unsigned, 3&gt; axi::checker::ace_protocol::resp_id</definition>
+        <argsstring></argsstring>
+        <name>resp_id</name>
+        <qualifiedname>axi::checker::ace_protocol::resp_id</qualifiedname>
+        <initializer>{{umax, umax, umax}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="60" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1checker_1_1ace__protocol_1a8afaea76d18a93ce50f839318ed8dae1" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::checker::ace_protocol::wr_req_beat_count</definition>
+        <argsstring></argsstring>
+        <name>wr_req_beat_count</name>
+        <qualifiedname>axi::checker::ace_protocol::wr_req_beat_count</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="61" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1checker_1_1ace__protocol_1a1b6173ee586971ab9c26fffabd564a59" prot="private" static="no" mutable="no">
+        <type>std::array&lt; std::unordered_map&lt; unsigned, std::deque&lt; uintptr_t &gt; &gt;, 3 &gt;</type>
+        <definition>std::array&lt;std::unordered_map&lt;unsigned, std::deque&lt;uintptr_t&gt; &gt;, 3&gt; axi::checker::ace_protocol::open_tx_by_id</definition>
+        <argsstring></argsstring>
+        <name>open_tx_by_id</name>
+        <qualifiedname>axi::checker::ace_protocol::open_tx_by_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="62" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1checker_1_1ace__protocol_1a95ceb0f6c77d5f98eb0fafaf3c38c597" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; unsigned, std::deque&lt; uintptr_t &gt; &gt;</type>
+        <definition>std::unordered_map&lt;unsigned, std::deque&lt;uintptr_t&gt; &gt; axi::checker::ace_protocol::resp_by_id</definition>
+        <argsstring></argsstring>
+        <name>resp_by_id</name>
+        <qualifiedname>axi::checker::ace_protocol::resp_by_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="63" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1checker_1_1ace__protocol_1ad6d064b27ce61f78add37d9327aed217" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; unsigned, unsigned &gt;</type>
+        <definition>std::unordered_map&lt;unsigned, unsigned&gt; axi::checker::ace_protocol::rd_resp_beat_count</definition>
+        <argsstring></argsstring>
+        <name>rd_resp_beat_count</name>
+        <qualifiedname>axi::checker::ace_protocol::rd_resp_beat_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="64" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classaxi_1_1checker_1_1ace__protocol_1a015e30af6a805d5d6e3f02f4fe897b21" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::checker::ace_protocol::ace_protocol</definition>
+        <argsstring>(std::string const &amp;name, unsigned bus_width_in_bytes, unsigned rd_response_timeout, unsigned wr_response_timeout)</argsstring>
+        <name>ace_protocol</name>
+        <qualifiedname>axi::checker::ace_protocol::ace_protocol</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>bus_width_in_bytes</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>rd_response_timeout</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>wr_response_timeout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="36" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="36" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1checker_1_1ace__protocol_1a7f8f6ab7b135aa8026f83e987b4a334f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>axi::checker::ace_protocol::~ace_protocol</definition>
+        <argsstring>()</argsstring>
+        <name>~ace_protocol</name>
+        <qualifiedname>axi::checker::ace_protocol::~ace_protocol</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="41" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1checker_1_1ace__protocol_1a4fcd4943c4d23267c1cd5a9c999b652b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::checker::ace_protocol::ace_protocol</definition>
+        <argsstring>(const ace_protocol &amp;other)=delete</argsstring>
+        <name>ace_protocol</name>
+        <qualifiedname>axi::checker::ace_protocol::ace_protocol</qualifiedname>
+        <param>
+          <type>const ace_protocol &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="42" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1checker_1_1ace__protocol_1a5305e3dab15c4be7d63aab7565c32142" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::checker::ace_protocol::ace_protocol</definition>
+        <argsstring>(ace_protocol &amp;&amp;other)=delete</argsstring>
+        <name>ace_protocol</name>
+        <qualifiedname>axi::checker::ace_protocol::ace_protocol</qualifiedname>
+        <param>
+          <type>ace_protocol &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="43" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1checker_1_1ace__protocol_1aebbb928a58e27fc8c3c1ff4c6862fdea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ace_protocol &amp;</type>
+        <definition>ace_protocol &amp; axi::checker::ace_protocol::operator=</definition>
+        <argsstring>(const ace_protocol &amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>axi::checker::ace_protocol::operator=</qualifiedname>
+        <param>
+          <type>const ace_protocol &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="44" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1checker_1_1ace__protocol_1a207de07157ae299759ad661ad7f6429f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ace_protocol &amp;</type>
+        <definition>ace_protocol &amp; axi::checker::ace_protocol::operator=</definition>
+        <argsstring>(ace_protocol &amp;&amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>axi::checker::ace_protocol::operator=</qualifiedname>
+        <param>
+          <type>ace_protocol &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="45" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1checker_1_1ace__protocol_1ac0043138b2d51a661dff67279be37cb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::checker::ace_protocol::fw_pre</definition>
+        <argsstring>(payload_type const &amp;trans, phase_type const &amp;phase) override</argsstring>
+        <name>fw_pre</name>
+        <qualifiedname>axi::checker::ace_protocol::fw_pre</qualifiedname>
+        <param>
+          <type>payload_type const &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type const &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="46" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.cpp" bodystart="24" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1checker_1_1ace__protocol_1ada44dc1b084357a3e99cc2fb399be3a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::checker::ace_protocol::fw_post</definition>
+        <argsstring>(payload_type const &amp;trans, phase_type const &amp;phase, tlm::tlm_sync_enum rstat) override</argsstring>
+        <name>fw_post</name>
+        <qualifiedname>axi::checker::ace_protocol::fw_post</qualifiedname>
+        <param>
+          <type>payload_type const &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type const &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_sync_enum</type>
+          <declname>rstat</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="47" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.cpp" bodystart="36" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1checker_1_1ace__protocol_1a783f602dee1b4146c49c8dfa4bfede3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::checker::ace_protocol::bw_pre</definition>
+        <argsstring>(payload_type const &amp;trans, phase_type const &amp;phase) override</argsstring>
+        <name>bw_pre</name>
+        <qualifiedname>axi::checker::ace_protocol::bw_pre</qualifiedname>
+        <param>
+          <type>payload_type const &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type const &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="48" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.cpp" bodystart="50" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1checker_1_1ace__protocol_1a4c9c1b2e0e1a80b4d724ad30f289e516" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::checker::ace_protocol::bw_post</definition>
+        <argsstring>(payload_type const &amp;trans, phase_type const &amp;phase, tlm::tlm_sync_enum rstat) override</argsstring>
+        <name>bw_post</name>
+        <qualifiedname>axi::checker::ace_protocol::bw_post</qualifiedname>
+        <param>
+          <type>payload_type const &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type const &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_sync_enum</type>
+          <declname>rstat</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="49" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.cpp" bodystart="62" bodyend="71"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classaxi_1_1checker_1_1ace__protocol_1a61976c5c4f3cd907ea0ecdb116e16aad" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool axi::checker::ace_protocol::check_phase_change</definition>
+        <argsstring>(payload_type const &amp;trans, const phase_type &amp;phase)</argsstring>
+        <name>check_phase_change</name>
+        <qualifiedname>axi::checker::ace_protocol::check_phase_change</qualifiedname>
+        <param>
+          <type>payload_type const &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>const phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="65" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.cpp" bodystart="73" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1checker_1_1ace__protocol_1af6b1a37c29989b479a9726ed786842e3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::checker::ace_protocol::request_update</definition>
+        <argsstring>(payload_type const &amp;trans)</argsstring>
+        <name>request_update</name>
+        <qualifiedname>axi::checker::ace_protocol::request_update</qualifiedname>
+        <param>
+          <type>payload_type const &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="66" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.cpp" bodystart="110" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1checker_1_1ace__protocol_1ac445c7e95f5b12710be801d4272e1c4b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::checker::ace_protocol::response_update</definition>
+        <argsstring>(payload_type const &amp;trans)</argsstring>
+        <name>response_update</name>
+        <qualifiedname>axi::checker::ace_protocol::response_update</qualifiedname>
+        <param>
+          <type>payload_type const &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="67" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.cpp" bodystart="167" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1checker_1_1ace__protocol_1a010ddba34441a9fec9e973f1b3e8b14a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::checker::ace_protocol::check_properties</definition>
+        <argsstring>(payload_type const &amp;trans)</argsstring>
+        <name>check_properties</name>
+        <qualifiedname>axi::checker::ace_protocol::check_properties</qualifiedname>
+        <param>
+          <type>payload_type const &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="68" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.cpp" bodystart="233" bodyend="368"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::checker::ace_protocol</label>
+        <link refid="classaxi_1_1checker_1_1ace__protocol"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>axi::checker::checker_if&lt; axi::axi_protocol_types &gt;</label>
+        <link refid="structaxi_1_1checker_1_1checker__if"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::checker::ace_protocol</label>
+        <link refid="classaxi_1_1checker_1_1ace__protocol"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>axi::checker::checker_if&lt; axi::axi_protocol_types &gt;</label>
+        <link refid="structaxi_1_1checker_1_1checker__if"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" line="30" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.h" bodystart="30" bodyend="69"/>
+    <listofallmembers>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a015e30af6a805d5d6e3f02f4fe897b21" prot="public" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>ace_protocol</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a4fcd4943c4d23267c1cd5a9c999b652b" prot="public" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>ace_protocol</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a5305e3dab15c4be7d63aab7565c32142" prot="public" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>ace_protocol</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a21aae70248927d1da0d48bfbb6ce6abf" prot="public" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>bw</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a4c9c1b2e0e1a80b4d724ad30f289e516" prot="public" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>bw_post</name></member>
+      <member refid="structaxi_1_1checker_1_1checker__if_1a2db5a9a5538dee9aa89549ecb2f96e60" prot="public" virt="pure-virtual" ambiguityscope="axi::checker::checker_if&lt; axi::axi_protocol_types &gt;::"><scope>axi::checker::ace_protocol</scope><name>bw_post</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a783f602dee1b4146c49c8dfa4bfede3b" prot="public" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>bw_pre</name></member>
+      <member refid="structaxi_1_1checker_1_1checker__if_1aeb8d2b125ba8f609ff9aa7a844f9c0f1" prot="public" virt="pure-virtual" ambiguityscope="axi::checker::checker_if&lt; axi::axi_protocol_types &gt;::"><scope>axi::checker::ace_protocol</scope><name>bw_pre</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a61976c5c4f3cd907ea0ecdb116e16aad" prot="private" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>check_phase_change</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a010ddba34441a9fec9e973f1b3e8b14a" prot="private" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>check_properties</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1aa27417997bace37b48714e73cdd5526a" prot="private" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>dataless_req</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1ada44dc1b084357a3e99cc2fb399be3a4" prot="public" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>fw_post</name></member>
+      <member refid="structaxi_1_1checker_1_1checker__if_1a3c761383b3a23710d23797972fdf012a" prot="public" virt="pure-virtual" ambiguityscope="axi::checker::checker_if&lt; axi::axi_protocol_types &gt;::"><scope>axi::checker::ace_protocol</scope><name>fw_post</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1ac0043138b2d51a661dff67279be37cb1" prot="public" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>fw_pre</name></member>
+      <member refid="structaxi_1_1checker_1_1checker__if_1a435aa3d9f703cf9075e749b490abfa97" prot="public" virt="pure-virtual" ambiguityscope="axi::checker::checker_if&lt; axi::axi_protocol_types &gt;::"><scope>axi::checker::ace_protocol</scope><name>fw_pre</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1aa25ab433d1b6d2cf0b8feb5c9707d7f8" prot="public" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>name</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a1b6173ee586971ab9c26fffabd564a59" prot="private" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>open_tx_by_id</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1aebbb928a58e27fc8c3c1ff4c6862fdea" prot="public" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>operator=</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a207de07157ae299759ad661ad7f6429f" prot="public" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>operator=</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a1cda58571a11df6ad1b90ab31eafe6b0" prot="private" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>payload_type</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1ad6a56955f414b2221ea40fa6b6f37a2e" prot="private" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>phase_type</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1ad6d064b27ce61f78add37d9327aed217" prot="private" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>rd_resp_beat_count</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1aadd3b03c258b95fc8384f49373938f5d" prot="public" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>rd_response_timeout</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a2d5a180d471227b1683d603a3fbd44ff" prot="private" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>req_beat</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1aa71309b7c24437f86fc066203b767254" prot="private" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>req_id</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1af6b1a37c29989b479a9726ed786842e3" prot="private" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>request_update</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1ad0fc0ba6afb766463188dce470fa467d" prot="private" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>resp_beat</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a95ceb0f6c77d5f98eb0fafaf3c38c597" prot="private" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>resp_by_id</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a03358cd7f6212543e7e4aa7c1e51d6a2" prot="private" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>resp_id</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1ac445c7e95f5b12710be801d4272e1c4b" prot="private" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>response_update</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a235a1bbb8f96600db95ab7d43ab35eed" prot="private" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>umax</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a8afaea76d18a93ce50f839318ed8dae1" prot="private" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>wr_req_beat_count</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1ac6353bb7256b55bd8beb10ff72a6b06f" prot="public" virt="non-virtual"><scope>axi::checker::ace_protocol</scope><name>wr_response_timeout</name></member>
+      <member refid="classaxi_1_1checker_1_1ace__protocol_1a7f8f6ab7b135aa8026f83e987b4a334f" prot="public" virt="virtual"><scope>axi::checker::ace_protocol</scope><name>~ace_protocol</name></member>
+      <member refid="structaxi_1_1checker_1_1checker__if_1a138b1bd8eda6cafd60759237814c54ef" prot="public" virt="virtual"><scope>axi::checker::ace_protocol</scope><name>~checker_if</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

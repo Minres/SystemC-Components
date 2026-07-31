@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_dce7ea34a91c0189183270decd6916da" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv</compoundname>
+    <innerfile refid="tlm__extension__recording__registry_8h">tlm_extension_recording_registry.h</innerfile>
+    <innerfile refid="tlm__gp__data_8h">tlm_gp_data.h</innerfile>
+    <innerfile refid="tlm__gp__data__ext_8h">tlm_gp_data_ext.h</innerfile>
+    <innerfile refid="tlm__rec__initiator__socket_8h">tlm_rec_initiator_socket.h</innerfile>
+    <innerfile refid="tlm__rec__target__socket_8h">tlm_rec_target_socket.h</innerfile>
+    <innerfile refid="scc_2scv_2tlm__recorder_8cpp">tlm_recorder.cpp</innerfile>
+    <innerfile refid="scc_2scv_2tlm__recorder_8h">tlm_recorder.h</innerfile>
+    <innerfile refid="sysc_2tlm_2scc_2scv_2tlm__recorder__module_8h">tlm_recorder_module.h</innerfile>
+    <innerfile refid="tlm__recording__extension_8h">tlm_recording_extension.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/"/>
+  </compounddef>
+</doxygen>

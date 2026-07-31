@@ -1,0 +1,363 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structapb_1_1apb__extension" kind="struct" language="C++" prot="public">
+    <compoundname>apb::apb_extension</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_extension&lt; apb_extension &gt;</basecompoundref>
+    <sectiondef kind="private-type">
+      <memberdef kind="enum" id="structapb_1_1apb__extension_1afc29ab1e33384eb56580fed43033a9cf" prot="private" static="no" strong="no">
+        <type></type>
+        <name></name>
+        <qualifiedname>apb::apb_extension</qualifiedname>
+        <enumvalue id="structapb_1_1apb__extension_1afc29ab1e33384eb56580fed43033a9cfac8d6998a211ab89a4560d3a55b16f94f" prot="private">
+          <name>PRIV</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structapb_1_1apb__extension_1afc29ab1e33384eb56580fed43033a9cfa2faf753600d853877321ad6d64b45ddd" prot="private">
+          <name>NON_SEC</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structapb_1_1apb__extension_1afc29ab1e33384eb56580fed43033a9cfa0c3aaf5b87440e5c8c336f737f754537" prot="private">
+          <name>INSTR</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structapb_1_1apb__extension_1afc29ab1e33384eb56580fed43033a9cfab2f53ea07157b4968e2ca68d82f5eb5f" prot="private">
+          <name>NSE</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="68" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structapb_1_1apb__extension_1a38581c78bd450458050613d18e67beda" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t apb::apb_extension::ext_prot</definition>
+        <argsstring></argsstring>
+        <name>ext_prot</name>
+        <qualifiedname>apb::apb_extension::ext_prot</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="69" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" bodystart="69" bodyend="69"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structapb_1_1apb__extension_1a61fca52e439685058f68eacb1a25564b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool apb::apb_extension::is_privileged</definition>
+        <argsstring>() const</argsstring>
+        <name>is_privileged</name>
+        <qualifiedname>apb::apb_extension::is_privileged</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="37" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="structapb_1_1apb__extension_1aeb6fc38bf5ae226c493ad96e4b2da9d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void apb::apb_extension::set_privileged</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_privileged</name>
+        <qualifiedname>apb::apb_extension::set_privileged</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>priv</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="38" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" bodystart="77" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="structapb_1_1apb__extension_1af315006a3c55e929f0ecda69d1a0a7ba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void apb::apb_extension::set_non_secure</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_non_secure</name>
+        <qualifiedname>apb::apb_extension::set_non_secure</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>priv</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="40" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" bodystart="86" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="structapb_1_1apb__extension_1aed3b902134397bde8321f5d379e750e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool apb::apb_extension::is_non_secure</definition>
+        <argsstring>() const</argsstring>
+        <name>is_non_secure</name>
+        <qualifiedname>apb::apb_extension::is_non_secure</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="41" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" bodystart="84" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="structapb_1_1apb__extension_1ab198cbc32345afd806d3c60f5fce2652" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool apb::apb_extension::is_instruction</definition>
+        <argsstring>() const</argsstring>
+        <name>is_instruction</name>
+        <qualifiedname>apb::apb_extension::is_instruction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="43" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" bodystart="93" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="structapb_1_1apb__extension_1a983383de1a344d09c701c17a80e0d9e8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void apb::apb_extension::set_instruction</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_instruction</name>
+        <qualifiedname>apb::apb_extension::set_instruction</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>instr</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="44" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" bodystart="95" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="structapb_1_1apb__extension_1aad60ec196b63b940f87e926b0799b3cc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t apb::apb_extension::get_protection</definition>
+        <argsstring>() const</argsstring>
+        <name>get_protection</name>
+        <qualifiedname>apb::apb_extension::get_protection</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="46" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" bodystart="102" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="structapb_1_1apb__extension_1a14cba954d4ec43f5ffb5fa3d8e5667e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void apb::apb_extension::set_protection</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_protection</name>
+        <qualifiedname>apb::apb_extension::set_protection</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>prot</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="47" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" bodystart="103" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="structapb_1_1apb__extension_1adbd7c192ba7e6305db2de3e4fa723db0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void apb::apb_extension::set_nse</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_nse</name>
+        <qualifiedname>apb::apb_extension::set_nse</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>instr</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="50" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" bodystart="107" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="structapb_1_1apb__extension_1ada30957d1cf223acfc67b534decd991f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool apb::apb_extension::is_nse</definition>
+        <argsstring>() const</argsstring>
+        <name>is_nse</name>
+        <qualifiedname>apb::apb_extension::is_nse</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="51" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" bodystart="105" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="structapb_1_1apb__extension_1afd5ea9d53ef159c0c739e04e60475caf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>apb::apb_extension::apb_extension</definition>
+        <argsstring>()=default</argsstring>
+        <name>apb_extension</name>
+        <qualifiedname>apb::apb_extension::apb_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="53" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structapb_1_1apb__extension_1a2b1ed0ce5171c1ddc66b5b79abcf600f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>apb::apb_extension::apb_extension</definition>
+        <argsstring>(const apb_extension &amp;o)=default</argsstring>
+        <name>apb_extension</name>
+        <qualifiedname>apb::apb_extension::apb_extension</qualifiedname>
+        <param>
+          <type>const apb_extension &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="55" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structapb_1_1apb__extension_1a40699cf553c23ccfd90be1199d9f7339" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_extension_base *</type>
+        <definition>tlm::tlm_extension_base * apb::apb_extension::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <qualifiedname>apb::apb_extension::clone</qualifiedname>
+        <briefdescription>
+<para>the clone function to create deep copies of </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>pointer to heap-allocated extension </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="60" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" bodystart="114" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="structapb_1_1apb__extension_1ad7a8fe80f117368486f0b85f8f2c32b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void apb::apb_extension::copy_from</definition>
+        <argsstring>(tlm::tlm_extension_base const &amp;ext) override</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>apb::apb_extension::copy_from</qualifiedname>
+        <param>
+          <type>tlm::tlm_extension_base const &amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+<para>deep copy all values from ext </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ext</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="65" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" bodystart="116" bodyend="120"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>apb::apb_extension</label>
+        <link refid="structapb_1_1apb__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; apb_extension &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>apb::apb_extension</label>
+        <link refid="structapb_1_1apb__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; apb_extension &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" line="35" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/apb_tlm.h" bodystart="35" bodyend="70"/>
+    <listofallmembers>
+      <member refid="structapb_1_1apb__extension_1afd5ea9d53ef159c0c739e04e60475caf" prot="public" virt="non-virtual"><scope>apb::apb_extension</scope><name>apb_extension</name></member>
+      <member refid="structapb_1_1apb__extension_1a2b1ed0ce5171c1ddc66b5b79abcf600f" prot="public" virt="non-virtual"><scope>apb::apb_extension</scope><name>apb_extension</name></member>
+      <member refid="structapb_1_1apb__extension_1a40699cf553c23ccfd90be1199d9f7339" prot="public" virt="non-virtual"><scope>apb::apb_extension</scope><name>clone</name></member>
+      <member refid="structapb_1_1apb__extension_1ad7a8fe80f117368486f0b85f8f2c32b9" prot="public" virt="non-virtual"><scope>apb::apb_extension</scope><name>copy_from</name></member>
+      <member refid="structapb_1_1apb__extension_1a38581c78bd450458050613d18e67beda" prot="private" virt="non-virtual"><scope>apb::apb_extension</scope><name>ext_prot</name></member>
+      <member refid="structapb_1_1apb__extension_1aad60ec196b63b940f87e926b0799b3cc" prot="public" virt="non-virtual"><scope>apb::apb_extension</scope><name>get_protection</name></member>
+      <member refid="structapb_1_1apb__extension_1afc29ab1e33384eb56580fed43033a9cfa0c3aaf5b87440e5c8c336f737f754537" prot="private" virt="non-virtual"><scope>apb::apb_extension</scope><name>INSTR</name></member>
+      <member refid="structapb_1_1apb__extension_1ab198cbc32345afd806d3c60f5fce2652" prot="public" virt="non-virtual"><scope>apb::apb_extension</scope><name>is_instruction</name></member>
+      <member refid="structapb_1_1apb__extension_1aed3b902134397bde8321f5d379e750e7" prot="public" virt="non-virtual"><scope>apb::apb_extension</scope><name>is_non_secure</name></member>
+      <member refid="structapb_1_1apb__extension_1ada30957d1cf223acfc67b534decd991f" prot="public" virt="non-virtual"><scope>apb::apb_extension</scope><name>is_nse</name></member>
+      <member refid="structapb_1_1apb__extension_1a61fca52e439685058f68eacb1a25564b" prot="public" virt="non-virtual"><scope>apb::apb_extension</scope><name>is_privileged</name></member>
+      <member refid="structapb_1_1apb__extension_1afc29ab1e33384eb56580fed43033a9cfa2faf753600d853877321ad6d64b45ddd" prot="private" virt="non-virtual"><scope>apb::apb_extension</scope><name>NON_SEC</name></member>
+      <member refid="structapb_1_1apb__extension_1afc29ab1e33384eb56580fed43033a9cfab2f53ea07157b4968e2ca68d82f5eb5f" prot="private" virt="non-virtual"><scope>apb::apb_extension</scope><name>NSE</name></member>
+      <member refid="structapb_1_1apb__extension_1afc29ab1e33384eb56580fed43033a9cfac8d6998a211ab89a4560d3a55b16f94f" prot="private" virt="non-virtual"><scope>apb::apb_extension</scope><name>PRIV</name></member>
+      <member refid="structapb_1_1apb__extension_1a983383de1a344d09c701c17a80e0d9e8" prot="public" virt="non-virtual"><scope>apb::apb_extension</scope><name>set_instruction</name></member>
+      <member refid="structapb_1_1apb__extension_1af315006a3c55e929f0ecda69d1a0a7ba" prot="public" virt="non-virtual"><scope>apb::apb_extension</scope><name>set_non_secure</name></member>
+      <member refid="structapb_1_1apb__extension_1adbd7c192ba7e6305db2de3e4fa723db0" prot="public" virt="non-virtual"><scope>apb::apb_extension</scope><name>set_nse</name></member>
+      <member refid="structapb_1_1apb__extension_1aeb6fc38bf5ae226c493ad96e4b2da9d7" prot="public" virt="non-virtual"><scope>apb::apb_extension</scope><name>set_privileged</name></member>
+      <member refid="structapb_1_1apb__extension_1a14cba954d4ec43f5ffb5fa3d8e5667e1" prot="public" virt="non-virtual"><scope>apb::apb_extension</scope><name>set_protection</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,547 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process" kind="class" language="C++" prot="private">
+    <compoundname>tlm::scc::tagged_target_mixin::fw_process</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_fw_transport_if&lt; TYPES &gt;</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_mm_interface</basecompoundref>
+    <innerclass refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1_1process__handle__class" prot="private">tlm::scc::tagged_target_mixin::fw_process::process_handle_class</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1_1process__handle__list" prot="private">tlm::scc::tagged_target_mixin::fw_process::process_handle_list</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1_1mm__end__event__ext" prot="private">tlm::scc::tagged_target_mixin::fw_process::mm_end_event_ext</innerclass>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a34ed19b22f77420cfebe26dd5ef41049" prot="public" static="no">
+        <type>std::function&lt; sync_enum_type(unsigned int, transaction_type &amp;, phase_type &amp;, sc_core::sc_time &amp;)&gt;</type>
+        <definition>using tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::NBTransportPtr =  std::function&lt;sync_enum_type(unsigned int, transaction_type&amp;, phase_type&amp;, sc_core::sc_time&amp;)&gt;</definition>
+        <argsstring></argsstring>
+        <name>NBTransportPtr</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::NBTransportPtr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="163" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1aa9dfffbc302df1bb768df3c888a012da" prot="public" static="no">
+        <type>std::function&lt; void(unsigned int, transaction_type &amp;, sc_core::sc_time &amp;)&gt;</type>
+        <definition>using tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::BTransportPtr =  std::function&lt;void(unsigned int, transaction_type&amp;, sc_core::sc_time&amp;)&gt;</definition>
+        <argsstring></argsstring>
+        <name>BTransportPtr</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::BTransportPtr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="164" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1af81509d131074d9c0a431c6bf6041a1a" prot="public" static="no">
+        <type>std::function&lt; unsigned int(unsigned int, transaction_type &amp;)&gt;</type>
+        <definition>using tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::TransportDbgPtr =  std::function&lt;unsigned int(unsigned int, transaction_type&amp;)&gt;</definition>
+        <argsstring></argsstring>
+        <name>TransportDbgPtr</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::TransportDbgPtr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="165" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a615c0746550a2f4122389b38a6cf6e92" prot="public" static="no">
+        <type>std::function&lt; bool(unsigned int, transaction_type &amp;, tlm::tlm_dmi &amp;)&gt;</type>
+        <definition>using tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::GetDirectMemPtr =  std::function&lt;bool(unsigned int, transaction_type&amp;, tlm::tlm_dmi&amp;)&gt;</definition>
+        <argsstring></argsstring>
+        <name>GetDirectMemPtr</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::GetDirectMemPtr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="166" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1ade0045bd8c48df8cc6f19ea2a39fb11f" prot="private" static="no" mutable="no">
+        <type>process_handle_list</type>
+        <definition>process_handle_list tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::m_process_handle</definition>
+        <argsstring></argsstring>
+        <name>m_process_handle</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::m_process_handle</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="373" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="373" bodyend="373"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a229650ca993c96456f52367bb352f91f" prot="private" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::m_name</definition>
+        <argsstring></argsstring>
+        <name>m_name</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::m_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="482" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="482" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a4a5aa4b78f1b59af4d11e7e85ceaf183" prot="private" static="no" mutable="no">
+        <type>tagged_target_mixin *</type>
+        <definition>tagged_target_mixin* tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::m_owner</definition>
+        <argsstring></argsstring>
+        <name>m_owner</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::m_owner</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="483" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="483" bodyend="483"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a381b03fa7ff4e6a8271217ded64bd8c1" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::tags[4]</definition>
+        <argsstring>[4]</argsstring>
+        <name>tags</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::tags</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="484" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="484" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a262fa71f9a8cb2ae8ad8086c9fcfaddf" prot="private" static="no" mutable="no">
+        <type>NBTransportPtr</type>
+        <definition>NBTransportPtr tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::m_nb_transport_ptr</definition>
+        <argsstring></argsstring>
+        <name>m_nb_transport_ptr</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::m_nb_transport_ptr</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="485" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="485" bodyend="485"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a387a7dde5f5f9a2da90797734d8e37b5" prot="private" static="no" mutable="no">
+        <type>BTransportPtr</type>
+        <definition>BTransportPtr tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::m_b_transport_ptr</definition>
+        <argsstring></argsstring>
+        <name>m_b_transport_ptr</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::m_b_transport_ptr</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="486" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="486" bodyend="486"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a988954318b6af28a26a95fe42427b565" prot="private" static="no" mutable="no">
+        <type>TransportDbgPtr</type>
+        <definition>TransportDbgPtr tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::m_transport_dbg_ptr</definition>
+        <argsstring></argsstring>
+        <name>m_transport_dbg_ptr</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::m_transport_dbg_ptr</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="487" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="487" bodyend="487"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a6a91b078cf796c2b5f92087d4a9f1d7e" prot="private" static="no" mutable="no">
+        <type>GetDirectMemPtr</type>
+        <definition>GetDirectMemPtr tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::m_get_direct_mem_ptr</definition>
+        <argsstring></argsstring>
+        <name>m_get_direct_mem_ptr</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::m_get_direct_mem_ptr</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="488" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="488" bodyend="488"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a70c6e4f83863cca4456f7cb21e1cfafe" prot="private" static="no" mutable="no">
+        <type>tlm_utils::peq_with_get&lt; transaction_type &gt;</type>
+        <definition>tlm_utils::peq_with_get&lt;transaction_type&gt; tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::m_peq</definition>
+        <argsstring></argsstring>
+        <name>m_peq</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::m_peq</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="489" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="489" bodyend="489"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1ab0023b4d9f68f604e51b340e551db975" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::m_response_in_progress</definition>
+        <argsstring></argsstring>
+        <name>m_response_in_progress</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::m_response_in_progress</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="490" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="490" bodyend="490"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a903de1bdc9194bbee7bf9c769037d0c2" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::m_end_response</definition>
+        <argsstring></argsstring>
+        <name>m_end_response</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::m_end_response</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="491" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="491" bodyend="491"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1aa9bdc56442914fe1d74371b42b7990b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::fw_process</definition>
+        <argsstring>(tagged_target_mixin *p_own)</argsstring>
+        <name>fw_process</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::fw_process</qualifiedname>
+        <param>
+          <type>tagged_target_mixin *</type>
+          <declname>p_own</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="168" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="168" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1acc00061db26c158c9a63346bd34e9d04" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::set_nb_transport_ptr</definition>
+        <argsstring>(NBTransportPtr p, unsigned int tag)</argsstring>
+        <name>set_nb_transport_ptr</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::set_nb_transport_ptr</qualifiedname>
+        <param>
+          <type>NBTransportPtr</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="182" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="182" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a9b0d76d1e36dd8157a03e4bf6b3ab95f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::set_b_transport_ptr</definition>
+        <argsstring>(BTransportPtr p, unsigned int tag)</argsstring>
+        <name>set_b_transport_ptr</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::set_b_transport_ptr</qualifiedname>
+        <param>
+          <type>BTransportPtr</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="193" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="193" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1ab908f560a2da6601794e2f9fb75e468f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::set_transport_dbg_ptr</definition>
+        <argsstring>(TransportDbgPtr p, unsigned int tag)</argsstring>
+        <name>set_transport_dbg_ptr</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::set_transport_dbg_ptr</qualifiedname>
+        <param>
+          <type>TransportDbgPtr</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="204" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="204" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a9e61a9ec00ecd835c209c91bf5389c90" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::set_get_direct_mem_ptr</definition>
+        <argsstring>(GetDirectMemPtr p, unsigned int tag)</argsstring>
+        <name>set_get_direct_mem_ptr</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::set_get_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>GetDirectMemPtr</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="215" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="215" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a3252781c4d5982fbf9e0b8bdbb69d233" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sync_enum_type</type>
+        <definition>sync_enum_type tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::nb_transport_fw</definition>
+        <argsstring>(transaction_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t)</argsstring>
+        <name>nb_transport_fw</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::nb_transport_fw</qualifiedname>
+        <param>
+          <type>transaction_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>&lt; unreachable code</para>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="226" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="226" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a047ece6dd0432d4d03d513e090adcdc1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::b_transport</definition>
+        <argsstring>(transaction_type &amp;trans, sc_core::sc_time &amp;t)</argsstring>
+        <name>b_transport</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::b_transport</qualifiedname>
+        <param>
+          <type>transaction_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="267" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="267" bodyend="305"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a858ad6c3458336e3890360918b53393a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::transport_dbg</definition>
+        <argsstring>(transaction_type &amp;trans)</argsstring>
+        <name>transport_dbg</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::transport_dbg</qualifiedname>
+        <param>
+          <type>transaction_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="307" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="307" bodyend="315"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a54ddec8cba53d6fcb480f095e0299c35" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::get_direct_mem_ptr</definition>
+        <argsstring>(transaction_type &amp;trans, tlm::tlm_dmi &amp;dmi_data)</argsstring>
+        <name>get_direct_mem_ptr</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::get_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>transaction_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_dmi &amp;</type>
+          <declname>dmi_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="317" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="317" bodyend="329"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1af82205402d617f729f7db8efb7191eb7" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::nb2b_thread</definition>
+        <argsstring>(process_handle_class *h)</argsstring>
+        <name>nb2b_thread</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::nb2b_thread</qualifiedname>
+        <param>
+          <type>process_handle_class *</type>
+          <declname>h</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="375" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="375" bodyend="401"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1ab3f54619359cdb3d04505622ccfc9d9c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::b2nb_thread</definition>
+        <argsstring>()</argsstring>
+        <name>b2nb_thread</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::b2nb_thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="403" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="403" bodyend="462"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a5aeeca491a2a92cc6fe7a9ed64b17971" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process::free</definition>
+        <argsstring>(tlm::tlm_generic_payload *trans)</argsstring>
+        <name>free</name>
+        <qualifiedname>tlm::scc::tagged_target_mixin::fw_process::free</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload *</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="464" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="464" bodyend="470"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_fw_transport_if&lt; TYPES &gt;</label>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_mm_interface</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::scc::tagged_target_mixin&lt; base_type, TYPES &gt;::fw_process</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_fw_transport_if&lt; TYPES &gt;</label>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_mm_interface</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" line="161" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_target_mixin.h" bodystart="161" bodyend="492"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1ab3f54619359cdb3d04505622ccfc9d9c" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>b2nb_thread</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a047ece6dd0432d4d03d513e090adcdc1" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>b_transport</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1aa9dfffbc302df1bb768df3c888a012da" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>BTransportPtr</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a5aeeca491a2a92cc6fe7a9ed64b17971" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>free</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1aa9bdc56442914fe1d74371b42b7990b0" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>fw_process</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a54ddec8cba53d6fcb480f095e0299c35" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>get_direct_mem_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a615c0746550a2f4122389b38a6cf6e92" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>GetDirectMemPtr</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a387a7dde5f5f9a2da90797734d8e37b5" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>m_b_transport_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a903de1bdc9194bbee7bf9c769037d0c2" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>m_end_response</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a6a91b078cf796c2b5f92087d4a9f1d7e" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>m_get_direct_mem_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a229650ca993c96456f52367bb352f91f" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>m_name</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a262fa71f9a8cb2ae8ad8086c9fcfaddf" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>m_nb_transport_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a4a5aa4b78f1b59af4d11e7e85ceaf183" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>m_owner</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a70c6e4f83863cca4456f7cb21e1cfafe" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>m_peq</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1ade0045bd8c48df8cc6f19ea2a39fb11f" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>m_process_handle</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1ab0023b4d9f68f604e51b340e551db975" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>m_response_in_progress</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a988954318b6af28a26a95fe42427b565" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>m_transport_dbg_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1af82205402d617f729f7db8efb7191eb7" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>nb2b_thread</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a3252781c4d5982fbf9e0b8bdbb69d233" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>nb_transport_fw</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a34ed19b22f77420cfebe26dd5ef41049" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>NBTransportPtr</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a9b0d76d1e36dd8157a03e4bf6b3ab95f" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>set_b_transport_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a9e61a9ec00ecd835c209c91bf5389c90" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>set_get_direct_mem_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1acc00061db26c158c9a63346bd34e9d04" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>set_nb_transport_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1ab908f560a2da6601794e2f9fb75e468f" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>set_transport_dbg_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a381b03fa7ff4e6a8271217ded64bd8c1" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>tags</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1a858ad6c3458336e3890360918b53393a" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>transport_dbg</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__target__mixin_1_1fw__process_1af81509d131074d9c0a431c6bf6041a1a" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_target_mixin::fw_process</scope><name>TransportDbgPtr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

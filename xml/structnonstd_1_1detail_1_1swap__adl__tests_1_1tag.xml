@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1detail_1_1swap__adl__tests_1_1tag" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::detail::swap_adl_tests::tag</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="191" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="191" bodyend="191"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

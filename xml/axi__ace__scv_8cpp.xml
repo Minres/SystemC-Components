@@ -1,0 +1,522 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="axi__ace__scv_8cpp" kind="file" language="C++">
+    <compoundname>axi_ace_scv.cpp</compoundname>
+    <includes refid="axi__tlm_8h" local="no">axi/axi_tlm.h</includes>
+    <includes local="no">fmt/format.h</includes>
+    <includes refid="tlm__extension__recording__registry_8h" local="no">tlm/scc/scv/tlm_extension_recording_registry.h</includes>
+    <includes refid="scc_2scv_2tlm__recorder_8h" local="no">tlm/scc/scv/tlm_recorder.h</includes>
+    <includes refid="tlm__id_8h" local="no">tlm/scc/tlm_id.h</includes>
+    <incdepgraph>
+      <node id="11">
+        <label>util/delegate.h</label>
+        <link refid="delegate_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>ities.h</label>
+        <link refid="ities_8h_source"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>util/pool_allocator.h</label>
+        <link refid="pool__allocator_8h_source"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>tlm/scc/scv/tlm_extension_recording_registry.h</label>
+        <link refid="tlm__extension__recording__registry_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>tlm/scc/scv/tlm_recorder.h</label>
+        <link refid="scc_2scv_2tlm__recorder_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>tlm_recording_extension.h</label>
+        <link refid="tlm__recording__extension_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>tlm_gp_shared.h</label>
+        <link refid="tlm__gp__shared_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>tlm/scc/tlm_id.h</label>
+        <link refid="tlm__id_8h_source"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>tlm/scc/tlm_mm.h</label>
+        <link refid="tlm__mm_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>axi/axi_tlm.h</label>
+        <link refid="axi__tlm_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp</label>
+        <link refid="axi__ace__scv_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>algorithm</label>
+      </node>
+      <node id="3">
+        <label>array</label>
+      </node>
+      <node id="26">
+        <label>assert.h</label>
+      </node>
+      <node id="27">
+        <label>bitset</label>
+      </node>
+      <node id="12">
+        <label>cassert</label>
+      </node>
+      <node id="28">
+        <label>cctype</label>
+      </node>
+      <node id="29">
+        <label>climits</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="35">
+        <label>deque</label>
+      </node>
+      <node id="7">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="30">
+        <label>fstream</label>
+      </node>
+      <node id="31">
+        <label>iterator</label>
+      </node>
+      <node id="32">
+        <label>limits</label>
+      </node>
+      <node id="9">
+        <label>memory</label>
+      </node>
+      <node id="36">
+        <label>mutex</label>
+      </node>
+      <node id="13">
+        <label>new</label>
+      </node>
+      <node id="18">
+        <label>regex</label>
+      </node>
+      <node id="15">
+        <label>scv-tr.h</label>
+      </node>
+      <node id="19">
+        <label>sstream</label>
+      </node>
+      <node id="20">
+        <label>string</label>
+      </node>
+      <node id="33">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="21">
+        <label>sysc/kernel/sc_dynamic_processes.h</label>
+      </node>
+      <node id="5">
+        <label>tlm</label>
+      </node>
+      <node id="38">
+        <label>tlm_utils/peq_with_cb_and_phase.h</label>
+      </node>
+      <node id="6">
+        <label>type_traits</label>
+      </node>
+      <node id="37">
+        <label>unordered_map</label>
+      </node>
+      <node id="10">
+        <label>unordered_set</label>
+      </node>
+      <node id="14">
+        <label>utility</label>
+      </node>
+      <node id="34">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structaxi_1_1scv_1_1tlm__id__ext__recording" prot="public">axi::scv::tlm_id_ext_recording</innerclass>
+    <innerclass refid="structaxi_1_1scv_1_1axi3__ext__record" prot="public">axi::scv::axi3_ext_record</innerclass>
+    <innerclass refid="structaxi_1_1scv_1_1axi3__ext__recording" prot="public">axi::scv::axi3_ext_recording</innerclass>
+    <innerclass refid="structaxi_1_1scv_1_1axi4__ext__record" prot="public">axi::scv::axi4_ext_record</innerclass>
+    <innerclass refid="structaxi_1_1scv_1_1axi4__ext__recording" prot="public">axi::scv::axi4_ext_recording</innerclass>
+    <innerclass refid="structaxi_1_1scv_1_1ace__ext__record" prot="public">axi::scv::ace_ext_record</innerclass>
+    <innerclass refid="structaxi_1_1scv_1_1ace__ext__recording" prot="public">axi::scv::ace_ext_recording</innerclass>
+    <innernamespace refid="namespaceaxi">axi</innernamespace>
+    <innernamespace refid="namespaceaxi_1_1scv">axi::scv</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2020<sp/>Arteris<sp/>IP</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;axi/axi_tlm.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/format.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm/scc/scv/tlm_extension_recording_registry.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm/scc/scv/tlm_recorder.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm/scc/tlm_id.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceaxi" kindref="compound">axi</ref><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">scv<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">tlm::scc::scv;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="structaxi_1_1scv_1_1tlm__id__ext__recording" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">tlm_id_ext_recording<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if" kindref="compound">tlm_extensions_recording_if</ref>&lt;axi::axi_protocol_types&gt;<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm_id_ext_recording()<sp/>{<sp/>recordBegin<sp/>=<sp/>&amp;recordBeginTx;<sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recordBeginTx(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>axi_protocol_types::tlm_payload_type&amp;<sp/>trans)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_record_registry::get().<ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a07f6b3f1e99994310cf0d289ceccad53" kindref="member">recordBeginTx</ref>(tlm::scc::tlm_id_extension::ID,<sp/>handle,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trans.get_extension&lt;<ref refid="structtlm_1_1scc_1_1tlm__id__extension" kindref="compound">tlm::scc::tlm_id_extension</ref>&gt;(),<sp/></highlight><highlight class="stringliteral">&quot;trans.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="structaxi_1_1scv_1_1axi3__ext__record" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">axi3_ext_record<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if" kindref="compound">tlm_extension_record_if</ref><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>axi3_ext_record()<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1a137d8b93971625450c01fb82f70ce2c7" kindref="member">recordBegin</ref><sp/>=<sp/>&amp;recordBeginTx;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1abf714e72f94ce9f37c10c9ec76065a3e" kindref="member">recordEnd</ref><sp/>=<sp/>recordEndTx;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recordBeginTx(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>tlm::tlm_extension_base*<sp/>e,<sp/>std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>prefix)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ext<sp/>=<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal"><ref refid="structaxi_1_1axi3__extension" kindref="compound">axi3_extension</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(e))<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}id&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_id());</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}user[CTRL]&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_user(common::id_type::CTRL));</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}user[DATA]&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_user(common::id_type::DATA));</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}user[RESP]&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_user(common::id_type::RESP));</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}length&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_length());</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}size&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_size());</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}burst&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>std::string(<ref refid="namespaceaxi_1a160f78a3c731c8d023eb40610bd6773b" kindref="member">to_char</ref>(ext-&gt;get_burst())));</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}prot&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_prot());</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}exclusive&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>std::string(ext-&gt;is_exclusive()<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cache&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_cache());</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cache_bufferable&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_bufferable());</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cache_cacheable&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_cacheable());</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cache_read_alloc&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_read_allocate());</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cache_write_alloc&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_write_allocate());</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}qos&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_qos());</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}region&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_region());</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recordEndTx(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>tlm::tlm_extension_base*<sp/>e,<sp/>std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>prefix)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ext<sp/>=<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal"><ref refid="structaxi_1_1axi3__extension" kindref="compound">axi3_extension</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(e))<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}resp&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>std::string(<ref refid="namespaceaxi_1a160f78a3c731c8d023eb40610bd6773b" kindref="member">to_char</ref>(ext-&gt;get_resp())));</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="structaxi_1_1scv_1_1axi3__ext__recording" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">axi3_ext_recording<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if" kindref="compound">tlm_extensions_recording_if</ref>&lt;axi_protocol_types&gt;<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>axi3_ext_recording()<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>recordBegin<sp/>=<sp/>&amp;recordBeginTx;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>recordEnd<sp/>=<sp/>&amp;recordEndTx;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recordBeginTx(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>axi_protocol_types::tlm_payload_type&amp;<sp/>trans)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_record_registry::get().<ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a07f6b3f1e99994310cf0d289ceccad53" kindref="member">recordBeginTx</ref>(axi3_extension::ID,<sp/>handle,<sp/>trans.get_extension&lt;<ref refid="structaxi_1_1axi3__extension" kindref="compound">axi3_extension</ref>&gt;(),</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;trans.axi3.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recordEndTx(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>axi_protocol_types::tlm_payload_type&amp;<sp/>trans)<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_record_registry::get().recordEndTx(axi3_extension::ID,<sp/>handle,<sp/>trans.get_extension&lt;<ref refid="structaxi_1_1axi3__extension" kindref="compound">axi3_extension</ref>&gt;(),<sp/></highlight><highlight class="stringliteral">&quot;trans.axi3.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="structaxi_1_1scv_1_1axi4__ext__record" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">axi4_ext_record<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if" kindref="compound">tlm_extension_record_if</ref><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>axi4_ext_record()<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1a137d8b93971625450c01fb82f70ce2c7" kindref="member">recordBegin</ref><sp/>=<sp/>&amp;recordBeginTx;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1abf714e72f94ce9f37c10c9ec76065a3e" kindref="member">recordEnd</ref><sp/>=<sp/>&amp;recordEndTx;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recordBeginTx(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>tlm::tlm_extension_base*<sp/>e,<sp/>std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>prefix)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ext<sp/>=<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal"><ref refid="structaxi_1_1axi4__extension" kindref="compound">axi4_extension</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(e))<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}id&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_id());</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}user[CTRL]&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_user(common::id_type::CTRL));</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}user[DATA]&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_user(common::id_type::DATA));</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}user[RESP]&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_user(common::id_type::RESP));</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}length&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_length());</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}size&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_size());</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}burst&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>std::string(<ref refid="namespaceaxi_1a160f78a3c731c8d023eb40610bd6773b" kindref="member">to_char</ref>(ext-&gt;get_burst())));</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}prot&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_prot());</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}exclusive&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>std::string(ext-&gt;is_exclusive()<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cache&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_cache());</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cache_bufferable&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_bufferable());</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cache_modifiable&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_modifiable());</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cache_allocate&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_allocate());</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cache_other_alloc&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_other_allocate());</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}qos&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_qos());</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}region&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_region());</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recordEndTx(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>tlm::tlm_extension_base*<sp/>e,<sp/>std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>prefix)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ext<sp/>=<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal"><ref refid="structaxi_1_1axi4__extension" kindref="compound">axi4_extension</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(e))<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}resp&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>std::string(<ref refid="namespaceaxi_1a160f78a3c731c8d023eb40610bd6773b" kindref="member">to_char</ref>(ext-&gt;get_resp())));</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="structaxi_1_1scv_1_1axi4__ext__recording" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">axi4_ext_recording<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if" kindref="compound">tlm_extensions_recording_if</ref>&lt;axi_protocol_types&gt;<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>axi4_ext_recording()<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>recordBegin<sp/>=<sp/>&amp;recordBeginTx;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>recordEnd<sp/>=<sp/>&amp;recordEndTx;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recordBeginTx(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>axi_protocol_types::tlm_payload_type&amp;<sp/>trans)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_record_registry::get().<ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a07f6b3f1e99994310cf0d289ceccad53" kindref="member">recordBeginTx</ref>(axi4_extension::ID,<sp/>handle,<sp/>trans.get_extension&lt;<ref refid="structaxi_1_1axi4__extension" kindref="compound">axi4_extension</ref>&gt;(),</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;trans.axi4.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recordEndTx(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>axi_protocol_types::tlm_payload_type&amp;<sp/>trans)<sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_record_registry::get().recordEndTx(axi4_extension::ID,<sp/>handle,<sp/>trans.get_extension&lt;<ref refid="structaxi_1_1axi4__extension" kindref="compound">axi4_extension</ref>&gt;(),<sp/></highlight><highlight class="stringliteral">&quot;trans.axi4.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="structaxi_1_1scv_1_1ace__ext__record" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">ace_ext_record<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if" kindref="compound">tlm_extension_record_if</ref><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>ace_ext_record()<sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1a137d8b93971625450c01fb82f70ce2c7" kindref="member">recordBegin</ref><sp/>=<sp/>&amp;recordBeginTx;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1abf714e72f94ce9f37c10c9ec76065a3e" kindref="member">recordEnd</ref><sp/>=<sp/>&amp;recordEndTx;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recordBeginTx(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>tlm::tlm_extension_base*<sp/>e,<sp/>std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>prefix)<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ext<sp/>=<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal"><ref refid="structaxi_1_1ace__extension" kindref="compound">ace_extension</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(e))<sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}id&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_id());</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}user[CTRL]&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_user(common::id_type::CTRL));</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}user[DATA]&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_user(common::id_type::DATA));</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}length&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_length());</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}size&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_size());</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}burst&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>std::string(<ref refid="namespaceaxi_1a160f78a3c731c8d023eb40610bd6773b" kindref="member">to_char</ref>(ext-&gt;get_burst())));</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}prot&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_prot());</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}exclusive&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>std::string(ext-&gt;is_exclusive()<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cache&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_cache());</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cache_bufferable&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_bufferable());</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cache_modifiable&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_modifiable());</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cache_allocate&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_allocate());</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cache_other_alloc&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_other_allocate());</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}qos&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_qos());</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}region&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_region());</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}domain&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>std::string(<ref refid="namespaceaxi_1a160f78a3c731c8d023eb40610bd6773b" kindref="member">to_char</ref>(ext-&gt;get_domain())));</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}snoop&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>std::string(<ref refid="namespaceaxi_1a160f78a3c731c8d023eb40610bd6773b" kindref="member">to_char</ref>(ext-&gt;get_snoop())));</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}barrier&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>std::string(<ref refid="namespaceaxi_1a160f78a3c731c8d023eb40610bd6773b" kindref="member">to_char</ref>(ext-&gt;get_barrier())));</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}unique&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;get_unique());</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recordEndTx(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>tlm::tlm_extension_base*<sp/>e,<sp/>std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>prefix)<sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ext<sp/>=<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal"><ref refid="structaxi_1_1ace__extension" kindref="compound">ace_extension</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(e))<sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}resp&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>std::string(<ref refid="namespaceaxi_1a160f78a3c731c8d023eb40610bd6773b" kindref="member">to_char</ref>(ext-&gt;get_resp())));</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cresp&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(ext-&gt;get_cresp()));</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cresp_PassDirty&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_pass_dirty());</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cresp_IsShared&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_shared());</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cresp_SnoopDataTransfer&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_snoop_data_transfer());</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cresp_SnoopError&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_snoop_error());</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}cresp_SnoopWasUnique&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;is_snoop_was_unique());</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185" refid="structaxi_1_1scv_1_1ace__ext__recording" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">ace_ext_recording<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if" kindref="compound">tlm_extensions_recording_if</ref>&lt;axi_protocol_types&gt;<sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>ace_ext_recording()<sp/>{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>recordBegin<sp/>=<sp/>&amp;recordBeginTx;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>recordEnd<sp/>=<sp/>&amp;recordEndTx;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recordBeginTx(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>axi_protocol_types::tlm_payload_type&amp;<sp/>trans)<sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_record_registry::get().<ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a07f6b3f1e99994310cf0d289ceccad53" kindref="member">recordBeginTx</ref>(ace_extension::ID,<sp/>handle,<sp/>trans.get_extension&lt;<ref refid="structaxi_1_1ace__extension" kindref="compound">ace_extension</ref>&gt;(),<sp/></highlight><highlight class="stringliteral">&quot;trans.ace.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recordEndTx(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>axi_protocol_types::tlm_payload_type&amp;<sp/>trans)<sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_record_registry::get().recordEndTx(ace_extension::ID,<sp/>handle,<sp/>trans.get_extension&lt;<ref refid="structaxi_1_1ace__extension" kindref="compound">ace_extension</ref>&gt;(),<sp/></highlight><highlight class="stringliteral">&quot;trans.ace.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__GNUG__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal">__attribute__((constructor))</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>register_extensions()<sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1scc_1_1tlm__id__extension" kindref="compound">tlm::scc::tlm_id_extension</ref><sp/>ext(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!tlm_extension_recording_registry&lt;axi_protocol_types&gt;::get().is_ext_registered(ext.ID))<sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_recording_registry&lt;axi_protocol_types&gt;::get().register_ext_rec(ext.ID,</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>util::make_unique&lt;tlm_id_ext_recording&gt;());<sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="comment"><sp/><sp/><sp/><sp/>/********************************************************************************************************************/</highlight><highlight class="normal"><sp/>axi::</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>axi3_extension<sp/>ext3;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!tlm_extension_recording_registry&lt;axi_protocol_types&gt;::get().is_ext_registered(ext3.ID))<sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_recording_registry&lt;axi::axi_protocol_types&gt;::get().register_ext_rec(</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ext3.ID,</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>util::make_unique&lt;axi::scv::axi3_ext_recording&gt;());<sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!tlm_extension_record_registry::get().is_ext_registered(ext3.ID))</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_record_registry::get().register_ext_rec(ext3.ID,</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>util::make_unique&lt;axi3_ext_record&gt;());<sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight><highlight class="comment"><sp/><sp/><sp/><sp/>/********************************************************************************************************************/</highlight><highlight class="normal"><sp/>axi::</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>axi4_extension<sp/>ext4;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!tlm_extension_recording_registry&lt;axi_protocol_types&gt;::get().is_ext_registered(ext4.ID))<sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_recording_registry&lt;axi::axi_protocol_types&gt;::get().register_ext_rec(</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ext4.ID,</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>util::make_unique&lt;axi::scv::axi4_ext_recording&gt;());<sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!tlm_extension_record_registry::get().is_ext_registered(ext4.ID))</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_record_registry::get().register_ext_rec(ext4.ID,</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>util::make_unique&lt;axi4_ext_record&gt;());<sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight><highlight class="comment"><sp/><sp/><sp/><sp/>/********************************************************************************************************************/</highlight><highlight class="normal"><sp/>axi::</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ace_extension<sp/>extace;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!tlm_extension_recording_registry&lt;axi_protocol_types&gt;::get().is_ext_registered(extace.ID))<sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_recording_registry&lt;axi::axi_protocol_types&gt;::get().register_ext_rec(</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>extace.ID,</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>util::make_unique&lt;axi::scv::ace_ext_recording&gt;());<sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!tlm_extension_record_registry::get().is_ext_registered(extace.ID))</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_record_registry::get().register_ext_rec(extace.ID,</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>util::make_unique&lt;ace_ext_record&gt;());<sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>registered<sp/>=<sp/>register_extensions();</highlight></codeline>
+<codeline lineno="239"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scv</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>axi</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp"/>
+  </compounddef>
+</doxygen>

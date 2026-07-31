@@ -1,0 +1,316 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1ar__axi" kind="struct" language="C++" prot="public">
+    <compoundname>axi::ar_axi</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename CFG</type>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval><ref refid="structaxi_1_1master__types" kindref="compound">master_types</ref></defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structaxi_1_1ar__axi_1ab7ba8d1f07e6509b54538820025629fe" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_full_t&lt; sc_dt::sc_uint&lt; CFG::IDWIDTH &gt; &gt;</type>
+        <definition>TYPES::template m2s_full_t&lt;sc_dt::sc_uint&lt;CFG::IDWIDTH&gt; &gt; axi::ar_axi&lt; CFG, TYPES &gt;::ar_id</definition>
+        <argsstring></argsstring>
+        <name>ar_id</name>
+        <qualifiedname>axi::ar_axi::ar_id</qualifiedname>
+        <initializer>{&quot;ar_id&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="271" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="271" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ar__axi_1af7a334ef7ad2a7d378df2e1c98f88b54" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; sc_dt::sc_uint&lt; CFG::ADDRWIDTH &gt; &gt;</type>
+        <definition>TYPES::template m2s_t&lt;sc_dt::sc_uint&lt;CFG::ADDRWIDTH&gt; &gt; axi::ar_axi&lt; CFG, TYPES &gt;::ar_addr</definition>
+        <argsstring></argsstring>
+        <name>ar_addr</name>
+        <qualifiedname>axi::ar_axi::ar_addr</qualifiedname>
+        <initializer>{&quot;ar_addr&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="272" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="272" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ar__axi_1a96f91b9fe4f0ede97b7cd7021789e6e0" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_full_t&lt; sc_dt::sc_uint&lt; 8 &gt; &gt;</type>
+        <definition>TYPES::template m2s_full_t&lt;sc_dt::sc_uint&lt;8&gt; &gt; axi::ar_axi&lt; CFG, TYPES &gt;::ar_len</definition>
+        <argsstring></argsstring>
+        <name>ar_len</name>
+        <qualifiedname>axi::ar_axi::ar_len</qualifiedname>
+        <initializer>{&quot;ar_len&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="273" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="273" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ar__axi_1a75477f2b16d8c58eafd30a145216b1c6" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_full_t&lt; sc_dt::sc_uint&lt; 3 &gt; &gt;</type>
+        <definition>TYPES::template m2s_full_t&lt;sc_dt::sc_uint&lt;3&gt; &gt; axi::ar_axi&lt; CFG, TYPES &gt;::ar_size</definition>
+        <argsstring></argsstring>
+        <name>ar_size</name>
+        <qualifiedname>axi::ar_axi::ar_size</qualifiedname>
+        <initializer>{&quot;ar_size&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="274" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="274" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ar__axi_1a36d4e904cba5fb734690635cd8c733c2" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_full_t&lt; sc_dt::sc_uint&lt; 2 &gt; &gt;</type>
+        <definition>TYPES::template m2s_full_t&lt;sc_dt::sc_uint&lt;2&gt; &gt; axi::ar_axi&lt; CFG, TYPES &gt;::ar_burst</definition>
+        <argsstring></argsstring>
+        <name>ar_burst</name>
+        <qualifiedname>axi::ar_axi::ar_burst</qualifiedname>
+        <initializer>{&quot;ar_burst&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="275" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="275" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ar__axi_1ae080cabb8f779ad17eaef647968cbd34" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_full_t&lt; bool &gt;</type>
+        <definition>TYPES::template m2s_full_t&lt;bool&gt; axi::ar_axi&lt; CFG, TYPES &gt;::ar_lock</definition>
+        <argsstring></argsstring>
+        <name>ar_lock</name>
+        <qualifiedname>axi::ar_axi::ar_lock</qualifiedname>
+        <initializer>{&quot;ar_lock&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="276" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="276" bodyend="276"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ar__axi_1a5446d572d85ddcd34454b8f5a51c55e0" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_full_t&lt; sc_dt::sc_uint&lt; 4 &gt; &gt;</type>
+        <definition>TYPES::template m2s_full_t&lt;sc_dt::sc_uint&lt;4&gt; &gt; axi::ar_axi&lt; CFG, TYPES &gt;::ar_cache</definition>
+        <argsstring></argsstring>
+        <name>ar_cache</name>
+        <qualifiedname>axi::ar_axi::ar_cache</qualifiedname>
+        <initializer>{&quot;ar_cache&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="277" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="277" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ar__axi_1a050a8869e3931ef03ab7907d5073fa4e" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; sc_dt::sc_uint&lt; 3 &gt; &gt;</type>
+        <definition>TYPES::template m2s_t&lt;sc_dt::sc_uint&lt;3&gt; &gt; axi::ar_axi&lt; CFG, TYPES &gt;::ar_prot</definition>
+        <argsstring></argsstring>
+        <name>ar_prot</name>
+        <qualifiedname>axi::ar_axi::ar_prot</qualifiedname>
+        <initializer>{&quot;ar_prot&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="278" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="278" bodyend="278"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ar__axi_1ace6839efc234fb3f41de97fa8d6b1365" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_full_t&lt; sc_dt::sc_uint&lt; 4 &gt; &gt;</type>
+        <definition>TYPES::template m2s_full_t&lt;sc_dt::sc_uint&lt;4&gt; &gt; axi::ar_axi&lt; CFG, TYPES &gt;::ar_qos</definition>
+        <argsstring></argsstring>
+        <name>ar_qos</name>
+        <qualifiedname>axi::ar_axi::ar_qos</qualifiedname>
+        <initializer>{&quot;ar_qos&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="279" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="279" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ar__axi_1a6374ac4e68b9d3fb489bf62e9fb06b91" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_full_t&lt; sc_dt::sc_uint&lt; 4 &gt; &gt;</type>
+        <definition>TYPES::template m2s_full_t&lt;sc_dt::sc_uint&lt;4&gt; &gt; axi::ar_axi&lt; CFG, TYPES &gt;::ar_region</definition>
+        <argsstring></argsstring>
+        <name>ar_region</name>
+        <qualifiedname>axi::ar_axi::ar_region</qualifiedname>
+        <initializer>{&quot;ar_region&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="280" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="280" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ar__axi_1a56f558bc72b0439837e4bf9e649908d9" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; bool &gt;</type>
+        <definition>TYPES::template m2s_t&lt;bool&gt; axi::ar_axi&lt; CFG, TYPES &gt;::ar_valid</definition>
+        <argsstring></argsstring>
+        <name>ar_valid</name>
+        <qualifiedname>axi::ar_axi::ar_valid</qualifiedname>
+        <initializer>{&quot;ar_valid&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="281" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="281" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ar__axi_1a2e34821f1ed6f199613f3bca9d1a82e4" prot="public" static="no" mutable="no">
+        <type>TYPES::template s2m_t&lt; bool &gt;</type>
+        <definition>TYPES::template s2m_t&lt;bool&gt; axi::ar_axi&lt; CFG, TYPES &gt;::ar_ready</definition>
+        <argsstring></argsstring>
+        <name>ar_ready</name>
+        <qualifiedname>axi::ar_axi::ar_ready</qualifiedname>
+        <initializer>{&quot;ar_ready&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="282" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="282" bodyend="282"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ar__axi_1ac663ead4cc65893bdb4ce1f06d4e79a7" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_opt_t&lt; typename CFG::user_t &gt;</type>
+        <definition>TYPES::template m2s_opt_t&lt;typename CFG::user_t&gt; axi::ar_axi&lt; CFG, TYPES &gt;::ar_user</definition>
+        <argsstring></argsstring>
+        <name>ar_user</name>
+        <qualifiedname>axi::ar_axi::ar_user</qualifiedname>
+        <initializer>{&quot;ar_user&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="283" column="40" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="283" bodyend="283"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1ar__axi_1a3d195e95fdbc646ec15d0bdc0b32b496" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::ar_axi&lt; CFG, TYPES &gt;::ar_axi</definition>
+        <argsstring>()=default</argsstring>
+        <name>ar_axi</name>
+        <qualifiedname>axi::ar_axi::ar_axi</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="285" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1ar__axi_1a88f351ac148f13a7d15db8d3087179f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::ar_axi&lt; CFG, TYPES &gt;::ar_axi</definition>
+        <argsstring>(const char *prefix)</argsstring>
+        <name>ar_axi</name>
+        <qualifiedname>axi::ar_axi::ar_axi</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>prefix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="286" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="286" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1ar__axi_1a1c92de6db75ee6be9d107b1d183ea025" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename OTYPES</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void axi::ar_axi&lt; CFG, TYPES &gt;::bind_ar</definition>
+        <argsstring>(ar_axi&lt; CFG, OTYPES &gt; &amp;o)</argsstring>
+        <name>bind_ar</name>
+        <qualifiedname>axi::ar_axi::bind_ar</qualifiedname>
+        <param>
+          <type>ar_axi&lt; CFG, OTYPES &gt; &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="301" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="301" bodyend="315"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1ar__axi_1a7b81c3af189dc0b86fa2dd50707057bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename OTYPES</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void axi::ar_axi&lt; CFG, TYPES &gt;::bind_ar</definition>
+        <argsstring>(ar_axi_lite&lt; CFG, OTYPES &gt; &amp;o)</argsstring>
+        <name>bind_ar</name>
+        <qualifiedname>axi::ar_axi::bind_ar</qualifiedname>
+        <param>
+          <type><ref refid="structaxi_1_1ar__axi__lite" kindref="compound">ar_axi_lite</ref>&lt; CFG, OTYPES &gt; &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="316" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="721" bodyend="726"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="270" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="270" bodyend="317"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1ar__axi_1af7a334ef7ad2a7d378df2e1c98f88b54" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>ar_addr</name></member>
+      <member refid="structaxi_1_1ar__axi_1a3d195e95fdbc646ec15d0bdc0b32b496" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>ar_axi</name></member>
+      <member refid="structaxi_1_1ar__axi_1a88f351ac148f13a7d15db8d3087179f6" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>ar_axi</name></member>
+      <member refid="structaxi_1_1ar__axi_1a36d4e904cba5fb734690635cd8c733c2" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>ar_burst</name></member>
+      <member refid="structaxi_1_1ar__axi_1a5446d572d85ddcd34454b8f5a51c55e0" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>ar_cache</name></member>
+      <member refid="structaxi_1_1ar__axi_1ab7ba8d1f07e6509b54538820025629fe" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>ar_id</name></member>
+      <member refid="structaxi_1_1ar__axi_1a96f91b9fe4f0ede97b7cd7021789e6e0" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>ar_len</name></member>
+      <member refid="structaxi_1_1ar__axi_1ae080cabb8f779ad17eaef647968cbd34" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>ar_lock</name></member>
+      <member refid="structaxi_1_1ar__axi_1a050a8869e3931ef03ab7907d5073fa4e" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>ar_prot</name></member>
+      <member refid="structaxi_1_1ar__axi_1ace6839efc234fb3f41de97fa8d6b1365" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>ar_qos</name></member>
+      <member refid="structaxi_1_1ar__axi_1a2e34821f1ed6f199613f3bca9d1a82e4" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>ar_ready</name></member>
+      <member refid="structaxi_1_1ar__axi_1a6374ac4e68b9d3fb489bf62e9fb06b91" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>ar_region</name></member>
+      <member refid="structaxi_1_1ar__axi_1a75477f2b16d8c58eafd30a145216b1c6" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>ar_size</name></member>
+      <member refid="structaxi_1_1ar__axi_1ac663ead4cc65893bdb4ce1f06d4e79a7" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>ar_user</name></member>
+      <member refid="structaxi_1_1ar__axi_1a56f558bc72b0439837e4bf9e649908d9" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>ar_valid</name></member>
+      <member refid="structaxi_1_1ar__axi_1a1c92de6db75ee6be9d107b1d183ea025" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>bind_ar</name></member>
+      <member refid="structaxi_1_1ar__axi_1a7b81c3af189dc0b86fa2dd50707057bf" prot="public" virt="non-virtual"><scope>axi::ar_axi</scope><name>bind_ar</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

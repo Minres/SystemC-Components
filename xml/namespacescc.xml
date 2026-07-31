@@ -1,0 +1,2912 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacescc" kind="namespace" language="C++">
+    <compoundname>scc</compoundname>
+    <innerclass refid="classscc_1_1ticking__clock" prot="public">scc::ticking_clock</innerclass>
+    <innerclass refid="classscc_1_1tickless__clock" prot="public">scc::tickless_clock</innerclass>
+    <innerclass refid="structscc_1_1dmi__mgr" prot="public">scc::dmi_mgr</innerclass>
+    <innerclass refid="structscc_1_1delay__spec__type" prot="public">scc::delay_spec_type</innerclass>
+    <innerclass refid="structscc_1_1delay__spec__type_3_01true_01_4" prot="public">scc::delay_spec_type&lt; true &gt;</innerclass>
+    <innerclass refid="structscc_1_1delay__spec__type_3_01false_01_4" prot="public">scc::delay_spec_type&lt; false &gt;</innerclass>
+    <innerclass refid="classscc_1_1memory" prot="public">scc::memory</innerclass>
+    <innerclass refid="structscc_1_1host__mem__map__extension" prot="public">scc::host_mem_map_extension</innerclass>
+    <innerclass refid="classscc_1_1sc__register__indexed" prot="public">scc::sc_register_indexed</innerclass>
+    <innerclass refid="classscc_1_1sc__register__masked" prot="public">scc::sc_register_masked</innerclass>
+    <innerclass refid="structscc_1_1sc__register__mem" prot="public">scc::sc_register_mem</innerclass>
+    <innerclass refid="classscc_1_1resetable" prot="public">scc::resetable</innerclass>
+    <innerclass refid="classscc_1_1resource__access__if" prot="public">scc::resource_access_if</innerclass>
+    <innerclass refid="classscc_1_1indexed__resource__access__if" prot="public">scc::indexed_resource_access_if</innerclass>
+    <innerclass refid="structscc_1_1router" prot="public">scc::router</innerclass>
+    <innerclass refid="classscc_1_1socket__width__adapter" prot="public">scc::socket_width_adapter</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm__bridge" prot="public">scc::tcp4tlm_bridge</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm__client" prot="public">scc::tcp4tlm_client</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm__server" prot="public">scc::tcp4tlm_server</innerclass>
+    <innerclass refid="structscc_1_1addr__range" prot="public">scc::addr_range</innerclass>
+    <innerclass refid="classscc_1_1tlm__target" prot="public">scc::tlm_target</innerclass>
+    <innerclass refid="structscc_1_1target__memory__map__entry" prot="public">scc::target_memory_map_entry</innerclass>
+    <innerclass refid="structscc_1_1target__name__map__entry" prot="public">scc::target_name_map_entry</innerclass>
+    <innerclass refid="structscc_1_1tlm__target__mod" prot="public">scc::tlm_target_mod</innerclass>
+    <innerclass refid="structscc_1_1tlm__target__bfs__params" prot="public">scc::tlm_target_bfs_params</innerclass>
+    <innerclass refid="classscc_1_1tlm__target__bfs__base" prot="public">scc::tlm_target_bfs_base</innerclass>
+    <innerclass refid="classscc_1_1tlm__target__bfs" prot="public">scc::tlm_target_bfs</innerclass>
+    <innerclass refid="classscc_1_1abstract__bitfield" prot="public">scc::abstract_bitfield</innerclass>
+    <innerclass refid="classscc_1_1bitfield__register" prot="public">scc::bitfield_register</innerclass>
+    <innerclass refid="classscc_1_1bitfield" prot="public">scc::bitfield</innerclass>
+    <innerclass refid="classscc_1_1tlm__target__bfs__register__base" prot="public">scc::tlm_target_bfs_register_base</innerclass>
+    <innerclass refid="structscc_1_1async__event" prot="public">scc::async_event</innerclass>
+    <innerclass refid="structscc_1_1async__source__if" prot="public">scc::async_source_if</innerclass>
+    <innerclass refid="structscc_1_1async__queue" prot="public">scc::async_queue</innerclass>
+    <innerclass refid="structscc_1_1async__thread" prot="public">scc::async_thread</innerclass>
+    <innerclass refid="classscc_1_1cci__broker" prot="public">scc::cci_broker</innerclass>
+    <innerclass refid="structscc_1_1cci__param__restricted" prot="public">scc::cci_param_restricted</innerclass>
+    <innerclass refid="classscc_1_1configurable__tracer" prot="public">scc::configurable_tracer</innerclass>
+    <innerclass refid="classscc_1_1configurer" prot="public">scc::configurer</innerclass>
+    <innerclass refid="classscc_1_1ext__attribute" prot="public">scc::ext_attribute</innerclass>
+    <innerclass refid="classscc_1_1fifo__w__cb" prot="public">scc::fifo_w_cb</innerclass>
+    <innerclass refid="structscc_1_1fst__trace__file" prot="public">scc::fst_trace_file</innerclass>
+    <innerclass refid="classscc_1_1hierarchy__dumper" prot="public">scc::hierarchy_dumper</innerclass>
+    <innerclass refid="classscc_1_1MT19937" prot="public">scc::MT19937</innerclass>
+    <innerclass refid="structscc_1_1observer" prot="public">scc::observer</innerclass>
+    <innerclass refid="classscc_1_1ordered__semaphore" prot="public">scc::ordered_semaphore</innerclass>
+    <innerclass refid="structscc_1_1ordered__semaphore__t" prot="public">scc::ordered_semaphore_t</innerclass>
+    <innerclass refid="structscc_1_1peq" prot="public">scc::peq</innerclass>
+    <innerclass refid="classscc_1_1perf__estimator" prot="public">scc::perf_estimator</innerclass>
+    <innerclass refid="classscc_1_1Logger" prot="public">scc::Logger</innerclass>
+    <innerclass refid="structscc_1_1python4sc" prot="public">scc::python4sc</innerclass>
+    <innerclass refid="structscc_1_1LogConfig" prot="public">scc::LogConfig</innerclass>
+    <innerclass refid="structscc_1_1ScLogger" prot="public">scc::ScLogger</innerclass>
+    <innerclass refid="classscc_1_1stream__redirection" prot="public">scc::stream_redirection</innerclass>
+    <innerclass refid="classscc_1_1sc__attribute__randomized" prot="public">scc::sc_attribute_randomized</innerclass>
+    <innerclass refid="structscc_1_1sc__clock__ext" prot="public">scc::sc_clock_ext</innerclass>
+    <innerclass refid="classscc_1_1sc__owning__signal" prot="public">scc::sc_owning_signal</innerclass>
+    <innerclass refid="classscc_1_1sc__thread__pool" prot="public">scc::sc_thread_pool</innerclass>
+    <innerclass refid="structscc_1_1sc__variable__b" prot="public">scc::sc_variable_b</innerclass>
+    <innerclass refid="structscc_1_1sc__variable" prot="public">scc::sc_variable</innerclass>
+    <innerclass refid="structscc_1_1sc__variable_3_01bool_01_4" prot="public">scc::sc_variable&lt; bool &gt;</innerclass>
+    <innerclass refid="structscc_1_1sc__variable__vector" prot="public">scc::sc_variable_vector</innerclass>
+    <innerclass refid="structscc_1_1sc__ref__variable" prot="public">scc::sc_ref_variable</innerclass>
+    <innerclass refid="structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4" prot="public">scc::sc_ref_variable&lt; sc_core::sc_event &gt;</innerclass>
+    <innerclass refid="structscc_1_1sc__ref__variable__masked" prot="public">scc::sc_ref_variable_masked</innerclass>
+    <innerclass refid="classscc_1_1sc__in__opt" prot="public">scc::sc_in_opt</innerclass>
+    <innerclass refid="classscc_1_1sc__in__opt_3_01bool_01_4" prot="public">scc::sc_in_opt&lt; bool &gt;</innerclass>
+    <innerclass refid="classscc_1_1sc__in__opt_3_01sc__dt_1_1sc__logic_01_4" prot="public">scc::sc_in_opt&lt; sc_dt::sc_logic &gt;</innerclass>
+    <innerclass refid="classscc_1_1sc__inout__opt" prot="public">scc::sc_inout_opt</innerclass>
+    <innerclass refid="classscc_1_1sc__inout__opt_3_01bool_01_4" prot="public">scc::sc_inout_opt&lt; bool &gt;</innerclass>
+    <innerclass refid="classscc_1_1sc__inout__opt_3_01sc__dt_1_1sc__logic_01_4" prot="public">scc::sc_inout_opt&lt; sc_dt::sc_logic &gt;</innerclass>
+    <innerclass refid="classscc_1_1sc__out__opt" prot="public">scc::sc_out_opt</innerclass>
+    <innerclass refid="structscc_1_1tick2time" prot="public">scc::tick2time</innerclass>
+    <innerclass refid="structscc_1_1time2tick" prot="public">scc::time2tick</innerclass>
+    <innerclass refid="structscc_1_1traceable" prot="public">scc::traceable</innerclass>
+    <innerclass refid="classscc_1_1tracer" prot="public">scc::tracer</innerclass>
+    <innerclass refid="structscc_1_1ForLoop" prot="public">scc::ForLoop</innerclass>
+    <innerclass refid="structscc_1_1ForLoop_3_011_01_4" prot="public">scc::ForLoop&lt; 1 &gt;</innerclass>
+    <innerclass refid="structscc_1_1sc__uint__tester" prot="public">scc::sc_uint_tester</innerclass>
+    <innerclass refid="structscc_1_1sc__int__tester" prot="public">scc::sc_int_tester</innerclass>
+    <innerclass refid="structscc_1_1sc__biguint__tester" prot="public">scc::sc_biguint_tester</innerclass>
+    <innerclass refid="structscc_1_1sc__bigint__tester" prot="public">scc::sc_bigint_tester</innerclass>
+    <innerclass refid="structscc_1_1sc__bv__tester" prot="public">scc::sc_bv_tester</innerclass>
+    <innerclass refid="structscc_1_1sc__lv__tester" prot="public">scc::sc_lv_tester</innerclass>
+    <innerclass refid="structscc_1_1tracer__base" prot="public">scc::tracer_base</innerclass>
+    <innerclass refid="structscc_1_1vcd__mt__trace__file" prot="public">scc::vcd_mt_trace_file</innerclass>
+    <innerclass refid="structscc_1_1vcd__pull__trace__file" prot="public">scc::vcd_pull_trace_file</innerclass>
+    <innerclass refid="structscc_1_1vcd__push__trace__file" prot="public">scc::vcd_push_trace_file</innerclass>
+    <innernamespace refid="namespacescc_1_1impl">scc::impl</innernamespace>
+    <innernamespace refid="namespacescc_1_1tcp4tlm">scc::tcp4tlm</innernamespace>
+    <innernamespace refid="namespacescc_1_1trace">scc::trace</innernamespace>
+    <innernamespace refid="namespacescc_1_1dt">scc::dt</innernamespace>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacescc_1a55c0acbe37efa647b583451b6ef6c84f" prot="public" static="no" strong="no">
+        <type></type>
+        <name>dmi_status</name>
+        <qualifiedname>scc::dmi_status</qualifiedname>
+        <enumvalue id="namespacescc_1a55c0acbe37efa647b583451b6ef6c84fa9ea5c916201f45baf9c6b79e088e27d5" prot="public">
+          <name>ERROR</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1a55c0acbe37efa647b583451b6ef6c84fa5c0887cb0944304bac37ed4f468fb2db" prot="public">
+          <name>OK</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1a55c0acbe37efa647b583451b6ef6c84fa38bf0eb7402c57622f9c74b88e2bb4a8" prot="public">
+          <name>DMI_RD</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1a55c0acbe37efa647b583451b6ef6c84fa82509583cf0ec772f239c40f71e4e563" prot="public">
+          <name>DMI_WR</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1a55c0acbe37efa647b583451b6ef6c84fa556c73469fc6da5c45db6366bd0c43a5" prot="public">
+          <name>DMI_ALL</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The <ref refid="namespacescc_1a55c0acbe37efa647b583451b6ef6c84f" kindref="member">dmi_status</ref> enum represents the status of DMI transactions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The <ref refid="namespacescc_1a55c0acbe37efa647b583451b6ef6c84f" kindref="member">dmi_status</ref> enum is used to indicate the success or failure of DMI read and write operations. It provides a clear and concise way to communicate the status of the transactions.</para>
+<para><simplesect kind="note"><para>The <ref refid="namespacescc_1a55c0acbe37efa647b583451b6ef6c84f" kindref="member">dmi_status</ref> enum is a part of the SystemC Component (SCC) library. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="36" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7ca" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>log</name>
+        <qualifiedname>scc::log</qualifiedname>
+        <enumvalue id="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7caab50339a10e1de285ac99d4c3990b8693" prot="public">
+          <name>NONE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7caa19da7170bea36556dde582519795f3fc" prot="public">
+          <name>FATAL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7caabb1ca97ec761fc37101737ba0aa2e7c5" prot="public">
+          <name>ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7caa059e9861e0400dfbe05c98a841f3f96b" prot="public">
+          <name>WARNING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7caa551b723eafd6a31d444fcb2f5920fbd3" prot="public">
+          <name>INFO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7caadc30ec20708ef7b0f641ef78b7880a15" prot="public">
+          <name>DEBUG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7caa2d3e4144aa384b18849ab9a8abad74d6" prot="public">
+          <name>TRACE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7caa7a353f5110fc118369c36379546e454c" prot="public">
+          <name>TRACEALL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7caaa4e13871aad5d745fa6c199efe814f10" prot="public">
+          <name>DBGTRACE</name>
+          <initializer>= TRACEALL</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>enum defining the log levels </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="88" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacescc_1a16c18825e698bcd4b014919563c5c191" prot="public" static="no" strong="yes">
+        <type>unsigned</type>
+        <name>trace_types</name>
+        <qualifiedname>scc::trace_types</qualifiedname>
+        <enumvalue id="namespacescc_1a16c18825e698bcd4b014919563c5c191ab50339a10e1de285ac99d4c3990b8693" prot="public">
+          <name>NONE</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>NONE </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1a16c18825e698bcd4b014919563c5c191ae8aec3b875fcfac29de4bc603e426577" prot="public">
+          <name>SIGNALS</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>SIGNALS </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1a16c18825e698bcd4b014919563c5c191a379f0209b3f2aa2adafe3f8b4f1727e4" prot="public">
+          <name>PORTS</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>PORTS </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1a16c18825e698bcd4b014919563c5c191a330f54e7fc1474d15797dd7546492947" prot="public">
+          <name>SOCKETS</name>
+          <initializer>= 0x4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>SOCKETS </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1a16c18825e698bcd4b014919563c5c191a4d6ae4d01611352da487e8f731549e9d" prot="public">
+          <name>VARIABLES</name>
+          <initializer>= 0x8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>VARIABLES </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1a16c18825e698bcd4b014919563c5c191a5fb1f955b45e38e31789286a1790398d" prot="public">
+          <name>ALL</name>
+          <initializer>= 0xff</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>ALL </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>identifies the various type to be traced </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="36" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" bodystart="36" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacescc_1a7b77ff97662daca77fb79844dc1d5087" prot="public" static="no" strong="no">
+        <type></type>
+        <name></name>
+        <qualifiedname>scc</qualifiedname>
+        <enumvalue id="namespacescc_1a7b77ff97662daca77fb79844dc1d5087a4222c68f13e7c5c8d87665ce946e100b" prot="public">
+          <name>LT</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="187" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="187" bodyend="187"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacescc_1a0eaff3a88e4e0c697a115543d1f55902" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>unsigned long long</type>
+            <declname>SIZE</declname>
+            <defname>SIZE</defname>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>BUSWIDTH</declname>
+            <defname>BUSWIDTH</defname>
+            <defval>LT</defval>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>PAGE_ADDR_BITS</declname>
+            <defname>PAGE_ADDR_BITS</defname>
+            <defval>24</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classscc_1_1tickless__clock" kindref="compound">tickless_clock</ref>&lt; <ref refid="classscc_1_1memory" kindref="compound">memory</ref>&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, false &gt; &gt;</type>
+        <definition>using scc::memory_tl =  tickless_clock&lt;memory&lt;SIZE, BUSWIDTH, PAGE_ADDR_BITS, false&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>memory_tl</name>
+        <qualifiedname>scc::memory_tl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="180" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacescc_1ad4c40e9b39f98dc9a735e575ba6d6ab4" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>unsigned long long</type>
+            <declname>SIZE</declname>
+            <defname>SIZE</defname>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>BUSWIDTH</declname>
+            <defname>BUSWIDTH</defname>
+            <defval>LT</defval>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>PAGE_ADDR_BITS</declname>
+            <defname>PAGE_ADDR_BITS</defname>
+            <defval>24</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classscc_1_1ticking__clock" kindref="compound">ticking_clock</ref>&lt; <ref refid="classscc_1_1memory" kindref="compound">memory</ref>&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, true &gt; &gt;</type>
+        <definition>using scc::memory_tc =  ticking_clock&lt;memory&lt;SIZE, BUSWIDTH, PAGE_ADDR_BITS, true&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>memory_tc</name>
+        <qualifiedname>scc::memory_tc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="182" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacescc_1a12df3826bf3653c3e91a08406bced97c" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename DATATYPE</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classscc_1_1impl_1_1sc__register" kindref="compound">impl::sc_register</ref>&lt; typename <ref refid="classscc_1_1impl_1_1helper" kindref="compound">impl::helper</ref>&lt; DATATYPE &gt;::Type &gt;</type>
+        <definition>using scc::sc_register =  impl::sc_register&lt;typename impl::helper&lt;DATATYPE&gt;::Type&gt;</definition>
+        <argsstring></argsstring>
+        <name>sc_register</name>
+        <qualifiedname>scc::sc_register</qualifiedname>
+        <briefdescription>
+<para>import the implementation into the scc namespace </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="354" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="354" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacescc_1ad84a060ca04d8086b02780bdc55f26d7" prot="public" static="no">
+        <type>struct <ref refid="structscc_1_1tlm__target__bfs__params" kindref="compound">scc::tlm_target_bfs_params</ref></type>
+        <definition>typedef struct scc::tlm_target_bfs_params scc::tlm_target_bfs_params_t</definition>
+        <argsstring></argsstring>
+        <name>tlm_target_bfs_params_t</name>
+        <qualifiedname>scc::tlm_target_bfs_params_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="54" column="25"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacescc_1a38c854e6122fa3b6de5126435717395b" prot="public" static="no">
+        <type>PrettyWriter&lt; OStreamWrapper &gt;</type>
+        <definition>typedef PrettyWriter&lt; OStreamWrapper &gt; scc::writer_type =  PrettyWriter&lt;OStreamWrapper&gt;</definition>
+        <argsstring></argsstring>
+        <name>writer_type</name>
+        <qualifiedname>scc::writer_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer_nocci.cpp" line="31" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer_nocci.cpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacescc_1a6098f3edb66c35a7fdb58e8b1d282979" prot="public" static="no">
+        <type>sc_core::sc_trace_file</type>
+        <definition>using scc::sc_trace_file =  sc_core::sc_trace_file</definition>
+        <argsstring></argsstring>
+        <name>sc_trace_file</name>
+        <qualifiedname>scc::sc_trace_file</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" line="30" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacescc_1a48132544e037231e339ac2fab9723d4e" prot="public" static="no">
+        <type>sc_core::sc_object</type>
+        <definition>using scc::sc_object =  sc_core::sc_object</definition>
+        <argsstring></argsstring>
+        <name>sc_object</name>
+        <qualifiedname>scc::sc_object</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" line="31" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacescc_1af767bac5756df30aa0af5a7c3e2e6c24" prot="public" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex scc::verbosity_mtx</definition>
+        <argsstring></argsstring>
+        <name>verbosity_mtx</name>
+        <qualifiedname>scc::verbosity_mtx</qualifiedname>
+        <briefdescription>
+<para>a mutex needed to syncronize verbosity manipulations </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" line="333" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="333" bodyend="-1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" declline="319" declcolumn="19"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacescc_1a28d5724163743126e54f852306bd982a" prot="public" static="yes" mutable="no">
+        <type>char const  *const</type>
+        <definition>char const* const scc::default_trace_enable_name</definition>
+        <argsstring></argsstring>
+        <name>default_trace_enable_name</name>
+        <qualifiedname>scc::default_trace_enable_name</qualifiedname>
+        <initializer>= &quot;scc_tracer.default_trace_enable&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" line="309" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" bodystart="309" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacescc_1aa8d6c38b0ba369e0beac44d0bf6a7b93" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacescc_1a55c0acbe37efa647b583451b6ef6c84f" kindref="member">dmi_status</ref></type>
+        <definition>dmi_status scc::operator|=</definition>
+        <argsstring>(dmi_status s1, dmi_status s2)</argsstring>
+        <name>operator|=</name>
+        <qualifiedname>scc::operator|=</qualifiedname>
+        <param>
+          <type><ref refid="namespacescc_1a55c0acbe37efa647b583451b6ef6c84f" kindref="member">dmi_status</ref></type>
+          <declname>s1</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacescc_1a55c0acbe37efa647b583451b6ef6c84f" kindref="member">dmi_status</ref></type>
+          <declname>s2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="37" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1af8863724e83e5f3653b28901d4f2838d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned long long</type>
+            <declname>SIZE</declname>
+            <defname>SIZE</defname>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>BUSWIDTH</declname>
+            <defname>BUSWIDTH</defname>
+            <defval>LT</defval>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>int scc::handle_operation</definition>
+        <argsstring>(memory&lt; SIZE, BUSWIDTH &gt; &amp;, tlm::tlm_generic_payload &amp;, sc_core::sc_time &amp;delay)</argsstring>
+        <name>handle_operation</name>
+        <qualifiedname>scc::handle_operation</qualifiedname>
+        <param>
+          <type><ref refid="classscc_1_1memory" kindref="compound">memory</ref>&lt; SIZE, BUSWIDTH &gt; &amp;</type>
+        </param>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="185" column="5" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" declline="185" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1adb1fb85d9a320b3339ff7081966d696c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>long long int</type>
+        <definition>long long int scc::get_time_of_day_us</definition>
+        <argsstring>()</argsstring>
+        <name>get_time_of_day_us</name>
+        <qualifiedname>scc::get_time_of_day_us</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.cpp" line="253" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.cpp" bodystart="253" bodyend="261"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a03eb872bb1271b74892a6c2ddff59044" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::init_cci</definition>
+        <argsstring>(std::string name)</argsstring>
+        <name>init_cci</name>
+        <qualifiedname>scc::init_cci</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" line="188" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.cpp" bodystart="188" bodyend="198" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" declline="32" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1af837755465d0c4911efaa87d2824e96a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>_min_max_restriction&lt; T &gt;</type>
+        <definition>_min_max_restriction&lt; T &gt; scc::min_max_restriction</definition>
+        <argsstring>(T min, T max)</argsstring>
+        <name>min_max_restriction</name>
+        <qualifiedname>scc::min_max_restriction</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+<para>creates a min/max restriction with including the limits </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the type of the value the restricion applies </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>min</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the lower bound </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the upper bound </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>_min_max_restriction&lt;T&gt; instance of the restriction functor </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="93" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="93" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a43b0aa735a3fd9b9cb0f1c42933a133b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>_min_max_restriction&lt; T &gt;</type>
+        <definition>_min_max_restriction&lt; T &gt; scc::gte_lte_restriction</definition>
+        <argsstring>(T min, T max)</argsstring>
+        <name>gte_lte_restriction</name>
+        <qualifiedname>scc::gte_lte_restriction</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+<para>alias for <ref refid="namespacescc_1af837755465d0c4911efaa87d2824e96a" kindref="member">min_max_restriction(T min, T max)</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="95" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="95" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a98553e045ed6ba303e915a1bc74bb8d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>_min_max_excl_restriction&lt; T &gt;</type>
+        <definition>_min_max_excl_restriction&lt; T &gt; scc::min_max_excl_restriction</definition>
+        <argsstring>(T min, T max)</argsstring>
+        <name>min_max_excl_restriction</name>
+        <qualifiedname>scc::min_max_excl_restriction</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+<para>creates a min/max restriction with excluding the limits </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the type of the value the restricion applies </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>min</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the lower bound </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the upper bound </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>_min_max_excl_restriction&lt;T&gt; instance of the restriction functor </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="104" column="46" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="104" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a0494681f5dca0716347b7531568c54a9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>_min_max_excl_restriction&lt; T &gt;</type>
+        <definition>_min_max_excl_restriction&lt; T &gt; scc::gt_lt_restriction</definition>
+        <argsstring>(T min, T max)</argsstring>
+        <name>gt_lt_restriction</name>
+        <qualifiedname>scc::gt_lt_restriction</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+<para>alias for <ref refid="namespacescc_1a98553e045ed6ba303e915a1bc74bb8d7" kindref="member">min_max_excl_restriction(T min, T max)</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="108" column="46" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="108" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1ae4fe172b09afbeb2fc67be93bf407388" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>_min_restriction&lt; T &gt;</type>
+        <definition>_min_restriction&lt; T &gt; scc::min_restriction</definition>
+        <argsstring>(T min)</argsstring>
+        <name>min_restriction</name>
+        <qualifiedname>scc::min_restriction</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>min</declname>
+        </param>
+        <briefdescription>
+<para>creates a minimum restriction including the minimum value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the type of the value the restricion applies </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>min</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the lower bound </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>_min_restriction&lt;T&gt; </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="116" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="116" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a0bfeb10cb76d710cc3f4f481db797f5f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>_min_restriction&lt; T &gt;</type>
+        <definition>_min_restriction&lt; T &gt; scc::gte_restriction</definition>
+        <argsstring>(T min)</argsstring>
+        <name>gte_restriction</name>
+        <qualifiedname>scc::gte_restriction</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>min</declname>
+        </param>
+        <briefdescription>
+<para>alias for <ref refid="namespacescc_1ae4fe172b09afbeb2fc67be93bf407388" kindref="member">min_restriction(T min)</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="118" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="118" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a34b61cc3b88fe38fed8d3e79bce21509" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>_min_excl_restriction&lt; T &gt;</type>
+        <definition>_min_excl_restriction&lt; T &gt; scc::min_excl_restriction</definition>
+        <argsstring>(T min)</argsstring>
+        <name>min_excl_restriction</name>
+        <qualifiedname>scc::min_excl_restriction</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>min</declname>
+        </param>
+        <briefdescription>
+<para>creates a minimum restriction excluding the minimum value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the type of the value the restricion applies </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>min</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the lower bound </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>_min_excl_restriction&lt;T&gt; </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="126" column="42" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="126" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1ab4238ef97e60b9a7750c268c74793443" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>_min_excl_restriction&lt; T &gt;</type>
+        <definition>_min_excl_restriction&lt; T &gt; scc::gt_restriction</definition>
+        <argsstring>(T min)</argsstring>
+        <name>gt_restriction</name>
+        <qualifiedname>scc::gt_restriction</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>min</declname>
+        </param>
+        <briefdescription>
+<para>alias for <ref refid="namespacescc_1a34b61cc3b88fe38fed8d3e79bce21509" kindref="member">min_excl_restriction(T min)</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="128" column="42" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="128" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1acbe6e85e005ea75031c2162ebdf3f707" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>_max_restriction&lt; T &gt;</type>
+        <definition>_max_restriction&lt; T &gt; scc::max_restriction</definition>
+        <argsstring>(T max)</argsstring>
+        <name>max_restriction</name>
+        <qualifiedname>scc::max_restriction</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+<para>creates a maximum restriction including the maximum value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the type of the value the restricion applies </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the upper bound </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>_max_restriction&lt;T&gt; </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="136" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="136" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1ac619ebd656148900682d802d7ef5fa88" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>_max_restriction&lt; T &gt;</type>
+        <definition>_max_restriction&lt; T &gt; scc::lte_restriction</definition>
+        <argsstring>(T max)</argsstring>
+        <name>lte_restriction</name>
+        <qualifiedname>scc::lte_restriction</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+<para>alias for <ref refid="namespacescc_1acbe6e85e005ea75031c2162ebdf3f707" kindref="member">max_restriction(T max)</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="138" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="138" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1aae3871d3d47fa790ff8199b38a55400e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>_max_excl_restriction&lt; T &gt;</type>
+        <definition>_max_excl_restriction&lt; T &gt; scc::max_excl_restriction</definition>
+        <argsstring>(T max)</argsstring>
+        <name>max_excl_restriction</name>
+        <qualifiedname>scc::max_excl_restriction</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+<para>creates a maximum restriction excluding the maximum value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the type of the value the restricion applies </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the upper bound </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>_max_excl_restriction&lt;T&gt; </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="146" column="42" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="146" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1aca9573d6e004e93682a1b87adaa80a24" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>_max_excl_restriction&lt; T &gt;</type>
+        <definition>_max_excl_restriction&lt; T &gt; scc::lt_excl_restriction</definition>
+        <argsstring>(T max)</argsstring>
+        <name>lt_excl_restriction</name>
+        <qualifiedname>scc::lt_excl_restriction</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+<para>alias for <ref refid="namespacescc_1aae3871d3d47fa790ff8199b38a55400e" kindref="member">max_excl_restriction(T max)</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="148" column="42" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="148" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a4ce9ef8bd8388134b8a4468f6f1bbe8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>_discrete_restriction&lt; T &gt;</type>
+        <definition>_discrete_restriction&lt; T &gt; scc::discrete_restriction</definition>
+        <argsstring>(std::initializer_list&lt; T &gt; values)</argsstring>
+        <name>discrete_restriction</name>
+        <qualifiedname>scc::discrete_restriction</qualifiedname>
+        <param>
+          <type>std::initializer_list&lt; T &gt;</type>
+          <declname>values</declname>
+        </param>
+        <briefdescription>
+<para>creates a restriction for a discrete values set </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the type of the value the restricion applies </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>values</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the set of allowed values </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>_discrete_restriction&lt;T&gt; </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="156" column="42" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="156" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a6a9ccf5781600af8bb997b45e9dedc75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>size_t</type>
+            <declname>SZ</declname>
+            <defname>SZ</defname>
+          </param>
+        </templateparamlist>
+        <type>_discrete_restriction&lt; T &gt;</type>
+        <definition>_discrete_restriction&lt; T &gt; scc::discrete_restriction</definition>
+        <argsstring>(std::array&lt; T, SZ &gt; values)</argsstring>
+        <name>discrete_restriction</name>
+        <qualifiedname>scc::discrete_restriction</qualifiedname>
+        <param>
+          <type>std::array&lt; T, SZ &gt;</type>
+          <declname>values</declname>
+        </param>
+        <briefdescription>
+<para>creates a restriction for a discrete values set </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the type of the value the restricion applies </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SZ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>size of the array </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>values</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the set of allowed values </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>_discrete_restriction&lt;T&gt; </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="167" column="44" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="167" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a46ddf9cad4e03e3fb0063e743e1acfca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>_discrete_restriction&lt; T &gt;</type>
+        <definition>_discrete_restriction&lt; T &gt; scc::discrete_restriction</definition>
+        <argsstring>(std::vector&lt; T &gt; values)</argsstring>
+        <name>discrete_restriction</name>
+        <qualifiedname>scc::discrete_restriction</qualifiedname>
+        <param>
+          <type>std::vector&lt; T &gt;</type>
+          <declname>values</declname>
+        </param>
+        <briefdescription>
+<para>creates a restriction for a discrete values set </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the type of the value the restricion applies </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>values</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the set of allowed values </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>_discrete_restriction&lt;T&gt; </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="177" column="42" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="177" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a268df8cbb9b18bfb572ee6c1751f5ba8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string scc::hier_name_as_regex</definition>
+        <argsstring>(std::string const &amp;parname)</argsstring>
+        <name>hier_name_as_regex</name>
+        <qualifiedname>scc::hier_name_as_regex</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>parname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" line="738" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" bodystart="738" bodyend="745"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a8517be25cc457ee2140b237cea86e277" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Value const &amp;</type>
+        <definition>Value const &amp; scc::get_value_from_hierarchy</definition>
+        <argsstring>(const std::string &amp;hier_name, Value const &amp;value)</argsstring>
+        <name>get_value_from_hierarchy</name>
+        <qualifiedname>scc::get_value_from_hierarchy</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>hier_name</declname>
+        </param>
+        <param>
+          <type>Value const &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer_nocci.cpp" line="254" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer_nocci.cpp" bodystart="254" bodyend="261"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1aa51e9f86440e0ef28d19589483f5afcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename OT</type>
+            <defval>T</defval>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool scc::changed</definition>
+        <argsstring>(trace::fst_trace *trace)</argsstring>
+        <name>changed</name>
+        <qualifiedname>scc::changed</qualifiedname>
+        <param>
+          <type><ref refid="structscc_1_1trace_1_1fst__trace" kindref="compound">trace::fst_trace</ref> *</type>
+          <declname>trace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" line="259" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" bodystart="259" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a05a96856c671cf9bf95c50d4b98c1fdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sc_core::sc_trace_file *</type>
+        <definition>sc_core::sc_trace_file * scc::create_fst_trace_file</definition>
+        <argsstring>(const char *name, std::function&lt; bool()&gt; enable=std::function&lt; bool()&gt;())</argsstring>
+        <name>create_fst_trace_file</name>
+        <qualifiedname>scc::create_fst_trace_file</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::function&lt; bool()&gt;</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+<para>create FST file which uses pull mechanism </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" line="494" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" bodystart="494" bodyend="494" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace.h" declline="46" declcolumn="24"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a6f2f10f7cabec89e2db77888c3962998" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::close_fst_trace_file</definition>
+        <argsstring>(sc_core::sc_trace_file *tf)</argsstring>
+        <name>close_fst_trace_file</name>
+        <qualifiedname>scc::close_fst_trace_file</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <briefdescription>
+<para>close the FST file </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" line="496" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" bodystart="496" bodyend="496" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace.h" declline="48" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a8a3e4cd281f4a5eb7f3b08e284b4370a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void scc::sc_trace</definition>
+        <argsstring>(sc_core::sc_trace_file *tf, const sc_core::sc_signal_in_if&lt; T &gt; &amp;object, const char *name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>scc::sc_trace</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const sc_core::sc_signal_in_if&lt; T &gt; &amp;</type>
+          <declname>object</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="135" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" bodystart="135" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1ae14f19c6b5963b3365a4e6150db7fcb2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void scc::sc_trace</definition>
+        <argsstring>(sc_core::sc_trace_file *tf, const sc_core::sc_signal_in_if&lt; T &gt; &amp;object, const std::string &amp;name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>scc::sc_trace</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const sc_core::sc_signal_in_if&lt; T &gt; &amp;</type>
+          <declname>object</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="152" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" bodystart="152" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a33028e24a9da7bd91f78aeb2a32865bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void scc::sc_trace</definition>
+        <argsstring>(sc_core::sc_trace_file *tf, const sc_core::sc_in&lt; T &gt; &amp;port, char const *name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>scc::sc_trace</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const sc_core::sc_in&lt; T &gt; &amp;</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>char const *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="156" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" bodystart="156" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a3e1dd04c722ec8ba87d2fe25335b5de5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void scc::sc_trace</definition>
+        <argsstring>(sc_core::sc_trace_file *tf, const sc_core::sc_in&lt; T &gt; &amp;port, const std::string &amp;name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>scc::sc_trace</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const sc_core::sc_in&lt; T &gt; &amp;</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="179" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" bodystart="179" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a30e925449b63a5c8983b657d85e9ef0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void scc::sc_trace</definition>
+        <argsstring>(sc_core::sc_trace_file *tf, const sc_core::sc_inout&lt; T &gt; &amp;port, char const *name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>scc::sc_trace</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const sc_core::sc_inout&lt; T &gt; &amp;</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>char const *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="183" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" bodystart="183" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a5c5a6e6104b18bcf01bac0d4332a1791" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void scc::sc_trace</definition>
+        <argsstring>(sc_core::sc_trace_file *tf, const sc_core::sc_inout&lt; T &gt; &amp;port, const std::string &amp;name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>scc::sc_trace</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const sc_core::sc_inout&lt; T &gt; &amp;</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="206" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" bodystart="206" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1aa5492479cd210ab4ee26dd01a0d50621" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::SC_HAS_PROCESS</definition>
+        <argsstring>(perf_estimator)</argsstring>
+        <name>SC_HAS_PROCESS</name>
+        <qualifiedname>scc::SC_HAS_PROCESS</qualifiedname>
+        <param>
+          <type><ref refid="classscc_1_1perf__estimator" kindref="compound">perf_estimator</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.cpp" line="38" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.cpp" declline="38" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1add84a48bd5840a2b33f95392f9f401dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::wait</definition>
+        <argsstring>(int value, std::string const &amp;unit)</argsstring>
+        <name>wait</name>
+        <qualifiedname>scc::wait</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>unit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.cpp" line="40" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.cpp" bodystart="40" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a6dd5e817579de3f3df649cbabfee8477" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7ca" kindref="member">log</ref></type>
+        <definition>log scc::as_log</definition>
+        <argsstring>(int logLevel)</argsstring>
+        <name>as_log</name>
+        <qualifiedname>scc::as_log</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>logLevel</declname>
+        </param>
+        <briefdescription>
+<para>safely convert an integer into a log level </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>logLevel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the logging level </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the log level </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="103" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="103" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a0cb213a8bb2b789e1f251e8f7bda7048" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::istream &amp;</type>
+        <definition>std::istream &amp; scc::operator&gt;&gt;</definition>
+        <argsstring>(std::istream &amp;is, log &amp;val)</argsstring>
+        <name>operator&gt;&gt;</name>
+        <qualifiedname>scc::operator&gt;&gt;</qualifiedname>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>is</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7ca" kindref="member">log</ref> &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>read a log level from input stream e.g. used by boost::lexical_cast </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>is</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>input stream holding the string representation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value holding the resulting value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the input stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="116" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="116" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1ae733a5f6069c8564774b2f27056112e0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; scc::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, log const &amp;val)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>scc::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7ca" kindref="member">log</ref> const &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>output the textual representation of the log level </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>os</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>logging level </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>reference to the stream for chaining </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="133" column="8" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="133" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a588d361902bd572f50471957b94598f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::init_logging</definition>
+        <argsstring>(log level=log::WARNING, unsigned type_field_width=24, bool print_time=false)</argsstring>
+        <name>init_logging</name>
+        <qualifiedname>scc::init_logging</qualifiedname>
+        <param>
+          <type><ref refid="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7ca" kindref="member">log</ref></type>
+          <declname>level</declname>
+          <defval>log::WARNING</defval>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>type_field_width</declname>
+          <defval>24</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>print_time</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>initializes the SystemC logging system with a particular logging level </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the log level </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type_field_width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the with of the type field in the output </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>print_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>whether to print the system time stamp </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="145" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="510" bodyend="516" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" declline="145" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a196ce77af0c568e5b2978f2c656670df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::reinit_logging</definition>
+        <argsstring>()</argsstring>
+        <name>reinit_logging</name>
+        <qualifiedname>scc::reinit_logging</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="151" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="496" bodyend="496" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" declline="151" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a1bfea925559dd376f400691196619db4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::reinit_logging</definition>
+        <argsstring>(log level)</argsstring>
+        <name>reinit_logging</name>
+        <qualifiedname>scc::reinit_logging</qualifiedname>
+        <param>
+          <type><ref refid="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7ca" kindref="member">log</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="158" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="498" bodyend="506" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" declline="158" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a1f2e06684f1c077649c1b054b2009bab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::init_logging</definition>
+        <argsstring>(const LogConfig &amp;log_config)</argsstring>
+        <name>init_logging</name>
+        <qualifiedname>scc::init_logging</qualifiedname>
+        <param>
+          <type>const <ref refid="structscc_1_1LogConfig" kindref="compound">LogConfig</ref> &amp;</type>
+          <declname>log_config</declname>
+        </param>
+        <briefdescription>
+<para>initializes the SystemC logging system with a particular configuration </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>log_config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the logging configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="284" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="518" bodyend="522" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" declline="284" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a85f8d3b4b4e681f51c9271f7bd2273c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::is_logging_initialized</definition>
+        <argsstring>()</argsstring>
+        <name>is_logging_initialized</name>
+        <qualifiedname>scc::is_logging_initialized</qualifiedname>
+        <briefdescription>
+<para>get the state of the SCC logging system </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the logging system has been initialized </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="291" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="508" bodyend="508" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" declline="291" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a5774b93bf1aae3b5e8a8bac3d49395c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::set_logging_level</definition>
+        <argsstring>(log level)</argsstring>
+        <name>set_logging_level</name>
+        <qualifiedname>scc::set_logging_level</qualifiedname>
+        <param>
+          <type><ref refid="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7ca" kindref="member">log</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>sets the SystemC logging level </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the logging level </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="298" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="524" bodyend="531" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" declline="298" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1adff0e5026215760c40861f3f5bf58ba5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7ca" kindref="member">log</ref></type>
+        <definition>auto scc::get_logging_level</definition>
+        <argsstring>()</argsstring>
+        <name>get_logging_level</name>
+        <qualifiedname>scc::get_logging_level</qualifiedname>
+        <briefdescription>
+<para>get the SystemC logging level </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the logging level </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="305" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="533" bodyend="533" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" declline="305" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1adb41507a91bbc0f2952fb3b620a66fc5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::set_cycle_base</definition>
+        <argsstring>(sc_core::sc_time period)</argsstring>
+        <name>set_cycle_base</name>
+        <qualifiedname>scc::set_cycle_base</qualifiedname>
+        <param>
+          <type>sc_core::sc_time</type>
+          <declname>period</declname>
+        </param>
+        <briefdescription>
+<para>sets the cycle base for cycle based logging </para>
+        </briefdescription>
+        <detaileddescription>
+<para>if this is set to a non-SC_ZERO_TIME value all logging timestamps are printed as cyles (multiple of this value)</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>period</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the cycle period </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="314" column="6" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" declline="314" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1ae03a700a0c86ff029dab975a4e36b5f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_verbosity</type>
+        <definition>sc_core::sc_verbosity scc::get_log_verbosity</definition>
+        <argsstring>()</argsstring>
+        <name>get_log_verbosity</name>
+        <qualifiedname>scc::get_log_verbosity</qualifiedname>
+        <briefdescription>
+<para>get the global verbosity level </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the global verbosity level </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="326" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="326" bodyend="328"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1ada4a51f41a8631204ca8a73ab60e96f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sc_core::sc_verbosity</type>
+        <definition>sc_core::sc_verbosity scc::get_log_verbosity</definition>
+        <argsstring>(char const *t)</argsstring>
+        <name>get_log_verbosity</name>
+        <qualifiedname>scc::get_log_verbosity</qualifiedname>
+        <param>
+          <type>char const *</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>get the scope-based verbosity level </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The function returns a scope specific verbosity level if defined (e.g. by using a CCI param named &quot;log_level&quot;). Otherwise the global verbosity level is being returned</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the SystemC hierarchy scope name </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the verbosity level </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="339" column="23" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" declline="339" declcolumn="23"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a84ae337bade4eec8e18ed51e3ea1c870" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_verbosity</type>
+        <definition>sc_core::sc_verbosity scc::get_log_verbosity</definition>
+        <argsstring>(std::string const &amp;t)</argsstring>
+        <name>get_log_verbosity</name>
+        <qualifiedname>scc::get_log_verbosity</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="350" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="350" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a0782f3b4ec33ad92092ebc23fcd9ef9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T scc::operator+</definition>
+        <argsstring>(sc_variable&lt; T &gt; const &amp;a, sc_variable&lt; T &gt; const &amp;b)</argsstring>
+        <name>operator+</name>
+        <qualifiedname>scc::operator+</qualifiedname>
+        <param>
+          <type><ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; const &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; const &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="296" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="296" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a23cce251f0e349a95c9c63a2598689df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T scc::operator-</definition>
+        <argsstring>(sc_variable&lt; T &gt; const &amp;a, sc_variable&lt; T &gt; const &amp;b)</argsstring>
+        <name>operator-</name>
+        <qualifiedname>scc::operator-</qualifiedname>
+        <param>
+          <type><ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; const &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; const &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="297" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="297" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a8c1a6f533b167e2d43d4fbd732be613a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T scc::operator*</definition>
+        <argsstring>(sc_variable&lt; T &gt; const &amp;a, sc_variable&lt; T &gt; const &amp;b)</argsstring>
+        <name>operator*</name>
+        <qualifiedname>scc::operator*</qualifiedname>
+        <param>
+          <type><ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; const &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; const &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="298" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="298" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1ae12979efd6cc3b68e16de673000420da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T scc::operator/</definition>
+        <argsstring>(sc_variable&lt; T &gt; const &amp;a, sc_variable&lt; T &gt; const &amp;b)</argsstring>
+        <name>operator/</name>
+        <qualifiedname>scc::operator/</qualifiedname>
+        <param>
+          <type><ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; const &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; const &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="299" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="299" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a1658d2256ec8dc35dcc41758e38528b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T scc::operator+</definition>
+        <argsstring>(T const &amp;a, sc_variable&lt; T &gt; const &amp;b)</argsstring>
+        <name>operator+</name>
+        <qualifiedname>scc::operator+</qualifiedname>
+        <param>
+          <type>T const &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; const &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="300" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="300" bodyend="300"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a143c54ded0b78576bfce9c0840bfff99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T scc::operator-</definition>
+        <argsstring>(T const &amp;a, sc_variable&lt; T &gt; const &amp;b)</argsstring>
+        <name>operator-</name>
+        <qualifiedname>scc::operator-</qualifiedname>
+        <param>
+          <type>T const &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; const &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="301" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="301" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1aa7cee3a261faad3ad785f77ca3b52303" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T scc::operator*</definition>
+        <argsstring>(T const &amp;a, sc_variable&lt; T &gt; const &amp;b)</argsstring>
+        <name>operator*</name>
+        <qualifiedname>scc::operator*</qualifiedname>
+        <param>
+          <type>T const &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; const &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="302" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="302" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1ac31f9e1b447dcbf21172fa2b306055c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T scc::operator/</definition>
+        <argsstring>(T const &amp;a, sc_variable&lt; T &gt; const &amp;b)</argsstring>
+        <name>operator/</name>
+        <qualifiedname>scc::operator/</qualifiedname>
+        <param>
+          <type>T const &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; const &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="303" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="303" bodyend="303"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a7b6dd6de7940338595fde40f6ed58899" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_trace_file *</type>
+        <definition>sc_core::sc_trace_file * scc::scc_create_vcd_trace_file</definition>
+        <argsstring>(const char *name, std::function&lt; bool()&gt; enable=std::function&lt; bool()&gt;())</argsstring>
+        <name>scc_create_vcd_trace_file</name>
+        <qualifiedname>scc::scc_create_vcd_trace_file</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::function&lt; bool()&gt;</type>
+          <declname>enable</declname>
+          <defval>std::function&lt; bool()&gt;()</defval>
+        </param>
+        <briefdescription>
+<para>keep backward compatibility </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_vcd_trace.h" line="29" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_vcd_trace.h" bodystart="29" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a990ab3bb3fdf831438275356d4bfdf29" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::scc_close_vcd_trace_file</definition>
+        <argsstring>(sc_core::sc_trace_file *tf)</argsstring>
+        <name>scc_close_vcd_trace_file</name>
+        <qualifiedname>scc::scc_close_vcd_trace_file</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_vcd_trace.h" line="32" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_vcd_trace.h" bodystart="32" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1ae600ee1aa352b2194f804648c812f8a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>::std::ostream &amp;</type>
+        <definition>::std::ostream &amp; scc::operator&lt;&lt;</definition>
+        <argsstring>(::std::ostream &amp;os, const sc_in_opt&lt; T &gt; &amp;a)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>scc::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>::std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classscc_1_1sc__in__opt" kindref="compound">sc_in_opt</ref>&lt; T &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="135" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="135" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a657a77148aeb4e42f5f8a5c13c54ee2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>::std::ostream &amp;</type>
+        <definition>::std::ostream &amp; scc::operator&lt;&lt;</definition>
+        <argsstring>(::std::ostream &amp;os, const sc_inout_opt&lt; T &gt; &amp;a)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>scc::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>::std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classscc_1_1sc__inout__opt" kindref="compound">sc_inout_opt</ref>&lt; T &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="434" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="434" bodyend="434"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1ad21ad98c50fd159709a9e22d09a569b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void scc::sc_trace</definition>
+        <argsstring>(sc_core::sc_trace_file *tf, const sc_in_opt&lt; T &gt; &amp;port, const std::string &amp;name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>scc::sc_trace</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classscc_1_1sc__in__opt" kindref="compound">sc_in_opt</ref>&lt; T &gt; &amp;</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="775" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="775" bodyend="784"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1ad260459b2f99adb00363b1e46043f548" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void scc::sc_trace</definition>
+        <argsstring>(sc_core::sc_trace_file *tf, const sc_inout_opt&lt; T &gt; &amp;port, const std::string &amp;name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>scc::sc_trace</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classscc_1_1sc__inout__opt" kindref="compound">sc_inout_opt</ref>&lt; T &gt; &amp;</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="786" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="786" bodyend="796"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a7bde74268e41e976762f8ddb50a4c493" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sc_core::sc_trace_file *</type>
+        <definition>sc_core::sc_trace_file * scc::create_vcd_pull_trace_file</definition>
+        <argsstring>(const char *name, std::function&lt; bool()&gt; enable=std::function&lt; bool()&gt;())</argsstring>
+        <name>create_vcd_pull_trace_file</name>
+        <qualifiedname>scc::create_vcd_pull_trace_file</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::function&lt; bool()&gt;</type>
+          <declname>enable</declname>
+          <defval>std::function&lt; bool()&gt;()</defval>
+        </param>
+        <briefdescription>
+<para>create VCD file which uses pull mechanism </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.cpp" line="257" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.cpp" bodystart="257" bodyend="259" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace.h" declline="31" declcolumn="24"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1aeadf6c32c9f835617525be32457940e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::close_vcd_pull_trace_file</definition>
+        <argsstring>(sc_core::sc_trace_file *tf)</argsstring>
+        <name>close_vcd_pull_trace_file</name>
+        <qualifiedname>scc::close_vcd_pull_trace_file</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <briefdescription>
+<para>close the VCD file </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.cpp" line="261" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.cpp" bodystart="261" bodyend="264" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace.h" declline="33" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a9cf439e0816a76b818f694798e2b3bfd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sc_core::sc_trace_file *</type>
+        <definition>sc_core::sc_trace_file * scc::create_vcd_push_trace_file</definition>
+        <argsstring>(const char *name, std::function&lt; bool()&gt; enable=std::function&lt; bool()&gt;())</argsstring>
+        <name>create_vcd_push_trace_file</name>
+        <qualifiedname>scc::create_vcd_push_trace_file</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::function&lt; bool()&gt;</type>
+          <declname>enable</declname>
+          <defval>std::function&lt; bool()&gt;()</defval>
+        </param>
+        <briefdescription>
+<para>create VCD file which uses push mechanism </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_push_trace.cpp" line="333" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_push_trace.cpp" bodystart="333" bodyend="335" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace.h" declline="36" declcolumn="24"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a7aee345fef9e0d922c783991aba69863" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::close_vcd_push_trace_file</definition>
+        <argsstring>(sc_core::sc_trace_file *tf)</argsstring>
+        <name>close_vcd_push_trace_file</name>
+        <qualifiedname>scc::close_vcd_push_trace_file</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <briefdescription>
+<para>close the VCD file </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_push_trace.cpp" line="337" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_push_trace.cpp" bodystart="337" bodyend="337" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace.h" declline="38" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a34d366f7c2add809b4d17cfc1ffead97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sc_core::sc_trace_file *</type>
+        <definition>sc_core::sc_trace_file * scc::create_vcd_mt_trace_file</definition>
+        <argsstring>(const char *name, std::function&lt; bool()&gt; enable=std::function&lt; bool()&gt;())</argsstring>
+        <name>create_vcd_mt_trace_file</name>
+        <qualifiedname>scc::create_vcd_mt_trace_file</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::function&lt; bool()&gt;</type>
+          <declname>enable</declname>
+          <defval>std::function&lt; bool()&gt;()</defval>
+        </param>
+        <briefdescription>
+<para>create compressed VCD file which uses push mechanism and multithreading </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.cpp" line="325" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.cpp" bodystart="325" bodyend="327" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace.h" declline="41" declcolumn="24"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a3443615dc03bc5e3113576c8eb55f1ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::close_vcd_mt_trace_file</definition>
+        <argsstring>(sc_core::sc_trace_file *tf)</argsstring>
+        <name>close_vcd_mt_trace_file</name>
+        <qualifiedname>scc::close_vcd_mt_trace_file</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <briefdescription>
+<para>close the VCD file </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.cpp" line="329" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.cpp" bodystart="329" bodyend="329" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace.h" declline="43" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a510bfa343d32967a6e00e32e28bc53c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool scc::try_trace_obj</definition>
+        <argsstring>(sc_trace_file *trace_file, const sc_object *object, trace_types types_to_trace)</argsstring>
+        <name>try_trace_obj</name>
+        <qualifiedname>scc::try_trace_obj</qualifiedname>
+        <param>
+          <type>sc_trace_file *</type>
+          <declname>trace_file</declname>
+        </param>
+        <param>
+          <type>const sc_object *</type>
+          <declname>object</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191" kindref="member">trace_types</ref></type>
+          <declname>types_to_trace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" line="33" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" bodystart="33" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1af454f568ec5f2dde168963294b1e67b8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191" kindref="member">trace_types</ref></type>
+        <definition>trace_types scc::operator|</definition>
+        <argsstring>(trace_types lhs, trace_types rhs)</argsstring>
+        <name>operator|</name>
+        <qualifiedname>scc::operator|</qualifiedname>
+        <param>
+          <type><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191" kindref="member">trace_types</ref></type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191" kindref="member">trace_types</ref></type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>operator overload to allow boolean or operations on <ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191" kindref="member">trace_types</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>left hand side </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>right hand side </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>result </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="52" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" bodystart="52" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1ab6b307c15631ee1e6e97fdbdaeec7fe6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191" kindref="member">trace_types</ref></type>
+        <definition>trace_types scc::operator&amp;</definition>
+        <argsstring>(trace_types lhs, trace_types rhs)</argsstring>
+        <name>operator&amp;</name>
+        <qualifiedname>scc::operator&amp;</qualifiedname>
+        <param>
+          <type><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191" kindref="member">trace_types</ref></type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191" kindref="member">trace_types</ref></type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>operator overload to allow boolean and operations on <ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191" kindref="member">trace_types</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>left hand side </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>right hand side </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>result </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="63" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" bodystart="63" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a177d2c8422ce01b5393f5ccad4c811fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>std::unique_ptr&lt; T &gt;</type>
+        <definition>std::unique_ptr&lt; T &gt; scc::make_unique</definition>
+        <argsstring>(Args &amp;&amp;... args)</argsstring>
+        <name>make_unique</name>
+        <qualifiedname>scc::make_unique</qualifiedname>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="44" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="44" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1aa066ca062a252e15f2994b1bbbff9d32" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * scc::legalize_name</definition>
+        <argsstring>(char *const name)</argsstring>
+        <name>legalize_name</name>
+        <qualifiedname>scc::legalize_name</qualifiedname>
+        <param>
+          <type>char *const</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="189" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="189" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1ae8e86510cfa8857da837f0d6cfa6cf1c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string scc::legalize_name</definition>
+        <argsstring>(std::string const &amp;name)</argsstring>
+        <name>legalize_name</name>
+        <qualifiedname>scc::legalize_name</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="200" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="200" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a37aa0e4e0cb80c3c3eeffc491e4a2f81" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::icompare</definition>
+        <argsstring>(std::string const &amp;a, std::string const &amp;b)</argsstring>
+        <name>icompare</name>
+        <qualifiedname>scc::icompare</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>case-insensitive string compare</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string a </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string b </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>result of std::equal </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="214" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="214" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a5df192e5fb1021968646f2212bbf6acf" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time scc::parse_from_string</definition>
+        <argsstring>(std::string value, std::string unit) noexcept</argsstring>
+        <name>parse_from_string</name>
+        <qualifiedname>scc::parse_from_string</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>unit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>parse a time value from given strings</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to parse </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>unit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the unit string </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the parsed sc_core::sc_time value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="229" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="229" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a69f13e127ccc21fca23b968019ab55c2" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time scc::parse_from_string</definition>
+        <argsstring>(std::string value) noexcept</argsstring>
+        <name>parse_from_string</name>
+        <qualifiedname>scc::parse_from_string</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>parse a time value from a given string</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to parse </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the parsed sc_core::sc_time value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="254" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="254" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a8fce866f948a3c8092930ccc52bc1923" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time scc::time_to_next_posedge</definition>
+        <argsstring>(sc_core::sc_clock const *clk)</argsstring>
+        <name>time_to_next_posedge</name>
+        <qualifiedname>scc::time_to_next_posedge</qualifiedname>
+        <param>
+          <type>sc_core::sc_clock const *</type>
+          <declname>clk</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="275" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="275" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1ac9624dae310d4223ec10f35123c5f6b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::ilog2</definition>
+        <argsstring>(uint32_t val)</argsstring>
+        <name>ilog2</name>
+        <qualifiedname>scc::ilog2</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="294" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="294" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a58d7c29bcc1ce0d2a492796c73e6dbe4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T scc::get_value</definition>
+        <argsstring>(sc_core::sc_attribute&lt; T &gt; &amp;a)</argsstring>
+        <name>get_value</name>
+        <qualifiedname>scc::get_value</qualifiedname>
+        <param>
+          <type>sc_core::sc_attribute&lt; T &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="313" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="313" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1aa431951747a78699ec5d2726245c0c54" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void scc::set_value</definition>
+        <argsstring>(sc_core::sc_attribute&lt; T &gt; &amp;a, T &amp;&amp;value)</argsstring>
+        <name>set_value</name>
+        <qualifiedname>scc::set_value</qualifiedname>
+        <param>
+          <type>sc_core::sc_attribute&lt; T &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>T &amp;&amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="315" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="315" bodyend="315"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a89ad70e7b5ef8f701ee781b761020923" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T scc::get_value</definition>
+        <argsstring>(cci::cci_param_typed&lt; T &gt; &amp;a)</argsstring>
+        <name>get_value</name>
+        <qualifiedname>scc::get_value</qualifiedname>
+        <param>
+          <type>cci::cci_param_typed&lt; T &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="317" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="317" bodyend="317"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a1c163b16a27d2ba889b2da1ed8506f40" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void scc::set_value</definition>
+        <argsstring>(cci::cci_param_typed&lt; T &gt; &amp;a, T &amp;&amp;value)</argsstring>
+        <name>set_value</name>
+        <qualifiedname>scc::set_value</qualifiedname>
+        <param>
+          <type>cci::cci_param_typed&lt; T &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>T &amp;&amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="319" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="319" bodyend="319"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1a3cce0923cbacb2dc16a50caa6ad746cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename OT</type>
+            <defval>T</defval>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool scc::changed</definition>
+        <argsstring>(trace::vcd_trace *trace)</argsstring>
+        <name>changed</name>
+        <qualifiedname>scc::changed</qualifiedname>
+        <param>
+          <type><ref refid="structscc_1_1trace_1_1vcd__trace" kindref="compound">trace::vcd_trace</ref> *</type>
+          <declname>trace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.cpp" line="65" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.cpp" bodystart="65" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1aaa7fe133e2db0cb87985f932b1596fa7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::record_changes</definition>
+        <argsstring>(FILE *vcd_out, std::vector&lt; trace::vcd_trace * &gt; const &amp;changed, std::vector&lt; trace::vcd_trace * &gt; const &amp;triggered)</argsstring>
+        <name>record_changes</name>
+        <qualifiedname>scc::record_changes</qualifiedname>
+        <param>
+          <type>FILE *</type>
+          <declname>vcd_out</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structscc_1_1trace_1_1vcd__trace" kindref="compound">trace::vcd_trace</ref> * &gt; const &amp;</type>
+          <declname>changed</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structscc_1_1trace_1_1vcd__trace" kindref="compound">trace::vcd_trace</ref> * &gt; const &amp;</type>
+          <declname>triggered</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.cpp" line="280" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.cpp" bodystart="280" bodyend="280"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>SCC TLM utilities. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>SCC SystemC utilities. </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/clock_if_mixins.h" line="25" column="1"/>
+  </compounddef>
+</doxygen>

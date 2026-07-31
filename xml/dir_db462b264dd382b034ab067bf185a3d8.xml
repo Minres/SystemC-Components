@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_db462b264dd382b034ab067bf185a3d8" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw</compoundname>
+    <innerdir refid="dir_9515dfed6db8f8b82639dcc500aa5d7f">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv</innerdir>
+    <innerfile refid="nw_2initiator__mixin_8h">initiator_mixin.h</innerfile>
+    <innerfile refid="nw_2target__mixin_8h">target_mixin.h</innerfile>
+    <innerfile refid="tlm__array_8h">tlm_array.h</innerfile>
+    <innerfile refid="tlm__network_8h">tlm_network.h</innerfile>
+    <innerfile refid="tlm__network__gp_8h">tlm_network_gp.h</innerfile>
+    <innerfile refid="tlm__network__sockets_8h">tlm_network_sockets.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/"/>
+  </compounddef>
+</doxygen>

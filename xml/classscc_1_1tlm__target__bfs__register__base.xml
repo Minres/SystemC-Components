@@ -1,0 +1,250 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1tlm__target__bfs__register__base" kind="class" language="C++" prot="public">
+    <compoundname>scc::tlm_target_bfs_register_base</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_object</basecompoundref>
+    <basecompoundref refid="classscc_1_1resetable" prot="public" virt="non-virtual">scc::resetable</basecompoundref>
+    <includes refid="tlm__target__bfs__register__base_8h" local="no">tlm_target_bfs_register_base.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename derived_t</type>
+      </param>
+      <param>
+        <type>bool</type>
+        <declname>use_URID</declname>
+        <defname>use_URID</defname>
+        <defval>false</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1tlm__target__bfs__register__base_1a231656e753ffa51524fac513793e2965" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tlm_target_bfs_register_base&lt; derived_t, use_URID &gt;::tlm_target_bfs_register_base</definition>
+        <argsstring>(sc_core::sc_module_name name)</argsstring>
+        <name>tlm_target_bfs_register_base</name>
+        <qualifiedname>scc::tlm_target_bfs_register_base::tlm_target_bfs_register_base</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="332" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="332" bodyend="333"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tlm__target__bfs__register__base_1ae07ab902f01c314397bca2fb32225853" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned</type>
+            <declname>buswidth</declname>
+            <defname>buswidth</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void scc::tlm_target_bfs_register_base&lt; derived_t, use_URID &gt;::registerResources</definition>
+        <argsstring>(scc::tlm_target&lt; buswidth &gt; &amp;target)</argsstring>
+        <name>registerResources</name>
+        <qualifiedname>scc::tlm_target_bfs_register_base::registerResources</qualifiedname>
+        <param>
+          <type><ref refid="classscc_1_1tlm__target" kindref="compound">scc::tlm_target</ref>&lt; buswidth &gt; &amp;</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="335" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="335" bodyend="340"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tlm__target__bfs__register__base_1a483fa886a7c58eef6ad6324f34ff6cc9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classscc_1_1bitfield__register" kindref="compound">bitfield_register</ref>&lt; uint32_t &gt; &amp;</type>
+        <definition>bitfield_register&lt; uint32_t &gt; &amp; scc::tlm_target_bfs_register_base&lt; derived_t, use_URID &gt;::getRegister</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>getRegister</name>
+        <qualifiedname>scc::tlm_target_bfs_register_base::getRegister</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Search for a register by name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If no matching register is found a FATALERROR is generated. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="347" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="347" bodyend="354"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tlm__target__bfs__register__base_1a8de33ec4c09c7562b15022757e1cf7ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classscc_1_1bitfield" kindref="compound">bitfield</ref>&lt; uint32_t &gt; &amp;</type>
+        <definition>bitfield&lt; uint32_t &gt; &amp; scc::tlm_target_bfs_register_base&lt; derived_t, use_URID &gt;::getBitfieldByName</definition>
+        <argsstring>(const std::string &amp;regname, const std::string &amp;name)</argsstring>
+        <name>getBitfieldByName</name>
+        <qualifiedname>scc::tlm_target_bfs_register_base::getBitfieldByName</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>regname</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Search for a bitfield by name and register name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If the register layout could change use <ref refid="classscc_1_1tlm__target__bfs__register__base_1a9a7f4f68d97b498e78c7567376a31b6a" kindref="member">getBitfield()</ref> instead.</para>
+<para>If no matching bitfield is found a FATALERROR is generated. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="363" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="363" bodyend="372"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tlm__target__bfs__register__base_1a64ae7a0d3cc179f11fdaefc59cbeefff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classscc_1_1bitfield" kindref="compound">bitfield</ref>&lt; uint32_t &gt; &amp;</type>
+        <definition>bitfield&lt; uint32_t &gt; &amp; scc::tlm_target_bfs_register_base&lt; derived_t, use_URID &gt;::getBitfieldById</definition>
+        <argsstring>(const std::string &amp;urid)</argsstring>
+        <name>getBitfieldById</name>
+        <qualifiedname>scc::tlm_target_bfs_register_base::getBitfieldById</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>urid</declname>
+        </param>
+        <briefdescription>
+<para>Search for a bitfield by urid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If no matching bitfield is found a FATALERROR is generated. <simplesect kind="see"><para><ref refid="classscc_1_1tlm__target__bfs__register__base_1a9a7f4f68d97b498e78c7567376a31b6a" kindref="member">getBitfield()</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="380" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="380" bodyend="387"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tlm__target__bfs__register__base_1a9a7f4f68d97b498e78c7567376a31b6a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classscc_1_1bitfield" kindref="compound">bitfield</ref>&lt; uint32_t &gt; &amp;</type>
+        <definition>bitfield&lt; uint32_t &gt; &amp; scc::tlm_target_bfs_register_base&lt; derived_t, use_URID &gt;::getBitfield</definition>
+        <argsstring>(const std::string &amp;regname, const std::string &amp;name, const std::string &amp;urid)</argsstring>
+        <name>getBitfield</name>
+        <qualifiedname>scc::tlm_target_bfs_register_base::getBitfield</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>regname</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>urid</declname>
+        </param>
+        <briefdescription>
+<para>Preferred way to get access to a bitfield. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If use_URID is true searches a bitfield by the specified urid. If use_URID is false searches a bitfield by name and regname. Also generates a warning if the found bitfield has an urid different from the specified urid.</para>
+<para>If no matching bitfield is found a FATALERROR is generated. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="399" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="399" bodyend="410"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classscc_1_1tlm__target__bfs__register__base_1ae6017a1873186c4a9590fd1548961b9c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>derived_t &amp;</type>
+        <definition>derived_t &amp; scc::tlm_target_bfs_register_base&lt; derived_t, use_URID &gt;::asDerived</definition>
+        <argsstring>()</argsstring>
+        <name>asDerived</name>
+        <qualifiedname>scc::tlm_target_bfs_register_base::asDerived</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="413" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="413" bodyend="413"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Base class the register layout classes for peripheral_base_minres must derive from. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>derived_t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the concrete register class. Used for CRTP. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>use_URID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set this to true if the bitfield/register layout is not the same as the original. If true, then register lookups work by urid and not by regname and bitfield name. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="3">
+        <label>scc::resetable</label>
+        <link refid="classscc_1_1resetable"/>
+      </node>
+      <node id="1">
+        <label>scc::tlm_target_bfs_register_base&lt; derived_t, use_URID &gt;</label>
+        <link refid="classscc_1_1tlm__target__bfs__register__base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="3">
+        <label>scc::resetable</label>
+        <link refid="classscc_1_1resetable"/>
+      </node>
+      <node id="1">
+        <label>scc::tlm_target_bfs_register_base&lt; derived_t, use_URID &gt;</label>
+        <link refid="classscc_1_1tlm__target__bfs__register__base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="330" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="330" bodyend="414"/>
+    <listofallmembers>
+      <member refid="classscc_1_1resetable_1ad2339e261c4368a444cc76f8cb70f69a" prot="protected" virt="non-virtual"><scope>scc::tlm_target_bfs_register_base</scope><name>_in_reset</name></member>
+      <member refid="classscc_1_1tlm__target__bfs__register__base_1ae6017a1873186c4a9590fd1548961b9c" prot="private" virt="non-virtual"><scope>scc::tlm_target_bfs_register_base</scope><name>asDerived</name></member>
+      <member refid="classscc_1_1tlm__target__bfs__register__base_1a9a7f4f68d97b498e78c7567376a31b6a" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs_register_base</scope><name>getBitfield</name></member>
+      <member refid="classscc_1_1tlm__target__bfs__register__base_1a64ae7a0d3cc179f11fdaefc59cbeefff" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs_register_base</scope><name>getBitfieldById</name></member>
+      <member refid="classscc_1_1tlm__target__bfs__register__base_1a8de33ec4c09c7562b15022757e1cf7ed" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs_register_base</scope><name>getBitfieldByName</name></member>
+      <member refid="classscc_1_1tlm__target__bfs__register__base_1a483fa886a7c58eef6ad6324f34ff6cc9" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs_register_base</scope><name>getRegister</name></member>
+      <member refid="classscc_1_1resetable_1a9b7574e6b9bdad38d37fe65df13b67fc" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs_register_base</scope><name>in_reset</name></member>
+      <member refid="classscc_1_1resetable_1a828a6d1d71fedb05d4613df1d1d27f73" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs_register_base</scope><name>register_resource</name></member>
+      <member refid="classscc_1_1tlm__target__bfs__register__base_1ae07ab902f01c314397bca2fb32225853" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs_register_base</scope><name>registerResources</name></member>
+      <member refid="classscc_1_1resetable_1af63d28b09f5a7a8a13026970cedc9fee" prot="public" virt="virtual"><scope>scc::tlm_target_bfs_register_base</scope><name>reset_start</name></member>
+      <member refid="classscc_1_1resetable_1a08e6d77fb61068a3ae5df6b1634c718c" prot="public" virt="virtual"><scope>scc::tlm_target_bfs_register_base</scope><name>reset_stop</name></member>
+      <member refid="classscc_1_1resetable_1a8658736cab500724a41a5ad90b280903" prot="protected" virt="non-virtual"><scope>scc::tlm_target_bfs_register_base</scope><name>resources</name></member>
+      <member refid="classscc_1_1tlm__target__bfs__register__base_1a231656e753ffa51524fac513793e2965" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs_register_base</scope><name>tlm_target_bfs_register_base</name></member>
+      <member refid="classscc_1_1resetable_1a6ec2a1bc4f69c3c3f9e1692b282b46b9" prot="public" virt="virtual"><scope>scc::tlm_target_bfs_register_base</scope><name>~resetable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

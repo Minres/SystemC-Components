@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceaxi_1_1pin" kind="namespace" language="C++">
+    <compoundname>axi::pin</compoundname>
+    <innerclass refid="structaxi_1_1pin_1_1ace__initiator" prot="public">axi::pin::ace_initiator</innerclass>
+    <innerclass refid="structaxi_1_1pin_1_1ace__lite__initiator" prot="public">axi::pin::ace_lite_initiator</innerclass>
+    <innerclass refid="structaxi_1_1pin_1_1ace__lite__target" prot="public">axi::pin::ace_lite_target</innerclass>
+    <innerclass refid="structaxi_1_1pin_1_1ace__target" prot="public">axi::pin::ace_target</innerclass>
+    <innerclass refid="structaxi_1_1pin_1_1axi4__initiator" prot="public">axi::pin::axi4_initiator</innerclass>
+    <innerclass refid="structaxi_1_1pin_1_1axi4__target" prot="public">axi::pin::axi4_target</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceaxi_1_1pin_1a87c0643d5f7542aa60e54e1a829b835b" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename CFG</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structaxi_1_1pin_1_1axi4__initiator" kindref="compound">axi4_initiator</ref>&lt; CFG &gt;</type>
+        <definition>using axi::pin::axi5_initiator =  axi4_initiator&lt;CFG&gt;</definition>
+        <argsstring></argsstring>
+        <name>axi5_initiator</name>
+        <qualifiedname>axi::pin::axi5_initiator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" line="162" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxi_1_1pin_1a87f3f9b6d02c020393b9b124254d00bb" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename CFG</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structaxi_1_1pin_1_1axi4__target" kindref="compound">axi4_target</ref>&lt; CFG &gt;</type>
+        <definition>using axi::pin::axi5_target =  axi4_target&lt;CFG&gt;</definition>
+        <argsstring></argsstring>
+        <name>axi5_target</name>
+        <qualifiedname>axi::pin::axi5_target</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_target.h" line="121" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_target.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>pin level adapters </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_initiator.h" line="33" column="1"/>
+  </compounddef>
+</doxygen>

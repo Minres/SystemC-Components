@@ -1,0 +1,721 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classobi_1_1pin_1_1target" kind="class" language="C++" prot="public">
+    <compoundname>obi::pin::target</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <innerclass refid="structobi_1_1pin_1_1target_1_1tx__state" prot="private">obi::pin::target::tx_state</innerclass>
+    <templateparamlist>
+      <param>
+        <type>unsigned int</type>
+        <declname>DATA_WIDTH</declname>
+        <defname>DATA_WIDTH</defname>
+        <defval>32</defval>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>ADDR_WIDTH</declname>
+        <defname>ADDR_WIDTH</defname>
+        <defval>32</defval>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>ID_WIDTH</declname>
+        <defname>ID_WIDTH</defname>
+        <defval>0</defval>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>USER_WIDTH</declname>
+        <defname>USER_WIDTH</defname>
+        <defval>0</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classobi_1_1pin_1_1target_1aeb5d12995e450a2a6a031e57f7a06a67" prot="public" static="no">
+        <type>tlm::tlm_base_protocol_types::tlm_payload_type</type>
+        <definition>using obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::payload_type =  tlm::tlm_base_protocol_types::tlm_payload_type</definition>
+        <argsstring></argsstring>
+        <name>payload_type</name>
+        <qualifiedname>obi::pin::target::payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="43" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classobi_1_1pin_1_1target_1a4d973831b73163c2739e9a4094ec0737" prot="public" static="no">
+        <type>tlm::tlm_base_protocol_types::tlm_phase_type</type>
+        <definition>using obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::phase_type =  tlm::tlm_base_protocol_types::tlm_phase_type</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>obi::pin::target::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="44" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1ad38fba9c1bf0813db74499443550dbfd" prot="public" static="no" mutable="no">
+        <type><ref refid="classtlm_1_1scc_1_1initiator__mixin" kindref="compound">tlm::scc::initiator_mixin</ref>&lt; <ref refid="classtlm_1_1scc_1_1scv_1_1tlm__rec__initiator__socket" kindref="compound">tlm::scc::scv::tlm_rec_initiator_socket</ref>&lt; 0 &gt; &gt;</type>
+        <definition>tlm::scc::initiator_mixin&lt;tlm::scc::scv::tlm_rec_initiator_socket&lt;0&gt; &gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::isckt</definition>
+        <argsstring></argsstring>
+        <name>isckt</name>
+        <qualifiedname>obi::pin::target::isckt</qualifiedname>
+        <initializer>{&quot;isckt&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="50" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1a44edf9617aef1cc2e99e26880c77ed26" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::clk_i</definition>
+        <argsstring></argsstring>
+        <name>clk_i</name>
+        <qualifiedname>obi::pin::target::clk_i</qualifiedname>
+        <initializer>{&quot;clk_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="52" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1a25e09a0de7ddb1b6d466db8f373baf41" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::resetn_i</definition>
+        <argsstring></argsstring>
+        <name>resetn_i</name>
+        <qualifiedname>obi::pin::target::resetn_i</qualifiedname>
+        <initializer>{&quot;resetn_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="53" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1a414c35b52475dd652ecfafea9584bdb7" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::req_i</definition>
+        <argsstring></argsstring>
+        <name>req_i</name>
+        <qualifiedname>obi::pin::target::req_i</qualifiedname>
+        <initializer>{&quot;req_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="55" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1aed37aa8954bf6746ed02dec1bde02a5c" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; bool &gt;</type>
+        <definition>sc_core::sc_out&lt;bool&gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::gnt_o</definition>
+        <argsstring></argsstring>
+        <name>gnt_o</name>
+        <qualifiedname>obi::pin::target::gnt_o</qualifiedname>
+        <initializer>{&quot;gnt_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="56" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1aed35ca977b6424908af8db6a6a9042a3" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; sc_dt::sc_uint&lt; ADDR_WIDTH &gt; &gt;</type>
+        <definition>sc_core::sc_in&lt;sc_dt::sc_uint&lt;ADDR_WIDTH&gt; &gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::addr_i</definition>
+        <argsstring></argsstring>
+        <name>addr_i</name>
+        <qualifiedname>obi::pin::target::addr_i</qualifiedname>
+        <initializer>{&quot;addr_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="57" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1a74799386e2bbdbae5975b33c38702949" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::we_i</definition>
+        <argsstring></argsstring>
+        <name>we_i</name>
+        <qualifiedname>obi::pin::target::we_i</qualifiedname>
+        <initializer>{&quot;we_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="58" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1a71261da90e185d311b522ddf317fd18c" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; sc_dt::sc_uint&lt; DATA_WIDTH/8 &gt; &gt;</type>
+        <definition>sc_core::sc_in&lt;sc_dt::sc_uint&lt;DATA_WIDTH / 8&gt; &gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::be_i</definition>
+        <argsstring></argsstring>
+        <name>be_i</name>
+        <qualifiedname>obi::pin::target::be_i</qualifiedname>
+        <initializer>{&quot;be_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="59" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1a504daff9b7b3c2ede59c909ab1c3002f" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; sc_dt::sc_uint&lt; DATA_WIDTH &gt; &gt;</type>
+        <definition>sc_core::sc_in&lt;sc_dt::sc_uint&lt;DATA_WIDTH&gt; &gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::wdata_i</definition>
+        <argsstring></argsstring>
+        <name>wdata_i</name>
+        <qualifiedname>obi::pin::target::wdata_i</qualifiedname>
+        <initializer>{&quot;wdata_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="60" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1af7a243e6222038f646901b9eb1dede85" prot="public" static="no" mutable="no">
+        <type><ref refid="classscc_1_1sc__in__opt" kindref="compound">scc::sc_in_opt</ref>&lt; sc_dt::sc_uint&lt; USER_WIDTH &gt; &gt;</type>
+        <definition>scc::sc_in_opt&lt;sc_dt::sc_uint&lt;USER_WIDTH&gt; &gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::auser_i</definition>
+        <argsstring></argsstring>
+        <name>auser_i</name>
+        <qualifiedname>obi::pin::target::auser_i</qualifiedname>
+        <initializer>{&quot;auser_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="61" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1a30ca4e204a8b3ffaf462502b34ef7c3a" prot="public" static="no" mutable="no">
+        <type><ref refid="classscc_1_1sc__in__opt" kindref="compound">scc::sc_in_opt</ref>&lt; sc_dt::sc_uint&lt; USER_WIDTH &gt; &gt;</type>
+        <definition>scc::sc_in_opt&lt;sc_dt::sc_uint&lt;USER_WIDTH&gt; &gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::wuser_i</definition>
+        <argsstring></argsstring>
+        <name>wuser_i</name>
+        <qualifiedname>obi::pin::target::wuser_i</qualifiedname>
+        <initializer>{&quot;wuser_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="62" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1a4a279c35b813b15c7af7351078f5e5c4" prot="public" static="no" mutable="no">
+        <type><ref refid="classscc_1_1sc__in__opt" kindref="compound">scc::sc_in_opt</ref>&lt; sc_dt::sc_uint&lt; ID_WIDTH &gt; &gt;</type>
+        <definition>scc::sc_in_opt&lt;sc_dt::sc_uint&lt;ID_WIDTH&gt; &gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::aid_i</definition>
+        <argsstring></argsstring>
+        <name>aid_i</name>
+        <qualifiedname>obi::pin::target::aid_i</qualifiedname>
+        <initializer>{&quot;aid_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="63" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1ad37cd9d0d5038bd2905b9db9fa3714fe" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; bool &gt;</type>
+        <definition>sc_core::sc_out&lt;bool&gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::rvalid_o</definition>
+        <argsstring></argsstring>
+        <name>rvalid_o</name>
+        <qualifiedname>obi::pin::target::rvalid_o</qualifiedname>
+        <initializer>{&quot;rvalid_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="65" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1a1cf51c69d23a381d88916669495f747f" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::rready_i</definition>
+        <argsstring></argsstring>
+        <name>rready_i</name>
+        <qualifiedname>obi::pin::target::rready_i</qualifiedname>
+        <initializer>{&quot;rready_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="66" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="66" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1a3ca7ca37fa00d7d1ae45e62f10fe2881" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; sc_dt::sc_uint&lt; DATA_WIDTH &gt; &gt;</type>
+        <definition>sc_core::sc_out&lt;sc_dt::sc_uint&lt;DATA_WIDTH&gt; &gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::rdata_o</definition>
+        <argsstring></argsstring>
+        <name>rdata_o</name>
+        <qualifiedname>obi::pin::target::rdata_o</qualifiedname>
+        <initializer>{&quot;rdata_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="67" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="67" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1ad5dc6f80cf16e500d7c18b803e3ff6c2" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; bool &gt;</type>
+        <definition>sc_core::sc_out&lt;bool&gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::err_o</definition>
+        <argsstring></argsstring>
+        <name>err_o</name>
+        <qualifiedname>obi::pin::target::err_o</qualifiedname>
+        <initializer>{&quot;err_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="68" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1adb2ea34232e19f9851bf8590542edc4e" prot="public" static="no" mutable="no">
+        <type><ref refid="classscc_1_1sc__out__opt" kindref="compound">scc::sc_out_opt</ref>&lt; sc_dt::sc_uint&lt; USER_WIDTH &gt; &gt;</type>
+        <definition>scc::sc_out_opt&lt;sc_dt::sc_uint&lt;USER_WIDTH&gt; &gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::ruser_o</definition>
+        <argsstring></argsstring>
+        <name>ruser_o</name>
+        <qualifiedname>obi::pin::target::ruser_o</qualifiedname>
+        <initializer>{&quot;ruser_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="69" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="69" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1aa36aea073df2793f5599766a8914f195" prot="public" static="no" mutable="no">
+        <type><ref refid="classscc_1_1sc__out__opt" kindref="compound">scc::sc_out_opt</ref>&lt; sc_dt::sc_uint&lt; ID_WIDTH &gt; &gt;</type>
+        <definition>scc::sc_out_opt&lt;sc_dt::sc_uint&lt;ID_WIDTH&gt; &gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::r_id_o</definition>
+        <argsstring></argsstring>
+        <name>r_id_o</name>
+        <qualifiedname>obi::pin::target::r_id_o</qualifiedname>
+        <initializer>{&quot;r_id_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="70" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1aa8539d455d1695d85fbea0205252b7dd" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; sc_core::sc_time &gt;</type>
+        <definition>cci::cci_param&lt;sc_core::sc_time&gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::sample_delay</definition>
+        <argsstring></argsstring>
+        <name>sample_delay</name>
+        <qualifiedname>obi::pin::target::sample_delay</qualifiedname>
+        <initializer>{&quot;sample_delay&quot;, 0_ns}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="74" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1a744fe75f34e765e484f4fae5287bc83e" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; int &gt;</type>
+        <definition>cci::cci_param&lt;int&gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::req2gnt_delay</definition>
+        <argsstring></argsstring>
+        <name>req2gnt_delay</name>
+        <qualifiedname>obi::pin::target::req2gnt_delay</qualifiedname>
+        <initializer>{&quot;req2gnt_delay&quot;, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="75" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1ad6652282b9c2251cdd3b77534e7bb6ad" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; int &gt;</type>
+        <definition>cci::cci_param&lt;int&gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::addr2data_delay</definition>
+        <argsstring></argsstring>
+        <name>addr2data_delay</name>
+        <qualifiedname>obi::pin::target::addr2data_delay</qualifiedname>
+        <initializer>{&quot;addr2data_delay&quot;, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="76" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="76" bodyend="76"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1ace1722755c3c6cb85ea243d569c58311" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::clk_delayed</definition>
+        <argsstring></argsstring>
+        <name>clk_delayed</name>
+        <qualifiedname>obi::pin::target::clk_delayed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="90" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1a5d35e21f86126048b09b2987d2dedee8" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::clk_self</definition>
+        <argsstring></argsstring>
+        <name>clk_self</name>
+        <qualifiedname>obi::pin::target::clk_self</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="90" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1a6c77be05fc62796e9d574313618dc47e" prot="private" static="no" mutable="no">
+        <type><ref refid="structscc_1_1peq" kindref="compound">scc::peq</ref>&lt; tlm::scc::tlm_gp_shared_ptr &gt;</type>
+        <definition>scc::peq&lt;tlm::scc::tlm_gp_shared_ptr&gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::achannel_rsp</definition>
+        <argsstring></argsstring>
+        <name>achannel_rsp</name>
+        <qualifiedname>obi::pin::target::achannel_rsp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="91" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1a3d09195a6d979d44cfc6ff385669773e" prot="private" static="no" mutable="no">
+        <type>std::deque&lt; std::tuple&lt; tlm::scc::tlm_gp_shared_ptr, unsigned &gt; &gt;</type>
+        <definition>std::deque&lt;std::tuple&lt;tlm::scc::tlm_gp_shared_ptr, unsigned&gt; &gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::rchannel_pending_rsp</definition>
+        <argsstring></argsstring>
+        <name>rchannel_pending_rsp</name>
+        <qualifiedname>obi::pin::target::rchannel_pending_rsp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="92" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1a663bd6d2c6f8dfaff349918fa0f2d7b4" prot="private" static="no" mutable="no">
+        <type><ref refid="structscc_1_1peq" kindref="compound">scc::peq</ref>&lt; tlm::scc::tlm_gp_shared_ptr &gt;</type>
+        <definition>scc::peq&lt;tlm::scc::tlm_gp_shared_ptr&gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::rchannel_rsp</definition>
+        <argsstring></argsstring>
+        <name>rchannel_rsp</name>
+        <qualifiedname>obi::pin::target::rchannel_rsp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="93" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classobi_1_1pin_1_1target_1af5bbff5cf8d61f4ce2b0c99fa827d18f" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; payload_type *, tx_state &gt;</type>
+        <definition>std::unordered_map&lt;payload_type*, tx_state&gt; obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::states</definition>
+        <argsstring></argsstring>
+        <name>states</name>
+        <qualifiedname>obi::pin::target::states</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="99" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classobi_1_1pin_1_1target_1add42f5984bc38667d5d13890f9390fc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::SC_HAS_PROCESS</definition>
+        <argsstring>(target)</argsstring>
+        <name>SC_HAS_PROCESS</name>
+        <qualifiedname>obi::pin::target::SC_HAS_PROCESS</qualifiedname>
+        <param>
+          <type>target</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="46" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classobi_1_1pin_1_1target_1a423cc13b0d533812437af715f543fc9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::target</definition>
+        <argsstring>(sc_core::sc_module_name nm)</argsstring>
+        <name>target</name>
+        <qualifiedname>obi::pin::target::target</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="48" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classobi_1_1pin_1_1target_1abab47fa39f36134d57d035545be44c7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::nb_transport_bw</definition>
+        <argsstring>(payload_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t)</argsstring>
+        <name>nb_transport_bw</name>
+        <qualifiedname>obi::pin::target::nb_transport_bw</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="72" column="24"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classobi_1_1pin_1_1target_1ac74af4821ced3d0b2a69fa95bfc15317" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::clk_cb</definition>
+        <argsstring>()</argsstring>
+        <name>clk_cb</name>
+        <qualifiedname>obi::pin::target::clk_cb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="79" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classobi_1_1pin_1_1target_1abeb33268117cccb5f60cd95b768a0c3e" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::achannel_req_t</definition>
+        <argsstring>()</argsstring>
+        <name>achannel_req_t</name>
+        <qualifiedname>obi::pin::target::achannel_req_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="80" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="172" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="classobi_1_1pin_1_1target_1abacf2fda2f7d044abdde8785aeba952b" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::rchannel_rsp_t</definition>
+        <argsstring>()</argsstring>
+        <name>rchannel_rsp_t</name>
+        <qualifiedname>obi::pin::target::rchannel_rsp_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="81" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="244" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="function" id="classobi_1_1pin_1_1target_1ae6d1203bb18eb01d5825f9374688c0da" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;::clk_delay</definition>
+        <argsstring>()</argsstring>
+        <name>clk_delay</name>
+        <qualifiedname>obi::pin::target::clk_delay</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="83" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="83" bodyend="89"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;</label>
+        <link refid="classobi_1_1pin_1_1target"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;</label>
+        <link refid="classobi_1_1pin_1_1target"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>isckt</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>aid_i</edgelabel>
+          <edgelabel>auser_i</edgelabel>
+          <edgelabel>wuser_i</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>r_id_o</edgelabel>
+          <edgelabel>ruser_o</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="10">
+        <label>sc_core::sc_port&lt; sc_core::sc_signal_in_if&lt; sc_dt::sc_uint&lt; 0 &gt; &gt;, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</label>
+      </node>
+      <node id="13">
+        <label>sc_core::sc_port&lt; sc_core::sc_signal_inout_if&lt; sc_dt::sc_uint&lt; 0 &gt; &gt;, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</label>
+      </node>
+      <node id="9">
+        <label>scc::sc_in_opt&lt; sc_dt::sc_uint&lt; 0 &gt; &gt;</label>
+        <link refid="classscc_1_1sc__in__opt"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>scc::sc_inout_opt&lt; sc_dt::sc_uint&lt; 0 &gt; &gt;</label>
+        <link refid="classscc_1_1sc__inout__opt"/>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>scc::sc_out_opt&lt; sc_dt::sc_uint&lt; 0 &gt; &gt;</label>
+        <link refid="classscc_1_1sc__out__opt"/>
+        <childnode refid="12" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::scc::initiator_mixin&lt; tlm::scc::scv::tlm_rec_initiator_socket&lt; 0 &gt; &gt;</label>
+        <link refid="classtlm_1_1scc_1_1initiator__mixin"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tlm::scc::scv::tlm_rec_initiator_socket&lt; 0 &gt;</label>
+        <link refid="classtlm_1_1scc_1_1scv_1_1tlm__rec__initiator__socket"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>recorder</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>tlm::scc::scv::tlm_recorder&lt; tlm::tlm_base_protocol_types &gt;</label>
+        <link refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+      <node id="7">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+      <node id="5">
+        <label>tlm::tlm_initiator_socket&lt; BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ONE_OR_MORE_BOUND &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="41" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" bodystart="41" bodyend="100"/>
+    <listofallmembers>
+      <member refid="classobi_1_1pin_1_1target_1abeb33268117cccb5f60cd95b768a0c3e" prot="private" virt="non-virtual"><scope>obi::pin::target</scope><name>achannel_req_t</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a6c77be05fc62796e9d574313618dc47e" prot="private" virt="non-virtual"><scope>obi::pin::target</scope><name>achannel_rsp</name></member>
+      <member refid="classobi_1_1pin_1_1target_1ad6652282b9c2251cdd3b77534e7bb6ad" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>addr2data_delay</name></member>
+      <member refid="classobi_1_1pin_1_1target_1aed35ca977b6424908af8db6a6a9042a3" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>addr_i</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a4a279c35b813b15c7af7351078f5e5c4" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>aid_i</name></member>
+      <member refid="classobi_1_1pin_1_1target_1af7a243e6222038f646901b9eb1dede85" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>auser_i</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a71261da90e185d311b522ddf317fd18c" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>be_i</name></member>
+      <member refid="classobi_1_1pin_1_1target_1ac74af4821ced3d0b2a69fa95bfc15317" prot="private" virt="non-virtual"><scope>obi::pin::target</scope><name>clk_cb</name></member>
+      <member refid="classobi_1_1pin_1_1target_1ae6d1203bb18eb01d5825f9374688c0da" prot="private" virt="non-virtual"><scope>obi::pin::target</scope><name>clk_delay</name></member>
+      <member refid="classobi_1_1pin_1_1target_1ace1722755c3c6cb85ea243d569c58311" prot="private" virt="non-virtual"><scope>obi::pin::target</scope><name>clk_delayed</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a44edf9617aef1cc2e99e26880c77ed26" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>clk_i</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a5d35e21f86126048b09b2987d2dedee8" prot="private" virt="non-virtual"><scope>obi::pin::target</scope><name>clk_self</name></member>
+      <member refid="classobi_1_1pin_1_1target_1ad5dc6f80cf16e500d7c18b803e3ff6c2" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>err_o</name></member>
+      <member refid="classobi_1_1pin_1_1target_1aed37aa8954bf6746ed02dec1bde02a5c" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>gnt_o</name></member>
+      <member refid="classobi_1_1pin_1_1target_1ad38fba9c1bf0813db74499443550dbfd" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>isckt</name></member>
+      <member refid="classobi_1_1pin_1_1target_1abab47fa39f36134d57d035545be44c7f" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>nb_transport_bw</name></member>
+      <member refid="classobi_1_1pin_1_1target_1aeb5d12995e450a2a6a031e57f7a06a67" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>payload_type</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a4d973831b73163c2739e9a4094ec0737" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>phase_type</name></member>
+      <member refid="classobi_1_1pin_1_1target_1aa36aea073df2793f5599766a8914f195" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>r_id_o</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a3d09195a6d979d44cfc6ff385669773e" prot="private" virt="non-virtual"><scope>obi::pin::target</scope><name>rchannel_pending_rsp</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a663bd6d2c6f8dfaff349918fa0f2d7b4" prot="private" virt="non-virtual"><scope>obi::pin::target</scope><name>rchannel_rsp</name></member>
+      <member refid="classobi_1_1pin_1_1target_1abacf2fda2f7d044abdde8785aeba952b" prot="private" virt="non-virtual"><scope>obi::pin::target</scope><name>rchannel_rsp_t</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a3ca7ca37fa00d7d1ae45e62f10fe2881" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>rdata_o</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a744fe75f34e765e484f4fae5287bc83e" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>req2gnt_delay</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a414c35b52475dd652ecfafea9584bdb7" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>req_i</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a25e09a0de7ddb1b6d466db8f373baf41" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>resetn_i</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a1cf51c69d23a381d88916669495f747f" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>rready_i</name></member>
+      <member refid="classobi_1_1pin_1_1target_1adb2ea34232e19f9851bf8590542edc4e" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>ruser_o</name></member>
+      <member refid="classobi_1_1pin_1_1target_1ad37cd9d0d5038bd2905b9db9fa3714fe" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>rvalid_o</name></member>
+      <member refid="classobi_1_1pin_1_1target_1aa8539d455d1695d85fbea0205252b7dd" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>sample_delay</name></member>
+      <member refid="classobi_1_1pin_1_1target_1add42f5984bc38667d5d13890f9390fc0" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="classobi_1_1pin_1_1target_1af5bbff5cf8d61f4ce2b0c99fa827d18f" prot="private" virt="non-virtual"><scope>obi::pin::target</scope><name>states</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a423cc13b0d533812437af715f543fc9b" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>target</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a504daff9b7b3c2ede59c909ab1c3002f" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>wdata_i</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a74799386e2bbdbae5975b33c38702949" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>we_i</name></member>
+      <member refid="classobi_1_1pin_1_1target_1a30ca4e204a8b3ffaf462502b34ef7c3a" prot="public" virt="non-virtual"><scope>obi::pin::target</scope><name>wuser_i</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

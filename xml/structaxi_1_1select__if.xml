@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1select__if" kind="struct" language="C++" prot="public">
+    <compoundname>axi::select_if</compoundname>
+    <templateparamlist>
+      <param>
+        <type>bool</type>
+        <declname>Cond</declname>
+        <defname>Cond</defname>
+      </param>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>class S</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structaxi_1_1select__if_1af762b8a1b99c8717168d7ea172f94b78" prot="public" static="no">
+        <type>S</type>
+        <definition>typedef S axi::select_if&lt; Cond, T, S &gt;::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>axi::select_if::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="72" column="42" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="72" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="72" bodyend="72"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1select__if_1af762b8a1b99c8717168d7ea172f94b78" prot="public" virt="non-virtual"><scope>axi::select_if</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

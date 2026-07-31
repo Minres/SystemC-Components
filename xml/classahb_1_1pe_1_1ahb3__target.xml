@@ -1,0 +1,346 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classahb_1_1pe_1_1ahb3__target" kind="class" language="C++" prot="public">
+    <compoundname>ahb::pe::ahb3_target</compoundname>
+    <basecompoundref refid="classahb_1_1pe_1_1ahb__target__b" prot="public" virt="non-virtual">ahb::pe::ahb_target_b</basecompoundref>
+    <includes refid="ahb__target_8h" local="no">ahb_target.h</includes>
+    <templateparamlist>
+      <param>
+        <type>unsigned int</type>
+        <declname>BUSWIDTH</declname>
+        <defname>BUSWIDTH</defname>
+        <defval>32</defval>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval>tlm::tlm_base_protocol_types</defval>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>N</declname>
+        <defname>N</defname>
+        <defval>1</defval>
+      </param>
+      <param>
+        <type>sc_core::sc_port_policy</type>
+        <declname>POL</declname>
+        <defname>POL</defname>
+        <defval>sc_core::SC_ONE_OR_MORE_BOUND</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classahb_1_1pe_1_1ahb3__target_1acc03c2a87fcbbeefa8fb1062dd42f712" prot="public" static="no">
+        <type><ref refid="classahb_1_1pe_1_1ahb__target__b_1a60943bc698ecc88117396b0ca1f658f5" kindref="member">ahb_target_b</ref></type>
+        <definition>using ahb::pe::ahb3_target&lt; BUSWIDTH, TYPES, N, POL &gt;::base =  ahb_target_b</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <qualifiedname>ahb::pe::ahb3_target::base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="136" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classahb_1_1pe_1_1ahb3__target_1a778e3f4c818fc494e8b04b15831fb8b8" prot="public" static="no">
+        <type>base::payload_type</type>
+        <definition>using ahb::pe::ahb3_target&lt; BUSWIDTH, TYPES, N, POL &gt;::payload_type =  base::payload_type</definition>
+        <argsstring></argsstring>
+        <name>payload_type</name>
+        <qualifiedname>ahb::pe::ahb3_target::payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="137" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classahb_1_1pe_1_1ahb3__target_1aab2ca68d6811193fd954c0cf409f3115" prot="public" static="no">
+        <type>base::phase_type</type>
+        <definition>using ahb::pe::ahb3_target&lt; BUSWIDTH, TYPES, N, POL &gt;::phase_type =  base::phase_type</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>ahb::pe::ahb3_target::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="138" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb3__target_1a70e058a0e9d9b44bc067f83ef893cdf8" prot="private" static="no" mutable="no">
+        <type>tlm::tlm_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;</type>
+        <definition>tlm::tlm_target_socket&lt;BUSWIDTH, TYPES, N, POL&gt;&amp; ahb::pe::ahb3_target&lt; BUSWIDTH, TYPES, N, POL &gt;::socket</definition>
+        <argsstring></argsstring>
+        <name>socket</name>
+        <qualifiedname>ahb::pe::ahb3_target::socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="164" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb3__target_1a99f6c74bd7e930eb6544d34aa674d492" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ahb::pe::ahb3_target&lt; BUSWIDTH, TYPES, N, POL &gt;::ahb3_target</definition>
+        <argsstring>(tlm::tlm_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;socket)</argsstring>
+        <name>ahb3_target</name>
+        <qualifiedname>ahb::pe::ahb3_target::ahb3_target</qualifiedname>
+        <param>
+          <type>tlm::tlm_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;</type>
+          <declname>socket</declname>
+        </param>
+        <briefdescription>
+<para>the constructor </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>socket</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>reference to the initiator socket used to send and receive transactions </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="143" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="143" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb3__target_1a62c1922d07ad9a066ebf3cd8e1c1fa17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ahb::pe::ahb3_target&lt; BUSWIDTH, TYPES, N, POL &gt;::ahb3_target</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm, tlm::tlm_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;socket)</argsstring>
+        <name>ahb3_target</name>
+        <qualifiedname>ahb::pe::ahb3_target::ahb3_target</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;</type>
+          <declname>socket</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="147" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="147" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb3__target_1a6e3c4c293078d4cdaf7446c35328ca6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ahb::pe::ahb3_target&lt; BUSWIDTH, TYPES, N, POL &gt;::ahb3_target</definition>
+        <argsstring>()=delete</argsstring>
+        <name>ahb3_target</name>
+        <qualifiedname>ahb::pe::ahb3_target::ahb3_target</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="153" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb3__target_1a0b6d50f8ee243f5465ae60e64b81487d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ahb::pe::ahb3_target&lt; BUSWIDTH, TYPES, N, POL &gt;::ahb3_target</definition>
+        <argsstring>(ahb3_target const &amp;)=delete</argsstring>
+        <name>ahb3_target</name>
+        <qualifiedname>ahb::pe::ahb3_target::ahb3_target</qualifiedname>
+        <param>
+          <type>ahb3_target const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="155" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb3__target_1a11e06bc9e80edfbb33e49c790e1a1cf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ahb::pe::ahb3_target&lt; BUSWIDTH, TYPES, N, POL &gt;::ahb3_target</definition>
+        <argsstring>(ahb3_target &amp;&amp;)=delete</argsstring>
+        <name>ahb3_target</name>
+        <qualifiedname>ahb::pe::ahb3_target::ahb3_target</qualifiedname>
+        <param>
+          <type>ahb3_target &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="157" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb3__target_1a175bb10a1054acd0c13172d738daadae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classahb_1_1pe_1_1ahb3__target_1a99f6c74bd7e930eb6544d34aa674d492" kindref="member">ahb3_target</ref> &amp;</type>
+        <definition>ahb3_target &amp; ahb::pe::ahb3_target&lt; BUSWIDTH, TYPES, N, POL &gt;::operator=</definition>
+        <argsstring>(ahb3_target const &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>ahb::pe::ahb3_target::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classahb_1_1pe_1_1ahb3__target_1a99f6c74bd7e930eb6544d34aa674d492" kindref="member">ahb3_target</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="159" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb3__target_1a669349f320c09e28cda991b0f40618b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classahb_1_1pe_1_1ahb3__target_1a99f6c74bd7e930eb6544d34aa674d492" kindref="member">ahb3_target</ref> &amp;</type>
+        <definition>ahb3_target &amp; ahb::pe::ahb3_target&lt; BUSWIDTH, TYPES, N, POL &gt;::operator=</definition>
+        <argsstring>(ahb3_target &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>ahb::pe::ahb3_target::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classahb_1_1pe_1_1ahb3__target_1a99f6c74bd7e930eb6544d34aa674d492" kindref="member">ahb3_target</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="161" column="17"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>the target socket protocol engine adapted to a particular target socket configuration </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ahb::pe::ahb3_target&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classahb_1_1pe_1_1ahb3__target"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ahb::pe::ahb_target_b</label>
+        <link refid="classahb_1_1pe_1_1ahb__target__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ahb::pe::ahb3_target&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classahb_1_1pe_1_1ahb3__target"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ahb::pe::ahb_target_b</label>
+        <link refid="classahb_1_1pe_1_1ahb__target__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>rd_resp</edgelabel>
+          <edgelabel>wr_resp</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="7">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="6">
+        <label>sc_core::sc_semaphore_if</label>
+      </node>
+      <node id="5">
+        <label>scc::ordered_semaphore</label>
+        <link refid="classscc_1_1ordered__semaphore"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>scc::traceable</label>
+        <link refid="structscc_1_1traceable"/>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" line="134" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h" bodystart="134" bodyend="165"/>
+    <listofallmembers>
+      <member refid="classahb_1_1pe_1_1ahb3__target_1a99f6c74bd7e930eb6544d34aa674d492" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>ahb3_target</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__target_1a62c1922d07ad9a066ebf3cd8e1c1fa17" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>ahb3_target</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__target_1a6e3c4c293078d4cdaf7446c35328ca6f" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>ahb3_target</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__target_1a0b6d50f8ee243f5465ae60e64b81487d" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>ahb3_target</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__target_1a11e06bc9e80edfbb33e49c790e1a1cf5" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>ahb3_target</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a60943bc698ecc88117396b0ca1f658f5" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>ahb_target_b</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1aa3be1ea4697ed03ba9f398cf52284683" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>ahb_target_b</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a0343640c64f39bc77f80c500d30f1c89" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>ahb_target_b</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a05ee07dede02271cf9110f1eb1b6b1a9" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>ahb_target_b</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a891b0f434531888c5ff77914a3a1577d" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>b_transport</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__target_1acc03c2a87fcbbeefa8fb1062dd42f712" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>base</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1ad684307f88f59d4046c8b109a9d1d027" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>clk_i</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a310c1e69b87b2d459c6ad2edbbeeda4c" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>clk_if</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a598afd243b1c941b0db075b7f597556f" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>end_of_elaboration</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a62553fe6be6e433e3e50453c06e5ed96" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>fast_req</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a146f7ef5d36f60b02345e725ebb1de3d" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>fast_resp</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a7c448a06613914a5bf1dbd61ff8da6db" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>get_direct_mem_ptr</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1ad82377c5ca58640722c642cbc269da7c" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>nb_transport_fw</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a8a56bf906e44bd30b9272e1f6edc0d5a" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>operation_cb</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a2ef5bb2e95d1a76c4513e6977daf9cf5" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>operation_resp</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__target_1a175bb10a1054acd0c13172d738daadae" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>operator=</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__target_1a669349f320c09e28cda991b0f40618b1" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>operator=</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a1351eb5c2ab3e01eb373cb06c03fd24a" prot="protected" virt="non-virtual" ambiguityscope="ahb::pe::ahb_target_b::"><scope>ahb::pe::ahb3_target</scope><name>operator=</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a6c823b515f2f214ba4cbfdac89ea3d66" prot="protected" virt="non-virtual" ambiguityscope="ahb::pe::ahb_target_b::"><scope>ahb::pe::ahb3_target</scope><name>operator=</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__target_1a778e3f4c818fc494e8b04b15831fb8b8" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>payload_type</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__target_1aab2ca68d6811193fd954c0cf409f3115" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>phase_type</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1ad934f8e560a446bbb2b30f8da05ef243" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>rd</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1acd1a1c7fe677a79e153b172916ebefa2" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>rd_addr_accept_delay</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1ab085bd64962fce6e82c6780c19fbfd2c" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>rd_data_beat_delay</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a2a414fa56508428a62cd0a0ed26e6c3c" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>rd_resp</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a510bcf84357b370c2ecdde8d1802f208" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>rd_resp_delay</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1ac2e17a809a6ba9b6f95eaaf6a3e47e35" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a84ef0869d085b2647e44ab785ddaffcc" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>send_resp_thread</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1aae571201d6387648356dc363c4996451" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>set_operation_cb</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1af4557d03e6052b28066706ca5f6923f7" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>sn</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a7e5b3c0641ff13071136bdd386f2a4c1" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>sn_sem</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__target_1a70e058a0e9d9b44bc067f83ef893cdf8" prot="private" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>socket</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1aa6ba1104edaa91b9a87e177f8ef298bf" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>socket_bw</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a4b2cd69f477a8e6af34ba8702c91368c" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>transport_dbg</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a8cd382ad0a941c41b0b67d028f10758e" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>wr</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1a3998d97bf04eb873330d87f8fff8cbc0" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>wr_data_accept_delay</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1abebe7096fd9a9ffa8b887516115f5d35" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>wr_resp</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__target__b_1ad2bce8d0b9c2312a61eb8d00f5442769" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_target</scope><name>wr_resp_delay</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

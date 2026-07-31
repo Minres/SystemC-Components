@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1detail_1_1returns__void__impl_3_01F_00_01void__t_3_01invoke__result__t_3_01F_00_899bbcae771d97efe99e3eeffbd178c6" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::detail::returns_void_impl&lt; F, void_t&lt; invoke_result_t&lt; F, U... &gt; &gt;, U... &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::is_void&lt; invoke_result_t&lt; F, U... &gt; &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class F</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>U</declname>
+        <defname>U</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>nonstd::detail::returns_void_impl&lt; F, void_t&lt; invoke_result_t&lt; F, U... &gt; &gt;, U... &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1returns__void__impl_3_01F_00_01void__t_3_01invoke__result__t_3_01F_00_899bbcae771d97efe99e3eeffbd178c6"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::is_void&lt; invoke_result_t&lt; F, U... &gt; &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>nonstd::detail::returns_void_impl&lt; F, void_t&lt; invoke_result_t&lt; F, U... &gt; &gt;, U... &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1returns__void__impl_3_01F_00_01void__t_3_01invoke__result__t_3_01F_00_899bbcae771d97efe99e3eeffbd178c6"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::is_void&lt; invoke_result_t&lt; F, U... &gt; &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="250" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="250" bodyend="250"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,603 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structcxs_1_1cxs__transmitter" kind="struct" language="C++" prot="public">
+    <compoundname>cxs::cxs_transmitter</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if" prot="public" virt="non-virtual">tlm::nw::tlm_network_fw_transport_if&lt; cxs_packet_types &gt;</basecompoundref>
+    <basecompoundref refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if" prot="public" virt="non-virtual">tlm::nw::tlm_network_bw_transport_if&lt; cxs_flit_types &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>unsigned</type>
+        <declname>PHITWIDTH</declname>
+        <defname>PHITWIDTH</defname>
+        <defval>256</defval>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>CXSMAXPKTPERFLIT</declname>
+        <defname>CXSMAXPKTPERFLIT</defname>
+        <defval>2</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structcxs_1_1cxs__transmitter_1a360a558e33dabd6470d8b73fcaec5f47" prot="public" static="no">
+        <type>cxs_flit_types::tlm_payload_type</type>
+        <definition>using cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::flit_tx_type =  cxs_flit_types::tlm_payload_type</definition>
+        <argsstring></argsstring>
+        <name>flit_tx_type</name>
+        <qualifiedname>cxs::cxs_transmitter::flit_tx_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="125" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structcxs_1_1cxs__transmitter_1a6dac26fa1c3d8d0f939a8b317e4e713a" prot="public" static="no">
+        <type>cxs_flit_types::tlm_phase_type</type>
+        <definition>using cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::flit_phase_type =  cxs_flit_types::tlm_phase_type</definition>
+        <argsstring></argsstring>
+        <name>flit_phase_type</name>
+        <qualifiedname>cxs::cxs_transmitter::flit_phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="126" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structcxs_1_1cxs__transmitter_1a74a7d0d821508e932d8d205b3f417830" prot="public" static="no">
+        <type>cxs_packet_types::tlm_payload_type</type>
+        <definition>using cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::pkt_tx_type =  cxs_packet_types::tlm_payload_type</definition>
+        <argsstring></argsstring>
+        <name>pkt_tx_type</name>
+        <qualifiedname>cxs::cxs_transmitter::pkt_tx_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="128" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structcxs_1_1cxs__transmitter_1a687c7de8bb8dbe97a842383a7f148ae1" prot="public" static="no">
+        <type>cxs_packet_types::tlm_phase_type</type>
+        <definition>using cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::pkt_phase_type =  cxs_packet_types::tlm_phase_type</definition>
+        <argsstring></argsstring>
+        <name>pkt_phase_type</name>
+        <qualifiedname>cxs::cxs_transmitter::pkt_phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="129" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structcxs_1_1cxs__transmitter_1ad532d2b5b05ff321afa9c22f3a1ed0b7" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::PHIT_BYTE_WIDTH</definition>
+        <argsstring></argsstring>
+        <name>PHIT_BYTE_WIDTH</name>
+        <qualifiedname>cxs::cxs_transmitter::PHIT_BYTE_WIDTH</qualifiedname>
+        <initializer>= PHITWIDTH / 8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="131" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcxs_1_1cxs__transmitter_1af0990b5adb2f521cb89a750ea8d9b922" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::BUCKET_SIZE</definition>
+        <argsstring></argsstring>
+        <name>BUCKET_SIZE</name>
+        <qualifiedname>cxs::cxs_transmitter::BUCKET_SIZE</qualifiedname>
+        <initializer>= PHITWIDTH / 8 / CXSMAXPKTPERFLIT</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="132" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structcxs_1_1cxs__transmitter_1a534fea9d48420b6b0d98b4f8bc5d52ba" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::clk_i</definition>
+        <argsstring></argsstring>
+        <name>clk_i</name>
+        <qualifiedname>cxs::cxs_transmitter::clk_i</qualifiedname>
+        <initializer>{&quot;clk_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="134" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="134" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcxs_1_1cxs__transmitter_1a5dff7e2f99a09cbb700ac39b1c21d5ba" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::rst_i</definition>
+        <argsstring></argsstring>
+        <name>rst_i</name>
+        <qualifiedname>cxs::cxs_transmitter::rst_i</qualifiedname>
+        <initializer>{&quot;rst_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="136" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="136" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcxs_1_1cxs__transmitter_1a5a2218d06ad9eb34e8cf78301590da16" prot="public" static="no" mutable="no">
+        <type>cxs_pkt_target_socket</type>
+        <definition>cxs_pkt_target_socket cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::tsck</definition>
+        <argsstring></argsstring>
+        <name>tsck</name>
+        <qualifiedname>cxs::cxs_transmitter::tsck</qualifiedname>
+        <initializer>{&quot;tsck&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="138" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="138" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcxs_1_1cxs__transmitter_1aa1a7dcddd01dce8ac8934a9c15b1cba5" prot="public" static="no" mutable="no">
+        <type>cxs_flit_initiator_socket&lt; PHITWIDTH &gt;</type>
+        <definition>cxs_flit_initiator_socket&lt;PHITWIDTH&gt; cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::isck</definition>
+        <argsstring></argsstring>
+        <name>isck</name>
+        <qualifiedname>cxs::cxs_transmitter::isck</qualifiedname>
+        <initializer>{&quot;isck&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="140" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="140" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcxs_1_1cxs__transmitter_1af28ba5d4a9e1a6028b5dc9da419b0ba1" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; sc_core::sc_time &gt;</type>
+        <definition>cci::cci_param&lt;sc_core::sc_time&gt; cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::clock_period</definition>
+        <argsstring></argsstring>
+        <name>clock_period</name>
+        <qualifiedname>cxs::cxs_transmitter::clock_period</qualifiedname>
+        <initializer>{&quot;clock_period&quot;, sc_core::SC_ZERO_TIME, &quot;clock period of the CXS transmitter&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="142" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="142" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcxs_1_1cxs__transmitter_1a09099f23d38ef688b4dd45dd039e1c1c" prot="public" static="no" mutable="no">
+        <type><ref refid="structscc_1_1cci__param__restricted" kindref="compound">scc::cci_param_restricted</ref>&lt; unsigned &gt;</type>
+        <definition>scc::cci_param_restricted&lt;unsigned&gt; cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::burst_len</definition>
+        <argsstring></argsstring>
+        <name>burst_len</name>
+        <qualifiedname>cxs::cxs_transmitter::burst_len</qualifiedname>
+        <initializer>{&quot;burst_len&quot;, 1, <ref refid="namespacescc_1ae4fe172b09afbeb2fc67be93bf407388" kindref="member">scc::min_restriction</ref>(1u),
+                                                  &quot;minimum amount of credits to start transmitting flits, shall be larger than 0&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="144" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="144" bodyend="145"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structcxs_1_1cxs__transmitter_1acb422749cf763d5b71a2809495c253e8" prot="private" static="no" mutable="no">
+        <type><ref refid="structscc_1_1peq" kindref="compound">scc::peq</ref>&lt; cxs_pkt_shared_ptr &gt;</type>
+        <definition>scc::peq&lt;cxs_pkt_shared_ptr&gt; cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::pkt_peq</definition>
+        <argsstring></argsstring>
+        <name>pkt_peq</name>
+        <qualifiedname>cxs::cxs_transmitter::pkt_peq</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="266" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="266" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcxs_1_1cxs__transmitter_1ad37ee9a90300a250eae1a5169aab2791" prot="private" static="no" mutable="no">
+        <type>cxs_pkt_shared_ptr</type>
+        <definition>cxs_pkt_shared_ptr cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::pending_pkt</definition>
+        <argsstring></argsstring>
+        <name>pending_pkt</name>
+        <qualifiedname>cxs::cxs_transmitter::pending_pkt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="267" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcxs_1_1cxs__transmitter_1a118d25ef0368f5525a770f37a038ef68" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::transfered_pkt_bytes</definition>
+        <argsstring></argsstring>
+        <name>transfered_pkt_bytes</name>
+        <qualifiedname>cxs::cxs_transmitter::transfered_pkt_bytes</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="268" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="268" bodyend="268"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcxs_1_1cxs__transmitter_1a34fb503655e0e15940facebbb8dcb073" prot="private" static="no" mutable="no">
+        <type><ref refid="structscc_1_1peq" kindref="compound">scc::peq</ref>&lt; unsigned &gt;</type>
+        <definition>scc::peq&lt;unsigned&gt; cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::received_credits</definition>
+        <argsstring></argsstring>
+        <name>received_credits</name>
+        <qualifiedname>cxs::cxs_transmitter::received_credits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="270" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="270" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcxs_1_1cxs__transmitter_1ab941b4cc50f45ec8936aab181f54bf60" prot="private" static="no" mutable="no">
+        <type><ref refid="structscc_1_1sc__variable" kindref="compound">scc::sc_variable</ref>&lt; unsigned &gt;</type>
+        <definition>scc::sc_variable&lt;unsigned&gt; cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::available_credits</definition>
+        <argsstring></argsstring>
+        <name>available_credits</name>
+        <qualifiedname>cxs::cxs_transmitter::available_credits</qualifiedname>
+        <initializer>{&quot;available_credits&quot;, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="271" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="271" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcxs_1_1cxs__transmitter_1abce0bdfe120102a1fbde350687ac15b3" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::burst_credits</definition>
+        <argsstring></argsstring>
+        <name>burst_credits</name>
+        <qualifiedname>cxs::cxs_transmitter::burst_credits</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="272" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="272" bodyend="272"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structcxs_1_1cxs__transmitter_1aacc00b9beb689c0f06c4261e26372c34" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::cxs_transmitter</definition>
+        <argsstring>(sc_core::sc_module_name const &amp;nm)</argsstring>
+        <name>cxs_transmitter</name>
+        <qualifiedname>cxs::cxs_transmitter::cxs_transmitter</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="147" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="147" bodyend="158"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structcxs_1_1cxs__transmitter_1a09cbeb7494a20a3a1c4b857fd614c85e" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::start_of_simulation</definition>
+        <argsstring>() override</argsstring>
+        <name>start_of_simulation</name>
+        <qualifiedname>cxs::cxs_transmitter::start_of_simulation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="161" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="161" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="structcxs_1_1cxs__transmitter_1a323714906e368829a9626f2f82b52c86" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::b_transport</definition>
+        <argsstring>(pkt_tx_type &amp;trans, sc_core::sc_time &amp;t) override</argsstring>
+        <name>b_transport</name>
+        <qualifiedname>cxs::cxs_transmitter::b_transport</qualifiedname>
+        <param>
+          <type>pkt_tx_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="167" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="167" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="structcxs_1_1cxs__transmitter_1a53dd4fc6cedb4a0737bbba1c8348e1d0" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::nb_transport_fw</definition>
+        <argsstring>(pkt_tx_type &amp;trans, pkt_phase_type &amp;phase, sc_core::sc_time &amp;t) override</argsstring>
+        <name>nb_transport_fw</name>
+        <qualifiedname>cxs::cxs_transmitter::nb_transport_fw</qualifiedname>
+        <param>
+          <type>pkt_tx_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>pkt_phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="175" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="175" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="structcxs_1_1cxs__transmitter_1a23f991dca21a2f718f54a0e6d9ee8261" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::transport_dbg</definition>
+        <argsstring>(pkt_tx_type &amp;trans) override</argsstring>
+        <name>transport_dbg</name>
+        <qualifiedname>cxs::cxs_transmitter::transport_dbg</qualifiedname>
+        <param>
+          <type>pkt_tx_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="187" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="187" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="structcxs_1_1cxs__transmitter_1a7ea698d970dd12ee5421dddbe03066b8" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::nb_transport_bw</definition>
+        <argsstring>(flit_tx_type &amp;trans, flit_phase_type &amp;phase, sc_core::sc_time &amp;t) override</argsstring>
+        <name>nb_transport_bw</name>
+        <qualifiedname>cxs::cxs_transmitter::nb_transport_bw</qualifiedname>
+        <param>
+          <type>flit_tx_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>flit_phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="189" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="189" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="structcxs_1_1cxs__transmitter_1a19df0fc4f1d6713e66da66201780d02b" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::handle_received_credits</definition>
+        <argsstring>()</argsstring>
+        <name>handle_received_credits</name>
+        <qualifiedname>cxs::cxs_transmitter::handle_received_credits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="204" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="204" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="structcxs_1_1cxs__transmitter_1a8c7929d49757e3c770904066d9b7864c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;::clock</definition>
+        <argsstring>()</argsstring>
+        <name>clock</name>
+        <qualifiedname>cxs::cxs_transmitter::clock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="211" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="211" bodyend="264"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;</label>
+        <link refid="structcxs_1_1cxs__transmitter"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="7">
+        <label>tlm::nw::tlm_network_bw_transport_if&lt; cxs_flit_types &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::nw::tlm_network_fw_transport_if&lt; cxs_packet_types &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_blocking_transport_if&lt; cxs_packet_types::tlm_payload_type &gt;</label>
+      </node>
+      <node id="8">
+        <label>tlm::tlm_bw_nonblocking_transport_if&lt; cxs_flit_types::tlm_payload_type &gt;</label>
+      </node>
+      <node id="5">
+        <label>tlm::tlm_fw_nonblocking_transport_if&lt; cxs_packet_types::tlm_payload_type &gt;</label>
+      </node>
+      <node id="6">
+        <label>tlm::tlm_transport_dbg_if&lt; cxs_packet_types::tlm_payload_type &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="13">
+        <label>cci::cci_param&lt; unsigned, cci::CCI_MUTABLE_PARAM &gt;</label>
+      </node>
+      <node id="1">
+        <label>cxs::cxs_transmitter&lt; PHITWIDTH, CXSMAXPKTPERFLIT &gt;</label>
+        <link refid="structcxs_1_1cxs__transmitter"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>tsck</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>isck</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>burst_len</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="12">
+        <label>scc::cci_param_restricted&lt; unsigned &gt;</label>
+        <link refid="structscc_1_1cci__param__restricted"/>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>tlm::nw::tlm_network_bw_transport_if&lt; cxs_flit_types &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::nw::tlm_network_fw_transport_if&lt; cxs_packet_types &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>tlm::nw::tlm_network_initiator_socket&lt; PHITWIDTH, CXS_CMD, cxs_flit_types, N &gt;&lt; 256 &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__initiator__socket"/>
+      </node>
+      <node id="9">
+        <label>tlm::nw::tlm_network_target_socket&lt; 8, CXS_PKT, cxs_packet_types, N &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__target__socket"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>tlm::tlm_base_target_socket&lt; 0, tlm_network_fw_transport_if&lt; cxs_packet_types &gt;, tlm_network_bw_transport_if&lt; cxs_packet_types &gt;, N, sc_core::SC_ONE_OR_MORE_BOUND &gt;</label>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_blocking_transport_if&lt; cxs_packet_types::tlm_payload_type &gt;</label>
+      </node>
+      <node id="8">
+        <label>tlm::tlm_bw_nonblocking_transport_if&lt; cxs_flit_types::tlm_payload_type &gt;</label>
+      </node>
+      <node id="5">
+        <label>tlm::tlm_fw_nonblocking_transport_if&lt; cxs_packet_types::tlm_payload_type &gt;</label>
+      </node>
+      <node id="6">
+        <label>tlm::tlm_transport_dbg_if&lt; cxs_packet_types::tlm_payload_type &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="122" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="124" bodyend="273"/>
+    <listofallmembers>
+      <member refid="structcxs_1_1cxs__transmitter_1ab941b4cc50f45ec8936aab181f54bf60" prot="private" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>available_credits</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a323714906e368829a9626f2f82b52c86" prot="private" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>b_transport</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1af0990b5adb2f521cb89a750ea8d9b922" prot="public" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>BUCKET_SIZE</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1abce0bdfe120102a1fbde350687ac15b3" prot="private" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>burst_credits</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a09099f23d38ef688b4dd45dd039e1c1c" prot="public" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>burst_len</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a534fea9d48420b6b0d98b4f8bc5d52ba" prot="public" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>clk_i</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a8c7929d49757e3c770904066d9b7864c" prot="private" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>clock</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1af28ba5d4a9e1a6028b5dc9da419b0ba1" prot="public" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>clock_period</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1aacc00b9beb689c0f06c4261e26372c34" prot="public" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>cxs_transmitter</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a6dac26fa1c3d8d0f939a8b317e4e713a" prot="public" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>flit_phase_type</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a360a558e33dabd6470d8b73fcaec5f47" prot="public" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>flit_tx_type</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a19df0fc4f1d6713e66da66201780d02b" prot="private" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>handle_received_credits</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1aa1a7dcddd01dce8ac8934a9c15b1cba5" prot="public" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>isck</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a7ea698d970dd12ee5421dddbe03066b8" prot="private" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>nb_transport_bw</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a53dd4fc6cedb4a0737bbba1c8348e1d0" prot="private" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>nb_transport_fw</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1ad37ee9a90300a250eae1a5169aab2791" prot="private" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>pending_pkt</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1ad532d2b5b05ff321afa9c22f3a1ed0b7" prot="public" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>PHIT_BYTE_WIDTH</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1acb422749cf763d5b71a2809495c253e8" prot="private" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>pkt_peq</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a687c7de8bb8dbe97a842383a7f148ae1" prot="public" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>pkt_phase_type</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a74a7d0d821508e932d8d205b3f417830" prot="public" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>pkt_tx_type</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if_1abc3da322c51493048e2f02b236060aaf" prot="public" virt="non-virtual" ambiguityscope="tlm::"><scope>cxs::cxs_transmitter</scope><name>protocol_types</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if_1a27f9ce86a8d4a18ab2e115c943717a4b" prot="public" virt="non-virtual" ambiguityscope="tlm::nw::tlm_network_bw_transport_if&lt; cxs_flit_types &gt;::"><scope>cxs::cxs_transmitter</scope><name>protocol_types</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a34fb503655e0e15940facebbb8dcb073" prot="private" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>received_credits</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a5dff7e2f99a09cbb700ac39b1c21d5ba" prot="public" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>rst_i</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a09cbeb7494a20a3a1c4b857fd614c85e" prot="private" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>start_of_simulation</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a118d25ef0368f5525a770f37a038ef68" prot="private" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>transfered_pkt_bytes</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a23f991dca21a2f718f54a0e6d9ee8261" prot="private" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>transport_dbg</name></member>
+      <member refid="structcxs_1_1cxs__transmitter_1a5a2218d06ad9eb34e8cf78301590da16" prot="public" virt="non-virtual"><scope>cxs::cxs_transmitter</scope><name>tsck</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

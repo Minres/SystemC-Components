@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -176,7 +176,7 @@ $(function(){initNavTree('ordered__semaphore_8cpp_source.html','',''); });
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
 <div class="foldopen" id="foldopen00104" data-start="{" data-end="}">
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="classscc_1_1ordered__semaphore.html#adfde4ade9e1091aa42f57bebc7c41e41">  104</a></span><span class="keyword">auto</span> <a class="code hl_function" href="classscc_1_1ordered__semaphore.html#adfde4ade9e1091aa42f57bebc7c41e41">ordered_semaphore::trywait</a>() -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">if</span>(in_use()) {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">if</span>(value == 0) {</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    }</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    --value;</div>
@@ -213,7 +213,7 @@ $(function(){initNavTree('ordered__semaphore_8cpp_source.html','',''); });
 <div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC TLM utilities.</div><div class="ttdef"><b>Definition</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
 <div class="ttc" id="anamespaceutil_html"><div class="ttname"><a href="namespaceutil.html">util</a></div><div class="ttdoc">SCC common utilities.</div><div class="ttdef"><b>Definition</b> <a href="bit__field_8h_source.html#l00030">bit_field.h:30</a></div></div>
 <div class="ttc" id="anamespaceutil_html_a21daaf5c20308c280a887f7a5cc91a79"><div class="ttname"><a href="namespaceutil.html#a21daaf5c20308c280a887f7a5cc91a79">util::strprintf</a></div><div class="ttdeci">std::string strprintf(const std::string format,...)</div><div class="ttdoc">allocate and print to a string buffer</div><div class="ttdef"><b>Definition</b> <a href="strprintf_8h_source.html#l00035">strprintf.h:35</a></div></div>
-<div class="ttc" id="astructscc_1_1sc__ref__variable_html"><div class="ttname"><a href="structscc_1_1sc__ref__variable.html">scc::sc_ref_variable</a></div><div class="ttdoc">the sc_ref_variable for a particular plain data type. This marks an existing C++ variable as discover...</div><div class="ttdef"><b>Definition</b> <a href="sc__variable_8h_source.html#l00444">sc_variable.h:444</a></div></div>
+<div class="ttc" id="astructscc_1_1sc__ref__variable_html"><div class="ttname"><a href="structscc_1_1sc__ref__variable.html">scc::sc_ref_variable</a></div><div class="ttdoc">the sc_ref_variable for a particular plain data type. This marks an existing C++ variable as discover...</div><div class="ttdef"><b>Definition</b> <a href="sc__variable_8h_source.html#l00441">sc_variable.h:441</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

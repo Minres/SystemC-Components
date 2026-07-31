@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classaxi_1_1ace__bw__transport__if" kind="class" language="C++" prot="public">
+    <compoundname>axi::ace_bw_transport_if</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_bw_transport_if&lt; axi_protocol_types &gt;</basecompoundref>
+    <basecompoundref refid="classaxi_1_1bw__blocking__transport__if" prot="public" virt="virtual">axi::bw_blocking_transport_if&lt; axi_protocol_types::tlm_payload_type &gt;</basecompoundref>
+    <includes refid="axi__tlm_8h" local="no">axi_tlm.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+        <defval><ref refid="structaxi_1_1axi__protocol__types" kindref="compound">axi_protocol_types</ref></defval>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The ACE backward interface which combines the TLM2.0 backward interface and the <simplesect kind="see"><para><ref refid="classaxi_1_1bw__blocking__transport__if" kindref="compound">bw_blocking_transport_if</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::ace_bw_transport_if&lt; TYPES &gt;</label>
+        <link refid="classaxi_1_1ace__bw__transport__if"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>axi::bw_blocking_transport_if&lt; axi_protocol_types::tlm_payload_type &gt;</label>
+        <link refid="classaxi_1_1bw__blocking__transport__if"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_bw_transport_if&lt; axi_protocol_types &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::ace_bw_transport_if&lt; TYPES &gt;</label>
+        <link refid="classaxi_1_1ace__bw__transport__if"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>axi::bw_blocking_transport_if&lt; axi_protocol_types::tlm_payload_type &gt;</label>
+        <link refid="classaxi_1_1bw__blocking__transport__if"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_bw_transport_if&lt; axi_protocol_types &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="960" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="961" bodyend="961"/>
+    <listofallmembers>
+      <member refid="classaxi_1_1bw__blocking__transport__if_1ad2bf9e98fe605c100629654745b444e8" prot="public" virt="pure-virtual"><scope>axi::ace_bw_transport_if</scope><name>b_snoop</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

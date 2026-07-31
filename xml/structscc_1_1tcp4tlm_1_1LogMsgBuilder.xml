@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tcp4tlm_1_1LogMsgBuilder" kind="struct" language="C++" prot="public">
+    <compoundname>scc::tcp4tlm::LogMsgBuilder</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm_1_1LogMsgBuilder_1a915d5cf8163428648c334d9b6838299a" prot="public" static="no">
+        <type>LogMsg</type>
+        <definition>typedef LogMsg scc::tcp4tlm::LogMsgBuilder::Table</definition>
+        <argsstring></argsstring>
+        <name>Table</name>
+        <qualifiedname>scc::tcp4tlm::LogMsgBuilder::Table</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="540" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="540" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1LogMsgBuilder_1aabe408c8bfcf534435a0dea0a1f21340" prot="public" static="no" mutable="no">
+        <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+        <definition>::flatbuffers::FlatBufferBuilder&amp; scc::tcp4tlm::LogMsgBuilder::fbb_</definition>
+        <argsstring></argsstring>
+        <name>fbb_</name>
+        <qualifiedname>scc::tcp4tlm::LogMsgBuilder::fbb_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="541" column="38" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="541" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1LogMsgBuilder_1a8e1a223588a22fc3e687f5b91087ae83" prot="public" static="no" mutable="no">
+        <type>::flatbuffers::uoffset_t</type>
+        <definition>::flatbuffers::uoffset_t scc::tcp4tlm::LogMsgBuilder::start_</definition>
+        <argsstring></argsstring>
+        <name>start_</name>
+        <qualifiedname>scc::tcp4tlm::LogMsgBuilder::start_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="542" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="542" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1LogMsgBuilder_1a9458d5b0e0ee1dfba4e4ebc6f88777fa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::LogMsgBuilder::add_id</definition>
+        <argsstring>(uint32_t id)</argsstring>
+        <name>add_id</name>
+        <qualifiedname>scc::tcp4tlm::LogMsgBuilder::add_id</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="543" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="543" bodyend="543"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1LogMsgBuilder_1ad15418f74292234a12b0f922a6d57822" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::LogMsgBuilder::add_msg</definition>
+        <argsstring>(::flatbuffers::Offset&lt;::flatbuffers::String &gt; msg)</argsstring>
+        <name>add_msg</name>
+        <qualifiedname>scc::tcp4tlm::LogMsgBuilder::add_msg</qualifiedname>
+        <param>
+          <type>::flatbuffers::Offset&lt;::flatbuffers::String &gt;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="544" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="544" bodyend="544"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1LogMsgBuilder_1a0886cfa35742d6eb21e59353d420b8aa" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tcp4tlm::LogMsgBuilder::LogMsgBuilder</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb)</argsstring>
+        <name>LogMsgBuilder</name>
+        <qualifiedname>scc::tcp4tlm::LogMsgBuilder::LogMsgBuilder</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="545" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="545" bodyend="548"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1LogMsgBuilder_1a85142b3cc3297ff350511110df6667cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>::flatbuffers::Offset&lt; LogMsg &gt;</type>
+        <definition>::flatbuffers::Offset&lt; LogMsg &gt; scc::tcp4tlm::LogMsgBuilder::Finish</definition>
+        <argsstring>()</argsstring>
+        <name>Finish</name>
+        <qualifiedname>scc::tcp4tlm::LogMsgBuilder::Finish</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="549" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="549" bodyend="553"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="539" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="539" bodyend="554"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tcp4tlm_1_1LogMsgBuilder_1a9458d5b0e0ee1dfba4e4ebc6f88777fa" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::LogMsgBuilder</scope><name>add_id</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1LogMsgBuilder_1ad15418f74292234a12b0f922a6d57822" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::LogMsgBuilder</scope><name>add_msg</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1LogMsgBuilder_1aabe408c8bfcf534435a0dea0a1f21340" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::LogMsgBuilder</scope><name>fbb_</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1LogMsgBuilder_1a85142b3cc3297ff350511110df6667cb" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::LogMsgBuilder</scope><name>Finish</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1LogMsgBuilder_1a0886cfa35742d6eb21e59353d420b8aa" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::LogMsgBuilder</scope><name>LogMsgBuilder</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1LogMsgBuilder_1a8e1a223588a22fc3e687f5b91087ae83" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::LogMsgBuilder</scope><name>start_</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1LogMsgBuilder_1a915d5cf8163428648c334d9b6838299a" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::LogMsgBuilder</scope><name>Table</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

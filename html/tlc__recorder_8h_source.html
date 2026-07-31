@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -365,7 +365,7 @@ $(function(){initNavTree('tlc__recorder_8h_source.html','',''); });
 <div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>    }</div>
 <div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span> </div>
 <div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>    <span class="keyword">auto</span> addr = trans.get_address();</div>
-<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; ext : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::inst().get())</div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; ext : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::get())</div>
 <div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>        <span class="keywordflow">if</span>(ext)</div>
 <div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>            ext-&gt;recordBeginTx(h, trans);</div>
 <div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>    <a class="code hl_class" href="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension.html">tlm::scc::scv::tlm_recording_extension</a>* preExt = <span class="keyword">nullptr</span>;</div>
@@ -396,7 +396,7 @@ $(function(){initNavTree('tlc__recorder_8h_source.html','',''); });
 <div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span> </div>
 <div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>    trans.set_address(addr);</div>
 <div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>    tlm::scc::scv::record(h, trans);</div>
-<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; ext : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::inst().get())</div>
+<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; ext : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::get())</div>
 <div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span>        <span class="keywordflow">if</span>(ext)</div>
 <div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span>            ext-&gt;recordEndTx(h, trans);</div>
 <div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>    <span class="comment">// End the transaction</span></div>
@@ -429,7 +429,7 @@ $(function(){initNavTree('tlc__recorder_8h_source.html','',''); });
 <div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span>        b_timed_peq.notify(*req, tlm::BEGIN_REQ, delay);</div>
 <div class="line"><a id="l00477" name="l00477"></a><span class="lineno">  477</span>    }</div>
 <div class="line"><a id="l00478" name="l00478"></a><span class="lineno">  478</span> </div>
-<div class="line"><a id="l00479" name="l00479"></a><span class="lineno">  479</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; ext : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::inst().get())</div>
+<div class="line"><a id="l00479" name="l00479"></a><span class="lineno">  479</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; ext : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::get())</div>
 <div class="line"><a id="l00480" name="l00480"></a><span class="lineno">  480</span>        <span class="keywordflow">if</span>(ext)</div>
 <div class="line"><a id="l00481" name="l00481"></a><span class="lineno">  481</span>            ext-&gt;recordBeginTx(h, trans);</div>
 <div class="line"><a id="l00482" name="l00482"></a><span class="lineno">  482</span>    <a class="code hl_class" href="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension.html">tlm::scc::scv::tlm_recording_extension</a>* preExt = NULL;</div>
@@ -459,7 +459,7 @@ $(function(){initNavTree('tlc__recorder_8h_source.html','',''); });
 <div class="line"><a id="l00506" name="l00506"></a><span class="lineno">  506</span>    }</div>
 <div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span> </div>
 <div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span>    tlm::scc::scv::record(h, trans);</div>
-<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; ext : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::inst().get())</div>
+<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; ext : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::get())</div>
 <div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>        <span class="keywordflow">if</span>(ext)</div>
 <div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>            ext-&gt;recordEndTx(h, trans);</div>
 <div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>    <span class="comment">// End the transaction</span></div>
@@ -524,7 +524,7 @@ $(function(){initNavTree('tlc__recorder_8h_source.html','',''); });
 <div class="line"><a id="l00569" name="l00569"></a><span class="lineno">  569</span>    <span class="comment">// update the extension</span></div>
 <div class="line"><a id="l00570" name="l00570"></a><span class="lineno">  570</span>    preExt-&gt;<a class="code hl_variable" href="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension.html#a5242db103effdec334d65ce5088e08c9">txHandle</a> = h;</div>
 <div class="line"><a id="l00571" name="l00571"></a><span class="lineno">  571</span>    h.record_attribute(<span class="stringliteral">&quot;delay&quot;</span>, delay.to_string());</div>
-<div class="line"><a id="l00572" name="l00572"></a><span class="lineno">  572</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; ext : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::inst().get())</div>
+<div class="line"><a id="l00572" name="l00572"></a><span class="lineno">  572</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; ext : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::get())</div>
 <div class="line"><a id="l00573" name="l00573"></a><span class="lineno">  573</span>        <span class="keywordflow">if</span>(ext)</div>
 <div class="line"><a id="l00574" name="l00574"></a><span class="lineno">  574</span>            ext-&gt;recordBeginTx(h, trans);</div>
 <div class="line"><a id="l00575" name="l00575"></a><span class="lineno">  575</span><span class="comment">    /*************************************************************************</span></div>
@@ -548,7 +548,7 @@ $(function(){initNavTree('tlc__recorder_8h_source.html','',''); });
 <div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span>    tlm::scc::scv::record(h, status);</div>
 <div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>    h.record_attribute(<span class="stringliteral">&quot;delay[return_path]&quot;</span>, delay.to_string());</div>
 <div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span>    tlm::scc::scv::record(h, trans);</div>
-<div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; ext : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::inst().get())</div>
+<div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; ext : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::get())</div>
 <div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span>        <span class="keywordflow">if</span>(ext)</div>
 <div class="line"><a id="l00598" name="l00598"></a><span class="lineno">  598</span>            ext-&gt;recordEndTx(h, trans);</div>
 <div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span>    <span class="comment">// get the extension and free the memory if it was mine</span></div>
@@ -614,7 +614,7 @@ $(function(){initNavTree('tlc__recorder_8h_source.html','',''); });
 <div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span>    <span class="comment">// and set the extension handle to this transaction</span></div>
 <div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>    preExt-&gt;<a class="code hl_variable" href="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension.html#a5242db103effdec334d65ce5088e08c9">txHandle</a> = h;</div>
 <div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>    h.record_attribute(<span class="stringliteral">&quot;delay&quot;</span>, delay.to_string());</div>
-<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; ext : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::inst().get())</div>
+<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; ext : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::get())</div>
 <div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span>        <span class="keywordflow">if</span>(ext)</div>
 <div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>            ext-&gt;recordBeginTx(h, trans);</div>
 <div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span><span class="comment">    /*************************************************************************</span></div>
@@ -638,7 +638,7 @@ $(function(){initNavTree('tlc__recorder_8h_source.html','',''); });
 <div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>    tlm::scc::scv::record(h, status);</div>
 <div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>    h.record_attribute(<span class="stringliteral">&quot;delay[return_path]&quot;</span>, delay.to_string());</div>
 <div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>    tlm::scc::scv::record(h, trans);</div>
-<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; ext : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::inst().get())</div>
+<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; ext : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::get())</div>
 <div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>        <span class="keywordflow">if</span>(ext)</div>
 <div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>            ext-&gt;recordEndTx(h, trans);</div>
 <div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>    <span class="comment">// get the extension and free the memory if it was mine</span></div>

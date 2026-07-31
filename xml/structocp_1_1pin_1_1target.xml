@@ -1,0 +1,504 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structocp_1_1pin_1_1target" kind="struct" language="C++" prot="public">
+    <compoundname>ocp::pin::target</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>unsigned</type>
+        <declname>DATA_WIDTH</declname>
+        <defname>DATA_WIDTH</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ADDR_WIDTH</declname>
+        <defname>ADDR_WIDTH</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>BUSWIDTH</declname>
+        <defname>BUSWIDTH</defname>
+        <defval>DATA_WIDTH</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structocp_1_1pin_1_1target_1a4b59a50972bfb6126054335c2b257b35" prot="public" static="no">
+        <type>tlm::tlm_base_protocol_types::tlm_payload_type</type>
+        <definition>using ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::payload_type =  tlm::tlm_base_protocol_types::tlm_payload_type</definition>
+        <argsstring></argsstring>
+        <name>payload_type</name>
+        <qualifiedname>ocp::pin::target::payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="40" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structocp_1_1pin_1_1target_1ac913c94c4f1b9fba26f92b3a28220125" prot="public" static="no">
+        <type>tlm::tlm_base_protocol_types::tlm_phase_type</type>
+        <definition>using ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::phase_type =  tlm::tlm_base_protocol_types::tlm_phase_type</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>ocp::pin::target::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="41" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structocp_1_1pin_1_1target_1aee1121ecaed5cba413436b8ed60116d4" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::clk_i</definition>
+        <argsstring></argsstring>
+        <name>clk_i</name>
+        <qualifiedname>ocp::pin::target::clk_i</qualifiedname>
+        <initializer>{&quot;clk_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="43" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="variable" id="structocp_1_1pin_1_1target_1a3d74219dff71068916fcc02619f0886a" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::reset</definition>
+        <argsstring></argsstring>
+        <name>reset</name>
+        <qualifiedname>ocp::pin::target::reset</qualifiedname>
+        <initializer>{&quot;&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="44" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="variable" id="structocp_1_1pin_1_1target_1aabcd20a3343a1891d2584efc2ecdb954" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; sc_uint&lt; 3 &gt; &gt;</type>
+        <definition>sc_core::sc_in&lt;sc_uint&lt;3&gt; &gt; ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::MCmd</definition>
+        <argsstring></argsstring>
+        <name>MCmd</name>
+        <qualifiedname>ocp::pin::target::MCmd</qualifiedname>
+        <initializer>{&quot;MCmd&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="46" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="variable" id="structocp_1_1pin_1_1target_1ab9bfee5e77f178ea29268040bf4662bf" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; sc_uint&lt; ADDR_WIDTH &gt; &gt;</type>
+        <definition>sc_core::sc_in&lt;sc_uint&lt;ADDR_WIDTH&gt; &gt; ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::MAddr</definition>
+        <argsstring></argsstring>
+        <name>MAddr</name>
+        <qualifiedname>ocp::pin::target::MAddr</qualifiedname>
+        <initializer>{&quot;MAddr&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="47" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="variable" id="structocp_1_1pin_1_1target_1a1d0f5e7da362f39e6e3703ebe0bb3216" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; sc_uint&lt; DATA_WIDTH &gt; &gt;</type>
+        <definition>sc_core::sc_in&lt;sc_uint&lt;DATA_WIDTH&gt; &gt; ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::MData</definition>
+        <argsstring></argsstring>
+        <name>MData</name>
+        <qualifiedname>ocp::pin::target::MData</qualifiedname>
+        <initializer>{&quot;MData&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="48" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="variable" id="structocp_1_1pin_1_1target_1a9c4be3a487cf98724b8ffe707336922e" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; sc_uint&lt; DATA_WIDTH/8 &gt; &gt;</type>
+        <definition>sc_core::sc_in&lt;sc_uint&lt;DATA_WIDTH / 8&gt; &gt; ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::MByteEn</definition>
+        <argsstring></argsstring>
+        <name>MByteEn</name>
+        <qualifiedname>ocp::pin::target::MByteEn</qualifiedname>
+        <initializer>{&quot;MByteEn&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="49" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="variable" id="structocp_1_1pin_1_1target_1a746dd073994229c25ec0dcbd425b0a3e" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; bool &gt;</type>
+        <definition>sc_core::sc_out&lt;bool&gt; ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::SCmdAccept</definition>
+        <argsstring></argsstring>
+        <name>SCmdAccept</name>
+        <qualifiedname>ocp::pin::target::SCmdAccept</qualifiedname>
+        <initializer>{&quot;SCmdAccept&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="50" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="variable" id="structocp_1_1pin_1_1target_1afc408d29c91e347912e3810519500b84" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; sc_uint&lt; 2 &gt; &gt;</type>
+        <definition>sc_core::sc_out&lt;sc_uint&lt;2&gt; &gt; ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::SResp</definition>
+        <argsstring></argsstring>
+        <name>SResp</name>
+        <qualifiedname>ocp::pin::target::SResp</qualifiedname>
+        <initializer>{&quot;SResp&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="52" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="variable" id="structocp_1_1pin_1_1target_1ac36eaec19052df47ab8dfdf3d4a08b25" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; sc_uint&lt; DATA_WIDTH &gt; &gt;</type>
+        <definition>sc_core::sc_out&lt;sc_uint&lt;DATA_WIDTH&gt; &gt; ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::SData</definition>
+        <argsstring></argsstring>
+        <name>SData</name>
+        <qualifiedname>ocp::pin::target::SData</qualifiedname>
+        <initializer>{&quot;SData&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="53" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="variable" id="structocp_1_1pin_1_1target_1ace27136101714abf17a75a3af774091e" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::MRespAccept</definition>
+        <argsstring></argsstring>
+        <name>MRespAccept</name>
+        <qualifiedname>ocp::pin::target::MRespAccept</qualifiedname>
+        <initializer>{&quot;MRespAccept&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="54" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="54" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="variable" id="structocp_1_1pin_1_1target_1abd047d89e6020c69350eb122d75cfa29" prot="public" static="no" mutable="no">
+        <type>tlm::tlm_initiator_socket&lt; BUSWIDTH &gt;</type>
+        <definition>tlm::tlm_initiator_socket&lt;BUSWIDTH&gt; ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::isckt</definition>
+        <argsstring></argsstring>
+        <name>isckt</name>
+        <qualifiedname>ocp::pin::target::isckt</qualifiedname>
+        <initializer>{&quot;isckt&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="56" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structocp_1_1pin_1_1target_1aa0561c62bdde206bb17b3b3eb9299769" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_clock *</type>
+        <definition>sc_core::sc_clock* ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::clk_if</definition>
+        <argsstring></argsstring>
+        <name>clk_if</name>
+        <qualifiedname>ocp::pin::target::clk_if</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="78" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="variable" id="structocp_1_1pin_1_1target_1a4165909dd892bccb2489bfd7857ecf1a" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::clk_delayed</definition>
+        <argsstring></argsstring>
+        <name>clk_delayed</name>
+        <qualifiedname>ocp::pin::target::clk_delayed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="79" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structocp_1_1pin_1_1target_1abdd58663cff09096d861b138f1374a8f" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::end_req_received_evt</definition>
+        <argsstring></argsstring>
+        <name>end_req_received_evt</name>
+        <qualifiedname>ocp::pin::target::end_req_received_evt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="79" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structocp_1_1pin_1_1target_1a8ae0d9a8b533300ca441ec1aab64143c" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::wdata_end_req_evt</definition>
+        <argsstring></argsstring>
+        <name>wdata_end_req_evt</name>
+        <qualifiedname>ocp::pin::target::wdata_end_req_evt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="79" column="56" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structocp_1_1pin_1_1target_1a733d51e4cc7accd6f7516f2eeded961e" prot="private" static="no" mutable="no">
+        <type><ref refid="structscc_1_1peq" kindref="compound">scc::peq</ref>&lt; tlm::scc::tlm_gp_shared_ptr &gt;</type>
+        <definition>scc::peq&lt;tlm::scc::tlm_gp_shared_ptr&gt; ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::resp_queue</definition>
+        <argsstring></argsstring>
+        <name>resp_queue</name>
+        <qualifiedname>ocp::pin::target::resp_queue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="80" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structocp_1_1pin_1_1target_1ae87fa88f2dd57ea098cb73840deb3209" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::SC_HAS_PROCESS</definition>
+        <argsstring>(target)</argsstring>
+        <name>SC_HAS_PROCESS</name>
+        <qualifiedname>ocp::pin::target::SC_HAS_PROCESS</qualifiedname>
+        <param>
+          <type>target</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="38" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structocp_1_1pin_1_1target_1a4eb3857ddf805fc7c1be075ee0ade6ba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::target</definition>
+        <argsstring>(sc_core::sc_module_name const &amp;nm)</argsstring>
+        <name>target</name>
+        <qualifiedname>ocp::pin::target::target</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="58" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="58" bodyend="66"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structocp_1_1pin_1_1target_1acc6e8d66c91cf41e3d03fe30969a2bcc" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::nb_transport_bw</definition>
+        <argsstring>(payload_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t) override</argsstring>
+        <name>nb_transport_bw</name>
+        <qualifiedname>ocp::pin::target::nb_transport_bw</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="69" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="87" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="structocp_1_1pin_1_1target_1ac2bb9925b66eff8aa8a5077a5cf7f593" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::invalidate_direct_mem_ptr</definition>
+        <argsstring>(sc_dt::uint64 start_range, sc_dt::uint64 end_range) override</argsstring>
+        <name>invalidate_direct_mem_ptr</name>
+        <qualifiedname>ocp::pin::target::invalidate_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>start_range</declname>
+        </param>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>end_range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="71" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="100" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="structocp_1_1pin_1_1target_1ac18b0fb17091fe08d8b56c69b2f56381" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_elaboration</name>
+        <qualifiedname>ocp::pin::target::end_of_elaboration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="73" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="73" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="structocp_1_1pin_1_1target_1a5fc877f9406071d10f200aee81a68517" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::clk_delay</definition>
+        <argsstring>()</argsstring>
+        <name>clk_delay</name>
+        <qualifiedname>ocp::pin::target::clk_delay</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="75" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="structocp_1_1pin_1_1target_1a6e028109dc0937f93f339e92abdae7c2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::req</definition>
+        <argsstring>()</argsstring>
+        <name>req</name>
+        <qualifiedname>ocp::pin::target::req</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="76" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="104" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="structocp_1_1pin_1_1target_1a2c30dec3fbd743031cba587ac4192b6e" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;::resp</definition>
+        <argsstring>()</argsstring>
+        <name>resp</name>
+        <qualifiedname>ocp::pin::target::resp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="77" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="165" bodyend="188"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;</label>
+        <link refid="structocp_1_1pin_1_1target"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ocp::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, BUSWIDTH &gt;</label>
+        <link refid="structocp_1_1pin_1_1target"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" line="37" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/pin/target.h" bodystart="37" bodyend="81"/>
+    <listofallmembers>
+      <member refid="structocp_1_1pin_1_1target_1a5fc877f9406071d10f200aee81a68517" prot="private" virt="non-virtual"><scope>ocp::pin::target</scope><name>clk_delay</name></member>
+      <member refid="structocp_1_1pin_1_1target_1a4165909dd892bccb2489bfd7857ecf1a" prot="private" virt="non-virtual"><scope>ocp::pin::target</scope><name>clk_delayed</name></member>
+      <member refid="structocp_1_1pin_1_1target_1aee1121ecaed5cba413436b8ed60116d4" prot="public" virt="non-virtual"><scope>ocp::pin::target</scope><name>clk_i</name></member>
+      <member refid="structocp_1_1pin_1_1target_1aa0561c62bdde206bb17b3b3eb9299769" prot="private" virt="non-virtual"><scope>ocp::pin::target</scope><name>clk_if</name></member>
+      <member refid="structocp_1_1pin_1_1target_1ac18b0fb17091fe08d8b56c69b2f56381" prot="private" virt="non-virtual"><scope>ocp::pin::target</scope><name>end_of_elaboration</name></member>
+      <member refid="structocp_1_1pin_1_1target_1abdd58663cff09096d861b138f1374a8f" prot="private" virt="non-virtual"><scope>ocp::pin::target</scope><name>end_req_received_evt</name></member>
+      <member refid="structocp_1_1pin_1_1target_1ac2bb9925b66eff8aa8a5077a5cf7f593" prot="private" virt="non-virtual"><scope>ocp::pin::target</scope><name>invalidate_direct_mem_ptr</name></member>
+      <member refid="structocp_1_1pin_1_1target_1abd047d89e6020c69350eb122d75cfa29" prot="public" virt="non-virtual"><scope>ocp::pin::target</scope><name>isckt</name></member>
+      <member refid="structocp_1_1pin_1_1target_1ab9bfee5e77f178ea29268040bf4662bf" prot="public" virt="non-virtual"><scope>ocp::pin::target</scope><name>MAddr</name></member>
+      <member refid="structocp_1_1pin_1_1target_1a9c4be3a487cf98724b8ffe707336922e" prot="public" virt="non-virtual"><scope>ocp::pin::target</scope><name>MByteEn</name></member>
+      <member refid="structocp_1_1pin_1_1target_1aabcd20a3343a1891d2584efc2ecdb954" prot="public" virt="non-virtual"><scope>ocp::pin::target</scope><name>MCmd</name></member>
+      <member refid="structocp_1_1pin_1_1target_1a1d0f5e7da362f39e6e3703ebe0bb3216" prot="public" virt="non-virtual"><scope>ocp::pin::target</scope><name>MData</name></member>
+      <member refid="structocp_1_1pin_1_1target_1ace27136101714abf17a75a3af774091e" prot="public" virt="non-virtual"><scope>ocp::pin::target</scope><name>MRespAccept</name></member>
+      <member refid="structocp_1_1pin_1_1target_1acc6e8d66c91cf41e3d03fe30969a2bcc" prot="private" virt="non-virtual"><scope>ocp::pin::target</scope><name>nb_transport_bw</name></member>
+      <member refid="structocp_1_1pin_1_1target_1a4b59a50972bfb6126054335c2b257b35" prot="public" virt="non-virtual"><scope>ocp::pin::target</scope><name>payload_type</name></member>
+      <member refid="structocp_1_1pin_1_1target_1ac913c94c4f1b9fba26f92b3a28220125" prot="public" virt="non-virtual"><scope>ocp::pin::target</scope><name>phase_type</name></member>
+      <member refid="structocp_1_1pin_1_1target_1a6e028109dc0937f93f339e92abdae7c2" prot="private" virt="non-virtual"><scope>ocp::pin::target</scope><name>req</name></member>
+      <member refid="structocp_1_1pin_1_1target_1a3d74219dff71068916fcc02619f0886a" prot="public" virt="non-virtual"><scope>ocp::pin::target</scope><name>reset</name></member>
+      <member refid="structocp_1_1pin_1_1target_1a2c30dec3fbd743031cba587ac4192b6e" prot="private" virt="non-virtual"><scope>ocp::pin::target</scope><name>resp</name></member>
+      <member refid="structocp_1_1pin_1_1target_1a733d51e4cc7accd6f7516f2eeded961e" prot="private" virt="non-virtual"><scope>ocp::pin::target</scope><name>resp_queue</name></member>
+      <member refid="structocp_1_1pin_1_1target_1ae87fa88f2dd57ea098cb73840deb3209" prot="public" virt="non-virtual"><scope>ocp::pin::target</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="structocp_1_1pin_1_1target_1a746dd073994229c25ec0dcbd425b0a3e" prot="public" virt="non-virtual"><scope>ocp::pin::target</scope><name>SCmdAccept</name></member>
+      <member refid="structocp_1_1pin_1_1target_1ac36eaec19052df47ab8dfdf3d4a08b25" prot="public" virt="non-virtual"><scope>ocp::pin::target</scope><name>SData</name></member>
+      <member refid="structocp_1_1pin_1_1target_1afc408d29c91e347912e3810519500b84" prot="public" virt="non-virtual"><scope>ocp::pin::target</scope><name>SResp</name></member>
+      <member refid="structocp_1_1pin_1_1target_1a4eb3857ddf805fc7c1be075ee0ade6ba" prot="public" virt="non-virtual"><scope>ocp::pin::target</scope><name>target</name></member>
+      <member refid="structocp_1_1pin_1_1target_1a8ae0d9a8b533300ca441ec1aab64143c" prot="private" virt="non-virtual"><scope>ocp::pin::target</scope><name>wdata_end_req_evt</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

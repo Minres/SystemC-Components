@@ -1,0 +1,288 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder" kind="struct" language="C++" prot="public">
+    <compoundname>scc::tcp4tlm::BusOpMsgBuilder</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a0dc54d624bc9ceddbe0e09610a299b94" prot="public" static="no">
+        <type>BusOpMsg</type>
+        <definition>typedef BusOpMsg scc::tcp4tlm::BusOpMsgBuilder::Table</definition>
+        <argsstring></argsstring>
+        <name>Table</name>
+        <qualifiedname>scc::tcp4tlm::BusOpMsgBuilder::Table</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="338" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="338" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a30d22a1467c892b523eaa837efdefee6" prot="public" static="no" mutable="no">
+        <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+        <definition>::flatbuffers::FlatBufferBuilder&amp; scc::tcp4tlm::BusOpMsgBuilder::fbb_</definition>
+        <argsstring></argsstring>
+        <name>fbb_</name>
+        <qualifiedname>scc::tcp4tlm::BusOpMsgBuilder::fbb_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="339" column="38" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="339" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a466660d32abc5953d83bf70d5ddb5bef" prot="public" static="no" mutable="no">
+        <type>::flatbuffers::uoffset_t</type>
+        <definition>::flatbuffers::uoffset_t scc::tcp4tlm::BusOpMsgBuilder::start_</definition>
+        <argsstring></argsstring>
+        <name>start_</name>
+        <qualifiedname>scc::tcp4tlm::BusOpMsgBuilder::start_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="340" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="340" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a2c9949ac452d2238e4bb6b5e3a05698f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::BusOpMsgBuilder::add_id</definition>
+        <argsstring>(uint32_t id)</argsstring>
+        <name>add_id</name>
+        <qualifiedname>scc::tcp4tlm::BusOpMsgBuilder::add_id</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="341" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="341" bodyend="341"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1abe74f4f3fe0e8d35f3100397c7dec41f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::BusOpMsgBuilder::add_time_stamp</definition>
+        <argsstring>(uint64_t time_stamp)</argsstring>
+        <name>add_time_stamp</name>
+        <qualifiedname>scc::tcp4tlm::BusOpMsgBuilder::add_time_stamp</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>time_stamp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="342" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="342" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a6b6d51ec2b71611991b9c34aeb0ed7bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::BusOpMsgBuilder::add_time_offset</definition>
+        <argsstring>(uint64_t time_offset)</argsstring>
+        <name>add_time_offset</name>
+        <qualifiedname>scc::tcp4tlm::BusOpMsgBuilder::add_time_offset</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>time_offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="343" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="343" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1aa4f9ed875574751ea0a1813ffe88d680" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::BusOpMsgBuilder::add_type</definition>
+        <argsstring>(scc::tcp4tlm::BusAccessType type)</argsstring>
+        <name>add_type</name>
+        <qualifiedname>scc::tcp4tlm::BusOpMsgBuilder::add_type</qualifiedname>
+        <param>
+          <type>scc::tcp4tlm::BusAccessType</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="344" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="344" bodyend="344"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a82ace6121a9ff0e667f18d25c9d79ad2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::BusOpMsgBuilder::add_index</definition>
+        <argsstring>(uint32_t index)</argsstring>
+        <name>add_index</name>
+        <qualifiedname>scc::tcp4tlm::BusOpMsgBuilder::add_index</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="345" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="345" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a5865d70417a3988bb9ffdae3a5d17d98" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::BusOpMsgBuilder::add_address</definition>
+        <argsstring>(uint64_t address)</argsstring>
+        <name>add_address</name>
+        <qualifiedname>scc::tcp4tlm::BusOpMsgBuilder::add_address</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="346" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="346" bodyend="346"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1aa918a7deafc90cacaf0d5492be4dc0a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::BusOpMsgBuilder::add_size</definition>
+        <argsstring>(uint32_t size)</argsstring>
+        <name>add_size</name>
+        <qualifiedname>scc::tcp4tlm::BusOpMsgBuilder::add_size</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="347" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="347" bodyend="347"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1afbce824c8f40b091cdee94402fe83703" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::BusOpMsgBuilder::add_no_response</definition>
+        <argsstring>(bool no_response)</argsstring>
+        <name>add_no_response</name>
+        <qualifiedname>scc::tcp4tlm::BusOpMsgBuilder::add_no_response</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>no_response</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="348" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="348" bodyend="348"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a99409b2f7a9cf229b70e283b4c808cd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::BusOpMsgBuilder::add_data</definition>
+        <argsstring>(::flatbuffers::Offset&lt;::flatbuffers::Vector&lt; uint8_t &gt; &gt; data)</argsstring>
+        <name>add_data</name>
+        <qualifiedname>scc::tcp4tlm::BusOpMsgBuilder::add_data</qualifiedname>
+        <param>
+          <type>::flatbuffers::Offset&lt;::flatbuffers::Vector&lt; uint8_t &gt; &gt;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="349" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="349" bodyend="349"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a61652f8d4234a07ead088f3324d64d07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::BusOpMsgBuilder::add_byte_enable</definition>
+        <argsstring>(::flatbuffers::Offset&lt;::flatbuffers::Vector&lt; uint8_t &gt; &gt; byte_enable)</argsstring>
+        <name>add_byte_enable</name>
+        <qualifiedname>scc::tcp4tlm::BusOpMsgBuilder::add_byte_enable</qualifiedname>
+        <param>
+          <type>::flatbuffers::Offset&lt;::flatbuffers::Vector&lt; uint8_t &gt; &gt;</type>
+          <declname>byte_enable</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="350" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="350" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a7651e0ce004b64acd5d790432934e4d4" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tcp4tlm::BusOpMsgBuilder::BusOpMsgBuilder</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb)</argsstring>
+        <name>BusOpMsgBuilder</name>
+        <qualifiedname>scc::tcp4tlm::BusOpMsgBuilder::BusOpMsgBuilder</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="353" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="353" bodyend="356"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a00a11ad5dce03b8bda2560262b5cd317" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>::flatbuffers::Offset&lt; BusOpMsg &gt;</type>
+        <definition>::flatbuffers::Offset&lt; BusOpMsg &gt; scc::tcp4tlm::BusOpMsgBuilder::Finish</definition>
+        <argsstring>()</argsstring>
+        <name>Finish</name>
+        <qualifiedname>scc::tcp4tlm::BusOpMsgBuilder::Finish</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="357" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="357" bodyend="361"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="337" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="337" bodyend="362"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a5865d70417a3988bb9ffdae3a5d17d98" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::BusOpMsgBuilder</scope><name>add_address</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a61652f8d4234a07ead088f3324d64d07" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::BusOpMsgBuilder</scope><name>add_byte_enable</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a99409b2f7a9cf229b70e283b4c808cd8" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::BusOpMsgBuilder</scope><name>add_data</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a2c9949ac452d2238e4bb6b5e3a05698f" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::BusOpMsgBuilder</scope><name>add_id</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a82ace6121a9ff0e667f18d25c9d79ad2" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::BusOpMsgBuilder</scope><name>add_index</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1afbce824c8f40b091cdee94402fe83703" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::BusOpMsgBuilder</scope><name>add_no_response</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1aa918a7deafc90cacaf0d5492be4dc0a3" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::BusOpMsgBuilder</scope><name>add_size</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a6b6d51ec2b71611991b9c34aeb0ed7bd" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::BusOpMsgBuilder</scope><name>add_time_offset</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1abe74f4f3fe0e8d35f3100397c7dec41f" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::BusOpMsgBuilder</scope><name>add_time_stamp</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1aa4f9ed875574751ea0a1813ffe88d680" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::BusOpMsgBuilder</scope><name>add_type</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a7651e0ce004b64acd5d790432934e4d4" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::BusOpMsgBuilder</scope><name>BusOpMsgBuilder</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a30d22a1467c892b523eaa837efdefee6" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::BusOpMsgBuilder</scope><name>fbb_</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a00a11ad5dce03b8bda2560262b5cd317" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::BusOpMsgBuilder</scope><name>Finish</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a466660d32abc5953d83bf70d5ddb5bef" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::BusOpMsgBuilder</scope><name>start_</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder_1a0dc54d624bc9ceddbe0e09610a299b94" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::BusOpMsgBuilder</scope><name>Table</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1router_1_1range__entry" kind="struct" language="C++" prot="protected">
+    <compoundname>scc::router::range_entry</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1router_1_1range__entry_1ac53937b266503e60ddd850e480a26008" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::range_entry::base</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <qualifiedname>scc::router::range_entry::base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="189" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1router_1_1range__entry_1aca38ee56365456a8fa0b16a3367e9fdd" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::range_entry::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>scc::router::range_entry::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="189" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1router_1_1range__entry_1a3ad94028d0e71ef3c3c23b37bc1a9a66" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::range_entry::remap</definition>
+        <argsstring></argsstring>
+        <name>remap</name>
+        <qualifiedname>scc::router::range_entry::remap</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="190" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="190" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="188" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="188" bodyend="191"/>
+    <listofallmembers>
+      <member refid="structscc_1_1router_1_1range__entry_1ac53937b266503e60ddd850e480a26008" prot="public" virt="non-virtual"><scope>scc::router::range_entry</scope><name>base</name></member>
+      <member refid="structscc_1_1router_1_1range__entry_1a3ad94028d0e71ef3c3c23b37bc1a9a66" prot="public" virt="non-virtual"><scope>scc::router::range_entry</scope><name>remap</name></member>
+      <member refid="structscc_1_1router_1_1range__entry_1aca38ee56365456a8fa0b16a3367e9fdd" prot="public" virt="non-virtual"><scope>scc::router::range_entry</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

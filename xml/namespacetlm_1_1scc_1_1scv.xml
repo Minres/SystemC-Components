@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacetlm_1_1scc_1_1scv" kind="namespace" language="C++">
+    <compoundname>tlm::scc::scv</compoundname>
+    <innerclass refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if" prot="public">tlm::scc::scv::tlm_extension_record_if</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry" prot="public">tlm::scc::scv::tlm_extension_record_registry</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if" prot="public">tlm::scc::scv::tlm_extensions_recording_if</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry" prot="public">tlm::scc::scv::tlm_extension_recording_registry</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data" prot="public">tlm::scc::scv::tlm_gp_data</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data" prot="public">tlm::scc::scv::tlm_dmi_data</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1scv_1_1tlm__rec__initiator__socket" prot="public">tlm::scc::scv::tlm_rec_initiator_socket</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket" prot="public">tlm::scc::scv::tlm_rec_target_socket</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1scv_1_1tlm__id__ext__record" prot="public">tlm::scc::scv::tlm_id_ext_record</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording" prot="public">tlm::scc::scv::tlm_id_ext_recording</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder" prot="public">tlm::scc::scv::tlm_recorder</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module" prot="public">tlm::scc::scv::tlm_recorder_module</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension" prot="public">tlm::scc::scv::tlm_recording_extension</innerclass>
+    <innernamespace refid="namespacetlm_1_1scc_1_1scv_1_1impl">tlm::scc::scv::impl</innernamespace>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacetlm_1_1scc_1_1scv_1a3961552c4bff4247f69606fa61fede3f" prot="public" static="no" strong="no">
+        <type></type>
+        <name>tlm_phase_enum</name>
+        <qualifiedname>tlm::scc::scv::tlm_phase_enum</qualifiedname>
+        <enumvalue id="namespacetlm_1_1scc_1_1scv_1a3961552c4bff4247f69606fa61fede3fad0ec72b71e157a0de02e88f4c6d39839" prot="public">
+          <name>UNINITIALIZED_PHASE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetlm_1_1scc_1_1scv_1a3961552c4bff4247f69606fa61fede3fa0f1c0165ab1d11da6aa0a393627976f5" prot="public">
+          <name>BEGIN_REQ</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetlm_1_1scc_1_1scv_1a3961552c4bff4247f69606fa61fede3fa77c0249399c6fe3d52b54b462a83229a" prot="public">
+          <name>END_REQ</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetlm_1_1scc_1_1scv_1a3961552c4bff4247f69606fa61fede3fa33fdf144c3f873e83d9c07b877eeafc6" prot="public">
+          <name>BEGIN_RESP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetlm_1_1scc_1_1scv_1a3961552c4bff4247f69606fa61fede3fab71e4c138bb157d99921c02105d12d7f" prot="public">
+          <name>END_RESP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetlm_1_1scc_1_1scv_1a3961552c4bff4247f69606fa61fede3fafac147e645ce3dbdb30f1c259cc3d093" prot="public">
+          <name>CUSTOM1</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetlm_1_1scc_1_1scv_1a3961552c4bff4247f69606fa61fede3fa6d82d4d071d84df181293d1ca9c105fe" prot="public">
+          <name>CUSTOM2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetlm_1_1scc_1_1scv_1a3961552c4bff4247f69606fa61fede3fa677f8e454c57e69143c825d2e111c98f" prot="public">
+          <name>CUSTOM3</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetlm_1_1scc_1_1scv_1a3961552c4bff4247f69606fa61fede3fa95e7efea4099ceafa1512465c10f5621" prot="public">
+          <name>CUSTOM4</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetlm_1_1scc_1_1scv_1a3961552c4bff4247f69606fa61fede3fa0386378372aebdeb15748e1252fffb07" prot="public">
+          <name>CUSTOM5</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetlm_1_1scc_1_1scv_1a3961552c4bff4247f69606fa61fede3fa8aaa38ad04ebcdf2595960e141474d70" prot="public">
+          <name>CUSTOM6</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="156" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="156" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacetlm_1_1scc_1_1scv_1ae134530def3431d02bd2ce4c9366c948" prot="public" static="no" strong="no">
+        <type></type>
+        <name>tx_rel</name>
+        <qualifiedname>tlm::scc::scv::tx_rel</qualifiedname>
+        <enumvalue id="namespacetlm_1_1scc_1_1scv_1ae134530def3431d02bd2ce4c9366c948a2e848c05048f6482bf9665d8a8f38687" prot="public">
+          <name>PARENT_CHILD</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>indicates parent child relationship </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetlm_1_1scc_1_1scv_1ae134530def3431d02bd2ce4c9366c948af9c5fa52b6f6953158c50756bab851be" prot="public">
+          <name>PREDECESSOR_SUCCESSOR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>indicates predecessor successor relationship </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>transaction relationships </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" line="41" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" bodystart="41" bodyend="44"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacetlm_1_1scc_1_1scv_1a3fef657015be5f26a25c222e4d43c0a1" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tlm::scc::scv::registered</definition>
+        <argsstring></argsstring>
+        <name>registered</name>
+        <qualifiedname>tlm::scc::scv::registered</qualifiedname>
+        <initializer>= register_extensions()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" line="108" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacetlm_1_1scc_1_1scv_1a1d09ae38ba92c3eb7d2f86d69c4c22a9" prot="public" static="yes" mutable="no">
+        <type>std::array&lt; const char *, 2 &gt;</type>
+        <definition>std::array&lt;const char*, 2&gt; tlm::scc::scv::tx_rel_str</definition>
+        <argsstring></argsstring>
+        <name>tx_rel_str</name>
+        <qualifiedname>tlm::scc::scv::tx_rel_str</qualifiedname>
+        <initializer>= {{&quot;PARENT/CHILD&quot;, &quot;PRED/SUCC&quot;}}</initializer>
+        <briefdescription>
+<para>the string representation of the <ref refid="namespacetlm_1_1scc_1_1scv_1ae134530def3431d02bd2ce4c9366c948" kindref="member">tx_rel</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" line="46" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacetlm_1_1scc_1_1scv_1aa283c7c713d0bd2a395bf90b564f00ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::scv::record</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;handle, tlm::tlm_generic_payload const &amp;o)</argsstring>
+        <name>record</name>
+        <qualifiedname>tlm::scc::scv::record</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_generic_payload const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" line="39" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" bodystart="39" bodyend="56" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" declline="47" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1scc_1_1scv_1a7cda133de3f1db279c08f7bb3d8f3333" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::scv::record</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;handle, tlm::tlm_phase const &amp;o)</argsstring>
+        <name>record</name>
+        <qualifiedname>tlm::scc::scv::record</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_phase const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" line="57" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" bodystart="57" bodyend="63" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" declline="48" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1scc_1_1scv_1a762c006948abda5e7c9e94a0bfad3806" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::scv::record</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;handle, tlm::tlm_sync_enum o)</argsstring>
+        <name>record</name>
+        <qualifiedname>tlm::scc::scv::record</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_sync_enum</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" line="64" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" bodystart="64" bodyend="64" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" declline="49" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1scc_1_1scv_1a48fbcedc662a77085a453e7840da8794" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::scv::record</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;handle, tlm::tlm_dmi const &amp;o)</argsstring>
+        <name>record</name>
+        <qualifiedname>tlm::scc::scv::record</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_dmi const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" line="65" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" bodystart="65" bodyend="72" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" declline="50" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1scc_1_1scv_1a7ad9b62790be5799f8839f715cff9ef0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::scc::scv::register_extensions</definition>
+        <argsstring>()</argsstring>
+        <name>register_extensions</name>
+        <qualifiedname>tlm::scc::scv::register_extensions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" line="98" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" bodystart="98" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1scc_1_1scv_1a892a26d2484eca1d97e00671bb02b609" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * tlm::scc::scv::rel_str</definition>
+        <argsstring>(tx_rel rel)</argsstring>
+        <name>rel_str</name>
+        <qualifiedname>tlm::scc::scv::rel_str</qualifiedname>
+        <param>
+          <type><ref refid="namespacetlm_1_1scc_1_1scv_1ae134530def3431d02bd2ce4c9366c948" kindref="member">tx_rel</ref></type>
+          <declname>rel</declname>
+        </param>
+        <briefdescription>
+<para>cast the <ref refid="namespacetlm_1_1scc_1_1scv_1ae134530def3431d02bd2ce4c9366c948" kindref="member">tx_rel</ref> enum to a string </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the relationship enum </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" line="51" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" bodystart="51" bodyend="51"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>SCC SCV4TLM classes and functions. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="42" column="1"/>
+  </compounddef>
+</doxygen>

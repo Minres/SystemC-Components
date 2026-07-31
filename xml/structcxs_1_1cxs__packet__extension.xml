@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structcxs_1_1cxs__packet__extension" kind="struct" language="C++" prot="public">
+    <compoundname>cxs::cxs_packet_extension</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_extension&lt; cxs_packet_extension &gt;</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structcxs_1_1cxs__packet__extension_1a9afa595788d0fd62c25cf141773f6529" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; cxs_pkt_shared_ptr &gt;</type>
+        <definition>std::vector&lt;cxs_pkt_shared_ptr&gt; cxs::cxs_packet_extension::packets</definition>
+        <argsstring></argsstring>
+        <name>packets</name>
+        <qualifiedname>cxs::cxs_packet_extension::packets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="118" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structcxs_1_1cxs__packet__extension_1a73a335d0b1d4071b55d8a2a3b9a4d8bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>tlm_extension_base *</type>
+        <definition>virtual tlm_extension_base * cxs::cxs_packet_extension::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <qualifiedname>cxs::cxs_packet_extension::clone</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="110" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="110" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="structcxs_1_1cxs__packet__extension_1a54322edc3d0117114160adf7d246b7c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void cxs::cxs_packet_extension::copy_from</definition>
+        <argsstring>(tlm_extension_base const &amp;ext) override</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>cxs::cxs_packet_extension::copy_from</qualifiedname>
+        <param>
+          <type>tlm_extension_base const &amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="115" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="115" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="structcxs_1_1cxs__packet__extension_1aabcbf541a41f4cb84fdd6a77eb2b91d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual cxs::cxs_packet_extension::~cxs_packet_extension</definition>
+        <argsstring>()=default</argsstring>
+        <name>~cxs_packet_extension</name>
+        <qualifiedname>cxs::cxs_packet_extension::~cxs_packet_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="116" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>cxs::cxs_packet_extension</label>
+        <link refid="structcxs_1_1cxs__packet__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; cxs_packet_extension &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>cxs::cxs_packet_extension</label>
+        <link refid="structcxs_1_1cxs__packet__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; cxs_packet_extension &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="109" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="109" bodyend="119"/>
+    <listofallmembers>
+      <member refid="structcxs_1_1cxs__packet__extension_1a73a335d0b1d4071b55d8a2a3b9a4d8bb" prot="public" virt="virtual"><scope>cxs::cxs_packet_extension</scope><name>clone</name></member>
+      <member refid="structcxs_1_1cxs__packet__extension_1a54322edc3d0117114160adf7d246b7c9" prot="public" virt="non-virtual"><scope>cxs::cxs_packet_extension</scope><name>copy_from</name></member>
+      <member refid="structcxs_1_1cxs__packet__extension_1a9afa595788d0fd62c25cf141773f6529" prot="public" virt="non-virtual"><scope>cxs::cxs_packet_extension</scope><name>packets</name></member>
+      <member refid="structcxs_1_1cxs__packet__extension_1aabcbf541a41f4cb84fdd6a77eb2b91d6" prot="public" virt="virtual"><scope>cxs::cxs_packet_extension</scope><name>~cxs_packet_extension</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tcp4tlm_1_1ResponsePayloadTraits" kind="struct" language="C++" prot="public">
+    <compoundname>scc::tcp4tlm::ResponsePayloadTraits</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1ResponsePayloadTraits_1af6eee5171b989ba4d09306800bf8dd08" prot="public" static="yes" mutable="no">
+        <type>const ResponsePayload</type>
+        <definition>const ResponsePayload scc::tcp4tlm::ResponsePayloadTraits&lt; T &gt;::enum_value</definition>
+        <argsstring></argsstring>
+        <name>enum_value</name>
+        <qualifiedname>scc::tcp4tlm::ResponsePayloadTraits::enum_value</qualifiedname>
+        <initializer>= ResponsePayload_NONE</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="177" column="69" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="177" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="177" bodyend="177"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tcp4tlm_1_1ResponsePayloadTraits_1af6eee5171b989ba4d09306800bf8dd08" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::ResponsePayloadTraits</scope><name>enum_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

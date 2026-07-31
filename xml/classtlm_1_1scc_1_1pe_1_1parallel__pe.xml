@@ -1,0 +1,327 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1pe_1_1parallel__pe" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::pe::parallel_pe</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb" prot="public" virt="non-virtual">tlm::scc::pe::intor_fw_nb</basecompoundref>
+    <includes refid="parallel__pe_8h" local="no">parallel_pe.h</includes>
+    <innerclass refid="structtlm_1_1scc_1_1pe_1_1parallel__pe_1_1thread__unit" prot="private">tlm::scc::pe::parallel_pe::thread_unit</innerclass>
+    <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1pe_1_1parallel__pe_1a25a8307f67cbaeef51837758441f6d7f" prot="private" static="no">
+        <templateparamlist>
+          <param>
+            <type>class IF</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_port&lt; IF, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</type>
+        <definition>using tlm::scc::pe::parallel_pe::sc_port_opt =  sc_core::sc_port&lt;IF, 1, sc_core::SC_ZERO_OR_MORE_BOUND&gt;</definition>
+        <argsstring></argsstring>
+        <name>sc_port_opt</name>
+        <qualifiedname>tlm::scc::pe::parallel_pe::sc_port_opt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="38" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1pe_1_1parallel__pe_1aa07c98cbe18b572aafee1b454fb24456" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_export&lt; <ref refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb" kindref="compound">intor_fw_nb</ref> &gt;</type>
+        <definition>sc_core::sc_export&lt;intor_fw_nb&gt; tlm::scc::pe::parallel_pe::fw_i</definition>
+        <argsstring></argsstring>
+        <name>fw_i</name>
+        <qualifiedname>tlm::scc::pe::parallel_pe::fw_i</qualifiedname>
+        <initializer>{&quot;fw_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>upstream forward interface</para>
+<para>This interface is used to connect the protocol engine to the upstream forward port </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="58" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1pe_1_1parallel__pe_1a3363b0608cec40ca8ccbd264d1790a3a" prot="public" static="no" mutable="no">
+        <type>sc_port_opt&lt; <ref refid="structtlm_1_1scc_1_1pe_1_1intor__bw__nb" kindref="compound">intor_bw_nb</ref> &gt;</type>
+        <definition>sc_port_opt&lt;intor_bw_nb&gt; tlm::scc::pe::parallel_pe::bw_o</definition>
+        <argsstring></argsstring>
+        <name>bw_o</name>
+        <qualifiedname>tlm::scc::pe::parallel_pe::bw_o</qualifiedname>
+        <initializer>{&quot;bw_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>upstream backward interface</para>
+<para>This interface is used to connect the protocol engine to the upstream backward export </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="64" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" bodystart="64" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1pe_1_1parallel__pe_1a091d332d72e8ffeb90daddbeaf8bfd12" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_port&lt; <ref refid="structtlm_1_1scc_1_1pe_1_1intor__fw__b" kindref="compound">intor_fw_b</ref> &gt;</type>
+        <definition>sc_core::sc_port&lt;intor_fw_b&gt; tlm::scc::pe::parallel_pe::fw_o</definition>
+        <argsstring></argsstring>
+        <name>fw_o</name>
+        <qualifiedname>tlm::scc::pe::parallel_pe::fw_o</qualifiedname>
+        <initializer>{&quot;fw_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>downstream forward interface</para>
+<para>This interface is used to connect the protocol engine to the downstream forward export </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="70" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" bodystart="70" bodyend="70"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1pe_1_1parallel__pe_1a1e441a6280a102846d39c6f498203d97" prot="private" static="no" mutable="no">
+        <type>std::deque&lt; unsigned &gt;</type>
+        <definition>std::deque&lt;unsigned&gt; tlm::scc::pe::parallel_pe::waiting_ids</definition>
+        <argsstring></argsstring>
+        <name>waiting_ids</name>
+        <qualifiedname>tlm::scc::pe::parallel_pe::waiting_ids</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="90" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1pe_1_1parallel__pe_1ab53c5bffbb700d2b1690b5a341c31577" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; thread_unit &gt;</type>
+        <definition>std::vector&lt;thread_unit&gt; tlm::scc::pe::parallel_pe::threads</definition>
+        <argsstring></argsstring>
+        <name>threads</name>
+        <qualifiedname>tlm::scc::pe::parallel_pe::threads</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="91" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1pe_1_1parallel__pe_1a03fabf2be05cfa689969773b994288ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::pe::parallel_pe::parallel_pe</definition>
+        <argsstring>(sc_core::sc_module_name const &amp;nm)</argsstring>
+        <name>parallel_pe</name>
+        <qualifiedname>tlm::scc::pe::parallel_pe::parallel_pe</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the module</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This constructor is private and should only be called from the sc_module constructor. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="79" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.cpp" bodystart="27" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1pe_1_1parallel__pe_1a3d01b4870b473ebadd37fa99d530e0e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>tlm::scc::pe::parallel_pe::~parallel_pe</definition>
+        <argsstring>()</argsstring>
+        <name>~parallel_pe</name>
+        <qualifiedname>tlm::scc::pe::parallel_pe::~parallel_pe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>virtual destructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="83" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1pe_1_1parallel__pe_1a328033b654937d856a5227797a92529e" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void tlm::scc::pe::parallel_pe::transport</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;payload, bool lt_transport=false) override</argsstring>
+        <name>transport</name>
+        <qualifiedname>tlm::scc::pe::parallel_pe::transport</qualifiedname>
+        <reimplements refid="structtlm_1_1scc_1_1pe_1_1intor__fw_1a69f17795eabb5192d5388dd6b67e4109">transport</reimplements>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>payload</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>lt_transport</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the transport of the payload. Independent of the underlying layer this function is blocking</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>payload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>object with (optional) extensions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lt_transport</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>use b_transport instead of nb_transport* </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="86" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.cpp" bodystart="34" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1pe_1_1parallel__pe_1aa6d6f1ecce202c0ef7b486a97ff440ac" prot="private" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void tlm::scc::pe::parallel_pe::snoop_resp</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;payload, bool sync) override</argsstring>
+        <name>snoop_resp</name>
+        <qualifiedname>tlm::scc::pe::parallel_pe::snoop_resp</qualifiedname>
+        <reimplements refid="structtlm_1_1scc_1_1pe_1_1intor__fw_1a1e85d9861b52f3ec31c17e107ccd852b">snoop_resp</reimplements>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>payload</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>sync</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>send a response to a backward transaction if not immediately answered</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>payload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>object with (optional) extensions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sync</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true send with next rising clock edge of the pe otherwise send it immediately </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="88" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Parallel Protocol Engine</para>
+<para>This module implements a parallel protocol engine that can handle multiple transactions in parallel.</para>
+<para><simplesect kind="note"><para>This implementation assumes that the provided interfaces are compatible </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="4">
+        <label>tlm::scc::pe::intor_fw&lt; type::NB &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::scc::pe::intor_fw_nb</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::pe::parallel_pe</label>
+        <link refid="classtlm_1_1scc_1_1pe_1_1parallel__pe"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="4">
+        <label>tlm::scc::pe::intor_fw&lt; type::NB &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::scc::pe::intor_fw_nb</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::pe::parallel_pe</label>
+        <link refid="classtlm_1_1scc_1_1pe_1_1parallel__pe"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="37" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" bodystart="37" bodyend="92"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1pe_1_1parallel__pe_1a3363b0608cec40ca8ccbd264d1790a3a" prot="public" virt="non-virtual"><scope>tlm::scc::pe::parallel_pe</scope><name>bw_o</name></member>
+      <member refid="classtlm_1_1scc_1_1pe_1_1parallel__pe_1aa07c98cbe18b572aafee1b454fb24456" prot="public" virt="non-virtual"><scope>tlm::scc::pe::parallel_pe</scope><name>fw_i</name></member>
+      <member refid="classtlm_1_1scc_1_1pe_1_1parallel__pe_1a091d332d72e8ffeb90daddbeaf8bfd12" prot="public" virt="non-virtual"><scope>tlm::scc::pe::parallel_pe</scope><name>fw_o</name></member>
+      <member refid="classtlm_1_1scc_1_1pe_1_1parallel__pe_1a03fabf2be05cfa689969773b994288ab" prot="public" virt="non-virtual"><scope>tlm::scc::pe::parallel_pe</scope><name>parallel_pe</name></member>
+      <member refid="classtlm_1_1scc_1_1pe_1_1parallel__pe_1a25a8307f67cbaeef51837758441f6d7f" prot="private" virt="non-virtual"><scope>tlm::scc::pe::parallel_pe</scope><name>sc_port_opt</name></member>
+      <member refid="classtlm_1_1scc_1_1pe_1_1parallel__pe_1aa6d6f1ecce202c0ef7b486a97ff440ac" prot="private" virt="virtual"><scope>tlm::scc::pe::parallel_pe</scope><name>snoop_resp</name></member>
+      <member refid="classtlm_1_1scc_1_1pe_1_1parallel__pe_1ab53c5bffbb700d2b1690b5a341c31577" prot="private" virt="non-virtual"><scope>tlm::scc::pe::parallel_pe</scope><name>threads</name></member>
+      <member refid="classtlm_1_1scc_1_1pe_1_1parallel__pe_1a328033b654937d856a5227797a92529e" prot="private" virt="virtual"><scope>tlm::scc::pe::parallel_pe</scope><name>transport</name></member>
+      <member refid="classtlm_1_1scc_1_1pe_1_1parallel__pe_1a1e441a6280a102846d39c6f498203d97" prot="private" virt="non-virtual"><scope>tlm::scc::pe::parallel_pe</scope><name>waiting_ids</name></member>
+      <member refid="classtlm_1_1scc_1_1pe_1_1parallel__pe_1a3d01b4870b473ebadd37fa99d530e0e1" prot="public" virt="virtual"><scope>tlm::scc::pe::parallel_pe</scope><name>~parallel_pe</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

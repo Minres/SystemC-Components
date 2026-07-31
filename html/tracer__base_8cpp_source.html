@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -417,7 +417,7 @@ $(function(){initNavTree('tracer__base_8cpp_source.html','',''); });
 <div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    <span class="keyword">auto</span> <a class="code hl_variable" href="structscc_1_1tracer__base.html#aa537e06076101c84363724d8c90d6d6e">cci_broker</a> = cci::cci_get_broker();</div>
 <div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    <span class="keyword">auto</span> <a class="code hl_variable" href="structscc_1_1tracer__base.html#a77e5c593bc12d3bdf8e7d035d9f1da4d">default_trace_enable_handle</a> = <a class="code hl_variable" href="structscc_1_1tracer__base.html#aa537e06076101c84363724d8c90d6d6e">cci_broker</a>.get_param_handle(default_trace_enable_name);</div>
 <div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="structscc_1_1tracer__base.html#a77e5c593bc12d3bdf8e7d035d9f1da4d">default_trace_enable_handle</a>.is_valid())</div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        <a class="code hl_variable" href="structscc_1_1tracer__base.html#a77e5c593bc12d3bdf8e7d035d9f1da4d">default_trace_enable_handle</a>.get_cci_value().set&lt;<span class="keywordtype">bool</span>&gt;(v);</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        <a class="code hl_variable" href="structscc_1_1tracer__base.html#a77e5c593bc12d3bdf8e7d035d9f1da4d">default_trace_enable_handle</a>.set_cci_value(cci::cci_value(v));</div>
 <div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>}</div>
 <div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span> </div>
 <div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>} <span class="comment">// namespace scc</span></div>

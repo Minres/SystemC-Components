@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtilelink_1_1tl__c" kind="struct" language="C++" prot="public">
+    <compoundname>tilelink::tl_c</compoundname>
+    <basecompoundref refid="structtilelink_1_1ch__a" prot="public" virt="non-virtual">tilelink::ch_a&lt; CFG, master_types &gt;</basecompoundref>
+    <basecompoundref refid="structtilelink_1_1ch__b" prot="public" virt="non-virtual">tilelink::ch_b&lt; CFG, master_types &gt;</basecompoundref>
+    <basecompoundref refid="structtilelink_1_1ch__c" prot="public" virt="non-virtual">tilelink::ch_c&lt; CFG, master_types &gt;</basecompoundref>
+    <basecompoundref refid="structtilelink_1_1ch__d" prot="public" virt="non-virtual">tilelink::ch_d&lt; CFG, master_types &gt;</basecompoundref>
+    <basecompoundref refid="structtilelink_1_1ch__e" prot="public" virt="non-virtual">tilelink::ch_e&lt; CFG, master_types &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename CFG</type>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval><ref refid="structtilelink_1_1master__types" kindref="compound">master_types</ref></defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtilelink_1_1tl__c_1ac717955d8963cdb4a594231e4d0c6bcc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tilelink::tl_c&lt; CFG, TYPES &gt;::tl_c</definition>
+        <argsstring>()</argsstring>
+        <name>tl_c</name>
+        <qualifiedname>tilelink::tl_c::tl_c</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="289" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="289" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tl__c_1aca59945fe10f554a5c404c373492e10b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tilelink::tl_c&lt; CFG, TYPES &gt;::tl_c</definition>
+        <argsstring>(const char *prefix)</argsstring>
+        <name>tl_c</name>
+        <qualifiedname>tilelink::tl_c::tl_c</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>prefix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="295" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="295" bodyend="300"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tl__c_1a778d8acc5a73a2d4bc5bc5be61f3c75f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename OTYPES</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void tilelink::tl_c&lt; CFG, TYPES &gt;::bind</definition>
+        <argsstring>(tl_c&lt; CFG, OTYPES &gt; &amp;o)</argsstring>
+        <name>bind</name>
+        <qualifiedname>tilelink::tl_c::bind</qualifiedname>
+        <param>
+          <type>tl_c&lt; CFG, OTYPES &gt; &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="301" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="301" bodyend="307"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>tilelink::ch_a&lt; CFG, master_types &gt;</label>
+        <link refid="structtilelink_1_1ch__a"/>
+      </node>
+      <node id="3">
+        <label>tilelink::ch_b&lt; CFG, master_types &gt;</label>
+        <link refid="structtilelink_1_1ch__b"/>
+      </node>
+      <node id="4">
+        <label>tilelink::ch_c&lt; CFG, master_types &gt;</label>
+        <link refid="structtilelink_1_1ch__c"/>
+      </node>
+      <node id="5">
+        <label>tilelink::ch_d&lt; CFG, master_types &gt;</label>
+        <link refid="structtilelink_1_1ch__d"/>
+      </node>
+      <node id="6">
+        <label>tilelink::ch_e&lt; CFG, master_types &gt;</label>
+        <link refid="structtilelink_1_1ch__e"/>
+      </node>
+      <node id="1">
+        <label>tilelink::tl_c&lt; CFG, TYPES &gt;</label>
+        <link refid="structtilelink_1_1tl__c"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>tilelink::ch_a&lt; CFG, master_types &gt;</label>
+        <link refid="structtilelink_1_1ch__a"/>
+      </node>
+      <node id="3">
+        <label>tilelink::ch_b&lt; CFG, master_types &gt;</label>
+        <link refid="structtilelink_1_1ch__b"/>
+      </node>
+      <node id="4">
+        <label>tilelink::ch_c&lt; CFG, master_types &gt;</label>
+        <link refid="structtilelink_1_1ch__c"/>
+      </node>
+      <node id="5">
+        <label>tilelink::ch_d&lt; CFG, master_types &gt;</label>
+        <link refid="structtilelink_1_1ch__d"/>
+      </node>
+      <node id="6">
+        <label>tilelink::ch_e&lt; CFG, master_types &gt;</label>
+        <link refid="structtilelink_1_1ch__e"/>
+      </node>
+      <node id="1">
+        <label>tilelink::tl_c&lt; CFG, TYPES &gt;</label>
+        <link refid="structtilelink_1_1tl__c"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="288" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="288" bodyend="308"/>
+    <listofallmembers>
+      <member refid="structtilelink_1_1ch__a_1ab17725b6333ccbd8576ee536125836c5" prot="public" virt="non-virtual" ambiguityscope="tilelink::"><scope>tilelink::tl_c</scope><name>address</name></member>
+      <member refid="structtilelink_1_1ch__b_1ab61b566d8aa1ced3c1f39793a7830476" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_b&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>address</name></member>
+      <member refid="structtilelink_1_1ch__c_1af510aba622a52dd63a92d155ccf5e00e" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_c&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>address</name></member>
+      <member refid="structtilelink_1_1tl__c_1a778d8acc5a73a2d4bc5bc5be61f3c75f" prot="public" virt="non-virtual"><scope>tilelink::tl_c</scope><name>bind</name></member>
+      <member refid="structtilelink_1_1ch__a_1af331da70e3a0b827ace48ecfb466ba0e" prot="public" virt="non-virtual"><scope>tilelink::tl_c</scope><name>bind_a</name></member>
+      <member refid="structtilelink_1_1ch__b_1afe2af9e79e31848f0ac2914ad3de7d50" prot="public" virt="non-virtual"><scope>tilelink::tl_c</scope><name>bind_b</name></member>
+      <member refid="structtilelink_1_1ch__c_1a0b4211e29009fbb84c6f695a640ddc15" prot="public" virt="non-virtual"><scope>tilelink::tl_c</scope><name>bind_c</name></member>
+      <member refid="structtilelink_1_1ch__d_1a9311086018a4e6f70dce1166dee8e7eb" prot="public" virt="non-virtual"><scope>tilelink::tl_c</scope><name>bind_d</name></member>
+      <member refid="structtilelink_1_1ch__e_1a085971d780e169c0684a1c9078eaecf4" prot="public" virt="non-virtual"><scope>tilelink::tl_c</scope><name>bind_e</name></member>
+      <member refid="structtilelink_1_1ch__a_1af02006468b957fed380700665517a0f0" prot="public" virt="non-virtual"><scope>tilelink::tl_c</scope><name>ch_a</name></member>
+      <member refid="structtilelink_1_1ch__b_1a2c8a4ea47e0efcb0635a5ac32649c372" prot="public" virt="non-virtual"><scope>tilelink::tl_c</scope><name>ch_b</name></member>
+      <member refid="structtilelink_1_1ch__c_1a83415d95deb89446f8faede527c59a0a" prot="public" virt="non-virtual"><scope>tilelink::tl_c</scope><name>ch_c</name></member>
+      <member refid="structtilelink_1_1ch__d_1ad139e81eff9c6ec37172ac98cb545127" prot="public" virt="non-virtual"><scope>tilelink::tl_c</scope><name>ch_d</name></member>
+      <member refid="structtilelink_1_1ch__e_1a87cf6f343265fa3e8adac4df5d29ad92" prot="public" virt="non-virtual"><scope>tilelink::tl_c</scope><name>ch_e</name></member>
+      <member refid="structtilelink_1_1ch__a_1ab31ee0794460257b071b1cdffad9d741" prot="public" virt="non-virtual" ambiguityscope="tilelink::"><scope>tilelink::tl_c</scope><name>code</name></member>
+      <member refid="structtilelink_1_1ch__b_1adef80ba8f88d55891ffa6d01d6d38332" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_b&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>code</name></member>
+      <member refid="structtilelink_1_1ch__c_1abe03b55a774f86ad0110a0a3094fd5b7" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_c&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>code</name></member>
+      <member refid="structtilelink_1_1ch__d_1ae334017362c0d4ec3b9fa295d13c7080" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_d&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>code</name></member>
+      <member refid="structtilelink_1_1ch__a_1a1a35e544df666960357dde27a810cdde" prot="public" virt="non-virtual" ambiguityscope="tilelink::"><scope>tilelink::tl_c</scope><name>corrupt</name></member>
+      <member refid="structtilelink_1_1ch__b_1ac247dee152045f6c6725abd73bda61ec" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_b&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>corrupt</name></member>
+      <member refid="structtilelink_1_1ch__c_1aaa03850b45ddddcf2d8ea6177965b5b8" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_c&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>corrupt</name></member>
+      <member refid="structtilelink_1_1ch__d_1ac47f97960be101c626550099eeb4ca9e" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_d&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>corrupt</name></member>
+      <member refid="structtilelink_1_1ch__a_1aadbe73e84762c5e74bd1e89f96447549" prot="public" virt="non-virtual" ambiguityscope="tilelink::"><scope>tilelink::tl_c</scope><name>data</name></member>
+      <member refid="structtilelink_1_1ch__b_1acd7cca4dd35bb99b431c64feb6c9f71d" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_b&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>data</name></member>
+      <member refid="structtilelink_1_1ch__c_1a9c087e4b556c2d982b3c78964d69b7d5" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_c&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>data</name></member>
+      <member refid="structtilelink_1_1ch__d_1a7ead9d862414963c977ab59267a6ed6d" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_d&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>data</name></member>
+      <member refid="structtilelink_1_1ch__d_1a8f48a88b3aeccd1fb8cc8091a0b2251c" prot="public" virt="non-virtual"><scope>tilelink::tl_c</scope><name>denied</name></member>
+      <member refid="structtilelink_1_1ch__a_1a1caf804dcd3c92fa7c91863fb98acaba" prot="public" virt="non-virtual" ambiguityscope="tilelink::"><scope>tilelink::tl_c</scope><name>mask</name></member>
+      <member refid="structtilelink_1_1ch__b_1a59e7632e0448a228efea1aa51bebacd8" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_b&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>mask</name></member>
+      <member refid="structtilelink_1_1ch__a_1ab6030df1992ae2d40098e731fe81aa93" prot="public" virt="non-virtual" ambiguityscope="tilelink::"><scope>tilelink::tl_c</scope><name>param</name></member>
+      <member refid="structtilelink_1_1ch__b_1a6d0c99c18c56f906feb8bed0a22e017e" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_b&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>param</name></member>
+      <member refid="structtilelink_1_1ch__c_1a6d49ea80433ea7d7871a4e2a99bd2139" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_c&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>param</name></member>
+      <member refid="structtilelink_1_1ch__d_1a1370febac9861eaad042b1eea95c7ac5" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_d&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>param</name></member>
+      <member refid="structtilelink_1_1ch__a_1a4ed1f9592a9ab77d935b4cd1e92e7bd1" prot="public" virt="non-virtual" ambiguityscope="tilelink::"><scope>tilelink::tl_c</scope><name>ready</name></member>
+      <member refid="structtilelink_1_1ch__b_1a8ba3e0a6efd67c2382baf049be9a15ad" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_b&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>ready</name></member>
+      <member refid="structtilelink_1_1ch__c_1a5a4d2a91e653fe3f5bad4324c86b592f" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_c&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>ready</name></member>
+      <member refid="structtilelink_1_1ch__d_1a782dadb0ba6ff44f81f78901a7eb11f9" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_d&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>ready</name></member>
+      <member refid="structtilelink_1_1ch__e_1a4b1d5b29cb349d45633bf6e6696c264c" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_e&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>ready</name></member>
+      <member refid="structtilelink_1_1ch__d_1aaa6a20ff98af428f74811f23fac3e9d1" prot="public" virt="non-virtual" ambiguityscope="tilelink::"><scope>tilelink::tl_c</scope><name>sink</name></member>
+      <member refid="structtilelink_1_1ch__e_1ade85a04165d885223d5ac8d38034591d" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_e&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>sink</name></member>
+      <member refid="structtilelink_1_1ch__a_1aef12041f0632411ac362b8e328e0ca58" prot="public" virt="non-virtual" ambiguityscope="tilelink::"><scope>tilelink::tl_c</scope><name>size</name></member>
+      <member refid="structtilelink_1_1ch__b_1a611ecf2d613c6f25d1e4b95941bcc724" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_b&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>size</name></member>
+      <member refid="structtilelink_1_1ch__c_1a77b392109e24b70fed39c2bc86ef29f2" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_c&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>size</name></member>
+      <member refid="structtilelink_1_1ch__d_1a0380c75d01ba3a610cb9eccf5a18e1d4" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_d&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>size</name></member>
+      <member refid="structtilelink_1_1ch__a_1a18eed6de768c786f8b08ec0ae66d0f71" prot="public" virt="non-virtual" ambiguityscope="tilelink::"><scope>tilelink::tl_c</scope><name>source</name></member>
+      <member refid="structtilelink_1_1ch__b_1af7363c4069420739a50115a848b5b1ba" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_b&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>source</name></member>
+      <member refid="structtilelink_1_1ch__c_1acfa2265bb3aef3f33cd1aa49c77bf937" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_c&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>source</name></member>
+      <member refid="structtilelink_1_1ch__d_1aa70d8ba31159f536d5c5463016359c17" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_d&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>source</name></member>
+      <member refid="structtilelink_1_1tl__c_1ac717955d8963cdb4a594231e4d0c6bcc" prot="public" virt="non-virtual"><scope>tilelink::tl_c</scope><name>tl_c</name></member>
+      <member refid="structtilelink_1_1tl__c_1aca59945fe10f554a5c404c373492e10b" prot="public" virt="non-virtual"><scope>tilelink::tl_c</scope><name>tl_c</name></member>
+      <member refid="structtilelink_1_1ch__a_1a71d02f4a884e3d261320c0a53a64169d" prot="public" virt="non-virtual" ambiguityscope="tilelink::"><scope>tilelink::tl_c</scope><name>valid</name></member>
+      <member refid="structtilelink_1_1ch__b_1a5109efb9a41e5d43b1c086a98165f7d8" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_b&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>valid</name></member>
+      <member refid="structtilelink_1_1ch__c_1ae28857e28a7531aa41101505a378fb0e" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_c&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>valid</name></member>
+      <member refid="structtilelink_1_1ch__d_1a5b8f2467e561e9b893412670c48a09db" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_d&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>valid</name></member>
+      <member refid="structtilelink_1_1ch__e_1a125e4e105b0f006724ab3a8df66f2690" prot="public" virt="non-virtual" ambiguityscope="tilelink::ch_e&lt; CFG, master_types &gt;::"><scope>tilelink::tl_c</scope><name>valid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

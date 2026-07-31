@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structutil_1_1LoggerDelegate" kind="struct" language="C++" prot="public">
+    <compoundname>util::LoggerDelegate</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structutil_1_1LoggerDelegate_1ac4bf529b24985debda469b72d95cb106" prot="public" static="no">
+        <type>void(<ref refid="namespacelogging_1acdebf4f4cd477e9f9c1159bfcd08249a" kindref="member">logging::log_level</ref>, std::string const  &amp;, std::string const  &amp;, unsigned, char const  *)</type>
+        <definition>using util::LoggerDelegate::delegate_fn =  void(logging::log_level, std::string const&amp;, std::string const&amp;, unsigned, char const*)</definition>
+        <argsstring></argsstring>
+        <name>delegate_fn</name>
+        <qualifiedname>util::LoggerDelegate::delegate_fn</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" line="42" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structutil_1_1LoggerDelegate_1a81f7d8c9d68fd9ca2883d2ff8691425b" prot="public" static="no" mutable="no">
+        <type><ref refid="classutil_1_1delegate" kindref="compound">util::delegate</ref>&lt; delegate_fn &gt;</type>
+        <definition>util::delegate&lt;delegate_fn&gt; util::LoggerDelegate::log</definition>
+        <argsstring></argsstring>
+        <name>log</name>
+        <qualifiedname>util::LoggerDelegate::log</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" line="43" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structutil_1_1LoggerDelegate_1a17513f24ec6c95dd192012ed437375ea" prot="public" static="no" mutable="no">
+        <type><ref refid="namespacelogging_1acdebf4f4cd477e9f9c1159bfcd08249a" kindref="member">logging::log_level</ref></type>
+        <definition>logging::log_level util::LoggerDelegate::level</definition>
+        <argsstring></argsstring>
+        <name>level</name>
+        <qualifiedname>util::LoggerDelegate::level</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" line="44" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>util::LoggerDelegate</label>
+        <link refid="structutil_1_1LoggerDelegate"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>log</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>util::delegate&lt; delegate_fn &gt;</label>
+        <link refid="classutil_1_1delegate"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" line="41" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" bodystart="41" bodyend="45"/>
+    <listofallmembers>
+      <member refid="structutil_1_1LoggerDelegate_1ac4bf529b24985debda469b72d95cb106" prot="public" virt="non-virtual"><scope>util::LoggerDelegate</scope><name>delegate_fn</name></member>
+      <member refid="structutil_1_1LoggerDelegate_1a17513f24ec6c95dd192012ed437375ea" prot="public" virt="non-virtual"><scope>util::LoggerDelegate</scope><name>level</name></member>
+      <member refid="structutil_1_1LoggerDelegate_1a81f7d8c9d68fd9ca2883d2ff8691425b" prot="public" virt="non-virtual"><scope>util::LoggerDelegate</scope><name>log</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

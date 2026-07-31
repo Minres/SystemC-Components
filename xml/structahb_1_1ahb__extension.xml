@@ -1,0 +1,565 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structahb_1_1ahb__extension" kind="struct" language="C++" prot="public">
+    <compoundname>ahb::ahb_extension</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_extension&lt; ahb_extension &gt;</basecompoundref>
+    <sectiondef kind="private-type">
+      <memberdef kind="enum" id="structahb_1_1ahb__extension_1ac49532334da391a30386564c21906ff8" prot="private" static="no" strong="no">
+        <type></type>
+        <name></name>
+        <qualifiedname>ahb::ahb_extension</qualifiedname>
+        <enumvalue id="structahb_1_1ahb__extension_1ac49532334da391a30386564c21906ff8af2e7ff45dcb859c24848ccf26a2b0ee3" prot="private">
+          <name>INSTR</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structahb_1_1ahb__extension_1ac49532334da391a30386564c21906ff8a146d507e4d5c3cdf2ace3f53bac66f25" prot="private">
+          <name>PRIV</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structahb_1_1ahb__extension_1ac49532334da391a30386564c21906ff8a68069948fb10874a04bd22e7b8786b09" prot="private">
+          <name>BUFFERABLE</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structahb_1_1ahb__extension_1ac49532334da391a30386564c21906ff8a24c9b11c4fce7221565002430a2e677b" prot="private">
+          <name>CACHABLE</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="119" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="119" bodyend="119"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structahb_1_1ahb__extension_1ab9b5d397a819506e4e3c2a7a2fd79be5" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ahb::ahb_extension::prot</definition>
+        <argsstring></argsstring>
+        <name>prot</name>
+        <qualifiedname>ahb::ahb_extension::prot</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="120" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="120" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="variable" id="structahb_1_1ahb__extension_1acf677754d046ab1f105a9afe1a342cb4" prot="private" static="no" mutable="no">
+        <type>lock_e</type>
+        <definition>lock_e ahb::ahb_extension::lock</definition>
+        <argsstring></argsstring>
+        <name>lock</name>
+        <qualifiedname>ahb::ahb_extension::lock</qualifiedname>
+        <initializer>{lock_e::NORMAL}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="121" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="121" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="variable" id="structahb_1_1ahb__extension_1ac1fd05d0ac9d2c786d2d942100c0ae80" prot="private" static="no" mutable="no">
+        <type>resp_e</type>
+        <definition>resp_e ahb::ahb_extension::resp</definition>
+        <argsstring></argsstring>
+        <name>resp</name>
+        <qualifiedname>ahb::ahb_extension::resp</qualifiedname>
+        <initializer>{resp_e::OKAY}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="122" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="122" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="variable" id="structahb_1_1ahb__extension_1afe31c6814db9cf063c935001fe7269a1" prot="private" static="no" mutable="no">
+        <type>burst_e</type>
+        <definition>burst_e ahb::ahb_extension::burst</definition>
+        <argsstring></argsstring>
+        <name>burst</name>
+        <qualifiedname>ahb::ahb_extension::burst</qualifiedname>
+        <initializer>{burst_e::SINGLE}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="123" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="123" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="variable" id="structahb_1_1ahb__extension_1aff06b7d9e744e25fc074fde32929a247" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ahb::ahb_extension::seq</definition>
+        <argsstring></argsstring>
+        <name>seq</name>
+        <qualifiedname>ahb::ahb_extension::seq</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="124" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="124" bodyend="124"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1aa1c5d00c533a8c6111f2eb66498b7202" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ahb::ahb_extension::is_instruction</definition>
+        <argsstring>() const</argsstring>
+        <name>is_instruction</name>
+        <qualifiedname>ahb::ahb_extension::is_instruction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="77" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="135" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1aa1829965f8611bbcbd50e61a0f8fe3ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb::ahb_extension::set_instruction</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_instruction</name>
+        <qualifiedname>ahb::ahb_extension::set_instruction</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>instr</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="78" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="137" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1adbcac95dab39080ebe8db069cd529b40" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ahb::ahb_extension::is_privileged</definition>
+        <argsstring>() const</argsstring>
+        <name>is_privileged</name>
+        <qualifiedname>ahb::ahb_extension::is_privileged</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="80" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="144" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a3ffc92a0f7884ba36ade2d455422f165" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb::ahb_extension::set_privileged</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_privileged</name>
+        <qualifiedname>ahb::ahb_extension::set_privileged</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>priv</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="81" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="146" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a69b79dd6cf371ca54b40b6e743029d2c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb::ahb_extension::set_bufferable</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_bufferable</name>
+        <qualifiedname>ahb::ahb_extension::set_bufferable</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>bufferable</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="83" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="155" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a4f29cb0666b0272ab40ee48150e17937" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ahb::ahb_extension::is_bufferable</definition>
+        <argsstring>() const</argsstring>
+        <name>is_bufferable</name>
+        <qualifiedname>ahb::ahb_extension::is_bufferable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="84" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="153" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a9d5e79c5a3db618e91880705b638861c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb::ahb_extension::set_cacheable</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_cacheable</name>
+        <qualifiedname>ahb::ahb_extension::set_cacheable</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>cacheable</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="86" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="164" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a6b63dcfbd28fef6c1396c823cce20725" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ahb::ahb_extension::is_cacheable</definition>
+        <argsstring>() const</argsstring>
+        <name>is_cacheable</name>
+        <qualifiedname>ahb::ahb_extension::is_cacheable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="87" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="162" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a47aa039146070ba065ad0d03f1ee543c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ahb::ahb_extension::is_locked</definition>
+        <argsstring>() const</argsstring>
+        <name>is_locked</name>
+        <qualifiedname>ahb::ahb_extension::is_locked</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="89" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="175" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1aa633d98a1820c747d41edda743bd0a37" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb::ahb_extension::set_locked</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_locked</name>
+        <qualifiedname>ahb::ahb_extension::set_locked</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>locked</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="90" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="177" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a04657b7079c01707a2cb87fe785c0a48" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ahb::ahb_extension::is_seq</definition>
+        <argsstring>() const</argsstring>
+        <name>is_seq</name>
+        <qualifiedname>ahb::ahb_extension::is_seq</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="92" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="183" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a7e1aabe03b7821bc5662ad95f784d62d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb::ahb_extension::set_seq</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_seq</name>
+        <qualifiedname>ahb::ahb_extension::set_seq</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>s</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="93" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="185" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a720f5ab7899a8e3c0dd5b5140d437d64" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t ahb::ahb_extension::get_protection</definition>
+        <argsstring>() const</argsstring>
+        <name>get_protection</name>
+        <qualifiedname>ahb::ahb_extension::get_protection</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="95" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="171" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a78235a66ac530131492acc9aaf040cd6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb::ahb_extension::set_protection</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_protection</name>
+        <qualifiedname>ahb::ahb_extension::set_protection</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>protection</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="96" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="173" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a716cb5d11c866bf1219445bd25adc96c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>burst_e</type>
+        <definition>burst_e ahb::ahb_extension::get_burst</definition>
+        <argsstring>() const</argsstring>
+        <name>get_burst</name>
+        <qualifiedname>ahb::ahb_extension::get_burst</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="98" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="179" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a8e7208fbd3a1b8a9c8bd2d77a9679a75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb::ahb_extension::set_burst</definition>
+        <argsstring>(burst_e)</argsstring>
+        <name>set_burst</name>
+        <qualifiedname>ahb::ahb_extension::set_burst</qualifiedname>
+        <param>
+          <type>burst_e</type>
+          <defname>b</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="99" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="181" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1af7c56a68b99fcc6efcc83f2ebf41ee91" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>resp_e</type>
+        <definition>resp_e ahb::ahb_extension::get_resp</definition>
+        <argsstring>() const</argsstring>
+        <name>get_resp</name>
+        <qualifiedname>ahb::ahb_extension::get_resp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="101" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="189" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a634e3642a28b81900846c488adcf9804" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb::ahb_extension::set_resp</definition>
+        <argsstring>(resp_e)</argsstring>
+        <name>set_resp</name>
+        <qualifiedname>ahb::ahb_extension::set_resp</qualifiedname>
+        <param>
+          <type>resp_e</type>
+          <defname>r</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="102" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="191" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a84958747bfc87cb71448eb6eb99e5c7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ahb::ahb_extension::ahb_extension</definition>
+        <argsstring>()=default</argsstring>
+        <name>ahb_extension</name>
+        <qualifiedname>ahb::ahb_extension::ahb_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="104" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a55ef94813d8fe4cc189ae7501aaee00d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ahb::ahb_extension::ahb_extension</definition>
+        <argsstring>(const ahb_extension &amp;o)=default</argsstring>
+        <name>ahb_extension</name>
+        <qualifiedname>ahb::ahb_extension::ahb_extension</qualifiedname>
+        <param>
+          <type>const ahb_extension &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="106" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a364ccc294670ae6a48da1d7fc0c801cf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_extension_base *</type>
+        <definition>tlm::tlm_extension_base * ahb::ahb_extension::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <qualifiedname>ahb::ahb_extension::clone</qualifiedname>
+        <briefdescription>
+<para>the clone function to create deep copies of </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>pointer to heap-allocated extension </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="111" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="187" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="structahb_1_1ahb__extension_1a33bc9af7f11dee5ae8718fdad6703bcd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb::ahb_extension::copy_from</definition>
+        <argsstring>(tlm::tlm_extension_base const &amp;ext) override</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>ahb::ahb_extension::copy_from</qualifiedname>
+        <param>
+          <type>tlm::tlm_extension_base const &amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+<para>deep copy all values from ext </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ext</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="116" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="193" bodyend="197"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ahb::ahb_extension</label>
+        <link refid="structahb_1_1ahb__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; ahb_extension &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ahb::ahb_extension</label>
+        <link refid="structahb_1_1ahb__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; ahb_extension &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="75" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="75" bodyend="125"/>
+    <listofallmembers>
+      <member refid="structahb_1_1ahb__extension_1a84958747bfc87cb71448eb6eb99e5c7d" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>ahb_extension</name></member>
+      <member refid="structahb_1_1ahb__extension_1a55ef94813d8fe4cc189ae7501aaee00d" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>ahb_extension</name></member>
+      <member refid="structahb_1_1ahb__extension_1ac49532334da391a30386564c21906ff8a68069948fb10874a04bd22e7b8786b09" prot="private" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>BUFFERABLE</name></member>
+      <member refid="structahb_1_1ahb__extension_1afe31c6814db9cf063c935001fe7269a1" prot="private" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>burst</name></member>
+      <member refid="structahb_1_1ahb__extension_1ac49532334da391a30386564c21906ff8a24c9b11c4fce7221565002430a2e677b" prot="private" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>CACHABLE</name></member>
+      <member refid="structahb_1_1ahb__extension_1a364ccc294670ae6a48da1d7fc0c801cf" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>clone</name></member>
+      <member refid="structahb_1_1ahb__extension_1a33bc9af7f11dee5ae8718fdad6703bcd" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>copy_from</name></member>
+      <member refid="structahb_1_1ahb__extension_1a716cb5d11c866bf1219445bd25adc96c" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>get_burst</name></member>
+      <member refid="structahb_1_1ahb__extension_1a720f5ab7899a8e3c0dd5b5140d437d64" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>get_protection</name></member>
+      <member refid="structahb_1_1ahb__extension_1af7c56a68b99fcc6efcc83f2ebf41ee91" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>get_resp</name></member>
+      <member refid="structahb_1_1ahb__extension_1ac49532334da391a30386564c21906ff8af2e7ff45dcb859c24848ccf26a2b0ee3" prot="private" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>INSTR</name></member>
+      <member refid="structahb_1_1ahb__extension_1a4f29cb0666b0272ab40ee48150e17937" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>is_bufferable</name></member>
+      <member refid="structahb_1_1ahb__extension_1a6b63dcfbd28fef6c1396c823cce20725" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>is_cacheable</name></member>
+      <member refid="structahb_1_1ahb__extension_1aa1c5d00c533a8c6111f2eb66498b7202" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>is_instruction</name></member>
+      <member refid="structahb_1_1ahb__extension_1a47aa039146070ba065ad0d03f1ee543c" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>is_locked</name></member>
+      <member refid="structahb_1_1ahb__extension_1adbcac95dab39080ebe8db069cd529b40" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>is_privileged</name></member>
+      <member refid="structahb_1_1ahb__extension_1a04657b7079c01707a2cb87fe785c0a48" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>is_seq</name></member>
+      <member refid="structahb_1_1ahb__extension_1acf677754d046ab1f105a9afe1a342cb4" prot="private" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>lock</name></member>
+      <member refid="structahb_1_1ahb__extension_1ac49532334da391a30386564c21906ff8a146d507e4d5c3cdf2ace3f53bac66f25" prot="private" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>PRIV</name></member>
+      <member refid="structahb_1_1ahb__extension_1ab9b5d397a819506e4e3c2a7a2fd79be5" prot="private" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>prot</name></member>
+      <member refid="structahb_1_1ahb__extension_1ac1fd05d0ac9d2c786d2d942100c0ae80" prot="private" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>resp</name></member>
+      <member refid="structahb_1_1ahb__extension_1aff06b7d9e744e25fc074fde32929a247" prot="private" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>seq</name></member>
+      <member refid="structahb_1_1ahb__extension_1a69b79dd6cf371ca54b40b6e743029d2c" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>set_bufferable</name></member>
+      <member refid="structahb_1_1ahb__extension_1a8e7208fbd3a1b8a9c8bd2d77a9679a75" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>set_burst</name></member>
+      <member refid="structahb_1_1ahb__extension_1a9d5e79c5a3db618e91880705b638861c" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>set_cacheable</name></member>
+      <member refid="structahb_1_1ahb__extension_1aa1829965f8611bbcbd50e61a0f8fe3ef" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>set_instruction</name></member>
+      <member refid="structahb_1_1ahb__extension_1aa633d98a1820c747d41edda743bd0a37" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>set_locked</name></member>
+      <member refid="structahb_1_1ahb__extension_1a3ffc92a0f7884ba36ade2d455422f165" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>set_privileged</name></member>
+      <member refid="structahb_1_1ahb__extension_1a78235a66ac530131492acc9aaf040cd6" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>set_protection</name></member>
+      <member refid="structahb_1_1ahb__extension_1a634e3642a28b81900846c488adcf9804" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>set_resp</name></member>
+      <member refid="structahb_1_1ahb__extension_1a7e1aabe03b7821bc5662ad95f784d62d" prot="public" virt="non-virtual"><scope>ahb::ahb_extension</scope><name>set_seq</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

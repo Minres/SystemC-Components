@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1nw_1_1target__mixin_1_1bw__process" kind="class" language="C++" prot="private">
+    <compoundname>tlm::nw::target_mixin::bw_process</compoundname>
+    <basecompoundref refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if" prot="public" virt="non-virtual">tlm::nw::tlm_network_bw_transport_if&lt; TYPES &gt;</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtlm_1_1nw_1_1target__mixin_1_1bw__process_1a00c8930ae4eeb62efedc3f7e0daad5a8" prot="private" static="no" mutable="no">
+        <type><ref refid="classtlm_1_1nw_1_1target__mixin_1a1e3bebbb2afc7bf61a2d021b8bc89b6a" kindref="member">target_mixin</ref> *</type>
+        <definition>target_mixin* tlm::nw::target_mixin&lt; BASE_TYPE, REQUESTOR, TYPES &gt;::bw_process::m_owner</definition>
+        <argsstring></argsstring>
+        <name>m_owner</name>
+        <qualifiedname>tlm::nw::target_mixin::bw_process::m_owner</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" line="144" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1nw_1_1target__mixin_1_1bw__process_1a8084fd55fba5b6c1b7801592135572e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::nw::target_mixin&lt; BASE_TYPE, REQUESTOR, TYPES &gt;::bw_process::bw_process</definition>
+        <argsstring>(target_mixin *p_own)</argsstring>
+        <name>bw_process</name>
+        <qualifiedname>tlm::nw::target_mixin::bw_process::bw_process</qualifiedname>
+        <param>
+          <type><ref refid="classtlm_1_1nw_1_1target__mixin_1a1e3bebbb2afc7bf61a2d021b8bc89b6a" kindref="member">target_mixin</ref> *</type>
+          <declname>p_own</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" line="121" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" bodystart="121" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1nw_1_1target__mixin_1_1bw__process_1a4465fd24f8b10f21c139cb66477a7755" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sync_enum_type</type>
+        <definition>sync_enum_type tlm::nw::target_mixin&lt; BASE_TYPE, REQUESTOR, TYPES &gt;::bw_process::nb_transport_bw</definition>
+        <argsstring>(transaction_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t)</argsstring>
+        <name>nb_transport_bw</name>
+        <qualifiedname>tlm::nw::target_mixin::bw_process::nb_transport_bw</qualifiedname>
+        <param>
+          <type>transaction_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" line="124" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" bodystart="124" bodyend="141"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::nw::target_mixin&lt; BASE_TYPE, REQUESTOR, TYPES &gt;::bw_process</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::nw::tlm_network_bw_transport_if&lt; TYPES &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_bw_nonblocking_transport_if&lt; TYPES::tlm_payload_type &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::nw::target_mixin&lt; BASE_TYPE, REQUESTOR, TYPES &gt;::bw_process</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::nw::tlm_network_bw_transport_if&lt; TYPES &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_bw_nonblocking_transport_if&lt; TYPES::tlm_payload_type &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" line="119" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" bodystart="119" bodyend="145"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1nw_1_1target__mixin_1_1bw__process_1a8084fd55fba5b6c1b7801592135572e2" prot="public" virt="non-virtual"><scope>tlm::nw::target_mixin::bw_process</scope><name>bw_process</name></member>
+      <member refid="classtlm_1_1nw_1_1target__mixin_1_1bw__process_1a00c8930ae4eeb62efedc3f7e0daad5a8" prot="private" virt="non-virtual"><scope>tlm::nw::target_mixin::bw_process</scope><name>m_owner</name></member>
+      <member refid="classtlm_1_1nw_1_1target__mixin_1_1bw__process_1a4465fd24f8b10f21c139cb66477a7755" prot="public" virt="non-virtual"><scope>tlm::nw::target_mixin::bw_process</scope><name>nb_transport_bw</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if_1a27f9ce86a8d4a18ab2e115c943717a4b" prot="public" virt="non-virtual"><scope>tlm::nw::target_mixin::bw_process</scope><name>protocol_types</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

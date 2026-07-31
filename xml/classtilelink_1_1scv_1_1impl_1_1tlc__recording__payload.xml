@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtilelink_1_1scv_1_1impl_1_1tlc__recording__payload" kind="class" language="C++" prot="public">
+    <compoundname>tilelink::scv::impl::tlc_recording_payload</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tilelink::tl_protocol_types::tlm_payload_type</basecompoundref>
+    <includes refid="tlc__recorder_8h" local="no">tlc_recorder.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+        <defval><ref refid="structtilelink_1_1tl__protocol__types" kindref="compound">tilelink::tl_protocol_types</ref></defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classtilelink_1_1scv_1_1impl_1_1tlc__recording__payload_1af0cfaba049c01d902d7b4c548a2848d0" prot="public" static="no" mutable="no">
+        <type>SCVNS scv_tr_handle</type>
+        <definition>SCVNS scv_tr_handle tilelink::scv::impl::tlc_recording_payload&lt; TYPES &gt;::parent</definition>
+        <argsstring></argsstring>
+        <name>parent</name>
+        <qualifiedname>tilelink::scv::impl::tlc_recording_payload::parent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="44" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtilelink_1_1scv_1_1impl_1_1tlc__recording__payload_1a29d541fcee60c84c878dab9516638c35" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t tilelink::scv::impl::tlc_recording_payload&lt; TYPES &gt;::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <qualifiedname>tilelink::scv::impl::tlc_recording_payload::id</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="45" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtilelink_1_1scv_1_1impl_1_1tlc__recording__payload_1a47d3e43ca507be8b8c38367a376994f4" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tilelink::scv::impl::tlc_recording_payload&lt; TYPES &gt;::is_snoop</definition>
+        <argsstring></argsstring>
+        <name>is_snoop</name>
+        <qualifiedname>tilelink::scv::impl::tlc_recording_payload::is_snoop</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="46" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtilelink_1_1scv_1_1impl_1_1tlc__recording__payload_1af33bf4e14b2869a766ebe664d1f41651" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlc_recording_payload &amp;</type>
+        <definition>tlc_recording_payload &amp; tilelink::scv::impl::tlc_recording_payload&lt; TYPES &gt;::operator=</definition>
+        <argsstring>(const typename TYPES::tlm_payload_type &amp;x)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>tilelink::scv::impl::tlc_recording_payload::operator=</qualifiedname>
+        <param>
+          <type>const typename TYPES::tlm_payload_type &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="47" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" bodystart="47" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classtilelink_1_1scv_1_1impl_1_1tlc__recording__payload_1aad0448d9420eb309c97b951fed38588b" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tilelink::scv::impl::tlc_recording_payload&lt; TYPES &gt;::tlc_recording_payload</definition>
+        <argsstring>(tlm::tlm_mm_interface *mm)</argsstring>
+        <name>tlc_recording_payload</name>
+        <qualifiedname>tilelink::scv::impl::tlc_recording_payload::tlc_recording_payload</qualifiedname>
+        <param>
+          <type>tlm::tlm_mm_interface *</type>
+          <declname>mm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="59" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" bodystart="59" bodyend="61"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the class to hold the information to be recorded on the timed streams </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tilelink::scv::impl::tlc_recording_payload&lt; TYPES &gt;</label>
+        <link refid="classtilelink_1_1scv_1_1impl_1_1tlc__recording__payload"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tilelink::tl_protocol_types::tlm_payload_type</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tilelink::scv::impl::tlc_recording_payload&lt; TYPES &gt;</label>
+        <link refid="classtilelink_1_1scv_1_1impl_1_1tlc__recording__payload"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tilelink::tl_protocol_types::tlm_payload_type</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="42" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" bodystart="42" bodyend="62"/>
+    <listofallmembers>
+      <member refid="classtilelink_1_1scv_1_1impl_1_1tlc__recording__payload_1a29d541fcee60c84c878dab9516638c35" prot="public" virt="non-virtual"><scope>tilelink::scv::impl::tlc_recording_payload</scope><name>id</name></member>
+      <member refid="classtilelink_1_1scv_1_1impl_1_1tlc__recording__payload_1a47d3e43ca507be8b8c38367a376994f4" prot="public" virt="non-virtual"><scope>tilelink::scv::impl::tlc_recording_payload</scope><name>is_snoop</name></member>
+      <member refid="classtilelink_1_1scv_1_1impl_1_1tlc__recording__payload_1af33bf4e14b2869a766ebe664d1f41651" prot="public" virt="non-virtual"><scope>tilelink::scv::impl::tlc_recording_payload</scope><name>operator=</name></member>
+      <member refid="classtilelink_1_1scv_1_1impl_1_1tlc__recording__payload_1af0cfaba049c01d902d7b4c548a2848d0" prot="public" virt="non-virtual"><scope>tilelink::scv::impl::tlc_recording_payload</scope><name>parent</name></member>
+      <member refid="classtilelink_1_1scv_1_1impl_1_1tlc__recording__payload_1aad0448d9420eb309c97b951fed38588b" prot="public" virt="non-virtual"><scope>tilelink::scv::impl::tlc_recording_payload</scope><name>tlc_recording_payload</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

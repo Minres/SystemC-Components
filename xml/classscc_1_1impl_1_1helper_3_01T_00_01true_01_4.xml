@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1impl_1_1helper_3_01T_00_01true_01_4" kind="class" language="C++" prot="public">
+    <compoundname>scc::impl::helper&lt; T, true &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classscc_1_1impl_1_1helper_3_01T_00_01true_01_4_1abd70b1d995d8f6adb1ed3405cef3019c" prot="public" static="no">
+        <type>T</type>
+        <definition>using scc::impl::helper&lt; T, true &gt;::Type =  T</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <qualifiedname>scc::impl::helper&lt; T, true &gt;::Type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="50" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1impl_1_1helper_3_01T_00_01true_01_4_1a8db41fe756a199c02336c7c4fddb91cb" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Type</type>
+          </param>
+        </templateparamlist>
+        <type>Type</type>
+        <definition>Type scc::impl::helper&lt; T, true &gt;::get_max_uval</definition>
+        <argsstring>() const</argsstring>
+        <name>get_max_uval</name>
+        <qualifiedname>scc::impl::helper&lt; T, true &gt;::get_max_uval</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="51" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="51" bodyend="53"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="48" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="48" bodyend="54"/>
+    <listofallmembers>
+      <member refid="classscc_1_1impl_1_1helper_3_01T_00_01true_01_4_1a8db41fe756a199c02336c7c4fddb91cb" prot="public" virt="non-virtual"><scope>scc::impl::helper&lt; T, true &gt;</scope><name>get_max_uval</name></member>
+      <member refid="classscc_1_1impl_1_1helper_3_01T_00_01true_01_4_1abd70b1d995d8f6adb1ed3405cef3019c" prot="public" virt="non-virtual"><scope>scc::impl::helper&lt; T, true &gt;</scope><name>Type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

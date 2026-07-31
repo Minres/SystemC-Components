@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_ff9f1cc2327aca43a3ba2b9ea3b4cb19" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe</compoundname>
+    <innerfile refid="ace__target__pe_8cpp">ace_target_pe.cpp</innerfile>
+    <innerfile refid="ace__target__pe_8h">ace_target_pe.h</innerfile>
+    <innerfile refid="third__party_2axi__chi_2axi_2pe_2axi__initiator_8cpp">axi_initiator.cpp</innerfile>
+    <innerfile refid="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h">axi_initiator.h</innerfile>
+    <innerfile refid="axi__target__pe_8cpp">axi_target_pe.cpp</innerfile>
+    <innerfile refid="axi__target__pe_8h">axi_target_pe.h</innerfile>
+    <innerfile refid="ordered__target_8cpp">ordered_target.cpp</innerfile>
+    <innerfile refid="ordered__target_8h">ordered_target.h</innerfile>
+    <innerfile refid="reordering__target_8cpp">reordering_target.cpp</innerfile>
+    <innerfile refid="reordering__target_8h">reordering_target.h</innerfile>
+    <innerfile refid="replay__target_8cpp">replay_target.cpp</innerfile>
+    <innerfile refid="replay__target_8h">replay_target.h</innerfile>
+    <innerfile refid="simple__ace__target_8h">simple_ace_target.h</innerfile>
+    <innerfile refid="simple__initiator_8cpp">simple_initiator.cpp</innerfile>
+    <innerfile refid="simple__initiator_8h">simple_initiator.h</innerfile>
+    <innerfile refid="simple__target_8h">simple_target.h</innerfile>
+    <innerfile refid="target__info__if_8h">target_info_if.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/"/>
+  </compounddef>
+</doxygen>

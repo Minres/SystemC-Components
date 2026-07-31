@@ -1,0 +1,674 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="memory_8h" kind="file" language="C++">
+    <compoundname>memory.h</compoundname>
+    <includes refid="span_8h" local="no">nonstd/span.h</includes>
+    <includes refid="memory__map__collector_8h" local="no">tlm/scc/memory_map_collector.h</includes>
+    <includes local="no">tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h</includes>
+    <includes refid="ities_8h" local="no">util/ities.h</includes>
+    <includes refid="clock__if__mixins_8h" local="yes">clock_if_mixins.h</includes>
+    <includes local="no">cci_configuration</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">numeric</includes>
+    <includes refid="sysc_2scc_2mt19937__rng_8h" local="no">scc/mt19937_rng.h</includes>
+    <includes refid="report_8h" local="no">scc/report.h</includes>
+    <includes refid="signal__opt__ports_8h" local="no">scc/signal_opt_ports.h</includes>
+    <includes refid="utilities_8h" local="no">scc/utilities.h</includes>
+    <includes local="no">tlm.h</includes>
+    <includes refid="scc_2target__mixin_8h" local="no">tlm/scc/target_mixin.h</includes>
+    <includes local="no">type_traits</includes>
+    <includes refid="range__lut_8h" local="no">util/range_lut.h</includes>
+    <includes refid="sparse__array_8h" local="no">util/sparse_array.h</includes>
+    <includedby refid="scc__components_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc_components.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>nonstd/span.h</label>
+        <link refid="span_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>util/ities.h</label>
+        <link refid="ities_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>util/range_lut.h</label>
+        <link refid="range__lut_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>util/sparse_array.h</label>
+        <link refid="sparse__array_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>clock_if_mixins.h</label>
+        <link refid="clock__if__mixins_8h_source"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h</label>
+        <link refid="memory_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>scc/mt19937_rng.h</label>
+        <link refid="sysc_2scc_2mt19937__rng_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>scc/report.h</label>
+        <link refid="report_8h_source"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>scc/signal_opt_ports.h</label>
+        <link refid="signal__opt__ports_8h_source"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>utilities.h</label>
+        <link refid="utilities_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>tlm/scc/memory_map_collector.h</label>
+        <link refid="memory__map__collector_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>tlm/scc/target_mixin.h</label>
+        <link refid="scc_2target__mixin_8h_source"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>algorithm</label>
+      </node>
+      <node id="3">
+        <label>array</label>
+      </node>
+      <node id="15">
+        <label>assert.h</label>
+      </node>
+      <node id="16">
+        <label>bitset</label>
+      </node>
+      <node id="49">
+        <label>cassert</label>
+      </node>
+      <node id="26">
+        <label>cci_configuration</label>
+      </node>
+      <node id="17">
+        <label>cctype</label>
+      </node>
+      <node id="18">
+        <label>climits</label>
+      </node>
+      <node id="4">
+        <label>cstddef</label>
+      </node>
+      <node id="5">
+        <label>cstdint</label>
+      </node>
+      <node id="34">
+        <label>cstring</label>
+      </node>
+      <node id="19">
+        <label>fstream</label>
+      </node>
+      <node id="43">
+        <label>functional</label>
+      </node>
+      <node id="35">
+        <label>iomanip</label>
+      </node>
+      <node id="29">
+        <label>iostream</label>
+      </node>
+      <node id="20">
+        <label>iterator</label>
+      </node>
+      <node id="8">
+        <label>limits</label>
+      </node>
+      <node id="33">
+        <label>locale</label>
+      </node>
+      <node id="46">
+        <label>map</label>
+      </node>
+      <node id="21">
+        <label>memory</label>
+      </node>
+      <node id="36">
+        <label>mutex</label>
+      </node>
+      <node id="27">
+        <label>numeric</label>
+      </node>
+      <node id="30">
+        <label>random</label>
+      </node>
+      <node id="9">
+        <label>sstream</label>
+      </node>
+      <node id="10">
+        <label>stdexcept</label>
+      </node>
+      <node id="47">
+        <label>string</label>
+      </node>
+      <node id="22">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="37">
+        <label>sysc/kernel/sc_time.h</label>
+      </node>
+      <node id="38">
+        <label>sysc/utils/sc_report.h</label>
+      </node>
+      <node id="25">
+        <label>systemc</label>
+      </node>
+      <node id="11">
+        <label>tlm</label>
+      </node>
+      <node id="41">
+        <label>tlm.h</label>
+      </node>
+      <node id="12">
+        <label>tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h</label>
+      </node>
+      <node id="44">
+        <label>tlm_utils/peq_with_get.h</label>
+      </node>
+      <node id="6">
+        <label>type_traits</label>
+      </node>
+      <node id="39">
+        <label>unordered_map</label>
+      </node>
+      <node id="23">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h</label>
+        <link refid="memory_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc_components.h</label>
+        <link refid="scc__components_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/scc.h</label>
+        <link refid="scc_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structscc_1_1delay__spec__type_3_01true_01_4" prot="public">scc::delay_spec_type&lt; true &gt;</innerclass>
+    <innerclass refid="structscc_1_1delay__spec__type_3_01false_01_4" prot="public">scc::delay_spec_type&lt; false &gt;</innerclass>
+    <innerclass refid="classscc_1_1memory" prot="public">scc::memory</innerclass>
+    <innerclass refid="structscc_1_1memory_1_1host__map__entry" prot="protected">scc::memory::host_map_entry</innerclass>
+    <innerclass refid="structscc_1_1host__mem__map__extension" prot="public">scc::host_mem_map_extension</innerclass>
+    <innernamespace refid="namespacescc">scc</innernamespace>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="memory_8h_1a14c0ae1e60ff59c85eb89bc7ce5d9afc" prot="public" static="no">
+        <name>SC_INCLUDE_DYNAMIC_PROCESSES</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="26" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2016,<sp/>2018<sp/>MINRES<sp/>Technologies<sp/>GmbH</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SYSC_MEMORY_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SYSC_MEMORY_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Needed<sp/>for<sp/>the<sp/>simple_target_socket</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;nonstd/span.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm/scc/memory_map_collector.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;util/ities.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SC_INCLUDE_DYNAMIC_PROCESSES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SC_INCLUDE_DYNAMIC_PROCESSES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;clock_if_mixins.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cci_configuration&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;numeric&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scc/mt19937_rng.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scc/report.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scc/signal_opt_ports.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scc/utilities.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm/scc/target_mixin.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;type_traits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;util/range_lut.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;util/sparse_array.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacescc" kindref="compound">scc</ref><sp/>{</highlight></codeline>
+<codeline lineno="44" refid="structscc_1_1delay__spec__type" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>USE_CYCLES&gt;<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structscc_1_1delay__spec__type" kindref="compound">delay_spec_type</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="structscc_1_1delay__spec__type_3_01true_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structscc_1_1delay__spec__type" kindref="compound">delay_spec_type</ref>&lt;true&gt;<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">type<sp/>=<sp/>unsigned;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>get_default_val()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/>};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/>get_effective_value(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>cycles,<sp/>sc_core::sc_time<sp/>period)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cycles<sp/>*<sp/>period;<sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="structscc_1_1delay__spec__type_3_01false_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structscc_1_1delay__spec__type" kindref="compound">delay_spec_type</ref>&lt;false&gt;<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">type<sp/>=<sp/>sc_core::sc_time;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/>get_default_val()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::SC_ZERO_TIME;<sp/>};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>sc_core::sc_time<sp/>get_effective_value(sc_core::sc_time<sp/>delay,<sp/>sc_core::sc_time<sp/>period)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>delay;<sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>SIZE,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>BUSWIDTH<sp/>=<sp/>LT,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>PAGE_ADDR_BITS<sp/>=<sp/>24,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>USE_CYCLES<sp/>=<sp/>false&gt;</highlight></codeline>
+<codeline lineno="73" refid="classscc_1_1memory" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classscc_1_1memory_1af75e83ad446e375408b7506def7e6105" kindref="member">memory</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>sc_core::sc_module<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">delay_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="structscc_1_1delay__spec__type" kindref="compound">delay_spec_type&lt;USE_CYCLES&gt;::type</ref>;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">this_class<sp/>=<sp/><ref refid="classscc_1_1memory_1af75e83ad446e375408b7506def7e6105" kindref="member">memory&lt;SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES&gt;</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="classscc_1_1memory_1a42724399568f19d258e75b8ffc8afaf4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classtlm_1_1scc_1_1target__mixin" kindref="compound">tlm::scc::target_mixin&lt;tlm::tlm_target_socket&lt;BUSWIDTH&gt;</ref>&gt;<sp/><ref refid="classscc_1_1memory_1a42724399568f19d258e75b8ffc8afaf4" kindref="member">target</ref>{</highlight><highlight class="stringliteral">&quot;ts&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="85" refid="classscc_1_1memory_1af75e83ad446e375408b7506def7e6105" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1memory_1af75e83ad446e375408b7506def7e6105" kindref="member">memory</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sc_core::sc_module_name&amp;<sp/>nm);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>getPageSize()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1<sp/>&lt;&lt;<sp/>PAGE_ADDR_BITS;<sp/>}</highlight></codeline>
+<codeline lineno="97" refid="classscc_1_1memory_1a1cbf76da779307e937eb3d2276023f9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1memory_1a1cbf76da779307e937eb3d2276023f9f" kindref="member">getSize</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SIZE;<sp/>}</highlight></codeline>
+<codeline lineno="104" refid="classscc_1_1memory_1a9e95d3ec25322c020273b305aea7242d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1memory_1a9e95d3ec25322c020273b305aea7242d" kindref="member">set_operation_callback</ref>(std::function&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">(<ref refid="classscc_1_1memory_1af75e83ad446e375408b7506def7e6105" kindref="member">memory&lt;SIZE, BUSWIDTH&gt;</ref>&amp;,<sp/>tlm::tlm_generic_payload&amp;,<sp/>sc_core::sc_time&amp;<sp/>delay)&gt;<sp/>cb)<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>operation_cb<sp/>=<sp/>cb;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113" refid="classscc_1_1memory_1a0109255ac77e8ceeb8c1a3a22bc3373b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1memory_1a0109255ac77e8ceeb8c1a3a22bc3373b" kindref="member">set_dmi_callback</ref>(std::function&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">(<ref refid="classscc_1_1memory_1af75e83ad446e375408b7506def7e6105" kindref="member">memory&lt;SIZE, BUSWIDTH&gt;</ref>&amp;,<sp/>tlm::tlm_generic_payload&amp;,<sp/>tlm::tlm_dmi&amp;)&gt;<sp/>cb)<sp/>{<sp/>dmi_cb<sp/>=<sp/>cb;<sp/>}</highlight></codeline>
+<codeline lineno="118" refid="classscc_1_1memory_1a1f7662b73f068f2f95eb27fcd4278f5a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param&lt;bool&gt;<sp/><ref refid="classscc_1_1memory_1a1f7662b73f068f2f95eb27fcd4278f5a" kindref="member">allow_dmi</ref>{</highlight><highlight class="stringliteral">&quot;allow_dmi&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Allow<sp/>DMI<sp/>accesses<sp/>to<sp/>this<sp/>memory<sp/>if<sp/>set&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="122" refid="classscc_1_1memory_1a92625153fa99f37f97cd115a40fed337" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param&lt;delay_type&gt;<sp/><ref refid="classscc_1_1memory_1a92625153fa99f37f97cd115a40fed337" kindref="member">rd_resp_delay</ref>{</highlight><highlight class="stringliteral">&quot;rd_resp_delay&quot;</highlight><highlight class="normal">,<sp/><ref refid="structscc_1_1delay__spec__type" kindref="compound">delay_spec_type&lt;USE_CYCLES&gt;::get_default_val</ref>()};</highlight></codeline>
+<codeline lineno="126" refid="classscc_1_1memory_1ac77708eadfbe7887bf4c192e5c53d101" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param&lt;delay_type&gt;<sp/><ref refid="classscc_1_1memory_1ac77708eadfbe7887bf4c192e5c53d101" kindref="member">wr_resp_delay</ref>{</highlight><highlight class="stringliteral">&quot;wr_resp_delay&quot;</highlight><highlight class="normal">,<sp/><ref refid="structscc_1_1delay__spec__type" kindref="compound">delay_spec_type&lt;USE_CYCLES&gt;::get_default_val</ref>()};</highlight></codeline>
+<codeline lineno="135" refid="classscc_1_1memory_1aa53e0821463b77bf9efd099c0d0eb2e9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1memory_1aa53e0821463b77bf9efd099c0d0eb2e9" kindref="member">map_host_memory</ref>(uint64_t<sp/>base,<sp/>uint64_t<sp/>size,<sp/>uint8_t*<sp/>ptr)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>host_mem_lut.addEntry(host_map_entry{ptr,<sp/>base,<sp/>size},<sp/>base,<sp/>size);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal">(std::runtime_error&amp;<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SCCERR(SCMOD)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>map<sp/>memory<sp/>to<sp/>address=0x&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::hex<sp/>&lt;&lt;<sp/>base<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>with<sp/>size=0x&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>size<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>because:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>e.what();</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149" refid="classscc_1_1memory_1a60a1a8e55b2b351fa39a6fc6fa4dcbeb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1memory_1a60a1a8e55b2b351fa39a6fc6fa4dcbeb" kindref="member">unmap_host_memory</ref>(uint64_t<sp/>base,<sp/>uint64_t<sp/>size)<sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!host_mem_lut.removeEntry(host_map_entry{nullptr,<sp/>base,<sp/>size}))<sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SCCERR(SCMOD)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>unmap<sp/>memory<sp/>at<sp/>address=0x&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::hex<sp/>&lt;&lt;<sp/>base<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>with<sp/>size=0x&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>size;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="157" refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classutil_1_1sparse__array" kindref="compound">util::sparse_array&lt;uint8_t, SIZE, PAGE_ADDR_BITS&gt;</ref><sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>;</highlight></codeline>
+<codeline lineno="158" refid="structscc_1_1memory_1_1host__map__entry" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structscc_1_1memory_1_1host__map__entry" kindref="compound">host_map_entry</ref><sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t*<sp/>ptr;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>base;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>size;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(<ref refid="structscc_1_1memory_1_1host__map__entry" kindref="compound">host_map_entry</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>o)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>base<sp/>==<sp/>o.base<sp/>&amp;&amp;<sp/>size<sp/>==<sp/>o.size;<sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(<ref refid="structscc_1_1memory_1_1host__map__entry" kindref="compound">host_map_entry</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>o)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!operator==(o);<sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classutil_1_1range__lut" kindref="compound">util::range_lut&lt;host_map_entry&gt;</ref><sp/>host_mem_lut{<ref refid="structscc_1_1memory_1_1host__map__entry" kindref="compound">host_map_entry</ref>{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>0,<sp/>0}};</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>set_clock_period(sc_core::sc_time<sp/>period)<sp/>{<sp/>clk_period<sp/>=<sp/>period;<sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_time<sp/>clk_period;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="172" refid="classscc_1_1memory_1a1435f2eca492121ef54061cf37841727" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1memory_1a1435f2eca492121ef54061cf37841727" kindref="member">handle_operation</ref>(tlm::tlm_generic_payload&amp;<sp/>trans,<sp/>sc_core::sc_time&amp;<sp/>delay);</highlight></codeline>
+<codeline lineno="174" refid="classscc_1_1memory_1ada3883568c630164cf8680368ba975f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1memory_1ada3883568c630164cf8680368ba975f0" kindref="member">handle_dmi</ref>(tlm::tlm_generic_payload&amp;<sp/>gp,<sp/>tlm::tlm_dmi&amp;<sp/>dmi_data);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;int(this_class&amp;,<sp/>tlm::tlm_generic_payload&amp;,<sp/>sc_core::sc_time&amp;<sp/>delay)&gt;<sp/>operation_cb;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;bool(this_class&amp;,<sp/>tlm::tlm_generic_payload&amp;,<sp/>tlm::tlm_dmi&amp;)&gt;<sp/>dmi_cb;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>SIZE,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>BUSWIDTH<sp/>=<sp/>LT,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>PAGE_ADDR_BITS<sp/>=<sp/>24&gt;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">memory_tl<sp/>=<sp/><ref refid="classscc_1_1tickless__clock" kindref="compound">tickless_clock&lt;memory&lt;SIZE, BUSWIDTH, PAGE_ADDR_BITS, false&gt;</ref>&gt;;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>SIZE,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>BUSWIDTH<sp/>=<sp/>LT,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>PAGE_ADDR_BITS<sp/>=<sp/>24&gt;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">memory_tc<sp/>=<sp/><ref refid="classscc_1_1ticking__clock" kindref="compound">ticking_clock&lt;memory&lt;SIZE, BUSWIDTH, PAGE_ADDR_BITS, true&gt;</ref>&gt;;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>SIZE,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>BUSWIDTH<sp/>=<sp/>LT&gt;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>handle_operation(<ref refid="classscc_1_1memory" kindref="compound">memory&lt;SIZE, BUSWIDTH&gt;</ref>&amp;,<sp/>tlm::tlm_generic_payload&amp;,<sp/>sc_core::sc_time&amp;<sp/>delay);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="structscc_1_1host__mem__map__extension" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">host_mem_map_extension<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>tlm::tlm_extension&lt;host_mem_map_extension&gt;<sp/>{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm_extension_base*<sp/>clone()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>copy_from(tlm_extension_base<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>ext)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>host_mem_map_extension(uint8_t*<sp/>data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size)</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>range(data,<sp/>data<sp/>+<sp/>size)<sp/>{}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>host_mem_map_extension(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size)</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>range(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>size)<sp/>{}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>host_mem_map_extension()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>~host_mem_map_extension()<sp/>{}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>nonstd::span&lt;uint8_t&gt;<sp/>range;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>SIZE,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>BUSWIDTH,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>PAGE_ADDR_BITS,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>USE_CYCLES&gt;</highlight></codeline>
+<codeline lineno="203" refid="classscc_1_1memory_1af75e83ad446e375408b7506def7e6105" refkind="member"><highlight class="normal"><ref refid="classscc_1_1memory_1af75e83ad446e375408b7506def7e6105" kindref="member">memory&lt;SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES&gt;::memory</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sc_core::sc_module_name&amp;<sp/>nm)</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">:<sp/>sc_module(nm)<sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Register<sp/>callback<sp/>for<sp/>incoming<sp/>b_transport<sp/>interface<sp/>method<sp/>call</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1memory_1a42724399568f19d258e75b8ffc8afaf4" kindref="member">target</ref>.register_b_transport([</highlight><highlight class="keyword">this</highlight><highlight class="normal">](tlm::tlm_generic_payload&amp;<sp/>gp,<sp/>sc_core::sc_time&amp;<sp/>delay)<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>operation_cb<sp/>?<sp/>operation_cb(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>gp,<sp/>delay)<sp/>:<sp/><ref refid="classscc_1_1memory_1a1435f2eca492121ef54061cf37841727" kindref="member">handle_operation</ref>(gp,<sp/>delay);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1memory_1a42724399568f19d258e75b8ffc8afaf4" kindref="member">target</ref>.register_transport_dbg([</highlight><highlight class="keyword">this</highlight><highlight class="normal">](tlm::tlm_generic_payload&amp;<sp/>gp)<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(gp.get_command()<sp/>==<sp/>tlm::TLM_IGNORE_COMMAND)</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ext<sp/>=<sp/>gp.get_extension&lt;<ref refid="structtlm_1_1scc_1_1memory__map__extension" kindref="compound">tlm::scc::memory_map_extension</ref>&gt;())<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ext-&gt;node.name<sp/>=<sp/>name();</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sc_core::sc_time<sp/>z<sp/>=<sp/>sc_core::SC_ZERO_TIME;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ext<sp/>=<sp/>gp.get_extension&lt;<ref refid="structscc_1_1host__mem__map__extension" kindref="compound">host_mem_map_extension</ref>&gt;())<sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ext-&gt;range.data())</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classscc_1_1memory_1aa53e0821463b77bf9efd099c0d0eb2e9" kindref="member">map_host_memory</ref>(gp.get_address(),<sp/>ext-&gt;range.size(),<sp/>ext-&gt;range.data());</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classscc_1_1memory_1a60a1a8e55b2b351fa39a6fc6fa4dcbeb" kindref="member">unmap_host_memory</ref>(gp.get_address(),<sp/>ext-&gt;range.size());</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(gp.get_command()<sp/>==<sp/>tlm::TLM_IGNORE_COMMAND)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>operation_cb<sp/>?<sp/>operation_cb(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>gp,<sp/>z)<sp/>:<sp/><ref refid="classscc_1_1memory_1a1435f2eca492121ef54061cf37841727" kindref="member">handle_operation</ref>(gp,<sp/>z);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1memory_1a42724399568f19d258e75b8ffc8afaf4" kindref="member">target</ref>.register_get_direct_mem_ptr([</highlight><highlight class="keyword">this</highlight><highlight class="normal">](tlm::tlm_generic_payload&amp;<sp/>gp,<sp/>tlm::tlm_dmi&amp;<sp/>dmi_data)<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dmi_cb<sp/>?<sp/>dmi_cb(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>gp,<sp/>dmi_data)<sp/>:<sp/><ref refid="classscc_1_1memory_1ada3883568c630164cf8680368ba975f0" kindref="member">handle_dmi</ref>(gp,<sp/>dmi_data);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="229"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>SIZE,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>BUSWIDTH,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>PAGE_ADDR_BITS,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>USE_CYCLES&gt;</highlight></codeline>
+<codeline lineno="232" refid="classscc_1_1memory_1a1435f2eca492121ef54061cf37841727" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1memory_1a1435f2eca492121ef54061cf37841727" kindref="member">memory&lt;SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES&gt;::handle_operation</ref>(tlm::tlm_generic_payload&amp;<sp/>trans,<sp/>sc_core::sc_time&amp;<sp/>delay)<sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>adr<sp/>=<sp/>trans.get_address();</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t*<sp/>ptr<sp/>=<sp/>trans.get_data_ptr();</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>len<sp/>=<sp/>trans.get_data_length();</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t*<sp/>byt<sp/>=<sp/>trans.get_byte_enable_ptr();</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>wid<sp/>=<sp/>trans.get_streaming_width();</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>address<sp/>range<sp/>and<sp/>check<sp/>for<sp/>unsupported<sp/>features,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>i.e.<sp/>byte<sp/>enables,<sp/>streaming,<sp/>and<sp/>bursts</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Can<sp/>ignore<sp/>DMI<sp/>hint<sp/>and<sp/>extensions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(adr<sp/>+<sp/>len<sp/>&gt;<sp/>::sc_dt::uint64(SIZE))<sp/>{</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SC_REPORT_ERROR(</highlight><highlight class="stringliteral">&quot;TLM-2&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;generic<sp/>payload<sp/>transaction<sp/>exceeeds<sp/>memory<sp/>size&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(wid<sp/>&lt;<sp/>len)<sp/>{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SCCERR(SCMOD)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Streaming<sp/>width:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>wid<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>data<sp/>length:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>len;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SC_REPORT_ERROR(</highlight><highlight class="stringliteral">&quot;TLM-2&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;generic<sp/>payload<sp/>transaction<sp/>not<sp/>supported&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>scattered<sp/>=</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>byt<sp/>?<sp/>std::accumulate(byt,<sp/>byt<sp/>+<sp/>trans.get_byte_enable_length(),<sp/>0xff,<sp/>[](uint8_t<sp/>a,<sp/>uint8_t<sp/>b)<sp/>{<sp/>return<sp/>a<sp/>&amp;<sp/>b;<sp/>})<sp/>!=<sp/>0xff<sp/>:<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm::tlm_command<sp/>cmd<sp/>=<sp/>trans.get_command();</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/>SCCTRACE(SCMOD)<sp/>&lt;&lt;<sp/>(cmd<sp/>==<sp/>tlm::TLM_READ_COMMAND<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;read&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;write&quot;</highlight><highlight class="normal">)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>access<sp/>to<sp/>addr<sp/>0x&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::hex<sp/>&lt;&lt;<sp/>adr;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/>trans.set_dmi_allowed(<ref refid="classscc_1_1memory_1a1f7662b73f068f2f95eb27fcd4278f5a" kindref="member">allow_dmi</ref>.get_value());</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/>trans.set_response_status(tlm::TLM_OK_RESPONSE);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>hm_entry<sp/>=<sp/>host_mem_lut.getEntry(adr);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(cmd<sp/>==<sp/>tlm::TLM_READ_COMMAND)<sp/>{</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>delay<sp/>+=<sp/><ref refid="structscc_1_1delay__spec__type" kindref="compound">delay_spec_type&lt;USE_CYCLES&gt;::get_effective_value</ref>(<ref refid="classscc_1_1memory_1a92625153fa99f37f97cd115a40fed337" kindref="member">rd_resp_delay</ref>,<sp/>clk_period);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(hm_entry.ptr)<sp/>{</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>hm_start_offs<sp/>=<sp/>adr<sp/>-<sp/>hm_entry.base;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>hm_end_offs<sp/>=<sp/>hm_start_offs<sp/>+<sp/>len;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>hm_ptr<sp/>=<sp/>hm_entry.ptr<sp/>+<sp/>hm_start_offs;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(hm_end_offs<sp/>&lt;<sp/>hm_entry.size)<sp/>{</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(hm_ptr,<sp/>hm_ptr<sp/>+<sp/>len,<sp/>ptr);</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>transfer_length<sp/>=<sp/>hm_end_offs<sp/>-<sp/>hm_start_offs;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(hm_ptr,<sp/>hm_ptr<sp/>+<sp/>transfer_length,<sp/>ptr);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>transfer_length;<sp/>i<sp/>&lt;<sp/>len;<sp/>i++)</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ptr[i]<sp/>=<sp/><ref refid="classscc_1_1MT19937_1a7ea1c4d7480170eebe650fdd3985083c" kindref="member">scc::MT19937::uniform</ref>()<sp/>%<sp/>256;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>.is_allocated(adr))<sp/>{</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>p<sp/>=<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>(adr<sp/>/<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>.page_size);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>offs<sp/>=<sp/>adr<sp/>&amp;<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>.page_addr_mask;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((offs<sp/>+<sp/>len)<sp/>&gt;<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>.page_size)<sp/>{</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>first_part<sp/>=<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>.page_size<sp/>-<sp/>offs;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(p.data()<sp/>+<sp/>offs,<sp/>p.data()<sp/>+<sp/>offs<sp/>+<sp/>first_part,<sp/>ptr);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>p2<sp/>=<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>((adr<sp/>/<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>.page_size)<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>second_part<sp/>=<sp/>len<sp/>-<sp/>first_part;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(p2.data(),<sp/>p2.data()<sp/>+<sp/>second_part,<sp/>ptr<sp/>+<sp/>first_part);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(p.data()<sp/>+<sp/>offs,<sp/>p.data()<sp/>+<sp/>offs<sp/>+<sp/>len,<sp/>ptr);</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>no<sp/>allocated<sp/>page<sp/>so<sp/>return<sp/>randomized<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>len;<sp/>i++)</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ptr[i]<sp/>=<sp/><ref refid="classscc_1_1MT19937_1a7ea1c4d7480170eebe650fdd3985083c" kindref="member">scc::MT19937::uniform</ref>()<sp/>%<sp/>256;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(cmd<sp/>==<sp/>tlm::TLM_WRITE_COMMAND)<sp/>{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>delay<sp/>+=<sp/><ref refid="structscc_1_1delay__spec__type" kindref="compound">delay_spec_type&lt;USE_CYCLES&gt;::get_effective_value</ref>(clk_period,<sp/><ref refid="classscc_1_1memory_1ac77708eadfbe7887bf4c192e5c53d101" kindref="member">wr_resp_delay</ref>);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(UNLIKELY(hm_entry.ptr))<sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>hm_start_offs<sp/>=<sp/>adr<sp/>-<sp/>hm_entry.base;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>hm_end_offs<sp/>=<sp/>adr<sp/>+<sp/>len<sp/>-<sp/>hm_entry.base;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>hm_ptr<sp/>=<sp/>hm_entry.ptr<sp/>+<sp/>hm_start_offs;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>transfer_length<sp/>=<sp/>hm_end_offs<sp/>&lt;<sp/>hm_entry.size<sp/>?<sp/>len<sp/>:<sp/>hm_end_offs<sp/>-<sp/>hm_start_offs;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(scattered)<sp/>{</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>transfer_length;<sp/>++i)</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(byt[i]<sp/>==<sp/>0xff)</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*(hm_ptr<sp/>+<sp/>i)<sp/>=<sp/>*(ptr<sp/>+<sp/>i);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(ptr,<sp/>ptr<sp/>+<sp/>transfer_length,<sp/>hm_ptr);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>p<sp/>=<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>(adr<sp/>/<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>.page_size);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>offs<sp/>=<sp/>adr<sp/>&amp;<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>.page_addr_mask;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(UNLIKELY((offs<sp/>+<sp/>len)<sp/>&gt;<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>.page_size))<sp/>{<sp/></highlight><highlight class="comment">//<sp/>we<sp/>cross<sp/>a<sp/>page<sp/>of<sp/>the<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>first_part<sp/>=<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>.page_size<sp/>-<sp/>offs;</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(scattered)<sp/>{</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>first_part;<sp/>++i)</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(byt[i]<sp/>==<sp/>0xff)</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*(p.data()<sp/>+<sp/>offs<sp/>+<sp/>i)<sp/>=<sp/>*(ptr<sp/>+<sp/>i);</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(ptr,<sp/>ptr<sp/>+<sp/>first_part,<sp/>p.data()<sp/>+<sp/>offs);</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>p2<sp/>=<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>((adr<sp/>/<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>.page_size)<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(scattered)<sp/>{</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>j<sp/>=<sp/>first_part;<sp/>j<sp/>&lt;<sp/>len;<sp/>++i,<sp/>++j)</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(byt[j]<sp/>==<sp/>0xff)</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*(p2.data()<sp/>+<sp/>i)<sp/>=<sp/>*(ptr<sp/>+<sp/>j);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(ptr<sp/>+<sp/>first_part,<sp/>ptr<sp/>+<sp/>len,<sp/>p2.data());</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="comment">//<sp/>we<sp/>stay<sp/>within<sp/>a<sp/>page<sp/>of<sp/>the<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(scattered)<sp/>{</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>len;<sp/>++i)</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(byt[i]<sp/>==<sp/>0xff)</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*(p.data()<sp/>+<sp/>offs<sp/>+<sp/>i)<sp/>=<sp/>*(ptr<sp/>+<sp/>i);</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(ptr,<sp/>ptr<sp/>+<sp/>len,<sp/>p.data()<sp/>+<sp/>offs);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>len;</highlight></codeline>
+<codeline lineno="334"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>SIZE,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>BUSWIDTH,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>PAGE_ADDR_BITS,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>USE_CYCLES&gt;</highlight></codeline>
+<codeline lineno="337" refid="classscc_1_1memory_1ada3883568c630164cf8680368ba975f0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1memory_1ada3883568c630164cf8680368ba975f0" kindref="member">memory&lt;SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES&gt;::handle_dmi</ref>(tlm::tlm_generic_payload&amp;<sp/>gp,<sp/>tlm::tlm_dmi&amp;<sp/>dmi_data)<sp/>{</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classscc_1_1memory_1a1f7662b73f068f2f95eb27fcd4278f5a" kindref="member">allow_dmi</ref>.get_value())<sp/>{</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>hm_entry<sp/>=<sp/>host_mem_lut.getEntry(gp.get_address());</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(hm_entry.ptr)<sp/>{</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dmi_data.set_start_address(hm_entry.base);</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dmi_data.set_end_address(hm_entry.base<sp/>+<sp/>hm_entry.size<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dmi_data.set_dmi_ptr(hm_entry.ptr);</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>p<sp/>=<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>(gp.get_address()<sp/>/<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>.page_size);</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>start_address<sp/>=<sp/>gp.get_address()<sp/>&amp;<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">~mem</ref>.page_addr_mask;</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>end_address<sp/>=<sp/>std::min&lt;uint64_t&gt;(start_address<sp/>+<sp/><ref refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" kindref="member">mem</ref>.page_size,<sp/>SIZE);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dmi_data.set_start_address(start_address);</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dmi_data.set_end_address(end_address<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dmi_data.set_dmi_ptr(p.data());</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dmi_data.set_granted_access(tlm::tlm_dmi::DMI_ACCESS_READ_WRITE);</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dmi_data.set_read_latency(<ref refid="structscc_1_1delay__spec__type" kindref="compound">delay_spec_type&lt;USE_CYCLES&gt;::get_effective_value</ref>(clk_period,<sp/><ref refid="classscc_1_1memory_1a92625153fa99f37f97cd115a40fed337" kindref="member">rd_resp_delay</ref>));</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dmi_data.set_write_latency(<ref refid="structscc_1_1delay__spec__type" kindref="compound">delay_spec_type&lt;USE_CYCLES&gt;::get_effective_value</ref>(clk_period,<sp/><ref refid="classscc_1_1memory_1ac77708eadfbe7887bf4c192e5c53d101" kindref="member">wr_resp_delay</ref>));</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1memory_1a1f7662b73f068f2f95eb27fcd4278f5a" kindref="member">allow_dmi</ref>.get_value();</highlight></codeline>
+<codeline lineno="357"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_SYSC_MEMORY_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h"/>
+  </compounddef>
+</doxygen>

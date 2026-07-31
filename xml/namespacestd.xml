@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacestd" kind="namespace" language="C++">
+    <compoundname>std</compoundname>
+    <innerclass refid="structstd_1_1hash_3_01nonstd_1_1optional_3_01T_01_4_01_4" prot="public">std::hash&lt; nonstd::optional&lt; T &gt; &gt;</innerclass>
+    <innerclass refid="classstd_1_1tuple__size_3_01TCB__SPAN__NAMESPACE__NAME_1_1span_3_01ElementType_00_01Extent_01_4_01_4" prot="public">std::tuple_size&lt; TCB_SPAN_NAMESPACE_NAME::span&lt; ElementType, Extent &gt; &gt;</innerclass>
+    <innerclass refid="classstd_1_1tuple__element_3_01I_00_01TCB__SPAN__NAMESPACE__NAME_1_1span_3_01ElementType_00_01Extent_01_4_01_4" prot="public">std::tuple_element&lt; I, TCB_SPAN_NAMESPACE_NAME::span&lt; ElementType, Extent &gt; &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01util_1_1delegate_3_01R_07A_8_8_8_08_4_01_4" prot="public">std::hash&lt; util::delegate&lt; R(A...)&gt; &gt;</innerclass>
+    <innernamespace refid="namespacestd_1_1conditional">std::conditional</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1640" column="1"/>
+  </compounddef>
+</doxygen>

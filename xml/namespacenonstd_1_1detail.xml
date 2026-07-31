@@ -1,0 +1,628 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacenonstd_1_1detail" kind="namespace" language="C++">
+    <compoundname>nonstd::detail</compoundname>
+    <innerclass refid="structnonstd_1_1detail_1_1conjunction" prot="public">nonstd::detail::conjunction</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1conjunction_3_01B_01_4" prot="public">nonstd::detail::conjunction&lt; B &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1conjunction_3_01B_00_01Bs_8_8_8_01_4" prot="public">nonstd::detail::conjunction&lt; B, Bs... &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1invoke__result__impl" prot="public">nonstd::detail::invoke_result_impl</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1invoke__result__impl_3_01F_00_01decltype_07detail_1_1invoke_07std_1_1d93385ec22a5e390d0b206f42b452de3f" prot="public">nonstd::detail::invoke_result_impl&lt; F, decltype(detail::invoke(std::declval&lt; F &gt;(), std::declval&lt; Us &gt;()...), void()), Us... &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1is__swappable" prot="public">nonstd::detail::is_swappable</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1is__swappable_3_01T_0fN_0e_00_01T_0fN_0e_4" prot="public">nonstd::detail::is_swappable&lt; T[N], T[N]&gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1is__nothrow__swappable" prot="public">nonstd::detail::is_nothrow_swappable</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1voider" prot="public">nonstd::detail::voider</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1is__optional__impl" prot="public">nonstd::detail::is_optional_impl</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1is__optional__impl_3_01optional_3_01T_01_4_01_4" prot="public">nonstd::detail::is_optional_impl&lt; optional&lt; T &gt; &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1returns__void__impl" prot="public">nonstd::detail::returns_void_impl</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1returns__void__impl_3_01F_00_01void__t_3_01invoke__result__t_3_01F_00_899bbcae771d97efe99e3eeffbd178c6" prot="public">nonstd::detail::returns_void_impl&lt; F, void_t&lt; invoke_result_t&lt; F, U... &gt; &gt;, U... &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__storage__base" prot="public">nonstd::detail::optional_storage_base</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__storage__base_3_01T_00_01true_01_4" prot="public">nonstd::detail::optional_storage_base&lt; T, true &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__operations__base" prot="public">nonstd::detail::optional_operations_base</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__copy__base" prot="public">nonstd::detail::optional_copy_base</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__copy__base_3_01T_00_01false_01_4" prot="public">nonstd::detail::optional_copy_base&lt; T, false &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__move__base" prot="public">nonstd::detail::optional_move_base</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__move__base_3_01T_00_01false_01_4" prot="public">nonstd::detail::optional_move_base&lt; T, false &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__copy__assign__base" prot="public">nonstd::detail::optional_copy_assign_base</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__copy__assign__base_3_01T_00_01false_01_4" prot="public">nonstd::detail::optional_copy_assign_base&lt; T, false &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__move__assign__base" prot="public">nonstd::detail::optional_move_assign_base</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__move__assign__base_3_01T_00_01false_01_4" prot="public">nonstd::detail::optional_move_assign_base&lt; T, false &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__delete__ctor__base" prot="public">nonstd::detail::optional_delete_ctor_base</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__delete__ctor__base_3_01T_00_01true_00_01false_01_4" prot="public">nonstd::detail::optional_delete_ctor_base&lt; T, true, false &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__delete__ctor__base_3_01T_00_01false_00_01true_01_4" prot="public">nonstd::detail::optional_delete_ctor_base&lt; T, false, true &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__delete__ctor__base_3_01T_00_01false_00_01false_01_4" prot="public">nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__delete__assign__base" prot="public">nonstd::detail::optional_delete_assign_base</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__delete__assign__base_3_01T_00_01true_00_01false_01_4" prot="public">nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__delete__assign__base_3_01T_00_01false_00_01true_01_4" prot="public">nonstd::detail::optional_delete_assign_base&lt; T, false, true &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__delete__assign__base_3_01T_00_01false_00_01false_01_4" prot="public">nonstd::detail::optional_delete_assign_base&lt; T, false, false &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1i__am__secret" prot="public">nonstd::detail::i_am_secret</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1in__place__type__tag" prot="public">nonstd::detail::in_place_type_tag</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1in__place__index__tag" prot="public">nonstd::detail::in_place_index_tag</innerclass>
+    <innernamespace refid="namespacenonstd_1_1detail_1_1swap__adl__tests">nonstd::detail::swap_adl_tests</innernamespace>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1a29db734a5934bc7987e36c6424cdb187" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>typename std::remove_const&lt; T &gt;::type</type>
+        <definition>using nonstd::detail::remove_const_t =  typename std::remove_const&lt;T&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>remove_const_t</name>
+        <qualifiedname>nonstd::detail::remove_const_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="119" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1a772def254117b097e207a786b4c3efbc" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>typename std::remove_reference&lt; T &gt;::type</type>
+        <definition>using nonstd::detail::remove_reference_t =  typename std::remove_reference&lt;T&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>remove_reference_t</name>
+        <qualifiedname>nonstd::detail::remove_reference_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="120" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1aa4e4519b956b6ce2d3f5e64e9761c8da" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>typename std::decay&lt; T &gt;::type</type>
+        <definition>using nonstd::detail::decay_t =  typename std::decay&lt;T&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>decay_t</name>
+        <qualifiedname>nonstd::detail::decay_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="121" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1afd7881c59898282011efd03bc778d13c" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>bool</type>
+            <declname>E</declname>
+            <defname>E</defname>
+          </param>
+          <param>
+            <type>class T</type>
+            <defval>void</defval>
+          </param>
+        </templateparamlist>
+        <type>typename std::enable_if&lt; E, T &gt;::type</type>
+        <definition>using nonstd::detail::enable_if_t =  typename std::enable_if&lt;E, T&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>enable_if_t</name>
+        <qualifiedname>nonstd::detail::enable_if_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="122" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1a4ff5668c8528909cc05c558805fb14aa" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>bool</type>
+            <declname>B</declname>
+            <defname>B</defname>
+          </param>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type>typename std::conditional&lt; B, T, F &gt;::type</type>
+        <definition>using nonstd::detail::conditional_t =  typename std::conditional&lt;B, T, F&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>conditional_t</name>
+        <qualifiedname>nonstd::detail::conditional_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="123" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1a9594109d16b8e6333fc5eb9ceac9ff97" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Us</declname>
+            <defname>Us</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structnonstd_1_1detail_1_1invoke__result__impl" kindref="compound">invoke_result_impl</ref>&lt; F, void, Us... &gt;</type>
+        <definition>using nonstd::detail::invoke_result =  invoke_result_impl&lt;F, void, Us...&gt;</definition>
+        <argsstring></argsstring>
+        <name>invoke_result</name>
+        <qualifiedname>nonstd::detail::invoke_result</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="177" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1aad7c7a84d80da3c5fc281ea5739370e3" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Us</declname>
+            <defname>Us</defname>
+          </param>
+        </templateparamlist>
+        <type>typename invoke_result&lt; F, Us... &gt;::type</type>
+        <definition>using nonstd::detail::invoke_result_t =  typename invoke_result&lt;F, Us...&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>invoke_result_t</name>
+        <qualifiedname>nonstd::detail::invoke_result_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="179" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1a3839e4003a9db2c7a893f9a118d1cd1a" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type>typename <ref refid="structnonstd_1_1detail_1_1voider" kindref="compound">voider</ref>&lt; Ts... &gt;::type</type>
+        <definition>using nonstd::detail::void_t =  typename voider&lt;Ts...&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>void_t</name>
+        <qualifiedname>nonstd::detail::void_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="235" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1a6414a0dd5493cb8590b42647970d7f90" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structnonstd_1_1detail_1_1is__optional__impl" kindref="compound">is_optional_impl</ref>&lt; decay_t&lt; T &gt; &gt;</type>
+        <definition>using nonstd::detail::is_optional =  is_optional_impl&lt;decay_t&lt;T&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>is_optional</name>
+        <qualifiedname>nonstd::detail::is_optional</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="240" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1a4378e3ff03448adf89c0ebc73b625a31" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>conditional_t&lt; std::is_void&lt; U &gt;::value, <ref refid="classnonstd_1_1monostate" kindref="compound">monostate</ref>, U &gt;</type>
+        <definition>using nonstd::detail::fixup_void =  conditional_t&lt;std::is_void&lt;U&gt;::value, monostate, U&gt;</definition>
+        <argsstring></argsstring>
+        <name>fixup_void</name>
+        <qualifiedname>nonstd::detail::fixup_void</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="243" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1a6e45cff9e1060837870143c546b5b8ea" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+          <param>
+            <type>class</type>
+            <defval>invoke_result_t&lt;F, U&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; fixup_void&lt; invoke_result_t&lt; F, U &gt; &gt; &gt;</type>
+        <definition>using nonstd::detail::get_map_return =  optional&lt;fixup_void&lt;invoke_result_t&lt;F, U&gt;&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>get_map_return</name>
+        <qualifiedname>nonstd::detail::get_map_return</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="245" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1ab0e873b8aca3a1e1556ee078be9b1205" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>U</declname>
+            <defname>U</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structnonstd_1_1detail_1_1returns__void__impl" kindref="compound">returns_void_impl</ref>&lt; F, void, U... &gt;</type>
+        <definition>using nonstd::detail::returns_void =  returns_void_impl&lt;F, void, U...&gt;</definition>
+        <argsstring></argsstring>
+        <name>returns_void</name>
+        <qualifiedname>nonstd::detail::returns_void</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="251" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="251" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1ac55b6436691a973ec04c10051f516d63" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>U</declname>
+            <defname>U</defname>
+          </param>
+        </templateparamlist>
+        <type>enable_if_t&lt; returns_void&lt; T &amp;&amp;, U... &gt;::value &gt;</type>
+        <definition>using nonstd::detail::enable_if_ret_void =  enable_if_t&lt;returns_void&lt;T&amp;&amp;, U...&gt;::value&gt;</definition>
+        <argsstring></argsstring>
+        <name>enable_if_ret_void</name>
+        <qualifiedname>nonstd::detail::enable_if_ret_void</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="253" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1ad765d3f9719ecb1c1387f676be2b9f6e" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>U</declname>
+            <defname>U</defname>
+          </param>
+        </templateparamlist>
+        <type>enable_if_t&lt;!returns_void&lt; T &amp;&amp;, U... &gt;::value &gt;</type>
+        <definition>using nonstd::detail::disable_if_ret_void =  enable_if_t&lt;!returns_void&lt;T&amp;&amp;, U...&gt;::value&gt;</definition>
+        <argsstring></argsstring>
+        <name>disable_if_ret_void</name>
+        <qualifiedname>nonstd::detail::disable_if_ret_void</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="255" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="255" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1aebcafd8946519ad41cfac5d03121f273" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>detail::enable_if_t&lt; std::is_constructible&lt; T, U &amp;&amp; &gt;::value &amp;&amp;!std::is_same&lt; detail::decay_t&lt; U &gt;, <ref refid="structnonstd_1_1in__place__t" kindref="compound">in_place_t</ref> &gt;::value &amp;&amp; !std::is_same&lt; <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; T &gt;, detail::decay_t&lt; U &gt; &gt;::value &gt;</type>
+        <definition>using nonstd::detail::enable_forward_value = 
+    detail::enable_if_t&lt;std::is_constructible&lt;T, U&amp;&amp;&gt;::value &amp;&amp; !std::is_same&lt;detail::decay_t&lt;U&gt;, in_place_t&gt;::value &amp;&amp;
+                        !std::is_same&lt;optional&lt;T&gt;, detail::decay_t&lt;U&gt;&gt;::value&gt;</definition>
+        <argsstring></argsstring>
+        <name>enable_forward_value</name>
+        <qualifiedname>nonstd::detail::enable_forward_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="258" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="258" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1a2dafae23b8b9c6dc1dfe9de8b77d8e34" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+          <param>
+            <type>class Other</type>
+          </param>
+        </templateparamlist>
+        <type>detail::enable_if_t&lt; std::is_constructible&lt; T, Other &gt;::value &amp;&amp;!std::is_constructible&lt; T, <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp; &gt;::value &amp;&amp; !std::is_constructible&lt; T, <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp;&amp; &gt;::value &amp;&amp;!std::is_constructible&lt; T, const <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp; &gt;::value &amp;&amp; !std::is_constructible&lt; T, const <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp;&amp; &gt;::value &amp;&amp;!std::is_convertible&lt; <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp;, T &gt;::value &amp;&amp; !std::is_convertible&lt; <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp;&amp;, T &gt;::value &amp;&amp;!std::is_convertible&lt; const <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp;, T &gt;::value &amp;&amp; !std::is_convertible&lt; const <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp;&amp;, T &gt;::value &gt;</type>
+        <definition>using nonstd::detail::enable_from_other = 
+    detail::enable_if_t&lt;std::is_constructible&lt;T, Other&gt;::value &amp;&amp; !std::is_constructible&lt;T, optional&lt;U&gt;&amp;&gt;::value &amp;&amp;
+                        !std::is_constructible&lt;T, optional&lt;U&gt;&amp;&amp;&gt;::value &amp;&amp; !std::is_constructible&lt;T, const optional&lt;U&gt;&amp;&gt;::value &amp;&amp;
+                        !std::is_constructible&lt;T, const optional&lt;U&gt;&amp;&amp;&gt;::value &amp;&amp; !std::is_convertible&lt;optional&lt;U&gt;&amp;, T&gt;::value &amp;&amp;
+                        !std::is_convertible&lt;optional&lt;U&gt;&amp;&amp;, T&gt;::value &amp;&amp; !std::is_convertible&lt;const optional&lt;U&gt;&amp;, T&gt;::value &amp;&amp;
+                        !std::is_convertible&lt;const optional&lt;U&gt;&amp;&amp;, T&gt;::value&gt;</definition>
+        <argsstring></argsstring>
+        <name>enable_from_other</name>
+        <qualifiedname>nonstd::detail::enable_from_other</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="263" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="263" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1a242d11443962a97e495b2446150805b0" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>detail::enable_if_t&lt;!std::is_same&lt; <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; T &gt;, detail::decay_t&lt; U &gt; &gt;::value &amp;&amp; !<ref refid="structnonstd_1_1detail_1_1conjunction" kindref="compound">detail::conjunction</ref>&lt; std::is_scalar&lt; T &gt;, std::is_same&lt; T, detail::decay_t&lt; U &gt; &gt; &gt;::value &amp;&amp; std::is_constructible&lt; T, U &gt;::value &amp;&amp;std::is_assignable&lt; T &amp;, U &gt;::value &gt;</type>
+        <definition>using nonstd::detail::enable_assign_forward =  detail::enable_if_t&lt;!std::is_same&lt;optional&lt;T&gt;, detail::decay_t&lt;U&gt;&gt;::value &amp;&amp;
+                                                  !detail::conjunction&lt;std::is_scalar&lt;T&gt;, std::is_same&lt;T, detail::decay_t&lt;U&gt;&gt;&gt;::value &amp;&amp;
+                                                  std::is_constructible&lt;T, U&gt;::value &amp;&amp; std::is_assignable&lt;T&amp;, U&gt;::value&gt;</definition>
+        <argsstring></argsstring>
+        <name>enable_assign_forward</name>
+        <qualifiedname>nonstd::detail::enable_assign_forward</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="271" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="271" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacenonstd_1_1detail_1a45575afd4f7395441a3153c28810959e" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+          <param>
+            <type>class Other</type>
+          </param>
+        </templateparamlist>
+        <type>detail::enable_if_t&lt; std::is_constructible&lt; T, Other &gt;::value &amp;&amp;std::is_assignable&lt; T &amp;, Other &gt;::value &amp;&amp; !std::is_constructible&lt; T, <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp; &gt;::value &amp;&amp;!std::is_constructible&lt; T, <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp;&amp; &gt;::value &amp;&amp; !std::is_constructible&lt; T, const <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp; &gt;::value &amp;&amp;!std::is_constructible&lt; T, const <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp;&amp; &gt;::value &amp;&amp; !std::is_convertible&lt; <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp;, T &gt;::value &amp;&amp;!std::is_convertible&lt; <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp;&amp;, T &gt;::value &amp;&amp; !std::is_convertible&lt; const <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp;, T &gt;::value &amp;&amp;!std::is_convertible&lt; const <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp;&amp;, T &gt;::value &amp;&amp; !std::is_assignable&lt; T &amp;, <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp; &gt;::value &amp;&amp;!std::is_assignable&lt; T &amp;, <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp;&amp; &gt;::value &amp;&amp; !std::is_assignable&lt; T &amp;, const <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp; &gt;::value &amp;&amp;!std::is_assignable&lt; T &amp;, const <ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; U &gt; &amp;&amp; &gt;::value &gt;</type>
+        <definition>using nonstd::detail::enable_assign_from_other = 
+    detail::enable_if_t&lt;std::is_constructible&lt;T, Other&gt;::value &amp;&amp; std::is_assignable&lt;T&amp;, Other&gt;::value &amp;&amp;
+                        !std::is_constructible&lt;T, optional&lt;U&gt;&amp;&gt;::value &amp;&amp; !std::is_constructible&lt;T, optional&lt;U&gt;&amp;&amp;&gt;::value &amp;&amp;
+                        !std::is_constructible&lt;T, const optional&lt;U&gt;&amp;&gt;::value &amp;&amp; !std::is_constructible&lt;T, const optional&lt;U&gt;&amp;&amp;&gt;::value &amp;&amp;
+                        !std::is_convertible&lt;optional&lt;U&gt;&amp;, T&gt;::value &amp;&amp; !std::is_convertible&lt;optional&lt;U&gt;&amp;&amp;, T&gt;::value &amp;&amp;
+                        !std::is_convertible&lt;const optional&lt;U&gt;&amp;, T&gt;::value &amp;&amp; !std::is_convertible&lt;const optional&lt;U&gt;&amp;&amp;, T&gt;::value &amp;&amp;
+                        !std::is_assignable&lt;T&amp;, optional&lt;U&gt;&amp;&gt;::value &amp;&amp; !std::is_assignable&lt;T&amp;, optional&lt;U&gt;&amp;&amp;&gt;::value &amp;&amp;
+                        !std::is_assignable&lt;T&amp;, const optional&lt;U&gt;&amp;&gt;::value &amp;&amp; !std::is_assignable&lt;T&amp;, const optional&lt;U&gt;&amp;&amp;&gt;::value&gt;</definition>
+        <argsstring></argsstring>
+        <name>enable_assign_from_other</name>
+        <qualifiedname>nonstd::detail::enable_assign_from_other</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="276" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="276" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacenonstd_1_1detail_1a593b6150e6e2e8ebf0ec42bd80596671" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" noexceptexpression="noexcept(std::mem_fn(f)(std::forward&lt; Args &gt;(args)...))" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Fn</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>enable_if_t&lt;std::is_member_pointer&lt;decay_t&lt;Fn&gt;&gt;::value&gt;</defval>
+          </param>
+          <param>
+            <type>int</type>
+            <defval>0</defval>
+          </param>
+        </templateparamlist>
+        <type>decltype(std::mem_fn(f)(std::forward&lt; Args &gt;(args)...))</type>
+        <definition>decltype(std::mem_fn(f)(std::forward&lt; Args &gt;(args)...)) nonstd::detail::invoke</definition>
+        <argsstring>(Fn &amp;&amp;f, Args &amp;&amp;... args)</argsstring>
+        <name>invoke</name>
+        <qualifiedname>nonstd::detail::invoke</qualifiedname>
+        <param>
+          <type>Fn &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="158" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="158" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacenonstd_1_1detail_1a202c69258414cc58d6dadc9caffa3f97" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" noexceptexpression="noexcept(std::forward&lt; Fn &gt;(f)(std::forward&lt; Args &gt;(args)...))" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Fn</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>enable_if_t&lt;!std::is_member_pointer&lt;decay_t&lt;Fn&gt;&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>decltype(std::forward&lt; Fn &gt;(f)(std::forward&lt; Args &gt;(args)...))</type>
+        <definition>decltype(std::forward&lt; Fn &gt;(f)(std::forward&lt; Args &gt;(args)...)) nonstd::detail::invoke</definition>
+        <argsstring>(Fn &amp;&amp;f, Args &amp;&amp;... args)</argsstring>
+        <name>invoke</name>
+        <qualifiedname>nonstd::detail::invoke</qualifiedname>
+        <param>
+          <type>Fn &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="164" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="164" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacenonstd_1_1detail_1a3fde78f1627beb614e76c55661e089ed" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Opt</type>
+          </param>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>class Ret</type>
+            <defval>decltype(detail::invoke(std::declval&lt;F&gt;(), *std::declval&lt;Opt&gt;()))</defval>
+          </param>
+          <param>
+            <type>detail::enable_if_t&lt;!std::is_void&lt; Ret &gt;::value &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; Ret &gt;</type>
+        <definition>optional&lt; Ret &gt; nonstd::detail::optional_map_impl</definition>
+        <argsstring>(Opt &amp;&amp;opt, F &amp;&amp;f)</argsstring>
+        <name>optional_map_impl</name>
+        <qualifiedname>nonstd::detail::optional_map_impl</qualifiedname>
+        <param>
+          <type>Opt &amp;&amp;</type>
+          <declname>opt</declname>
+        </param>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1227" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1227" bodyend="1229"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacenonstd_1_1detail_1a4a265de8ae58a77099ff721ef6e8d7f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Opt</type>
+          </param>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>class Ret</type>
+            <defval>decltype(detail::invoke(std::declval&lt;F&gt;(), *std::declval&lt;Opt&gt;()))</defval>
+          </param>
+          <param>
+            <type>detail::enable_if_t&lt; std::is_void&lt; Ret &gt;::value &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt; <ref refid="classnonstd_1_1monostate" kindref="compound">monostate</ref> &gt;</type>
+        <definition>optional&lt; monostate &gt; nonstd::detail::optional_map_impl</definition>
+        <argsstring>(Opt &amp;&amp;opt, F &amp;&amp;f)</argsstring>
+        <name>optional_map_impl</name>
+        <qualifiedname>nonstd::detail::optional_map_impl</qualifiedname>
+        <param>
+          <type>Opt &amp;&amp;</type>
+          <declname>opt</declname>
+        </param>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1234" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1234" bodyend="1241"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>\exclude </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="115" column="1"/>
+  </compounddef>
+</doxygen>

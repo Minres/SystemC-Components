@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1detail_1_1VisitorApplicatorImpl" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::detail::VisitorApplicatorImpl</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename R</type>
+      </param>
+      <param>
+        <type>typename VT</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1VisitorApplicatorImpl_1aaa2b38983904605fb6e715ffb1fcec8c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Visitor</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>R</type>
+        <definition>static R nonstd::variants::detail::VisitorApplicatorImpl&lt; R, VT &gt;::apply</definition>
+        <argsstring>(Visitor const &amp;v, T const &amp;arg)</argsstring>
+        <name>apply</name>
+        <qualifiedname>nonstd::variants::detail::VisitorApplicatorImpl::apply</qualifiedname>
+        <param>
+          <type>Visitor const &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>T const &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2343" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2343" bodyend="2343"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2342" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2342" bodyend="2344"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1VisitorApplicatorImpl_1aaa2b38983904605fb6e715ffb1fcec8c" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::VisitorApplicatorImpl</scope><name>apply</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

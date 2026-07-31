@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::scv::tlm_extension_record_if</compoundname>
+    <derivedcompoundref refid="structaxi_1_1scv_1_1ace__ext__record" prot="public" virt="non-virtual">axi::scv::ace_ext_record</derivedcompoundref>
+    <derivedcompoundref refid="structaxi_1_1scv_1_1axi3__ext__record" prot="public" virt="non-virtual">axi::scv::axi3_ext_record</derivedcompoundref>
+    <derivedcompoundref refid="structaxi_1_1scv_1_1axi4__ext__record" prot="public" virt="non-virtual">axi::scv::axi4_ext_record</derivedcompoundref>
+    <derivedcompoundref refid="structchi_1_1chi__ctrl__ext__record" prot="public" virt="non-virtual">chi::chi_ctrl_ext_record</derivedcompoundref>
+    <derivedcompoundref refid="structchi_1_1chi__data__credit__ext__record" prot="public" virt="non-virtual">chi::chi_data_credit_ext_record</derivedcompoundref>
+    <derivedcompoundref refid="structchi_1_1chi__data__ext__record" prot="public" virt="non-virtual">chi::chi_data_ext_record</derivedcompoundref>
+    <derivedcompoundref refid="structchi_1_1chi__req__credit__ext__record" prot="public" virt="non-virtual">chi::chi_req_credit_ext_record</derivedcompoundref>
+    <derivedcompoundref refid="structchi_1_1chi__resp__credit__ext__record" prot="public" virt="non-virtual">chi::chi_resp_credit_ext_record</derivedcompoundref>
+    <derivedcompoundref refid="structchi_1_1chi__snp__ext__record" prot="public" virt="non-virtual">chi::chi_snp_ext_record</derivedcompoundref>
+    <derivedcompoundref refid="structcxs_1_1cxs__ext__record" prot="public" virt="non-virtual">cxs::cxs_ext_record</derivedcompoundref>
+    <derivedcompoundref refid="structtilelink_1_1tlc__ext__record" prot="public" virt="non-virtual">tilelink::tlc_ext_record</derivedcompoundref>
+    <derivedcompoundref refid="structtlm_1_1scc_1_1scv_1_1tlm__id__ext__record" prot="public" virt="non-virtual">tlm::scc::scv::tlm_id_ext_record</derivedcompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1a137d8b93971625450c01fb82f70ce2c7" prot="public" static="no" mutable="no">
+        <type><ref refid="classutil_1_1delegate" kindref="compound">util::delegate</ref>&lt; void(SCVNS scv_tr_handle &amp;, tlm::tlm_extension_base *, std::string const  &amp;)&gt;</type>
+        <definition>util::delegate&lt;void(SCVNS scv_tr_handle&amp;, tlm::tlm_extension_base*, std::string const&amp;)&gt; tlm::scc::scv::tlm_extension_record_if::recordBegin</definition>
+        <argsstring></argsstring>
+        <name>recordBegin</name>
+        <qualifiedname>tlm::scc::scv::tlm_extension_record_if::recordBegin</qualifiedname>
+        <briefdescription>
+<para>recording attributes in extensions at the beginning, it is intended to be overload as it does nothing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="48" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1abf714e72f94ce9f37c10c9ec76065a3e" prot="public" static="no" mutable="no">
+        <type><ref refid="classutil_1_1delegate" kindref="compound">util::delegate</ref>&lt; void(SCVNS scv_tr_handle &amp;, tlm::tlm_extension_base *, std::string const  &amp;)&gt;</type>
+        <definition>util::delegate&lt;void(SCVNS scv_tr_handle&amp;, tlm::tlm_extension_base*, std::string const&amp;)&gt; tlm::scc::scv::tlm_extension_record_if::recordEnd</definition>
+        <argsstring></argsstring>
+        <name>recordEnd</name>
+        <qualifiedname>tlm::scc::scv::tlm_extension_record_if::recordEnd</qualifiedname>
+        <briefdescription>
+<para>recording attributes in extensions at the end, it is intended to be overload as it does nothing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="53" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1a6887834989a54263dc3ce2f0811fc6a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual tlm::scc::scv::tlm_extension_record_if::~tlm_extension_record_if</definition>
+        <argsstring>()=default</argsstring>
+        <name>~tlm_extension_record_if</name>
+        <qualifiedname>tlm::scc::scv::tlm_extension_record_if::~tlm_extension_record_if</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="55" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>axi::scv::ace_ext_record</label>
+        <link refid="structaxi_1_1scv_1_1ace__ext__record"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>axi::scv::axi3_ext_record</label>
+        <link refid="structaxi_1_1scv_1_1axi3__ext__record"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>axi::scv::axi4_ext_record</label>
+        <link refid="structaxi_1_1scv_1_1axi4__ext__record"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>chi::chi_ctrl_ext_record</label>
+        <link refid="structchi_1_1chi__ctrl__ext__record"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>chi::chi_data_credit_ext_record</label>
+        <link refid="structchi_1_1chi__data__credit__ext__record"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>chi::chi_data_ext_record</label>
+        <link refid="structchi_1_1chi__data__ext__record"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>chi::chi_req_credit_ext_record</label>
+        <link refid="structchi_1_1chi__req__credit__ext__record"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>chi::chi_resp_credit_ext_record</label>
+        <link refid="structchi_1_1chi__resp__credit__ext__record"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>chi::chi_snp_ext_record</label>
+        <link refid="structchi_1_1chi__snp__ext__record"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>cxs::cxs_ext_record</label>
+        <link refid="structcxs_1_1cxs__ext__record"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>tilelink::tlc_ext_record</label>
+        <link refid="structtilelink_1_1tlc__ext__record"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::scv::tlm_extension_record_if</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if"/>
+      </node>
+      <node id="13">
+        <label>tlm::scc::scv::tlm_id_ext_record</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__id__ext__record"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::scc::scv::tlm_extension_record_if</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>recordBegin</edgelabel>
+          <edgelabel>recordEnd</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>util::delegate&lt; void(SCVNS scv_tr_handle &amp;, tlm::tlm_extension_base *, std::string const &amp;)&gt;</label>
+        <link refid="classutil_1_1delegate"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="43" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="43" bodyend="56"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1a137d8b93971625450c01fb82f70ce2c7" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_extension_record_if</scope><name>recordBegin</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1abf714e72f94ce9f37c10c9ec76065a3e" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_extension_record_if</scope><name>recordEnd</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1a6887834989a54263dc3ce2f0811fc6a4" prot="public" virt="virtual"><scope>tlm::scc::scv::tlm_extension_record_if</scope><name>~tlm_extension_record_if</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

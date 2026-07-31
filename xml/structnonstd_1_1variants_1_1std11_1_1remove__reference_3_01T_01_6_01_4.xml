@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1std11_1_1remove__reference_3_01T_01_6_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::std11::remove_reference&lt; T &amp; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structnonstd_1_1variants_1_1std11_1_1remove__reference_3_01T_01_6_01_4_1a183bf5e28c660a8e812e270d0b739405" prot="public" static="no">
+        <type>T</type>
+        <definition>typedef T nonstd::variants::std11::remove_reference&lt; T &amp; &gt;::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>nonstd::variants::std11::remove_reference&lt; T &amp; &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="441" column="46" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="441" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="441" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="441" bodyend="441"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1std11_1_1remove__reference_3_01T_01_6_01_4_1a183bf5e28c660a8e812e270d0b739405" prot="public" virt="non-virtual"><scope>nonstd::variants::std11::remove_reference&lt; T &amp; &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1detail_1_1is__optional__impl" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::detail::is_optional_impl</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::false_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>nonstd::detail::is_optional_impl&lt; T &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1is__optional__impl"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>nonstd::detail::is_optional_impl&lt; T &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1is__optional__impl"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="238" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="238" bodyend="238"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

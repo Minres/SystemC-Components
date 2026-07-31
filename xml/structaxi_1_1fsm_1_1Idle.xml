@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1fsm_1_1Idle" kind="struct" language="C++" prot="public">
+    <compoundname>axi::fsm::Idle</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">bsc::state&lt; Idle, AxiProtocolFsm &gt;</basecompoundref>
+    <includes refid="protocol__fsm_8h" local="no">protocol_fsm.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structaxi_1_1fsm_1_1Idle_1a575c79c0032754956fc8249e196938e9" prot="public" static="no">
+        <type>mpl::list&lt; bsc::transition&lt; <ref refid="structaxi_1_1fsm_1_1BegPartReq" kindref="compound">BegPartReq</ref>, <ref refid="structaxi_1_1fsm_1_1PartialRequest" kindref="compound">PartialRequest</ref> &gt;, bsc::transition&lt; <ref refid="structaxi_1_1fsm_1_1BegReq" kindref="compound">BegReq</ref>, <ref refid="structaxi_1_1fsm_1_1Request" kindref="compound">Request</ref> &gt;, bsc::transition&lt; <ref refid="structaxi_1_1fsm_1_1WReq" kindref="compound">WReq</ref>, <ref refid="structaxi_1_1fsm_1_1ATrans" kindref="compound">ATrans</ref> &gt; &gt;</type>
+        <definition>typedef mpl::list&lt;bsc::transition&lt;BegPartReq, PartialRequest&gt;, bsc::transition&lt;BegReq, Request&gt;, bsc::transition&lt;WReq, ATrans&gt; &gt; axi::fsm::Idle::reactions</definition>
+        <argsstring></argsstring>
+        <name>reactions</name>
+        <qualifiedname>axi::fsm::Idle::reactions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="86" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1Idle_1a5c06092991b67ac38b20e51380971df2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::fsm::Idle::Idle</definition>
+        <argsstring>(my_context ctx)</argsstring>
+        <name>Idle</name>
+        <qualifiedname>axi::fsm::Idle::Idle</qualifiedname>
+        <param>
+          <type>my_context</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="79" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="79" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1Idle_1aed9c462ae9a072823daffc26349c1dfc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::fsm::Idle::~Idle</definition>
+        <argsstring>()</argsstring>
+        <name>~Idle</name>
+        <qualifiedname>axi::fsm::Idle::~Idle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="81" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="81" bodyend="84"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the idle state </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::fsm::Idle</label>
+        <link refid="structaxi_1_1fsm_1_1Idle"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>bsc::state&lt; Idle, AxiProtocolFsm &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::fsm::Idle</label>
+        <link refid="structaxi_1_1fsm_1_1Idle"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>bsc::state&lt; Idle, AxiProtocolFsm &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="78" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="78" bodyend="87"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1fsm_1_1Idle_1a5c06092991b67ac38b20e51380971df2" prot="public" virt="non-virtual"><scope>axi::fsm::Idle</scope><name>Idle</name></member>
+      <member refid="structaxi_1_1fsm_1_1Idle_1a575c79c0032754956fc8249e196938e9" prot="public" virt="non-virtual"><scope>axi::fsm::Idle</scope><name>reactions</name></member>
+      <member refid="structaxi_1_1fsm_1_1Idle_1aed9c462ae9a072823daffc26349c1dfc" prot="public" virt="non-virtual"><scope>axi::fsm::Idle</scope><name>~Idle</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

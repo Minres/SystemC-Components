@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry" kind="struct" language="C++" prot="private">
+    <compoundname>axi::pin::axi4_initiator::fifo_entry</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1a4376d5951ab0832bfe86293c01995d67" prot="public" static="no" mutable="no">
+        <type>tlm::tlm_generic_payload *</type>
+        <definition>tlm::tlm_generic_payload* axi::pin::axi4_initiator&lt; CFG &gt;::fifo_entry::gp</definition>
+        <argsstring></argsstring>
+        <name>gp</name>
+        <qualifiedname>axi::pin::axi4_initiator::fifo_entry::gp</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" line="116" column="34" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1a3b9ab29d77b4944add3a646432021398" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool axi::pin::axi4_initiator&lt; CFG &gt;::fifo_entry::last</definition>
+        <argsstring></argsstring>
+        <name>last</name>
+        <qualifiedname>axi::pin::axi4_initiator::fifo_entry::last</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" line="117" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1a5e0859d09db05dca2d357d00a326694d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool axi::pin::axi4_initiator&lt; CFG &gt;::fifo_entry::needs_end_req</definition>
+        <argsstring></argsstring>
+        <name>needs_end_req</name>
+        <qualifiedname>axi::pin::axi4_initiator::fifo_entry::needs_end_req</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" line="118" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1ab60409f98a4c15739300cb226ce577c2" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t axi::pin::axi4_initiator&lt; CFG &gt;::fifo_entry::beat_num</definition>
+        <argsstring></argsstring>
+        <name>beat_num</name>
+        <qualifiedname>axi::pin::axi4_initiator::fifo_entry::beat_num</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" line="119" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1a57b471bf98fdc65830e11ad0b8ca741f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::pin::axi4_initiator&lt; CFG &gt;::fifo_entry::fifo_entry</definition>
+        <argsstring>(tlm::tlm_generic_payload *gp, bool last, bool needs_end_req, size_t beat_num)</argsstring>
+        <name>fifo_entry</name>
+        <qualifiedname>axi::pin::axi4_initiator::fifo_entry::fifo_entry</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload *</type>
+          <declname>gp</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>last</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>needs_end_req</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>beat_num</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" line="120" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" bodystart="120" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1a0bb621f62c7f9bedb16b03afe6b2bb21" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::pin::axi4_initiator&lt; CFG &gt;::fifo_entry::fifo_entry</definition>
+        <argsstring>(tlm::tlm_generic_payload *gp, bool needs_end_req)</argsstring>
+        <name>fifo_entry</name>
+        <qualifiedname>axi::pin::axi4_initiator::fifo_entry::fifo_entry</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload *</type>
+          <declname>gp</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>needs_end_req</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" line="128" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" bodystart="128" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1a01e872c626e991fbfa16723b85aaff23" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::pin::axi4_initiator&lt; CFG &gt;::fifo_entry::fifo_entry</definition>
+        <argsstring>(fifo_entry const &amp;o)</argsstring>
+        <name>fifo_entry</name>
+        <qualifiedname>axi::pin::axi4_initiator::fifo_entry::fifo_entry</qualifiedname>
+        <param>
+          <type>fifo_entry const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" line="134" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" bodystart="134" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1a7d788b14fc40385f63d504c42b2fad96" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>fifo_entry &amp;</type>
+        <definition>fifo_entry &amp; axi::pin::axi4_initiator&lt; CFG &gt;::fifo_entry::operator=</definition>
+        <argsstring>(const fifo_entry &amp;o)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>axi::pin::axi4_initiator::fifo_entry::operator=</qualifiedname>
+        <param>
+          <type>const fifo_entry &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" line="142" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" bodystart="142" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1a14eff17a0fcb01d4985369214554f9d8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::pin::axi4_initiator&lt; CFG &gt;::fifo_entry::~fifo_entry</definition>
+        <argsstring>()</argsstring>
+        <name>~fifo_entry</name>
+        <qualifiedname>axi::pin::axi4_initiator::fifo_entry::~fifo_entry</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" line="149" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" bodystart="149" bodyend="152"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" line="115" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h" bodystart="115" bodyend="153"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1ab60409f98a4c15739300cb226ce577c2" prot="public" virt="non-virtual"><scope>axi::pin::axi4_initiator::fifo_entry</scope><name>beat_num</name></member>
+      <member refid="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1a57b471bf98fdc65830e11ad0b8ca741f" prot="public" virt="non-virtual"><scope>axi::pin::axi4_initiator::fifo_entry</scope><name>fifo_entry</name></member>
+      <member refid="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1a0bb621f62c7f9bedb16b03afe6b2bb21" prot="public" virt="non-virtual"><scope>axi::pin::axi4_initiator::fifo_entry</scope><name>fifo_entry</name></member>
+      <member refid="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1a01e872c626e991fbfa16723b85aaff23" prot="public" virt="non-virtual"><scope>axi::pin::axi4_initiator::fifo_entry</scope><name>fifo_entry</name></member>
+      <member refid="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1a4376d5951ab0832bfe86293c01995d67" prot="public" virt="non-virtual"><scope>axi::pin::axi4_initiator::fifo_entry</scope><name>gp</name></member>
+      <member refid="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1a3b9ab29d77b4944add3a646432021398" prot="public" virt="non-virtual"><scope>axi::pin::axi4_initiator::fifo_entry</scope><name>last</name></member>
+      <member refid="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1a5e0859d09db05dca2d357d00a326694d" prot="public" virt="non-virtual"><scope>axi::pin::axi4_initiator::fifo_entry</scope><name>needs_end_req</name></member>
+      <member refid="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1a7d788b14fc40385f63d504c42b2fad96" prot="public" virt="non-virtual"><scope>axi::pin::axi4_initiator::fifo_entry</scope><name>operator=</name></member>
+      <member refid="structaxi_1_1pin_1_1axi4__initiator_1_1fifo__entry_1a14eff17a0fcb01d4985369214554f9d8" prot="public" virt="non-virtual"><scope>axi::pin::axi4_initiator::fifo_entry</scope><name>~fifo_entry</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

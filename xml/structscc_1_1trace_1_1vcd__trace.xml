@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1trace_1_1vcd__trace" kind="struct" language="C++" prot="public" abstract="yes">
+    <compoundname>scc::trace::vcd_trace</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1trace_1_1vcd__trace_1afadb6d04df5e8f9e5ad88871db00c70e" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string scc::trace::vcd_trace::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <qualifiedname>scc::trace::vcd_trace::name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="138" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1trace_1_1vcd__trace_1a44e232e8a8907cbcf28af01050ae37be" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string scc::trace::vcd_trace::trc_hndl</definition>
+        <argsstring></argsstring>
+        <name>trc_hndl</name>
+        <qualifiedname>scc::trace::vcd_trace::trc_hndl</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="139" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="139" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1trace_1_1vcd__trace_1a9b5265e185d302f4240f3683efdd649b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::trace::vcd_trace::is_alias</definition>
+        <argsstring></argsstring>
+        <name>is_alias</name>
+        <qualifiedname>scc::trace::vcd_trace::is_alias</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="140" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="140" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1trace_1_1vcd__trace_1a28b23e3c590f27f9ef1ffd784a668582" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::trace::vcd_trace::is_triggered</definition>
+        <argsstring></argsstring>
+        <name>is_triggered</name>
+        <qualifiedname>scc::trace::vcd_trace::is_triggered</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="141" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="141" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1trace_1_1vcd__trace_1aa1c90c663124ef2d6f6d4b1b60fe237e" prot="public" static="no" mutable="no">
+        <type>const unsigned</type>
+        <definition>const unsigned scc::trace::vcd_trace::bits</definition>
+        <argsstring></argsstring>
+        <name>bits</name>
+        <qualifiedname>scc::trace::vcd_trace::bits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="142" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1trace_1_1vcd__trace_1aad80bda1e2f83724a88a301d890fa777" prot="public" static="no" mutable="no">
+        <type>const trace_type</type>
+        <definition>const trace_type scc::trace::vcd_trace::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>scc::trace::vcd_trace::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="143" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="143" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1trace_1_1vcd__trace_1a1470ae9de9359677ac5afd41664907bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::trace::vcd_trace::vcd_trace</definition>
+        <argsstring>(std::string const &amp;nm, trace_type t, unsigned bits)</argsstring>
+        <name>vcd_trace</name>
+        <qualifiedname>scc::trace::vcd_trace::vcd_trace</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>trace_type</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>bits</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="125" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="125" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1vcd__trace_1a4208671679812507ddb24a368911c9e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void scc::trace::vcd_trace::record</definition>
+        <argsstring>(FPTR os)=0</argsstring>
+        <name>record</name>
+        <qualifiedname>scc::trace::vcd_trace::record</qualifiedname>
+        <param>
+          <type>FPTR</type>
+          <declname>os</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="130" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1vcd__trace_1a5fb7589a2c4672dff71951caaa8e9e6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void scc::trace::vcd_trace::update</definition>
+        <argsstring>()=0</argsstring>
+        <name>update</name>
+        <qualifiedname>scc::trace::vcd_trace::update</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="132" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1vcd__trace_1a114a3ae3ce779b9e2ea30b14ac79f805" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>uintptr_t</type>
+        <definition>virtual uintptr_t scc::trace::vcd_trace::get_hash</definition>
+        <argsstring>()=0</argsstring>
+        <name>get_hash</name>
+        <qualifiedname>scc::trace::vcd_trace::get_hash</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="134" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1vcd__trace_1a60d95d7118d5510aa84923131b2a88ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual scc::trace::vcd_trace::~vcd_trace</definition>
+        <argsstring>()</argsstring>
+        <name>~vcd_trace</name>
+        <qualifiedname>scc::trace::vcd_trace::~vcd_trace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="136" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="136" bodyend="136"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="124" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="124" bodyend="144"/>
+    <listofallmembers>
+      <member refid="structscc_1_1trace_1_1vcd__trace_1aa1c90c663124ef2d6f6d4b1b60fe237e" prot="public" virt="non-virtual"><scope>scc::trace::vcd_trace</scope><name>bits</name></member>
+      <member refid="structscc_1_1trace_1_1vcd__trace_1a114a3ae3ce779b9e2ea30b14ac79f805" prot="public" virt="pure-virtual"><scope>scc::trace::vcd_trace</scope><name>get_hash</name></member>
+      <member refid="structscc_1_1trace_1_1vcd__trace_1a9b5265e185d302f4240f3683efdd649b" prot="public" virt="non-virtual"><scope>scc::trace::vcd_trace</scope><name>is_alias</name></member>
+      <member refid="structscc_1_1trace_1_1vcd__trace_1a28b23e3c590f27f9ef1ffd784a668582" prot="public" virt="non-virtual"><scope>scc::trace::vcd_trace</scope><name>is_triggered</name></member>
+      <member refid="structscc_1_1trace_1_1vcd__trace_1afadb6d04df5e8f9e5ad88871db00c70e" prot="public" virt="non-virtual"><scope>scc::trace::vcd_trace</scope><name>name</name></member>
+      <member refid="structscc_1_1trace_1_1vcd__trace_1a4208671679812507ddb24a368911c9e0" prot="public" virt="pure-virtual"><scope>scc::trace::vcd_trace</scope><name>record</name></member>
+      <member refid="structscc_1_1trace_1_1vcd__trace_1a44e232e8a8907cbcf28af01050ae37be" prot="public" virt="non-virtual"><scope>scc::trace::vcd_trace</scope><name>trc_hndl</name></member>
+      <member refid="structscc_1_1trace_1_1vcd__trace_1aad80bda1e2f83724a88a301d890fa777" prot="public" virt="non-virtual"><scope>scc::trace::vcd_trace</scope><name>type</name></member>
+      <member refid="structscc_1_1trace_1_1vcd__trace_1a5fb7589a2c4672dff71951caaa8e9e6d" prot="public" virt="pure-virtual"><scope>scc::trace::vcd_trace</scope><name>update</name></member>
+      <member refid="structscc_1_1trace_1_1vcd__trace_1a1470ae9de9359677ac5afd41664907bd" prot="public" virt="non-virtual"><scope>scc::trace::vcd_trace</scope><name>vcd_trace</name></member>
+      <member refid="structscc_1_1trace_1_1vcd__trace_1a60d95d7118d5510aa84923131b2a88ce" prot="public" virt="virtual"><scope>scc::trace::vcd_trace</scope><name>~vcd_trace</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1fsm_1_1PartialResponse" kind="struct" language="C++" prot="public">
+    <compoundname>axi::fsm::PartialResponse</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">bsc::state&lt; PartialResponse, AxiProtocolFsm &gt;</basecompoundref>
+    <includes refid="protocol__fsm_8h" local="no">protocol_fsm.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structaxi_1_1fsm_1_1PartialResponse_1acf42bed4f677342260790cfb8df0b67a" prot="public" static="no">
+        <type>bsc::transition&lt; <ref refid="structaxi_1_1fsm_1_1EndPartResp" kindref="compound">EndPartResp</ref>, <ref refid="structaxi_1_1fsm_1_1ReadIdle" kindref="compound">ReadIdle</ref> &gt;</type>
+        <definition>typedef bsc::transition&lt;EndPartResp, ReadIdle&gt; axi::fsm::PartialResponse::reactions</definition>
+        <argsstring></argsstring>
+        <name>reactions</name>
+        <qualifiedname>axi::fsm::PartialResponse::reactions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="155" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1PartialResponse_1afce24b5407b81a19226e0a36d1c05521" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::fsm::PartialResponse::PartialResponse</definition>
+        <argsstring>(my_context ctx)</argsstring>
+        <name>PartialResponse</name>
+        <qualifiedname>axi::fsm::PartialResponse::PartialResponse</qualifiedname>
+        <param>
+          <type>my_context</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="146" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="146" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1PartialResponse_1af149f07c78ae93411ddaefa8111ad4dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::fsm::PartialResponse::~PartialResponse</definition>
+        <argsstring>()</argsstring>
+        <name>~PartialResponse</name>
+        <qualifiedname>axi::fsm::PartialResponse::~PartialResponse</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="151" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="151" bodyend="154"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the beat of a burst response </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::fsm::PartialResponse</label>
+        <link refid="structaxi_1_1fsm_1_1PartialResponse"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>bsc::state&lt; PartialResponse, AxiProtocolFsm &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::fsm::PartialResponse</label>
+        <link refid="structaxi_1_1fsm_1_1PartialResponse"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>bsc::state&lt; PartialResponse, AxiProtocolFsm &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="145" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="145" bodyend="156"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1fsm_1_1PartialResponse_1afce24b5407b81a19226e0a36d1c05521" prot="public" virt="non-virtual"><scope>axi::fsm::PartialResponse</scope><name>PartialResponse</name></member>
+      <member refid="structaxi_1_1fsm_1_1PartialResponse_1acf42bed4f677342260790cfb8df0b67a" prot="public" virt="non-virtual"><scope>axi::fsm::PartialResponse</scope><name>reactions</name></member>
+      <member refid="structaxi_1_1fsm_1_1PartialResponse_1af149f07c78ae93411ddaefa8111ad4dc" prot="public" virt="non-virtual"><scope>axi::fsm::PartialResponse</scope><name>~PartialResponse</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacenonstd_1_1sv__lite" kind="namespace" language="C++">
+    <compoundname>nonstd::sv_lite</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="string__view_8hpp_1ae47d462c701ad1d52fc1f70f43661ab0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class CharT</type>
+          </param>
+          <param>
+            <type>class Traits</type>
+          </param>
+        </templateparamlist>
+        <type>std::basic_string&lt; CharT, Traits &gt;</type>
+        <definition>std::basic_string&lt; CharT, Traits &gt; nonstd::sv_lite::to_string</definition>
+        <argsstring>(basic_string_view&lt; CharT, Traits &gt; v)</argsstring>
+        <name>to_string</name>
+        <qualifiedname>nonstd::sv_lite::to_string</qualifiedname>
+        <param>
+          <type>basic_string_view&lt; CharT, Traits &gt;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/string_view.hpp" line="1462" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/string_view.hpp" bodystart="1462" bodyend="1464"/>
+      </memberdef>
+      <memberdef kind="function" id="string__view_8hpp_1a0abd5315fae0fb8dea3674db6ce59465" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class CharT</type>
+          </param>
+          <param>
+            <type>class Traits</type>
+          </param>
+          <param>
+            <type>class Allocator</type>
+          </param>
+        </templateparamlist>
+        <type>std::basic_string&lt; CharT, Traits, Allocator &gt;</type>
+        <definition>std::basic_string&lt; CharT, Traits, Allocator &gt; nonstd::sv_lite::to_string</definition>
+        <argsstring>(basic_string_view&lt; CharT, Traits &gt; v, Allocator const &amp;a)</argsstring>
+        <name>to_string</name>
+        <qualifiedname>nonstd::sv_lite::to_string</qualifiedname>
+        <param>
+          <type>basic_string_view&lt; CharT, Traits &gt;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>Allocator const &amp;</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/string_view.hpp" line="1467" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/string_view.hpp" bodystart="1467" bodyend="1469"/>
+      </memberdef>
+      <memberdef kind="function" id="string__view_8hpp_1a3050fe3a9bb25e8fa18566426943a358" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class CharT</type>
+          </param>
+          <param>
+            <type>class Traits</type>
+          </param>
+          <param>
+            <type>class Allocator</type>
+          </param>
+        </templateparamlist>
+        <type>basic_string_view&lt; CharT, Traits &gt;</type>
+        <definition>basic_string_view&lt; CharT, Traits &gt; nonstd::sv_lite::to_string_view</definition>
+        <argsstring>(std::basic_string&lt; CharT, Traits, Allocator &gt; const &amp;s)</argsstring>
+        <name>to_string_view</name>
+        <qualifiedname>nonstd::sv_lite::to_string_view</qualifiedname>
+        <param>
+          <type>std::basic_string&lt; CharT, Traits, Allocator &gt; const &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/string_view.hpp" line="1474" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/string_view.hpp" bodystart="1474" bodyend="1476"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/string_view.hpp" line="1449" column="1"/>
+  </compounddef>
+</doxygen>

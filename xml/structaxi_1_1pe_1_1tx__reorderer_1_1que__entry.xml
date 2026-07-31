@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1pe_1_1tx__reorderer_1_1que__entry" kind="struct" language="C++" prot="protected">
+    <compoundname>axi::pe::tx_reorderer::que_entry</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structaxi_1_1pe_1_1tx__reorderer_1_1que__entry_1a7b10f0e4d8e7687b6cae138cad528369" prot="public" static="no" mutable="no">
+        <type>tlm::scc::tlm_gp_shared_ptr</type>
+        <definition>tlm::scc::tlm_gp_shared_ptr axi::pe::tx_reorderer::que_entry::trans</definition>
+        <argsstring></argsstring>
+        <name>trans</name>
+        <qualifiedname>axi::pe::tx_reorderer::que_entry::trans</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="64" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pe_1_1tx__reorderer_1_1que__entry_1a600e90299a39e850907d1684b45be979" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::pe::tx_reorderer::que_entry::age</definition>
+        <argsstring></argsstring>
+        <name>age</name>
+        <qualifiedname>axi::pe::tx_reorderer::que_entry::age</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="65" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" bodystart="65" bodyend="65"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1pe_1_1tx__reorderer_1_1que__entry_1a63c954eeae82b826e43d4eed3fd797f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::pe::tx_reorderer::que_entry::que_entry</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;gp)</argsstring>
+        <name>que_entry</name>
+        <qualifiedname>axi::pe::tx_reorderer::que_entry::que_entry</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>gp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="66" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" bodystart="66" bodyend="67"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="63" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" bodystart="63" bodyend="68"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1pe_1_1tx__reorderer_1_1que__entry_1a600e90299a39e850907d1684b45be979" prot="public" virt="non-virtual"><scope>axi::pe::tx_reorderer::que_entry</scope><name>age</name></member>
+      <member refid="structaxi_1_1pe_1_1tx__reorderer_1_1que__entry_1a63c954eeae82b826e43d4eed3fd797f1" prot="public" virt="non-virtual"><scope>axi::pe::tx_reorderer::que_entry</scope><name>que_entry</name></member>
+      <member refid="structaxi_1_1pe_1_1tx__reorderer_1_1que__entry_1a7b10f0e4d8e7687b6cae138cad528369" prot="public" virt="non-virtual"><scope>axi::pe::tx_reorderer::que_entry</scope><name>trans</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

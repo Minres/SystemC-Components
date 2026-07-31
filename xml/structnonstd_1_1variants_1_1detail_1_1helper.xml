@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1detail_1_1helper" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::detail::helper</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T0</type>
+      </param>
+      <param>
+        <type>class T1</type>
+      </param>
+      <param>
+        <type>class T2</type>
+      </param>
+      <param>
+        <type>class T3</type>
+      </param>
+      <param>
+        <type>class T4</type>
+      </param>
+      <param>
+        <type>class T5</type>
+      </param>
+      <param>
+        <type>class T6</type>
+      </param>
+      <param>
+        <type>class T7</type>
+      </param>
+      <param>
+        <type>class T8</type>
+      </param>
+      <param>
+        <type>class T9</type>
+      </param>
+      <param>
+        <type>class T10</type>
+      </param>
+      <param>
+        <type>class T11</type>
+      </param>
+      <param>
+        <type>class T12</type>
+      </param>
+      <param>
+        <type>class T13</type>
+      </param>
+      <param>
+        <type>class T14</type>
+      </param>
+      <param>
+        <type>class T15</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structnonstd_1_1variants_1_1detail_1_1helper_1ade11d672f33f33de56d12afaebaadf45" prot="public" static="no">
+        <type>signed char</type>
+        <definition>typedef signed char nonstd::variants::detail::helper&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt;::type_index_t</definition>
+        <argsstring></argsstring>
+        <name>type_index_t</name>
+        <qualifiedname>nonstd::variants::detail::helper::type_index_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="954" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="954" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1helper_1a5f1045e7cfa5aef9a968f90f0c754c4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::helper&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt;::variant_TL16</definition>
+        <argsstring>(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15) variant_types</argsstring>
+        <name>variant_TL16</name>
+        <qualifiedname>nonstd::variants::detail::helper::variant_TL16</qualifiedname>
+        <param>
+          <type>T0</type>
+        </param>
+        <param>
+          <type>T1</type>
+        </param>
+        <param>
+          <type>T2</type>
+        </param>
+        <param>
+          <type>T3</type>
+        </param>
+        <param>
+          <type>T4</type>
+        </param>
+        <param>
+          <type>T5</type>
+        </param>
+        <param>
+          <type>T6</type>
+        </param>
+        <param>
+          <type>T7</type>
+        </param>
+        <param>
+          <type>T8</type>
+        </param>
+        <param>
+          <type>T9</type>
+        </param>
+        <param>
+          <type>T10</type>
+        </param>
+        <param>
+          <type>T11</type>
+        </param>
+        <param>
+          <type>T12</type>
+        </param>
+        <param>
+          <type>T13</type>
+        </param>
+        <param>
+          <type>T14</type>
+        </param>
+        <param>
+          <type>T15</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="955" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1helper_1a724567cb219913fc647232fefb4d33ac" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>U *</type>
+        <definition>static U * nonstd::variants::detail::helper&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt;::as</definition>
+        <argsstring>(void *data)</argsstring>
+        <name>as</name>
+        <qualifiedname>nonstd::variants::detail::helper::as</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="957" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="957" bodyend="957"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1helper_1ac57a1cb0adee01c4bf5399434b048d6b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>U const *</type>
+        <definition>static U const  * nonstd::variants::detail::helper&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt;::as</definition>
+        <argsstring>(void const *data)</argsstring>
+        <name>as</name>
+        <qualifiedname>nonstd::variants::detail::helper::as</qualifiedname>
+        <param>
+          <type>void const *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="959" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="959" bodyend="959"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1helper_1a9a9984796f5a3fbf31ffbe907110c149" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>type_index_t</type>
+        <definition>static type_index_t nonstd::variants::detail::helper&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt;::to_index_t</definition>
+        <argsstring>(std::size_t index)</argsstring>
+        <name>to_index_t</name>
+        <qualifiedname>nonstd::variants::detail::helper::to_index_t</qualifiedname>
+        <param>
+          <type>std::size_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="961" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="961" bodyend="961"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1helper_1a5800bc8fb2e047987126afb8587140a0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void nonstd::variants::detail::helper&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt;::destroy</definition>
+        <argsstring>(type_index_t index, void *data)</argsstring>
+        <name>destroy</name>
+        <qualifiedname>nonstd::variants::detail::helper::destroy</qualifiedname>
+        <param>
+          <type>type_index_t</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="963" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="963" bodyend="1014"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1helper_1a9208c18edc8e4e9bec57b29889bb679b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>type_index_t</type>
+        <definition>static type_index_t nonstd::variants::detail::helper&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt;::copy_construct</definition>
+        <argsstring>(type_index_t const from_index, const void *from_value, void *to_value)</argsstring>
+        <name>copy_construct</name>
+        <qualifiedname>nonstd::variants::detail::helper::copy_construct</qualifiedname>
+        <param>
+          <type>type_index_t const</type>
+          <declname>from_index</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>from_value</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>to_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="1140" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="1140" bodyend="1192"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1helper_1a37700bacf5ca1685bca4a39fd410bd3b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>type_index_t</type>
+        <definition>static type_index_t nonstd::variants::detail::helper&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt;::copy_assign</definition>
+        <argsstring>(type_index_t const from_index, const void *from_value, void *to_value)</argsstring>
+        <name>copy_assign</name>
+        <qualifiedname>nonstd::variants::detail::helper::copy_assign</qualifiedname>
+        <param>
+          <type>type_index_t const</type>
+          <declname>from_index</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>from_value</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>to_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="1194" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="1194" bodyend="1246"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="953" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="953" bodyend="1247"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1helper_1a724567cb219913fc647232fefb4d33ac" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::helper</scope><name>as</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1helper_1ac57a1cb0adee01c4bf5399434b048d6b" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::helper</scope><name>as</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1helper_1a37700bacf5ca1685bca4a39fd410bd3b" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::helper</scope><name>copy_assign</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1helper_1a9208c18edc8e4e9bec57b29889bb679b" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::helper</scope><name>copy_construct</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1helper_1a5800bc8fb2e047987126afb8587140a0" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::helper</scope><name>destroy</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1helper_1a9a9984796f5a3fbf31ffbe907110c149" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::helper</scope><name>to_index_t</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1helper_1ade11d672f33f33de56d12afaebaadf45" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::helper</scope><name>type_index_t</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1helper_1a5f1045e7cfa5aef9a968f90f0c754c4e" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::helper</scope><name>variant_TL16</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

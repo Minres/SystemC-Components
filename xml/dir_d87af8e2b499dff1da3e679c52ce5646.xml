@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_d87af8e2b499dff1da3e679c52ce5646" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm</compoundname>
+    <innerdir refid="dir_db462b264dd382b034ab067bf185a3d8">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw</innerdir>
+    <innerdir refid="dir_e617fe9c9bac53cf4104c40a60f7993d">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/"/>
+  </compounddef>
+</doxygen>

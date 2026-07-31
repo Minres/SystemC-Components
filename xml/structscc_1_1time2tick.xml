@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1time2tick" kind="struct" language="C++" prot="public">
+    <compoundname>scc::time2tick</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <includes refid="python4sc_8h" local="no">python4sc.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1time2tick_1a41dae016560dfe25a5f578c585eae0ba" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; sc_core::sc_time &gt;</type>
+        <definition>sc_core::sc_in&lt;sc_core::sc_time&gt; scc::time2tick::clk_i</definition>
+        <argsstring></argsstring>
+        <name>clk_i</name>
+        <qualifiedname>scc::time2tick::clk_i</qualifiedname>
+        <initializer>{&quot;clk_i&quot;}</initializer>
+        <briefdescription>
+<para>the clock input </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time2tick.h" line="39" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time2tick.h" bodystart="39" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1time2tick_1a1fdc0c60627c01b8423b19b4c1be7aae" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; bool &gt;</type>
+        <definition>sc_core::sc_out&lt;bool&gt; scc::time2tick::clk_o</definition>
+        <argsstring></argsstring>
+        <name>clk_o</name>
+        <qualifiedname>scc::time2tick::clk_o</qualifiedname>
+        <initializer>{&quot;clk_o&quot;}</initializer>
+        <briefdescription>
+<para>the clock output </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time2tick.h" line="41" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time2tick.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1time2tick_1abe13cce532c10d073e92d12dd649abad" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time scc::time2tick::clk_period</definition>
+        <argsstring></argsstring>
+        <name>clk_period</name>
+        <qualifiedname>scc::time2tick::clk_period</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time2tick.h" line="53" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time2tick.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1time2tick_1a3a79e201186fb5d6fe9f55195c19ad94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::time2tick::SC_HAS_PROCESS</definition>
+        <argsstring>(time2tick)</argsstring>
+        <name>SC_HAS_PROCESS</name>
+        <qualifiedname>scc::time2tick::SC_HAS_PROCESS</qualifiedname>
+        <param>
+          <type><ref refid="structscc_1_1time2tick_1a037123c4af2cb8c8dfba81f2c346b19f" kindref="member">time2tick</ref></type>
+        </param>
+        <briefdescription>
+<para>yes, we have processes </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time2tick.h" line="36" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1time2tick_1a037123c4af2cb8c8dfba81f2c346b19f" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::time2tick::time2tick</definition>
+        <argsstring>(sc_core::sc_module_name nm)</argsstring>
+        <name>time2tick</name>
+        <qualifiedname>scc::time2tick::time2tick</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the constructor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the name </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time2tick.h" line="47" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time2tick.h" bodystart="47" bodyend="50"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structscc_1_1time2tick_1ac1a9e2673df1028a03b733e1d6ee6303" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::time2tick::clocker</definition>
+        <argsstring>()</argsstring>
+        <name>clocker</name>
+        <qualifiedname>scc::time2tick::clocker</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time2tick.h" line="54" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time_n_tick.cpp" bodystart="66" bodyend="78"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>translate a tick-less clock (sc_time based) to boolean clock </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::time2tick</label>
+        <link refid="structscc_1_1time2tick"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::time2tick</label>
+        <link refid="structscc_1_1time2tick"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time2tick.h" line="33" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time2tick.h" bodystart="33" bodyend="55"/>
+    <listofallmembers>
+      <member refid="structscc_1_1time2tick_1a41dae016560dfe25a5f578c585eae0ba" prot="public" virt="non-virtual"><scope>scc::time2tick</scope><name>clk_i</name></member>
+      <member refid="structscc_1_1time2tick_1a1fdc0c60627c01b8423b19b4c1be7aae" prot="public" virt="non-virtual"><scope>scc::time2tick</scope><name>clk_o</name></member>
+      <member refid="structscc_1_1time2tick_1abe13cce532c10d073e92d12dd649abad" prot="private" virt="non-virtual"><scope>scc::time2tick</scope><name>clk_period</name></member>
+      <member refid="structscc_1_1time2tick_1ac1a9e2673df1028a03b733e1d6ee6303" prot="private" virt="non-virtual"><scope>scc::time2tick</scope><name>clocker</name></member>
+      <member refid="structscc_1_1time2tick_1a3a79e201186fb5d6fe9f55195c19ad94" prot="public" virt="non-virtual"><scope>scc::time2tick</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="structscc_1_1time2tick_1a037123c4af2cb8c8dfba81f2c346b19f" prot="public" virt="non-virtual"><scope>scc::time2tick</scope><name>time2tick</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

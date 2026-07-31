@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="signal__opt__ports_8cpp" kind="file" language="C++">
+    <compoundname>signal_opt_ports.cpp</compoundname>
+    <includes refid="signal__opt__ports_8h" local="yes">signal_opt_ports.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.cpp</label>
+        <link refid="signal__opt__ports_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>signal_opt_ports.h</label>
+        <link refid="signal__opt__ports_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>systemc</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;signal_opt_ports.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">sc_core::sc_port&lt;sc_core::sc_signal_in_if&lt;bool&gt;,<sp/>1,<sp/>sc_core::SC_ZERO_OR_MORE_BOUND&gt;;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">sc_core::sc_port&lt;sc_core::sc_signal_in_if&lt;sc_dt::sc_logic&gt;,<sp/>1,<sp/>sc_core::SC_ZERO_OR_MORE_BOUND&gt;;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">sc_core::sc_port&lt;sc_core::sc_signal_inout_if&lt;bool&gt;,<sp/>1,<sp/>sc_core::SC_ZERO_OR_MORE_BOUND&gt;;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">sc_core::sc_port&lt;sc_core::sc_signal_inout_if&lt;sc_dt::sc_logic&gt;,<sp/>1,<sp/>sc_core::SC_ZERO_OR_MORE_BOUND&gt;;</highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.cpp"/>
+  </compounddef>
+</doxygen>

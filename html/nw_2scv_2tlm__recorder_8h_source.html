@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -295,7 +295,7 @@ $(function(){initNavTree('nw_2scv_2tlm__recorder_8h_source.html','',''); });
 <div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    }</div>
 <div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span> </div>
 <div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    <span class="keywordflow">if</span>(trans.get_extension_count())</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; extensionRecording : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::inst().get())</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; extensionRecording : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::get())</div>
 <div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>            <span class="keywordflow">if</span>(extensionRecording)</div>
 <div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>                extensionRecording-&gt;recordBeginTx(h, trans);</div>
 <div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    <a class="code hl_class" href="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension.html">tlm::scc::scv::tlm_recording_extension</a>* preExt = <span class="keyword">nullptr</span>;</div>
@@ -324,7 +324,7 @@ $(function(){initNavTree('nw_2scv_2tlm__recorder_8h_source.html','',''); });
 <div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    }</div>
 <div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    record(h, trans);</div>
 <div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>    <span class="keywordflow">if</span>(trans.get_extension_count())</div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; extensionRecording : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::inst().get())</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; extensionRecording : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::get())</div>
 <div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>            <span class="keywordflow">if</span>(extensionRecording)</div>
 <div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>                extensionRecording-&gt;recordEndTx(h, trans);</div>
 <div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>    <span class="comment">// End the transaction</span></div>
@@ -367,7 +367,7 @@ $(function(){initNavTree('nw_2scv_2tlm__recorder_8h_source.html','',''); });
 <div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>        preExt-&gt;<a class="code hl_variable" href="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension.html#a5242db103effdec334d65ce5088e08c9">txHandle</a> = h;</div>
 <div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>    h.record_attribute(<span class="stringliteral">&quot;delay&quot;</span>, delay.to_string());</div>
 <div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>    <span class="keywordflow">if</span>(trans.get_extension_count())</div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; extensionRecording : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::inst().get())</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; extensionRecording : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::get())</div>
 <div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>            <span class="keywordflow">if</span>(extensionRecording)</div>
 <div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>                extensionRecording-&gt;recordBeginTx(h, trans);</div>
 <div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span><span class="comment">    /*************************************************************************</span></div>
@@ -391,7 +391,7 @@ $(function(){initNavTree('nw_2scv_2tlm__recorder_8h_source.html','',''); });
 <div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>    h.record_attribute(<span class="stringliteral">&quot;delay[return_path]&quot;</span>, delay.to_string());</div>
 <div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>    record(h, trans);</div>
 <div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>    <span class="keywordflow">if</span>(trans.get_extension_count())</div>
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; extensionRecording : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::inst().get())</div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; extensionRecording : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::get())</div>
 <div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>            <span class="keywordflow">if</span>(extensionRecording)</div>
 <div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>                extensionRecording-&gt;recordEndTx(h, trans);</div>
 <div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>    <span class="comment">// get the extension and free the memory if it was mine</span></div>
@@ -455,7 +455,7 @@ $(function(){initNavTree('nw_2scv_2tlm__recorder_8h_source.html','',''); });
 <div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span>    }</div>
 <div class="line"><a id="l00474" name="l00474"></a><span class="lineno">  474</span>    h.record_attribute(<span class="stringliteral">&quot;delay&quot;</span>, delay.to_string());</div>
 <div class="line"><a id="l00475" name="l00475"></a><span class="lineno">  475</span>    <span class="keywordflow">if</span>(trans.get_extension_count())</div>
-<div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span>        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; extensionRecording : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::inst().get())</div>
+<div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span>        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; extensionRecording : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::get())</div>
 <div class="line"><a id="l00477" name="l00477"></a><span class="lineno">  477</span>            <span class="keywordflow">if</span>(extensionRecording)</div>
 <div class="line"><a id="l00478" name="l00478"></a><span class="lineno">  478</span>                extensionRecording-&gt;recordBeginTx(h, trans);</div>
 <div class="line"><a id="l00479" name="l00479"></a><span class="lineno">  479</span><span class="comment">    /*************************************************************************</span></div>
@@ -479,7 +479,7 @@ $(function(){initNavTree('nw_2scv_2tlm__recorder_8h_source.html','',''); });
 <div class="line"><a id="l00497" name="l00497"></a><span class="lineno">  497</span>    h.record_attribute(<span class="stringliteral">&quot;delay[return_path]&quot;</span>, delay.to_string());</div>
 <div class="line"><a id="l00498" name="l00498"></a><span class="lineno">  498</span>    record(h, trans);</div>
 <div class="line"><a id="l00499" name="l00499"></a><span class="lineno">  499</span>    <span class="keywordflow">if</span>(trans.get_extension_count())</div>
-<div class="line"><a id="l00500" name="l00500"></a><span class="lineno">  500</span>        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; extensionRecording : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::inst().get())</div>
+<div class="line"><a id="l00500" name="l00500"></a><span class="lineno">  500</span>        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; extensionRecording : tlm::scc::scv::tlm_extension_recording_registry&lt;TYPES&gt;::get())</div>
 <div class="line"><a id="l00501" name="l00501"></a><span class="lineno">  501</span>            <span class="keywordflow">if</span>(extensionRecording)</div>
 <div class="line"><a id="l00502" name="l00502"></a><span class="lineno">  502</span>                extensionRecording-&gt;recordEndTx(h, trans);</div>
 <div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span>    <span class="comment">// End the transaction</span></div>

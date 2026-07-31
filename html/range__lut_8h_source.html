@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -237,7 +237,7 @@ $(function(){initNavTree('range__lut_8h_source.html','',''); });
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>            <span class="keywordflow">break</span>;</div>
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <span class="keywordflow">case</span> END_RANGE:</div>
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>            buf &lt;&lt; <span class="stringliteral">&quot; to 0x&quot;</span> &lt;&lt; std::setw(<span class="keyword">sizeof</span>(uint64_t) * 2) &lt;&lt; std::setfill(<span class="charliteral">&#39;0&#39;</span>) &lt;&lt; std::uppercase &lt;&lt; std::hex &lt;&lt; iter-&gt;first &lt;&lt; std::dec</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>                &lt;&lt; <span class="stringliteral">&quot; as &quot;</span> &lt;&lt; iter-&gt;second-&gt;index &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>                &lt;&lt; <span class="stringliteral">&quot; as &quot;</span> &lt;&lt; iter-&gt;second.index &lt;&lt; std::endl;</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        }</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    }</div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    <span class="keywordflow">return</span> buf.str();</div>
@@ -253,7 +253,7 @@ $(function(){initNavTree('range__lut_8h_source.html','',''); });
 <div class="ttc" id="aclassutil_1_1range__lut_html"><div class="ttname"><a href="classutil_1_1range__lut.html">util::range_lut</a></div><div class="ttdoc">range based lookup table</div><div class="ttdef"><b>Definition</b> <a href="#l00037">range_lut.h:37</a></div></div>
 <div class="ttc" id="aclassutil_1_1range__lut_html_a00b5f04f8f8e65353ca8c2ba31e456f1"><div class="ttname"><a href="classutil_1_1range__lut.html#a00b5f04f8f8e65353ca8c2ba31e456f1">util::range_lut::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdef"><b>Definition</b> <a href="#l00079">range_lut.h:79</a></div></div>
 <div class="ttc" id="aclassutil_1_1range__lut_html_a0c28a218793815a94551a714248f844c"><div class="ttname"><a href="classutil_1_1range__lut.html#a0c28a218793815a94551a714248f844c">util::range_lut::toString</a></div><div class="ttdeci">std::string toString() const</div><div class="ttdef"><b>Definition</b> <a href="#l00196">range_lut.h:196</a></div></div>
-<div class="ttc" id="aclassutil_1_1range__lut_html_a1bb740c8dd9d2981ba6e4fd19b0991e5"><div class="ttname"><a href="classutil_1_1range__lut.html#a1bb740c8dd9d2981ba6e4fd19b0991e5">util::range_lut&lt; std::pair&lt; scc::resource_access_if *, uint64_t &gt; &gt;::size</a></div><div class="ttdeci">size_t size() const</div><div class="ttdef"><b>Definition</b> <a href="#l00075">range_lut.h:75</a></div></div>
+<div class="ttc" id="aclassutil_1_1range__lut_html_a1bb740c8dd9d2981ba6e4fd19b0991e5"><div class="ttname"><a href="classutil_1_1range__lut.html#a1bb740c8dd9d2981ba6e4fd19b0991e5">util::range_lut&lt; resource_access_t &gt;::size</a></div><div class="ttdeci">size_t size() const</div><div class="ttdef"><b>Definition</b> <a href="#l00075">range_lut.h:75</a></div></div>
 <div class="ttc" id="aclassutil_1_1range__lut_html_a6029c217eb995fcc1948d8c2a11ba09f"><div class="ttname"><a href="classutil_1_1range__lut.html#a6029c217eb995fcc1948d8c2a11ba09f">util::range_lut::addEntry</a></div><div class="ttdeci">void addEntry(T const &amp;i, uint64_t base_addr, uint64_t size)</div><div class="ttdef"><b>Definition</b> <a href="#l00135">range_lut.h:135</a></div></div>
 <div class="ttc" id="aclassutil_1_1range__lut_html_a67c15e6b45263973d0d8d6acd67cdc01"><div class="ttname"><a href="classutil_1_1range__lut.html#a67c15e6b45263973d0d8d6acd67cdc01">util::range_lut::validate</a></div><div class="ttdeci">void validate() const</div><div class="ttdef"><b>Definition</b> <a href="#l00169">range_lut.h:169</a></div></div>
 <div class="ttc" id="aclassutil_1_1range__lut_html_a7b7ad72a4d8d204f73e91b28264a9746"><div class="ttname"><a href="classutil_1_1range__lut.html#a7b7ad72a4d8d204f73e91b28264a9746">util::range_lut::removeEntry</a></div><div class="ttdeci">bool removeEntry(T i)</div><div class="ttdef"><b>Definition</b> <a href="#l00150">range_lut.h:150</a></div></div>

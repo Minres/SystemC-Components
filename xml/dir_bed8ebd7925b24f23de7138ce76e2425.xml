@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_bed8ebd7925b24f23de7138ce76e2425" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv</compoundname>
+    <innerfile refid="scv__tr__binary_8cpp">scv_tr_binary.cpp</innerfile>
+    <innerfile refid="scv__tr__compressed_8cpp">scv_tr_compressed.cpp</innerfile>
+    <innerfile refid="scv__tr__db_8h">scv_tr_db.h</innerfile>
+    <innerfile refid="scv__tr__ftr_8cpp">scv_tr_ftr.cpp</innerfile>
+    <innerfile refid="scv__tr__ldb_8cpp">scv_tr_ldb.cpp</innerfile>
+    <innerfile refid="scv__tr__lz4_8cpp">scv_tr_lz4.cpp</innerfile>
+    <innerfile refid="scv__tr__mtc_8cpp">scv_tr_mtc.cpp</innerfile>
+    <innerfile refid="scv__tr__sqlite_8cpp">scv_tr_sqlite.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/"/>
+  </compounddef>
+</doxygen>

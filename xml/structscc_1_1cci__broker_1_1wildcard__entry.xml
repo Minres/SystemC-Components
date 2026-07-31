@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1cci__broker_1_1wildcard__entry" kind="struct" language="C++" prot="private">
+    <compoundname>scc::cci_broker::wildcard_entry</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1cci__broker_1_1wildcard__entry_1a15821afb125ea31a8278abdd4d6a8bc1" prot="public" static="no" mutable="no">
+        <type>std::regex</type>
+        <definition>std::regex scc::cci_broker::wildcard_entry::rr</definition>
+        <argsstring></argsstring>
+        <name>rr</name>
+        <qualifiedname>scc::cci_broker::wildcard_entry::rr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="53" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1cci__broker_1_1wildcard__entry_1acfb100a9df6948444d92efb0d94124f7" prot="public" static="no" mutable="no">
+        <type>cci::cci_value</type>
+        <definition>cci::cci_value scc::cci_broker::wildcard_entry::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>scc::cci_broker::wildcard_entry::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="54" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1cci__broker_1_1wildcard__entry_1af0771d7c81222d6060d88262e1575f9b" prot="public" static="no" mutable="no">
+        <type>cci::cci_originator</type>
+        <definition>cci::cci_originator scc::cci_broker::wildcard_entry::originator</definition>
+        <argsstring></argsstring>
+        <name>originator</name>
+        <qualifiedname>scc::cci_broker::wildcard_entry::originator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="55" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" line="52" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_broker.h" bodystart="52" bodyend="56"/>
+    <listofallmembers>
+      <member refid="structscc_1_1cci__broker_1_1wildcard__entry_1af0771d7c81222d6060d88262e1575f9b" prot="public" virt="non-virtual"><scope>scc::cci_broker::wildcard_entry</scope><name>originator</name></member>
+      <member refid="structscc_1_1cci__broker_1_1wildcard__entry_1a15821afb125ea31a8278abdd4d6a8bc1" prot="public" virt="non-virtual"><scope>scc::cci_broker::wildcard_entry</scope><name>rr</name></member>
+      <member refid="structscc_1_1cci__broker_1_1wildcard__entry_1acfb100a9df6948444d92efb0d94124f7" prot="public" virt="non-virtual"><scope>scc::cci_broker::wildcard_entry</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

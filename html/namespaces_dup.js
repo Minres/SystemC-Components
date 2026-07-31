@@ -6,6 +6,7 @@ var namespaces_dup =
     [ "axis", "namespaceaxis.html", "namespaceaxis" ],
     [ "chi", "namespacechi.html", "namespacechi" ],
     [ "cxs", "namespacecxs.html", "namespacecxs" ],
+    [ "eth", "namespaceeth.html", "namespaceeth" ],
     [ "logging", "namespacelogging.html", "namespacelogging" ],
     [ "nonstd", null, [
       [ "detail", "namespacenonstd_1_1detail.html", "namespacenonstd_1_1detail" ],

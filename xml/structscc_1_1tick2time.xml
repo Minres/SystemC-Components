@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tick2time" kind="struct" language="C++" prot="public">
+    <compoundname>scc::tick2time</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1tick2time_1a2c71845bb90ffdb89a8a6b65b294a0be" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; sc_core::sc_time &gt;</type>
+        <definition>sc_core::sc_out&lt;sc_core::sc_time&gt; scc::tick2time::clk_o</definition>
+        <argsstring></argsstring>
+        <name>clk_o</name>
+        <qualifiedname>scc::tick2time::clk_o</qualifiedname>
+        <initializer>{&quot;clk_o&quot;}</initializer>
+        <briefdescription>
+<para>the clock output </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tick2time.h" line="46" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tick2time.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tick2time_1a2febdf8a09b985c807746f04805a7a03" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; scc::tick2time::clk_i</definition>
+        <argsstring></argsstring>
+        <name>clk_i</name>
+        <qualifiedname>scc::tick2time::clk_i</qualifiedname>
+        <initializer>{&quot;clk_i&quot;}</initializer>
+        <briefdescription>
+<para>the clock input </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tick2time.h" line="48" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tick2time.h" bodystart="48" bodyend="48"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1tick2time_1a3814f8fb426449ff12b3c22737e4c51c" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time scc::tick2time::clk_period</definition>
+        <argsstring></argsstring>
+        <name>clk_period</name>
+        <qualifiedname>scc::tick2time::clk_period</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tick2time.h" line="60" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tick2time.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tick2time_1a992c2319f3fc889a6572a8bbc8a91fef" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time scc::tick2time::last_tick</definition>
+        <argsstring></argsstring>
+        <name>last_tick</name>
+        <qualifiedname>scc::tick2time::last_tick</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tick2time.h" line="61" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tick2time.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1tick2time_1a272711f89d950ee2d7f629ae2bad86d6" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::tick2time::tick2time</definition>
+        <argsstring>(sc_core::sc_module_name nm)</argsstring>
+        <name>tick2time</name>
+        <qualifiedname>scc::tick2time::tick2time</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the constructor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the name </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tick2time.h" line="54" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time_n_tick.cpp" bodystart="29" bodyend="30"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="structscc_1_1tick2time_1a4f9065ec84069ab853959c7e0cf8d89d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tick2time::end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_elaboration</name>
+        <qualifiedname>scc::tick2time::end_of_elaboration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tick2time.h" line="57" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/time_n_tick.cpp" bodystart="32" bodyend="57"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::tick2time</label>
+        <link refid="structscc_1_1tick2time"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::tick2time</label>
+        <link refid="structscc_1_1tick2time"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tick2time.h" line="39" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tick2time.h" bodystart="44" bodyend="66"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tick2time_1a2febdf8a09b985c807746f04805a7a03" prot="public" virt="non-virtual"><scope>scc::tick2time</scope><name>clk_i</name></member>
+      <member refid="structscc_1_1tick2time_1a2c71845bb90ffdb89a8a6b65b294a0be" prot="public" virt="non-virtual"><scope>scc::tick2time</scope><name>clk_o</name></member>
+      <member refid="structscc_1_1tick2time_1a3814f8fb426449ff12b3c22737e4c51c" prot="private" virt="non-virtual"><scope>scc::tick2time</scope><name>clk_period</name></member>
+      <member refid="structscc_1_1tick2time_1a4f9065ec84069ab853959c7e0cf8d89d" prot="protected" virt="non-virtual"><scope>scc::tick2time</scope><name>end_of_elaboration</name></member>
+      <member refid="structscc_1_1tick2time_1a992c2319f3fc889a6572a8bbc8a91fef" prot="private" virt="non-virtual"><scope>scc::tick2time</scope><name>last_tick</name></member>
+      <member refid="structscc_1_1tick2time_1a272711f89d950ee2d7f629ae2bad86d6" prot="public" virt="non-virtual"><scope>scc::tick2time</scope><name>tick2time</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

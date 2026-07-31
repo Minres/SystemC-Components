@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1signal__types" kind="struct" language="C++" prot="public">
+    <compoundname>axi::signal_types</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structaxi_1_1signal__types_1ab81301a81e472fa1d7a4d41638d6ea51" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_signal&lt; T &gt;</type>
+        <definition>using axi::signal_types::m2s_t =  sc_core::sc_signal&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>m2s_t</name>
+        <qualifiedname>axi::signal_types::m2s_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="64" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1signal__types_1ac9ce6f4d922f861183573cc6920ac74e" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_signal&lt; T &gt;</type>
+        <definition>using axi::signal_types::s2m_t =  sc_core::sc_signal&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>s2m_t</name>
+        <qualifiedname>axi::signal_types::s2m_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="65" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1signal__types_1a8070a3b0ade7bf6bae738709ffe74de8" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_signal&lt; T &gt;</type>
+        <definition>using axi::signal_types::m2s_full_t =  sc_core::sc_signal&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>m2s_full_t</name>
+        <qualifiedname>axi::signal_types::m2s_full_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="66" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1signal__types_1af7636b83b1fb2043f61e723cc02a8542" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_signal&lt; T &gt;</type>
+        <definition>using axi::signal_types::s2m_full_t =  sc_core::sc_signal&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>s2m_full_t</name>
+        <qualifiedname>axi::signal_types::s2m_full_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="67" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1signal__types_1a2e5e3139a095eabe60e01f7ab8be72ab" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_signal&lt; T &gt;</type>
+        <definition>using axi::signal_types::m2s_opt_t =  sc_core::sc_signal&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>m2s_opt_t</name>
+        <qualifiedname>axi::signal_types::m2s_opt_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="68" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1signal__types_1a1cf102739933e02d67b0dba0720c9a0f" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_signal&lt; T &gt;</type>
+        <definition>using axi::signal_types::s2m_opt_t =  sc_core::sc_signal&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>s2m_opt_t</name>
+        <qualifiedname>axi::signal_types::s2m_opt_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="69" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="63" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="63" bodyend="70"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1signal__types_1a8070a3b0ade7bf6bae738709ffe74de8" prot="public" virt="non-virtual"><scope>axi::signal_types</scope><name>m2s_full_t</name></member>
+      <member refid="structaxi_1_1signal__types_1a2e5e3139a095eabe60e01f7ab8be72ab" prot="public" virt="non-virtual"><scope>axi::signal_types</scope><name>m2s_opt_t</name></member>
+      <member refid="structaxi_1_1signal__types_1ab81301a81e472fa1d7a4d41638d6ea51" prot="public" virt="non-virtual"><scope>axi::signal_types</scope><name>m2s_t</name></member>
+      <member refid="structaxi_1_1signal__types_1af7636b83b1fb2043f61e723cc02a8542" prot="public" virt="non-virtual"><scope>axi::signal_types</scope><name>s2m_full_t</name></member>
+      <member refid="structaxi_1_1signal__types_1a1cf102739933e02d67b0dba0720c9a0f" prot="public" virt="non-virtual"><scope>axi::signal_types</scope><name>s2m_opt_t</name></member>
+      <member refid="structaxi_1_1signal__types_1ac9ce6f4d922f861183573cc6920ac74e" prot="public" virt="non-virtual"><scope>axi::signal_types</scope><name>s2m_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

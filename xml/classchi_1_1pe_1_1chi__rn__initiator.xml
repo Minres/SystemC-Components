@@ -1,0 +1,443 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classchi_1_1pe_1_1chi__rn__initiator" kind="class" language="C++" prot="public">
+    <compoundname>chi::pe::chi_rn_initiator</compoundname>
+    <basecompoundref refid="classchi_1_1pe_1_1chi__rn__initiator__b" prot="public" virt="non-virtual">chi::pe::chi_rn_initiator_b</basecompoundref>
+    <includes refid="chi__rn__initiator_8h" local="no">chi_rn_initiator.h</includes>
+    <templateparamlist>
+      <param>
+        <type>unsigned int</type>
+        <declname>BUSWIDTH</declname>
+        <defname>BUSWIDTH</defname>
+        <defval>32</defval>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval><ref refid="structchi_1_1chi__protocol__types" kindref="compound">chi::chi_protocol_types</ref></defval>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>N</declname>
+        <defname>N</defname>
+        <defval>1</defval>
+      </param>
+      <param>
+        <type>sc_core::sc_port_policy</type>
+        <declname>POL</declname>
+        <defname>POL</defname>
+        <defval>sc_core::SC_ONE_OR_MORE_BOUND</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classchi_1_1pe_1_1chi__rn__initiator_1a52b00f7d828067ebb11b8b0118812df9" prot="public" static="no">
+        <type>chi_rn_initiator_b</type>
+        <definition>using chi::pe::chi_rn_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::base =  chi_rn_initiator_b</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <qualifiedname>chi::pe::chi_rn_initiator::base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" line="211" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" bodystart="211" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classchi_1_1pe_1_1chi__rn__initiator_1a876b0565fbc691d024b874572fb0098e" prot="public" static="no">
+        <type>base::payload_type</type>
+        <definition>using chi::pe::chi_rn_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::payload_type =  base::payload_type</definition>
+        <argsstring></argsstring>
+        <name>payload_type</name>
+        <qualifiedname>chi::pe::chi_rn_initiator::payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" line="213" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classchi_1_1pe_1_1chi__rn__initiator_1a238c7b29801cb9efc28da5cbc5bdc0f7" prot="public" static="no">
+        <type>base::phase_type</type>
+        <definition>using chi::pe::chi_rn_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::phase_type =  base::phase_type</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>chi::pe::chi_rn_initiator::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" line="214" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" bodystart="214" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classchi_1_1pe_1_1chi__rn__initiator_1a1d08ac68878b7d1e5624bf569b72315e" prot="private" static="no" mutable="no">
+        <type><ref refid="structchi_1_1chi__initiator__socket" kindref="compound">chi::chi_initiator_socket</ref>&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;</type>
+        <definition>chi::chi_initiator_socket&lt;BUSWIDTH, TYPES, N, POL&gt;&amp; chi::pe::chi_rn_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::socket</definition>
+        <argsstring></argsstring>
+        <name>socket</name>
+        <qualifiedname>chi::pe::chi_rn_initiator::socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" line="237" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" bodystart="237" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classchi_1_1pe_1_1chi__rn__initiator_1a5c9c6ad121757ef6827c916b78903e5c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>chi::pe::chi_rn_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::chi_rn_initiator</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm, chi::chi_initiator_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;socket_)</argsstring>
+        <name>chi_rn_initiator</name>
+        <qualifiedname>chi::pe::chi_rn_initiator::chi_rn_initiator</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type><ref refid="structchi_1_1chi__initiator__socket" kindref="compound">chi::chi_initiator_socket</ref>&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;</type>
+          <declname>socket_</declname>
+        </param>
+        <briefdescription>
+<para>the constructor </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>socket</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>reference to the initiator socket used to send and receive transactions </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" line="219" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" bodystart="219" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1pe_1_1chi__rn__initiator_1ab64e2707c9aa2e65f621825b03e61e46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>chi::pe::chi_rn_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::chi_rn_initiator</definition>
+        <argsstring>()=delete</argsstring>
+        <name>chi_rn_initiator</name>
+        <qualifiedname>chi::pe::chi_rn_initiator::chi_rn_initiator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" line="226" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1pe_1_1chi__rn__initiator_1a686520a5b55a2f5a2eb761eaf4d675dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>chi::pe::chi_rn_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::chi_rn_initiator</definition>
+        <argsstring>(chi_rn_initiator const &amp;)=delete</argsstring>
+        <name>chi_rn_initiator</name>
+        <qualifiedname>chi::pe::chi_rn_initiator::chi_rn_initiator</qualifiedname>
+        <param>
+          <type>chi_rn_initiator const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" line="228" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1pe_1_1chi__rn__initiator_1a16c94fd7243936069a110291cb3efb7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>chi::pe::chi_rn_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::chi_rn_initiator</definition>
+        <argsstring>(chi_rn_initiator &amp;&amp;)=delete</argsstring>
+        <name>chi_rn_initiator</name>
+        <qualifiedname>chi::pe::chi_rn_initiator::chi_rn_initiator</qualifiedname>
+        <param>
+          <type>chi_rn_initiator &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" line="230" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1pe_1_1chi__rn__initiator_1aaa84f003b8365d0251625acbebe3fc66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classchi_1_1pe_1_1chi__rn__initiator_1a5c9c6ad121757ef6827c916b78903e5c" kindref="member">chi_rn_initiator</ref> &amp;</type>
+        <definition>chi_rn_initiator &amp; chi::pe::chi_rn_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::operator=</definition>
+        <argsstring>(chi_rn_initiator const &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>chi::pe::chi_rn_initiator::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classchi_1_1pe_1_1chi__rn__initiator_1a5c9c6ad121757ef6827c916b78903e5c" kindref="member">chi_rn_initiator</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" line="232" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1pe_1_1chi__rn__initiator_1a67cb8dce929ed0b0e354326083a4a045" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classchi_1_1pe_1_1chi__rn__initiator_1a5c9c6ad121757ef6827c916b78903e5c" kindref="member">chi_rn_initiator</ref> &amp;</type>
+        <definition>chi_rn_initiator &amp; chi::pe::chi_rn_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::operator=</definition>
+        <argsstring>(chi_rn_initiator &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>chi::pe::chi_rn_initiator::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classchi_1_1pe_1_1chi__rn__initiator_1a5c9c6ad121757ef6827c916b78903e5c" kindref="member">chi_rn_initiator</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" line="234" column="22"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>the CHI initiator socket protocol engine adapted to a particular initiator socket configuration </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6">
+        <label>chi::bw_blocking_transport_if&lt; chi::chi_protocol_types::tlm_payload_type &gt;</label>
+        <link refid="classchi_1_1bw__blocking__transport__if"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>chi::chi_bw_transport_if&lt; chi::chi_protocol_types &gt;</label>
+        <link refid="classchi_1_1chi__bw__transport__if"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>chi::pe::chi_rn_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classchi_1_1pe_1_1chi__rn__initiator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>chi::pe::chi_rn_initiator_b</label>
+        <link refid="classchi_1_1pe_1_1chi__rn__initiator__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="3">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="9">
+        <label>tlm::scc::pe::intor_fw&lt; type::BL &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>tlm::scc::pe::intor_fw_b</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw__b"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>tlm::tlm_bw_transport_if&lt; chi::chi_protocol_types &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6">
+        <label>chi::bw_blocking_transport_if&lt; chi::chi_protocol_types::tlm_payload_type &gt;</label>
+        <link refid="classchi_1_1bw__blocking__transport__if"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>chi::chi_bw_transport_if&lt; chi::chi_protocol_types &gt;</label>
+        <link refid="classchi_1_1chi__bw__transport__if"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>chi::pe::chi_rn_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classchi_1_1pe_1_1chi__rn__initiator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>chi::pe::chi_rn_initiator_b</label>
+        <link refid="classchi_1_1pe_1_1chi__rn__initiator__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>ReceivedReqCreditCounter</edgelabel>
+          <edgelabel>ReceivedSrespCreditCounter</edgelabel>
+          <edgelabel>ReceivedWdatCreditCounter</edgelabel>
+          <edgelabel>prio_sresp_chnl</edgelabel>
+          <edgelabel>prio_wdat_chnl</edgelabel>
+          <edgelabel>req_chnl</edgelabel>
+          <edgelabel>req_order</edgelabel>
+          <edgelabel>sresp_chnl</edgelabel>
+          <edgelabel>strict_order_sem</edgelabel>
+          <edgelabel>wdat_chnl</edgelabel>
+          <edgelabel>  ...</edgelabel>
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>ProvidedCrespCreditCounter</edgelabel>
+          <edgelabel>ProvidedRdatCreditCounter</edgelabel>
+          <edgelabel>ProvidedSnpCreditCounter</edgelabel>
+          <edgelabel>snp_counter</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="3">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="12">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="11">
+        <label>sc_core::sc_semaphore_if</label>
+      </node>
+      <node id="10">
+        <label>scc::ordered_semaphore</label>
+        <link refid="classscc_1_1ordered__semaphore"/>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>scc::sc_variable&lt; unsigned &gt;</label>
+        <link refid="structscc_1_1sc__variable"/>
+        <childnode refid="15" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>scc::sc_variable_b</label>
+        <link refid="structscc_1_1sc__variable__b"/>
+        <childnode refid="12" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>scc::traceable</label>
+        <link refid="structscc_1_1traceable"/>
+      </node>
+      <node id="9">
+        <label>tlm::scc::pe::intor_fw&lt; type::BL &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>tlm::scc::pe::intor_fw_b</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw__b"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>tlm::tlm_bw_transport_if&lt; chi::chi_protocol_types &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" line="209" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" bodystart="209" bodyend="238"/>
+    <listofallmembers>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1adaffdc0e17f51ee8809da77d370606db" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>active_tx_by_id</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a618ca75e346d107f00c8bbdec40692ee" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>add_protocol_cb</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1ae0e51e71baa3c9cdf0a2931fe1f7e8ba" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>any_tx_finished</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1ad90883b4c3aafa84b670184b6d71474c" prot="public" virt="virtual"><scope>chi::pe::chi_rn_initiator</scope><name>b_snoop</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator_1a52b00f7d828067ebb11b8b0118812df9" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>base</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1aa15d6d1134aecb909b0357173bef3a29" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>bw_o</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a6a0cf79256269a221b37e2368177cb77" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>calculate_beats</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a36b389c51df449d1000bf45e0a6c8ada" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>cb_function_t</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator_1a5c9c6ad121757ef6827c916b78903e5c" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>chi_rn_initiator</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator_1ab64e2707c9aa2e65f621825b03e61e46" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>chi_rn_initiator</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator_1a686520a5b55a2f5a2eb761eaf4d675dc" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>chi_rn_initiator</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator_1a16c94fd7243936069a110291cb3efb7d" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>chi_rn_initiator</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1abcf6bff2985129135f5229cbd3a3b8e9" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>chi_rn_initiator_b</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1aea54106a9dcf3ed7aa1b9e93dcf6de15" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>chi_rn_initiator_b</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a1c93a26312d65df7966d8de8c90666d8" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>chi_rn_initiator_b</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a58c569efb04e28b712136a7a81985f9c" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>chi_rn_initiator_b</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a9ba6e25a2d359317acb8e8558d0234f8" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>clk_i</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a24411dba4198be5919b01f1b1230916b" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>clk_period</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a49201960d86671d208b4f8b138527d35" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>cresp_req_credit_limit</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a732242cf4fe1ec463797d514ea409563" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>data_interleaving</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a8c235126e77aa5a089226890e8beaffd" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>end_of_elaboration</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a9a727c0baf5f2a5b63ebff9886ae129d" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>fw_i</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1ab8fa26b64d6824dac2a4433b832e7504" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>get_credit_count</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a4da3ef7c2a183ae8d513d40ec3166c9a" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>get_transferwith_in_bytes</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a0cdeac0a7b070a8f931c6e110175c8c3" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>grant_credit</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a7e4c066edf56efe615e38d3538d87d91" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>instance_name</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a879013e05480359c9b2812c3e53014f4" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>invalidate_direct_mem_ptr</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a6fe6a00ca48011cc1e803330116ee4a4" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>nb_transport_bw</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator_1aaa84f003b8365d0251625acbebe3fc66" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>operator=</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator_1a67cb8dce929ed0b0e354326083a4a045" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>operator=</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a3dafc488264aaa8a3b87e9c90ed77d9b" prot="public" virt="non-virtual" ambiguityscope="chi::pe::chi_rn_initiator_b::"><scope>chi::pe::chi_rn_initiator</scope><name>operator=</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1af3e13a7aa9dad643e594e1626205a4cb" prot="public" virt="non-virtual" ambiguityscope="chi::pe::chi_rn_initiator_b::"><scope>chi::pe::chi_rn_initiator</scope><name>operator=</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator_1a876b0565fbc691d024b874572fb0098e" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>payload_type</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator_1a238c7b29801cb9efc28da5cbc5bdc0f7" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>phase_type</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1af873327f4300bdba5d98fc953a31e404" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>prio_sresp_chnl</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1ac0de860bf51a647bf280401251744777" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>prio_wdat_chnl</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a644d93633c18fdf5edf94d0a76447bb2" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>ProvidedCrespCreditCounter</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a96838ca4347b5ae8e7bbed4b5c2cc59b" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>ProvidedRdatCreditCounter</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a2f7b5863df984996a0d1d4597150dd28" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>ProvidedSnpCreditCounter</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a799b69669b29067cb9693caf792a4eca" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>rdat_req_credit_limit</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1ac127f4b546b6ba858ea0a191bd544189" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>ReceivedReqCreditCounter</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a132d1e1efb02f3d074a4e3db3731ecc4" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>ReceivedSrespCreditCounter</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a8c227cfb791bd075f7c80987a953c7a0" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>ReceivedWdatCreditCounter</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a6d241e936adb3fa06adee0a7b416ecd4" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>req_chnl</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a835c470393838fac835c31a9113c1df0" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>req_order</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a46d530e25ebf555c07c2191233d1bffc" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>snoop_dispatch</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a62f2283264ab0962a68f546ff8a13d55" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>snoop_handler</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a9daff32fa40432163b04337e1b7f17a6" prot="public" virt="virtual"><scope>chi::pe::chi_rn_initiator</scope><name>snoop_resp</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1ac8f76b03370a0afb398542b6748f9975" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>snp_counter</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a86f588b6682a18b124072c7bdd4ddee0" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>snp_dispatch_que</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a09ecac16512c8dfc144c979e6296b9c7" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>snp_peq</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a2c224dc6787eb76f43706edee2096704" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>snp_req_credit_limit</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1aadc2547af1388004f98f72d101f1ecab" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>snp_req_limit</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator_1a1d08ac68878b7d1e5624bf569b72315e" prot="private" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>socket</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1af42da6f21710721cb3477bf814cd2444" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>socket_fw</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a7b3e59d06905c9e4a83f6d34635ef941" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>src_id</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a8e2a9f85f63ba2f3e6ba9ed510666fe7" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>sresp_chnl</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a002f5c51799a94561e4ea4e5acad407a" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>strict_income_order</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a791e09e0ddd8573bce60421258c1df91" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>strict_order_sem</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1ae60d51cec81d3a5ba42ba5bf4f7a9baa" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>tgt_id</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1ae6e6a01efbcd16e4b8333813386b35a2" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>thread_active</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a1346bae723e1cb2b7655630430c8b6a3" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>thread_avail</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a49a058b28b7e8107269d15c943995538" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>transfer_width_in_bytes</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a046918449ceeb77b78fb3bbf27383922" prot="public" virt="virtual"><scope>chi::pe::chi_rn_initiator</scope><name>transport</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a38265f0ec5ad5f6f7f67e7d8cc6d03ba" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>tx_state_by_trans</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a7d53f7be49161542aa600dd822b16386" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>tx_state_pool</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a23e7e3d705db1e3b7eae7c88f626aed7" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>use_legacy_mapping</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a577d20e6e40381b9979af6a5febd985d" prot="protected" virt="non-virtual"><scope>chi::pe::chi_rn_initiator</scope><name>wdat_chnl</name></member>
+      <member refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a26af44831c21fc5d6fe131d077cf6567" prot="public" virt="virtual"><scope>chi::pe::chi_rn_initiator</scope><name>~chi_rn_initiator_b</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

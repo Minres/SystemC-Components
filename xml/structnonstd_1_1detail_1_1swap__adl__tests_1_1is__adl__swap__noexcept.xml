@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1detail_1_1swap__adl__tests_1_1is__adl__swap__noexcept" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::detail::swap_adl_tests::is_adl_swap_noexcept</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::integral_constant&lt; bool, noexcept(can_swap&lt; T, U &gt;(0))&gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>class U</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>nonstd::detail::swap_adl_tests::is_adl_swap_noexcept&lt; T, U &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1swap__adl__tests_1_1is__adl__swap__noexcept"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::integral_constant&lt; bool, noexcept(can_swap&lt; T, U &gt;(0))&gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>nonstd::detail::swap_adl_tests::is_adl_swap_noexcept&lt; T, U &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1swap__adl__tests_1_1is__adl__swap__noexcept"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::integral_constant&lt; bool, noexcept(can_swap&lt; T, U &gt;(0))&gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="211" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="211" bodyend="211"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

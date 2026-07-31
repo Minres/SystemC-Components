@@ -1,0 +1,2147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceaxi" kind="namespace" language="C++">
+    <compoundname>axi</compoundname>
+    <innerclass refid="classaxi_1_1axi__initiator__base" prot="public">axi::axi_initiator_base</innerclass>
+    <innerclass refid="classaxi_1_1axi__initiator" prot="public">axi::axi_initiator</innerclass>
+    <innerclass refid="classaxi_1_1axi__target__base" prot="public">axi::axi_target_base</innerclass>
+    <innerclass refid="classaxi_1_1axi__target" prot="public">axi::axi_target</innerclass>
+    <innerclass refid="structaxi_1_1master__types" prot="public">axi::master_types</innerclass>
+    <innerclass refid="structaxi_1_1lite__master__types" prot="public">axi::lite_master_types</innerclass>
+    <innerclass refid="structaxi_1_1slave__types" prot="public">axi::slave_types</innerclass>
+    <innerclass refid="structaxi_1_1lite__slave__types" prot="public">axi::lite_slave_types</innerclass>
+    <innerclass refid="structaxi_1_1signal__types" prot="public">axi::signal_types</innerclass>
+    <innerclass refid="structaxi_1_1select__if" prot="public">axi::select_if</innerclass>
+    <innerclass refid="structaxi_1_1select__if_3_01true_00_01T_00_01S_01_4" prot="public">axi::select_if&lt; true, T, S &gt;</innerclass>
+    <innerclass refid="structaxi_1_1axi4__cfg" prot="public">axi::axi4_cfg</innerclass>
+    <innerclass refid="structaxi_1_1axi4__lite__cfg" prot="public">axi::axi4_lite_cfg</innerclass>
+    <innerclass refid="structaxi_1_1ace__cfg" prot="public">axi::ace_cfg</innerclass>
+    <innerclass refid="structaxi_1_1aw__axi__lite" prot="public">axi::aw_axi_lite</innerclass>
+    <innerclass refid="structaxi_1_1aw__axi" prot="public">axi::aw_axi</innerclass>
+    <innerclass refid="structaxi_1_1wdata__axi__lite" prot="public">axi::wdata_axi_lite</innerclass>
+    <innerclass refid="structaxi_1_1wdata__axi" prot="public">axi::wdata_axi</innerclass>
+    <innerclass refid="structaxi_1_1b__axi__lite" prot="public">axi::b_axi_lite</innerclass>
+    <innerclass refid="structaxi_1_1b__axi" prot="public">axi::b_axi</innerclass>
+    <innerclass refid="structaxi_1_1ar__axi__lite" prot="public">axi::ar_axi_lite</innerclass>
+    <innerclass refid="structaxi_1_1ar__axi" prot="public">axi::ar_axi</innerclass>
+    <innerclass refid="structaxi_1_1rresp__axi__lite" prot="public">axi::rresp_axi_lite</innerclass>
+    <innerclass refid="structaxi_1_1rresp__axi" prot="public">axi::rresp_axi</innerclass>
+    <innerclass refid="structaxi_1_1rresp__ace" prot="public">axi::rresp_ace</innerclass>
+    <innerclass refid="structaxi_1_1ar__ace" prot="public">axi::ar_ace</innerclass>
+    <innerclass refid="structaxi_1_1aw__ace" prot="public">axi::aw_ace</innerclass>
+    <innerclass refid="structaxi_1_1ac__ace" prot="public">axi::ac_ace</innerclass>
+    <innerclass refid="structaxi_1_1cd__ace" prot="public">axi::cd_ace</innerclass>
+    <innerclass refid="structaxi_1_1cr__ace" prot="public">axi::cr_ace</innerclass>
+    <innerclass refid="structaxi_1_1enable__for__enum" prot="public">axi::enable_for_enum</innerclass>
+    <innerclass refid="structaxi_1_1common" prot="public">axi::common</innerclass>
+    <innerclass refid="structaxi_1_1request" prot="public">axi::request</innerclass>
+    <innerclass refid="structaxi_1_1axi3" prot="public">axi::axi3</innerclass>
+    <innerclass refid="structaxi_1_1axi4" prot="public">axi::axi4</innerclass>
+    <innerclass refid="structaxi_1_1ace" prot="public">axi::ace</innerclass>
+    <innerclass refid="structaxi_1_1response" prot="public">axi::response</innerclass>
+    <innerclass refid="structaxi_1_1ace__response" prot="public">axi::ace_response</innerclass>
+    <innerclass refid="structaxi_1_1axi__extension" prot="public">axi::axi_extension</innerclass>
+    <innerclass refid="structaxi_1_1axi3__extension" prot="public">axi::axi3_extension</innerclass>
+    <innerclass refid="structaxi_1_1axi4__extension" prot="public">axi::axi4_extension</innerclass>
+    <innerclass refid="structaxi_1_1ace__extension" prot="public">axi::ace_extension</innerclass>
+    <innerclass refid="structaxi_1_1axi__protocol__types" prot="public">axi::axi_protocol_types</innerclass>
+    <innerclass refid="classaxi_1_1bw__blocking__transport__if" prot="public">axi::bw_blocking_transport_if</innerclass>
+    <innerclass refid="classaxi_1_1ace__bw__transport__if" prot="public">axi::ace_bw_transport_if</innerclass>
+    <innerclass refid="structaxi_1_1axi__initiator__socket" prot="public">axi::axi_initiator_socket</innerclass>
+    <innerclass refid="structaxi_1_1axi__target__socket" prot="public">axi::axi_target_socket</innerclass>
+    <innerclass refid="structaxi_1_1ace__initiator__socket" prot="public">axi::ace_initiator_socket</innerclass>
+    <innerclass refid="structaxi_1_1ace__target__socket" prot="public">axi::ace_target_socket</innerclass>
+    <innerclass refid="structaxi_1_1enable__for__enum_3_01burst__e_01_4" prot="public">axi::enable_for_enum&lt; burst_e &gt;</innerclass>
+    <innerclass refid="structaxi_1_1enable__for__enum_3_01lock__e_01_4" prot="public">axi::enable_for_enum&lt; lock_e &gt;</innerclass>
+    <innerclass refid="structaxi_1_1enable__for__enum_3_01domain__e_01_4" prot="public">axi::enable_for_enum&lt; domain_e &gt;</innerclass>
+    <innerclass refid="structaxi_1_1enable__for__enum_3_01bar__e_01_4" prot="public">axi::enable_for_enum&lt; bar_e &gt;</innerclass>
+    <innerclass refid="structaxi_1_1enable__for__enum_3_01snoop__e_01_4" prot="public">axi::enable_for_enum&lt; snoop_e &gt;</innerclass>
+    <innerclass refid="structaxi_1_1enable__for__enum_3_01resp__e_01_4" prot="public">axi::enable_for_enum&lt; resp_e &gt;</innerclass>
+    <innernamespace refid="namespaceaxi_1_1pin">axi::pin</innernamespace>
+    <innernamespace refid="namespaceaxi_1_1checker">axi::checker</innernamespace>
+    <innernamespace refid="namespaceaxi_1_1fsm">axi::fsm</innernamespace>
+    <innernamespace refid="namespaceaxi_1_1lwtr">axi::lwtr</innernamespace>
+    <innernamespace refid="namespaceaxi_1_1pe">axi::pe</innernamespace>
+    <innernamespace refid="namespaceaxi_1_1scv">axi::scv</innernamespace>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceaxi_1aba604a93989beaeda94e8f5910faaff3" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>flavor_e</name>
+        <qualifiedname>axi::flavor_e</qualifiedname>
+        <enumvalue id="namespaceaxi_1aba604a93989beaeda94e8f5910faaff3ad4b37d9c236c57f7a2bef544da3fcf1e" prot="public">
+          <name>AXI</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1aba604a93989beaeda94e8f5910faaff3a5bef1b7448267ddfcd0d680ab3bce7f8" prot="public">
+          <name>ACEL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1aba604a93989beaeda94e8f5910faaff3a757f4749aebb1891ef5ac2a9b5439cea" prot="public">
+          <name>ACE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="27" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="27" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceaxi_1a976930b97a74baed7a45ff5cdb324ae9" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>burst_e</name>
+        <qualifiedname>axi::burst_e</qualifiedname>
+        <enumvalue id="namespaceaxi_1a976930b97a74baed7a45ff5cdb324ae9ac6e6dc18b53b4c2681394b9d8aefcec7" prot="public">
+          <name>FIXED</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1a976930b97a74baed7a45ff5cdb324ae9afc67535e5273d466beba3c06c0dbd988" prot="public">
+          <name>INCR</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>fixed address burst </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1a976930b97a74baed7a45ff5cdb324ae9ae1c8555fcf0ea2bb648a6fd527d658c0" prot="public">
+          <name>WRAP</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>incrementing burst </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the burst type enumeration class </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="72" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="72" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceaxi_1ae831769511f0a2e0b73e223c4d7e5b4f" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>lock_e</name>
+        <qualifiedname>axi::lock_e</qualifiedname>
+        <enumvalue id="namespaceaxi_1ae831769511f0a2e0b73e223c4d7e5b4fa1e23852820b9154316c7c06e2b7ba051" prot="public">
+          <name>NORMAL</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ae831769511f0a2e0b73e223c4d7e5b4fa44f4d4d74b5fb62744efc586d21ae6b1" prot="public">
+          <name>EXLUSIVE</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ae831769511f0a2e0b73e223c4d7e5b4faaeff3f3f2731681b2ed6a27786a56203" prot="public">
+          <name>LOCKED</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the lock type enumeration class </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="80" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceaxi_1a2c24f5d71a27284a4de95bb3ddf6748d" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>domain_e</name>
+        <qualifiedname>axi::domain_e</qualifiedname>
+        <enumvalue id="namespaceaxi_1a2c24f5d71a27284a4de95bb3ddf6748da2e4b4a7d718e5fea69afced0f16003cd" prot="public">
+          <name>NON_SHAREABLE</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1a2c24f5d71a27284a4de95bb3ddf6748da9fc6ea62cdb3219442587a70aa7a9da0" prot="public">
+          <name>INNER_SHAREABLE</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1a2c24f5d71a27284a4de95bb3ddf6748dac9e781ce1e107bd1f7f48280e5c1934f" prot="public">
+          <name>OUTER_SHAREABLE</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1a2c24f5d71a27284a4de95bb3ddf6748dafa177138f94a7ea01f549b1aa7893d03" prot="public">
+          <name>SYSTEM</name>
+          <initializer>= 0x3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the domain type enumeration class </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="84" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="84" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceaxi_1a6318752e2d4bb1398307086ebc1421f7" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>bar_e</name>
+        <qualifiedname>axi::bar_e</qualifiedname>
+        <enumvalue id="namespaceaxi_1a6318752e2d4bb1398307086ebc1421f7a58b0a3db91dbb7282de3912df7d0e310" prot="public">
+          <name>RESPECT_BARRIER</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1a6318752e2d4bb1398307086ebc1421f7a55e6eaaefb11cf68e4d140056c85de3d" prot="public">
+          <name>MEMORY_BARRIER</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+<para>Normal access, respecting barriers. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1a6318752e2d4bb1398307086ebc1421f7ae7847b0265fff538e317b93c14b24f65" prot="public">
+          <name>IGNORE_BARRIER</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+<para>Memory barrier. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1a6318752e2d4bb1398307086ebc1421f7ad4cde75ed2cbe78a3bec0f8cf49f6d88" prot="public">
+          <name>SYNCHRONISATION_BARRIER</name>
+          <initializer>= 0x3</initializer>
+          <briefdescription>
+<para>Normal access, ignoring barriers. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the barrier type enumeration class </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="88" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="88" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>snoop_e</name>
+        <qualifiedname>axi::snoop_e</qualifiedname>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212ad2d6e6ad885c293cabe6df3e525fd58a" prot="public">
+          <name>READ_NO_SNOOP</name>
+          <initializer>= 0x10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212ac9b2c14d782d4cbc37bd2def8f48ad45" prot="public">
+          <name>READ_ONCE</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a6cdd845c4ecc7a9b6c3ddf1efc865b1c" prot="public">
+          <name>READ_SHARED</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a680929f2d79251f3bf3ccb1f513d1b75" prot="public">
+          <name>READ_CLEAN</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212aad484588116ef48f4c3ff7961c8df72b" prot="public">
+          <name>READ_NOT_SHARED_DIRTY</name>
+          <initializer>= 0x3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212abde495440f97e19dd8a58ae52a119895" prot="public">
+          <name>READ_ONCE_CLEAN_INVALID</name>
+          <initializer>= 0x4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a9c615101b3819c99446b2c9b043df600" prot="public">
+          <name>READ_ONCE_MAKE_INVALID</name>
+          <initializer>= 0x5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a655f4ea3e9b6603a390eee88b26a2546" prot="public">
+          <name>READ_UNIQUE</name>
+          <initializer>= 0x7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a41b442e7420e6de0ee3775bc91af23c1" prot="public">
+          <name>CLEAN_UNIQUE</name>
+          <initializer>= 0xb</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a0772a20a4782663dfbfc5e3d89d23ead" prot="public">
+          <name>MAKE_UNIQUE</name>
+          <initializer>= 0xc</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a146a24839c317a59e36e7680c30c309a" prot="public">
+          <name>CLEAN_SHARED</name>
+          <initializer>= 0x8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a3af471aef5b0e98de3f28d80e455036e" prot="public">
+          <name>CLEAN_INVALID</name>
+          <initializer>= 0x9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212ad782b149de5251fd43e4f673d2d3d7b4" prot="public">
+          <name>CLEAN_SHARED_PERSIST</name>
+          <initializer>= 0xa</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212ae25a67df02b8c96858889fb3848009b1" prot="public">
+          <name>MAKE_INVALID</name>
+          <initializer>= 0xd</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a895e8d6c23ba8178349c32c8f23cf886" prot="public">
+          <name>DVM_COMPLETE</name>
+          <initializer>= 0xe</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a80d933ad1afb9a70cdfa4024323462a5" prot="public">
+          <name>DVM_MESSAGE</name>
+          <initializer>= 0xf</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a59838d3bb5866b79a45f7396dc48c22a" prot="public">
+          <name>BARRIER</name>
+          <initializer>= 0x40</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a2ff910d32c2f29d4deffe8f8e14a4f98" prot="public">
+          <name>WRITE_NO_SNOOP</name>
+          <initializer>= 0x30</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a5afe97919159cf6c9a975788067dece7" prot="public">
+          <name>WRITE_UNIQUE</name>
+          <initializer>= 0x20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212ae6372b30460c6f844a64bcbcc36b6558" prot="public">
+          <name>WRITE_LINE_UNIQUE</name>
+          <initializer>= 0x21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a7a1ff97c1a35bf1641436ab73ea29c1b" prot="public">
+          <name>WRITE_CLEAN</name>
+          <initializer>= 0x22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a62b070c7046d62c52574b9460e5c7d21" prot="public">
+          <name>WRITE_BACK</name>
+          <initializer>= 0x23</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212ac36043204098fb7b9dee5659c38236bf" prot="public">
+          <name>EVICT</name>
+          <initializer>= 0x24</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212ae85db8ed23ed26703e2c013e0948b2c9" prot="public">
+          <name>WRITE_EVICT</name>
+          <initializer>= 0x25</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212ab272dd76b9e108366946165e5e3ebfba" prot="public">
+          <name>CMO_ON_WRITE</name>
+          <initializer>= 0x26</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212aa9305c7d4cf93321e48921c0ba5f6fb5" prot="public">
+          <name>WRITE_UNIQUE_PTL_STASH</name>
+          <initializer>= 0x28</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a45404a91cb44b575366a5b97e93b6963" prot="public">
+          <name>WRITE_UNIQUE_FULL_STASH</name>
+          <initializer>= 0x29</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212ac86ac8ebf88fd4153e6586da26de16ae" prot="public">
+          <name>STASH_ONCE_SHARED</name>
+          <initializer>= 0x2c</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212aeabb1d3a5f45d145a97f50d339f616fb" prot="public">
+          <name>STASH_ONCE_UNIQUE</name>
+          <initializer>= 0x2d</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212a2cf45e8189f89fbd73e1aefcfb7e6341" prot="public">
+          <name>STASH_TRANSLATION</name>
+          <initializer>= 0x2e</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the snoop type enumeration class. Since the interpretation depends of other setting there are double defined entries </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="98" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="98" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceaxi_1a0ddbfef39ab482c08c4972d8c4d1adf6" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>atop_low_e</name>
+        <qualifiedname>axi::atop_low_e</qualifiedname>
+        <enumvalue id="namespaceaxi_1a0ddbfef39ab482c08c4972d8c4d1adf6a9eeb52badb613229884838847294b90d" prot="public">
+          <name>ADD</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1a0ddbfef39ab482c08c4972d8c4d1adf6ad22bcc369c956e87d0d2f12c364f204a" prot="public">
+          <name>CLR</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1a0ddbfef39ab482c08c4972d8c4d1adf6a287a2b6de015d0090c2ab3f8428f13cb" prot="public">
+          <name>EOR</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1a0ddbfef39ab482c08c4972d8c4d1adf6a8c52684db8f49511e9b44471716bf164" prot="public">
+          <name>SET</name>
+          <initializer>= 0x3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1a0ddbfef39ab482c08c4972d8c4d1adf6a00e365acdc6de6b62421116e865bd420" prot="public">
+          <name>SMAX</name>
+          <initializer>= 0x4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1a0ddbfef39ab482c08c4972d8c4d1adf6a2d9174ad446fde0fc750265f9e075977" prot="public">
+          <name>SMIN</name>
+          <initializer>= 0x5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1a0ddbfef39ab482c08c4972d8c4d1adf6adf23c745cc30333029ae3a73cd87c059" prot="public">
+          <name>UMAX</name>
+          <initializer>= 0x6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1a0ddbfef39ab482c08c4972d8c4d1adf6a925d976d8f961af767954de9f62f40cb" prot="public">
+          <name>UMIN</name>
+          <initializer>= 0x7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="143" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="143" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceaxi_1aa0a621d44d9030c3b5d37abcdebf64dd" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>atop_enc_e</name>
+        <qualifiedname>axi::atop_enc_e</qualifiedname>
+        <enumvalue id="namespaceaxi_1aa0a621d44d9030c3b5d37abcdebf64dda3263abaa18804fcca16a43f702227b06" prot="public">
+          <name>NonAtomic</name>
+          <initializer>= 0x00</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1aa0a621d44d9030c3b5d37abcdebf64ddaed8f1a96e6ff224c545adf5917f82e9e" prot="public">
+          <name>AtomicStore</name>
+          <initializer>= 0x10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1aa0a621d44d9030c3b5d37abcdebf64dda286479074cfd3496ace2f31bb33aec51" prot="public">
+          <name>AtomicLoad</name>
+          <initializer>= 0x20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1aa0a621d44d9030c3b5d37abcdebf64ddaae97d24bc516cad87ff2444ecc8f4914" prot="public">
+          <name>AtomicSwap</name>
+          <initializer>= 0x30</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1aa0a621d44d9030c3b5d37abcdebf64dda6f8b41a47fea31cd62b7c675592598a8" prot="public">
+          <name>AtomicCompare</name>
+          <initializer>= 0x31</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="145" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="145" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceaxi_1aedd3cd54df738e346b6f61786117fdc8" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>resp_e</name>
+        <qualifiedname>axi::resp_e</qualifiedname>
+        <enumvalue id="namespaceaxi_1aedd3cd54df738e346b6f61786117fdc8a74eb855e4de6fe58228f03006c02fd8a" prot="public">
+          <name>OKAY</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1aedd3cd54df738e346b6f61786117fdc8a1bd72b97a305c531eda0055de64e4cb9" prot="public">
+          <name>EXOKAY</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1aedd3cd54df738e346b6f61786117fdc8af1714594a4a7584916a93ea188089db0" prot="public">
+          <name>SLVERR</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceaxi_1aedd3cd54df738e346b6f61786117fdc8a4203d7ca5a39f887307a22836cc6965d" prot="public">
+          <name>DECERR</name>
+          <initializer>= 0x3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the response type enumeration class </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="155" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="155" bodyend="155"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceaxi_1ab870c83d81dc722d6158f757ade63c06" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>unsigned int</type>
+            <declname>BUSWDTH</declname>
+            <defname>BUSWDTH</defname>
+            <defval>32</defval>
+          </param>
+          <param>
+            <type>unsigned int</type>
+            <declname>ADDRWDTH</declname>
+            <defname>ADDRWDTH</defname>
+            <defval>32</defval>
+          </param>
+          <param>
+            <type>unsigned int</type>
+            <declname>IDWDTH</declname>
+            <defname>IDWDTH</defname>
+            <defval>32</defval>
+          </param>
+          <param>
+            <type>unsigned int</type>
+            <declname>USERWDTH</declname>
+            <defname>USERWDTH</defname>
+            <defval>1</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structaxi_1_1axi4__cfg" kindref="compound">axi4_cfg</ref>&lt; BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH &gt;</type>
+        <definition>using axi::axi5_cfg =  axi4_cfg&lt;BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH&gt;</definition>
+        <argsstring></argsstring>
+        <name>axi5_cfg</name>
+        <qualifiedname>axi::axi5_cfg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="93" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxi_1ad2cefef50280dd49b148ae6d28a04f06" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename CFG</type>
+          </param>
+          <param>
+            <type>typename TYPES</type>
+            <defval>master_types</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structaxi_1_1wdata__axi" kindref="compound">wdata_axi</ref>&lt; CFG, TYPES &gt;</type>
+        <definition>using axi::wdata_ace =  wdata_axi&lt;CFG, TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>wdata_ace</name>
+        <qualifiedname>axi::wdata_ace</qualifiedname>
+        <briefdescription>
+<para>alias declaration for rresp_ch_ace, wdata_ch_ace, b_ch_ace??? </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="713" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="713" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxi_1a46e72e34831454bc499f58a910a51e3c" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename CFG</type>
+          </param>
+          <param>
+            <type>typename TYPES</type>
+            <defval>master_types</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structaxi_1_1b__axi" kindref="compound">b_axi</ref>&lt; CFG, TYPES &gt;</type>
+        <definition>using axi::b_ace =  b_axi&lt;CFG, TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>b_ace</name>
+        <qualifiedname>axi::b_ace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="714" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="714" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxi_1ac0f843b673772b3c64d5aa3902e74a45" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename CFG</type>
+          </param>
+          <param>
+            <type>typename TYPES</type>
+            <defval>master_types</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structaxi_1_1wdata__axi" kindref="compound">wdata_axi</ref>&lt; CFG, TYPES &gt;</type>
+        <definition>using axi::wdata_ace_lite =  wdata_axi&lt;CFG, TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>wdata_ace_lite</name>
+        <qualifiedname>axi::wdata_ace_lite</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="715" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="715" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxi_1a0e6ed860f29326985756782b249590e0" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename CFG</type>
+          </param>
+          <param>
+            <type>typename TYPES</type>
+            <defval>master_types</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structaxi_1_1b__axi" kindref="compound">b_axi</ref>&lt; CFG, TYPES &gt;</type>
+        <definition>using axi::b_ace_lite =  b_axi&lt;CFG, TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>b_ace_lite</name>
+        <qualifiedname>axi::b_ace_lite</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="716" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="716" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxi_1aa937f273aa811f19316b43b2a692d407" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename CFG</type>
+          </param>
+          <param>
+            <type>typename TYPES</type>
+            <defval>master_types</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structaxi_1_1rresp__axi" kindref="compound">rresp_axi</ref>&lt; CFG, TYPES &gt;</type>
+        <definition>using axi::rresp_ace_lite =  rresp_axi&lt;CFG, TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>rresp_ace_lite</name>
+        <qualifiedname>axi::rresp_ace_lite</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="717" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="717" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxi_1a8679bb6db00be842b17105a089d47ee2" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename CFG</type>
+          </param>
+          <param>
+            <type>typename TYPES</type>
+            <defval>master_types</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structaxi_1_1aw__ace" kindref="compound">aw_ace</ref>&lt; CFG, TYPES &gt;</type>
+        <definition>using axi::aw_ace_lite =  aw_ace&lt;CFG, TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>aw_ace_lite</name>
+        <qualifiedname>axi::aw_ace_lite</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="718" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="718" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxi_1a69647865f68193436aaa8aa870d3b3cf" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename CFG</type>
+          </param>
+          <param>
+            <type>typename TYPES</type>
+            <defval>master_types</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structaxi_1_1ar__ace" kindref="compound">ar_ace</ref>&lt; CFG, TYPES &gt;</type>
+        <definition>using axi::ar_ace_lite =  ar_ace&lt;CFG, TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>ar_ace_lite</name>
+        <qualifiedname>axi::ar_ace_lite</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="719" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="719" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxi_1a197940bc00863fb8a69614bb495f98b3" prot="public" static="no">
+        <type>tlm::tlm_generic_payload</type>
+        <definition>using axi::axi_payload =  tlm::tlm_generic_payload</definition>
+        <argsstring></argsstring>
+        <name>axi_payload</name>
+        <qualifiedname>axi::axi_payload</qualifiedname>
+        <briefdescription>
+<para>aliases for payload and phase types </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="913" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="913" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxi_1a32161216b948d2c0ed41c20b1898569a" prot="public" static="no">
+        <type>tlm::tlm_phase</type>
+        <definition>using axi::axi_phase =  tlm::tlm_phase</definition>
+        <argsstring></argsstring>
+        <name>axi_phase</name>
+        <qualifiedname>axi::axi_phase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="914" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="914" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxi_1ab17a1a259e883a02dd68e4f8e823d5af" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename TYPES</type>
+            <defval>axi_protocol_types</defval>
+          </param>
+        </templateparamlist>
+        <type>tlm::tlm_fw_transport_if&lt; TYPES &gt;</type>
+        <definition>using axi::axi_fw_transport_if =  tlm::tlm_fw_transport_if&lt;TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>axi_fw_transport_if</name>
+        <qualifiedname>axi::axi_fw_transport_if</qualifiedname>
+        <briefdescription>
+<para>alias declaration for the forward interface </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="951" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="951" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxi_1a805751c34d41d1e062fb5d9cae799971" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename TYPES</type>
+            <defval>axi_protocol_types</defval>
+          </param>
+        </templateparamlist>
+        <type>tlm::tlm_bw_transport_if&lt; TYPES &gt;</type>
+        <definition>using axi::axi_bw_transport_if =  tlm::tlm_bw_transport_if&lt;TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>axi_bw_transport_if</name>
+        <qualifiedname>axi::axi_bw_transport_if</qualifiedname>
+        <briefdescription>
+<para>alias declaration for the backward interface: </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="953" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="953" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxi_1a98e4c879f769a206781bdbca8e6223b5" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename TYPES</type>
+            <defval>axi_protocol_types</defval>
+          </param>
+        </templateparamlist>
+        <type>tlm::tlm_fw_transport_if&lt; TYPES &gt;</type>
+        <definition>using axi::ace_fw_transport_if =  tlm::tlm_fw_transport_if&lt;TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>ace_fw_transport_if</name>
+        <qualifiedname>axi::ace_fw_transport_if</qualifiedname>
+        <briefdescription>
+<para>alias declaration for the ACE forward interface </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="955" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="955" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxi_1a646870c0ac9eb41f9e25e9743b994c78" prot="public" static="no">
+        <type>sc_core::sc_type_index</type>
+        <definition>using axi::type_index =  sc_core::sc_type_index</definition>
+        <argsstring></argsstring>
+        <name>type_index</name>
+        <qualifiedname>axi::type_index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="964" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="964" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceaxi_1a33d4dea6144037e1e7629f78812ff196" prot="public" static="no" mutable="no">
+        <type>const sc_core::sc_time</type>
+        <definition>const sc_core::sc_time axi::CLK_DELAY</definition>
+        <argsstring></argsstring>
+        <name>CLK_DELAY</name>
+        <qualifiedname>axi::CLK_DELAY</qualifiedname>
+        <initializer>= 1_ps</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="25" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceaxi_1a842b752ef61c8e14221a7d5eda1fd65c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string axi::concat</definition>
+        <argsstring>(const char *prefix, const char *name)</argsstring>
+        <name>concat</name>
+        <qualifiedname>axi::concat</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>prefix</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="141" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="141" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a67a3411b557422d5da69d9eebfcab21a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * axi::to_char&lt; snoop_e &gt;</definition>
+        <argsstring>(snoop_e v)</argsstring>
+        <name>to_char&lt; snoop_e &gt;</name>
+        <qualifiedname>axi::to_char&lt; snoop_e &gt;</qualifiedname>
+        <param>
+          <type><ref refid="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212" kindref="member">snoop_e</ref></type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" line="26" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" bodystart="26" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a244a03fd91691072b68380a1dc56eee3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * axi::to_char&lt; burst_e &gt;</definition>
+        <argsstring>(burst_e v)</argsstring>
+        <name>to_char&lt; burst_e &gt;</name>
+        <qualifiedname>axi::to_char&lt; burst_e &gt;</qualifiedname>
+        <param>
+          <type><ref refid="namespaceaxi_1a976930b97a74baed7a45ff5cdb324ae9" kindref="member">burst_e</ref></type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" line="89" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" bodystart="89" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1ac56c3af438d52c3592bc76d18c6e6734" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * axi::to_char&lt; lock_e &gt;</definition>
+        <argsstring>(lock_e v)</argsstring>
+        <name>to_char&lt; lock_e &gt;</name>
+        <qualifiedname>axi::to_char&lt; lock_e &gt;</qualifiedname>
+        <param>
+          <type><ref refid="namespaceaxi_1ae831769511f0a2e0b73e223c4d7e5b4f" kindref="member">lock_e</ref></type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" line="102" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" bodystart="102" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a5e16b66f7e0b449a0451e6bc5aa95622" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * axi::to_char&lt; domain_e &gt;</definition>
+        <argsstring>(domain_e v)</argsstring>
+        <name>to_char&lt; domain_e &gt;</name>
+        <qualifiedname>axi::to_char&lt; domain_e &gt;</qualifiedname>
+        <param>
+          <type><ref refid="namespaceaxi_1a2c24f5d71a27284a4de95bb3ddf6748d" kindref="member">domain_e</ref></type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" line="115" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" bodystart="115" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a5774e94a7393c144ac2c523f1f9a9023" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * axi::to_char&lt; bar_e &gt;</definition>
+        <argsstring>(bar_e v)</argsstring>
+        <name>to_char&lt; bar_e &gt;</name>
+        <qualifiedname>axi::to_char&lt; bar_e &gt;</qualifiedname>
+        <param>
+          <type><ref refid="namespaceaxi_1a6318752e2d4bb1398307086ebc1421f7" kindref="member">bar_e</ref></type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" line="130" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" bodystart="130" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a8a4c685e85979ba8fdb4df024dee3fef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * axi::to_char&lt; resp_e &gt;</definition>
+        <argsstring>(resp_e v)</argsstring>
+        <name>to_char&lt; resp_e &gt;</name>
+        <qualifiedname>axi::to_char&lt; resp_e &gt;</qualifiedname>
+        <param>
+          <type><ref refid="namespaceaxi_1aedd3cd54df738e346b6f61786117fdc8" kindref="member">resp_e</ref></type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" line="145" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" bodystart="145" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1adaed7eb6838f1f272c3e14131bb405ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; axi::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const tlm::tlm_generic_payload &amp;t)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>axi::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const tlm::tlm_generic_payload &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" line="160" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" bodystart="160" bodyend="187" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" declline="67" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a9d591321a4ef4d1190a868046a44b9fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>char const *</type>
+        <definition>char const  * axi::is_valid_msg&lt; axi::ace_extension &gt;</definition>
+        <argsstring>(axi::ace_extension *ext)</argsstring>
+        <name>is_valid_msg&lt; axi::ace_extension &gt;</name>
+        <qualifiedname>axi::is_valid_msg&lt; axi::ace_extension &gt;</qualifiedname>
+        <param>
+          <type><ref refid="structaxi_1_1ace__extension" kindref="compound">axi::ace_extension</ref> *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" line="227" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" bodystart="227" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a11d5eaf9d588b3953e6bdb55cdaddef7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>char const *</type>
+        <definition>char const  * axi::is_valid_msg&lt; axi::axi4_extension &gt;</definition>
+        <argsstring>(axi::axi4_extension *ext)</argsstring>
+        <name>is_valid_msg&lt; axi::axi4_extension &gt;</name>
+        <qualifiedname>axi::is_valid_msg&lt; axi::axi4_extension &gt;</qualifiedname>
+        <param>
+          <type><ref refid="structaxi_1_1axi4__extension" kindref="compound">axi::axi4_extension</ref> *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" line="303" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" bodystart="303" bodyend="314"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1af4340c5cb5e6f355515a08e55b2d3a3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>char const *</type>
+        <definition>char const  * axi::is_valid_msg&lt; axi::axi3_extension &gt;</definition>
+        <argsstring>(axi::axi3_extension *ext)</argsstring>
+        <name>is_valid_msg&lt; axi::axi3_extension &gt;</name>
+        <qualifiedname>axi::is_valid_msg&lt; axi::axi3_extension &gt;</qualifiedname>
+        <param>
+          <type><ref refid="structaxi_1_1axi3__extension" kindref="compound">axi::axi3_extension</ref> *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" line="316" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" bodystart="316" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a4eeffc37861c128b179a8b0c73d5a893" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename E</type>
+          </param>
+        </templateparamlist>
+        <type>E</type>
+        <definition>E axi::into</definition>
+        <argsstring>(typename std::underlying_type&lt; E &gt;::type t)</argsstring>
+        <name>into</name>
+        <qualifiedname>axi::into</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; E &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>helper function to convert integer into class enums <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="38" column="22" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" declline="38" declcolumn="22"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1ad013d42a09dd713d0a368a6744f49787" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename E</type>
+          </param>
+          <param>
+            <type>typename ULT</type>
+            <defval>typename std::underlying_type&lt;E&gt;::type</defval>
+          </param>
+          <param>
+            <type>typename X</type>
+            <defval>typename std::enable_if&lt;std::is_enum&lt;E&gt;::value &amp;&amp; !std::is_convertible&lt;E, ULT&gt;::value, bool&gt;::type</defval>
+          </param>
+        </templateparamlist>
+        <type>ULT</type>
+        <definition>ULT axi::to_int</definition>
+        <argsstring>(E t)</argsstring>
+        <name>to_int</name>
+        <qualifiedname>axi::to_int</qualifiedname>
+        <param>
+          <type>E</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>helper function to convert class enums into integer <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="46" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="46" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a160f78a3c731c8d023eb40610bd6773b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename E</type>
+          </param>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * axi::to_char</definition>
+        <argsstring>(E t)</argsstring>
+        <name>to_char</name>
+        <qualifiedname>axi::to_char</qualifiedname>
+        <param>
+          <type>E</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>helper function to convert class enums into char string <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="54" column="24" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" declline="54" declcolumn="24"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1aba20318689c40756d5d8ffa9d2f13d88" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename E</type>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; enable_for_enum&lt; E &gt;::value, bool &gt;::type</type>
+          </param>
+        </templateparamlist>
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; axi::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, E e)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>axi::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>E</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>os</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="62" column="8" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="62" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a9868bfb4a0f32aa753bc01cb7a454bc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::DECLARE_EXTENDED_PHASE</definition>
+        <argsstring>(BEGIN_PARTIAL_REQ)</argsstring>
+        <name>DECLARE_EXTENDED_PHASE</name>
+        <qualifiedname>axi::DECLARE_EXTENDED_PHASE</qualifiedname>
+        <param>
+          <type>BEGIN_PARTIAL_REQ</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="933" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" declline="933" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a8086085601a3d1d56927378939eee237" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::DECLARE_EXTENDED_PHASE</definition>
+        <argsstring>(END_PARTIAL_REQ)</argsstring>
+        <name>DECLARE_EXTENDED_PHASE</name>
+        <qualifiedname>axi::DECLARE_EXTENDED_PHASE</qualifiedname>
+        <param>
+          <type>END_PARTIAL_REQ</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="934" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" declline="934" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a7ed7603c7f928c326ed8a92821081e4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::DECLARE_EXTENDED_PHASE</definition>
+        <argsstring>(BEGIN_PARTIAL_RESP)</argsstring>
+        <name>DECLARE_EXTENDED_PHASE</name>
+        <qualifiedname>axi::DECLARE_EXTENDED_PHASE</qualifiedname>
+        <param>
+          <type>BEGIN_PARTIAL_RESP</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="935" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" declline="935" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a37d29cd8a32697f9fa955e77da6ccd89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::DECLARE_EXTENDED_PHASE</definition>
+        <argsstring>(END_PARTIAL_RESP)</argsstring>
+        <name>DECLARE_EXTENDED_PHASE</name>
+        <qualifiedname>axi::DECLARE_EXTENDED_PHASE</qualifiedname>
+        <param>
+          <type>END_PARTIAL_RESP</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="936" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" declline="936" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a80769c18d114e00228ae45ee10978bea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::DECLARE_EXTENDED_PHASE</definition>
+        <argsstring>(ACK)</argsstring>
+        <name>DECLARE_EXTENDED_PHASE</name>
+        <qualifiedname>axi::DECLARE_EXTENDED_PHASE</qualifiedname>
+        <param>
+          <type>ACK</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="937" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" declline="937" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a90c4a7e87d6ddc5308f76c94ae6ee83e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename EXT</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool axi::is_valid</definition>
+        <argsstring>(EXT &amp;ext)</argsstring>
+        <name>is_valid</name>
+        <qualifiedname>axi::is_valid</qualifiedname>
+        <param>
+          <type>EXT &amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1100" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1100" bodyend="1100"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a1ffd3acf96755c93c49b4459ad7a7052" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename EXT</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool axi::is_valid</definition>
+        <argsstring>(EXT *ext)</argsstring>
+        <name>is_valid</name>
+        <qualifiedname>axi::is_valid</qualifiedname>
+        <param>
+          <type>EXT *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1102" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1102" bodyend="1102"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a7c812f15045f5ce280864c092b1e8aa0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename EXT</type>
+          </param>
+        </templateparamlist>
+        <type>char const *</type>
+        <definition>char const  * axi::is_valid_msg</definition>
+        <argsstring>(EXT &amp;ext)</argsstring>
+        <name>is_valid_msg</name>
+        <qualifiedname>axi::is_valid_msg</qualifiedname>
+        <param>
+          <type>EXT &amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1104" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1104" bodyend="1104"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1aa05c3442c4bf5fd6c77fe4e5cb2193cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename EXT</type>
+          </param>
+        </templateparamlist>
+        <type>char const *</type>
+        <definition>char const  * axi::is_valid_msg</definition>
+        <argsstring>(EXT *ext)</argsstring>
+        <name>is_valid_msg</name>
+        <qualifiedname>axi::is_valid_msg</qualifiedname>
+        <param>
+          <type>EXT *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1106" column="24" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" declline="1106" declcolumn="24"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a2d1d000a9134012f5a6e87401be121d3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool axi::is_dataless</definition>
+        <argsstring>(axi::ace_extension const *ext)</argsstring>
+        <name>is_dataless</name>
+        <qualifiedname>axi::is_dataless</qualifiedname>
+        <param>
+          <type><ref refid="structaxi_1_1ace__extension" kindref="compound">axi::ace_extension</ref> const *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1108" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1108" bodyend="1114"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1ae42852cbbb9fcc4b62234c00086056bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi::get_axi_id</definition>
+        <argsstring>(axi::axi_protocol_types::tlm_payload_type const &amp;trans)</argsstring>
+        <name>get_axi_id</name>
+        <qualifiedname>axi::get_axi_id</qualifiedname>
+        <param>
+          <type>axi::axi_protocol_types::tlm_payload_type const &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1116" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1116" bodyend="1125"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a5e2c13adbf88ec6cd3f8bd36082a2613" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi::get_axi_id</definition>
+        <argsstring>(axi::axi_protocol_types::tlm_payload_type const *trans)</argsstring>
+        <name>get_axi_id</name>
+        <qualifiedname>axi::get_axi_id</qualifiedname>
+        <param>
+          <type>axi::axi_protocol_types::tlm_payload_type const *</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1127" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1127" bodyend="1127"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1ad48f42fa6a7b36b4928191327f2f4c94" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool axi::is_burst</definition>
+        <argsstring>(const axi::axi_protocol_types::tlm_payload_type &amp;trans)</argsstring>
+        <name>is_burst</name>
+        <qualifiedname>axi::is_burst</qualifiedname>
+        <param>
+          <type>const axi::axi_protocol_types::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>determine if the transaction is an AXI burst <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the access is a burst</para>
+</simplesect>
+<xrefsect id="todo_1_todo000004"><xreftitle>Todo</xreftitle><xrefdescription><para>The calculation needs to be checked and probably fixed </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1136" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1136" bodyend="1145"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1aa6a3c1bd8abf582aba475da36c60bc02" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool axi::is_burst</definition>
+        <argsstring>(const axi::axi_protocol_types::tlm_payload_type *trans)</argsstring>
+        <name>is_burst</name>
+        <qualifiedname>axi::is_burst</qualifiedname>
+        <param>
+          <type>const axi::axi_protocol_types::tlm_payload_type *</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>determine if the transaction is an AXI burst <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the number of beats </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1151" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1151" bodyend="1151"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a23bfeb7b63813cfc979a31178c3d4950" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi::get_burst_length</definition>
+        <argsstring>(const request &amp;r)</argsstring>
+        <name>get_burst_length</name>
+        <qualifiedname>axi::get_burst_length</qualifiedname>
+        <param>
+          <type>const <ref refid="structaxi_1_1request" kindref="compound">request</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get length of a burst <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>r</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the number of beats </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1157" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1157" bodyend="1157"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a766c3019912f85d3cec3c9f639afcd5f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi::get_burst_length</definition>
+        <argsstring>(const request *r)</argsstring>
+        <name>get_burst_length</name>
+        <qualifiedname>axi::get_burst_length</qualifiedname>
+        <param>
+          <type>const <ref refid="structaxi_1_1request" kindref="compound">request</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get length of a burst <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>r</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the number of beats </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1163" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1163" bodyend="1163"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1ae82f41ac3d08f51929ee0afb6e7d2b71" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi::get_burst_length</definition>
+        <argsstring>(const axi::axi_protocol_types::tlm_payload_type &amp;trans)</argsstring>
+        <name>get_burst_length</name>
+        <qualifiedname>axi::get_burst_length</qualifiedname>
+        <param>
+          <type>const axi::axi_protocol_types::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get length of a burst <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the number of beats </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1169" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1169" bodyend="1178"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a955db446bb18e177ec46fb8477328357" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi::get_burst_length</definition>
+        <argsstring>(const axi::axi_protocol_types::tlm_payload_type *trans)</argsstring>
+        <name>get_burst_length</name>
+        <qualifiedname>axi::get_burst_length</qualifiedname>
+        <param>
+          <type>const axi::axi_protocol_types::tlm_payload_type *</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get length of a burst <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the number of beats </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1184" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1184" bodyend="1184"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1af2b7621ded35f049f6c449cddab09a97" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi::get_burst_size</definition>
+        <argsstring>(const request &amp;r)</argsstring>
+        <name>get_burst_size</name>
+        <qualifiedname>axi::get_burst_size</qualifiedname>
+        <param>
+          <type>const <ref refid="structaxi_1_1request" kindref="compound">request</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get size of a burst in bytes which is 2^AxBURST <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>r</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the burst size in bytes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1190" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1190" bodyend="1190"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1ad6d9476c6317fd04ada5ef8ea3cfb6c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi::get_burst_size</definition>
+        <argsstring>(const request *r)</argsstring>
+        <name>get_burst_size</name>
+        <qualifiedname>axi::get_burst_size</qualifiedname>
+        <param>
+          <type>const <ref refid="structaxi_1_1request" kindref="compound">request</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get size of a burst in bytes which is 2^AxBURST <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>r</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the burst size in bytes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1196" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1196" bodyend="1196"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a54bdd4e158af6b6d86a26fcf03bb4edb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi::get_burst_size</definition>
+        <argsstring>(const axi::axi_protocol_types::tlm_payload_type &amp;trans)</argsstring>
+        <name>get_burst_size</name>
+        <qualifiedname>axi::get_burst_size</qualifiedname>
+        <param>
+          <type>const axi::axi_protocol_types::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get size of a burst in bytes which is 2^AxBURST <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the burst size in bytes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1202" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1202" bodyend="1211"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1ae634c3cfeda866ccc984af52da8ab716" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi::get_burst_size</definition>
+        <argsstring>(const axi::axi_protocol_types::tlm_payload_type *trans)</argsstring>
+        <name>get_burst_size</name>
+        <qualifiedname>axi::get_burst_size</qualifiedname>
+        <param>
+          <type>const axi::axi_protocol_types::tlm_payload_type *</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get size of a burst in bytes which is 2^AxBURST <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the burst size in bytes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1217" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1217" bodyend="1217"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a70cee61eeaf0b66461d01d7e673d9113" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespaceaxi_1a976930b97a74baed7a45ff5cdb324ae9" kindref="member">burst_e</ref></type>
+        <definition>burst_e axi::get_burst_type</definition>
+        <argsstring>(const axi::axi_protocol_types::tlm_payload_type &amp;trans)</argsstring>
+        <name>get_burst_type</name>
+        <qualifiedname>axi::get_burst_type</qualifiedname>
+        <param>
+          <type>const axi::axi_protocol_types::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1219" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1219" bodyend="1228"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1afde22299d4f51acb02b71656693cbf96" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespaceaxi_1a976930b97a74baed7a45ff5cdb324ae9" kindref="member">burst_e</ref></type>
+        <definition>burst_e axi::get_burst_type</definition>
+        <argsstring>(const axi::axi_protocol_types::tlm_payload_type *trans)</argsstring>
+        <name>get_burst_type</name>
+        <qualifiedname>axi::get_burst_type</qualifiedname>
+        <param>
+          <type>const axi::axi_protocol_types::tlm_payload_type *</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1229" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1229" bodyend="1229"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a73f758dd0540906c51172a90d0f5148d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi::get_cache</definition>
+        <argsstring>(const axi::axi_protocol_types::tlm_payload_type &amp;trans)</argsstring>
+        <name>get_cache</name>
+        <qualifiedname>axi::get_cache</qualifiedname>
+        <param>
+          <type>const axi::axi_protocol_types::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1231" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1231" bodyend="1240"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1aadec87777af7ba37990603229b4be481" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi::get_cache</definition>
+        <argsstring>(const axi::axi_protocol_types::tlm_payload_type *trans)</argsstring>
+        <name>get_cache</name>
+        <qualifiedname>axi::get_cache</qualifiedname>
+        <param>
+          <type>const axi::axi_protocol_types::tlm_payload_type *</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1241" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1241" bodyend="1241"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a4c96bf76cb481bfecaf5bcc0cf7eaa58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type><ref refid="namespaceaxi_1a976930b97a74baed7a45ff5cdb324ae9" kindref="member">burst_e</ref></type>
+        <definition>burst_e axi::into&lt; burst_e &gt;</definition>
+        <argsstring>(typename std::underlying_type&lt; burst_e &gt;::type t)</argsstring>
+        <name>into&lt; burst_e &gt;</name>
+        <qualifiedname>axi::into&lt; burst_e &gt;</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; <ref refid="namespaceaxi_1a976930b97a74baed7a45ff5cdb324ae9" kindref="member">burst_e</ref> &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1253" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1253" bodyend="1256"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a25002de447619a20eaaccb86bf86c792" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type><ref refid="namespaceaxi_1ae831769511f0a2e0b73e223c4d7e5b4f" kindref="member">lock_e</ref></type>
+        <definition>lock_e axi::into&lt; lock_e &gt;</definition>
+        <argsstring>(typename std::underlying_type&lt; lock_e &gt;::type t)</argsstring>
+        <name>into&lt; lock_e &gt;</name>
+        <qualifiedname>axi::into&lt; lock_e &gt;</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; <ref refid="namespaceaxi_1ae831769511f0a2e0b73e223c4d7e5b4f" kindref="member">lock_e</ref> &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1258" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1258" bodyend="1261"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a3ac2b54867ed11253153275a95bf1ef6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type><ref refid="namespaceaxi_1a2c24f5d71a27284a4de95bb3ddf6748d" kindref="member">domain_e</ref></type>
+        <definition>domain_e axi::into&lt; domain_e &gt;</definition>
+        <argsstring>(typename std::underlying_type&lt; domain_e &gt;::type t)</argsstring>
+        <name>into&lt; domain_e &gt;</name>
+        <qualifiedname>axi::into&lt; domain_e &gt;</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; <ref refid="namespaceaxi_1a2c24f5d71a27284a4de95bb3ddf6748d" kindref="member">domain_e</ref> &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1263" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1263" bodyend="1266"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1afeefb67e38aa12c404cc9b9e3f60b5da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type><ref refid="namespaceaxi_1a6318752e2d4bb1398307086ebc1421f7" kindref="member">bar_e</ref></type>
+        <definition>bar_e axi::into&lt; bar_e &gt;</definition>
+        <argsstring>(typename std::underlying_type&lt; bar_e &gt;::type t)</argsstring>
+        <name>into&lt; bar_e &gt;</name>
+        <qualifiedname>axi::into&lt; bar_e &gt;</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; <ref refid="namespaceaxi_1a6318752e2d4bb1398307086ebc1421f7" kindref="member">bar_e</ref> &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1268" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1268" bodyend="1271"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a69665b2945f18b7d571d9bef74f993fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type><ref refid="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212" kindref="member">snoop_e</ref></type>
+        <definition>snoop_e axi::into&lt; snoop_e &gt;</definition>
+        <argsstring>(typename std::underlying_type&lt; snoop_e &gt;::type t)</argsstring>
+        <name>into&lt; snoop_e &gt;</name>
+        <qualifiedname>axi::into&lt; snoop_e &gt;</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; <ref refid="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212" kindref="member">snoop_e</ref> &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1273" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1273" bodyend="1276"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1a2daabf26c8f3731078e2cf67cf7de6b8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type><ref refid="namespaceaxi_1aedd3cd54df738e346b6f61786117fdc8" kindref="member">resp_e</ref></type>
+        <definition>resp_e axi::into&lt; resp_e &gt;</definition>
+        <argsstring>(typename std::underlying_type&lt; resp_e &gt;::type t)</argsstring>
+        <name>into&lt; resp_e &gt;</name>
+        <qualifiedname>axi::into&lt; resp_e &gt;</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; <ref refid="namespaceaxi_1aedd3cd54df738e346b6f61786117fdc8" kindref="member">resp_e</ref> &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="1278" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1278" bodyend="1281"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>TLM2.0 components modeling AHB. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>SCV components for AXI/ACE.</para>
+<para>LWTR components for AXI/ACE.</para>
+<para>TLM2.0 components modeling AXI/ACE.</para>
+<para>TLM2.0 components modeling AXI. </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="30" column="1"/>
+  </compounddef>
+</doxygen>

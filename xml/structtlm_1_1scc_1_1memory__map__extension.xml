@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1memory__map__extension" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::memory_map_extension</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_extension&lt; memory_map_extension &gt;</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1memory__map__extension_1aeaf493d23aa698b34cca30e5e7f35f86" prot="public" static="no" mutable="no">
+        <type><ref refid="structtlm_1_1scc_1_1memory__node" kindref="compound">memory_node</ref> &amp;</type>
+        <definition>memory_node&amp; tlm::scc::memory_map_extension::node</definition>
+        <argsstring></argsstring>
+        <name>node</name>
+        <qualifiedname>tlm::scc::memory_map_extension::node</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" line="50" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1memory__map__extension_1ade2055f90adbd704a9bfdb7008fcc3cb" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t tlm::scc::memory_map_extension::offset</definition>
+        <argsstring></argsstring>
+        <name>offset</name>
+        <qualifiedname>tlm::scc::memory_map_extension::offset</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" line="51" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" bodystart="51" bodyend="51"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1memory__map__extension_1adde3ca26231cef21504e31b2a686881b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm_extension_base *</type>
+        <definition>tlm_extension_base * tlm::scc::memory_map_extension::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <qualifiedname>tlm::scc::memory_map_extension::clone</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" line="43" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1memory__map__extension_1a31bde7c953a47e71b8530ba15c7beaea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::memory_map_extension::copy_from</definition>
+        <argsstring>(tlm_extension_base const &amp;from) override</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>tlm::scc::memory_map_extension::copy_from</qualifiedname>
+        <param>
+          <type>tlm_extension_base const &amp;</type>
+          <declname>from</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" line="44" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1memory__map__extension_1aa3d98a1e489f97f97f0bd7c611bbb09c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::memory_map_extension::memory_map_extension</definition>
+        <argsstring>(memory_node &amp;node)</argsstring>
+        <name>memory_map_extension</name>
+        <qualifiedname>tlm::scc::memory_map_extension::memory_map_extension</qualifiedname>
+        <param>
+          <type><ref refid="structtlm_1_1scc_1_1memory__node" kindref="compound">memory_node</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" line="46" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" bodystart="46" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1memory__map__extension_1abeecebb322a591304c5f0876a4489fc8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::memory_map_extension::~memory_map_extension</definition>
+        <argsstring>()</argsstring>
+        <name>~memory_map_extension</name>
+        <qualifiedname>tlm::scc::memory_map_extension::~memory_map_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" line="48" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" bodystart="48" bodyend="48"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::scc::memory_map_extension</label>
+        <link refid="structtlm_1_1scc_1_1memory__map__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; memory_map_extension &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::scc::memory_map_extension</label>
+        <link refid="structtlm_1_1scc_1_1memory__map__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::scc::memory_node</label>
+        <link refid="structtlm_1_1scc_1_1memory__node"/>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; memory_map_extension &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" line="42" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" bodystart="42" bodyend="52"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1memory__map__extension_1adde3ca26231cef21504e31b2a686881b" prot="public" virt="non-virtual"><scope>tlm::scc::memory_map_extension</scope><name>clone</name></member>
+      <member refid="structtlm_1_1scc_1_1memory__map__extension_1a31bde7c953a47e71b8530ba15c7beaea" prot="public" virt="non-virtual"><scope>tlm::scc::memory_map_extension</scope><name>copy_from</name></member>
+      <member refid="structtlm_1_1scc_1_1memory__map__extension_1aa3d98a1e489f97f97f0bd7c611bbb09c" prot="public" virt="non-virtual"><scope>tlm::scc::memory_map_extension</scope><name>memory_map_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1memory__map__extension_1aeaf493d23aa698b34cca30e5e7f35f86" prot="public" virt="non-virtual"><scope>tlm::scc::memory_map_extension</scope><name>node</name></member>
+      <member refid="structtlm_1_1scc_1_1memory__map__extension_1ade2055f90adbd704a9bfdb7008fcc3cb" prot="public" virt="non-virtual"><scope>tlm::scc::memory_map_extension</scope><name>offset</name></member>
+      <member refid="structtlm_1_1scc_1_1memory__map__extension_1abeecebb322a591304c5f0876a4489fc8" prot="public" virt="non-virtual"><scope>tlm::scc::memory_map_extension</scope><name>~memory_map_extension</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

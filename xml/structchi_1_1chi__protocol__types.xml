@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structchi_1_1chi__protocol__types" kind="struct" language="C++" prot="public">
+    <compoundname>chi::chi_protocol_types</compoundname>
+    <includes refid="chi__tlm_8h" local="no">chi_tlm.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structchi_1_1chi__protocol__types_1a0f9b816bdc5e10a1955fe2432f818790" prot="public" static="no">
+        <type><ref refid="namespacechi_1aaeb521d84ce6dc0d26b127ea298045ca" kindref="member">chi_payload</ref></type>
+        <definition>typedef chi_payload chi::chi_protocol_types::tlm_payload_type</definition>
+        <argsstring></argsstring>
+        <name>tlm_payload_type</name>
+        <qualifiedname>chi::chi_protocol_types::tlm_payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="880" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="880" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structchi_1_1chi__protocol__types_1a1979b9457d2326eb017642a700ec4776" prot="public" static="no">
+        <type>chi_phase</type>
+        <definition>typedef chi_phase chi::chi_protocol_types::tlm_phase_type</definition>
+        <argsstring></argsstring>
+        <name>tlm_phase_type</name>
+        <qualifiedname>chi::chi_protocol_types::tlm_phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="881" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="881" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The AXI protocol traits class. Since the protocoll defines additional non-ignorable phases a dedicated protocol traits class has to be defined. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="879" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="879" bodyend="882"/>
+    <listofallmembers>
+      <member refid="structchi_1_1chi__protocol__types_1a0f9b816bdc5e10a1955fe2432f818790" prot="public" virt="non-virtual"><scope>chi::chi_protocol_types</scope><name>tlm_payload_type</name></member>
+      <member refid="structchi_1_1chi__protocol__types_1a1979b9457d2326eb017642a700ec4776" prot="public" virt="non-virtual"><scope>chi::chi_protocol_types</scope><name>tlm_phase_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

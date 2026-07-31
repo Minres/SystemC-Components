@@ -1,0 +1,1008 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1router" kind="class" language="C++" prot="public">
+    <compoundname>scc::router</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <includes refid="router_8h" local="no">router.h</includes>
+    <innerclass refid="structscc_1_1router_1_1range__entry" prot="protected">scc::router::range_entry</innerclass>
+    <templateparamlist>
+      <param>
+        <type>unsigned</type>
+        <declname>BUSWIDTH</declname>
+        <defname>BUSWIDTH</defname>
+        <defval>LT</defval>
+      </param>
+      <param>
+        <type>typename TARGET_SOCKET_TYPE</type>
+        <defval>tlm::tlm_target_socket&lt;BUSWIDTH&gt;</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structscc_1_1router_1a9ad716a7c4aca95ecf11d3d9eee86b99" prot="public" static="no">
+        <type><ref refid="classtlm_1_1scc_1_1initiator__mixin" kindref="compound">tlm::scc::initiator_mixin</ref>&lt; tlm::tlm_initiator_socket&lt; BUSWIDTH &gt; &gt;</type>
+        <definition>using scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::intor_sckt =  tlm::scc::initiator_mixin&lt;tlm::tlm_initiator_socket&lt;BUSWIDTH&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>intor_sckt</name>
+        <qualifiedname>scc::router::intor_sckt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="43" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structscc_1_1router_1af33acd6976cf92bd66952cbab7041848" prot="public" static="no">
+        <type><ref refid="classtlm_1_1scc_1_1target__mixin" kindref="compound">tlm::scc::target_mixin</ref>&lt; TARGET_SOCKET_TYPE &gt;</type>
+        <definition>using scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::target_sckt =  tlm::scc::target_mixin&lt;TARGET_SOCKET_TYPE&gt;</definition>
+        <argsstring></argsstring>
+        <name>target_sckt</name>
+        <qualifiedname>scc::router::target_sckt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="44" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1router_1a8d25a2f668e8ca89cf0bada0cd0ca73b" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_vector&lt; target_sckt &gt;</type>
+        <definition>sc_core::sc_vector&lt;target_sckt&gt; scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::target</definition>
+        <argsstring></argsstring>
+        <name>target</name>
+        <qualifiedname>scc::router::target</qualifiedname>
+        <briefdescription>
+<para>the array of target sockets </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="46" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1router_1af210c7b79e8b4be8f96a4684adc43a9d" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_vector&lt; intor_sckt &gt;</type>
+        <definition>sc_core::sc_vector&lt;intor_sckt&gt; scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::initiator</definition>
+        <argsstring></argsstring>
+        <name>initiator</name>
+        <qualifiedname>scc::router::initiator</qualifiedname>
+        <briefdescription>
+<para>the array of initiator sockets </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="48" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="structscc_1_1router_1adc718f35404605afa068c106dc11e9fe" prot="protected" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::default_idx</definition>
+        <argsstring></argsstring>
+        <name>default_idx</name>
+        <qualifiedname>scc::router::default_idx</qualifiedname>
+        <initializer>= std::numeric_limits&lt;size_t&gt;::max()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="192" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1router_1a08aa08061c6e069bcd6c47bde32af989" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; uint64_t &gt;</type>
+        <definition>std::vector&lt;uint64_t&gt; scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::ibases</definition>
+        <argsstring></argsstring>
+        <name>ibases</name>
+        <qualifiedname>scc::router::ibases</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="193" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1router_1aa7e961e6b363f038c1052177b8739e22" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structscc_1_1router_1_1range__entry" kindref="compound">range_entry</ref> &gt;</type>
+        <definition>std::vector&lt;range_entry&gt; scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::tranges</definition>
+        <argsstring></argsstring>
+        <name>tranges</name>
+        <qualifiedname>scc::router::tranges</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="194" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1router_1aac2952e2464747b06eadf2a893d4e0d5" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; sc_core::sc_mutex &gt;</type>
+        <definition>std::vector&lt;sc_core::sc_mutex&gt; scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::mutexes</definition>
+        <argsstring></argsstring>
+        <name>mutexes</name>
+        <qualifiedname>scc::router::mutexes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="195" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1router_1af219af657e8f2b71d5eb20debd15c1f1" prot="protected" static="no" mutable="no">
+        <type><ref refid="classutil_1_1range__lut" kindref="compound">util::range_lut</ref>&lt; unsigned &gt;</type>
+        <definition>util::range_lut&lt;unsigned&gt; scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::addr_decoder</definition>
+        <argsstring></argsstring>
+        <name>addr_decoder</name>
+        <qualifiedname>scc::router::addr_decoder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="196" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1router_1a459c9dba4564defd1c000795fff3afbe" prot="protected" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, size_t &gt;</type>
+        <definition>std::unordered_map&lt;std::string, size_t&gt; scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::target_name_lut</definition>
+        <argsstring></argsstring>
+        <name>target_name_lut</name>
+        <qualifiedname>scc::router::target_name_lut</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="197" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1router_1aa96b610e32a6e97e4f8c07b9e9659f76" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::check_overlap_on_add_target</definition>
+        <argsstring></argsstring>
+        <name>check_overlap_on_add_target</name>
+        <qualifiedname>scc::router::check_overlap_on_add_target</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="198" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1router_1a56cd84657c48437d2fdc2591de559d01" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::warn_on_address_error</definition>
+        <argsstring></argsstring>
+        <name>warn_on_address_error</name>
+        <qualifiedname>scc::router::warn_on_address_error</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="199" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="199" bodyend="199"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1router_1a1ac98591575bccce289da5c820e8ecae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::router</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm, size_t slave_cnt=1, size_t master_cnt=1, bool check_overlap_on_add_target=false)</argsstring>
+        <name>router</name>
+        <qualifiedname>scc::router::router</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>slave_cnt</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>master_cnt</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>check_overlap_on_add_target</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>constructs a router </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the component name </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>slave_cnt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of slaves to be connected </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>master_cnt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of masters to be connected </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>check_overlap_on_add_target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true this enables validation of overlaps when adding or setting the target range. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="58" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="203" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1router_1a5cf9b1d032fdbed5382505c57f2596d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::~router</definition>
+        <argsstring>()=default</argsstring>
+        <name>~router</name>
+        <qualifiedname>scc::router::~router</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="60" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1router_1a3520b9bd8ae19990a41c1f58c73df364" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename TYPE</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::bind_target</definition>
+        <argsstring>(TYPE &amp;socket, size_t idx, uint64_t base, uint64_t size, bool remap=true)</argsstring>
+        <name>bind_target</name>
+        <qualifiedname>scc::router::bind_target</qualifiedname>
+        <param>
+          <type>TYPE &amp;</type>
+          <declname>socket</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>remap</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>bind the initiator socket of the router to some target giving a base and size </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TYPE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the socket type to bind </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>socket</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the target socket to bind </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of the target </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>base address of the target </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>size of the address range occupied by the target </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>remap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true address will be rewritten in accesses to be 0-based at the target </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="72" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="72" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1router_1a22ea2da96f1e3b890fb35cc7ee40ef27" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename TYPE</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::bind_target</definition>
+        <argsstring>(TYPE &amp;socket, size_t idx, std::string name)</argsstring>
+        <name>bind_target</name>
+        <qualifiedname>scc::router::bind_target</qualifiedname>
+        <param>
+          <type>TYPE &amp;</type>
+          <declname>socket</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>bind the initiator socket of the router to some target and name it </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TYPE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the socket type to bind </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>socket</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the target socket to bind </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of the target </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of the binding </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="85" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="85" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1router_1ad2ee7e08a2ee6e644bb2eb6e52c866d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::set_initiator_base</definition>
+        <argsstring>(size_t idx, uint64_t base)</argsstring>
+        <name>set_initiator_base</name>
+        <qualifiedname>scc::router::set_initiator_base</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>base</declname>
+        </param>
+        <briefdescription>
+<para>define a base address of a socket </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This will be added to the address of each access coming thru this socket</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="98" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="98" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1router_1a58b69845006982a347b7635916177625" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::set_default_target</definition>
+        <argsstring>(size_t idx)</argsstring>
+        <name>set_default_target</name>
+        <qualifiedname>scc::router::set_default_target</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+<para>define the default target socket </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If no target address range is hit the access is routed to this socket. If this is not defined a address error response is generated</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the default target </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="108" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="108" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1router_1a4c5d4657273941220741aa55752c9df0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::set_target_name</definition>
+        <argsstring>(size_t idx, std::string name)</argsstring>
+        <name>set_target_name</name>
+        <qualifiedname>scc::router::set_target_name</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>establish a mapping between socket name and socket index </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index of the socket </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the name of the connection </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="116" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="116" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1router_1a36c44e0876e3ea9f35070bad093dce5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::add_target_range</definition>
+        <argsstring>(std::string name, uint64_t base, uint64_t size, bool remap=true)</argsstring>
+        <name>add_target_range</name>
+        <qualifiedname>scc::router::add_target_range</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>remap</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>establish a mapping between a named socket and a target address range </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>base address of the target </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>size of the address range occupied by the target </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>remap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true address will be rewritten in accesses to be 0-based at the target </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="126" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="243" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1router_1ad1100f5b29696dce62b0520b696bfaef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::set_target_range</definition>
+        <argsstring>(size_t idx, uint64_t base, uint64_t size, bool remap=true)</argsstring>
+        <name>set_target_range</name>
+        <qualifiedname>scc::router::set_target_range</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>remap</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>establish a mapping between a socket and a target address range </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>base address of the target </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>size of the address range occupied by the target </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>remap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true address will be rewritten in accesses to be 0-based at the target </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="136" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="233" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1router_1a4c88ee2c99cbb819e6f50ad59f40312a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::set_warn_on_address_error</definition>
+        <argsstring>(bool enable)</argsstring>
+        <name>set_warn_on_address_error</name>
+        <qualifiedname>scc::router::set_warn_on_address_error</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+<para>enable warning message on address not found error </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true enable warning message </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="143" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="143" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1router_1adf3f9112438782fd0280b678e4824953" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::b_transport</definition>
+        <argsstring>(int i, tlm::tlm_generic_payload &amp;trans, sc_core::sc_time &amp;delay)</argsstring>
+        <name>b_transport</name>
+        <qualifiedname>scc::router::b_transport</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>tagged blocking transport method </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the tag </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the incoming transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the annotated delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="152" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="266" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1router_1a5a4001baef601f280e103718dac4a64c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::get_direct_mem_ptr</definition>
+        <argsstring>(int i, tlm::tlm_generic_payload &amp;trans, tlm::tlm_dmi &amp;dmi_data)</argsstring>
+        <name>get_direct_mem_ptr</name>
+        <qualifiedname>scc::router::get_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_dmi &amp;</type>
+          <declname>dmi_data</declname>
+        </param>
+        <briefdescription>
+<para>tagged forward DMI method </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the tag </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the incoming transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dmi_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="162" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="293" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1router_1a1fe3320f1652acf7190fe111b16ba6c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::transport_dbg</definition>
+        <argsstring>(int i, tlm::tlm_generic_payload &amp;trans)</argsstring>
+        <name>transport_dbg</name>
+        <qualifiedname>scc::router::transport_dbg</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+<para>tagged debug transaction method </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the tag </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the incoming transaction </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="170" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="328" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1router_1a9950b959f6c8b4526c282be1cede4d7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::invalidate_direct_mem_ptr</definition>
+        <argsstring>(int id, ::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range)</argsstring>
+        <name>invalidate_direct_mem_ptr</name>
+        <qualifiedname>scc::router::invalidate_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>::sc_dt::uint64</type>
+          <declname>start_range</declname>
+        </param>
+        <param>
+          <type>::sc_dt::uint64</type>
+          <declname>end_range</declname>
+        </param>
+        <briefdescription>
+<para>tagged backward DMI method </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the tag </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>start_range</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address range start address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end_range</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address range end address </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="179" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="380" bodyend="391"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1router_1aa0d3c1ab7dd0bd84769b7122980a66dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;::end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_elaboration</name>
+        <qualifiedname>scc::router::end_of_elaboration</qualifiedname>
+        <briefdescription>
+<para>tagged end of elaboration callback. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="185" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="392" bodyend="394"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>a TLM2.0 router for loosly-timed (LT) models </para>
+    </briefdescription>
+    <detaileddescription>
+<para>It uses the <ref refid="classtlm_1_1scc_1_1scv_1_1tlm__rec__initiator__socket" kindref="compound">tlm::scc::scv::tlm_rec_initiator_socket</ref> so that incoming and outgoing accesses can be traced using SCV</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>BUSWIDTH</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the width of the bus </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;</label>
+        <link refid="structscc_1_1router"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;</label>
+        <link refid="structscc_1_1router"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>addr_decoder</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>util::range_lut&lt; unsigned &gt;</label>
+        <link refid="classutil_1_1range__lut"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" line="42" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/router.h" bodystart="42" bodyend="200"/>
+    <listofallmembers>
+      <member refid="structscc_1_1router_1a36c44e0876e3ea9f35070bad093dce5e" prot="public" virt="non-virtual"><scope>scc::router</scope><name>add_target_range</name></member>
+      <member refid="structscc_1_1router_1af219af657e8f2b71d5eb20debd15c1f1" prot="protected" virt="non-virtual"><scope>scc::router</scope><name>addr_decoder</name></member>
+      <member refid="structscc_1_1router_1adf3f9112438782fd0280b678e4824953" prot="public" virt="non-virtual"><scope>scc::router</scope><name>b_transport</name></member>
+      <member refid="structscc_1_1router_1a3520b9bd8ae19990a41c1f58c73df364" prot="public" virt="non-virtual"><scope>scc::router</scope><name>bind_target</name></member>
+      <member refid="structscc_1_1router_1a22ea2da96f1e3b890fb35cc7ee40ef27" prot="public" virt="non-virtual"><scope>scc::router</scope><name>bind_target</name></member>
+      <member refid="structscc_1_1router_1aa96b610e32a6e97e4f8c07b9e9659f76" prot="protected" virt="non-virtual"><scope>scc::router</scope><name>check_overlap_on_add_target</name></member>
+      <member refid="structscc_1_1router_1adc718f35404605afa068c106dc11e9fe" prot="protected" virt="non-virtual"><scope>scc::router</scope><name>default_idx</name></member>
+      <member refid="structscc_1_1router_1aa0d3c1ab7dd0bd84769b7122980a66dd" prot="public" virt="non-virtual"><scope>scc::router</scope><name>end_of_elaboration</name></member>
+      <member refid="structscc_1_1router_1a5a4001baef601f280e103718dac4a64c" prot="public" virt="non-virtual"><scope>scc::router</scope><name>get_direct_mem_ptr</name></member>
+      <member refid="structscc_1_1router_1a08aa08061c6e069bcd6c47bde32af989" prot="protected" virt="non-virtual"><scope>scc::router</scope><name>ibases</name></member>
+      <member refid="structscc_1_1router_1af210c7b79e8b4be8f96a4684adc43a9d" prot="public" virt="non-virtual"><scope>scc::router</scope><name>initiator</name></member>
+      <member refid="structscc_1_1router_1a9ad716a7c4aca95ecf11d3d9eee86b99" prot="public" virt="non-virtual"><scope>scc::router</scope><name>intor_sckt</name></member>
+      <member refid="structscc_1_1router_1a9950b959f6c8b4526c282be1cede4d7e" prot="public" virt="non-virtual"><scope>scc::router</scope><name>invalidate_direct_mem_ptr</name></member>
+      <member refid="structscc_1_1router_1aac2952e2464747b06eadf2a893d4e0d5" prot="protected" virt="non-virtual"><scope>scc::router</scope><name>mutexes</name></member>
+      <member refid="structscc_1_1router_1a1ac98591575bccce289da5c820e8ecae" prot="public" virt="non-virtual"><scope>scc::router</scope><name>router</name></member>
+      <member refid="structscc_1_1router_1a58b69845006982a347b7635916177625" prot="public" virt="non-virtual"><scope>scc::router</scope><name>set_default_target</name></member>
+      <member refid="structscc_1_1router_1ad2ee7e08a2ee6e644bb2eb6e52c866d7" prot="public" virt="non-virtual"><scope>scc::router</scope><name>set_initiator_base</name></member>
+      <member refid="structscc_1_1router_1a4c5d4657273941220741aa55752c9df0" prot="public" virt="non-virtual"><scope>scc::router</scope><name>set_target_name</name></member>
+      <member refid="structscc_1_1router_1ad1100f5b29696dce62b0520b696bfaef" prot="public" virt="non-virtual"><scope>scc::router</scope><name>set_target_range</name></member>
+      <member refid="structscc_1_1router_1a4c88ee2c99cbb819e6f50ad59f40312a" prot="public" virt="non-virtual"><scope>scc::router</scope><name>set_warn_on_address_error</name></member>
+      <member refid="structscc_1_1router_1a8d25a2f668e8ca89cf0bada0cd0ca73b" prot="public" virt="non-virtual"><scope>scc::router</scope><name>target</name></member>
+      <member refid="structscc_1_1router_1a459c9dba4564defd1c000795fff3afbe" prot="protected" virt="non-virtual"><scope>scc::router</scope><name>target_name_lut</name></member>
+      <member refid="structscc_1_1router_1af33acd6976cf92bd66952cbab7041848" prot="public" virt="non-virtual"><scope>scc::router</scope><name>target_sckt</name></member>
+      <member refid="structscc_1_1router_1aa7e961e6b363f038c1052177b8739e22" prot="protected" virt="non-virtual"><scope>scc::router</scope><name>tranges</name></member>
+      <member refid="structscc_1_1router_1a1fe3320f1652acf7190fe111b16ba6c9" prot="public" virt="non-virtual"><scope>scc::router</scope><name>transport_dbg</name></member>
+      <member refid="structscc_1_1router_1a56cd84657c48437d2fdc2591de559d01" prot="protected" virt="non-virtual"><scope>scc::router</scope><name>warn_on_address_error</name></member>
+      <member refid="structscc_1_1router_1a5cf9b1d032fdbed5382505c57f2596d9" prot="public" virt="non-virtual"><scope>scc::router</scope><name>~router</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1050 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS" kind="struct" language="C++" prot="public">
+    <compoundname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</compoundname>
+    <basecompoundref prot="private" virt="non-virtual">flatbuffers::Table</basecompoundref>
+    <basecompoundref prot="private" virt="non-virtual">flatbuffers::Table</basecompoundref>
+    <basecompoundref prot="private" virt="non-virtual">flatbuffers::Table</basecompoundref>
+    <basecompoundref prot="private" virt="non-virtual">flatbuffers::Table</basecompoundref>
+    <basecompoundref prot="private" virt="non-virtual">flatbuffers::Table</basecompoundref>
+    <basecompoundref prot="private" virt="non-virtual">flatbuffers::Table</basecompoundref>
+    <basecompoundref prot="private" virt="non-virtual">flatbuffers::Table</basecompoundref>
+    <basecompoundref prot="private" virt="non-virtual">flatbuffers::Table</basecompoundref>
+    <basecompoundref prot="private" virt="non-virtual">flatbuffers::Table</basecompoundref>
+    <basecompoundref prot="private" virt="non-virtual">flatbuffers::Table</basecompoundref>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a30b39751ac1bbeba9a710975f8842e34" prot="public" static="no">
+        <type><ref refid="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder" kindref="compound">NotifyEndpointMsgBuilder</ref></type>
+        <definition>typedef NotifyEndpointMsgBuilder scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</definition>
+        <argsstring></argsstring>
+        <name>Builder</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="192" column="38" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ac903a4e7bcd8990662ed7df1b3453373" prot="public" static="no">
+        <type><ref refid="structscc_1_1tcp4tlm_1_1NotifyShutdownMsgBuilder" kindref="compound">NotifyShutdownMsgBuilder</ref></type>
+        <definition>typedef NotifyShutdownMsgBuilder scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</definition>
+        <argsstring></argsstring>
+        <name>Builder</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="238" column="38" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="238" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1e0423d3fa55f13b535430b10e4d9fd9" prot="public" static="no">
+        <type><ref refid="structscc_1_1tcp4tlm_1_1SyncMsgBuilder" kindref="compound">SyncMsgBuilder</ref></type>
+        <definition>typedef SyncMsgBuilder scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</definition>
+        <argsstring></argsstring>
+        <name>Builder</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="269" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="269" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1acf8573fd93f29f2d15ab6d56d6a15dd1" prot="public" static="no">
+        <type><ref refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder" kindref="compound">BusOpMsgBuilder</ref></type>
+        <definition>typedef BusOpMsgBuilder scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</definition>
+        <argsstring></argsstring>
+        <name>Builder</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="304" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="304" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a557458b5bec0f62b82252054d85cd2b5" prot="public" static="no">
+        <type><ref refid="structscc_1_1tcp4tlm_1_1ResponseMsgBuilder" kindref="compound">ResponseMsgBuilder</ref></type>
+        <definition>typedef ResponseMsgBuilder scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</definition>
+        <argsstring></argsstring>
+        <name>Builder</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="396" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="396" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1aa77b079c45fdfd97760d6e5b9326de78" prot="public" static="no">
+        <type><ref refid="structscc_1_1tcp4tlm_1_1BusDataMsgBuilder" kindref="compound">BusDataMsgBuilder</ref></type>
+        <definition>typedef BusDataMsgBuilder scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</definition>
+        <argsstring></argsstring>
+        <name>Builder</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="435" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="435" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a6dd0b9bcc1dea37c51fbcfe7eb743cc3" prot="public" static="no">
+        <type><ref refid="structscc_1_1tcp4tlm_1_1SigOpMsgBuilder" kindref="compound">SigOpMsgBuilder</ref></type>
+        <definition>typedef SigOpMsgBuilder scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</definition>
+        <argsstring></argsstring>
+        <name>Builder</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="486" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="486" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a6ac65dfda44cd20dfce77a9d85d74748" prot="public" static="no">
+        <type><ref refid="structscc_1_1tcp4tlm_1_1LogMsgBuilder" kindref="compound">LogMsgBuilder</ref></type>
+        <definition>typedef LogMsgBuilder scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</definition>
+        <argsstring></argsstring>
+        <name>Builder</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="529" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="529" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1c66ed4f004f15e5ca2d7d16a6d5239d" prot="public" static="no">
+        <type><ref refid="structscc_1_1tcp4tlm_1_1RequestEnvelopeBuilder" kindref="compound">RequestEnvelopeBuilder</ref></type>
+        <definition>typedef RequestEnvelopeBuilder scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</definition>
+        <argsstring></argsstring>
+        <name>Builder</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="571" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="571" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a3b57b60fbcfd0778e0a2bc11bb3aa7d4" prot="public" static="no">
+        <type><ref refid="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder" kindref="compound">ResponseEnvelopeBuilder</ref></type>
+        <definition>typedef ResponseEnvelopeBuilder scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</definition>
+        <argsstring></argsstring>
+        <name>Builder</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Builder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="655" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="655" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ae8be1ef59185fc763c0ea3b97c165623" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::id</definition>
+        <argsstring>() const</argsstring>
+        <name>id</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="194" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="194" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a71aa7c9fe37b1abd5566f4e317e06b10" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const ::flatbuffers::String *</type>
+        <definition>const ::flatbuffers::String * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::hostname</definition>
+        <argsstring>() const</argsstring>
+        <name>hostname</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::hostname</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="195" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="195" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a96d16274f34610382d9020a2eabfdf80" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::port</definition>
+        <argsstring>() const</argsstring>
+        <name>port</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::port</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="196" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="196" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</definition>
+        <argsstring>(::flatbuffers::Verifier &amp;verifier) const</argsstring>
+        <name>Verify</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</qualifiedname>
+        <param>
+          <type>::flatbuffers::Verifier &amp;</type>
+          <declname>verifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="197" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="197" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ae8be1ef59185fc763c0ea3b97c165623" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::id</definition>
+        <argsstring>() const</argsstring>
+        <name>id</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="240" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="240" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</definition>
+        <argsstring>(::flatbuffers::Verifier &amp;verifier) const</argsstring>
+        <name>Verify</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</qualifiedname>
+        <param>
+          <type>::flatbuffers::Verifier &amp;</type>
+          <declname>verifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="241" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="241" bodyend="243"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ae8be1ef59185fc763c0ea3b97c165623" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::id</definition>
+        <argsstring>() const</argsstring>
+        <name>id</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="271" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="271" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a3da8d80fd35c1dfb3ad27ce215e0bea5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::time_stamp</definition>
+        <argsstring>() const</argsstring>
+        <name>time_stamp</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::time_stamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="272" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="272" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</definition>
+        <argsstring>(::flatbuffers::Verifier &amp;verifier) const</argsstring>
+        <name>Verify</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</qualifiedname>
+        <param>
+          <type>::flatbuffers::Verifier &amp;</type>
+          <declname>verifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="273" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="273" bodyend="276"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ae8be1ef59185fc763c0ea3b97c165623" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::id</definition>
+        <argsstring>() const</argsstring>
+        <name>id</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="317" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="317" bodyend="317"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a3da8d80fd35c1dfb3ad27ce215e0bea5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::time_stamp</definition>
+        <argsstring>() const</argsstring>
+        <name>time_stamp</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::time_stamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="318" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="318" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a95e4d4fdb72e8393435483157e5799a2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::time_offset</definition>
+        <argsstring>() const</argsstring>
+        <name>time_offset</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::time_offset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="319" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="319" bodyend="319"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a6673f0a09a83368b95090a9b7d81ef05" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>scc::tcp4tlm::BusAccessType</type>
+        <definition>scc::tcp4tlm::BusAccessType scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::type</definition>
+        <argsstring>() const</argsstring>
+        <name>type</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="320" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="320" bodyend="320"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ad001942f27f7c7bd765e27781485232f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::index</definition>
+        <argsstring>() const</argsstring>
+        <name>index</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="321" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="321" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1afa0843059ab3b11235df5e922752196d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::address</definition>
+        <argsstring>() const</argsstring>
+        <name>address</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::address</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="322" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="322" bodyend="322"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1af544f33a3cd58c7649d623bc38bad049" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="323" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="323" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a97a883fc5c218a5dbcf5a0158863f726" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::no_response</definition>
+        <argsstring>() const</argsstring>
+        <name>no_response</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::no_response</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="324" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="324" bodyend="324"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a07cff5e36558db49e7cfcdf209d01d85" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const ::flatbuffers::Vector&lt; uint8_t &gt; *</type>
+        <definition>const ::flatbuffers::Vector&lt; uint8_t &gt; * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::data</definition>
+        <argsstring>() const</argsstring>
+        <name>data</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="325" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="325" bodyend="325"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ae6480a0bb2b61e096f3bd970f11c981c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const ::flatbuffers::Vector&lt; uint8_t &gt; *</type>
+        <definition>const ::flatbuffers::Vector&lt; uint8_t &gt; * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::byte_enable</definition>
+        <argsstring>() const</argsstring>
+        <name>byte_enable</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::byte_enable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="326" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="326" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</definition>
+        <argsstring>(::flatbuffers::Verifier &amp;verifier) const</argsstring>
+        <name>Verify</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</qualifiedname>
+        <param>
+          <type>::flatbuffers::Verifier &amp;</type>
+          <declname>verifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="327" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="327" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a048c01c409df78b656c5b0d2b05dbce9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>scc::tcp4tlm::ResponseStatus</type>
+        <definition>scc::tcp4tlm::ResponseStatus scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::status</definition>
+        <argsstring>() const</argsstring>
+        <name>status</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::status</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="398" column="34" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="398" bodyend="398"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1abeb33a93f2606f94f4562baeee4d5fc3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::req_id</definition>
+        <argsstring>() const</argsstring>
+        <name>req_id</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::req_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="399" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="399" bodyend="399"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</definition>
+        <argsstring>(::flatbuffers::Verifier &amp;verifier) const</argsstring>
+        <name>Verify</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</qualifiedname>
+        <param>
+          <type>::flatbuffers::Verifier &amp;</type>
+          <declname>verifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="400" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="400" bodyend="403"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a048c01c409df78b656c5b0d2b05dbce9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>scc::tcp4tlm::ResponseStatus</type>
+        <definition>scc::tcp4tlm::ResponseStatus scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::status</definition>
+        <argsstring>() const</argsstring>
+        <name>status</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::status</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="437" column="34" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="437" bodyend="437"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1abeb33a93f2606f94f4562baeee4d5fc3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::req_id</definition>
+        <argsstring>() const</argsstring>
+        <name>req_id</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::req_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="438" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="438" bodyend="438"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a07cff5e36558db49e7cfcdf209d01d85" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const ::flatbuffers::Vector&lt; uint8_t &gt; *</type>
+        <definition>const ::flatbuffers::Vector&lt; uint8_t &gt; * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::data</definition>
+        <argsstring>() const</argsstring>
+        <name>data</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="439" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="439" bodyend="439"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</definition>
+        <argsstring>(::flatbuffers::Verifier &amp;verifier) const</argsstring>
+        <name>Verify</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</qualifiedname>
+        <param>
+          <type>::flatbuffers::Verifier &amp;</type>
+          <declname>verifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="440" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="440" bodyend="444"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ae8be1ef59185fc763c0ea3b97c165623" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::id</definition>
+        <argsstring>() const</argsstring>
+        <name>id</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="488" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="488" bodyend="488"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a3da8d80fd35c1dfb3ad27ce215e0bea5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::time_stamp</definition>
+        <argsstring>() const</argsstring>
+        <name>time_stamp</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::time_stamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="489" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="489" bodyend="489"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ad001942f27f7c7bd765e27781485232f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::index</definition>
+        <argsstring>() const</argsstring>
+        <name>index</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="490" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="490" bodyend="490"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ab7f3a6aedf6dea83cc5b87ac63967305" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::value</definition>
+        <argsstring>() const</argsstring>
+        <name>value</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="491" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="491" bodyend="491"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</definition>
+        <argsstring>(::flatbuffers::Verifier &amp;verifier) const</argsstring>
+        <name>Verify</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</qualifiedname>
+        <param>
+          <type>::flatbuffers::Verifier &amp;</type>
+          <declname>verifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="492" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="492" bodyend="496"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ae8be1ef59185fc763c0ea3b97c165623" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::id</definition>
+        <argsstring>() const</argsstring>
+        <name>id</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="531" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="531" bodyend="531"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a0943d4619ff51f8295fc5470d49fed25" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const ::flatbuffers::String *</type>
+        <definition>const ::flatbuffers::String * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::msg</definition>
+        <argsstring>() const</argsstring>
+        <name>msg</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::msg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="532" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="532" bodyend="532"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</definition>
+        <argsstring>(::flatbuffers::Verifier &amp;verifier) const</argsstring>
+        <name>Verify</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</qualifiedname>
+        <param>
+          <type>::flatbuffers::Verifier &amp;</type>
+          <declname>verifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="533" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="533" bodyend="536"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1aa01a7f76936bd51e5752d55335444277" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>scc::tcp4tlm::RequestPayload</type>
+        <definition>scc::tcp4tlm::RequestPayload scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_type</definition>
+        <argsstring>() const</argsstring>
+        <name>payload_type</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="573" column="34" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="573" bodyend="575"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ace5f3b40784a50a48af049dd5b337694" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const void *</type>
+        <definition>const void * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload</definition>
+        <argsstring>() const</argsstring>
+        <name>payload</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="576" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="576" bodyend="576"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a59e68bada342b38fb4fc4f0975e22e51" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>const T *</type>
+        <definition>const T * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as</definition>
+        <argsstring>() const</argsstring>
+        <name>payload_as</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="577" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ad242a69b763d08db9d73be09a3aabded" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const scc::tcp4tlm::NotifyEndpointMsg *</type>
+        <definition>const scc::tcp4tlm::NotifyEndpointMsg * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as_NotifyEndpointMsg</definition>
+        <argsstring>() const</argsstring>
+        <name>payload_as_NotifyEndpointMsg</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as_NotifyEndpointMsg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="578" column="43" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="578" bodyend="582"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a215f296771a49e7e0f489ba4d28870c7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const scc::tcp4tlm::NotifyShutdownMsg *</type>
+        <definition>const scc::tcp4tlm::NotifyShutdownMsg * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as_NotifyShutdownMsg</definition>
+        <argsstring>() const</argsstring>
+        <name>payload_as_NotifyShutdownMsg</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as_NotifyShutdownMsg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="583" column="43" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="583" bodyend="587"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ac6546888cf698d343ca803ab462b9a77" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const scc::tcp4tlm::SyncMsg *</type>
+        <definition>const scc::tcp4tlm::SyncMsg * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as_SyncMsg</definition>
+        <argsstring>() const</argsstring>
+        <name>payload_as_SyncMsg</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as_SyncMsg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="588" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="588" bodyend="590"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ab8b2045034d3ba5cdadd6ccbd6371e41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const scc::tcp4tlm::BusOpMsg *</type>
+        <definition>const scc::tcp4tlm::BusOpMsg * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as_BusOpMsg</definition>
+        <argsstring>() const</argsstring>
+        <name>payload_as_BusOpMsg</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as_BusOpMsg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="591" column="34" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="591" bodyend="593"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ad69322ba8467eb851320c44ada51a491" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const scc::tcp4tlm::SigOpMsg *</type>
+        <definition>const scc::tcp4tlm::SigOpMsg * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as_SigOpMsg</definition>
+        <argsstring>() const</argsstring>
+        <name>payload_as_SigOpMsg</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as_SigOpMsg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="594" column="34" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="594" bodyend="596"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a475958f96e0c66a30c636678b51f2dd4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const scc::tcp4tlm::LogMsg *</type>
+        <definition>const scc::tcp4tlm::LogMsg * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as_LogMsg</definition>
+        <argsstring>() const</argsstring>
+        <name>payload_as_LogMsg</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as_LogMsg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="597" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="597" bodyend="599"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</definition>
+        <argsstring>(::flatbuffers::Verifier &amp;verifier) const</argsstring>
+        <name>Verify</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</qualifiedname>
+        <param>
+          <type>::flatbuffers::Verifier &amp;</type>
+          <declname>verifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="600" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="600" bodyend="603"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1acb0ac7c7d33b4510d5a56fe0fa673e7f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>scc::tcp4tlm::ResponsePayload</type>
+        <definition>scc::tcp4tlm::ResponsePayload scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_type</definition>
+        <argsstring>() const</argsstring>
+        <name>payload_type</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="657" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="657" bodyend="659"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ace5f3b40784a50a48af049dd5b337694" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const void *</type>
+        <definition>const void * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload</definition>
+        <argsstring>() const</argsstring>
+        <name>payload</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="660" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="660" bodyend="660"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a59e68bada342b38fb4fc4f0975e22e51" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>const T *</type>
+        <definition>const T * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as</definition>
+        <argsstring>() const</argsstring>
+        <name>payload_as</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="661" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1acf20dc970f1b90b1b08413877289ee6c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const scc::tcp4tlm::ResponseMsg *</type>
+        <definition>const scc::tcp4tlm::ResponseMsg * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as_ResponseMsg</definition>
+        <argsstring>() const</argsstring>
+        <name>payload_as_ResponseMsg</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as_ResponseMsg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="662" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="662" bodyend="665"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1abfaacece3666fae648acd64fa4e85a0b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const scc::tcp4tlm::BusDataMsg *</type>
+        <definition>const scc::tcp4tlm::BusDataMsg * scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as_BusDataMsg</definition>
+        <argsstring>() const</argsstring>
+        <name>payload_as_BusDataMsg</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::payload_as_BusDataMsg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="666" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="666" bodyend="669"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</definition>
+        <argsstring>(::flatbuffers::Verifier &amp;verifier) const</argsstring>
+        <name>Verify</name>
+        <qualifiedname>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS::Verify</qualifiedname>
+        <param>
+          <type>::flatbuffers::Verifier &amp;</type>
+          <declname>verifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="670" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="670" bodyend="673"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>flatbuffers::Table</label>
+      </node>
+      <node id="1">
+        <label>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</label>
+        <link refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>flatbuffers::Table</label>
+      </node>
+      <node id="1">
+        <label>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</label>
+        <link refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="191" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="191" bodyend="201"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1afa0843059ab3b11235df5e922752196d" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>address</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a30b39751ac1bbeba9a710975f8842e34" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Builder</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ac903a4e7bcd8990662ed7df1b3453373" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Builder</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1e0423d3fa55f13b535430b10e4d9fd9" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Builder</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1acf8573fd93f29f2d15ab6d56d6a15dd1" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Builder</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a557458b5bec0f62b82252054d85cd2b5" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Builder</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1aa77b079c45fdfd97760d6e5b9326de78" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Builder</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a6dd0b9bcc1dea37c51fbcfe7eb743cc3" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Builder</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a6ac65dfda44cd20dfce77a9d85d74748" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Builder</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1c66ed4f004f15e5ca2d7d16a6d5239d" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Builder</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a3b57b60fbcfd0778e0a2bc11bb3aa7d4" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Builder</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ae6480a0bb2b61e096f3bd970f11c981c" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>byte_enable</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a07cff5e36558db49e7cfcdf209d01d85" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>data</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a07cff5e36558db49e7cfcdf209d01d85" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>data</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a71aa7c9fe37b1abd5566f4e317e06b10" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>hostname</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ae8be1ef59185fc763c0ea3b97c165623" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>id</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ae8be1ef59185fc763c0ea3b97c165623" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>id</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ae8be1ef59185fc763c0ea3b97c165623" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>id</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ae8be1ef59185fc763c0ea3b97c165623" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>id</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ae8be1ef59185fc763c0ea3b97c165623" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>id</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ae8be1ef59185fc763c0ea3b97c165623" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>id</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ad001942f27f7c7bd765e27781485232f" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>index</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ad001942f27f7c7bd765e27781485232f" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>index</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a0943d4619ff51f8295fc5470d49fed25" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>msg</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a97a883fc5c218a5dbcf5a0158863f726" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>no_response</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ace5f3b40784a50a48af049dd5b337694" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>payload</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ace5f3b40784a50a48af049dd5b337694" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>payload</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a59e68bada342b38fb4fc4f0975e22e51" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>payload_as</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a59e68bada342b38fb4fc4f0975e22e51" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>payload_as</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1abfaacece3666fae648acd64fa4e85a0b" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>payload_as_BusDataMsg</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ab8b2045034d3ba5cdadd6ccbd6371e41" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>payload_as_BusOpMsg</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a475958f96e0c66a30c636678b51f2dd4" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>payload_as_LogMsg</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ad242a69b763d08db9d73be09a3aabded" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>payload_as_NotifyEndpointMsg</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a215f296771a49e7e0f489ba4d28870c7" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>payload_as_NotifyShutdownMsg</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1acf20dc970f1b90b1b08413877289ee6c" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>payload_as_ResponseMsg</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ad69322ba8467eb851320c44ada51a491" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>payload_as_SigOpMsg</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ac6546888cf698d343ca803ab462b9a77" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>payload_as_SyncMsg</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1aa01a7f76936bd51e5752d55335444277" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>payload_type</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1acb0ac7c7d33b4510d5a56fe0fa673e7f" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>payload_type</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a96d16274f34610382d9020a2eabfdf80" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>port</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1abeb33a93f2606f94f4562baeee4d5fc3" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>req_id</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1abeb33a93f2606f94f4562baeee4d5fc3" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>req_id</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1af544f33a3cd58c7649d623bc38bad049" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>size</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a048c01c409df78b656c5b0d2b05dbce9" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>status</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a048c01c409df78b656c5b0d2b05dbce9" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>status</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a95e4d4fdb72e8393435483157e5799a2" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>time_offset</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a3da8d80fd35c1dfb3ad27ce215e0bea5" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>time_stamp</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a3da8d80fd35c1dfb3ad27ce215e0bea5" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>time_stamp</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a3da8d80fd35c1dfb3ad27ce215e0bea5" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>time_stamp</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a6673f0a09a83368b95090a9b7d81ef05" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>type</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1ab7f3a6aedf6dea83cc5b87ac63967305" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>value</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Verify</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Verify</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Verify</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Verify</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Verify</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Verify</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Verify</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Verify</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Verify</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS_1a1b4c04cd2a646df38da65fc07370d457" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</scope><name>Verify</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

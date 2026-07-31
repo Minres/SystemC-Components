@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_be04617272aece3468352586f0f1ec2c" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/common/util</compoundname>
+    <innerfile refid="bit__field_8h">bit_field.h</innerfile>
+    <innerfile refid="bzip2__streambuf_8cpp">bzip2_streambuf.cpp</innerfile>
+    <innerfile refid="bzip2__streambuf_8h">bzip2_streambuf.h</innerfile>
+    <innerfile refid="defer_8h">defer.h</innerfile>
+    <innerfile refid="delegate_8h">delegate.h</innerfile>
+    <innerfile refid="elf_8cpp">elf.cpp</innerfile>
+    <innerfile refid="elf_8h">elf.h</innerfile>
+    <innerfile refid="gzip__streambuf_8cpp">gzip_streambuf.cpp</innerfile>
+    <innerfile refid="gzip__streambuf_8h">gzip_streambuf.h</innerfile>
+    <innerfile refid="ihex_8cpp">ihex.cpp</innerfile>
+    <innerfile refid="ihex_8h">ihex.h</innerfile>
+    <innerfile refid="instance__logger_8h">instance_logger.h</innerfile>
+    <innerfile refid="io-redirector_8cpp">io-redirector.cpp</innerfile>
+    <innerfile refid="io-redirector_8h">io-redirector.h</innerfile>
+    <innerfile refid="ities_8h">ities.h</innerfile>
+    <innerfile refid="logging_8h">logging.h</innerfile>
+    <innerfile refid="lz4__streambuf_8cpp">lz4_streambuf.cpp</innerfile>
+    <innerfile refid="lz4__streambuf_8h">lz4_streambuf.h</innerfile>
+    <innerfile refid="common_2util_2mt19937__rng_8h">mt19937_rng.h</innerfile>
+    <innerfile refid="pool__allocator_8h">pool_allocator.h</innerfile>
+    <innerfile refid="range__lut_8h">range_lut.h</innerfile>
+    <innerfile refid="ring__buffer_8h">ring_buffer.h</innerfile>
+    <innerfile refid="sccassert_8h">sccassert.h</innerfile>
+    <innerfile refid="sparse__array_8h">sparse_array.h</innerfile>
+    <innerfile refid="strprintf_8h">strprintf.h</innerfile>
+    <innerfile refid="thread__pool_8h">thread_pool.h</innerfile>
+    <innerfile refid="thread__syncronizer_8h">thread_syncronizer.h</innerfile>
+    <innerfile refid="watchdog_8cpp">watchdog.cpp</innerfile>
+    <innerfile refid="watchdog_8h">watchdog.h</innerfile>
+    <innerfile refid="xz__streambuf_8cpp">xz_streambuf.cpp</innerfile>
+    <innerfile refid="xz__streambuf_8h">xz_streambuf.h</innerfile>
+    <innerfile refid="zstd__streambuf_8cpp">zstd_streambuf.cpp</innerfile>
+    <innerfile refid="zstd__streambuf_8h">zstd_streambuf.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,314 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1signal__target__mixin" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::signal_target_mixin</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">BASE_TYPE</basecompoundref>
+    <innerclass refid="classtlm_1_1scc_1_1signal__target__mixin_1_1fw__process__if" prot="private">tlm::scc::signal_target_mixin::fw_process_if</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename BASE_TYPE</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1signal__target__mixin_1a12147a820d05dfb3aa508564daef0170" prot="public" static="no">
+        <type>typename BASE_TYPE::tlm_signal_type</type>
+        <definition>using tlm::scc::signal_target_mixin&lt; BASE_TYPE &gt;::tlm_signal_type =  typename BASE_TYPE::tlm_signal_type</definition>
+        <argsstring></argsstring>
+        <name>tlm_signal_type</name>
+        <qualifiedname>tlm::scc::signal_target_mixin::tlm_signal_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="31" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1signal__target__mixin_1ade08630dccd1f04ee0c929050f7c2384" prot="public" static="no">
+        <type>typename BASE_TYPE::transaction_type</type>
+        <definition>using tlm::scc::signal_target_mixin&lt; BASE_TYPE &gt;::transaction_type =  typename BASE_TYPE::transaction_type</definition>
+        <argsstring></argsstring>
+        <name>transaction_type</name>
+        <qualifiedname>tlm::scc::signal_target_mixin::transaction_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="32" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1signal__target__mixin_1abebc685e44d74f9371a1c9130d66fb7f" prot="public" static="no">
+        <type>typename BASE_TYPE::phase_type</type>
+        <definition>using tlm::scc::signal_target_mixin&lt; BASE_TYPE &gt;::phase_type =  typename BASE_TYPE::phase_type</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>tlm::scc::signal_target_mixin::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="33" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1signal__target__mixin_1ad3393bcc4039a0b41c2471d48b9e63fd" prot="public" static="no">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>using tlm::scc::signal_target_mixin&lt; BASE_TYPE &gt;::sync_enum_type =  tlm::tlm_sync_enum</definition>
+        <argsstring></argsstring>
+        <name>sync_enum_type</name>
+        <qualifiedname>tlm::scc::signal_target_mixin::sync_enum_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="34" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1signal__target__mixin_1a05c50cee77a9cab38b8c5d9fafdf998e" prot="public" static="no">
+        <type><ref refid="structtlm_1_1scc_1_1tlm__signal__fw__transport__if" kindref="compound">tlm_signal_fw_transport_if</ref>&lt; tlm_signal_type, typename BASE_TYPE::protocol_types &gt;</type>
+        <definition>using tlm::scc::signal_target_mixin&lt; BASE_TYPE &gt;::fw_interface_type =  tlm_signal_fw_transport_if&lt;tlm_signal_type, typename BASE_TYPE::protocol_types&gt;</definition>
+        <argsstring></argsstring>
+        <name>fw_interface_type</name>
+        <qualifiedname>tlm::scc::signal_target_mixin::fw_interface_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="35" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1signal__target__mixin_1a4454d2b9d2c427332728e9df04fef46d" prot="public" static="no">
+        <type><ref refid="structtlm_1_1scc_1_1tlm__signal__bw__transport__if" kindref="compound">tlm_signal_bw_transport_if</ref>&lt; tlm_signal_type, typename BASE_TYPE::protocol_types &gt;</type>
+        <definition>using tlm::scc::signal_target_mixin&lt; BASE_TYPE &gt;::bw_interface_type =  tlm_signal_bw_transport_if&lt;tlm_signal_type, typename BASE_TYPE::protocol_types&gt;</definition>
+        <argsstring></argsstring>
+        <name>bw_interface_type</name>
+        <qualifiedname>tlm::scc::signal_target_mixin::bw_interface_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="36" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1signal__target__mixin_1ad666f46af3369e3ecdaac4896e9ef498" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tlm::scc::signal_target_mixin&lt; BASE_TYPE &gt;::error_if_no_callback</definition>
+        <argsstring></argsstring>
+        <name>error_if_no_callback</name>
+        <qualifiedname>tlm::scc::signal_target_mixin::error_if_no_callback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="77" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1signal__target__mixin_1a514025833cb24affe784f8e2375afc88" prot="private" static="no" mutable="no">
+        <type>fw_process_if</type>
+        <definition>fw_process_if tlm::scc::signal_target_mixin&lt; BASE_TYPE &gt;::fw_if</definition>
+        <argsstring></argsstring>
+        <name>fw_if</name>
+        <qualifiedname>tlm::scc::signal_target_mixin::fw_if</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="138" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1signal__target__mixin_1ad278e58ad6bad3ab5f4015c9443d3236" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::signal_target_mixin&lt; BASE_TYPE &gt;::signal_target_mixin</definition>
+        <argsstring>()</argsstring>
+        <name>signal_target_mixin</name>
+        <qualifiedname>tlm::scc::signal_target_mixin::signal_target_mixin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="42" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="42" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1signal__target__mixin_1a92d572942fc65f1140de2bc125cef0d2" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::signal_target_mixin&lt; BASE_TYPE &gt;::signal_target_mixin</definition>
+        <argsstring>(const char *n)</argsstring>
+        <name>signal_target_mixin</name>
+        <qualifiedname>tlm::scc::signal_target_mixin::signal_target_mixin</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="48" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="48" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1signal__target__mixin_1a5b448b096194d2ec78869720a0861237" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::signal_target_mixin&lt; BASE_TYPE &gt;::register_nb_transport</definition>
+        <argsstring>(std::function&lt; sync_enum_type(transaction_type &amp;, phase_type &amp;, sc_core::sc_time &amp;)&gt; cb)</argsstring>
+        <name>register_nb_transport</name>
+        <qualifiedname>tlm::scc::signal_target_mixin::register_nb_transport</qualifiedname>
+        <param>
+          <type>std::function&lt; sync_enum_type(transaction_type &amp;, phase_type &amp;, sc_core::sc_time &amp;)&gt;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="61" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="61" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1signal__target__mixin_1a781d35753fac8b6d4832e32137e9764e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::signal_target_mixin&lt; BASE_TYPE &gt;::register_nb_transport</definition>
+        <argsstring>(std::function&lt; sync_enum_type(unsigned int, transaction_type &amp;, phase_type &amp;, sc_core::sc_time &amp;)&gt; cb, unsigned int tag)</argsstring>
+        <name>register_nb_transport</name>
+        <qualifiedname>tlm::scc::signal_target_mixin::register_nb_transport</qualifiedname>
+        <param>
+          <type>std::function&lt; sync_enum_type(unsigned int, transaction_type &amp;, phase_type &amp;, sc_core::sc_time &amp;)&gt;</type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+<para>register a functor for nb_transport_fw call </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the callback functor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the tag to be used with the functor </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="72" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="72" bodyend="75"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1signal__target__mixin_1adf37a9094fa4663353e1aa7b9ca24625" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sync_enum_type</type>
+        <definition>sync_enum_type tlm::scc::signal_target_mixin&lt; BASE_TYPE &gt;::bw_nb_transport</definition>
+        <argsstring>(transaction_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t)</argsstring>
+        <name>bw_nb_transport</name>
+        <qualifiedname>tlm::scc::signal_target_mixin::bw_nb_transport</qualifiedname>
+        <param>
+          <type>transaction_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="81" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="81" bodyend="83"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BASE_TYPE</label>
+      </node>
+      <node id="1">
+        <label>tlm::scc::signal_target_mixin&lt; BASE_TYPE &gt;</label>
+        <link refid="classtlm_1_1scc_1_1signal__target__mixin"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BASE_TYPE</label>
+      </node>
+      <node id="1">
+        <label>tlm::scc::signal_target_mixin&lt; BASE_TYPE &gt;</label>
+        <link refid="classtlm_1_1scc_1_1signal__target__mixin"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="29" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="29" bodyend="139"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1signal__target__mixin_1a4454d2b9d2c427332728e9df04fef46d" prot="public" virt="non-virtual"><scope>tlm::scc::signal_target_mixin</scope><name>bw_interface_type</name></member>
+      <member refid="classtlm_1_1scc_1_1signal__target__mixin_1adf37a9094fa4663353e1aa7b9ca24625" prot="private" virt="non-virtual"><scope>tlm::scc::signal_target_mixin</scope><name>bw_nb_transport</name></member>
+      <member refid="classtlm_1_1scc_1_1signal__target__mixin_1ad666f46af3369e3ecdaac4896e9ef498" prot="public" virt="non-virtual"><scope>tlm::scc::signal_target_mixin</scope><name>error_if_no_callback</name></member>
+      <member refid="classtlm_1_1scc_1_1signal__target__mixin_1a514025833cb24affe784f8e2375afc88" prot="private" virt="non-virtual"><scope>tlm::scc::signal_target_mixin</scope><name>fw_if</name></member>
+      <member refid="classtlm_1_1scc_1_1signal__target__mixin_1a05c50cee77a9cab38b8c5d9fafdf998e" prot="public" virt="non-virtual"><scope>tlm::scc::signal_target_mixin</scope><name>fw_interface_type</name></member>
+      <member refid="classtlm_1_1scc_1_1signal__target__mixin_1abebc685e44d74f9371a1c9130d66fb7f" prot="public" virt="non-virtual"><scope>tlm::scc::signal_target_mixin</scope><name>phase_type</name></member>
+      <member refid="classtlm_1_1scc_1_1signal__target__mixin_1a5b448b096194d2ec78869720a0861237" prot="public" virt="non-virtual"><scope>tlm::scc::signal_target_mixin</scope><name>register_nb_transport</name></member>
+      <member refid="classtlm_1_1scc_1_1signal__target__mixin_1a781d35753fac8b6d4832e32137e9764e" prot="public" virt="non-virtual"><scope>tlm::scc::signal_target_mixin</scope><name>register_nb_transport</name></member>
+      <member refid="classtlm_1_1scc_1_1signal__target__mixin_1ad278e58ad6bad3ab5f4015c9443d3236" prot="public" virt="non-virtual"><scope>tlm::scc::signal_target_mixin</scope><name>signal_target_mixin</name></member>
+      <member refid="classtlm_1_1scc_1_1signal__target__mixin_1a92d572942fc65f1140de2bc125cef0d2" prot="public" virt="non-virtual"><scope>tlm::scc::signal_target_mixin</scope><name>signal_target_mixin</name></member>
+      <member refid="classtlm_1_1scc_1_1signal__target__mixin_1ad3393bcc4039a0b41c2471d48b9e63fd" prot="public" virt="non-virtual"><scope>tlm::scc::signal_target_mixin</scope><name>sync_enum_type</name></member>
+      <member refid="classtlm_1_1scc_1_1signal__target__mixin_1a12147a820d05dfb3aa508564daef0170" prot="public" virt="non-virtual"><scope>tlm::scc::signal_target_mixin</scope><name>tlm_signal_type</name></member>
+      <member refid="classtlm_1_1scc_1_1signal__target__mixin_1ade08630dccd1f04ee0c929050f7c2384" prot="public" virt="non-virtual"><scope>tlm::scc::signal_target_mixin</scope><name>transaction_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,271 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::scv::tlm_extension_record_registry</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1a5e9759c484b6e626f40db89c6ff64f52" prot="public" static="no">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if" kindref="compound">tlm_extension_record_if</ref> &gt; &gt;</type>
+        <definition>using tlm::scc::scv::tlm_extension_record_registry::recording_vector =  std::vector&lt;std::unique_ptr&lt;tlm_extension_record_if&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>recording_vector</name>
+        <qualifiedname>tlm::scc::scv::tlm_extension_record_registry::recording_vector</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="58" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1a161deaa6962b4e2cb7b79ebec7737240" prot="private" static="no" mutable="no">
+        <type>recording_vector</type>
+        <definition>recording_vector tlm::scc::scv::tlm_extension_record_registry::ext_rec</definition>
+        <argsstring></argsstring>
+        <name>ext_rec</name>
+        <qualifiedname>tlm::scc::scv::tlm_extension_record_registry::ext_rec</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="109" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="109" bodyend="109"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1a98088712b64e0767eb0bd6ffe42b63c5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm_extension_record_registry &amp;</type>
+        <definition>static tlm_extension_record_registry &amp; tlm::scc::scv::tlm_extension_record_registry::get</definition>
+        <argsstring>()</argsstring>
+        <name>get</name>
+        <qualifiedname>tlm::scc::scv::tlm_extension_record_registry::get</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="60" column="42" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="60" bodyend="63"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1aa766842b66dfd7612e304b655e9657e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::scv::tlm_extension_record_registry::register_ext_rec</definition>
+        <argsstring>(size_t id, std::unique_ptr&lt; tlm_extension_record_if &gt; ext)</argsstring>
+        <name>register_ext_rec</name>
+        <qualifiedname>tlm::scc::scv::tlm_extension_record_registry::register_ext_rec</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if" kindref="compound">tlm_extension_record_if</ref> &gt;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="65" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="65" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1ad81978e0b205bfb776f277ebad44ad05" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::scc::scv::tlm_extension_record_registry::is_ext_registered</definition>
+        <argsstring>(size_t id)</argsstring>
+        <name>is_ext_registered</name>
+        <qualifiedname>tlm::scc::scv::tlm_extension_record_registry::is_ext_registered</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="73" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="73" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1a1436aac3c89d5944c8972e961c6e8ed7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t tlm::scc::scv::tlm_extension_record_registry::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>tlm::scc::scv::tlm_extension_record_registry::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="75" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1af5240925e6093b748d1024b9e1448d17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>recording_vector::iterator</type>
+        <definition>recording_vector::iterator tlm::scc::scv::tlm_extension_record_registry::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <qualifiedname>tlm::scc::scv::tlm_extension_record_registry::begin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="77" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1a7242134658c312ff56ef2e167896f7b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>recording_vector::iterator</type>
+        <definition>recording_vector::iterator tlm::scc::scv::tlm_extension_record_registry::end</definition>
+        <argsstring>()</argsstring>
+        <name>end</name>
+        <qualifiedname>tlm::scc::scv::tlm_extension_record_registry::end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="79" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="79" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1a26ececdd18c74a86c1edb9609bcea034" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if" kindref="compound">tlm_extension_record_if</ref> *</type>
+        <definition>tlm_extension_record_if * tlm::scc::scv::tlm_extension_record_registry::operator[]</definition>
+        <argsstring>(size_t n)</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>tlm::scc::scv::tlm_extension_record_registry::operator[]</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="81" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="81" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1a993b468b5371db4c749328770afd05b4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::scv::tlm_extension_record_registry::recordBeginTx</definition>
+        <argsstring>(size_t id, SCVNS scv_tr_handle &amp;handle, tlm::tlm_extension_base *ext, std::string const &amp;prefix=&quot;&quot;)</argsstring>
+        <name>recordBeginTx</name>
+        <qualifiedname>tlm::scc::scv::tlm_extension_record_registry::recordBeginTx</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_extension_base *</type>
+          <declname>ext</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>prefix</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+<para>recording attributes in extensions at the beginning </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="91" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="91" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1aeda147bedcf10e7dd2de777c6b3b4344" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::scv::tlm_extension_record_registry::recordEndTx</definition>
+        <argsstring>(size_t id, SCVNS scv_tr_handle &amp;handle, tlm::tlm_extension_base *ext, std::string const &amp;prefix=&quot;&quot;)</argsstring>
+        <name>recordEndTx</name>
+        <qualifiedname>tlm::scc::scv::tlm_extension_record_registry::recordEndTx</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_extension_base *</type>
+          <declname>ext</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>prefix</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+<para>recording attributes in extensions at the end </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="99" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="99" bodyend="103"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1a27b9e3788d64a3c27a7492f892047487" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::scv::tlm_extension_record_registry::tlm_extension_record_registry</definition>
+        <argsstring>()=default</argsstring>
+        <name>tlm_extension_record_registry</name>
+        <qualifiedname>tlm::scc::scv::tlm_extension_record_registry::tlm_extension_record_registry</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="106" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1aa7657b7761c01196a822fafb1cb29921" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::scv::tlm_extension_record_registry::~tlm_extension_record_registry</definition>
+        <argsstring>()=default</argsstring>
+        <name>~tlm_extension_record_registry</name>
+        <qualifiedname>tlm::scc::scv::tlm_extension_record_registry::~tlm_extension_record_registry</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="107" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="57" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="57" bodyend="110"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1af5240925e6093b748d1024b9e1448d17" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_extension_record_registry</scope><name>begin</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1a7242134658c312ff56ef2e167896f7b0" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_extension_record_registry</scope><name>end</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1a161deaa6962b4e2cb7b79ebec7737240" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_extension_record_registry</scope><name>ext_rec</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1a98088712b64e0767eb0bd6ffe42b63c5" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_extension_record_registry</scope><name>get</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1ad81978e0b205bfb776f277ebad44ad05" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_extension_record_registry</scope><name>is_ext_registered</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1a26ececdd18c74a86c1edb9609bcea034" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_extension_record_registry</scope><name>operator[]</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1a993b468b5371db4c749328770afd05b4" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_extension_record_registry</scope><name>recordBeginTx</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1aeda147bedcf10e7dd2de777c6b3b4344" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_extension_record_registry</scope><name>recordEndTx</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1a5e9759c484b6e626f40db89c6ff64f52" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_extension_record_registry</scope><name>recording_vector</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1aa766842b66dfd7612e304b655e9657e7" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_extension_record_registry</scope><name>register_ext_rec</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1a1436aac3c89d5944c8972e961c6e8ed7" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_extension_record_registry</scope><name>size</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1a27b9e3788d64a3c27a7492f892047487" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_extension_record_registry</scope><name>tlm_extension_record_registry</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__registry_1aa7657b7761c01196a822fafb1cb29921" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_extension_record_registry</scope><name>~tlm_extension_record_registry</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

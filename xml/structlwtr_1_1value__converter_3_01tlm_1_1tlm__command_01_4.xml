@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structlwtr_1_1value__converter_3_01tlm_1_1tlm__command_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>lwtr::value_converter&lt; tlm::tlm_command &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structlwtr_1_1value__converter_3_01tlm_1_1tlm__command_01_4_1a0ec1df7f6b9c4a6d2d30ee3add4a92e1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>value</type>
+        <definition>static value lwtr::value_converter&lt; tlm::tlm_command &gt;::to_value</definition>
+        <argsstring>(tlm::tlm_command v)</argsstring>
+        <name>to_value</name>
+        <qualifiedname>lwtr::value_converter&lt; tlm::tlm_command &gt;::to_value</qualifiedname>
+        <param>
+          <type>tlm::tlm_command</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2.h" line="37" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2.h" bodystart="37" bodyend="48"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2.h" line="36" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2.h" bodystart="36" bodyend="49"/>
+    <listofallmembers>
+      <member refid="structlwtr_1_1value__converter_3_01tlm_1_1tlm__command_01_4_1a0ec1df7f6b9c4a6d2d30ee3add4a92e1" prot="public" virt="non-virtual"><scope>lwtr::value_converter&lt; tlm::tlm_command &gt;</scope><name>to_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

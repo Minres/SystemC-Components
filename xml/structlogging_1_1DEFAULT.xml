@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structlogging_1_1DEFAULT" kind="struct" language="C++" prot="public">
+    <compoundname>logging::DEFAULT</compoundname>
+    <includes refid="logging_8h" local="no">logging.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structlogging_1_1DEFAULT_1a9c53cdd3b5aa78984afd32124a825a02" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>char const  *</type>
+        <definition>char const* logging::DEFAULT::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <qualifiedname>logging::DEFAULT::name</qualifiedname>
+        <initializer>= &quot;default&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="266" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="266" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the default logging category </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="265" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="265" bodyend="267"/>
+    <listofallmembers>
+      <member refid="structlogging_1_1DEFAULT_1a9c53cdd3b5aa78984afd32124a825a02" prot="public" virt="non-virtual"><scope>logging::DEFAULT</scope><name>name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

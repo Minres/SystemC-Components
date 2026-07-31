@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1detail_1_1is__swappable_3_01T_0fN_0e_00_01T_0fN_0e_4" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::detail::is_swappable&lt; T[N], T[N]&gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::integral_constant&lt; bool, decltype(detail::swap_adl_tests::can_swap&lt; T, T &gt;(0))::value &amp;&amp;(!decltype(detail::swap_adl_tests::uses_std&lt; T, T &gt;(0))::value||(std::is_move_assignable&lt; T &gt;::value &amp;&amp;std::is_move_constructible&lt; T &gt;::value))&gt;</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">std::integral_constant&lt; bool, decltype(detail::swap_adl_tests::can_swap&lt; T[N], T[N]&gt;(0))::value &amp;&amp;(!decltype(detail::swap_adl_tests::uses_std&lt; T[N], T[N]&gt;(0))::value||is_swappable&lt; T, T &gt;::value)&gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>std::size_t</type>
+        <declname>N</declname>
+        <defname>N</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>nonstd::detail::is_swappable&lt; T[N], T[N]&gt;</label>
+        <link refid="structnonstd_1_1detail_1_1is__swappable_3_01T_0fN_0e_00_01T_0fN_0e_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::integral_constant&lt; bool, decltype(detail::swap_adl_tests::can_swap&lt; T, T &gt;(0))::value &amp;&amp;(!decltype(detail::swap_adl_tests::uses_std&lt; T, T &gt;(0))::value||(std::is_move_assignable&lt; T &gt;::value &amp;&amp;std::is_move_constructible&lt; T &gt;::value))&gt;</label>
+      </node>
+      <node id="3">
+        <label>std::integral_constant&lt; bool, decltype(detail::swap_adl_tests::can_swap&lt; T[N], T[N]&gt;(0))::value &amp;&amp;(!decltype(detail::swap_adl_tests::uses_std&lt; T[N], T[N]&gt;(0))::value||is_swappable&lt; T, T &gt;::value)&gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>nonstd::detail::is_swappable&lt; T[N], T[N]&gt;</label>
+        <link refid="structnonstd_1_1detail_1_1is__swappable_3_01T_0fN_0e_00_01T_0fN_0e_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::integral_constant&lt; bool, decltype(detail::swap_adl_tests::can_swap&lt; T, T &gt;(0))::value &amp;&amp;(!decltype(detail::swap_adl_tests::uses_std&lt; T, T &gt;(0))::value||(std::is_move_assignable&lt; T &gt;::value &amp;&amp;std::is_move_constructible&lt; T &gt;::value))&gt;</label>
+      </node>
+      <node id="3">
+        <label>std::integral_constant&lt; bool, decltype(detail::swap_adl_tests::can_swap&lt; T[N], T[N]&gt;(0))::value &amp;&amp;(!decltype(detail::swap_adl_tests::uses_std&lt; T[N], T[N]&gt;(0))::value||is_swappable&lt; T, T &gt;::value)&gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="220" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="222" bodyend="222"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

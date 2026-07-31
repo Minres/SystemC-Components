@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classstd_1_1tuple__element_3_01I_00_01TCB__SPAN__NAMESPACE__NAME_1_1span_3_01ElementType_00_01Extent_01_4_01_4" kind="class" language="C++" prot="public">
+    <compoundname>std::tuple_element&lt; I, TCB_SPAN_NAMESPACE_NAME::span&lt; ElementType, Extent &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>size_t</type>
+        <declname>I</declname>
+        <defname>I</defname>
+      </param>
+      <param>
+        <type>typename ElementType</type>
+      </param>
+      <param>
+        <type>size_t</type>
+        <declname>Extent</declname>
+        <defname>Extent</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classstd_1_1tuple__element_3_01I_00_01TCB__SPAN__NAMESPACE__NAME_1_1span_3_01ElementType_00_01Extent_01_4_01_4_1ad528a0814927fbf53188b8915a8203de" prot="public" static="no">
+        <type>ElementType</type>
+        <definition>using std::tuple_element&lt; I, TCB_SPAN_NAMESPACE_NAME::span&lt; ElementType, Extent &gt; &gt;::type =  ElementType</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>std::tuple_element&lt; I, TCB_SPAN_NAMESPACE_NAME::span&lt; ElementType, Extent &gt; &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="469" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="469" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="466" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="466" bodyend="470"/>
+    <listofallmembers>
+      <member refid="classstd_1_1tuple__element_3_01I_00_01TCB__SPAN__NAMESPACE__NAME_1_1span_3_01ElementType_00_01Extent_01_4_01_4_1ad528a0814927fbf53188b8915a8203de" prot="public" virt="non-virtual"><scope>std::tuple_element&lt; I, TCB_SPAN_NAMESPACE_NAME::span&lt; ElementType, Extent &gt; &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

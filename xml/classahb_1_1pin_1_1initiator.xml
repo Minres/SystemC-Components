@@ -1,0 +1,443 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classahb_1_1pin_1_1initiator" kind="class" language="C++" prot="public">
+    <compoundname>ahb::pin::initiator</compoundname>
+    <basecompoundref prot="private" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <innerclass refid="structahb_1_1pin_1_1initiator_1_1data__phase__desc" prot="private">ahb::pin::initiator::data_phase_desc</innerclass>
+    <templateparamlist>
+      <param>
+        <type>unsigned</type>
+        <declname>DATA_WIDTH</declname>
+        <defname>DATA_WIDTH</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ADDR_WIDTH</declname>
+        <defname>ADDR_WIDTH</defname>
+        <defval>32</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classahb_1_1pin_1_1initiator_1aa3422fcde1f7f0cbe50a5d4401409d12" prot="private" static="no">
+        <type>sc_dt::sc_uint&lt; ADDR_WIDTH &gt;</type>
+        <definition>using ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::addr_t =  sc_dt::sc_uint&lt;ADDR_WIDTH&gt;</definition>
+        <argsstring></argsstring>
+        <name>addr_t</name>
+        <qualifiedname>ahb::pin::initiator::addr_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="37" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classahb_1_1pin_1_1initiator_1a81773f2a3aa0ad9b8d598aa12aec3cc3" prot="private" static="no">
+        <type>typename std::conditional&lt; is_larger(DATA_WIDTH), sc_dt::sc_biguint&lt; DATA_WIDTH &gt;, sc_dt::sc_uint&lt; DATA_WIDTH &gt; &gt;::type</type>
+        <definition>using ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::data_t =  typename std::conditional&lt;is_larger(DATA_WIDTH), sc_dt::sc_biguint&lt;DATA_WIDTH&gt;, sc_dt::sc_uint&lt;DATA_WIDTH&gt;&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>data_t</name>
+        <qualifiedname>ahb::pin::initiator::data_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="38" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classahb_1_1pin_1_1initiator_1aff6e2b3c56f38b53c3b3085d156c6f6f" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HCLK_i</definition>
+        <argsstring></argsstring>
+        <name>HCLK_i</name>
+        <qualifiedname>ahb::pin::initiator::HCLK_i</qualifiedname>
+        <initializer>{&quot;HCLK_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="41" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1initiator_1a89bcaced1f9ec1b7c7d41b7af4b216d8" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HRESETn_i</definition>
+        <argsstring></argsstring>
+        <name>HRESETn_i</name>
+        <qualifiedname>ahb::pin::initiator::HRESETn_i</qualifiedname>
+        <initializer>{&quot;HRESETn_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="42" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1initiator_1a0dc7bab434666fa53022fb52bc5699bc" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; addr_t &gt;</type>
+        <definition>sc_core::sc_out&lt;addr_t&gt; ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HADDR_o</definition>
+        <argsstring></argsstring>
+        <name>HADDR_o</name>
+        <qualifiedname>ahb::pin::initiator::HADDR_o</qualifiedname>
+        <initializer>{&quot;HADDR_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="43" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1initiator_1a5de138bc04720ef52facc9f91062bd09" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; sc_dt::sc_uint&lt; 3 &gt; &gt;</type>
+        <definition>sc_core::sc_out&lt;sc_dt::sc_uint&lt;3&gt; &gt; ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HBURST_o</definition>
+        <argsstring></argsstring>
+        <name>HBURST_o</name>
+        <qualifiedname>ahb::pin::initiator::HBURST_o</qualifiedname>
+        <initializer>{&quot;HBURST_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="44" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1initiator_1abcde9a6d7916c6b7d09ba330e5e39eb0" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; bool &gt;</type>
+        <definition>sc_core::sc_out&lt;bool&gt; ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HMASTLOCK_o</definition>
+        <argsstring></argsstring>
+        <name>HMASTLOCK_o</name>
+        <qualifiedname>ahb::pin::initiator::HMASTLOCK_o</qualifiedname>
+        <initializer>{&quot;HMASTLOCK_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="45" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1initiator_1a7afd8183ad489e97469f90ef5958b3ea" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; sc_dt::sc_uint&lt; 4 &gt; &gt;</type>
+        <definition>sc_core::sc_out&lt;sc_dt::sc_uint&lt;4&gt; &gt; ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HPROT_o</definition>
+        <argsstring></argsstring>
+        <name>HPROT_o</name>
+        <qualifiedname>ahb::pin::initiator::HPROT_o</qualifiedname>
+        <initializer>{&quot;HPROT_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="46" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1initiator_1ad1810a1c4a23f803abc9e371df69e1f1" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; sc_dt::sc_uint&lt; 3 &gt; &gt;</type>
+        <definition>sc_core::sc_out&lt;sc_dt::sc_uint&lt;3&gt; &gt; ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HSIZE_o</definition>
+        <argsstring></argsstring>
+        <name>HSIZE_o</name>
+        <qualifiedname>ahb::pin::initiator::HSIZE_o</qualifiedname>
+        <initializer>{&quot;HSIZE_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="47" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1initiator_1a08eaf5c6d283cf4989c846f68d4ecaa0" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; sc_dt::sc_uint&lt; 2 &gt; &gt;</type>
+        <definition>sc_core::sc_out&lt;sc_dt::sc_uint&lt;2&gt; &gt; ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HTRANS_o</definition>
+        <argsstring></argsstring>
+        <name>HTRANS_o</name>
+        <qualifiedname>ahb::pin::initiator::HTRANS_o</qualifiedname>
+        <initializer>{&quot;HTRANS_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="48" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1initiator_1a562cb8a022bb26a1edafeefb12406048" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; data_t &gt;</type>
+        <definition>sc_core::sc_out&lt;data_t&gt; ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HWDATA_o</definition>
+        <argsstring></argsstring>
+        <name>HWDATA_o</name>
+        <qualifiedname>ahb::pin::initiator::HWDATA_o</qualifiedname>
+        <initializer>{&quot;HWDATA_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="49" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1initiator_1a97489e7e662ed65ff9ac7607425f8155" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; bool &gt;</type>
+        <definition>sc_core::sc_out&lt;bool&gt; ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HWRITE_o</definition>
+        <argsstring></argsstring>
+        <name>HWRITE_o</name>
+        <qualifiedname>ahb::pin::initiator::HWRITE_o</qualifiedname>
+        <initializer>{&quot;HWRITE_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="50" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1initiator_1af62c753db0442f171123e62332c2c79a" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; data_t &gt;</type>
+        <definition>sc_core::sc_in&lt;data_t&gt; ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HRDATA_i</definition>
+        <argsstring></argsstring>
+        <name>HRDATA_i</name>
+        <qualifiedname>ahb::pin::initiator::HRDATA_i</qualifiedname>
+        <initializer>{&quot;HRDATA_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="51" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1initiator_1a838255fa868705f41d64a3ad8836f001" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HREADY_i</definition>
+        <argsstring></argsstring>
+        <name>HREADY_i</name>
+        <qualifiedname>ahb::pin::initiator::HREADY_i</qualifiedname>
+        <initializer>{&quot;HREADY_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="52" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1initiator_1a10fde7e2e5f3fa1ac82027482add9d23" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HRESP_i</definition>
+        <argsstring></argsstring>
+        <name>HRESP_i</name>
+        <qualifiedname>ahb::pin::initiator::HRESP_i</qualifiedname>
+        <initializer>{&quot;HRESP_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="53" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1initiator_1ac3889e2c7a241a8cef9ecbf7e5bc844d" prot="public" static="no" mutable="no">
+        <type><ref refid="classtlm_1_1scc_1_1target__mixin" kindref="compound">tlm::scc::target_mixin</ref>&lt; tlm::tlm_target_socket&lt; DATA_WIDTH &gt; &gt;</type>
+        <definition>tlm::scc::target_mixin&lt;tlm::tlm_target_socket&lt;DATA_WIDTH&gt; &gt; ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::tsckt</definition>
+        <argsstring></argsstring>
+        <name>tsckt</name>
+        <qualifiedname>ahb::pin::initiator::tsckt</qualifiedname>
+        <initializer>{&quot;tsckt&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="55" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="55" bodyend="55"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classahb_1_1pin_1_1initiator_1afd78dbb818d8068f091d2417156f3411" prot="private" static="no" mutable="no">
+        <type>tlm_utils::peq_with_get&lt; tlm::tlm_generic_payload &gt;</type>
+        <definition>tlm_utils::peq_with_get&lt;tlm::tlm_generic_payload&gt; ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::inqueue</definition>
+        <argsstring></argsstring>
+        <name>inqueue</name>
+        <qualifiedname>ahb::pin::initiator::inqueue</qualifiedname>
+        <initializer>{&quot;inqueue&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="69" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="69" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1initiator_1ac653bfa897b80c8573b1252edd0ca3ff" prot="private" static="no" mutable="no">
+        <type>tlm_utils::peq_with_get&lt; tlm::tlm_generic_payload &gt;</type>
+        <definition>tlm_utils::peq_with_get&lt;tlm::tlm_generic_payload&gt; ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::tx_in_flight</definition>
+        <argsstring></argsstring>
+        <name>tx_in_flight</name>
+        <qualifiedname>ahb::pin::initiator::tx_in_flight</qualifiedname>
+        <initializer>{&quot;tx_in_flight&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="70" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="70" bodyend="70"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classahb_1_1pin_1_1initiator_1a29f8288d3daaa612d153eb54edd35d93" prot="private" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static constexpr bool ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::is_larger</definition>
+        <argsstring>(unsigned x)</argsstring>
+        <name>is_larger</name>
+        <qualifiedname>ahb::pin::initiator::is_larger</qualifiedname>
+        <param>
+          <type>unsigned</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="36" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="36" bodyend="36"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classahb_1_1pin_1_1initiator_1a2fd4025381cdd4b918aa2f2a67d606d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::initiator</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm)</argsstring>
+        <name>initiator</name>
+        <qualifiedname>ahb::pin::initiator::initiator</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="57" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="77" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pin_1_1initiator_1af82cf8408b203e19489144a17ca75c76" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::~initiator</definition>
+        <argsstring>()=default</argsstring>
+        <name>~initiator</name>
+        <qualifiedname>ahb::pin::initiator::~initiator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="58" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classahb_1_1pin_1_1initiator_1ab1c67b43207beba6895f321948a50131" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::bus_addr_task</definition>
+        <argsstring>()</argsstring>
+        <name>bus_addr_task</name>
+        <qualifiedname>ahb::pin::initiator::bus_addr_task</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="66" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="99" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pin_1_1initiator_1a77faf82ee63ac87bb08e2b5c20174c42" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::bus_data_task</definition>
+        <argsstring>()</argsstring>
+        <name>bus_data_task</name>
+        <qualifiedname>ahb::pin::initiator::bus_data_task</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="67" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="133" bodyend="174"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;</label>
+        <link refid="classahb_1_1pin_1_1initiator"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;</label>
+        <link refid="classahb_1_1pin_1_1initiator"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>tsckt</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="3">
+        <label>tlm::scc::target_mixin&lt; tlm::tlm_target_socket&lt; DATA_WIDTH &gt; &gt;</label>
+        <link refid="classtlm_1_1scc_1_1target__mixin"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_target_socket&lt; DATA_WIDTH &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="35" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="35" bodyend="71"/>
+    <listofallmembers>
+      <member refid="classahb_1_1pin_1_1initiator_1aa3422fcde1f7f0cbe50a5d4401409d12" prot="private" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>addr_t</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1ab1c67b43207beba6895f321948a50131" prot="private" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>bus_addr_task</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1a77faf82ee63ac87bb08e2b5c20174c42" prot="private" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>bus_data_task</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1a81773f2a3aa0ad9b8d598aa12aec3cc3" prot="private" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>data_t</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1a0dc7bab434666fa53022fb52bc5699bc" prot="public" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>HADDR_o</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1a5de138bc04720ef52facc9f91062bd09" prot="public" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>HBURST_o</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1aff6e2b3c56f38b53c3b3085d156c6f6f" prot="public" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>HCLK_i</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1abcde9a6d7916c6b7d09ba330e5e39eb0" prot="public" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>HMASTLOCK_o</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1a7afd8183ad489e97469f90ef5958b3ea" prot="public" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>HPROT_o</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1af62c753db0442f171123e62332c2c79a" prot="public" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>HRDATA_i</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1a838255fa868705f41d64a3ad8836f001" prot="public" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>HREADY_i</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1a89bcaced1f9ec1b7c7d41b7af4b216d8" prot="public" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>HRESETn_i</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1a10fde7e2e5f3fa1ac82027482add9d23" prot="public" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>HRESP_i</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1ad1810a1c4a23f803abc9e371df69e1f1" prot="public" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>HSIZE_o</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1a08eaf5c6d283cf4989c846f68d4ecaa0" prot="public" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>HTRANS_o</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1a562cb8a022bb26a1edafeefb12406048" prot="public" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>HWDATA_o</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1a97489e7e662ed65ff9ac7607425f8155" prot="public" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>HWRITE_o</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1a2fd4025381cdd4b918aa2f2a67d606d5" prot="public" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>initiator</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1afd78dbb818d8068f091d2417156f3411" prot="private" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>inqueue</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1a29f8288d3daaa612d153eb54edd35d93" prot="private" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>is_larger</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1ac3889e2c7a241a8cef9ecbf7e5bc844d" prot="public" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>tsckt</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1ac653bfa897b80c8573b1252edd0ca3ff" prot="private" virt="non-virtual"><scope>ahb::pin::initiator</scope><name>tx_in_flight</name></member>
+      <member refid="classahb_1_1pin_1_1initiator_1af82cf8408b203e19489144a17ca75c76" prot="public" virt="virtual"><scope>ahb::pin::initiator</scope><name>~initiator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

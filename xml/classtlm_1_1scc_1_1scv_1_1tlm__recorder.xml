@@ -1,0 +1,994 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1scv_1_1tlm__recorder" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::scv::tlm_recorder</compoundname>
+    <basecompoundref prot="public" virt="virtual">tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</basecompoundref>
+    <basecompoundref prot="public" virt="virtual">tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</basecompoundref>
+    <includes refid="scc_2scv_2tlm__recorder_8h" local="no">tlm_recorder.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+        <defval>tlm::tlm_base_protocol_types</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a661ca38da1ed6fa33427dcc546fe0416" prot="private" static="no" strong="no">
+        <type></type>
+        <name>DIR</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::DIR</qualifiedname>
+        <enumvalue id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a661ca38da1ed6fa33427dcc546fe0416ac15116950d88955f5912d576eb281710" prot="private">
+          <name>FW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a661ca38da1ed6fa33427dcc546fe0416adbdd49f5c4faf15e55bd420f9ce4e214" prot="private">
+          <name>BW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a661ca38da1ed6fa33427dcc546fe0416a97d1d97ecf2de2f582350d202a4ea4b5" prot="private">
+          <name>REQ</name>
+          <initializer>= FW</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a661ca38da1ed6fa33427dcc546fe0416afd501312e57575a26fc3f82330f7dfc7" prot="private">
+          <name>RESP</name>
+          <initializer>= BW</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="271" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="271" bodyend="271"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1aa258d33fc06a9de2f7264c7160dd159e" prot="public" static="no">
+        <type><ref refid="structtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__types" kindref="compound">impl::tlm_recording_types</ref>&lt; TYPES &gt;</type>
+        <definition>using tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::recording_types =  impl::tlm_recording_types&lt;TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>recording_types</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::recording_types</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="98" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a22e8d4561e0b5856f4c0f850a92f5b92" prot="public" static="no">
+        <type><ref refid="structtlm_1_1scc_1_1tlm__mm" kindref="compound">tlm::scc::tlm_mm</ref>&lt; recording_types &gt;</type>
+        <definition>using tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::mm =  tlm::scc::tlm_mm&lt;recording_types&gt;</definition>
+        <argsstring></argsstring>
+        <name>mm</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="99" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1aa8daea0409ec21c4b9940c95809df5b8" prot="public" static="no">
+        <type><ref refid="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload" kindref="compound">impl::tlm_recording_payload</ref>&lt; TYPES &gt;</type>
+        <definition>using tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::tlm_recording_payload =  impl::tlm_recording_payload&lt;TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>tlm_recording_payload</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::tlm_recording_payload</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="100" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a2f47d19d088d8f368dea3957dc78f449" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_attribute&lt; bool &gt;</type>
+        <definition>sc_core::sc_attribute&lt;bool&gt; tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::enableBlTracing</definition>
+        <argsstring></argsstring>
+        <name>enableBlTracing</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::enableBlTracing</qualifiedname>
+        <briefdescription>
+<para>the attribute to selectively enable/disable recording of blocking protocol tx </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="103" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1acb035f487760eb33d508ea1585bd66be" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_attribute&lt; bool &gt;</type>
+        <definition>sc_core::sc_attribute&lt;bool&gt; tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::enableNbTracing</definition>
+        <argsstring></argsstring>
+        <name>enableNbTracing</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::enableNbTracing</qualifiedname>
+        <briefdescription>
+<para>the attribute to selectively enable/disable recording of non-blocking protocol tx </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="106" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a482d9394d94b4f178b244a0ae8199d0f" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_attribute&lt; bool &gt;</type>
+        <definition>sc_core::sc_attribute&lt;bool&gt; tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::enableTimedTracing</definition>
+        <argsstring></argsstring>
+        <name>enableTimedTracing</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::enableTimedTracing</qualifiedname>
+        <initializer>{&quot;enableTimedTracing&quot;, true}</initializer>
+        <briefdescription>
+<para>the attribute to selectively enable/disable timed recording </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="109" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="109" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ab2f4855006b138cff3ad519a10015c23" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_attribute&lt; bool &gt;</type>
+        <definition>sc_core::sc_attribute&lt;bool&gt; tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::enableDmiTracing</definition>
+        <argsstring></argsstring>
+        <name>enableDmiTracing</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::enableDmiTracing</qualifiedname>
+        <initializer>{&quot;enableDmiTracing&quot;, false}</initializer>
+        <briefdescription>
+<para>the attribute to selectively enable/disable DMI recording </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="112" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="112" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ad09e8834e0083d1e7d6f1d045d0876e0" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_port_b&lt; tlm::tlm_fw_transport_if&lt; TYPES &gt; &gt; &amp;</type>
+        <definition>sc_core::sc_port_b&lt;tlm::tlm_fw_transport_if&lt;TYPES&gt; &gt;&amp; tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::fw_port</definition>
+        <argsstring></argsstring>
+        <name>fw_port</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::fw_port</qualifiedname>
+        <briefdescription>
+<para>the port where fw accesses are forwarded to </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="115" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ad86288ce9e11637dfa593de3c76158e7" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_port_b&lt; tlm::tlm_bw_transport_if&lt; TYPES &gt; &gt; &amp;</type>
+        <definition>sc_core::sc_port_b&lt;tlm::tlm_bw_transport_if&lt;TYPES&gt; &gt;&amp; tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::bw_port</definition>
+        <argsstring></argsstring>
+        <name>bw_port</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::bw_port</qualifiedname>
+        <briefdescription>
+<para>the port where bw accesses are forwarded to </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="118" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ad30fecdbf411ddd52d36059167ee9649" prot="private" static="no" mutable="no">
+        <type>tlm_utils::peq_with_cb_and_phase&lt; tlm_recorder, recording_types &gt;</type>
+        <definition>tlm_utils::peq_with_cb_and_phase&lt;tlm_recorder, recording_types&gt; tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::nb_timed_peq</definition>
+        <argsstring></argsstring>
+        <name>nb_timed_peq</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::nb_timed_peq</qualifiedname>
+        <briefdescription>
+<para>event queue to hold time points of non-blocking transactions </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="253" column="38" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a1f2474d1a12785a7e73d01da0c3342b0" prot="private" static="no" mutable="no">
+        <type>SCVNS scv_tr_db *</type>
+        <definition>SCVNS scv_tr_db* tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::m_db</definition>
+        <argsstring></argsstring>
+        <name>m_db</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::m_db</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>transaction recording database </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="260" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="260" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a476bc2728d6bdefd00e2860b95986f2c" prot="private" static="no" mutable="no">
+        <type>SCVNS scv_tr_stream *</type>
+        <definition>SCVNS scv_tr_stream* tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::b_streamHandle</definition>
+        <argsstring></argsstring>
+        <name>b_streamHandle</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::b_streamHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>blocking transaction recording stream handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="262" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="262" bodyend="262"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1af832bb7826afc59422065dd67a09b760" prot="private" static="no" mutable="no">
+        <type>std::array&lt; SCVNS scv_tr_generator&lt; sc_dt::uint64, sc_dt::uint64 &gt; *, 3 &gt;</type>
+        <definition>std::array&lt;SCVNS scv_tr_generator&lt;sc_dt::uint64, sc_dt::uint64&gt;*, 3&gt; tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::b_trHandle</definition>
+        <argsstring></argsstring>
+        <name>b_trHandle</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::b_trHandle</qualifiedname>
+        <initializer>{{nullptr, nullptr, nullptr}}</initializer>
+        <briefdescription>
+<para>transaction generator handle for blocking transactions </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="264" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="264" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ae9ce10fe34312204787a07e384e85ff0" prot="private" static="no" mutable="no">
+        <type>SCVNS scv_tr_stream *</type>
+        <definition>SCVNS scv_tr_stream* tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::b_streamHandleTimed</definition>
+        <argsstring></argsstring>
+        <name>b_streamHandleTimed</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::b_streamHandleTimed</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>timed blocking transaction recording stream handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="266" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="266" bodyend="266"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a38367d3d8601dc6fe143ba042d93eecc" prot="private" static="no" mutable="no">
+        <type>std::array&lt; SCVNS scv_tr_generator&lt;&gt; *, 3 &gt;</type>
+        <definition>std::array&lt;SCVNS scv_tr_generator&lt;&gt;*, 3&gt; tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::b_trTimedHandle</definition>
+        <argsstring></argsstring>
+        <name>b_trTimedHandle</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::b_trTimedHandle</qualifiedname>
+        <initializer>{{nullptr, nullptr, nullptr}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>transaction generator handle for blocking transactions with annotated delays </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="269" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="269" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ae55017352a82e6de8383ea0ff9713ed2" prot="private" static="no" mutable="no">
+        <type>SCVNS scv_tr_stream *</type>
+        <definition>SCVNS scv_tr_stream* tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::nb_streamHandle</definition>
+        <argsstring></argsstring>
+        <name>nb_streamHandle</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::nb_streamHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>non-blocking transaction recording stream handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="273" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="273" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a2735028d0fdf1f28ded3263c37ff74d0" prot="private" static="no" mutable="no">
+        <type>SCVNS scv_tr_stream *</type>
+        <definition>SCVNS scv_tr_stream* tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::nb_streamHandleTimed</definition>
+        <argsstring></argsstring>
+        <name>nb_streamHandleTimed</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::nb_streamHandleTimed</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>non-blocking transaction recording stream handle with timing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="275" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="275" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ad8c1a24212c03455f6f49a8007d3c927" prot="private" static="no" mutable="no">
+        <type>std::array&lt; SCVNS scv_tr_generator&lt; std::string, std::string &gt; *, 2 &gt;</type>
+        <definition>std::array&lt;SCVNS scv_tr_generator&lt;std::string, std::string&gt;*, 2&gt; tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::nb_trHandle</definition>
+        <argsstring></argsstring>
+        <name>nb_trHandle</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::nb_trHandle</qualifiedname>
+        <initializer>{{nullptr, nullptr}}</initializer>
+        <briefdescription>
+<para>transaction generator handle for non-blocking transactions </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="277" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="277" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ae12a5009bafa6c7aaf0b0a3ef1f73369" prot="private" static="no" mutable="no">
+        <type>std::array&lt; SCVNS scv_tr_generator&lt;&gt; *, 2 &gt;</type>
+        <definition>std::array&lt;SCVNS scv_tr_generator&lt;&gt;*, 2&gt; tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::nb_trTimedHandle</definition>
+        <argsstring></argsstring>
+        <name>nb_trTimedHandle</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::nb_trTimedHandle</qualifiedname>
+        <initializer>{{nullptr, nullptr}}</initializer>
+        <briefdescription>
+<para>transaction generator handle for non-blocking transactions with annotated delays </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="279" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="279" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a32620f9602bbb28263c0ad4ed00058ed" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, SCVNS scv_tr_handle &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, SCVNS scv_tr_handle&gt; tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::nbtx_req_handle_map</definition>
+        <argsstring></argsstring>
+        <name>nbtx_req_handle_map</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::nbtx_req_handle_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="280" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1aa6d9dcdd8633f7022e9fb8d4f9d93b8d" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, SCVNS scv_tr_handle &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, SCVNS scv_tr_handle&gt; tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::nbtx_last_req_handle_map</definition>
+        <argsstring></argsstring>
+        <name>nbtx_last_req_handle_map</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::nbtx_last_req_handle_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="281" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a5c7f46e91a2679379f5fd563eea99fc6" prot="private" static="no" mutable="no">
+        <type>SCVNS scv_tr_stream *</type>
+        <definition>SCVNS scv_tr_stream* tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::dmi_streamHandle</definition>
+        <argsstring></argsstring>
+        <name>dmi_streamHandle</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::dmi_streamHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>dmi transaction recording stream handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="284" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="284" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a45873f49cbac397befba774cfb22d5ab" prot="private" static="no" mutable="no">
+        <type>SCVNS scv_tr_generator *</type>
+        <definition>SCVNS scv_tr_generator* tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::dmi_trGetHandle</definition>
+        <argsstring></argsstring>
+        <name>dmi_trGetHandle</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::dmi_trGetHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>transaction generator handle for DMI transactions </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="286" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="286" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a3dccd302437a5b185f7d01543e4d1a9e" prot="private" static="no" mutable="no">
+        <type>SCVNS scv_tr_generator&lt; sc_dt::uint64, sc_dt::uint64 &gt; *</type>
+        <definition>SCVNS scv_tr_generator&lt;sc_dt::uint64, sc_dt::uint64&gt;* tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::dmi_trInvalidateHandle</definition>
+        <argsstring></argsstring>
+        <name>dmi_trInvalidateHandle</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::dmi_trInvalidateHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="287" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="287" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1aca14bc18bd2f37ec408874a6230f308c" prot="private" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::fixed_basename</definition>
+        <argsstring></argsstring>
+        <name>fixed_basename</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::fixed_basename</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="329" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="329" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ab67206709c494663131f992550717573" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::get_parent</definition>
+        <argsstring>(char const *hier_name)</argsstring>
+        <name>get_parent</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::get_parent</qualifiedname>
+        <param>
+          <type>char const *</type>
+          <declname>hier_name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="91" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="91" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a12bd13e9df982a98ef5588dc0bf93f9e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::nbtx_cb</definition>
+        <argsstring>(tlm_recording_payload &amp;rec_parts, const typename TYPES::tlm_phase_type &amp;phase)</argsstring>
+        <name>nbtx_cb</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::nbtx_cb</qualifiedname>
+        <param>
+          <type>tlm_recording_payload &amp;</type>
+          <declname>rec_parts</declname>
+        </param>
+        <param>
+          <type>const typename TYPES::tlm_phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <briefdescription>
+<para>The thread processing the non-blocking requests with their annotated times to generate the timed view of non-blocking tx. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="258" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="557" bodyend="614"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a9b70bb57bbbe2fc11b146a47b37fdcff" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::phase2string</definition>
+        <argsstring>(const tlm::tlm_phase &amp;p)</argsstring>
+        <name>phase2string</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::phase2string</qualifiedname>
+        <param>
+          <type>const tlm::tlm_phase &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="330" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="330" bodyend="334"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ad308044e845e66db827d8df0a7cf9b3b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::tlm_recorder</definition>
+        <argsstring>(sc_core::sc_port_b&lt; tlm::tlm_fw_transport_if&lt; TYPES &gt; &gt; &amp;fw_port, sc_core::sc_port_b&lt; tlm::tlm_bw_transport_if&lt; TYPES &gt; &gt; &amp;bw_port, bool recording_enabled=true, SCVNS scv_tr_db *tr_db=SCVNS scv_tr_db::get_default_db())</argsstring>
+        <name>tlm_recorder</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::tlm_recorder</qualifiedname>
+        <param>
+          <type>sc_core::sc_port_b&lt; tlm::tlm_fw_transport_if&lt; TYPES &gt; &gt; &amp;</type>
+          <declname>fw_port</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_port_b&lt; tlm::tlm_bw_transport_if&lt; TYPES &gt; &gt; &amp;</type>
+          <declname>bw_port</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>recording_enabled</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>SCVNS scv_tr_db *</type>
+          <declname>tr_db</declname>
+          <defval>SCVNS scv_tr_db::get_default_db()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="133" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="133" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a590f784d72f2773ccf0fbfb6ce51853f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::tlm_recorder</definition>
+        <argsstring>(const char *name, sc_core::sc_port_b&lt; tlm::tlm_fw_transport_if&lt; TYPES &gt; &gt; &amp;fw_port, sc_core::sc_port_b&lt; tlm::tlm_bw_transport_if&lt; TYPES &gt; &gt; &amp;bw_port, bool recording_enabled=true, SCVNS scv_tr_db *tr_db=SCVNS scv_tr_db::get_default_db())</argsstring>
+        <name>tlm_recorder</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::tlm_recorder</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_port_b&lt; tlm::tlm_fw_transport_if&lt; TYPES &gt; &gt; &amp;</type>
+          <declname>fw_port</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_port_b&lt; tlm::tlm_bw_transport_if&lt; TYPES &gt; &gt; &amp;</type>
+          <declname>bw_port</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>recording_enabled</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>SCVNS scv_tr_db *</type>
+          <declname>tr_db</declname>
+          <defval>SCVNS scv_tr_db::get_default_db()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="150" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="150" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a8a179d96a788ba9c73c538cf5af046ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::~tlm_recorder</definition>
+        <argsstring>() override</argsstring>
+        <name>~tlm_recorder</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::~tlm_recorder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="161" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="161" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a63f34fde16139fafec01a26d52dcd7c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::nb_transport_fw</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, typename TYPES::tlm_phase_type &amp;phase, sc_core::sc_time &amp;delay) override</argsstring>
+        <name>nb_transport_fw</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::nb_transport_fw</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>The non-blocking forward transport function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is forwarded and recorded to a transaction stream named &quot;nb_fw&quot; with current timestamps. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>phase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the current phase of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the annotated delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the sync state of the transaction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="192" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="400" bodyend="483"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1acd4174b10b159b44e88a9ed0296cb2c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::nb_transport_bw</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, typename TYPES::tlm_phase_type &amp;phase, sc_core::sc_time &amp;delay) override</argsstring>
+        <name>nb_transport_bw</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::nb_transport_bw</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>The non-blocking backward transport function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is forwarded and recorded to a transaction stream named &quot;nb_bw&quot; with current timestamps. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>phase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the current phase of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the annotated delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the sync state of the transaction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="204" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="486" bodyend="555"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a011d2b25d42d6c1110c03b5a0e226cde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::b_transport</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, sc_core::sc_time &amp;delay) override</argsstring>
+        <name>b_transport</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::b_transport</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>The blocking transport function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is forwarded and recorded to a transaction stream named &quot;b_tx&quot; with current timestamps. Additionally a &quot;b_tx_timed&quot; is been created recording the transactions at their annotated delay <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the annotated delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="215" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="341" bodyend="397"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a5a33f8dbd5a5ff77f19956bd42df03c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::get_direct_mem_ptr</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, tlm::tlm_dmi &amp;dmi_data) override</argsstring>
+        <name>get_direct_mem_ptr</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::get_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_dmi &amp;</type>
+          <declname>dmi_data</declname>
+        </param>
+        <briefdescription>
+<para>The direct memory interface forward function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is just forwarded and not recorded. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dmi_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the structure holding the dmi information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>if the dmi structure is valid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="223" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="616" bodyend="627"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1addbd1c4f24bb3189ebf84b4c4e05ade6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::invalidate_direct_mem_ptr</definition>
+        <argsstring>(sc_dt::uint64 start_addr, sc_dt::uint64 end_addr) override</argsstring>
+        <name>invalidate_direct_mem_ptr</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::invalidate_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>start_addr</declname>
+        </param>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>end_addr</declname>
+        </param>
+        <briefdescription>
+<para>The direct memory interface backward function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is just forwarded and not recorded. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>start_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the start address of the memory area being invalid </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the end address of the memory area being invalid </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="230" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="634" bodyend="644"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a3b8c39a6b74d800e16bea0e0a88ead27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::transport_dbg</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans) override</argsstring>
+        <name>transport_dbg</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::transport_dbg</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+<para>The debug transportfunction. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is just forwarded and not recorded. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the sync state of the transaction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="237" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="651" bodyend="654"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a103a9e03a930bbcf2bc8f6f7874766f7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::isRecordingBlockingTxEnabled</definition>
+        <argsstring>() const</argsstring>
+        <name>isRecordingBlockingTxEnabled</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::isRecordingBlockingTxEnabled</qualifiedname>
+        <briefdescription>
+<para>get the current state of transaction recording </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>if true transaction recording is enabled otherwise transaction recording is bypassed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="243" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="243" bodyend="243"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a4dce159d9d7a3649441fc832637a1d8c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::isRecordingNonBlockingTxEnabled</definition>
+        <argsstring>() const</argsstring>
+        <name>isRecordingNonBlockingTxEnabled</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::isRecordingNonBlockingTxEnabled</qualifiedname>
+        <briefdescription>
+<para>get the current state of transaction recording </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>if true transaction recording is enabled otherwise transaction recording is bypassed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="249" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="249" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1af74bf6effe7f0bf6fd0b643ca69b2fa5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::scv::tlm_recorder&lt; TYPES &gt;::initialize_streams</definition>
+        <argsstring>()</argsstring>
+        <name>initialize_streams</name>
+        <qualifiedname>tlm::scc::scv::tlm_recorder::initialize_streams</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="290" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="290" bodyend="326"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The TLM2 transaction recorder. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This module records all TLM transaction to a SCV transaction stream for further viewing and analysis. The handle of the created transaction is storee in an tlm_extension so that another instance of the scv_tlm_recorder e.g. further down the opath can link to it. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::scc::scv::tlm_recorder&lt; TYPES &gt;</label>
+        <link refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::scc::scv::tlm_recorder&lt; TYPES &gt;</label>
+        <link refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="90" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="90" bodyend="335"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a476bc2728d6bdefd00e2860b95986f2c" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>b_streamHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ae9ce10fe34312204787a07e384e85ff0" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>b_streamHandleTimed</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a011d2b25d42d6c1110c03b5a0e226cde" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>b_transport</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1af832bb7826afc59422065dd67a09b760" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>b_trHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a38367d3d8601dc6fe143ba042d93eecc" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>b_trTimedHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a661ca38da1ed6fa33427dcc546fe0416adbdd49f5c4faf15e55bd420f9ce4e214" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>BW</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ad86288ce9e11637dfa593de3c76158e7" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>bw_port</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a661ca38da1ed6fa33427dcc546fe0416" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>DIR</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a5c7f46e91a2679379f5fd563eea99fc6" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>dmi_streamHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a45873f49cbac397befba774cfb22d5ab" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>dmi_trGetHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a3dccd302437a5b185f7d01543e4d1a9e" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>dmi_trInvalidateHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a2f47d19d088d8f368dea3957dc78f449" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>enableBlTracing</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ab2f4855006b138cff3ad519a10015c23" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>enableDmiTracing</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1acb035f487760eb33d508ea1585bd66be" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>enableNbTracing</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a482d9394d94b4f178b244a0ae8199d0f" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>enableTimedTracing</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1aca14bc18bd2f37ec408874a6230f308c" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>fixed_basename</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a661ca38da1ed6fa33427dcc546fe0416ac15116950d88955f5912d576eb281710" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>FW</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ad09e8834e0083d1e7d6f1d045d0876e0" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>fw_port</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a5a33f8dbd5a5ff77f19956bd42df03c4" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>get_direct_mem_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ab67206709c494663131f992550717573" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>get_parent</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1af74bf6effe7f0bf6fd0b643ca69b2fa5" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>initialize_streams</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1addbd1c4f24bb3189ebf84b4c4e05ade6" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>invalidate_direct_mem_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a103a9e03a930bbcf2bc8f6f7874766f7" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>isRecordingBlockingTxEnabled</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a4dce159d9d7a3649441fc832637a1d8c" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>isRecordingNonBlockingTxEnabled</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a1f2474d1a12785a7e73d01da0c3342b0" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>m_db</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a22e8d4561e0b5856f4c0f850a92f5b92" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>mm</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ae55017352a82e6de8383ea0ff9713ed2" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>nb_streamHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a2735028d0fdf1f28ded3263c37ff74d0" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>nb_streamHandleTimed</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ad30fecdbf411ddd52d36059167ee9649" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>nb_timed_peq</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1acd4174b10b159b44e88a9ed0296cb2c8" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>nb_transport_bw</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a63f34fde16139fafec01a26d52dcd7c5" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>nb_transport_fw</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ad8c1a24212c03455f6f49a8007d3c927" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>nb_trHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ae12a5009bafa6c7aaf0b0a3ef1f73369" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>nb_trTimedHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a12bd13e9df982a98ef5588dc0bf93f9e" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>nbtx_cb</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1aa6d9dcdd8633f7022e9fb8d4f9d93b8d" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>nbtx_last_req_handle_map</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a32620f9602bbb28263c0ad4ed00058ed" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>nbtx_req_handle_map</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a9b70bb57bbbe2fc11b146a47b37fdcff" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>phase2string</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1aa258d33fc06a9de2f7264c7160dd159e" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>recording_types</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a661ca38da1ed6fa33427dcc546fe0416a97d1d97ecf2de2f582350d202a4ea4b5" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>REQ</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a661ca38da1ed6fa33427dcc546fe0416afd501312e57575a26fc3f82330f7dfc7" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>RESP</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1ad308044e845e66db827d8df0a7cf9b3b" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>tlm_recorder</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a590f784d72f2773ccf0fbfb6ce51853f" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>tlm_recorder</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1aa8daea0409ec21c4b9940c95809df5b8" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>tlm_recording_payload</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a3b8c39a6b74d800e16bea0e0a88ead27" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>transport_dbg</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder_1a8a179d96a788ba9c73c538cf5af046ee" prot="public" virt="virtual"><scope>tlm::scc::scv::tlm_recorder</scope><name>~tlm_recorder</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

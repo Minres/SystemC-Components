@@ -1,0 +1,446 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tracer__base" kind="class" language="C++" prot="public">
+    <compoundname>scc::tracer_base</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <derivedcompoundref refid="classscc_1_1tracer" prot="public" virt="non-virtual">scc::tracer</derivedcompoundref>
+    <includes refid="tracer__base_8h" local="no">tracer_base.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1tracer__base_1a77e5c593bc12d3bdf8e7d035d9f1da4d" prot="public" static="no" mutable="no">
+        <type>cci::cci_param_handle</type>
+        <definition>cci::cci_param_handle scc::tracer_base::default_trace_enable_handle</definition>
+        <argsstring></argsstring>
+        <name>default_trace_enable_handle</name>
+        <qualifiedname>scc::tracer_base::default_trace_enable_handle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>cci parameter handle to determine if the tracing is enabled if not specified explicitly </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="84" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="structscc_1_1tracer__base_1ab89161002098e41cd35933fe21680335" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_trace_file *</type>
+        <definition>sc_core::sc_trace_file* scc::tracer_base::trf</definition>
+        <argsstring></argsstring>
+        <name>trf</name>
+        <qualifiedname>scc::tracer_base::trf</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="149" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" bodystart="149" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tracer__base_1a6a2ebee4379a80b0266d257582b8db0e" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191" kindref="member">trace_types</ref></type>
+        <definition>trace_types scc::tracer_base::types_to_trace</definition>
+        <argsstring></argsstring>
+        <name>types_to_trace</name>
+        <qualifiedname>scc::tracer_base::types_to_trace</qualifiedname>
+        <initializer>{<ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191a5fb1f955b45e38e31789286a1790398d" kindref="member">trace_types::ALL</ref>}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="151" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" bodystart="151" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tracer__base_1aa537e06076101c84363724d8c90d6d6e" prot="protected" static="no" mutable="no">
+        <type>cci::cci_broker_handle</type>
+        <definition>cci::cci_broker_handle scc::tracer_base::cci_broker</definition>
+        <argsstring></argsstring>
+        <name>cci_broker</name>
+        <qualifiedname>scc::tracer_base::cci_broker</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The broker used by all tracer classes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="156" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tracer__base_1a59e5921907988766ad45773991dc8fd9" prot="protected" static="no" mutable="no">
+        <type>std::unique_ptr&lt; cci::cci_param&lt; bool &gt; &gt;</type>
+        <definition>std::unique_ptr&lt;cci::cci_param&lt;bool&gt; &gt; scc::tracer_base::default_trace_enable</definition>
+        <argsstring></argsstring>
+        <name>default_trace_enable</name>
+        <qualifiedname>scc::tracer_base::default_trace_enable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="158" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1tracer__base_1aa001f2732378922fbc4414fa8ae4bfa5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tracer_base::tracer_base</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm)</argsstring>
+        <name>tracer_base</name>
+        <qualifiedname>scc::tracer_base::tracer_base</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+<para>named constructor </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the instance name </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="91" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" bodystart="91" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tracer__base_1a6aec3d56e7e73c0cef1046164a250c6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::tracer_base::tracer_base</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm, sc_core::sc_trace_file *tf, bool owned=true)</argsstring>
+        <name>tracer_base</name>
+        <qualifiedname>scc::tracer_base::tracer_base</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>owned</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>named constructor with trace file </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the instance name of the tracer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the trace file </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>owned</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true the tracefile is owned by the tracer and closed upon simulation end </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="101" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" bodystart="310" bodyend="320"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tracer__base_1af67c0e3931c52e0ed74f266c27ea5c58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tracer_base::~tracer_base</definition>
+        <argsstring>()</argsstring>
+        <name>~tracer_base</name>
+        <qualifiedname>scc::tracer_base::~tracer_base</qualifiedname>
+        <briefdescription>
+<para>destructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="107" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" bodystart="107" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tracer__base_1abe84fc98c6bb97f4071c14a19f531abf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tracer_base::set_trace_types</definition>
+        <argsstring>(trace_types t)</argsstring>
+        <name>set_trace_types</name>
+        <qualifiedname>scc::tracer_base::set_trace_types</qualifiedname>
+        <param>
+          <type><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191" kindref="member">trace_types</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>set the types to trace </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="114" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" bodystart="114" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tracer__base_1a46c28f6f1f804b5d2d2cd37df7fd1600" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const sc_core::sc_trace_file *</type>
+        <definition>const sc_core::sc_trace_file * scc::tracer_base::get_trace_file</definition>
+        <argsstring>() const</argsstring>
+        <name>get_trace_file</name>
+        <qualifiedname>scc::tracer_base::get_trace_file</qualifiedname>
+        <briefdescription>
+<para>get the tracefile used by this tracer </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the tracefile </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="121" column="34" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" bodystart="121" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tracer__base_1aa79fbb746822722e69e0404fc344918d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_trace_file *</type>
+        <definition>sc_core::sc_trace_file * scc::tracer_base::get_trace_file</definition>
+        <argsstring>()</argsstring>
+        <name>get_trace_file</name>
+        <qualifiedname>scc::tracer_base::get_trace_file</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="128" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" bodystart="128" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tracer__base_1a9c05d4bdee7c23ee7b3328c1e6f89888" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tracer_base::set_trace_file</definition>
+        <argsstring>(sc_core::sc_trace_file *trf)</argsstring>
+        <name>set_trace_file</name>
+        <qualifiedname>scc::tracer_base::set_trace_file</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>trf</declname>
+        </param>
+        <briefdescription>
+<para>set the trace file of this tracer </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The provided file is not owned by the tracer. Hence the caller is responsible for closing the tracefile <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="136" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" bodystart="136" bodyend="136"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structscc_1_1tracer__base_1a4661ffdd290ee29bc6bfde50ca554b7d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tracer_base::set_default_trace_enable</definition>
+        <argsstring>(bool)</argsstring>
+        <name>set_default_trace_enable</name>
+        <qualifiedname>scc::tracer_base::set_default_trace_enable</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>v</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="138" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" bodystart="331" bodyend="336"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tracer__base_1aac98a9d8c33cf434273b90308cfaa20d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tracer_base::get_default_trace_enable</definition>
+        <argsstring>()</argsstring>
+        <name>get_default_trace_enable</name>
+        <qualifiedname>scc::tracer_base::get_default_trace_enable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="140" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" bodystart="322" bodyend="329"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="structscc_1_1tracer__base_1adde89eb29e8db70db3c664ffdb988fb5" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string scc::tracer_base::get_name</definition>
+        <argsstring>()</argsstring>
+        <name>get_name</name>
+        <qualifiedname>scc::tracer_base::get_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="143" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" bodystart="269" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tracer__base_1a6088c75fecd3fdd7dabdf886054eafbb" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tracer_base::try_trace</definition>
+        <argsstring>(sc_core::sc_trace_file *trace_file, const sc_core::sc_object *object, trace_types t)</argsstring>
+        <name>try_trace</name>
+        <qualifiedname>scc::tracer_base::try_trace</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>trace_file</declname>
+        </param>
+        <param>
+          <type>const sc_core::sc_object *</type>
+          <declname>object</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191" kindref="member">trace_types</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="147" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" bodystart="110" bodyend="267"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="structscc_1_1tracer__base_1acd704016de6f8bab88468ae4f0201420" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void scc::tracer_base::descend</definition>
+        <argsstring>(const sc_core::sc_object *, bool trace_all)</argsstring>
+        <name>descend</name>
+        <qualifiedname>scc::tracer_base::descend</qualifiedname>
+        <reimplementedby refid="classscc_1_1configurable__tracer_1ac7b5301c5f276ffdc414236fa3a0c08b">descend</reimplementedby>
+        <param>
+          <type>const sc_core::sc_object *</type>
+          <defname>obj</defname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>trace_all</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="145" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" bodystart="271" bodyend="295"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>base class for automatic tracer </para>
+    </briefdescription>
+    <detaileddescription>
+<para>it provide the basic infrastructure to automagically trace ports, signals, tlm sockets and sc_variables. It comes with some limitations:<itemizedlist>
+<listitem><para>arbitrary sized data types are only traced if<itemizedlist>
+<listitem><para>size is less or equal 1024,</para>
+</listitem><listitem><para>if size is less than or equal 128 or a multiple of 8</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>sc_variables holding std::array or std::vector are only supported for native C++ datatypes</para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="4">
+        <label>scc::configurable_tracer</label>
+        <link refid="classscc_1_1configurable__tracer"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scc::tracer</label>
+        <link refid="classscc_1_1tracer"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>scc::tracer_base</label>
+        <link refid="structscc_1_1tracer__base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::tracer_base</label>
+        <link refid="structscc_1_1tracer__base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" line="80" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.h" bodystart="80" bodyend="159"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tracer__base_1aa537e06076101c84363724d8c90d6d6e" prot="protected" virt="non-virtual"><scope>scc::tracer_base</scope><name>cci_broker</name></member>
+      <member refid="structscc_1_1tracer__base_1a59e5921907988766ad45773991dc8fd9" prot="protected" virt="non-virtual"><scope>scc::tracer_base</scope><name>default_trace_enable</name></member>
+      <member refid="structscc_1_1tracer__base_1a77e5c593bc12d3bdf8e7d035d9f1da4d" prot="public" virt="non-virtual"><scope>scc::tracer_base</scope><name>default_trace_enable_handle</name></member>
+      <member refid="structscc_1_1tracer__base_1acd704016de6f8bab88468ae4f0201420" prot="protected" virt="virtual"><scope>scc::tracer_base</scope><name>descend</name></member>
+      <member refid="structscc_1_1tracer__base_1aac98a9d8c33cf434273b90308cfaa20d" prot="public" virt="non-virtual"><scope>scc::tracer_base</scope><name>get_default_trace_enable</name></member>
+      <member refid="structscc_1_1tracer__base_1adde89eb29e8db70db3c664ffdb988fb5" prot="protected" virt="non-virtual"><scope>scc::tracer_base</scope><name>get_name</name></member>
+      <member refid="structscc_1_1tracer__base_1a46c28f6f1f804b5d2d2cd37df7fd1600" prot="public" virt="non-virtual"><scope>scc::tracer_base</scope><name>get_trace_file</name></member>
+      <member refid="structscc_1_1tracer__base_1aa79fbb746822722e69e0404fc344918d" prot="public" virt="non-virtual"><scope>scc::tracer_base</scope><name>get_trace_file</name></member>
+      <member refid="structscc_1_1tracer__base_1a4661ffdd290ee29bc6bfde50ca554b7d" prot="public" virt="non-virtual"><scope>scc::tracer_base</scope><name>set_default_trace_enable</name></member>
+      <member refid="structscc_1_1tracer__base_1a9c05d4bdee7c23ee7b3328c1e6f89888" prot="public" virt="non-virtual"><scope>scc::tracer_base</scope><name>set_trace_file</name></member>
+      <member refid="structscc_1_1tracer__base_1abe84fc98c6bb97f4071c14a19f531abf" prot="public" virt="non-virtual"><scope>scc::tracer_base</scope><name>set_trace_types</name></member>
+      <member refid="structscc_1_1tracer__base_1aa001f2732378922fbc4414fa8ae4bfa5" prot="public" virt="non-virtual"><scope>scc::tracer_base</scope><name>tracer_base</name></member>
+      <member refid="structscc_1_1tracer__base_1a6aec3d56e7e73c0cef1046164a250c6a" prot="public" virt="non-virtual"><scope>scc::tracer_base</scope><name>tracer_base</name></member>
+      <member refid="structscc_1_1tracer__base_1ab89161002098e41cd35933fe21680335" prot="protected" virt="non-virtual"><scope>scc::tracer_base</scope><name>trf</name></member>
+      <member refid="structscc_1_1tracer__base_1a6088c75fecd3fdd7dabdf886054eafbb" prot="protected" virt="non-virtual"><scope>scc::tracer_base</scope><name>try_trace</name></member>
+      <member refid="structscc_1_1tracer__base_1a6a2ebee4379a80b0266d257582b8db0e" prot="protected" virt="non-virtual"><scope>scc::tracer_base</scope><name>types_to_trace</name></member>
+      <member refid="structscc_1_1tracer__base_1af67c0e3931c52e0ed74f266c27ea5c58" prot="public" virt="non-virtual"><scope>scc::tracer_base</scope><name>~tracer_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

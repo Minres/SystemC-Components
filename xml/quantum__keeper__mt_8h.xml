@@ -1,0 +1,378 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="quantum__keeper__mt_8h" kind="file" language="C++">
+    <compoundname>quantum_keeper_mt.h</compoundname>
+    <includes refid="sc__time__syncronizer_8h" local="yes">qk/sc_time_syncronizer.h</includes>
+    <includes refid="async__thread_8h" local="no">scc/async_thread.h</includes>
+    <includes local="no">sysc/kernel/sc_simcontext.h</includes>
+    <incdepgraph>
+      <node id="6">
+        <label>rigtorp/SPSCQueue.h</label>
+        <link refid="SPSCQueue_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>util/ities.h</label>
+        <link refid="ities_8h_source"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>scc/async_thread.h</label>
+        <link refid="async__thread_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>scc/peq.h</label>
+        <link refid="peq_8h_source"/>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>scc/report.h</label>
+        <link refid="report_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>utilities.h</label>
+        <link refid="utilities_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>global_time_keeper.h</label>
+        <link refid="global__time__keeper_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>qk/sc_time_syncronizer.h</label>
+        <link refid="sc__time__syncronizer_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>types.h</label>
+        <link refid="src_2sysc_2tlm_2scc_2qk_2types_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_mt.h</label>
+        <link refid="quantum__keeper__mt_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>algorithm</label>
+      </node>
+      <node id="16">
+        <label>array</label>
+      </node>
+      <node id="32">
+        <label>assert.h</label>
+      </node>
+      <node id="7">
+        <label>atomic</label>
+      </node>
+      <node id="33">
+        <label>bitset</label>
+      </node>
+      <node id="41">
+        <label>boost/optional.hpp</label>
+      </node>
+      <node id="8">
+        <label>cassert</label>
+      </node>
+      <node id="20">
+        <label>cci_configuration</label>
+      </node>
+      <node id="17">
+        <label>cctype</label>
+      </node>
+      <node id="34">
+        <label>climits</label>
+      </node>
+      <node id="9">
+        <label>cstddef</label>
+      </node>
+      <node id="22">
+        <label>cstring</label>
+      </node>
+      <node id="39">
+        <label>deque</label>
+      </node>
+      <node id="35">
+        <label>fstream</label>
+      </node>
+      <node id="5">
+        <label>future</label>
+      </node>
+      <node id="23">
+        <label>iomanip</label>
+      </node>
+      <node id="24">
+        <label>iostream</label>
+      </node>
+      <node id="36">
+        <label>iterator</label>
+      </node>
+      <node id="18">
+        <label>limits</label>
+      </node>
+      <node id="21">
+        <label>locale</label>
+      </node>
+      <node id="42">
+        <label>map</label>
+      </node>
+      <node id="10">
+        <label>memory</label>
+      </node>
+      <node id="25">
+        <label>mutex</label>
+      </node>
+      <node id="11">
+        <label>new</label>
+      </node>
+      <node id="26">
+        <label>sstream</label>
+      </node>
+      <node id="12">
+        <label>stdexcept</label>
+      </node>
+      <node id="37">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="44">
+        <label>sysc/communication/sc_prim_channel.h</label>
+      </node>
+      <node id="45">
+        <label>sysc/kernel/sc_object.h</label>
+      </node>
+      <node id="46">
+        <label>sysc/kernel/sc_simcontext.h</label>
+      </node>
+      <node id="27">
+        <label>sysc/kernel/sc_time.h</label>
+      </node>
+      <node id="28">
+        <label>sysc/utils/sc_report.h</label>
+      </node>
+      <node id="19">
+        <label>systemc</label>
+      </node>
+      <node id="47">
+        <label>thread</label>
+      </node>
+      <node id="13">
+        <label>type_traits</label>
+      </node>
+      <node id="29">
+        <label>unordered_map</label>
+      </node>
+      <node id="38">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__SCC_TLM_QUANTUMKEEPER_MT_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SCC_TLM_QUANTUMKEEPER_MT_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;qk/sc_time_syncronizer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scc/async_thread.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sysc/kernel/sc_simcontext.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>SC_VERSION_MAJOR<sp/>&lt;<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#warning<sp/>&quot;Multithreaded<sp/>quantum<sp/>keeper<sp/>is<sp/>only<sp/>supported<sp/>with<sp/>SystemC<sp/>3.0<sp/>and<sp/>newer&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEBUG_MT_SCHEDULING</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm" kindref="compound">tlm</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm_1_1scc" kindref="compound">scc</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">quantumkeeper_mt<sp/>:<sp/>sc_core::sc_object<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>quantumkeeper_mt()</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>sc_core::sc_object(</highlight><highlight class="stringliteral">&quot;qk&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>gtk_idx(qk::sc_time_syncronizer::get().get_channel_index())<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sc_core::sc_spawn_options<sp/>opt;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opt.spawn_method();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opt.set_sensitivity(&amp;keep_alive);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~quantumkeeper_mt()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>run_thread(std::function&lt;sc_core::sc_time()&gt;<sp/>f)<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1scc_1_1qk_1_1sc__time__syncronizer_1aa4df7a862c45f44c90781451ac8db6a2" kindref="member">qk::sc_time_syncronizer::get</ref>().notify_client_blocked(gtk_idx,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reset(sc_core::sc_time_stamp());</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thread_executor.start([</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>f]()<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;check_and_sync(sc_core::SC_ZERO_TIME);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>f();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1scc_1_1qk_1_1sc__time__syncronizer_1aa4df7a862c45f44c90781451ac8db6a2" kindref="member">qk::sc_time_syncronizer::get</ref>().notify_client_blocked(gtk_idx,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wait(thread_executor.thread_finish_event());</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>inc(sc_core::sc_time<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>core_inc)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>local_absolute_time<sp/>+=<sp/>core_inc;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>local_time_ticks_limit<sp/>=<sp/><ref refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a679195dae2fb0979098bff66fd3bfb90" kindref="member">qk::global_time_keeper::get</ref>().<ref refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a07c09411bf79f122d2e26845c006f9b1" kindref="member">get_client_max_time_ticks</ref>(gtk_idx);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>check_and_sync(sc_core::sc_time<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>core_inc)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>inc(core_inc);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a679195dae2fb0979098bff66fd3bfb90" kindref="member">qk::global_time_keeper::get</ref>().<ref refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a1f24e532370fc856be9aa352599088a1" kindref="member">update_client_time_ticks</ref>(gtk_idx,<sp/>local_absolute_time.value());</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>wait<sp/>until<sp/>the<sp/>SystemC<sp/>thread<sp/>advanced<sp/>to<sp/>the<sp/>same<sp/>time<sp/>then<sp/>we<sp/>are<sp/>minus<sp/>the<sp/>global<sp/>quantum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(local_absolute_time.value()<sp/>&gt;<sp/>local_time_ticks_limit)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::this_thread::yield();<sp/></highlight><highlight class="comment">//<sp/>should<sp/>do<sp/>the<sp/>same<sp/>than<sp/>__builtin_ia32_pause()<sp/>or<sp/>_mm_pause()<sp/>on<sp/>MSVC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>local_time_ticks_limit<sp/>=<sp/><ref refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a679195dae2fb0979098bff66fd3bfb90" kindref="member">qk::global_time_keeper::get</ref>().<ref refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a07c09411bf79f122d2e26845c006f9b1" kindref="member">get_client_max_time_ticks</ref>(gtk_idx);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1scc_1_1quantumkeeper__st_1abf1301a73a42a66d52f579229cc8bb0d" kindref="member">execute_on_sysc</ref>(std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)&gt;<sp/>fct)<sp/>{<sp/><ref refid="structtlm_1_1scc_1_1quantumkeeper__st_1abf1301a73a42a66d52f579229cc8bb0d" kindref="member">execute_on_sysc</ref>(fct,<sp/>local_absolute_time);<sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1scc_1_1quantumkeeper__st_1abf1301a73a42a66d52f579229cc8bb0d" kindref="member">execute_on_sysc</ref>(std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)&gt;&amp;<sp/>fct,<sp/>sc_core::sc_time<sp/>when)<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qk::callback_task<sp/>task([</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;fct]()<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>t0<sp/>=<sp/>sc_core::sc_time_stamp();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fct();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::sc_time_stamp()<sp/>-<sp/>t0;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>task.get_future();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a679195dae2fb0979098bff66fd3bfb90" kindref="member">qk::global_time_keeper::get</ref>().<ref refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a9f09220a67f96eb3df0dd60dac2a02d1" kindref="member">schedule_task</ref>(gtk_idx,<sp/>std::move(task),<sp/>when.value());</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>duration<sp/>=<sp/>ret.get();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>check_and_sync(duration);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_time<sp/>get_local_time()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>local_absolute_time<sp/>-<sp/>get_current_sc_time();<sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_time<sp/>get_local_absolute_time()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>local_absolute_time;<sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_time<sp/>get_current_sc_time()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sc_core::sc_time::from_value(<ref refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a679195dae2fb0979098bff66fd3bfb90" kindref="member">qk::global_time_keeper::get</ref>().get_sc_time_ticks());<sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>reset()<sp/>{<sp/>reset(get_current_sc_time());<sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>reset(sc_core::sc_time<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>abs_time)<sp/>{<sp/>local_absolute_time<sp/>=<sp/>sc_core::sc_time_stamp();<sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>unblock_thread()<sp/>{<sp/><ref refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a679195dae2fb0979098bff66fd3bfb90" kindref="member">qk::global_time_keeper::get</ref>().<ref refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a1f24e532370fc856be9aa352599088a1" kindref="member">update_client_time_ticks</ref>(gtk_idx,<sp/>local_absolute_time.value());<sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>gtk_idx;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>::scc::async_thread<sp/>thread_executor;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_event<sp/>keep_alive;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_time<sp/>local_absolute_time;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>local_time_ticks_limit{0};</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="132"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>tlm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__SCC_TLM_QUANTUMKEEPER_MT_H__</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_mt.h"/>
+  </compounddef>
+</doxygen>

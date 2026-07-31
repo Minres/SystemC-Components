@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -98,7 +98,8 @@ Collaboration diagram for scc::bitfield_register&lt; datatype_t &gt;:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:acc6109e4236ac6df2989d91377d65281" id="r_acc6109e4236ac6df2989d91377d65281"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc6109e4236ac6df2989d91377d65281">bitfield_register</a> (sc_core::sc_module_name name, size_t offset, datatype_t resetValue=0, datatype_t writeMask=-1, datatype_t readMask=-1)</td></tr>
-<tr class="memitem:a2d82cea9a300f3ef85df9ff5a8daf78b" id="r_a2d82cea9a300f3ef85df9ff5a8daf78b"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d82cea9a300f3ef85df9ff5a8daf78b">size</a> () const noexcept override</td></tr>
+<tr class="memitem:a53025a4faf810398fdc81de12ff13a30" id="r_a53025a4faf810398fdc81de12ff13a30"><td class="memItemLeft" align="right" valign="top">char const *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53025a4faf810398fdc81de12ff13a30">full_name</a> () const override</td></tr>
+<tr class="memitem:a648f082879bf572e7ce41b39b750c5ca" id="r_a648f082879bf572e7ce41b39b750c5ca"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a648f082879bf572e7ce41b39b750c5ca">size</a> () const noexcept override</td></tr>
 <tr class="memitem:a42ba983ea8228973c81996031225c084" id="r_a42ba983ea8228973c81996031225c084"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42ba983ea8228973c81996031225c084">reset</a> () override</td></tr>
 <tr class="memdesc:a42ba983ea8228973c81996031225c084"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset the resource  <br /></td></tr>
 <tr class="memitem:a1721bd204fd8aa28516aed265d1adc6a" id="r_a1721bd204fd8aa28516aed265d1adc6a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1721bd204fd8aa28516aed265d1adc6a">write</a> (const uint8_t *data, std::size_t length, uint64_t offset, sc_core::sc_time &amp;d) override</td></tr>
@@ -203,6 +204,38 @@ template&lt;typename datatype_t&gt; </div>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a53025a4faf810398fdc81de12ff13a30" name="a53025a4faf810398fdc81de12ff13a30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53025a4faf810398fdc81de12ff13a30">&#9670;&#160;</a></span>full_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename datatype_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char const  * <a class="el" href="classscc_1_1bitfield__register.html">scc::bitfield_register</a>&lt; datatype_t &gt;::full_name </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the name </dd></dl>
+
+<p>Implements <a class="el" href="classscc_1_1resource__access__if.html#ab84e9879450aa4146de9983d2245ddce">scc::resource_access_if</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00110">110</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+
+</div>
+</div>
 <a id="ac1f66cb5c4cd232ce9e0ec139a60f19a" name="ac1f66cb5c4cd232ce9e0ec139a60f19a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac1f66cb5c4cd232ce9e0ec139a60f19a">&#9670;&#160;</a></span>get()</h2>
 
@@ -229,7 +262,7 @@ template&lt;typename datatype_t&gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>the data stored in this register </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00170">170</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00174">174</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -259,7 +292,7 @@ template&lt;typename datatype_t&gt; </div>
 </div><div class="memdoc">
 <p>Convenience function to access the stored data </p>
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00181">181</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00185">185</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -289,7 +322,7 @@ template&lt;typename datatype_t&gt; </div>
 </div><div class="memdoc">
 <p>Convenience function to update the stored data </p>
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00185">185</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00189">189</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -319,7 +352,7 @@ template&lt;typename datatype_t&gt; </div>
 </div><div class="memdoc">
 <p>Updates the stored data with <code class="param">value</code> </p>
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00174">174</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00178">178</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -364,7 +397,7 @@ template&lt;typename datatype_t&gt; </div>
 
 <p>Implements <a class="el" href="classscc_1_1resource__access__if.html">scc::resource_access_if</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00132">132</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00136">136</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -415,7 +448,7 @@ template&lt;typename datatype_t&gt; </div>
 
 <p>Implements <a class="el" href="classscc_1_1resource__access__if.html#a81f86119c44d699f70b8980e12e97717">scc::resource_access_if</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00158">158</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00162">162</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -444,7 +477,7 @@ template&lt;typename datatype_t&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00176">176</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00180">180</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -477,7 +510,7 @@ template&lt;typename datatype_t&gt; </div>
 
 <p>Implements <a class="el" href="classscc_1_1resource__access__if.html#a94f5dba6b42b12379254975b72a475d6">scc::resource_access_if</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00112">112</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00116">116</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -509,7 +542,7 @@ template&lt;typename datatype_t&gt; </div>
 <a class="el" href="classscc_1_1bitfield__register.html" title="Register that can contain bitfields.">bitfield_register</a>&lt;datatype_t&gt;&amp; reg, datatype_t&amp; result)</span></p>
 <p>Callback is called after the individual bitfields. </p>
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00211">211</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00215">215</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -542,12 +575,12 @@ reg, datatype_t&amp; valueToWrite)</span></p>
 <p>Callback is called after the individual bitfields.</p>
 <p>If you want to change the value that gets written to the register change the value of the parameter valueToWrite. Direct writes to the register do not work. </p>
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00201">201</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00205">205</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
-<a id="a2d82cea9a300f3ef85df9ff5a8daf78b" name="a2d82cea9a300f3ef85df9ff5a8daf78b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d82cea9a300f3ef85df9ff5a8daf78b">&#9670;&#160;</a></span>size()</h2>
+<a id="a648f082879bf572e7ce41b39b750c5ca" name="a648f082879bf572e7ce41b39b750c5ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a648f082879bf572e7ce41b39b750c5ca">&#9670;&#160;</a></span>size()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -566,7 +599,7 @@ template&lt;typename datatype_t&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel constexpr">constexpr</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span><span class="mlabel noexcept">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -574,7 +607,7 @@ template&lt;typename datatype_t&gt; </div>
 
 <p>Implements <a class="el" href="classscc_1_1resource__access__if.html#a4b1353d979e7ce465dba34f05e10710e">scc::resource_access_if</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00110">110</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00114">114</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -619,7 +652,7 @@ template&lt;typename datatype_t&gt; </div>
 
 <p>Implements <a class="el" href="classscc_1_1resource__access__if.html">scc::resource_access_if</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00114">114</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00118">118</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -670,7 +703,7 @@ template&lt;typename datatype_t&gt; </div>
 
 <p>Implements <a class="el" href="classscc_1_1resource__access__if.html#ad9d368dd1a31310e1f147d019daa326c">scc::resource_access_if</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00150">150</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00154">154</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -697,7 +730,7 @@ template&lt;typename datatype_t&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00225">225</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00229">229</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -715,7 +748,7 @@ template&lt;typename datatype_t&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00215">215</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00219">219</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -741,7 +774,7 @@ template&lt;typename datatype_t&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00224">224</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00228">228</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -767,7 +800,7 @@ template&lt;typename datatype_t&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00220">220</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00224">224</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -793,7 +826,7 @@ template&lt;typename datatype_t&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00218">218</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00222">222</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -819,7 +852,7 @@ template&lt;typename datatype_t&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00221">221</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00225">225</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -845,7 +878,7 @@ template&lt;typename datatype_t&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00223">223</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00227">227</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>
@@ -871,7 +904,7 @@ template&lt;typename datatype_t&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00219">219</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target__bfs__register__base_8h_source.html#l00223">223</a> of file <a class="el" href="tlm__target__bfs__register__base_8h_source.html">tlm_target_bfs_register_base.h</a>.</p>
 
 </div>
 </div>

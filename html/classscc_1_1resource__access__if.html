@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -89,6 +89,8 @@ Inheritance diagram for scc::resource_access_if:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ab84e9879450aa4146de9983d2245ddce" id="r_ab84e9879450aa4146de9983d2245ddce"><td class="memItemLeft" align="right" valign="top">virtual char const *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab84e9879450aa4146de9983d2245ddce">full_name</a> () const =0</td></tr>
+<tr class="memdesc:ab84e9879450aa4146de9983d2245ddce"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the name of the resource  <br /></td></tr>
 <tr class="memitem:a4b1353d979e7ce465dba34f05e10710e" id="r_a4b1353d979e7ce465dba34f05e10710e"><td class="memItemLeft" align="right" valign="top">virtual std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b1353d979e7ce465dba34f05e10710e">size</a> () const =0</td></tr>
 <tr class="memdesc:a4b1353d979e7ce465dba34f05e10710e"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the size of the resource  <br /></td></tr>
 <tr class="memitem:a94f5dba6b42b12379254975b72a475d6" id="r_a94f5dba6b42b12379254975b72a475d6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94f5dba6b42b12379254975b72a475d6">reset</a> ()=0</td></tr>
@@ -109,6 +111,36 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> (uin
 
 <p class="definition">Definition at line <a class="el" href="resource__access__if_8h_source.html#l00030">30</a> of file <a class="el" href="resource__access__if_8h_source.html">resource_access_if.h</a>.</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="ab84e9879450aa4146de9983d2245ddce" name="ab84e9879450aa4146de9983d2245ddce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab84e9879450aa4146de9983d2245ddce">&#9670;&#160;</a></span>full_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual char const  * scc::resource_access_if::full_name </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>return the name of the resource </p>
+<dl class="section return"><dt>Returns</dt><dd>the name </dd></dl>
+
+<p>Implemented in <a class="el" href="classscc_1_1bitfield__register.html#a53025a4faf810398fdc81de12ff13a30">scc::bitfield_register&lt; datatype_t &gt;</a>, <a class="el" href="classscc_1_1impl_1_1sc__register.html#abcecef76ec622d0f5e7e8f99d40bf470">scc::impl::sc_register&lt; DATATYPE &gt;</a>, and <a class="el" href="classscc_1_1impl_1_1sc__register.html#abcecef76ec622d0f5e7e8f99d40bf470">scc::impl::sc_register&lt; typename impl::helper&lt; DATATYPE &gt;::Type &gt;</a>.</p>
+
+</div>
+</div>
 <a id="afba178290da5121755e18cdb44a06568" name="afba178290da5121755e18cdb44a06568"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afba178290da5121755e18cdb44a06568">&#9670;&#160;</a></span>read()</h2>
 
@@ -141,7 +173,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> (uin
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="resource__access__if_8h_source.html#l00072">72</a> of file <a class="el" href="resource__access__if_8h_source.html">resource_access_if.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resource__access__if_8h_source.html#l00077">77</a> of file <a class="el" href="resource__access__if_8h_source.html">resource_access_if.h</a>.</p>
 
 </div>
 </div>
@@ -247,7 +279,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> (uin
 <p>return the size of the resource </p>
 <dl class="section return"><dt>Returns</dt><dd>the size </dd></dl>
 
-<p>Implemented in <a class="el" href="classscc_1_1bitfield__register.html#a2d82cea9a300f3ef85df9ff5a8daf78b">scc::bitfield_register&lt; datatype_t &gt;</a>, <a class="el" href="classscc_1_1impl_1_1sc__register.html#ae4bd59511313c06e5b91ea67ff26774a">scc::impl::sc_register&lt; DATATYPE &gt;</a>, and <a class="el" href="classscc_1_1impl_1_1sc__register.html#ae4bd59511313c06e5b91ea67ff26774a">scc::impl::sc_register&lt; typename impl::helper&lt; DATATYPE &gt;::Type &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classscc_1_1bitfield__register.html#a648f082879bf572e7ce41b39b750c5ca">scc::bitfield_register&lt; datatype_t &gt;</a>, <a class="el" href="classscc_1_1impl_1_1sc__register.html#ae4bd59511313c06e5b91ea67ff26774a">scc::impl::sc_register&lt; DATATYPE &gt;</a>, and <a class="el" href="classscc_1_1impl_1_1sc__register.html#ae4bd59511313c06e5b91ea67ff26774a">scc::impl::sc_register&lt; typename impl::helper&lt; DATATYPE &gt;::Type &gt;</a>.</p>
 
 </div>
 </div>
@@ -283,7 +315,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> (uin
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="resource__access__if_8h_source.html#l00057">57</a> of file <a class="el" href="resource__access__if_8h_source.html">resource_access_if.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resource__access__if_8h_source.html#l00062">62</a> of file <a class="el" href="resource__access__if_8h_source.html">resource_access_if.h</a>.</p>
 
 </div>
 </div>

@@ -1,0 +1,353 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1perf__estimator" kind="class" language="C++" prot="public">
+    <compoundname>scc::perf_estimator</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <includes refid="perf__estimator_8h" local="no">perf_estimator.h</includes>
+    <innerclass refid="structscc_1_1perf__estimator_1_1time__stamp" prot="private">scc::perf_estimator::time_stamp</innerclass>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classscc_1_1perf__estimator_1ae7d39d8da818301113b32d12613878fa" prot="protected" static="no" mutable="no">
+        <type>time_stamp</type>
+        <definition>time_stamp scc::perf_estimator::soc</definition>
+        <argsstring></argsstring>
+        <name>soc</name>
+        <qualifiedname>scc::perf_estimator::soc</qualifiedname>
+        <briefdescription>
+<para>the recorded time stamps </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="98" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1perf__estimator_1acb455f9c34e8ec25be5b796f4067f995" prot="protected" static="no" mutable="no">
+        <type>time_stamp</type>
+        <definition>time_stamp scc::perf_estimator::eoe</definition>
+        <argsstring></argsstring>
+        <name>eoe</name>
+        <qualifiedname>scc::perf_estimator::eoe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="99" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1perf__estimator_1a14f53ba9c6478b72d5269720302144e2" prot="protected" static="no" mutable="no">
+        <type>time_stamp</type>
+        <definition>time_stamp scc::perf_estimator::sos</definition>
+        <argsstring></argsstring>
+        <name>sos</name>
+        <qualifiedname>scc::perf_estimator::sos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="100" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1perf__estimator_1a0a5fcaa76ff67e8fe0ea9fabfb634db2" prot="protected" static="no" mutable="no">
+        <type>time_stamp</type>
+        <definition>time_stamp scc::perf_estimator::eos</definition>
+        <argsstring></argsstring>
+        <name>eos</name>
+        <qualifiedname>scc::perf_estimator::eos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="101" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1perf__estimator_1add0a895809a1e42bf6cda00293c54fff" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time scc::perf_estimator::beat_delay</definition>
+        <argsstring></argsstring>
+        <name>beat_delay</name>
+        <qualifiedname>scc::perf_estimator::beat_delay</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="102" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1perf__estimator_1a33f1bbb47800bd187e2e348eeaaaa028" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time scc::perf_estimator::cycle_period</definition>
+        <argsstring></argsstring>
+        <name>cycle_period</name>
+        <qualifiedname>scc::perf_estimator::cycle_period</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="102" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1perf__estimator_1ac06e08ca7175bf29fd150e5b41e0a338" prot="protected" static="no" mutable="no">
+        <type>long</type>
+        <definition>long scc::perf_estimator::max_memory</definition>
+        <argsstring></argsstring>
+        <name>max_memory</name>
+        <qualifiedname>scc::perf_estimator::max_memory</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="105" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="105" bodyend="105"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1perf__estimator_1acf4b89b1872548fbad9cc550a289b4c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::perf_estimator::perf_estimator</definition>
+        <argsstring>()</argsstring>
+        <name>perf_estimator</name>
+        <qualifiedname>scc::perf_estimator::perf_estimator</qualifiedname>
+        <briefdescription>
+<para>default constructor creating an unnamed <ref refid="classscc_1_1perf__estimator" kindref="compound">perf_estimator</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="67" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="67" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1perf__estimator_1ad87498e8dae1a8ed27e9191b292197c4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::perf_estimator::perf_estimator</definition>
+        <argsstring>(sc_core::sc_time heart_beat)</argsstring>
+        <name>perf_estimator</name>
+        <qualifiedname>scc::perf_estimator::perf_estimator</qualifiedname>
+        <param>
+          <type>sc_core::sc_time</type>
+          <declname>heart_beat</declname>
+        </param>
+        <briefdescription>
+<para>default constructor creating an unnamed <ref refid="classscc_1_1perf__estimator" kindref="compound">perf_estimator</ref> having a heart beat </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>heart_beat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="75" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="75" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1perf__estimator_1ae1942a4583cf32a9e9055f6bac3f01b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>scc::perf_estimator::~perf_estimator</definition>
+        <argsstring>()</argsstring>
+        <name>~perf_estimator</name>
+        <qualifiedname>scc::perf_estimator::~perf_estimator</qualifiedname>
+        <briefdescription>
+<para>destructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="82" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.cpp" bodystart="49" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1perf__estimator_1a591441ba459c8a39b38a851653099c35" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::perf_estimator::set_cycle_time</definition>
+        <argsstring>(sc_core::sc_time cycle_period)</argsstring>
+        <name>set_cycle_time</name>
+        <qualifiedname>scc::perf_estimator::set_cycle_time</qualifiedname>
+        <param>
+          <type>sc_core::sc_time</type>
+          <declname>cycle_period</declname>
+        </param>
+        <briefdescription>
+<para>set the cycle time for cylces per second calculation </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cycle_period</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="89" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="89" bodyend="89"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classscc_1_1perf__estimator_1a8de6a396d5779808af91031a9b830401" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::perf_estimator::perf_estimator</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm, sc_core::sc_time heart_beat)</argsstring>
+        <name>perf_estimator</name>
+        <qualifiedname>scc::perf_estimator::perf_estimator</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time</type>
+          <declname>heart_beat</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="92" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1perf__estimator_1ad13d252cdce8369da7063e3bd1c77837" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::perf_estimator::end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_elaboration</name>
+        <qualifiedname>scc::perf_estimator::end_of_elaboration</qualifiedname>
+        <briefdescription>
+<para>SystemC callbacks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="94" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.cpp" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1perf__estimator_1abf775102ae09cc0ca3c7a4e55d6f0b77" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::perf_estimator::start_of_simulation</definition>
+        <argsstring>() override</argsstring>
+        <name>start_of_simulation</name>
+        <qualifiedname>scc::perf_estimator::start_of_simulation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="95" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.cpp" bodystart="65" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1perf__estimator_1a11e0f22f15b997f25f948d2a871d1c21" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::perf_estimator::end_of_simulation</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_simulation</name>
+        <qualifiedname>scc::perf_estimator::end_of_simulation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="96" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.cpp" bodystart="70" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1perf__estimator_1a2b95ea9023f39c265bda20e2f6110030" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::perf_estimator::beat</definition>
+        <argsstring>()</argsstring>
+        <name>beat</name>
+        <qualifiedname>scc::perf_estimator::beat</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="103" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.cpp" bodystart="85" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1perf__estimator_1a71a49bcbff5f980068c3a5d00c80f6ab" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>long</type>
+        <definition>long scc::perf_estimator::get_memory</definition>
+        <argsstring>()</argsstring>
+        <name>get_memory</name>
+        <qualifiedname>scc::perf_estimator::get_memory</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="104" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.cpp" bodystart="152" bodyend="163"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>a performance estimator </para>
+    </briefdescription>
+    <detaileddescription>
+<para>It records the time stamps a various time points (start and end of simulation) and calculates some performance figures. Optionally it provides a heart beat which periodically calls a functor If a cycle time is provides it calculates also the cycles per (wall clock) second </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::perf_estimator</label>
+        <link refid="classscc_1_1perf__estimator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::perf_estimator</label>
+        <link refid="classscc_1_1perf__estimator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>eoe</edgelabel>
+          <edgelabel>eos</edgelabel>
+          <edgelabel>soc</edgelabel>
+          <edgelabel>sos</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scc::perf_estimator::time_stamp</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="39" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="39" bodyend="106"/>
+    <listofallmembers>
+      <member refid="classscc_1_1perf__estimator_1a2b95ea9023f39c265bda20e2f6110030" prot="protected" virt="non-virtual"><scope>scc::perf_estimator</scope><name>beat</name></member>
+      <member refid="classscc_1_1perf__estimator_1add0a895809a1e42bf6cda00293c54fff" prot="protected" virt="non-virtual"><scope>scc::perf_estimator</scope><name>beat_delay</name></member>
+      <member refid="classscc_1_1perf__estimator_1a33f1bbb47800bd187e2e348eeaaaa028" prot="protected" virt="non-virtual"><scope>scc::perf_estimator</scope><name>cycle_period</name></member>
+      <member refid="classscc_1_1perf__estimator_1ad13d252cdce8369da7063e3bd1c77837" prot="protected" virt="non-virtual"><scope>scc::perf_estimator</scope><name>end_of_elaboration</name></member>
+      <member refid="classscc_1_1perf__estimator_1a11e0f22f15b997f25f948d2a871d1c21" prot="protected" virt="non-virtual"><scope>scc::perf_estimator</scope><name>end_of_simulation</name></member>
+      <member refid="classscc_1_1perf__estimator_1acb455f9c34e8ec25be5b796f4067f995" prot="protected" virt="non-virtual"><scope>scc::perf_estimator</scope><name>eoe</name></member>
+      <member refid="classscc_1_1perf__estimator_1a0a5fcaa76ff67e8fe0ea9fabfb634db2" prot="protected" virt="non-virtual"><scope>scc::perf_estimator</scope><name>eos</name></member>
+      <member refid="classscc_1_1perf__estimator_1a71a49bcbff5f980068c3a5d00c80f6ab" prot="protected" virt="non-virtual"><scope>scc::perf_estimator</scope><name>get_memory</name></member>
+      <member refid="classscc_1_1perf__estimator_1ac06e08ca7175bf29fd150e5b41e0a338" prot="protected" virt="non-virtual"><scope>scc::perf_estimator</scope><name>max_memory</name></member>
+      <member refid="classscc_1_1perf__estimator_1acf4b89b1872548fbad9cc550a289b4c9" prot="public" virt="non-virtual"><scope>scc::perf_estimator</scope><name>perf_estimator</name></member>
+      <member refid="classscc_1_1perf__estimator_1ad87498e8dae1a8ed27e9191b292197c4" prot="public" virt="non-virtual"><scope>scc::perf_estimator</scope><name>perf_estimator</name></member>
+      <member refid="classscc_1_1perf__estimator_1a8de6a396d5779808af91031a9b830401" prot="protected" virt="non-virtual"><scope>scc::perf_estimator</scope><name>perf_estimator</name></member>
+      <member refid="classscc_1_1perf__estimator_1a591441ba459c8a39b38a851653099c35" prot="public" virt="non-virtual"><scope>scc::perf_estimator</scope><name>set_cycle_time</name></member>
+      <member refid="classscc_1_1perf__estimator_1ae7d39d8da818301113b32d12613878fa" prot="protected" virt="non-virtual"><scope>scc::perf_estimator</scope><name>soc</name></member>
+      <member refid="classscc_1_1perf__estimator_1a14f53ba9c6478b72d5269720302144e2" prot="protected" virt="non-virtual"><scope>scc::perf_estimator</scope><name>sos</name></member>
+      <member refid="classscc_1_1perf__estimator_1abf775102ae09cc0ca3c7a4e55d6f0b77" prot="protected" virt="non-virtual"><scope>scc::perf_estimator</scope><name>start_of_simulation</name></member>
+      <member refid="classscc_1_1perf__estimator_1ae1942a4583cf32a9e9055f6bac3f01b2" prot="public" virt="virtual"><scope>scc::perf_estimator</scope><name>~perf_estimator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

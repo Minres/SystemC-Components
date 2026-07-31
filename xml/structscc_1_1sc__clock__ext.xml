@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1sc__clock__ext" kind="struct" language="C++" prot="public">
+    <compoundname>scc::sc_clock_ext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_clock</basecompoundref>
+    <includes refid="sc__clock__ext_8h" local="no">sc_clock_ext.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1sc__clock__ext_1a66d153b247dd3829a72ee0059aa67ce4" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; sc_core::sc_time &gt;</type>
+        <definition>cci::cci_param&lt;sc_core::sc_time&gt; scc::sc_clock_ext::period</definition>
+        <argsstring></argsstring>
+        <name>period</name>
+        <qualifiedname>scc::sc_clock_ext::period</qualifiedname>
+        <briefdescription>
+<para>The period of the generated clock. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This parameter allows users to specify the period of the generated clock. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" line="42" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1sc__clock__ext_1ab4ea1e1db2fd87ed23c736406e45f3be" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; double &gt;</type>
+        <definition>cci::cci_param&lt;double&gt; scc::sc_clock_ext::duty_cycle</definition>
+        <argsstring></argsstring>
+        <name>duty_cycle</name>
+        <qualifiedname>scc::sc_clock_ext::duty_cycle</qualifiedname>
+        <briefdescription>
+<para>The duty cycle of the generated clock. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This parameter allows users to specify the duty cycle of the generated clock. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" line="48" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1sc__clock__ext_1afa74a2dc0d821ce5003e8b5b50a44d04" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; sc_core::sc_time &gt;</type>
+        <definition>cci::cci_param&lt;sc_core::sc_time&gt; scc::sc_clock_ext::initial_delay</definition>
+        <argsstring></argsstring>
+        <name>initial_delay</name>
+        <qualifiedname>scc::sc_clock_ext::initial_delay</qualifiedname>
+        <briefdescription>
+<para>The start time of the generated clock. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This parameter allows users to specify the start time of the generated clock. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" line="54" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1sc__clock__ext_1ab1f289749b2384a8b26b71b4d0525599" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_clock_ext::sc_clock_ext</definition>
+        <argsstring>(const char *name_, const sc_core::sc_time &amp;period_, double duty_cycle_=0.5, const sc_core::sc_time &amp;start_time_=sc_core::SC_ZERO_TIME, bool posedge_first_=true)</argsstring>
+        <name>sc_clock_ext</name>
+        <qualifiedname>scc::sc_clock_ext::sc_clock_ext</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name_</declname>
+        </param>
+        <param>
+          <type>const sc_core::sc_time &amp;</type>
+          <declname>period_</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>duty_cycle_</declname>
+          <defval>0.5</defval>
+        </param>
+        <param>
+          <type>const sc_core::sc_time &amp;</type>
+          <declname>start_time_</declname>
+          <defval>sc_core::SC_ZERO_TIME</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>posedge_first_</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" line="56" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" bodystart="56" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__clock__ext_1a908227e52c61f54a827dcf6f219d41c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual scc::sc_clock_ext::~sc_clock_ext</definition>
+        <argsstring>()=default</argsstring>
+        <name>~sc_clock_ext</name>
+        <qualifiedname>scc::sc_clock_ext::~sc_clock_ext</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" line="65" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="structscc_1_1sc__clock__ext_1a01927b6871ce9c6a74c01e51f4ed3ff8" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_clock_ext::end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_elaboration</name>
+        <qualifiedname>scc::sc_clock_ext::end_of_elaboration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" line="68" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" bodystart="68" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__clock__ext_1aa455d587696e9ecaf0989c08fac5eba6" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_clock_ext::period_write_callback</definition>
+        <argsstring>(const cci::cci_param_write_event&lt; int &gt; &amp;ev)</argsstring>
+        <name>period_write_callback</name>
+        <qualifiedname>scc::sc_clock_ext::period_write_callback</qualifiedname>
+        <param>
+          <type>const cci::cci_param_write_event&lt; int &gt; &amp;</type>
+          <declname>ev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" line="80" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" bodystart="80" bodyend="80"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="structscc_1_1sc__clock__ext_1a93c369e3ad326b456f535b959746d64c" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string scc::sc_clock_ext::get_cci_name</definition>
+        <argsstring>(const char *base, const char *name)</argsstring>
+        <name>get_cci_name</name>
+        <qualifiedname>scc::sc_clock_ext::get_cci_name</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" line="81" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" bodystart="81" bodyend="81"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A clock source with construction time configurable start delay. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="structscc_1_1sc__clock__ext" kindref="compound">sc_clock_ext</ref> class extends the sc_core::sc_clock class to provide additional functionality, such as configuration via CCI. It allows users to specify the period, duty cycle, and start time of the generated clock . </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_clock</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_clock_ext</label>
+        <link refid="structscc_1_1sc__clock__ext"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_clock</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_clock_ext</label>
+        <link refid="structscc_1_1sc__clock__ext"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" line="36" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h" bodystart="36" bodyend="82"/>
+    <listofallmembers>
+      <member refid="structscc_1_1sc__clock__ext_1ab4ea1e1db2fd87ed23c736406e45f3be" prot="public" virt="non-virtual"><scope>scc::sc_clock_ext</scope><name>duty_cycle</name></member>
+      <member refid="structscc_1_1sc__clock__ext_1a01927b6871ce9c6a74c01e51f4ed3ff8" prot="protected" virt="non-virtual"><scope>scc::sc_clock_ext</scope><name>end_of_elaboration</name></member>
+      <member refid="structscc_1_1sc__clock__ext_1a93c369e3ad326b456f535b959746d64c" prot="protected" virt="non-virtual"><scope>scc::sc_clock_ext</scope><name>get_cci_name</name></member>
+      <member refid="structscc_1_1sc__clock__ext_1afa74a2dc0d821ce5003e8b5b50a44d04" prot="public" virt="non-virtual"><scope>scc::sc_clock_ext</scope><name>initial_delay</name></member>
+      <member refid="structscc_1_1sc__clock__ext_1a66d153b247dd3829a72ee0059aa67ce4" prot="public" virt="non-virtual"><scope>scc::sc_clock_ext</scope><name>period</name></member>
+      <member refid="structscc_1_1sc__clock__ext_1aa455d587696e9ecaf0989c08fac5eba6" prot="protected" virt="non-virtual"><scope>scc::sc_clock_ext</scope><name>period_write_callback</name></member>
+      <member refid="structscc_1_1sc__clock__ext_1ab1f289749b2384a8b26b71b4d0525599" prot="public" virt="non-virtual"><scope>scc::sc_clock_ext</scope><name>sc_clock_ext</name></member>
+      <member refid="structscc_1_1sc__clock__ext_1a908227e52c61f54a827dcf6f219d41c1" prot="public" virt="virtual"><scope>scc::sc_clock_ext</scope><name>~sc_clock_ext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classaxi_1_1axi__target__base" kind="class" language="C++" prot="public">
+    <compoundname>axi::axi_target_base</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <derivedcompoundref refid="classaxi_1_1axi__target" prot="public" virt="non-virtual">axi::axi_target&lt; BUSWIDTH &gt;</derivedcompoundref>
+    <includes refid="axi__target_8h" local="no">axi_target.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classaxi_1_1axi__target__base_1a47ac4c4c680373090bf4d5049bca7aed" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; axi::axi_target_base::clk_i</definition>
+        <argsstring></argsstring>
+        <name>clk_i</name>
+        <qualifiedname>axi::axi_target_base::clk_i</qualifiedname>
+        <initializer>{&quot;clk_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h" line="39" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h" bodystart="39" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1axi__target__base_1a047b59148fdaf11cc11a367fd77e9629" prot="public" static="no" mutable="no">
+        <type>tlm_utils::simple_initiator_socket&lt; axi_target_base, scc::LT &gt;</type>
+        <definition>tlm_utils::simple_initiator_socket&lt;axi_target_base, scc::LT&gt; axi::axi_target_base::isck</definition>
+        <argsstring></argsstring>
+        <name>isck</name>
+        <qualifiedname>axi::axi_target_base::isck</qualifiedname>
+        <initializer>{&quot;isck&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h" line="43" column="40" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classaxi_1_1axi__target__base_1a68a3cc4eb1f1c8455ec76ed9c4340d47" prot="private" static="no" mutable="no">
+        <type><ref refid="classaxi_1_1pe_1_1axi__target__pe" kindref="compound">axi::pe::axi_target_pe</ref> &amp;</type>
+        <definition>axi::pe::axi_target_pe&amp; axi::axi_target_base::pe</definition>
+        <argsstring></argsstring>
+        <name>pe</name>
+        <qualifiedname>axi::axi_target_base::pe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h" line="52" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1axi__target__base_1aa5fc7e7a0e217e3f4ae41fb4a9b4ad3c" prot="private" static="no" mutable="no">
+        <type><ref refid="structscc_1_1peq" kindref="compound">scc::peq</ref>&lt; tlm::tlm_generic_payload * &gt;</type>
+        <definition>scc::peq&lt;tlm::tlm_generic_payload*&gt; axi::axi_target_base::peq</definition>
+        <argsstring></argsstring>
+        <name>peq</name>
+        <qualifiedname>axi::axi_target_base::peq</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h" line="53" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classaxi_1_1axi__target__base_1a1314602287785c0970dff67ee57b2058" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi_target_base::axi_target_base</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm, axi::pe::axi_target_pe &amp;pe)</argsstring>
+        <name>axi_target_base</name>
+        <qualifiedname>axi::axi_target_base::axi_target_base</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type><ref refid="classaxi_1_1pe_1_1axi__target__pe" kindref="compound">axi::pe::axi_target_pe</ref> &amp;</type>
+          <declname>pe</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h" line="45" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.cpp" bodystart="31" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1axi__target__base_1afdd3dec6c3d79be1263f6f64309c8b47" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual axi::axi_target_base::~axi_target_base</definition>
+        <argsstring>()</argsstring>
+        <name>~axi_target_base</name>
+        <qualifiedname>axi::axi_target_base::~axi_target_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h" line="46" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classaxi_1_1axi__target__base_1a9daaf25224d6d9673735d2beb181a9bb" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi_target_base::access</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;trans)</argsstring>
+        <name>access</name>
+        <qualifiedname>axi::axi_target_base::access</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h" line="49" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.cpp" bodystart="40" bodyend="43"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classaxi_1_1axi__target__base_1a9207a67583851da35a81e01796b52067" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi_target_base::trans_queue</definition>
+        <argsstring>()</argsstring>
+        <name>trans_queue</name>
+        <qualifiedname>axi::axi_target_base::trans_queue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h" line="55" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.cpp" bodystart="45" bodyend="53"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para><ref refid="classaxi_1_1axi__target" kindref="compound">axi_target</ref> class instantiates the AXI Protocol Engine. It accesses the Protocol Engine with access() callback function and forwards the transactions via the output_socket. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>axi::axi_target&lt; BUSWIDTH &gt;</label>
+        <link refid="classaxi_1_1axi__target"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>axi::axi_target_base</label>
+        <link refid="classaxi_1_1axi__target__base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::axi_target_base</label>
+        <link refid="classaxi_1_1axi__target__base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h" line="37" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h" bodystart="37" bodyend="56"/>
+    <listofallmembers>
+      <member refid="classaxi_1_1axi__target__base_1a9daaf25224d6d9673735d2beb181a9bb" prot="protected" virt="non-virtual"><scope>axi::axi_target_base</scope><name>access</name></member>
+      <member refid="classaxi_1_1axi__target__base_1a1314602287785c0970dff67ee57b2058" prot="public" virt="non-virtual"><scope>axi::axi_target_base</scope><name>axi_target_base</name></member>
+      <member refid="classaxi_1_1axi__target__base_1a47ac4c4c680373090bf4d5049bca7aed" prot="public" virt="non-virtual"><scope>axi::axi_target_base</scope><name>clk_i</name></member>
+      <member refid="classaxi_1_1axi__target__base_1a047b59148fdaf11cc11a367fd77e9629" prot="public" virt="non-virtual"><scope>axi::axi_target_base</scope><name>isck</name></member>
+      <member refid="classaxi_1_1axi__target__base_1a68a3cc4eb1f1c8455ec76ed9c4340d47" prot="private" virt="non-virtual"><scope>axi::axi_target_base</scope><name>pe</name></member>
+      <member refid="classaxi_1_1axi__target__base_1aa5fc7e7a0e217e3f4ae41fb4a9b4ad3c" prot="private" virt="non-virtual"><scope>axi::axi_target_base</scope><name>peq</name></member>
+      <member refid="classaxi_1_1axi__target__base_1a9207a67583851da35a81e01796b52067" prot="private" virt="non-virtual"><scope>axi::axi_target_base</scope><name>trans_queue</name></member>
+      <member refid="classaxi_1_1axi__target__base_1afdd3dec6c3d79be1263f6f64309c8b47" prot="public" virt="virtual"><scope>axi::axi_target_base</scope><name>~axi_target_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

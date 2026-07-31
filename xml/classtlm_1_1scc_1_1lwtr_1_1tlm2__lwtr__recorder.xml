@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr__recorder" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::lwtr::tlm2_lwtr_recorder</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr" prot="public" virt="non-virtual">tlm::scc::lwtr::tlm2_lwtr&lt; tlm::tlm_base_protocol_types &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>unsigned</type>
+        <declname>BUSWIDTH</declname>
+        <defname>BUSWIDTH</defname>
+        <defval>32</defval>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval>tlm::tlm_base_protocol_types</defval>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>N</declname>
+        <defname>N</defname>
+        <defval>1</defval>
+      </param>
+      <param>
+        <type>sc_core::sc_port_policy</type>
+        <declname>POL</declname>
+        <defname>POL</defname>
+        <defval>sc_core::SC_ONE_OR_MORE_BOUND</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr__recorder_1af42edf8453e3263752c372f77a848a80" prot="public" static="no" mutable="no">
+        <type>tlm::tlm_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt;</type>
+        <definition>tlm::tlm_target_socket&lt;BUSWIDTH, TYPES, N, POL&gt; tlm::scc::lwtr::tlm2_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;::ts</definition>
+        <argsstring></argsstring>
+        <name>ts</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr_recorder::ts</qualifiedname>
+        <initializer>{&quot;ts&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="358" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="358" bodyend="358"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr__recorder_1a4bde3d4b6ff64ab06ac6cabd352716c2" prot="public" static="no" mutable="no">
+        <type>tlm::tlm_initiator_socket&lt; BUSWIDTH, TYPES, N, POL &gt;</type>
+        <definition>tlm::tlm_initiator_socket&lt;BUSWIDTH, TYPES, N, POL&gt; tlm::scc::lwtr::tlm2_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;::is</definition>
+        <argsstring></argsstring>
+        <name>is</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr_recorder::is</qualifiedname>
+        <initializer>{&quot;is&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="359" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="359" bodyend="359"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr__recorder_1aa9ef13a887bd4bda7849a42e0ae99cf2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::lwtr::tlm2_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;::tlm2_lwtr_recorder</definition>
+        <argsstring>(sc_core::sc_module_name nm, bool recording_enabled=true, tx_db *tr_db=tx_db::get_default_db())</argsstring>
+        <name>tlm2_lwtr_recorder</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr_recorder::tlm2_lwtr_recorder</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>recording_enabled</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>tx_db *</type>
+          <declname>tr_db</declname>
+          <defval>tx_db::get_default_db()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="361" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="361" bodyend="368"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="3">
+        <label>tlm::scc::lwtr::tlm2_lwtr&lt; tlm::tlm_base_protocol_types &gt;</label>
+        <link refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::lwtr::tlm2_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr__recorder"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="3">
+        <label>tlm::scc::lwtr::tlm2_lwtr&lt; tlm::tlm_base_protocol_types &gt;</label>
+        <link refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::lwtr::tlm2_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr__recorder"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="356" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="356" bodyend="369"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a04bd712f8b9ad3cc4932d808e99b9e6b" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>b_transport</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a79d63f3d0f1563d84b31223fcca074d7" prot="protected" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>bw_port</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aef6b9f1140faba74fd78503c22b641ab" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>enableBlTracing</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a4024003afce6abe8e37fecc1979320da" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>enableDmiTracing</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a031d8873a673d37ecd4bb60ad8c3e8f5" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>enableNbTracing</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1acfcedc70de6436e900a48961d6612f60" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>enableTimedTracing</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1adc0986c955a2002d2bf51f70cb8e562d" prot="protected" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>fw_port</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aa31b83c1cd573bab0e08c09f5e1b00e1" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>get_direct_mem_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a5e5550d103aa2cc1078f2ffde62e5b95" prot="protected" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>initialize_streams</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aa0acded6b251453f3e8324c5a42e218f" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>invalidate_direct_mem_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr__recorder_1a4bde3d4b6ff64ab06ac6cabd352716c2" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>is</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a3aa41cbf129d6a8132d63140e955ed97" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>isRecordingBlockingTxEnabled</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1abd8488304f9aa9ddf4bdabb6f363fa52" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>isRecordingNonBlockingTxEnabled</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aedb47b619c3965a911816a8b77c299cb" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>nb_transport_bw</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1ac01a1e1f6d6a7bdbe46ce83ee00f62a1" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>nb_transport_fw</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a9caed48a9557d0be7222e7ce357ad818" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>tlm2_lwtr</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr__recorder_1aa9ef13a887bd4bda7849a42e0ae99cf2" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>tlm2_lwtr_recorder</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1ac510ec6dc065f853aceb31f283338d0d" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>transport_dbg</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr__recorder_1af42edf8453e3263752c372f77a848a80" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>ts</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a4dba0af35d107d732b5e138c116208b7" prot="public" virt="virtual"><scope>tlm::scc::lwtr::tlm2_lwtr_recorder</scope><name>~tlm2_lwtr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1async__thread" kind="struct" language="C++" prot="public">
+    <compoundname>scc::async_thread</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_prim_channel</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1async__thread_1a3dbc5344d801126d63750ecb782d0143" prot="private" static="no" mutable="no">
+        <type>std::thread</type>
+        <definition>std::thread scc::async_thread::t1</definition>
+        <argsstring></argsstring>
+        <name>t1</name>
+        <qualifiedname>scc::async_thread::t1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" line="48" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1async__thread_1aeb27154b72f4dc0cfc086d6e8aeffaad" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event scc::async_thread::finish_event</definition>
+        <argsstring></argsstring>
+        <name>finish_event</name>
+        <qualifiedname>scc::async_thread::finish_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" line="49" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1async__thread_1ad6a0330b551629171bb627cfd297aefd" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; uint64_t &gt;</type>
+        <definition>std::atomic&lt;uint64_t&gt; scc::async_thread::finish_time</definition>
+        <argsstring></argsstring>
+        <name>finish_time</name>
+        <qualifiedname>scc::async_thread::finish_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" line="50" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1async__thread_1a4eef47dcdcae776819993b36ffffc525" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::async_thread::active</definition>
+        <argsstring></argsstring>
+        <name>active</name>
+        <qualifiedname>scc::async_thread::active</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" line="51" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" bodystart="51" bodyend="51"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1async__thread_1a5f454b8c5700a4ee4e86c6fe0304d582" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::async_thread::async_thread</definition>
+        <argsstring>()</argsstring>
+        <name>async_thread</name>
+        <qualifiedname>scc::async_thread::async_thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" line="15" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" bodystart="15" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1async__thread_1aa7c50a4770549566d4b74e325d3972c1" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::async_thread::async_thread</definition>
+        <argsstring>(const char *nm)</argsstring>
+        <name>async_thread</name>
+        <qualifiedname>scc::async_thread::async_thread</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" line="18" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" bodystart="18" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1async__thread_1a080a1afc130689ff60909fd84259dbd0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::async_thread::~async_thread</definition>
+        <argsstring>()</argsstring>
+        <name>~async_thread</name>
+        <qualifiedname>scc::async_thread::~async_thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" line="21" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" bodystart="21" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1async__thread_1a20d765eae926ad9dbd50f08ec694e51e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::async_thread::start</definition>
+        <argsstring>(std::function&lt; sc_core::sc_time()&gt; const &amp;f)</argsstring>
+        <name>start</name>
+        <qualifiedname>scc::async_thread::start</qualifiedname>
+        <param>
+          <type>std::function&lt; sc_core::sc_time()&gt; const &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" line="26" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" bodystart="26" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1async__thread_1a7d075744594dc90d24e40fa7b8c778d0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const sc_core::sc_event &amp;</type>
+        <definition>const sc_core::sc_event &amp; scc::async_thread::thread_finish_event</definition>
+        <argsstring>() const</argsstring>
+        <name>thread_finish_event</name>
+        <qualifiedname>scc::async_thread::thread_finish_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" line="38" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" bodystart="38" bodyend="38"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structscc_1_1async__thread_1af30b96f3125003d5ad8fb71f71fc9953" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::async_thread::update</definition>
+        <argsstring>() override</argsstring>
+        <name>update</name>
+        <qualifiedname>scc::async_thread::update</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" line="41" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" bodystart="41" bodyend="47"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_prim_channel</label>
+      </node>
+      <node id="1">
+        <label>scc::async_thread</label>
+        <link refid="structscc_1_1async__thread"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_prim_channel</label>
+      </node>
+      <node id="1">
+        <label>scc::async_thread</label>
+        <link refid="structscc_1_1async__thread"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" line="13" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_thread.h" bodystart="13" bodyend="52"/>
+    <listofallmembers>
+      <member refid="structscc_1_1async__thread_1a4eef47dcdcae776819993b36ffffc525" prot="private" virt="non-virtual"><scope>scc::async_thread</scope><name>active</name></member>
+      <member refid="structscc_1_1async__thread_1a5f454b8c5700a4ee4e86c6fe0304d582" prot="public" virt="non-virtual"><scope>scc::async_thread</scope><name>async_thread</name></member>
+      <member refid="structscc_1_1async__thread_1aa7c50a4770549566d4b74e325d3972c1" prot="public" virt="non-virtual"><scope>scc::async_thread</scope><name>async_thread</name></member>
+      <member refid="structscc_1_1async__thread_1aeb27154b72f4dc0cfc086d6e8aeffaad" prot="private" virt="non-virtual"><scope>scc::async_thread</scope><name>finish_event</name></member>
+      <member refid="structscc_1_1async__thread_1ad6a0330b551629171bb627cfd297aefd" prot="private" virt="non-virtual"><scope>scc::async_thread</scope><name>finish_time</name></member>
+      <member refid="structscc_1_1async__thread_1a20d765eae926ad9dbd50f08ec694e51e" prot="public" virt="non-virtual"><scope>scc::async_thread</scope><name>start</name></member>
+      <member refid="structscc_1_1async__thread_1a3dbc5344d801126d63750ecb782d0143" prot="private" virt="non-virtual"><scope>scc::async_thread</scope><name>t1</name></member>
+      <member refid="structscc_1_1async__thread_1a7d075744594dc90d24e40fa7b8c778d0" prot="public" virt="non-virtual"><scope>scc::async_thread</scope><name>thread_finish_event</name></member>
+      <member refid="structscc_1_1async__thread_1af30b96f3125003d5ad8fb71f71fc9953" prot="private" virt="non-virtual"><scope>scc::async_thread</scope><name>update</name></member>
+      <member refid="structscc_1_1async__thread_1a080a1afc130689ff60909fd84259dbd0" prot="public" virt="non-virtual"><scope>scc::async_thread</scope><name>~async_thread</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

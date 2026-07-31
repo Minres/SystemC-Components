@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structace__target__pe_1_1bw__intor__impl" kind="struct" language="C++" prot="public">
+    <compoundname>ace_target_pe::bw_intor_impl</compoundname>
+    <basecompoundref refid="structtlm_1_1scc_1_1pe_1_1intor__bw__nb" prot="public" virt="non-virtual">tlm::scc::pe::intor_bw_nb</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structace__target__pe_1_1bw__intor__impl_1aebe7f1b2a24d09f05ed1691c08a239ba" prot="public" static="no" mutable="no">
+        <type><ref refid="classaxi_1_1pe_1_1ace__target__pe_1a82790b1a10222ec1ba65ba11d4d176ee" kindref="member">ace_target_pe</ref> *const</type>
+        <definition>ace_target_pe* const axi::pe::ace_target_pe::bw_intor_impl::that</definition>
+        <argsstring></argsstring>
+        <name>that</name>
+        <qualifiedname>axi::pe::ace_target_pe::bw_intor_impl::that</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" line="40" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structace__target__pe_1_1bw__intor__impl_1a99569fc326770365b9844b3ce154cfe4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::pe::ace_target_pe::bw_intor_impl::bw_intor_impl</definition>
+        <argsstring>(ace_target_pe *that)</argsstring>
+        <name>bw_intor_impl</name>
+        <qualifiedname>axi::pe::ace_target_pe::bw_intor_impl::bw_intor_impl</qualifiedname>
+        <param>
+          <type><ref refid="classaxi_1_1pe_1_1ace__target__pe_1a82790b1a10222ec1ba65ba11d4d176ee" kindref="member">ace_target_pe</ref> *</type>
+          <declname>that</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" line="41" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" bodystart="41" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="structace__target__pe_1_1bw__intor__impl_1a90ed1a3696a519297b09babd152dd046" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi::pe::ace_target_pe::bw_intor_impl::transport</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;payload) override</argsstring>
+        <name>transport</name>
+        <qualifiedname>axi::pe::ace_target_pe::bw_intor_impl::transport</qualifiedname>
+        <reimplements refid="structtlm_1_1scc_1_1pe_1_1intor__bw_1af250b11afa4a9e1c6cf76668847bd3be">transport</reimplements>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>payload</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>callback from the pe top if there is a backward transaction e.g. a snoop</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>payload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>object with (optional) extensions return the latency until reponse is sent by the protocol engine </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" line="43" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" bodystart="43" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="structace__target__pe_1_1bw__intor__impl_1a54e4eca8ac7727361dfed7e32ee50c5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual axi::pe::ace_target_pe::bw_intor_impl::~bw_intor_impl</definition>
+        <argsstring>()=default</argsstring>
+        <name>~bw_intor_impl</name>
+        <qualifiedname>axi::pe::ace_target_pe::bw_intor_impl::~bw_intor_impl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" line="53" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::pe::ace_target_pe::bw_intor_impl</label>
+        <link refid="structace__target__pe_1_1bw__intor__impl"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="3">
+        <label>tlm::scc::pe::intor_bw&lt; type::NB &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__bw"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::pe::intor_bw_nb</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__bw__nb"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="13">
+        <label>axi::ace_fw_transport_if&lt; axi::axi_protocol_types &gt;</label>
+      </node>
+      <node id="12">
+        <label>axi::axi_bw_transport_if&lt; axi::axi_protocol_types &gt;</label>
+      </node>
+      <node id="14">
+        <label>axi::axi_initiator_socket&lt; 64 &gt;</label>
+        <link refid="structaxi_1_1axi__initiator__socket"/>
+        <childnode refid="15" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>axi::fsm::base</label>
+        <link refid="structaxi_1_1fsm_1_1base"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>fsm_event_queue</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>fsm_clk_queue</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>axi::pe::ace_target_pe</label>
+        <link refid="classaxi_1_1pe_1_1ace__target__pe"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="protected-inheritance">
+        </childnode>
+        <childnode refid="12" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>isckt_axi</edgelabel>
+        </childnode>
+        <childnode refid="16" relation="usage">
+          <edgelabel>rd_resp</edgelabel>
+          <edgelabel>rd_resp_ch</edgelabel>
+          <edgelabel>wr_resp_ch</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>axi::pe::ace_target_pe::bw_intor_impl</label>
+        <link refid="structace__target__pe_1_1bw__intor__impl"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>that</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="6">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="9">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="11">
+        <label>sc_core::sc_prim_channel</label>
+      </node>
+      <node id="17">
+        <label>sc_core::sc_semaphore_if</label>
+      </node>
+      <node id="10">
+        <label>scc::fifo_w_cb&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, payload_type *, unsigned &gt; &gt;</label>
+        <link refid="classscc_1_1fifo__w__cb"/>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>scc::ordered_semaphore</label>
+        <link refid="classscc_1_1ordered__semaphore"/>
+        <childnode refid="17" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+        <childnode refid="18" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>scc::peq&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, payload_type *, bool &gt; &gt;</label>
+        <link refid="structscc_1_1peq"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>scc::traceable</label>
+        <link refid="structscc_1_1traceable"/>
+      </node>
+      <node id="3">
+        <label>tlm::scc::pe::intor_bw&lt; type::NB &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__bw"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::pe::intor_bw_nb</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__bw__nb"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>tlm::tlm_base_initiator_socket&lt; BUSWIDTH, axi_fw_transport_if&lt; axi_protocol_types &gt;, axi_bw_transport_if&lt; axi_protocol_types &gt;, 1, sc_core::SC_ONE_OR_MORE_BOUND &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" line="39" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" bodystart="39" bodyend="54"/>
+    <listofallmembers>
+      <member refid="structace__target__pe_1_1bw__intor__impl_1a99569fc326770365b9844b3ce154cfe4" prot="public" virt="non-virtual"><scope>ace_target_pe::bw_intor_impl</scope><name>bw_intor_impl</name></member>
+      <member refid="structace__target__pe_1_1bw__intor__impl_1aebe7f1b2a24d09f05ed1691c08a239ba" prot="public" virt="non-virtual"><scope>ace_target_pe::bw_intor_impl</scope><name>that</name></member>
+      <member refid="structace__target__pe_1_1bw__intor__impl_1a90ed1a3696a519297b09babd152dd046" prot="public" virt="virtual"><scope>ace_target_pe::bw_intor_impl</scope><name>transport</name></member>
+      <member refid="structace__target__pe_1_1bw__intor__impl_1a54e4eca8ac7727361dfed7e32ee50c5d" prot="public" virt="virtual"><scope>ace_target_pe::bw_intor_impl</scope><name>~bw_intor_impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacechi_1_1scv" kind="namespace" language="C++">
+    <compoundname>chi::scv</compoundname>
+    <innerclass refid="classchi_1_1scv_1_1chi__trx__recorder" prot="public">chi::scv::chi_trx_recorder</innerclass>
+    <innerclass refid="classchi_1_1scv_1_1chitlm__recorder__module" prot="public">chi::scv::chitlm_recorder_module</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="chi_2scv_2recorder__modules_8h_1a869a503eb284dd1ebaa970451c3b8ece" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>unsigned int</type>
+            <declname>BUSWIDTH</declname>
+            <defname>BUSWIDTH</defname>
+            <defval>32</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classchi_1_1scv_1_1chitlm__recorder__module" kindref="compound">chitlm_recorder_module</ref>&lt; BUSWIDTH, <ref refid="structchi_1_1chi__protocol__types" kindref="compound">chi::chi_protocol_types</ref>, <ref refid="classchi_1_1scv_1_1chi__trx__recorder" kindref="compound">chi_trx_recorder</ref>&lt; <ref refid="structchi_1_1chi__protocol__types" kindref="compound">chi::chi_protocol_types</ref> &gt; &gt;</type>
+        <definition>using chi::scv::chi_trx_recorder_module =  chitlm_recorder_module&lt;BUSWIDTH, chi::chi_protocol_types, chi_trx_recorder&lt;chi::chi_protocol_types&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>chi_trx_recorder_module</name>
+        <qualifiedname>chi::scv::chi_trx_recorder_module</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" line="68" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="chi__tlm_8cpp_1a9b5ce78f86bc9468c5453e8f8043ec26" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool chi::scv::registered</definition>
+        <argsstring></argsstring>
+        <name>registered</name>
+        <qualifiedname>chi::scv::registered</qualifiedname>
+        <initializer>= register_extensions()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="638" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" bodystart="638" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="chi__tlm_8cpp_1a3f3eee0ada7c8f01824c3a9cf1158354" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::scv::register_extensions</definition>
+        <argsstring>()</argsstring>
+        <name>register_extensions</name>
+        <qualifiedname>chi::scv::register_extensions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="588" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" bodystart="588" bodyend="637" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" declline="53" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="583" column="1"/>
+  </compounddef>
+</doxygen>

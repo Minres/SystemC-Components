@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::scv::impl::tlm_recording_payload</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_base_protocol_types::tlm_payload_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+        <defval>tlm::tlm_base_protocol_types</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload_1a2cfc60f5bd07b73f04c8a62ebe65a4f4" prot="public" static="no" mutable="no">
+        <type>SCVNS scv_tr_handle</type>
+        <definition>SCVNS scv_tr_handle tlm::scc::scv::impl::tlm_recording_payload&lt; TYPES &gt;::parent</definition>
+        <argsstring></argsstring>
+        <name>parent</name>
+        <qualifiedname>tlm::scc::scv::impl::tlm_recording_payload::parent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="55" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload_1a97d7d5c2978c960a10309e4005a89239" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t tlm::scc::scv::impl::tlm_recording_payload&lt; TYPES &gt;::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <qualifiedname>tlm::scc::scv::impl::tlm_recording_payload::id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="56" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload_1a40ef1a65e698ab5c888a6af01a6fe29e" prot="public" static="no" mutable="no">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum tlm::scc::scv::impl::tlm_recording_payload&lt; TYPES &gt;::sync</definition>
+        <argsstring></argsstring>
+        <name>sync</name>
+        <qualifiedname>tlm::scc::scv::impl::tlm_recording_payload::sync</qualifiedname>
+        <initializer>{tlm::TLM_ACCEPTED}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="57" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="57" bodyend="57"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload_1a834e346a795793eb5a476095e6e79974" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm_recording_payload &amp;</type>
+        <definition>tlm_recording_payload &amp; tlm::scc::scv::impl::tlm_recording_payload&lt; TYPES &gt;::operator=</definition>
+        <argsstring>(const typename TYPES::tlm_payload_type &amp;x)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>tlm::scc::scv::impl::tlm_recording_payload::operator=</qualifiedname>
+        <param>
+          <type>const typename TYPES::tlm_payload_type &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="58" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="58" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload_1a4a8309e5ca705e63dc05701d23662e29" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::scv::impl::tlm_recording_payload&lt; TYPES &gt;::tlm_recording_payload</definition>
+        <argsstring>(tlm::tlm_mm_interface *mm)</argsstring>
+        <name>tlm_recording_payload</name>
+        <qualifiedname>tlm::scc::scv::impl::tlm_recording_payload::tlm_recording_payload</qualifiedname>
+        <param>
+          <type>tlm::tlm_mm_interface *</type>
+          <declname>mm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="70" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="70" bodyend="73"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::scc::scv::impl::tlm_recording_payload&lt; TYPES &gt;</label>
+        <link refid="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_base_protocol_types::tlm_payload_type</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::scc::scv::impl::tlm_recording_payload&lt; TYPES &gt;</label>
+        <link refid="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_base_protocol_types::tlm_payload_type</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="53" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" bodystart="53" bodyend="74"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload_1a97d7d5c2978c960a10309e4005a89239" prot="public" virt="non-virtual"><scope>tlm::scc::scv::impl::tlm_recording_payload</scope><name>id</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload_1a834e346a795793eb5a476095e6e79974" prot="public" virt="non-virtual"><scope>tlm::scc::scv::impl::tlm_recording_payload</scope><name>operator=</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload_1a2cfc60f5bd07b73f04c8a62ebe65a4f4" prot="public" virt="non-virtual"><scope>tlm::scc::scv::impl::tlm_recording_payload</scope><name>parent</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload_1a40ef1a65e698ab5c888a6af01a6fe29e" prot="public" virt="non-virtual"><scope>tlm::scc::scv::impl::tlm_recording_payload</scope><name>sync</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload_1a4a8309e5ca705e63dc05701d23662e29" prot="public" virt="non-virtual"><scope>tlm::scc::scv::impl::tlm_recording_payload</scope><name>tlm_recording_payload</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

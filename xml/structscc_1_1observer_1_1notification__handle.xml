@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1observer_1_1notification__handle" kind="struct" language="C++" prot="public" abstract="yes">
+    <compoundname>scc::observer::notification_handle</compoundname>
+    <includes refid="observer_8h" local="no">observer.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1observer_1_1notification__handle_1a417e4d80e0f0427919477ed63a746f4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool scc::observer::notification_handle::notify</definition>
+        <argsstring>()=0</argsstring>
+        <name>notify</name>
+        <qualifiedname>scc::observer::notification_handle::notify</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="58" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1_1notification__handle_1a43b6ffffeebf3b9b6861ae9634458d50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual scc::observer::notification_handle::~notification_handle</definition>
+        <argsstring>()</argsstring>
+        <name>~notification_handle</name>
+        <qualifiedname>scc::observer::notification_handle::~notification_handle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="59" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" bodystart="59" bodyend="59"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A handle to be used be the observed object to notify the observer about a change. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="57" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" bodystart="57" bodyend="60"/>
+    <listofallmembers>
+      <member refid="structscc_1_1observer_1_1notification__handle_1a417e4d80e0f0427919477ed63a746f4e" prot="public" virt="pure-virtual"><scope>scc::observer::notification_handle</scope><name>notify</name></member>
+      <member refid="structscc_1_1observer_1_1notification__handle_1a43b6ffffeebf3b9b6861ae9634458d50" prot="public" virt="virtual"><scope>scc::observer::notification_handle</scope><name>~notification_handle</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

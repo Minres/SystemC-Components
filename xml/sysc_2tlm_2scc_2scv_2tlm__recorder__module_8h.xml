@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="sysc_2tlm_2scc_2scv_2tlm__recorder__module_8h" kind="file" language="C++">
+    <compoundname>tlm_recorder_module.h</compoundname>
+    <includes refid="scc_2scv_2tlm__recorder_8h" local="no">tlm/scc/scv/tlm_recorder.h</includes>
+    <includes local="no">tlm_utils/simple_initiator_socket.h</includes>
+    <includes local="no">tlm_utils/simple_target_socket.h</includes>
+    <includedby refid="scc__sysc_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc_sysc.h</includedby>
+    <incdepgraph>
+      <node id="7">
+        <label>util/delegate.h</label>
+        <link refid="delegate_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>ities.h</label>
+        <link refid="ities_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>util/pool_allocator.h</label>
+        <link refid="pool__allocator_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm_extension_recording_registry.h</label>
+        <link refid="tlm__extension__recording__registry_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm/scc/scv/tlm_recorder.h</label>
+        <link refid="scc_2scv_2tlm__recorder_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h</label>
+        <link refid="sysc_2tlm_2scc_2scv_2tlm__recorder__module_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>tlm_recording_extension.h</label>
+        <link refid="tlm__recording__extension_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>tlm/scc/tlm_mm.h</label>
+        <link refid="tlm__mm_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>algorithm</label>
+      </node>
+      <node id="14">
+        <label>array</label>
+      </node>
+      <node id="23">
+        <label>assert.h</label>
+      </node>
+      <node id="24">
+        <label>bitset</label>
+      </node>
+      <node id="8">
+        <label>cassert</label>
+      </node>
+      <node id="25">
+        <label>cctype</label>
+      </node>
+      <node id="26">
+        <label>climits</label>
+      </node>
+      <node id="32">
+        <label>deque</label>
+      </node>
+      <node id="27">
+        <label>fstream</label>
+      </node>
+      <node id="28">
+        <label>iterator</label>
+      </node>
+      <node id="29">
+        <label>limits</label>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="33">
+        <label>mutex</label>
+      </node>
+      <node id="9">
+        <label>new</label>
+      </node>
+      <node id="15">
+        <label>regex</label>
+      </node>
+      <node id="12">
+        <label>scv-tr.h</label>
+      </node>
+      <node id="16">
+        <label>sstream</label>
+      </node>
+      <node id="17">
+        <label>string</label>
+      </node>
+      <node id="30">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="18">
+        <label>sysc/kernel/sc_dynamic_processes.h</label>
+      </node>
+      <node id="5">
+        <label>tlm</label>
+      </node>
+      <node id="35">
+        <label>tlm_utils/peq_with_cb_and_phase.h</label>
+      </node>
+      <node id="36">
+        <label>tlm_utils/simple_initiator_socket.h</label>
+      </node>
+      <node id="37">
+        <label>tlm_utils/simple_target_socket.h</label>
+      </node>
+      <node id="10">
+        <label>type_traits</label>
+      </node>
+      <node id="34">
+        <label>unordered_map</label>
+      </node>
+      <node id="6">
+        <label>unordered_set</label>
+      </node>
+      <node id="11">
+        <label>utility</label>
+      </node>
+      <node id="31">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/scc.h</label>
+        <link refid="scc_8h_source"/>
+      </node>
+      <node id="2">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc_sysc.h</label>
+        <link refid="scc__sysc_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h</label>
+        <link refid="sysc_2tlm_2scc_2scv_2tlm__recorder__module_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module" prot="public">tlm::scc::scv::tlm_recorder_module</innerclass>
+    <innernamespace refid="namespacetlm">tlm</innernamespace>
+    <innernamespace refid="namespacetlm_1_1scc">tlm::scc</innernamespace>
+    <innernamespace refid="namespacetlm_1_1scc_1_1scv">tlm::scc::scv</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2016,<sp/>2017<sp/>MINRES<sp/>Technologies<sp/>GmbH</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>TLM_SCC_SCV_RECORDER_MODULE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TLM_SCC_SCV_RECORDER_MODULE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm/scc/scv/tlm_recorder.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm_utils/simple_initiator_socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm_utils/simple_target_socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm" kindref="compound">tlm</ref><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm_1_1scc" kindref="compound">scc</ref><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm_1_1scc_1_1scv" kindref="compound">scv</ref><sp/>{</highlight></codeline>
+<codeline lineno="40" refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>BUSWIDTH<sp/>=<sp/>32,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES<sp/>=<sp/>tlm::tlm_base_protocol_types&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a0325bc998f75a2bb2d08bfe779235f78" kindref="member">tlm_recorder_module</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>sc_core::sc_module<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>SC_HAS_PROCESS(<ref refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a0325bc998f75a2bb2d08bfe779235f78" kindref="member">tlm_recorder_module</ref>);<sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a03282a2e89a025c4a293dae219ebe5e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm::tlm_target_socket&lt;BUSWIDTH,<sp/>TYPES,<sp/>1&gt;<sp/><ref refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a03282a2e89a025c4a293dae219ebe5e8" kindref="member">ts</ref>{</highlight><highlight class="stringliteral">&quot;ts&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="46" refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1aa5b5f9f8eb9f98521007a4c3d0c88b9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm::tlm_initiator_socket&lt;BUSWIDTH,<sp/>TYPES,<sp/>1&gt;<sp/><ref refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1aa5b5f9f8eb9f98521007a4c3d0c88b9f" kindref="member">is</ref>{</highlight><highlight class="stringliteral">&quot;is&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="56" refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a0325bc998f75a2bb2d08bfe779235f78" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a0325bc998f75a2bb2d08bfe779235f78" kindref="member">tlm_recorder_module</ref>(sc_core::sc_module_name<sp/>name,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>recording_enabled<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SCVNS<sp/>scv_tr_db*<sp/>tr_db<sp/>=<sp/>SCVNS<sp/>scv_tr_db::get_default_db())</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>sc_module(name)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>recorder.reset(</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder" kindref="compound">tlm_recorder&lt;TYPES&gt;</ref>(sc_core::sc_object::name(),<sp/><ref refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1aa5b5f9f8eb9f98521007a4c3d0c88b9f" kindref="member">is</ref>.get_base_port(),<sp/><ref refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a03282a2e89a025c4a293dae219ebe5e8" kindref="member">ts</ref>.get_base_port(),<sp/>recording_enabled,<sp/>tr_db));</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>add_attribute(recorder-&gt;enableBlTracing);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>add_attribute(recorder-&gt;enableNbTracing);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>add_attribute(recorder-&gt;enableTimedTracing);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>add_attribute(recorder-&gt;enableDmiTracing);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>bind<sp/>the<sp/>sockets<sp/>to<sp/>the<sp/>module</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1aa5b5f9f8eb9f98521007a4c3d0c88b9f" kindref="member">is</ref>.bind(*recorder);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module_1a03282a2e89a025c4a293dae219ebe5e8" kindref="member">ts</ref>.bind(*recorder);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_attribute&lt;bool&gt;<sp/>enableTimedTracing()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>recorder-&gt;enableBlTracing;<sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~tlm_recorder_module()<sp/>{}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;tlm_recorder&lt;TYPES&gt;&gt;<sp/>recorder;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>start_of_simulation()</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/>recorder-&gt;initialize_streams();<sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scv</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>tlm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>TLM_SCC_SCV_RECORDER_MODULE_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder_module.h"/>
+  </compounddef>
+</doxygen>

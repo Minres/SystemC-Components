@@ -1,0 +1,620 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classaxi_1_1pe_1_1rate__limiting__buffer" kind="class" language="C++" prot="public">
+    <compoundname>axi::pe::rate_limiting_buffer</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb" prot="private" virt="non-virtual">tlm::scc::pe::intor_fw_nb</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1aaa9b162450457e6dd284fd59f0901eef" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; axi::pe::rate_limiting_buffer::clk_i</definition>
+        <argsstring></argsstring>
+        <name>clk_i</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::clk_i</qualifiedname>
+        <initializer>{&quot;clk_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="29" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="29" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a6b6aedbde380b21da0d9f27162ece1a1" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_export&lt; <ref refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb" kindref="compound">tlm::scc::pe::intor_fw_nb</ref> &gt;</type>
+        <definition>sc_core::sc_export&lt;tlm::scc::pe::intor_fw_nb&gt; axi::pe::rate_limiting_buffer::fw_i</definition>
+        <argsstring></argsstring>
+        <name>fw_i</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::fw_i</qualifiedname>
+        <initializer>{&quot;fw_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="31" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="31" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a8dd62914a36eb1900ffe55376fd60b14" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_port&lt; <ref refid="structtlm_1_1scc_1_1pe_1_1intor__bw__nb" kindref="compound">tlm::scc::pe::intor_bw_nb</ref>, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</type>
+        <definition>sc_core::sc_port&lt;tlm::scc::pe::intor_bw_nb, 1, sc_core::SC_ZERO_OR_MORE_BOUND&gt; axi::pe::rate_limiting_buffer::bw_o</definition>
+        <argsstring></argsstring>
+        <name>bw_o</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::bw_o</qualifiedname>
+        <initializer>{&quot;bw_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="33" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a195a11070a29af9f383d29e7746b89e4" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; int &gt; &amp;</type>
+        <definition>cci::cci_param&lt;int&gt;&amp; axi::pe::rate_limiting_buffer::rd_resp_delay</definition>
+        <argsstring></argsstring>
+        <name>rd_resp_delay</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::rd_resp_delay</qualifiedname>
+        <briefdescription>
+<para>the latency between request and response phase. Will be overwritten by the return of the callback function (if registered) -&gt; RIV </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="39" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1afca81916eb1f7a18b7b526576d1fac85" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; int &gt; &amp;</type>
+        <definition>cci::cci_param&lt;int&gt;&amp; axi::pe::rate_limiting_buffer::wr_resp_delay</definition>
+        <argsstring></argsstring>
+        <name>wr_resp_delay</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::wr_resp_delay</qualifiedname>
+        <briefdescription>
+<para>the latency between request and response phase. Will be overwritten by the return of the callback function (if registered) -&gt; BV </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="44" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1ace4c856f927b5d8d08b38f2fe722a53a" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; double &gt;</type>
+        <definition>cci::cci_param&lt;double&gt; axi::pe::rate_limiting_buffer::rd_bw_limit_byte_per_sec</definition>
+        <argsstring></argsstring>
+        <name>rd_bw_limit_byte_per_sec</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::rd_bw_limit_byte_per_sec</qualifiedname>
+        <initializer>{&quot;rd_bw_limit_byte_per_sec&quot;, -1.0}</initializer>
+        <briefdescription>
+<para>the bandwidth limit for read accesses. A value of -1 disables the limiting </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="48" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1af20507a8f6daf64175c26c0f57203932" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; double &gt;</type>
+        <definition>cci::cci_param&lt;double&gt; axi::pe::rate_limiting_buffer::wr_bw_limit_byte_per_sec</definition>
+        <argsstring></argsstring>
+        <name>wr_bw_limit_byte_per_sec</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::wr_bw_limit_byte_per_sec</qualifiedname>
+        <initializer>{&quot;wr_bw_limit_byte_per_sec&quot;, -1.0}</initializer>
+        <briefdescription>
+<para>the bandwidth limit for write accesses. A value of -1 disables the limiting </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="52" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a5a5996ff51ae7250ee629b19368ab8d7" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; double &gt;</type>
+        <definition>cci::cci_param&lt;double&gt; axi::pe::rate_limiting_buffer::total_bw_limit_byte_per_sec</definition>
+        <argsstring></argsstring>
+        <name>total_bw_limit_byte_per_sec</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::total_bw_limit_byte_per_sec</qualifiedname>
+        <initializer>{&quot;total_bw_limit_byte_per_sec&quot;, -1.0}</initializer>
+        <briefdescription>
+<para>the bandwidth limit for read accesses. A value of -1 disables the limiting </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="56" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1aabfe0a2076935ae53975daf44d764add" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_clock *</type>
+        <definition>sc_core::sc_clock* axi::pe::rate_limiting_buffer::clk_if</definition>
+        <argsstring></argsstring>
+        <name>clk_if</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::clk_if</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="77" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a44e7698ff7642150bfdc6edac52d2e58" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time axi::pe::rate_limiting_buffer::time_per_byte_rd</definition>
+        <argsstring></argsstring>
+        <name>time_per_byte_rd</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::time_per_byte_rd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="78" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a1b1e0d476d5f597f61ddb927edd4e39a" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time axi::pe::rate_limiting_buffer::time_per_byte_wr</definition>
+        <argsstring></argsstring>
+        <name>time_per_byte_wr</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::time_per_byte_wr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="78" column="39" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a1c59dd23527656f60f3266b34dd78419" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time axi::pe::rate_limiting_buffer::time_per_byte_total</definition>
+        <argsstring></argsstring>
+        <name>time_per_byte_total</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::time_per_byte_total</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="78" column="56" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a416098527119abbd3b60709b5b4c8213" prot="protected" static="no" mutable="no">
+        <type><ref refid="classscc_1_1fifo__w__cb" kindref="compound">scc::fifo_w_cb</ref>&lt; std::tuple&lt; tlm::tlm_generic_payload *, unsigned &gt; &gt;</type>
+        <definition>scc::fifo_w_cb&lt;std::tuple&lt;tlm::tlm_generic_payload*, unsigned&gt; &gt; axi::pe::rate_limiting_buffer::rd_req2resp_fifo</definition>
+        <argsstring></argsstring>
+        <name>rd_req2resp_fifo</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::rd_req2resp_fifo</qualifiedname>
+        <initializer>{&quot;rd_req2resp_fifo&quot;}</initializer>
+        <briefdescription>
+<para>queues realizing the min latency </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="80" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a9f914c2c15ad2df1ba3d3ff6be3feeba" prot="protected" static="no" mutable="no">
+        <type><ref refid="classscc_1_1fifo__w__cb" kindref="compound">scc::fifo_w_cb</ref>&lt; std::tuple&lt; tlm::tlm_generic_payload *, unsigned &gt; &gt;</type>
+        <definition>scc::fifo_w_cb&lt;std::tuple&lt;tlm::tlm_generic_payload*, unsigned&gt; &gt; axi::pe::rate_limiting_buffer::wr_req2resp_fifo</definition>
+        <argsstring></argsstring>
+        <name>wr_req2resp_fifo</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::wr_req2resp_fifo</qualifiedname>
+        <initializer>{&quot;wr_req2resp_fifo&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="81" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="81" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1ac2a7af612545c7f9d7ea15792901acac" prot="protected" static="no" mutable="no">
+        <type><ref refid="classscc_1_1fifo__w__cb" kindref="compound">scc::fifo_w_cb</ref>&lt; tlm::tlm_generic_payload * &gt;</type>
+        <definition>scc::fifo_w_cb&lt;tlm::tlm_generic_payload*&gt; axi::pe::rate_limiting_buffer::rd_resp_fifo</definition>
+        <argsstring></argsstring>
+        <name>rd_resp_fifo</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::rd_resp_fifo</qualifiedname>
+        <initializer>{&quot;rd_resp_fifo&quot;}</initializer>
+        <briefdescription>
+<para>queues to handle bandwidth limit </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="83" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1abbd243c9b91f8fc620d44b89243f4c09" prot="protected" static="no" mutable="no">
+        <type><ref refid="classscc_1_1fifo__w__cb" kindref="compound">scc::fifo_w_cb</ref>&lt; tlm::tlm_generic_payload * &gt;</type>
+        <definition>scc::fifo_w_cb&lt;tlm::tlm_generic_payload*&gt; axi::pe::rate_limiting_buffer::wr_resp_fifo</definition>
+        <argsstring></argsstring>
+        <name>wr_resp_fifo</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::wr_resp_fifo</qualifiedname>
+        <initializer>{&quot;wr_resp_fifo&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="84" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="84" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a9e1e1df1dfc2c175a2f09fc8876636ad" prot="protected" static="no" mutable="no">
+        <type><ref refid="classscc_1_1ordered__semaphore" kindref="compound">scc::ordered_semaphore</ref></type>
+        <definition>scc::ordered_semaphore axi::pe::rate_limiting_buffer::total_arb</definition>
+        <argsstring></argsstring>
+        <name>total_arb</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::total_arb</qualifiedname>
+        <initializer>{1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="85" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="85" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a4c9f1876b55542b84adb0abf61c8534d" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double axi::pe::rate_limiting_buffer::total_residual_clocks</definition>
+        <argsstring></argsstring>
+        <name>total_residual_clocks</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::total_residual_clocks</qualifiedname>
+        <initializer>{0.0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="86" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="86" bodyend="86"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a2dc34c00f9314c9bc293ef52b78c5d98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::pe::rate_limiting_buffer::rate_limiting_buffer</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm, cci::cci_param&lt; int &gt; &amp;rd_resp_delay, cci::cci_param&lt; int &gt; &amp;wr_resp_delay)</argsstring>
+        <name>rate_limiting_buffer</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::rate_limiting_buffer</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>cci::cci_param&lt; int &gt; &amp;</type>
+          <declname>rd_resp_delay</declname>
+        </param>
+        <param>
+          <type>cci::cci_param&lt; int &gt; &amp;</type>
+          <declname>wr_resp_delay</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="58" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.cpp" bodystart="5" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a6544d6cae27593283f5b2c62a970d5cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual axi::pe::rate_limiting_buffer::~rate_limiting_buffer</definition>
+        <argsstring>()=default</argsstring>
+        <name>~rate_limiting_buffer</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::~rate_limiting_buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="60" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1rate__limiting__buffer_1ac675df569d7966c3f9f8c0a5f56e957c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void axi::pe::rate_limiting_buffer::transport</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;payload, bool lt_transport=false) override</argsstring>
+        <name>transport</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::transport</qualifiedname>
+        <reimplements refid="structtlm_1_1scc_1_1pe_1_1intor__fw_1a69f17795eabb5192d5388dd6b67e4109">transport</reimplements>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>payload</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>lt_transport</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the transport of the payload. Independent of the underlying layer this function is blocking</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>payload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>object with (optional) extensions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lt_transport</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>use b_transport instead of nb_transport* </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="67" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.cpp" bodystart="42" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a8ce1273f7db23382a291d562623d7903" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void axi::pe::rate_limiting_buffer::snoop_resp</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;payload, bool sync=false) override</argsstring>
+        <name>snoop_resp</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::snoop_resp</qualifiedname>
+        <reimplements refid="structtlm_1_1scc_1_1pe_1_1intor__fw_1a1e85d9861b52f3ec31c17e107ccd852b">snoop_resp</reimplements>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>payload</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>sync</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>send a response to a backward transaction if not immediately answered</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>payload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>object with (optional) extensions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sync</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true send with next rising clock edge of the pe otherwise send it immediately </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="74" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="74" bodyend="74"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a13e63e12b3a59b5cd9f2db9d483fe009" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::rate_limiting_buffer::end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_elaboration</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::end_of_elaboration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="87" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.cpp" bodystart="20" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a6543a49abe44e889e972d1a5e35ff122" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::rate_limiting_buffer::start_of_simulation</definition>
+        <argsstring>() override</argsstring>
+        <name>start_of_simulation</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::start_of_simulation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="88" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.cpp" bodystart="22" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a48dae28011f67afee1e925dd3e0662db" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::rate_limiting_buffer::process_req2resp_fifos</definition>
+        <argsstring>()</argsstring>
+        <name>process_req2resp_fifos</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::process_req2resp_fifos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="90" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.cpp" bodystart="49" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1rate__limiting__buffer_1adcf8672dfce1530e4039ef4472a6a73b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::rate_limiting_buffer::start_rd_resp_thread</definition>
+        <argsstring>()</argsstring>
+        <name>start_rd_resp_thread</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::start_rd_resp_thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="91" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.cpp" bodystart="72" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1rate__limiting__buffer_1a007c671b046e616a75ff75b9da7b81da" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::rate_limiting_buffer::start_wr_resp_thread</definition>
+        <argsstring>()</argsstring>
+        <name>start_wr_resp_thread</name>
+        <qualifiedname>axi::pe::rate_limiting_buffer::start_wr_resp_thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="92" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.cpp" bodystart="101" bodyend="128"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::pe::rate_limiting_buffer</label>
+        <link refid="classaxi_1_1pe_1_1rate__limiting__buffer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="4">
+        <label>tlm::scc::pe::intor_fw&lt; type::NB &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::scc::pe::intor_fw_nb</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::pe::rate_limiting_buffer</label>
+        <link refid="classaxi_1_1pe_1_1rate__limiting__buffer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="private-inheritance">
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>rd_req2resp_fifo</edgelabel>
+          <edgelabel>wr_req2resp_fifo</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>rd_resp_fifo</edgelabel>
+          <edgelabel>wr_resp_fifo</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>total_arb</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="11">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="7">
+        <label>sc_core::sc_prim_channel</label>
+      </node>
+      <node id="10">
+        <label>sc_core::sc_semaphore_if</label>
+      </node>
+      <node id="6">
+        <label>scc::fifo_w_cb&lt; std::tuple&lt; tlm::tlm_generic_payload *, unsigned &gt; &gt;</label>
+        <link refid="classscc_1_1fifo__w__cb"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>scc::fifo_w_cb&lt; tlm::tlm_generic_payload * &gt;</label>
+        <link refid="classscc_1_1fifo__w__cb"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>scc::ordered_semaphore</label>
+        <link refid="classscc_1_1ordered__semaphore"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>scc::traceable</label>
+        <link refid="structscc_1_1traceable"/>
+      </node>
+      <node id="4">
+        <label>tlm::scc::pe::intor_fw&lt; type::NB &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::scc::pe::intor_fw_nb</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" line="27" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h" bodystart="27" bodyend="93"/>
+    <listofallmembers>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a8dd62914a36eb1900ffe55376fd60b14" prot="public" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>bw_o</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1aaa9b162450457e6dd284fd59f0901eef" prot="public" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>clk_i</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1aabfe0a2076935ae53975daf44d764add" prot="protected" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>clk_if</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a13e63e12b3a59b5cd9f2db9d483fe009" prot="protected" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>end_of_elaboration</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a6b6aedbde380b21da0d9f27162ece1a1" prot="public" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>fw_i</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a48dae28011f67afee1e925dd3e0662db" prot="protected" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>process_req2resp_fifos</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a2dc34c00f9314c9bc293ef52b78c5d98" prot="public" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>rate_limiting_buffer</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1ace4c856f927b5d8d08b38f2fe722a53a" prot="public" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>rd_bw_limit_byte_per_sec</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a416098527119abbd3b60709b5b4c8213" prot="protected" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>rd_req2resp_fifo</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a195a11070a29af9f383d29e7746b89e4" prot="public" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>rd_resp_delay</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1ac2a7af612545c7f9d7ea15792901acac" prot="protected" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>rd_resp_fifo</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a8ce1273f7db23382a291d562623d7903" prot="public" virt="virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>snoop_resp</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a6543a49abe44e889e972d1a5e35ff122" prot="protected" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>start_of_simulation</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1adcf8672dfce1530e4039ef4472a6a73b" prot="protected" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>start_rd_resp_thread</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a007c671b046e616a75ff75b9da7b81da" prot="protected" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>start_wr_resp_thread</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a44e7698ff7642150bfdc6edac52d2e58" prot="protected" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>time_per_byte_rd</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a1c59dd23527656f60f3266b34dd78419" prot="protected" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>time_per_byte_total</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a1b1e0d476d5f597f61ddb927edd4e39a" prot="protected" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>time_per_byte_wr</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a9e1e1df1dfc2c175a2f09fc8876636ad" prot="protected" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>total_arb</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a5a5996ff51ae7250ee629b19368ab8d7" prot="public" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>total_bw_limit_byte_per_sec</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a4c9f1876b55542b84adb0abf61c8534d" prot="protected" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>total_residual_clocks</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1ac675df569d7966c3f9f8c0a5f56e957c" prot="public" virt="virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>transport</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1af20507a8f6daf64175c26c0f57203932" prot="public" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>wr_bw_limit_byte_per_sec</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a9f914c2c15ad2df1ba3d3ff6be3feeba" prot="protected" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>wr_req2resp_fifo</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1afca81916eb1f7a18b7b526576d1fac85" prot="public" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>wr_resp_delay</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1abbd243c9b91f8fc620d44b89243f4c09" prot="protected" virt="non-virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>wr_resp_fifo</name></member>
+      <member refid="classaxi_1_1pe_1_1rate__limiting__buffer_1a6544d6cae27593283f5b2c62a970d5cf" prot="public" virt="virtual"><scope>axi::pe::rate_limiting_buffer</scope><name>~rate_limiting_buffer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

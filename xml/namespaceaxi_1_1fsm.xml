@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceaxi_1_1fsm" kind="namespace" language="C++">
+    <compoundname>axi::fsm</compoundname>
+    <innerclass refid="structaxi_1_1fsm_1_1base" prot="public">axi::fsm::base</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1WReq" prot="public">axi::fsm::WReq</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1BegPartReq" prot="public">axi::fsm::BegPartReq</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1EndPartReq" prot="public">axi::fsm::EndPartReq</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1BegReq" prot="public">axi::fsm::BegReq</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1EndReq" prot="public">axi::fsm::EndReq</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1BegPartResp" prot="public">axi::fsm::BegPartResp</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1EndPartResp" prot="public">axi::fsm::EndPartResp</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1BegResp" prot="public">axi::fsm::BegResp</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1EndResp" prot="public">axi::fsm::EndResp</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1EndRespNoAck" prot="public">axi::fsm::EndRespNoAck</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1AckRecv" prot="public">axi::fsm::AckRecv</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1AxiProtocolFsm" prot="public">axi::fsm::AxiProtocolFsm</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1Idle" prot="public">axi::fsm::Idle</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1ATrans" prot="public">axi::fsm::ATrans</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1PartialRequest" prot="public">axi::fsm::PartialRequest</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1WriteIdle" prot="public">axi::fsm::WriteIdle</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1Request" prot="public">axi::fsm::Request</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1WaitForResponse" prot="public">axi::fsm::WaitForResponse</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1PartialResponse" prot="public">axi::fsm::PartialResponse</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1ReadIdle" prot="public">axi::fsm::ReadIdle</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1Response" prot="public">axi::fsm::Response</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1WaitAck" prot="public">axi::fsm::WaitAck</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1fsm__handle" prot="public">axi::fsm::fsm_handle</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="third__party_2axi__chi_2axi_2fsm_2types_8h_1a7671b0a44f285d033955b05fc5e9a75f" prot="public" static="no" strong="no">
+        <type></type>
+        <name>protocol_time_point_e</name>
+        <qualifiedname>axi::fsm::protocol_time_point_e</qualifiedname>
+        <enumvalue id="third__party_2axi__chi_2axi_2fsm_2types_8h_1a7671b0a44f285d033955b05fc5e9a75fabedaded4404991bd03ad0c2579d44e97" prot="public">
+          <name>RequestPhaseBeg</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="third__party_2axi__chi_2axi_2fsm_2types_8h_1a7671b0a44f285d033955b05fc5e9a75fa26e8ba38a2fda6fa9fb10c784c901946" prot="public">
+          <name>WValidE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="third__party_2axi__chi_2axi_2fsm_2types_8h_1a7671b0a44f285d033955b05fc5e9a75faadf658a9e12cbcd8725c9256d75f092b" prot="public">
+          <name>WReadyE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="third__party_2axi__chi_2axi_2fsm_2types_8h_1a7671b0a44f285d033955b05fc5e9a75faaa936f11b969823d04cfdd1dd4ea1678" prot="public">
+          <name>BegPartReqE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="third__party_2axi__chi_2axi_2fsm_2types_8h_1a7671b0a44f285d033955b05fc5e9a75faec532c1c00c54e7a868210a0163de152" prot="public">
+          <name>EndPartReqE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="third__party_2axi__chi_2axi_2fsm_2types_8h_1a7671b0a44f285d033955b05fc5e9a75fa64cbc659d4447d23e0b501a4e903350b" prot="public">
+          <name>BegReqE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="third__party_2axi__chi_2axi_2fsm_2types_8h_1a7671b0a44f285d033955b05fc5e9a75fa4fe6273aad56c355ba50db52ebff77e3" prot="public">
+          <name>EndReqE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="third__party_2axi__chi_2axi_2fsm_2types_8h_1a7671b0a44f285d033955b05fc5e9a75fa2a05c46c7e718a019bc6092ba2d955ce" prot="public">
+          <name>ResponsePhaseBeg</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="third__party_2axi__chi_2axi_2fsm_2types_8h_1a7671b0a44f285d033955b05fc5e9a75fad0ebfac52865d8983a1709977a6a9c3b" prot="public">
+          <name>BegPartRespE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="third__party_2axi__chi_2axi_2fsm_2types_8h_1a7671b0a44f285d033955b05fc5e9a75fafe7ef76739a6cca46bc0478fddd0e4b5" prot="public">
+          <name>EndPartRespE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="third__party_2axi__chi_2axi_2fsm_2types_8h_1a7671b0a44f285d033955b05fc5e9a75fa9273016fd3129f4842dac2d0bcbce4b5" prot="public">
+          <name>BegRespE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="third__party_2axi__chi_2axi_2fsm_2types_8h_1a7671b0a44f285d033955b05fc5e9a75fa101f3a0a9f47b5a0302bd984d57d76f3" prot="public">
+          <name>EndRespE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="third__party_2axi__chi_2axi_2fsm_2types_8h_1a7671b0a44f285d033955b05fc5e9a75fa4405182cd19b63100fdbae0f247216c7" prot="public">
+          <name>Ack</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="third__party_2axi__chi_2axi_2fsm_2types_8h_1a7671b0a44f285d033955b05fc5e9a75fae84628e65abf2b2e053fb0031c87b7f8" prot="public">
+          <name>CB_CNT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="28" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="28" bodyend="43"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="third__party_2axi__chi_2axi_2fsm_2types_8h_1a82fd63611b3f33d13d9050be9f041095" prot="public" static="no">
+        <type>std::array&lt; std::function&lt; void(void)&gt;, CB_CNT &gt;</type>
+        <definition>using axi::fsm::protocol_cb =  std::array&lt;std::function&lt;void(void)&gt;, CB_CNT&gt;</definition>
+        <argsstring></argsstring>
+        <name>protocol_cb</name>
+        <qualifiedname>axi::fsm::protocol_cb</qualifiedname>
+        <briefdescription>
+<para>alias for the callback function </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="51" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="base_8h_1a2bfac1dd22773510d6b47ed8a7cc2c3a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; axi::fsm::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const std::tuple&lt; axi::fsm::fsm_handle *, axi::fsm::protocol_time_point_e &gt; &amp;)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>axi::fsm::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const std::tuple&lt; <ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">axi::fsm::fsm_handle</ref> *, axi::fsm::protocol_time_point_e &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="33" column="8" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="third__party_2axi__chi_2axi_2fsm_2types_8h_1ae433dc021fbfa02c0b5c4dd1704b483f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * axi::fsm::evt2str</definition>
+        <argsstring>(unsigned evt)</argsstring>
+        <name>evt2str</name>
+        <qualifiedname>axi::fsm::evt2str</qualifiedname>
+        <param>
+          <type>unsigned</type>
+          <declname>evt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="45" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="45" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="base_8h_1adaed7eb6838f1f272c3e14131bb405ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; axi::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const tlm::tlm_generic_payload &amp;t)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>axi::fsm::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const tlm::tlm_generic_payload &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="35" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.cpp" bodystart="160" bodyend="187"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp" line="32" column="1"/>
+  </compounddef>
+</doxygen>

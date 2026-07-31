@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1wdata__axi__lite" kind="struct" language="C++" prot="public">
+    <compoundname>axi::wdata_axi_lite</compoundname>
+    <includes refid="axi_2signal__if_8h" local="no">signal_if.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename CFG</type>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structaxi_1_1wdata__axi__lite_1a65eed7c10fb70f58b1ef85dc64fd70fc" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; typename CFG::data_t &gt;</type>
+        <definition>TYPES::template m2s_t&lt;typename CFG::data_t&gt; axi::wdata_axi_lite&lt; CFG, TYPES &gt;::w_data</definition>
+        <argsstring></argsstring>
+        <name>w_data</name>
+        <qualifiedname>axi::wdata_axi_lite::w_data</qualifiedname>
+        <initializer>{&quot;w_data&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="418" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="418" bodyend="418"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1wdata__axi__lite_1aee11898f4323c61093be301738fab83c" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; typename CFG::strb_t &gt;</type>
+        <definition>TYPES::template m2s_t&lt;typename CFG::strb_t&gt; axi::wdata_axi_lite&lt; CFG, TYPES &gt;::w_strb</definition>
+        <argsstring></argsstring>
+        <name>w_strb</name>
+        <qualifiedname>axi::wdata_axi_lite::w_strb</qualifiedname>
+        <initializer>{&quot;w_strb&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="419" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="419" bodyend="419"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1wdata__axi__lite_1aa13809572afb4c947da11268ea5aa0b9" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; bool &gt;</type>
+        <definition>TYPES::template m2s_t&lt;bool&gt; axi::wdata_axi_lite&lt; CFG, TYPES &gt;::w_valid</definition>
+        <argsstring></argsstring>
+        <name>w_valid</name>
+        <qualifiedname>axi::wdata_axi_lite::w_valid</qualifiedname>
+        <initializer>{&quot;w_valid&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="420" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="420" bodyend="420"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1wdata__axi__lite_1a7dd039028cd627c1e162d70226b1369a" prot="public" static="no" mutable="no">
+        <type>TYPES::template s2m_t&lt; bool &gt;</type>
+        <definition>TYPES::template s2m_t&lt;bool&gt; axi::wdata_axi_lite&lt; CFG, TYPES &gt;::w_ready</definition>
+        <argsstring></argsstring>
+        <name>w_ready</name>
+        <qualifiedname>axi::wdata_axi_lite::w_ready</qualifiedname>
+        <initializer>{&quot;w_ready&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="421" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="421" bodyend="421"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1wdata__axi__lite_1a3e9d650b47bd083f8eba24563aaabe42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::wdata_axi_lite&lt; CFG, TYPES &gt;::wdata_axi_lite</definition>
+        <argsstring>()=default</argsstring>
+        <name>wdata_axi_lite</name>
+        <qualifiedname>axi::wdata_axi_lite::wdata_axi_lite</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="423" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1wdata__axi__lite_1a93b3a687cb6aac1f066af8873b7b3a4b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::wdata_axi_lite&lt; CFG, TYPES &gt;::wdata_axi_lite</definition>
+        <argsstring>(const char *prefix)</argsstring>
+        <name>wdata_axi_lite</name>
+        <qualifiedname>axi::wdata_axi_lite::wdata_axi_lite</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>prefix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="424" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="424" bodyend="428"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1wdata__axi__lite_1adddf758c62f44aea560cf7d5ad179916" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename OTYPES</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void axi::wdata_axi_lite&lt; CFG, TYPES &gt;::bind_w</definition>
+        <argsstring>(wdata_axi&lt; CFG, OTYPES &gt; &amp;o)</argsstring>
+        <name>bind_w</name>
+        <qualifiedname>axi::wdata_axi_lite::bind_w</qualifiedname>
+        <param>
+          <type><ref refid="structaxi_1_1wdata__axi" kindref="compound">wdata_axi</ref>&lt; CFG, OTYPES &gt; &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="430" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="430" bodyend="435"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>write data channel signals </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="417" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="417" bodyend="436"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1wdata__axi__lite_1adddf758c62f44aea560cf7d5ad179916" prot="public" virt="non-virtual"><scope>axi::wdata_axi_lite</scope><name>bind_w</name></member>
+      <member refid="structaxi_1_1wdata__axi__lite_1a65eed7c10fb70f58b1ef85dc64fd70fc" prot="public" virt="non-virtual"><scope>axi::wdata_axi_lite</scope><name>w_data</name></member>
+      <member refid="structaxi_1_1wdata__axi__lite_1a7dd039028cd627c1e162d70226b1369a" prot="public" virt="non-virtual"><scope>axi::wdata_axi_lite</scope><name>w_ready</name></member>
+      <member refid="structaxi_1_1wdata__axi__lite_1aee11898f4323c61093be301738fab83c" prot="public" virt="non-virtual"><scope>axi::wdata_axi_lite</scope><name>w_strb</name></member>
+      <member refid="structaxi_1_1wdata__axi__lite_1aa13809572afb4c947da11268ea5aa0b9" prot="public" virt="non-virtual"><scope>axi::wdata_axi_lite</scope><name>w_valid</name></member>
+      <member refid="structaxi_1_1wdata__axi__lite_1a3e9d650b47bd083f8eba24563aaabe42" prot="public" virt="non-virtual"><scope>axi::wdata_axi_lite</scope><name>wdata_axi_lite</name></member>
+      <member refid="structaxi_1_1wdata__axi__lite_1a93b3a687cb6aac1f066af8873b7b3a4b" prot="public" virt="non-virtual"><scope>axi::wdata_axi_lite</scope><name>wdata_axi_lite</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -308,7 +308,7 @@ $(function(){initNavTree('fst__trace_8cpp_source.html','',''); });
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    strftime(tbuf, 199, <span class="stringliteral">&quot;%b %d, %Y\t%H:%M:%S&quot;</span>, p_tm);</div>
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    fstWriterSetDate(m_fst, tbuf);</div>
 <div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    <span class="comment">// fstWriterSetFileType(m_fst, FST_FT_VERILOG);</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="preprocessor">#if SC_VERSION_MAJOR &lt; 3</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="preprocessor">#if IEEE_1666_SYSTEMC &lt; 202301L</span></div>
 <div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="preprocessor">#if defined(WITH_SC_TRACING_PHASE_CALLBACKS)</span></div>
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    <span class="comment">// remove from hierarchy</span></div>
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    sc_object::detach();</div>
@@ -521,7 +521,7 @@ $(function(){initNavTree('fst__trace_8cpp_source.html','',''); });
 <div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>    triggered_traces.reserve(all_traces.size());</div>
 <div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>}</div>
 <div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span> </div>
-<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span><span class="preprocessor">#if SC_VERSION_MAJOR &gt;= 3</span></div>
+<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span><span class="preprocessor">#if IEEE_1666_SYSTEMC &gt;= 202301L</span></div>
 <div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span><span class="keywordtype">void</span> fst_trace_file::stage_callback(<span class="keyword">const</span> sc_core::sc_stage&amp; stage) { cycle(<span class="keyword">false</span>); }</div>
 <div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span> </div>
@@ -575,7 +575,7 @@ $(function(){initNavTree('fst__trace_8cpp_source.html','',''); });
 <div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC TLM utilities.</div><div class="ttdef"><b>Definition</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
 <div class="ttc" id="anamespacescc_html_a05a96856c671cf9bf95c50d4b98c1fdb"><div class="ttname"><a href="namespacescc.html#a05a96856c671cf9bf95c50d4b98c1fdb">scc::create_fst_trace_file</a></div><div class="ttdeci">sc_core::sc_trace_file * create_fst_trace_file(const char *name, std::function&lt; bool()&gt; enable)</div><div class="ttdoc">create FST file which uses pull mechanism</div><div class="ttdef"><b>Definition</b> <a href="#l00494">fst_trace.cpp:494</a></div></div>
 <div class="ttc" id="anamespacescc_html_a6f2f10f7cabec89e2db77888c3962998"><div class="ttname"><a href="namespacescc.html#a6f2f10f7cabec89e2db77888c3962998">scc::close_fst_trace_file</a></div><div class="ttdeci">void close_fst_trace_file(sc_core::sc_trace_file *tf)</div><div class="ttdoc">close the FST file</div><div class="ttdef"><b>Definition</b> <a href="#l00496">fst_trace.cpp:496</a></div></div>
-<div class="ttc" id="anamespaceutil_html_a9a08dde0ab48fdc5605734229a0cfcba"><div class="ttname"><a href="namespaceutil.html#a9a08dde0ab48fdc5605734229a0cfcba">util::split</a></div><div class="ttdeci">std::vector&lt; std::string &gt; split(const std::string &amp;s, char separator)</div><div class="ttdef"><b>Definition</b> <a href="ities_8h_source.html#l00264">ities.h:264</a></div></div>
+<div class="ttc" id="anamespaceutil_html_a9a08dde0ab48fdc5605734229a0cfcba"><div class="ttname"><a href="namespaceutil.html#a9a08dde0ab48fdc5605734229a0cfcba">util::split</a></div><div class="ttdeci">std::vector&lt; std::string &gt; split(const std::string &amp;s, char separator)</div><div class="ttdef"><b>Definition</b> <a href="ities_8h_source.html#l00281">ities.h:281</a></div></div>
 <div class="ttc" id="astructscc_1_1fst__trace__file_html"><div class="ttname"><a href="structscc_1_1fst__trace__file.html">scc::fst_trace_file</a></div><div class="ttdef"><b>Definition</b> <a href="fst__trace_8hh_source.html#l00040">fst_trace.hh:46</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

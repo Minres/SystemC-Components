@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_17208d574043cc69bca219bb6ee20a2c" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe</compoundname>
+    <innerfile refid="intor__if_8h">intor_if.h</innerfile>
+    <innerfile refid="parallel__pe_8cpp">parallel_pe.cpp</innerfile>
+    <innerfile refid="parallel__pe_8h">parallel_pe.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscv__tr_1_1SQLiteDB" kind="class" language="C++" prot="public">
+    <compoundname>scv_tr::SQLiteDB</compoundname>
+    <innerclass refid="classscv__tr_1_1SQLiteDB_1_1SQLiteException" prot="public">scv_tr::SQLiteDB::SQLiteException</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classscv__tr_1_1SQLiteDB_1a1328e766aba608a83fa991fce250c86e" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int scv_tr::SQLiteDB::busyTimeoutMs</definition>
+        <argsstring></argsstring>
+        <name>busyTimeoutMs</name>
+        <qualifiedname>scv_tr::SQLiteDB::busyTimeoutMs</qualifiedname>
+        <initializer>{60000}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="128" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="128" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscv__tr_1_1SQLiteDB_1a89d2de6045aa2a64553d9f3d111c8189" prot="private" static="no" mutable="no">
+        <type>sqlite3 *</type>
+        <definition>sqlite3* scv_tr::SQLiteDB::db</definition>
+        <argsstring></argsstring>
+        <name>db</name>
+        <qualifiedname>scv_tr::SQLiteDB::db</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="129" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="129" bodyend="129"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscv__tr_1_1SQLiteDB_1aeef63130e17ede85a705abc9792349cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scv_tr::SQLiteDB::SQLiteDB</definition>
+        <argsstring>()=default</argsstring>
+        <name>SQLiteDB</name>
+        <qualifiedname>scv_tr::SQLiteDB::SQLiteDB</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="54" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classscv__tr_1_1SQLiteDB_1a215b625cc65d895d2919ae51aeda8868" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scv_tr::SQLiteDB::open</definition>
+        <argsstring>(const string szFile)</argsstring>
+        <name>open</name>
+        <qualifiedname>scv_tr::SQLiteDB::open</qualifiedname>
+        <param>
+          <type>const string</type>
+          <declname>szFile</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="56" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="56" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classscv__tr_1_1SQLiteDB_1ac773c6439e86957fa874180e802d73ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scv_tr::SQLiteDB::isOpen</definition>
+        <argsstring>()</argsstring>
+        <name>isOpen</name>
+        <qualifiedname>scv_tr::SQLiteDB::isOpen</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="71" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classscv__tr_1_1SQLiteDB_1a152907d82d48fa3259145403854531c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scv_tr::SQLiteDB::close</definition>
+        <argsstring>()</argsstring>
+        <name>close</name>
+        <qualifiedname>scv_tr::SQLiteDB::close</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="73" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="73" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classscv__tr_1_1SQLiteDB_1ac2c5f4ecd458142804cafe5ecc8609c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int scv_tr::SQLiteDB::exec</definition>
+        <argsstring>(const string szSQL)</argsstring>
+        <name>exec</name>
+        <qualifiedname>scv_tr::SQLiteDB::exec</qualifiedname>
+        <param>
+          <type>const string</type>
+          <declname>szSQL</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="93" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="93" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classscv__tr_1_1SQLiteDB_1a2551ac317a14ae54804609ad0185f1da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sqlite3_stmt *</type>
+        <definition>sqlite3_stmt * scv_tr::SQLiteDB::prepare</definition>
+        <argsstring>(const string szSQL)</argsstring>
+        <name>prepare</name>
+        <qualifiedname>scv_tr::SQLiteDB::prepare</qualifiedname>
+        <param>
+          <type>const string</type>
+          <declname>szSQL</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="94" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="94" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classscv__tr_1_1SQLiteDB_1a478adfd0d2f18a1d8476420154c1a6d9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int scv_tr::SQLiteDB::exec</definition>
+        <argsstring>(const char *szSQL)</argsstring>
+        <name>exec</name>
+        <qualifiedname>scv_tr::SQLiteDB::exec</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>szSQL</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="101" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="101" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classscv__tr_1_1SQLiteDB_1a862bc5e1cceb55be2568a792f06db608" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int scv_tr::SQLiteDB::exec</definition>
+        <argsstring>(sqlite3_stmt *stmt)</argsstring>
+        <name>exec</name>
+        <qualifiedname>scv_tr::SQLiteDB::exec</qualifiedname>
+        <param>
+          <type>sqlite3_stmt *</type>
+          <declname>stmt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="111" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="111" bodyend="119"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classscv__tr_1_1SQLiteDB_1a327308f2240678e02be25f5384d3f967" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scv_tr::SQLiteDB::checkDB</definition>
+        <argsstring>()</argsstring>
+        <name>checkDB</name>
+        <qualifiedname>scv_tr::SQLiteDB::checkDB</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="122" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="122" bodyend="125"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="37" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="37" bodyend="130"/>
+    <listofallmembers>
+      <member refid="classscv__tr_1_1SQLiteDB_1a1328e766aba608a83fa991fce250c86e" prot="private" virt="non-virtual"><scope>scv_tr::SQLiteDB</scope><name>busyTimeoutMs</name></member>
+      <member refid="classscv__tr_1_1SQLiteDB_1a327308f2240678e02be25f5384d3f967" prot="protected" virt="non-virtual"><scope>scv_tr::SQLiteDB</scope><name>checkDB</name></member>
+      <member refid="classscv__tr_1_1SQLiteDB_1a152907d82d48fa3259145403854531c9" prot="public" virt="non-virtual"><scope>scv_tr::SQLiteDB</scope><name>close</name></member>
+      <member refid="classscv__tr_1_1SQLiteDB_1a89d2de6045aa2a64553d9f3d111c8189" prot="private" virt="non-virtual"><scope>scv_tr::SQLiteDB</scope><name>db</name></member>
+      <member refid="classscv__tr_1_1SQLiteDB_1ac2c5f4ecd458142804cafe5ecc8609c0" prot="public" virt="non-virtual"><scope>scv_tr::SQLiteDB</scope><name>exec</name></member>
+      <member refid="classscv__tr_1_1SQLiteDB_1a478adfd0d2f18a1d8476420154c1a6d9" prot="public" virt="non-virtual"><scope>scv_tr::SQLiteDB</scope><name>exec</name></member>
+      <member refid="classscv__tr_1_1SQLiteDB_1a862bc5e1cceb55be2568a792f06db608" prot="public" virt="non-virtual"><scope>scv_tr::SQLiteDB</scope><name>exec</name></member>
+      <member refid="classscv__tr_1_1SQLiteDB_1ac773c6439e86957fa874180e802d73ce" prot="public" virt="non-virtual"><scope>scv_tr::SQLiteDB</scope><name>isOpen</name></member>
+      <member refid="classscv__tr_1_1SQLiteDB_1a215b625cc65d895d2919ae51aeda8868" prot="public" virt="non-virtual"><scope>scv_tr::SQLiteDB</scope><name>open</name></member>
+      <member refid="classscv__tr_1_1SQLiteDB_1a2551ac317a14ae54804609ad0185f1da" prot="public" virt="non-virtual"><scope>scv_tr::SQLiteDB</scope><name>prepare</name></member>
+      <member refid="classscv__tr_1_1SQLiteDB_1aeef63130e17ede85a705abc9792349cb" prot="public" virt="non-virtual"><scope>scv_tr::SQLiteDB</scope><name>SQLiteDB</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,305 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="traceable_8h" kind="file" language="C++">
+    <compoundname>traceable.h</compoundname>
+    <includedby refid="register_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h</includedby>
+    <includedby refid="configurable__tracer_8cpp" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp</includedby>
+    <includedby refid="ordered__semaphore_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h</includedby>
+    <includedby refid="tracer__base_8cpp" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp</includedby>
+    <includedby refid="scc__sysc_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc_sysc.h</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h</label>
+        <link refid="register_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc_components.h</label>
+        <link refid="scc__components_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.cpp</label>
+        <link refid="ahb__initiator_8cpp_source"/>
+      </node>
+      <node id="7">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h</label>
+        <link refid="ahb__initiator_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.cpp</label>
+        <link refid="ahb__target_8cpp_source"/>
+      </node>
+      <node id="10">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_target.h</label>
+        <link refid="ahb__target_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.cpp</label>
+        <link refid="apb__initiator_8cpp_source"/>
+      </node>
+      <node id="12">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h</label>
+        <link refid="apb__initiator_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.cpp</label>
+        <link refid="apb__target_8cpp_source"/>
+      </node>
+      <node id="14">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h</label>
+        <link refid="apb__target_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.cpp</label>
+        <link refid="src_2interfaces_2axi_2axi__initiator_8cpp_source"/>
+      </node>
+      <node id="35">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h</label>
+        <link refid="src_2interfaces_2axi_2axi__initiator_8h_source"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.cpp</label>
+        <link refid="axi__target_8cpp_source"/>
+      </node>
+      <node id="32">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h</label>
+        <link refid="axi__target_8h_source"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/scc_interfaces.h</label>
+        <link refid="scc__interfaces_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/scc.h</label>
+        <link refid="scc_8h_source"/>
+      </node>
+      <node id="5">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp</label>
+        <link refid="configurable__tracer_8cpp_source"/>
+      </node>
+      <node id="16">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.cpp</label>
+        <link refid="ordered__semaphore_8cpp_source"/>
+      </node>
+      <node id="6">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h</label>
+        <link refid="ordered__semaphore_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/traceable.h</label>
+        <link refid="traceable_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp</label>
+        <link refid="tracer__base_8cpp_source"/>
+      </node>
+      <node id="17">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc_sysc.h</label>
+        <link refid="scc__sysc_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp</label>
+        <link refid="ace__target__pe_8cpp_source"/>
+      </node>
+      <node id="18">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h</label>
+        <link refid="ace__target__pe_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_initiator.cpp</label>
+        <link refid="third__party_2axi__chi_2axi_2pe_2axi__initiator_8cpp_source"/>
+      </node>
+      <node id="21">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_initiator.h</label>
+        <link refid="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_target_pe.cpp</label>
+        <link refid="axi__target__pe_8cpp_source"/>
+      </node>
+      <node id="23">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_target_pe.h</label>
+        <link refid="axi__target__pe_8h_source"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.cpp</label>
+        <link refid="ordered__target_8cpp_source"/>
+      </node>
+      <node id="25">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h</label>
+        <link refid="ordered__target_8h_source"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.cpp</label>
+        <link refid="reordering__target_8cpp_source"/>
+      </node>
+      <node id="27">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h</label>
+        <link refid="reordering__target_8h_source"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.cpp</label>
+        <link refid="replay__target_8cpp_source"/>
+      </node>
+      <node id="29">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h</label>
+        <link refid="replay__target_8h_source"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_ace_target.h</label>
+        <link refid="simple__ace__target_8h_source"/>
+      </node>
+      <node id="37">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_initiator.cpp</label>
+        <link refid="simple__initiator_8cpp_source"/>
+      </node>
+      <node id="34">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_initiator.h</label>
+        <link refid="simple__initiator_8h_source"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_target.h</label>
+        <link refid="simple__target_8h_source"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.cpp</label>
+        <link refid="chi__rn__initiator_8cpp_source"/>
+      </node>
+      <node id="38">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h</label>
+        <link refid="chi__rn__initiator_8h_source"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structscc_1_1traceable" prot="public">scc::traceable</innerclass>
+    <innernamespace refid="namespacescc">scc</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2016,<sp/>2018<sp/>MINRES<sp/>Technologies<sp/>GmbH</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SCC_TRACABLE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SCC_TRACABLE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacescc" kindref="compound">scc</ref><sp/>{</highlight></codeline>
+<codeline lineno="32" refid="structscc_1_1traceable" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">traceable<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>traceable()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~traceable()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42" refid="structscc_1_1traceable_1a88d6b5b574c0a0714c954888836ea750" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structscc_1_1traceable_1a88d6b5b574c0a0714c954888836ea750" kindref="member">is_trace_enabled</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>scc<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>of<sp/>scc-sysc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>_SCC_TRACABLE_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/traceable.h"/>
+  </compounddef>
+</doxygen>

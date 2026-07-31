@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1InstanceLogger" kind="class" language="C++" prot="public">
+    <compoundname>util::InstanceLogger</compoundname>
+    <includes refid="instance__logger_8h" local="no">instance_logger.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename CATEGORY</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classutil_1_1InstanceLogger_1a239651fff4985be1d90f3f309a79cb8e" prot="private" static="no" mutable="no">
+        <type><ref refid="structutil_1_1LoggerDelegate" kindref="compound">LoggerDelegate</ref> *</type>
+        <definition>LoggerDelegate* util::InstanceLogger&lt; CATEGORY &gt;::logger</definition>
+        <argsstring></argsstring>
+        <name>logger</name>
+        <qualifiedname>util::InstanceLogger::logger</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" line="88" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classutil_1_1InstanceLogger_1a822415632a38de365672d0e9bd56981a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::InstanceLogger&lt; CATEGORY &gt;::InstanceLogger</definition>
+        <argsstring>()=default</argsstring>
+        <name>InstanceLogger</name>
+        <qualifiedname>util::InstanceLogger::InstanceLogger</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" line="54" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1InstanceLogger_1a7a17f0f710127b2e2406a74424b19f2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::InstanceLogger&lt; CATEGORY &gt;::~InstanceLogger</definition>
+        <argsstring>()=default</argsstring>
+        <name>~InstanceLogger</name>
+        <qualifiedname>util::InstanceLogger::~InstanceLogger</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" line="56" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1InstanceLogger_1a550440263b63298abf86791a6fd94233" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::InstanceLogger&lt; CATEGORY &gt;::InstanceLogger</definition>
+        <argsstring>(const InstanceLogger &amp;)=delete</argsstring>
+        <name>InstanceLogger</name>
+        <qualifiedname>util::InstanceLogger::InstanceLogger</qualifiedname>
+        <param>
+          <type>const InstanceLogger &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" line="58" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1InstanceLogger_1af199968925c3f77be4bd8bec9701f609" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>InstanceLogger &amp;</type>
+        <definition>InstanceLogger &amp; util::InstanceLogger&lt; CATEGORY &gt;::operator=</definition>
+        <argsstring>(const InstanceLogger &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>util::InstanceLogger::operator=</qualifiedname>
+        <param>
+          <type>const InstanceLogger &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" line="60" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1InstanceLogger_1af08d452dfe1bb80d9f000f16d9600131" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::InstanceLogger&lt; CATEGORY &gt;::set_log_level</definition>
+        <argsstring>(logging::log_level l)</argsstring>
+        <name>set_log_level</name>
+        <qualifiedname>util::InstanceLogger::set_log_level</qualifiedname>
+        <param>
+          <type><ref refid="namespacelogging_1acdebf4f4cd477e9f9c1159bfcd08249a" kindref="member">logging::log_level</ref></type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" line="62" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" bodystart="62" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1InstanceLogger_1af23f44e41aab729ea70cf88d53c5013c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacelogging_1acdebf4f4cd477e9f9c1159bfcd08249a" kindref="member">logging::log_level</ref></type>
+        <definition>logging::log_level util::InstanceLogger&lt; CATEGORY &gt;::get_log_level</definition>
+        <argsstring>()</argsstring>
+        <name>get_log_level</name>
+        <qualifiedname>util::InstanceLogger::get_log_level</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" line="69" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" bodystart="69" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1InstanceLogger_1ab98e1a9e9cf70619381aaf5adf2a834c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::InstanceLogger&lt; CATEGORY &gt;::log</definition>
+        <argsstring>(logging::log_level level, const std::string &amp;message, unsigned line, char const *file)</argsstring>
+        <name>log</name>
+        <qualifiedname>util::InstanceLogger::log</qualifiedname>
+        <param>
+          <type><ref refid="namespacelogging_1acdebf4f4cd477e9f9c1159bfcd08249a" kindref="member">logging::log_level</ref></type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>char const *</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" line="76" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" bodystart="76" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1InstanceLogger_1ae7f18b358c037aba813f3fa7d2adbea4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::InstanceLogger&lt; CATEGORY &gt;::set_logger</definition>
+        <argsstring>(LoggerDelegate &amp;logger)</argsstring>
+        <name>set_logger</name>
+        <qualifiedname>util::InstanceLogger::set_logger</qualifiedname>
+        <param>
+          <type><ref refid="structutil_1_1LoggerDelegate" kindref="compound">LoggerDelegate</ref> &amp;</type>
+          <declname>logger</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" line="85" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" bodystart="85" bodyend="85"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para><ref refid="classutil_1_1InstanceLogger" kindref="compound">InstanceLogger</ref> - an instance based logger facade which falls back to the logging based global c++ logger. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>CATEGORY</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" line="52" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/instance_logger.h" bodystart="52" bodyend="89"/>
+    <listofallmembers>
+      <member refid="classutil_1_1InstanceLogger_1af23f44e41aab729ea70cf88d53c5013c" prot="public" virt="non-virtual"><scope>util::InstanceLogger</scope><name>get_log_level</name></member>
+      <member refid="classutil_1_1InstanceLogger_1a822415632a38de365672d0e9bd56981a" prot="public" virt="non-virtual"><scope>util::InstanceLogger</scope><name>InstanceLogger</name></member>
+      <member refid="classutil_1_1InstanceLogger_1a550440263b63298abf86791a6fd94233" prot="public" virt="non-virtual"><scope>util::InstanceLogger</scope><name>InstanceLogger</name></member>
+      <member refid="classutil_1_1InstanceLogger_1ab98e1a9e9cf70619381aaf5adf2a834c" prot="public" virt="non-virtual"><scope>util::InstanceLogger</scope><name>log</name></member>
+      <member refid="classutil_1_1InstanceLogger_1a239651fff4985be1d90f3f309a79cb8e" prot="private" virt="non-virtual"><scope>util::InstanceLogger</scope><name>logger</name></member>
+      <member refid="classutil_1_1InstanceLogger_1af199968925c3f77be4bd8bec9701f609" prot="public" virt="non-virtual"><scope>util::InstanceLogger</scope><name>operator=</name></member>
+      <member refid="classutil_1_1InstanceLogger_1af08d452dfe1bb80d9f000f16d9600131" prot="public" virt="non-virtual"><scope>util::InstanceLogger</scope><name>set_log_level</name></member>
+      <member refid="classutil_1_1InstanceLogger_1ae7f18b358c037aba813f3fa7d2adbea4" prot="public" virt="non-virtual"><scope>util::InstanceLogger</scope><name>set_logger</name></member>
+      <member refid="classutil_1_1InstanceLogger_1a7a17f0f710127b2e2406a74424b19f2d" prot="public" virt="non-virtual"><scope>util::InstanceLogger</scope><name>~InstanceLogger</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

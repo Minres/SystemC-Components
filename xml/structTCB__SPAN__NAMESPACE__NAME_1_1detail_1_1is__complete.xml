@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__complete" kind="struct" language="C++" prot="public">
+    <compoundname>TCB_SPAN_NAMESPACE_NAME::detail::is_complete</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::false_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+      </param>
+      <param>
+        <type>typename</type>
+        <defval>size_t</defval>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>TCB_SPAN_NAMESPACE_NAME::detail::is_complete&lt; typename, typename &gt;</label>
+        <link refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__complete"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>TCB_SPAN_NAMESPACE_NAME::detail::is_complete&lt; typename, typename &gt;</label>
+        <link refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__complete"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="242" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="242" bodyend="242"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1148 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1request" kind="struct" language="C++" prot="public">
+    <compoundname>axi::request</compoundname>
+    <derivedcompoundref refid="structaxi_1_1axi3" prot="public" virt="non-virtual">axi::axi3</derivedcompoundref>
+    <derivedcompoundref refid="structaxi_1_1axi4" prot="public" virt="non-virtual">axi::axi4</derivedcompoundref>
+    <includes refid="axi__tlm_8h" local="no">axi_tlm.h</includes>
+    <sectiondef kind="protected-type">
+      <memberdef kind="enum" id="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059" prot="protected" static="no" strong="no">
+        <type></type>
+        <name></name>
+        <qualifiedname>axi::request</qualifiedname>
+        <enumvalue id="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059ab04fe2486b421c91fdf2f5e6a63eda9c" prot="protected">
+          <name>BUFFERABLE</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059a836d1a6de6027fd9cec712e66695c318" prot="protected">
+          <name>CACHEABLE</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059aa6a8168f2d3b9653ddd7cc7ea86f48c3" prot="protected">
+          <name>RA</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059ab9aeafdb11e7697a83e957368c56e319" prot="protected">
+          <name>WA</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059a1c6481d25c916b2555f85506a49cb658" prot="protected">
+          <name>EXCL</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059a4d23fb9251e4c32d456ff381753f56db" prot="protected">
+          <name>LOCKED</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059a3f79552a42dfff59fca8d62f7e77403e" prot="protected">
+          <name>PRIVILEGED</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059adbb484c9bce21529c509170d5b79c18b" prot="protected">
+          <name>SECURE</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059aadf7da6426f39ec0af754171530f3d35" prot="protected">
+          <name>INSTRUCTION</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="372" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="372" bodyend="382"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="structaxi_1_1request_1a9cc521dc2e4cab83ad2dfe6265e99330" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool axi::request::unique</definition>
+        <argsstring></argsstring>
+        <name>unique</name>
+        <qualifiedname>axi::request::unique</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="383" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="383" bodyend="383"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1request_1a5ab8299febf67f2cc3a6cd2add4a9b16" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::length</definition>
+        <argsstring></argsstring>
+        <name>length</name>
+        <qualifiedname>axi::request::length</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="385" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="385" bodyend="385"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1request_1afd07c4ec2889291afba960e3bce872e8" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>axi::request::size</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="386" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="386" bodyend="386"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1request_1a737ec9b923a79e18f28158e87f7b605b" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespaceaxi_1a976930b97a74baed7a45ff5cdb324ae9" kindref="member">burst_e</ref></type>
+        <definition>burst_e axi::request::burst</definition>
+        <argsstring></argsstring>
+        <name>burst</name>
+        <qualifiedname>axi::request::burst</qualifiedname>
+        <initializer>{burst_e::FIXED}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="387" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="387" bodyend="387"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1request_1ae91d834cd957f8d8c421c4ac10b23233" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::prot</definition>
+        <argsstring></argsstring>
+        <name>prot</name>
+        <qualifiedname>axi::request::prot</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="388" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="388" bodyend="388"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1request_1ae3f714a821fbd8b783dba736c6f5aacf" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::qos</definition>
+        <argsstring></argsstring>
+        <name>qos</name>
+        <qualifiedname>axi::request::qos</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="389" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="389" bodyend="389"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1request_1a09de904c41f99111a4b572e6d985fb37" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::region</definition>
+        <argsstring></argsstring>
+        <name>region</name>
+        <qualifiedname>axi::request::region</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="390" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="390" bodyend="390"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1request_1a8ca7b0ecc9abf9da22251db3c2c5eec4" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespaceaxi_1a2c24f5d71a27284a4de95bb3ddf6748d" kindref="member">domain_e</ref></type>
+        <definition>domain_e axi::request::domain</definition>
+        <argsstring></argsstring>
+        <name>domain</name>
+        <qualifiedname>axi::request::domain</qualifiedname>
+        <initializer>{domain_e::NON_SHAREABLE}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="391" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="391" bodyend="391"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1request_1af1fd9e1b2a802e6e2fc85ea397d58fb3" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212" kindref="member">snoop_e</ref></type>
+        <definition>snoop_e axi::request::snoop</definition>
+        <argsstring></argsstring>
+        <name>snoop</name>
+        <qualifiedname>axi::request::snoop</qualifiedname>
+        <initializer>{snoop_e::READ_NO_SNOOP}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="392" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="392" bodyend="392"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1request_1a58acae48be14e6c0f8f75703ef19be80" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespaceaxi_1a6318752e2d4bb1398307086ebc1421f7" kindref="member">bar_e</ref></type>
+        <definition>bar_e axi::request::barrier</definition>
+        <argsstring></argsstring>
+        <name>barrier</name>
+        <qualifiedname>axi::request::barrier</qualifiedname>
+        <initializer>{bar_e::RESPECT_BARRIER}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="393" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="393" bodyend="393"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1request_1a9be968cd7edbf1fca9676de17d90ed2f" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespaceaxi_1ae831769511f0a2e0b73e223c4d7e5b4f" kindref="member">lock_e</ref></type>
+        <definition>lock_e axi::request::lock</definition>
+        <argsstring></argsstring>
+        <name>lock</name>
+        <qualifiedname>axi::request::lock</qualifiedname>
+        <initializer>{lock_e::NORMAL}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="394" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="394" bodyend="394"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1request_1afad76545fa912b6e96e587800cbc547e" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::cache</definition>
+        <argsstring></argsstring>
+        <name>cache</name>
+        <qualifiedname>axi::request::cache</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="395" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="395" bodyend="395"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1request_1a404d1f864cccd79df9a0726018f48df8" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::atop</definition>
+        <argsstring></argsstring>
+        <name>atop</name>
+        <qualifiedname>axi::request::atop</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="396" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="396" bodyend="396"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1request_1ac35e18cc234d6a619b2f7eb91b9dcff8" prot="protected" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t axi::request::stash_nid</definition>
+        <argsstring></argsstring>
+        <name>stash_nid</name>
+        <qualifiedname>axi::request::stash_nid</qualifiedname>
+        <initializer>{std::numeric_limits&lt;uint16_t&gt;::max()}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="397" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="397" bodyend="397"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1request_1a0a7765e4f05cf2805d6d698ad92bb3fb" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::stash_lpid</definition>
+        <argsstring></argsstring>
+        <name>stash_lpid</name>
+        <qualifiedname>axi::request::stash_lpid</qualifiedname>
+        <initializer>{std::numeric_limits&lt;uint8_t&gt;::max()}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="398" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="398" bodyend="398"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1request_1adfd1fec538f6f86ba4e5c030532b5a4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::request::request</definition>
+        <argsstring>()=default</argsstring>
+        <name>request</name>
+        <qualifiedname>axi::request::request</qualifiedname>
+        <briefdescription>
+<para>the default constructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="205" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1aa5d46b88ea70b2a1758eb4488937bc6d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::request::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <qualifiedname>axi::request::reset</qualifiedname>
+        <briefdescription>
+<para>reset all data member to their default </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="207" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1422" bodyend="1436"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a15e9c67a3beed5958849b732fac3bf99" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::request::set_length</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_length</name>
+        <qualifiedname>axi::request::set_length</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>length</defname>
+        </param>
+        <briefdescription>
+<para>set the AxLEN value of the transaction, the value denotes the burst length - 1 </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>len value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="212" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1438" bodyend="1438"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a66a14fb9aafefec408910a0bef54375a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::get_length</definition>
+        <argsstring>() const</argsstring>
+        <name>get_length</name>
+        <qualifiedname>axi::request::get_length</qualifiedname>
+        <briefdescription>
+<para>get the AxLEN value of the transaction, the value denotes the burst length - 1 </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the AxLEN value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="217" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1440" bodyend="1440"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1ad84f2cfc054fbc90cc3ceb80646c4592" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::request::set_size</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_size</name>
+        <qualifiedname>axi::request::set_size</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>size</defname>
+        </param>
+        <briefdescription>
+<para>get the AxSIZE value of the transaction, the length is 2^size. It needs to be less than 10 (512 bit width) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>value of AxSIZE </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="222" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1442" bodyend="1445"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1afdcb442b28e27870e5264e7e34f80978" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::get_size</definition>
+        <argsstring>() const</argsstring>
+        <name>get_size</name>
+        <qualifiedname>axi::request::get_size</qualifiedname>
+        <briefdescription>
+<para>set the AxSIZE value of the transaction </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>AxSIZE value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="227" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1447" bodyend="1447"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a89d258d73dd9dd2f9d272a9bb1870e16" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::request::set_burst</definition>
+        <argsstring>(burst_e)</argsstring>
+        <name>set_burst</name>
+        <qualifiedname>axi::request::set_burst</qualifiedname>
+        <param>
+          <type><ref refid="namespaceaxi_1a976930b97a74baed7a45ff5cdb324ae9" kindref="member">burst_e</ref></type>
+          <defname>burst</defname>
+        </param>
+        <briefdescription>
+<para>set the AxBURST value, </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="namespaceaxi_1a976930b97a74baed7a45ff5cdb324ae9" kindref="member">burst_e</ref> </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>burst </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="232" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1449" bodyend="1449"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a65c9398266162cb4d00648d6a2f842de" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespaceaxi_1a976930b97a74baed7a45ff5cdb324ae9" kindref="member">burst_e</ref></type>
+        <definition>burst_e axi::request::get_burst</definition>
+        <argsstring>() const</argsstring>
+        <name>get_burst</name>
+        <qualifiedname>axi::request::get_burst</qualifiedname>
+        <briefdescription>
+<para>get the AxBURST value, </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="namespaceaxi_1a976930b97a74baed7a45ff5cdb324ae9" kindref="member">burst_e</ref> </para>
+</simplesect>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="237" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1451" bodyend="1451"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1aef3ae2ab0351948a3248bbb6e238c5c1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::request::set_prot</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_prot</name>
+        <qualifiedname>axi::request::set_prot</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>prot</defname>
+        </param>
+        <briefdescription>
+<para>set the AxPROT value as POD, only values from 0...7 are allowed </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>prot value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="242" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1453" bodyend="1456"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1aeab2b88aeb1a2c34f9d74764678b0879" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::get_prot</definition>
+        <argsstring>() const</argsstring>
+        <name>get_prot</name>
+        <qualifiedname>axi::request::get_prot</qualifiedname>
+        <briefdescription>
+<para>set the AxPROT value as POD, only values from 0...7 are allowed </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the prot value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="247" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1458" bodyend="1458"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a9ecab89b731d679c18fb2e6ccee1c8eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::request::set_privileged</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_privileged</name>
+        <qualifiedname>axi::request::set_privileged</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>privileged</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>set the privileged bit of the AxPROT (AxPROT[0]) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>privileged value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="252" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1460" bodyend="1464"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a71d730fb43b907c59f8a86cd3b91bccf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool axi::request::is_privileged</definition>
+        <argsstring>() const</argsstring>
+        <name>is_privileged</name>
+        <qualifiedname>axi::request::is_privileged</qualifiedname>
+        <briefdescription>
+<para>get the privileged bit of the AxPROT (AxPROT[0]) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the privileged value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="257" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1466" bodyend="1466"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a77d1b621723b24fd559fc401090fa567" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::request::set_non_secure</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_non_secure</name>
+        <qualifiedname>axi::request::set_non_secure</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>non_sec</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>set the non-secure bit of the AxPROT (AxPROT[1]) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>non-secure bit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="262" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1468" bodyend="1472"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a9159b55aa55e4cc0834afc53ca61c88b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool axi::request::is_non_secure</definition>
+        <argsstring>() const</argsstring>
+        <name>is_non_secure</name>
+        <qualifiedname>axi::request::is_non_secure</qualifiedname>
+        <briefdescription>
+<para>set the non-secure bit of the AxPROT (AxPROT[1]) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the non-secure bit </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="267" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1474" bodyend="1474"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a0697275297c7589f4eca7281fc7d73bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::request::set_instruction</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_instruction</name>
+        <qualifiedname>axi::request::set_instruction</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>instr</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>set the instruction bit of the AxPROT (AxPROT[2]) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>instruction bit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="272" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1476" bodyend="1480"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a59b9489214be49ba40d51b6a0209688a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool axi::request::is_instruction</definition>
+        <argsstring>() const</argsstring>
+        <name>is_instruction</name>
+        <qualifiedname>axi::request::is_instruction</qualifiedname>
+        <briefdescription>
+<para>set the instruction bit of the AxPROT (AxPROT[2]) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the instruction bit </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="277" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1482" bodyend="1482"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a338c50c1b375767b498d1380d6371bad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::request::set_cache</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_cache</name>
+        <qualifiedname>axi::request::set_cache</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>cache</defname>
+        </param>
+        <briefdescription>
+<para>set the AxCACHE value as POD, only value from 0..15 are allowed </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>cache value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="282" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1492" bodyend="1495"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1ae2ae5dc5d8c200636642946a89604ee9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::get_cache</definition>
+        <argsstring>() const</argsstring>
+        <name>get_cache</name>
+        <qualifiedname>axi::request::get_cache</qualifiedname>
+        <briefdescription>
+<para>get the AxCACHE value as POD </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the cache value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="287" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1497" bodyend="1497"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a317385855ba25be1350f74e88f4aa9df" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::request::set_qos</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_qos</name>
+        <qualifiedname>axi::request::set_qos</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>qos</defname>
+        </param>
+        <briefdescription>
+<para>set the AxQOS (quality of service) value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>qos value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="292" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1484" bodyend="1484"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1ab093f95a84529ed29a92b82680673322" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::get_qos</definition>
+        <argsstring>() const</argsstring>
+        <name>get_qos</name>
+        <qualifiedname>axi::request::get_qos</qualifiedname>
+        <briefdescription>
+<para>get the AxQOS (quality of service) value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the qos value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="297" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1486" bodyend="1486"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a53135f14b5435fa04244dd9f9e98c374" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::request::set_region</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_region</name>
+        <qualifiedname>axi::request::set_region</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>region</defname>
+        </param>
+        <briefdescription>
+<para>set the AxREGION value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>region value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="302" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1488" bodyend="1488"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a96af605c804ac84454e8f1af0cb4f140" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::get_region</definition>
+        <argsstring>() const</argsstring>
+        <name>get_region</name>
+        <qualifiedname>axi::request::get_region</qualifiedname>
+        <briefdescription>
+<para>get the AxREGION value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the region value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="307" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1490" bodyend="1490"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1abd686d32f82cf5932abec5de6d2a3512" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::request::set_atop</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_atop</name>
+        <qualifiedname>axi::request::set_atop</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>atop</defname>
+        </param>
+        <briefdescription>
+<para>set the raw AWATOP value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>atop value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="312" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1515" bodyend="1515"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a0deab8c3cbb7bfa260157d147bb40907" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::get_atop</definition>
+        <argsstring>() const</argsstring>
+        <name>get_atop</name>
+        <qualifiedname>axi::request::get_atop</qualifiedname>
+        <briefdescription>
+<para>get the raw AWATOP value return the unique value </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="317" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1517" bodyend="1517"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1af135251d167da3683106387f77f92d69" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::request::set_stash_nid</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_stash_nid</name>
+        <qualifiedname>axi::request::set_stash_nid</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>stash_nid</defname>
+        </param>
+        <briefdescription>
+<para>set the raw AWSTASHNID value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>atop value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="322" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1519" bodyend="1519"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1ab4dd5053edcc533635b36524b636e24d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::get_stash_nid</definition>
+        <argsstring>() const</argsstring>
+        <name>get_stash_nid</name>
+        <qualifiedname>axi::request::get_stash_nid</qualifiedname>
+        <briefdescription>
+<para>get the raw AWSTASHNID value return the unique value </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="327" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1521" bodyend="1521"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1aa06f216b958e01ee9b8cc8786b987f8f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool axi::request::is_stash_nid_en</definition>
+        <argsstring>() const</argsstring>
+        <name>is_stash_nid_en</name>
+        <qualifiedname>axi::request::is_stash_nid_en</qualifiedname>
+        <briefdescription>
+<para>check if AWSTASHNID is valid return the valid value </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="332" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1523" bodyend="1523"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a886ee1010bcce0821c95104046196d31" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::request::set_stash_lpid</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_stash_lpid</name>
+        <qualifiedname>axi::request::set_stash_lpid</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>stash_lpid</defname>
+        </param>
+        <briefdescription>
+<para>set the raw AWSTASHLPID value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>atop value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="337" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1525" bodyend="1525"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a3230069a0aab53c9e32f28558b63df47" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t axi::request::get_stash_lpid</definition>
+        <argsstring>() const</argsstring>
+        <name>get_stash_lpid</name>
+        <qualifiedname>axi::request::get_stash_lpid</qualifiedname>
+        <briefdescription>
+<para>get the raw AWSTASHLPID value return the unique value </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="342" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1527" bodyend="1527"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1request_1a22d195cd4702d849dc0f9bcc472ad4c2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool axi::request::is_stash_lpid_en</definition>
+        <argsstring>() const</argsstring>
+        <name>is_stash_lpid_en</name>
+        <qualifiedname>axi::request::is_stash_lpid_en</qualifiedname>
+        <briefdescription>
+<para>check if AWSTASHLPID is valid return the valid value </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="347" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1529" bodyend="1529"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="structaxi_1_1request_1a59b37551fe2e72a3cee5ac59b74e9fa8" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structaxi_1_1request_1adfd1fec538f6f86ba4e5c030532b5a4d" kindref="member">request</ref> &amp;</type>
+        <definition>request &amp; axi::request::operator=</definition>
+        <argsstring>(const request &amp;o)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>axi::request::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="structaxi_1_1request_1adfd1fec538f6f86ba4e5c030532b5a4d" kindref="member">request</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>equal operator <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>o</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>reference to self </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="355" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="355" bodyend="370"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The request part of AXI3, AXI4 and ACE transactions. All member data are stored in this class to allow easy reuse of free&apos;d memory and prevent memory fragmentation. The request class holds the data in a similar representation than in the HW implementation. Derived classes are not expected to add data member, they only add interpretation of bits and fields as member functions </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="8">
+        <label>axi::ace</label>
+        <link refid="structaxi_1_1ace"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>axi::ace_extension</label>
+        <link refid="structaxi_1_1ace__extension"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>axi::axi3</label>
+        <link refid="structaxi_1_1axi3"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>axi::axi3_extension</label>
+        <link refid="structaxi_1_1axi3__extension"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>axi::axi4</label>
+        <link refid="structaxi_1_1axi4"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>axi::axi4_extension</label>
+        <link refid="structaxi_1_1axi4__extension"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>axi::axi_extension&lt; ace, ace_response &gt;</label>
+        <link refid="structaxi_1_1axi__extension"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>axi::axi_extension&lt; axi3 &gt;</label>
+        <link refid="structaxi_1_1axi__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>axi::axi_extension&lt; axi4 &gt;</label>
+        <link refid="structaxi_1_1axi__extension"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>axi::request</label>
+        <link refid="structaxi_1_1request"/>
+      </node>
+    </inheritancegraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="203" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="203" bodyend="399"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1request_1a404d1f864cccd79df9a0726018f48df8" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>atop</name></member>
+      <member refid="structaxi_1_1request_1a58acae48be14e6c0f8f75703ef19be80" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>barrier</name></member>
+      <member refid="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059ab04fe2486b421c91fdf2f5e6a63eda9c" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>BUFFERABLE</name></member>
+      <member refid="structaxi_1_1request_1a737ec9b923a79e18f28158e87f7b605b" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>burst</name></member>
+      <member refid="structaxi_1_1request_1afad76545fa912b6e96e587800cbc547e" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>cache</name></member>
+      <member refid="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059a836d1a6de6027fd9cec712e66695c318" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>CACHEABLE</name></member>
+      <member refid="structaxi_1_1request_1a8ca7b0ecc9abf9da22251db3c2c5eec4" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>domain</name></member>
+      <member refid="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059a1c6481d25c916b2555f85506a49cb658" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>EXCL</name></member>
+      <member refid="structaxi_1_1request_1a0deab8c3cbb7bfa260157d147bb40907" prot="public" virt="non-virtual"><scope>axi::request</scope><name>get_atop</name></member>
+      <member refid="structaxi_1_1request_1a65c9398266162cb4d00648d6a2f842de" prot="public" virt="non-virtual"><scope>axi::request</scope><name>get_burst</name></member>
+      <member refid="structaxi_1_1request_1ae2ae5dc5d8c200636642946a89604ee9" prot="public" virt="non-virtual"><scope>axi::request</scope><name>get_cache</name></member>
+      <member refid="structaxi_1_1request_1a66a14fb9aafefec408910a0bef54375a" prot="public" virt="non-virtual"><scope>axi::request</scope><name>get_length</name></member>
+      <member refid="structaxi_1_1request_1aeab2b88aeb1a2c34f9d74764678b0879" prot="public" virt="non-virtual"><scope>axi::request</scope><name>get_prot</name></member>
+      <member refid="structaxi_1_1request_1ab093f95a84529ed29a92b82680673322" prot="public" virt="non-virtual"><scope>axi::request</scope><name>get_qos</name></member>
+      <member refid="structaxi_1_1request_1a96af605c804ac84454e8f1af0cb4f140" prot="public" virt="non-virtual"><scope>axi::request</scope><name>get_region</name></member>
+      <member refid="structaxi_1_1request_1afdcb442b28e27870e5264e7e34f80978" prot="public" virt="non-virtual"><scope>axi::request</scope><name>get_size</name></member>
+      <member refid="structaxi_1_1request_1a3230069a0aab53c9e32f28558b63df47" prot="public" virt="non-virtual"><scope>axi::request</scope><name>get_stash_lpid</name></member>
+      <member refid="structaxi_1_1request_1ab4dd5053edcc533635b36524b636e24d" prot="public" virt="non-virtual"><scope>axi::request</scope><name>get_stash_nid</name></member>
+      <member refid="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059aadf7da6426f39ec0af754171530f3d35" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>INSTRUCTION</name></member>
+      <member refid="structaxi_1_1request_1a59b9489214be49ba40d51b6a0209688a" prot="public" virt="non-virtual"><scope>axi::request</scope><name>is_instruction</name></member>
+      <member refid="structaxi_1_1request_1a9159b55aa55e4cc0834afc53ca61c88b" prot="public" virt="non-virtual"><scope>axi::request</scope><name>is_non_secure</name></member>
+      <member refid="structaxi_1_1request_1a71d730fb43b907c59f8a86cd3b91bccf" prot="public" virt="non-virtual"><scope>axi::request</scope><name>is_privileged</name></member>
+      <member refid="structaxi_1_1request_1a22d195cd4702d849dc0f9bcc472ad4c2" prot="public" virt="non-virtual"><scope>axi::request</scope><name>is_stash_lpid_en</name></member>
+      <member refid="structaxi_1_1request_1aa06f216b958e01ee9b8cc8786b987f8f" prot="public" virt="non-virtual"><scope>axi::request</scope><name>is_stash_nid_en</name></member>
+      <member refid="structaxi_1_1request_1a5ab8299febf67f2cc3a6cd2add4a9b16" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>length</name></member>
+      <member refid="structaxi_1_1request_1a9be968cd7edbf1fca9676de17d90ed2f" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>lock</name></member>
+      <member refid="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059a4d23fb9251e4c32d456ff381753f56db" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>LOCKED</name></member>
+      <member refid="structaxi_1_1request_1a59b37551fe2e72a3cee5ac59b74e9fa8" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>operator=</name></member>
+      <member refid="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059a3f79552a42dfff59fca8d62f7e77403e" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>PRIVILEGED</name></member>
+      <member refid="structaxi_1_1request_1ae91d834cd957f8d8c421c4ac10b23233" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>prot</name></member>
+      <member refid="structaxi_1_1request_1ae3f714a821fbd8b783dba736c6f5aacf" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>qos</name></member>
+      <member refid="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059aa6a8168f2d3b9653ddd7cc7ea86f48c3" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>RA</name></member>
+      <member refid="structaxi_1_1request_1a09de904c41f99111a4b572e6d985fb37" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>region</name></member>
+      <member refid="structaxi_1_1request_1adfd1fec538f6f86ba4e5c030532b5a4d" prot="public" virt="non-virtual"><scope>axi::request</scope><name>request</name></member>
+      <member refid="structaxi_1_1request_1aa5d46b88ea70b2a1758eb4488937bc6d" prot="public" virt="non-virtual"><scope>axi::request</scope><name>reset</name></member>
+      <member refid="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059adbb484c9bce21529c509170d5b79c18b" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>SECURE</name></member>
+      <member refid="structaxi_1_1request_1abd686d32f82cf5932abec5de6d2a3512" prot="public" virt="non-virtual"><scope>axi::request</scope><name>set_atop</name></member>
+      <member refid="structaxi_1_1request_1a89d258d73dd9dd2f9d272a9bb1870e16" prot="public" virt="non-virtual"><scope>axi::request</scope><name>set_burst</name></member>
+      <member refid="structaxi_1_1request_1a338c50c1b375767b498d1380d6371bad" prot="public" virt="non-virtual"><scope>axi::request</scope><name>set_cache</name></member>
+      <member refid="structaxi_1_1request_1a0697275297c7589f4eca7281fc7d73bd" prot="public" virt="non-virtual"><scope>axi::request</scope><name>set_instruction</name></member>
+      <member refid="structaxi_1_1request_1a15e9c67a3beed5958849b732fac3bf99" prot="public" virt="non-virtual"><scope>axi::request</scope><name>set_length</name></member>
+      <member refid="structaxi_1_1request_1a77d1b621723b24fd559fc401090fa567" prot="public" virt="non-virtual"><scope>axi::request</scope><name>set_non_secure</name></member>
+      <member refid="structaxi_1_1request_1a9ecab89b731d679c18fb2e6ccee1c8eb" prot="public" virt="non-virtual"><scope>axi::request</scope><name>set_privileged</name></member>
+      <member refid="structaxi_1_1request_1aef3ae2ab0351948a3248bbb6e238c5c1" prot="public" virt="non-virtual"><scope>axi::request</scope><name>set_prot</name></member>
+      <member refid="structaxi_1_1request_1a317385855ba25be1350f74e88f4aa9df" prot="public" virt="non-virtual"><scope>axi::request</scope><name>set_qos</name></member>
+      <member refid="structaxi_1_1request_1a53135f14b5435fa04244dd9f9e98c374" prot="public" virt="non-virtual"><scope>axi::request</scope><name>set_region</name></member>
+      <member refid="structaxi_1_1request_1ad84f2cfc054fbc90cc3ceb80646c4592" prot="public" virt="non-virtual"><scope>axi::request</scope><name>set_size</name></member>
+      <member refid="structaxi_1_1request_1a886ee1010bcce0821c95104046196d31" prot="public" virt="non-virtual"><scope>axi::request</scope><name>set_stash_lpid</name></member>
+      <member refid="structaxi_1_1request_1af135251d167da3683106387f77f92d69" prot="public" virt="non-virtual"><scope>axi::request</scope><name>set_stash_nid</name></member>
+      <member refid="structaxi_1_1request_1afd07c4ec2889291afba960e3bce872e8" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>size</name></member>
+      <member refid="structaxi_1_1request_1af1fd9e1b2a802e6e2fc85ea397d58fb3" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>snoop</name></member>
+      <member refid="structaxi_1_1request_1a0a7765e4f05cf2805d6d698ad92bb3fb" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>stash_lpid</name></member>
+      <member refid="structaxi_1_1request_1ac35e18cc234d6a619b2f7eb91b9dcff8" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>stash_nid</name></member>
+      <member refid="structaxi_1_1request_1a9cc521dc2e4cab83ad2dfe6265e99330" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>unique</name></member>
+      <member refid="structaxi_1_1request_1ad7b71a7a1f6fd49b65b88dfc11a8e059ab9aeafdb11e7697a83e957368c56e319" prot="protected" virt="non-virtual"><scope>axi::request</scope><name>WA</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

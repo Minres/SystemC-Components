@@ -1,0 +1,341 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="tlm__signal__sockets_8h" kind="file" language="C++">
+    <compoundname>tlm_signal_sockets.h</compoundname>
+    <includes refid="report_8h" local="yes">scc/report.h</includes>
+    <includes local="no">sysc/kernel/sc_object.h</includes>
+    <includes local="no">tlm_core/tlm_2/tlm_sockets/tlm_initiator_socket.h</includes>
+    <includes local="no">tlm_core/tlm_2/tlm_sockets/tlm_target_socket.h</includes>
+    <includedby refid="tlm__signal_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal.h</includedby>
+    <includedby refid="tlm__signal__conv_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_conv.h</includedby>
+    <incdepgraph>
+      <node id="20">
+        <label>util/ities.h</label>
+        <link refid="ities_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>scc/report.h</label>
+        <link refid="report_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>utilities.h</label>
+        <link refid="utilities_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h</label>
+        <link refid="tlm__signal__sockets_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>algorithm</label>
+      </node>
+      <node id="4">
+        <label>array</label>
+      </node>
+      <node id="22">
+        <label>assert.h</label>
+      </node>
+      <node id="23">
+        <label>bitset</label>
+      </node>
+      <node id="9">
+        <label>cci_configuration</label>
+      </node>
+      <node id="5">
+        <label>cctype</label>
+      </node>
+      <node id="24">
+        <label>climits</label>
+      </node>
+      <node id="11">
+        <label>cstring</label>
+      </node>
+      <node id="25">
+        <label>fstream</label>
+      </node>
+      <node id="12">
+        <label>iomanip</label>
+      </node>
+      <node id="13">
+        <label>iostream</label>
+      </node>
+      <node id="26">
+        <label>iterator</label>
+      </node>
+      <node id="6">
+        <label>limits</label>
+      </node>
+      <node id="10">
+        <label>locale</label>
+      </node>
+      <node id="7">
+        <label>memory</label>
+      </node>
+      <node id="14">
+        <label>mutex</label>
+      </node>
+      <node id="15">
+        <label>sstream</label>
+      </node>
+      <node id="16">
+        <label>stdexcept</label>
+      </node>
+      <node id="27">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="30">
+        <label>sysc/kernel/sc_object.h</label>
+      </node>
+      <node id="17">
+        <label>sysc/kernel/sc_time.h</label>
+      </node>
+      <node id="18">
+        <label>sysc/utils/sc_report.h</label>
+      </node>
+      <node id="8">
+        <label>systemc</label>
+      </node>
+      <node id="31">
+        <label>tlm_core/tlm_2/tlm_sockets/tlm_initiator_socket.h</label>
+      </node>
+      <node id="32">
+        <label>tlm_core/tlm_2/tlm_sockets/tlm_target_socket.h</label>
+      </node>
+      <node id="28">
+        <label>type_traits</label>
+      </node>
+      <node id="19">
+        <label>unordered_map</label>
+      </node>
+      <node id="29">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_initiator_mixin.h</label>
+        <link refid="signal__initiator__mixin_8h_source"/>
+      </node>
+      <node id="4">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h</label>
+        <link refid="signal__target__mixin_8h_source"/>
+      </node>
+      <node id="2">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal.h</label>
+        <link refid="tlm__signal_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_conv.h</label>
+        <link refid="tlm__signal__conv_8h_source"/>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h</label>
+        <link refid="tlm__signal__sockets_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__signal__baseprotocol__types" prot="public">tlm::scc::tlm_signal_baseprotocol_types</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__signal__fw__transport__if" prot="public">tlm::scc::tlm_signal_fw_transport_if</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__signal__bw__transport__if" prot="public">tlm::scc::tlm_signal_bw_transport_if</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__signal__initiator__socket" prot="public">tlm::scc::tlm_signal_initiator_socket</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__signal__target__socket" prot="public">tlm::scc::tlm_signal_target_socket</innerclass>
+    <innernamespace refid="namespacetlm">tlm</innernamespace>
+    <innernamespace refid="namespacetlm_1_1scc">tlm::scc</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2018-2022<sp/>MINRES<sp/>Technologies<sp/>GmbH</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_TLM_TLM_SIGNAL_SOCKETS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_TLM_TLM_SIGNAL_SOCKETS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;scc/report.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sysc/kernel/sc_object.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>CWR_SYSTEMC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm_h/tlm_sockets/tlm_initiator_socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm_h/tlm_sockets/tlm_target_socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm_core/tlm_2/tlm_sockets/tlm_initiator_socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm_core/tlm_2/tlm_sockets/tlm_target_socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm" kindref="compound">tlm</ref><sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm_1_1scc" kindref="compound">scc</ref><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>SIG&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1scc_1_1tlm__signal__gp" kindref="compound">tlm_signal_gp</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="structtlm_1_1scc_1_1tlm__signal__baseprotocol__types" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>SIG<sp/>=<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">&gt;<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1scc_1_1tlm__signal__baseprotocol__types" kindref="compound">tlm_signal_baseprotocol_types</ref><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">tlm_signal_type<sp/>=<sp/>SIG;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">tlm_payload_type<sp/>=<sp/><ref refid="structtlm_1_1scc_1_1tlm__signal__gp" kindref="compound">tlm_signal_gp&lt;tlm_signal_type&gt;</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">tlm_phase_type<sp/>=<sp/>::tlm::tlm_phase;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>SIG<sp/>=<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES<sp/>=<sp/>tlm_signal_baseprotocol_types&lt;SIG&gt;&gt;</highlight></codeline>
+<codeline lineno="45" refid="structtlm_1_1scc_1_1tlm__signal__fw__transport__if" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1scc_1_1tlm__signal__fw__transport__if" kindref="compound">tlm_signal_fw_transport_if</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>sc_core::sc_interface<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>TYPES<sp/>protocol_types;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>virtual<sp/>void<sp/>b_transport(typename<sp/>TYPES::tlm_payload_type&amp;,<sp/>sc_core::sc_time&amp;)<sp/>=<sp/>0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/>::tlm::tlm_sync_enum<sp/>nb_transport_fw(</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES::tlm_payload_type&amp;,<sp/>::tlm::tlm_phase&amp;,<sp/>sc_core::sc_time&amp;)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>SIG<sp/>=<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES<sp/>=<sp/>tlm_signal_baseprotocol_types&lt;SIG&gt;&gt;</highlight></codeline>
+<codeline lineno="52" refid="structtlm_1_1scc_1_1tlm__signal__bw__transport__if" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1scc_1_1tlm__signal__bw__transport__if" kindref="compound">tlm_signal_bw_transport_if</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>sc_core::sc_interface<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>TYPES<sp/>protocol_types;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/>::tlm::tlm_sync_enum<sp/>nb_transport_bw(</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES::tlm_payload_type&amp;,<sp/>::tlm::tlm_phase&amp;,<sp/>sc_core::sc_time&amp;)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>SC_VERSION_MAJOR<sp/>&lt;<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">type_index<sp/>=<sp/>sc_core::sc_type_index;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">type_index<sp/>=<sp/>std::type_index;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>SIG<sp/>=<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES<sp/>=<sp/>tlm_signal_baseprotocol_types&lt;SIG&gt;,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sc_core::sc_port_policy<sp/>POL<sp/>=<sp/>sc_core::SC_ONE_OR_MORE_BOUND&gt;</highlight></codeline>
+<codeline lineno="65" refid="structtlm_1_1scc_1_1tlm__signal__initiator__socket" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">tlm_signal_initiator_socket</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>tlm_base_initiator_socket&lt;0,<sp/>tlm_signal_fw_transport_if&lt;SIG,<sp/>TYPES&gt;,<sp/>tlm_signal_bw_transport_if&lt;SIG,<sp/>TYPES&gt;,<sp/>N,<sp/>POL&gt;<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">tlm_signal_type<sp/>=<sp/>SIG;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">protocol_types<sp/>=<sp/>TYPES;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">transaction_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES::tlm_payload_type;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">phase_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES::tlm_phase_type;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm_signal_initiator_socket()</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>tlm_base_initiator_socket&lt;0,<sp/>tlm_signal_fw_transport_if&lt;SIG,<sp/>TYPES&gt;,<sp/><ref refid="structtlm_1_1scc_1_1tlm__signal__bw__transport__if" kindref="compound">tlm_signal_bw_transport_if&lt;SIG, TYPES&gt;</ref>,<sp/>N,<sp/>POL&gt;()<sp/>{}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/>tlm_signal_initiator_socket(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>tlm_base_initiator_socket&lt;0,<sp/>tlm_signal_fw_transport_if&lt;SIG,<sp/>TYPES&gt;,<sp/><ref refid="structtlm_1_1scc_1_1tlm__signal__bw__transport__if" kindref="compound">tlm_signal_bw_transport_if&lt;SIG, TYPES&gt;</ref>,<sp/>N,<sp/>POL&gt;(name)<sp/>{}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>kind()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;tlm_signal_initiator_socket&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>type_index<sp/>get_protocol_types()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(TYPES);<sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>SIG<sp/>=<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES<sp/>=<sp/>tlm_signal_baseprotocol_types&lt;SIG&gt;,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>1&gt;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">tlm_signal_opt_initiator_socket<sp/>=<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1scc_1_1tlm__signal__initiator__socket" kindref="compound">tlm_signal_initiator_socket</ref>&lt;SIG,<sp/>TYPES,<sp/>N,<sp/>sc_core::SC_ZERO_OR_MORE_BOUND&gt;;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal">template<sp/>&lt;typename<sp/>SIG<sp/>=<sp/>bool,<sp/>typename<sp/>TYPES<sp/>=<sp/>tlm_signal_baseprotocol_types&lt;SIG&gt;,<sp/>int<sp/>N<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sc_core::sc_port_policy<sp/>POL<sp/>=<sp/>sc_core::SC_ONE_OR_MORE_BOUND&gt;</highlight></codeline>
+<codeline lineno="88" refid="structtlm_1_1scc_1_1tlm__signal__target__socket" refkind="compound"><highlight class="normal">struct<sp/>tlm_signal_target_socket</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>::tlm::tlm_base_target_socket&lt;0,<sp/>tlm_signal_fw_transport_if&lt;SIG,<sp/>TYPES&gt;,<sp/>tlm_signal_bw_transport_if&lt;SIG,<sp/>TYPES&gt;,<sp/>N,<sp/>POL&gt;<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">tlm_signal_type<sp/>=<sp/>SIG;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">protocol_types<sp/>=<sp/>TYPES;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">transaction_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES::tlm_payload_type;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">phase_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES::tlm_phase_type;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm_signal_target_socket()</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>tlm_base_target_socket&lt;0,<sp/>tlm_signal_fw_transport_if&lt;TYPES&gt;,<sp/><ref refid="structtlm_1_1scc_1_1tlm__signal__bw__transport__if" kindref="compound">tlm_signal_bw_transport_if&lt;TYPES&gt;</ref>,<sp/>N,<sp/>POL&gt;()<sp/>{}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/>tlm_signal_target_socket(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>tlm_base_target_socket&lt;0,<sp/>tlm_signal_fw_transport_if&lt;SIG,<sp/>TYPES&gt;,<sp/><ref refid="structtlm_1_1scc_1_1tlm__signal__bw__transport__if" kindref="compound">tlm_signal_bw_transport_if&lt;SIG, TYPES&gt;</ref>,<sp/>N,<sp/>POL&gt;(name)<sp/>{}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>kind()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;tlm_signal_target_socket&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>type_index<sp/>get_protocol_types()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(TYPES);<sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>SIG<sp/>=<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES<sp/>=<sp/>tlm_signal_baseprotocol_types&lt;SIG&gt;,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>1&gt;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">tlm_signal_opt_target_socket<sp/>=<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1scc_1_1tlm__signal__target__socket" kindref="compound">tlm_signal_target_socket</ref>&lt;SIG,<sp/>TYPES,<sp/>N,<sp/>sc_core::SC_ZERO_OR_MORE_BOUND&gt;;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>tlm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_TLM_TLM_SIGNAL_SOCKETS_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h"/>
+  </compounddef>
+</doxygen>

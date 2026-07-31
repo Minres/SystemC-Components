@@ -1,0 +1,2742 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacechi" kind="namespace" language="C++">
+    <compoundname>chi</compoundname>
+    <innerclass refid="structchi_1_1tlm__id__ext__recording" prot="public">chi::tlm_id_ext_recording</innerclass>
+    <innerclass refid="structchi_1_1chi__ctrl__ext__record" prot="public">chi::chi_ctrl_ext_record</innerclass>
+    <innerclass refid="structchi_1_1chi__ctrl__ext__recording" prot="public">chi::chi_ctrl_ext_recording</innerclass>
+    <innerclass refid="structchi_1_1chi__data__ext__record" prot="public">chi::chi_data_ext_record</innerclass>
+    <innerclass refid="structchi_1_1chi__data__ext__recording" prot="public">chi::chi_data_ext_recording</innerclass>
+    <innerclass refid="structchi_1_1chi__snp__ext__record" prot="public">chi::chi_snp_ext_record</innerclass>
+    <innerclass refid="structchi_1_1chi__snp__ext__recording" prot="public">chi::chi_snp_ext_recording</innerclass>
+    <innerclass refid="structchi_1_1chi__req__credit__ext__record" prot="public">chi::chi_req_credit_ext_record</innerclass>
+    <innerclass refid="structchi_1_1chi__resp__credit__ext__record" prot="public">chi::chi_resp_credit_ext_record</innerclass>
+    <innerclass refid="structchi_1_1chi__data__credit__ext__record" prot="public">chi::chi_data_credit_ext_record</innerclass>
+    <innerclass refid="structchi_1_1chi__credit__ext__recording" prot="public">chi::chi_credit_ext_recording</innerclass>
+    <innerclass refid="structchi_1_1enable__for__enum" prot="public">chi::enable_for_enum</innerclass>
+    <innerclass refid="structchi_1_1common" prot="public">chi::common</innerclass>
+    <innerclass refid="structchi_1_1request" prot="public">chi::request</innerclass>
+    <innerclass refid="structchi_1_1snp__request" prot="public">chi::snp_request</innerclass>
+    <innerclass refid="structchi_1_1data" prot="public">chi::data</innerclass>
+    <innerclass refid="structchi_1_1response" prot="public">chi::response</innerclass>
+    <innerclass refid="structchi_1_1chi__ctrl__extension" prot="public">chi::chi_ctrl_extension</innerclass>
+    <innerclass refid="structchi_1_1chi__snp__extension" prot="public">chi::chi_snp_extension</innerclass>
+    <innerclass refid="structchi_1_1chi__data__extension" prot="public">chi::chi_data_extension</innerclass>
+    <innerclass refid="structchi_1_1chi__credit__extension" prot="public">chi::chi_credit_extension</innerclass>
+    <innerclass refid="structchi_1_1chi__protocol__types" prot="public">chi::chi_protocol_types</innerclass>
+    <innerclass refid="classchi_1_1bw__blocking__transport__if" prot="public">chi::bw_blocking_transport_if</innerclass>
+    <innerclass refid="classchi_1_1chi__bw__transport__if" prot="public">chi::chi_bw_transport_if</innerclass>
+    <innerclass refid="structchi_1_1chi__initiator__socket" prot="public">chi::chi_initiator_socket</innerclass>
+    <innerclass refid="structchi_1_1chi__target__socket" prot="public">chi::chi_target_socket</innerclass>
+    <innerclass refid="structchi_1_1enable__for__enum_3_01req__optype__e_01_4" prot="public">chi::enable_for_enum&lt; req_optype_e &gt;</innerclass>
+    <innerclass refid="structchi_1_1enable__for__enum_3_01snp__optype__e_01_4" prot="public">chi::enable_for_enum&lt; snp_optype_e &gt;</innerclass>
+    <innerclass refid="structchi_1_1enable__for__enum_3_01dat__optype__e_01_4" prot="public">chi::enable_for_enum&lt; dat_optype_e &gt;</innerclass>
+    <innerclass refid="structchi_1_1enable__for__enum_3_01dat__resptype__e_01_4" prot="public">chi::enable_for_enum&lt; dat_resptype_e &gt;</innerclass>
+    <innerclass refid="structchi_1_1enable__for__enum_3_01rsp__optype__e_01_4" prot="public">chi::enable_for_enum&lt; rsp_optype_e &gt;</innerclass>
+    <innerclass refid="structchi_1_1enable__for__enum_3_01rsp__resptype__e_01_4" prot="public">chi::enable_for_enum&lt; rsp_resptype_e &gt;</innerclass>
+    <innerclass refid="structchi_1_1enable__for__enum_3_01rsp__resperrtype__e_01_4" prot="public">chi::enable_for_enum&lt; rsp_resperrtype_e &gt;</innerclass>
+    <innernamespace refid="namespacechi_1_1scv">chi::scv</innernamespace>
+    <innernamespace refid="namespacechi_1_1lwtr">chi::lwtr</innernamespace>
+    <innernamespace refid="namespacechi_1_1pe">chi::pe</innernamespace>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacechi_1abba5403c4080f4543b523652cfb217f1" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>req_optype_e</name>
+        <qualifiedname>chi::req_optype_e</qualifiedname>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1ad46e0554eca144788d81efbbff2b7c62" prot="public">
+          <name>ReqLCrdReturn</name>
+          <initializer>= 0x00</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a07350736a2b660069f68a9ac1f519e54" prot="public">
+          <name>ReadShared</name>
+          <initializer>= 0x01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a0a1490c57cc3c1fce41956260b95ad4a" prot="public">
+          <name>ReadClean</name>
+          <initializer>= 0x02</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1abbe87ce58cd317881168718b3aef8c5d" prot="public">
+          <name>ReadOnce</name>
+          <initializer>= 0x03</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a23ca1bb586d1e1d608aa1176517991d9" prot="public">
+          <name>ReadNoSnp</name>
+          <initializer>= 0x04</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1ad36f8323f8cb79add5ae9a6e321c798b" prot="public">
+          <name>PCrdReturn</name>
+          <initializer>= 0x05</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a942d4e37dd5607ab68e54755540d4a47" prot="public">
+          <name>Reserved</name>
+          <initializer>= 0x06</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a58d3c0f40beb93614d1994818e6a3eda" prot="public">
+          <name>ReadUnique</name>
+          <initializer>= 0x07</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a0bf10efb25a471e02346927bc178b1cb" prot="public">
+          <name>CleanShared</name>
+          <initializer>= 0x08</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a9a5ebc7dad6f98a7131ec22ab6e9bf41" prot="public">
+          <name>CleanInvalid</name>
+          <initializer>= 0x09</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1afdecee364e9923d93a9917f9f59dcd0c" prot="public">
+          <name>MakeInvalid</name>
+          <initializer>= 0x0A</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a1ca69c6c72bd8c42702a6097fa7c9222" prot="public">
+          <name>CleanUnique</name>
+          <initializer>= 0x0B</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a4cd7f71009bfbd215fff5967164c9c9a" prot="public">
+          <name>MakeUnique</name>
+          <initializer>= 0x0C</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a6e6a90c90deb83f0a4be1a4f3ee5d9de" prot="public">
+          <name>Evict</name>
+          <initializer>= 0x0D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a3b0d49b9a8706838d1acb770e01d2d32" prot="public">
+          <name>EOBarrier</name>
+          <initializer>= 0x0E</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a1774ba96b7bbf815cc4273a704a02c26" prot="public">
+          <name>ECBarrier</name>
+          <initializer>= 0x0F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a0ebdd5266e0af85db0443771ff38f008" prot="public">
+          <name>ReadNoSnpSep</name>
+          <initializer>= 0x11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a0fd1dac60c8aad7de91b10b0854b27df" prot="public">
+          <name>CleanSharedPersistSep</name>
+          <initializer>= 0x13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a5ed71530cef94b2179f7fca7120c6aee" prot="public">
+          <name>DVMOp</name>
+          <initializer>= 0x14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1aeeb5cab4c6e84e66c70a71254e1e0258" prot="public">
+          <name>WriteEvictFull</name>
+          <initializer>= 0x15</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a00ad203fada807710159709c0c3ce524" prot="public">
+          <name>WriteCleanPtl</name>
+          <initializer>= 0x16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1ad4a9b08d87b347c89d95963ceaef0db1" prot="public">
+          <name>WriteCleanFull</name>
+          <initializer>= 0x17</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1aa0862736a370af62e42bc85ac90d9fb3" prot="public">
+          <name>WriteUniquePtl</name>
+          <initializer>= 0x18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a79fdf410d7dd6a133a68da4089ab7d9c" prot="public">
+          <name>WriteUniqueFull</name>
+          <initializer>= 0x19</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1add5243c5ead06f9057bcf85466277d4e" prot="public">
+          <name>WriteBackPtl</name>
+          <initializer>= 0x1A</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1acf83eeb20d74dfdd232b802ca77205e7" prot="public">
+          <name>WriteBackFull</name>
+          <initializer>= 0x1B</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a009fdcf77fd6f5f6f83a6174ba521741" prot="public">
+          <name>WriteNoSnpPtl</name>
+          <initializer>= 0x1C</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a5f3bb72b2afe3b5b12c5643d613b0ed8" prot="public">
+          <name>WriteNoSnpFull</name>
+          <initializer>= 0x1D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1aa4900922a6e7c6207df2db0ff7c648ba" prot="public">
+          <name>WriteUniqueFullStash</name>
+          <initializer>= 0x20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a1a43a597409f4d6d02eac83a4921b845" prot="public">
+          <name>WriteUniquePtlStash</name>
+          <initializer>= 0x21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a3f149c4c9cf801d34dc75166ff8971cd" prot="public">
+          <name>StashOnceShared</name>
+          <initializer>= 0x22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1ab6ff0b43767303481aed9d008236d936" prot="public">
+          <name>StashOnceUnique</name>
+          <initializer>= 0x23</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1abb9effe3b475cc8c107f8528f5b5d053" prot="public">
+          <name>ReadOnceCleanInvalid</name>
+          <initializer>= 0x24</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a84cb866a44e5f1d52d8b6d72b28bf811" prot="public">
+          <name>ReadOnceMakeInvalid</name>
+          <initializer>= 0x25</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a4db09aa2b65373c349fc8d1a4dbf3de0" prot="public">
+          <name>ReadNotSharedDirty</name>
+          <initializer>= 0x26</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1ad2c204a4b8064fc9048198bdb7a87313" prot="public">
+          <name>CleanSharedPersist</name>
+          <initializer>= 0x27</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1aba452fb9d13eed841f7a585e5eac8a52" prot="public">
+          <name>AtomicStoreAdd</name>
+          <initializer>= 0x28</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a0456ef6663d4c83e42fa34f2f7c58e62" prot="public">
+          <name>AtomicStoreClr</name>
+          <initializer>= 0x29</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1ad1bb308cd7a8b869d532c17bc2d88dd1" prot="public">
+          <name>AtomicStoreEor</name>
+          <initializer>= 0x2A</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a27a3a7a3e1bfa74a02e2c318f4a51c30" prot="public">
+          <name>AtomicStoreSet</name>
+          <initializer>= 0x2B</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a29d012efd596bb190ed990faaaffac47" prot="public">
+          <name>AtomicStoreSmax</name>
+          <initializer>= 0x2C</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a6556e378e298cc7208a015c160dd1867" prot="public">
+          <name>AtomicStoreSmin</name>
+          <initializer>= 0x2D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1af0335afead56aa24b6f89d96a165485d" prot="public">
+          <name>AtomicStoreUmax</name>
+          <initializer>= 0x2E</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1ab5b10b25b5c5a45e1d588df2bccbac3e" prot="public">
+          <name>AtomicStoreUmin</name>
+          <initializer>= 0x2F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1acba4a8d71333a3be4e125df5d9f05ec5" prot="public">
+          <name>AtomicLoadAdd</name>
+          <initializer>= 0x30</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a716c09bf971d95f2899369a47bbe1a31" prot="public">
+          <name>AtomicLoadClr</name>
+          <initializer>= 0x31</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1ac7beeaa524b8700bf52985af70fcc9eb" prot="public">
+          <name>AtomicLoadEor</name>
+          <initializer>= 0x32</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1acbb05c5f41572174bfa17765cc0fc234" prot="public">
+          <name>AtomicLoadSet</name>
+          <initializer>= 0x33</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a9065e9d2eb6b07fa158a44c15da9738d" prot="public">
+          <name>AtomicLoadSmax</name>
+          <initializer>= 0x34</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a278e84005cc7478493982c4fcc8ac3d9" prot="public">
+          <name>AtomicLoadSmin</name>
+          <initializer>= 0x35</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1ae73c763fbf3feccec82e18a2fa41e8db" prot="public">
+          <name>AtomicLoadUmax</name>
+          <initializer>= 0x36</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a17862d8c31d57761cd1fb37e87499aeb" prot="public">
+          <name>AtomicLoadUmin</name>
+          <initializer>= 0x37</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1aae97d24bc516cad87ff2444ecc8f4914" prot="public">
+          <name>AtomicSwap</name>
+          <initializer>= 0x38</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a6f8b41a47fea31cd62b7c675592598a8" prot="public">
+          <name>AtomicCompare</name>
+          <initializer>= 0x39</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a4044c5a5bb86a315a5de9db100a00521" prot="public">
+          <name>PrefetchTgt</name>
+          <initializer>= 0x3A</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1afa039519580cd93e062af7db5ac46b52" prot="public">
+          <name>MakeReadUnique</name>
+          <initializer>= 0x41</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1aa8c9fec4e74d26b6fd1a39dafecb4664" prot="public">
+          <name>WriteEvictOrEvict</name>
+          <initializer>= 0x42</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a62ebe8241281c78181ff20c5b09b862b" prot="public">
+          <name>WriteUniqueZero</name>
+          <initializer>= 0x43</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a51d6231327b5690702ded88ff8d03dd1" prot="public">
+          <name>WriteNoSnpZero</name>
+          <initializer>= 0x44</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1aff380c2dcd0f8009f63e14871c63f93f" prot="public">
+          <name>StashOnceSepShared</name>
+          <initializer>= 0x47</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a4104b910505a83c8d07ed401426dc3db" prot="public">
+          <name>StashOnceSepUnique</name>
+          <initializer>= 0x48</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a75d0c0c81a3debb67fe9b8a11d4d7525" prot="public">
+          <name>ReadPreferUnique</name>
+          <initializer>= 0x4c</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a4326c7764dffb21ca60ed4596746cc94" prot="public">
+          <name>WriteNoSnpFullCleanSh</name>
+          <initializer>= 0x50</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1aaba20da83fb369529c46c7052e47b4f2" prot="public">
+          <name>WriteNoSnpFullCleanInv</name>
+          <initializer>= 0x51</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1ad31492f055c2775b26da535759403422" prot="public">
+          <name>WriteNoSnpFullCleanShPerSep</name>
+          <initializer>= 0x52</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a566065f2e2f884ac796e59ff6aa0c5be" prot="public">
+          <name>WriteUniqueFullCleanSh</name>
+          <initializer>= 0x54</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1afc2fa1d34a5eb01236f12b79e5117cb8" prot="public">
+          <name>WriteUniqueFullCleanShPerSep</name>
+          <initializer>= 0x56</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1aef96e25328a66f1b12786e1eeb3d4a99" prot="public">
+          <name>WriteBackFullCleanSh</name>
+          <initializer>= 0x58</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1ad3cf36de87da21c550edee634e429ebd" prot="public">
+          <name>WriteBackFullCleanInv</name>
+          <initializer>= 0x59</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a6d618f04a1871574b48c07f5594ad420" prot="public">
+          <name>WriteBackFullCleanShPerSep</name>
+          <initializer>= 0x5A</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a81418c897d33a35049a94f4ed3a54d9f" prot="public">
+          <name>WriteCleanFullCleanSh</name>
+          <initializer>= 0x5c</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a189c11e21a30d345a4619df62cf6bcf4" prot="public">
+          <name>WriteCleanFullCleanShPerSep</name>
+          <initializer>= 0x5e</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a700476d9f85aa7f4a59a6610030c9046" prot="public">
+          <name>WriteNoSnpPtlCleanSh</name>
+          <initializer>= 0x60</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a11c679939ffb7c5be5c1013fe82c5778" prot="public">
+          <name>WriteNoSnpPtlCleanInv</name>
+          <initializer>= 0x61</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a32124d894da5986beb7454e8ce7df829" prot="public">
+          <name>WriteNoSnpPtlCleanShPerSep</name>
+          <initializer>= 0x62</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a6824b6e43023c6bfa3b01a829f2e3f6c" prot="public">
+          <name>WriteUniquePtlCleanSh</name>
+          <initializer>= 0x64</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1ad8f8fb8ae4af9d221427b3efe523b53d" prot="public">
+          <name>WriteUniquePtlCleanShPerSep</name>
+          <initializer>= 0x66</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1abba5403c4080f4543b523652cfb217f1a19b6dd9cf8414bce98a4f0b86c3258ec" prot="public">
+          <name>ILLEGAL</name>
+          <initializer>= 0xFF</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="67" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="67" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>snp_optype_e</name>
+        <qualifiedname>chi::snp_optype_e</qualifiedname>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77a4c11ef732443ac812071091c4d3630a2" prot="public">
+          <name>SnpLCrdReturn</name>
+          <initializer>= 0x00</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77a7fc5db234a8f452706aa69113912865b" prot="public">
+          <name>SnpShared</name>
+          <initializer>= 0x01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77a95b23324e723d48d8e233d476c469022" prot="public">
+          <name>SnpClean</name>
+          <initializer>= 0x02</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77aaec3aecd329947e3b3bedb04c261f5b6" prot="public">
+          <name>SnpOnce</name>
+          <initializer>= 0x03</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77a4dd7ce5dc08bd55321740a833d52f88d" prot="public">
+          <name>SnpNotSharedDirty</name>
+          <initializer>= 0x04</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77a6ab6cc74d575a27747b7ac9fe8c0e10a" prot="public">
+          <name>SnpUniqueStash</name>
+          <initializer>= 0x05</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77aad6d7df6db39c35fd4351813defb5b84" prot="public">
+          <name>SnpMakeInvalidStash</name>
+          <initializer>= 0x06</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77a54968f59910eb0e059daff60356de0df" prot="public">
+          <name>SnpUnique</name>
+          <initializer>= 0x07</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77acf848408e11cc37351fc0d2d162220a6" prot="public">
+          <name>SnpCleanShared</name>
+          <initializer>= 0x08</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77a676fa22e7408517f2e41d113d636141a" prot="public">
+          <name>SnpCleanInvalid</name>
+          <initializer>= 0x09</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77adc8e7ee3f834c568ac4a867e004868d9" prot="public">
+          <name>SnpMakeInvalid</name>
+          <initializer>= 0x0A</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77a54fc8a0b6f50e0a328ffc9a4dfc8f845" prot="public">
+          <name>SnpStashUnique</name>
+          <initializer>= 0x0B</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77a100a8aa8b15c74d441578e979164f845" prot="public">
+          <name>SnpStashShared</name>
+          <initializer>= 0x0c</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77a821c265155fb702f07b07249ebb03563" prot="public">
+          <name>SnpDVMOp</name>
+          <initializer>= 0x0D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77aa9852e77783b96d4cca7ed1d175a33ac" prot="public">
+          <name>SnpQuery</name>
+          <initializer>= 0x10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77ab071f78f715a5b393815105deeef529d" prot="public">
+          <name>SnpSharedFwd</name>
+          <initializer>= 0x11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77a5a1572cd3ef40973765546eef1f51c94" prot="public">
+          <name>SnpCleanFwd</name>
+          <initializer>= 0x12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77abcc72c5206fe7e82b332d2cc9af3c65c" prot="public">
+          <name>SnpOnceFwd</name>
+          <initializer>= 0x13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77a29fc0281338cf08bf44c45f89f0f302d" prot="public">
+          <name>SnpNotSharedDirtyFwd</name>
+          <initializer>= 0x14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77a0879dc8f4807282b9955adc155182b25" prot="public">
+          <name>SnpPreferUnique</name>
+          <initializer>= 0x15</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77a8dfad84ae5c3e39d76cd015654aa484d" prot="public">
+          <name>SnpPreferUniqueFwd</name>
+          <initializer>= 0x16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77a4398ef508e491ce746b870d4950893bc" prot="public">
+          <name>SnpUniqueFwd</name>
+          <initializer>= 0x17</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a00a01c88bf9f85800ad627f7ff98ef77a19b6dd9cf8414bce98a4f0b86c3258ec" prot="public">
+          <name>ILLEGAL</name>
+          <initializer>= 0x20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="167" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="167" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacechi_1a493738eef328965145b1b40ddea8b822" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>dat_optype_e</name>
+        <qualifiedname>chi::dat_optype_e</qualifiedname>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822aa4c43238b9b1fab60fbe763e75c46d8f" prot="public">
+          <name>DataLCrdReturn</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822a0e8c7f46139791c9361a16e3751ed1dd" prot="public">
+          <name>SnpRespData</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822ae65c3ae576e75394884b748c89a3e2f8" prot="public">
+          <name>CopyBackWrData</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822a9d394382c51d4e542cc89fe431fcc83c" prot="public">
+          <name>NonCopyBackWrData</name>
+          <initializer>= 0x3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822a2fdb56d891a9ba0f25eeb6b6b3000dab" prot="public">
+          <name>CompData</name>
+          <initializer>= 0x4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822a124b8cc3eef55796912b8c9991319d4b" prot="public">
+          <name>SnpRespDataPtl</name>
+          <initializer>= 0x5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822a33152ddbe5acadac7a5535445d413963" prot="public">
+          <name>SnpRespDataFwded</name>
+          <initializer>= 0x6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822af741d901827ee97550e4163c8d80b227" prot="public">
+          <name>WriteDataCancel</name>
+          <initializer>= 0x7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822accf16e4b0866ef188c866b465fd3f003" prot="public">
+          <name>DataSepResp</name>
+          <initializer>= 0xB</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822a8e0fd35ef14c5021c5a8eb5ea7d605b4" prot="public">
+          <name>NCBWrDataCompAck</name>
+          <initializer>= 0xC</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822ab6432e2c15a095d085c7ed95da6212bc" prot="public">
+          <name>SnpRespData_I</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822afd364bcf95989bdb05cd70e54b6dbd37" prot="public">
+          <name>SnpRespData_UC</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822ab6052ac38d3ac01c2b3392d9020fa2cc" prot="public">
+          <name>SnpRespData_UD</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822a01af6f06eae06e41b1e05ad01c0f9ed7" prot="public">
+          <name>SnpRespData_SC</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822aa895ea710fa561a5e4f78b51ab21d724" prot="public">
+          <name>SnpRespData_SD</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822a7a52ec1c1f2838b3440061ed442d5b96" prot="public">
+          <name>SnpRespData_I_PD</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822aeb321e7e5de3fe7d285fc5ed51a0cfb4" prot="public">
+          <name>SnpRespData_UC_PD</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822a30da3c0eb14a126a11cbe4158d90bce4" prot="public">
+          <name>SnpRespData_SC_PD</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822ac6f7a1388e07adb9c7c28056abcf62c7" prot="public">
+          <name>SnpRespDataPtl_I_PD</name>
+          <initializer>= 0x5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822ae8ba5fb20bc610274bc5fd86c6be8cd1" prot="public">
+          <name>SnpRespDataPtl_UD</name>
+          <initializer>= 0x5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822a88b05277e5fc4e27e9f95982080726b9" prot="public">
+          <name>SnpRespData_I_Fwded_SC</name>
+          <initializer>= 0x6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822a107c3b7d607e616cf2fc17b0ebe85ec5" prot="public">
+          <name>SnpRespData_I_Fwded_SD_PD</name>
+          <initializer>= 0x6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822a8d6d84f24379414e7297b0aebdcb5acf" prot="public">
+          <name>SnpRespData_SC_Fwded_SC</name>
+          <initializer>= 0x6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822af3d4b06c556bd38604ddfb07464e4bd1" prot="public">
+          <name>SnpRespData_SC_Fwded_SD_PD</name>
+          <initializer>= 0x6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822aec9b4b8cfcd00d60ded7a72c2ed2b310" prot="public">
+          <name>SnpRespData_SD_Fwded_SC</name>
+          <initializer>= 0x6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822a5993282086d1db1322205ec9d1595adc" prot="public">
+          <name>SnpRespData_I_PD_Fwded_I</name>
+          <initializer>= 0x6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822a341ac732f8fb3d77c4bc6f8251b2f23d" prot="public">
+          <name>SnpRespData_I_PD_Fwded_SC</name>
+          <initializer>= 0x6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822a0de9ff79f155221134c8ea49a3308c8a" prot="public">
+          <name>SnpRespData_SC_PD_Fwded_I</name>
+          <initializer>= 0x6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a493738eef328965145b1b40ddea8b822aa2c97aa52dcc49133a8bb2ac99b534b3" prot="public">
+          <name>SnpRespData_SC_PD_Fwded_SC</name>
+          <initializer>= 0x6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="196" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="196" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1d" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>dat_resptype_e</name>
+        <qualifiedname>chi::dat_resptype_e</qualifiedname>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1dacd44515424cb32fac0cc1c4d26478f7b" prot="public">
+          <name>CompData_I</name>
+          <initializer>= 0b000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1da4f0a2ac15a420581323abf49aaf538d8" prot="public">
+          <name>CompData_SC</name>
+          <initializer>= 0b001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1da9f6c162cf6e3508dad8c81ab24bd27e9" prot="public">
+          <name>CompData_UC</name>
+          <initializer>= 0b010</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1dad0bbb367d8b0ec03f9900b4f48f2b79a" prot="public">
+          <name>CompData_UD_PD</name>
+          <initializer>= 0b110</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1da71ba9ddfe71b3db5502af87616d16708" prot="public">
+          <name>CompData_SD_PD</name>
+          <initializer>= 0b111</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1da23e67a91ccd39de16c0520b4f5d8ae72" prot="public">
+          <name>DataSepResp_I</name>
+          <initializer>= 0b000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1da127593e9bfef8fd7164769f973649a9f" prot="public">
+          <name>DataSepResp_SC</name>
+          <initializer>= 0b001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1dae46082e159fe438a644ecf4f18405b8a" prot="public">
+          <name>DataSepResp_UC</name>
+          <initializer>= 0b010</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1da35c0c1445703449483b5299242ff21fd" prot="public">
+          <name>RespSepData_I</name>
+          <initializer>= 0b000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1dab3625a548b42cbfcc823e5825b70504b" prot="public">
+          <name>RespSepData_SC</name>
+          <initializer>= 0b001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1da2cd4808e89e0ef11d6f8a2325a8f0d09" prot="public">
+          <name>RespSepData_UC</name>
+          <initializer>= 0b010</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1dab6432e2c15a095d085c7ed95da6212bc" prot="public">
+          <name>SnpRespData_I</name>
+          <initializer>= 0b000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1dafd364bcf95989bdb05cd70e54b6dbd37" prot="public">
+          <name>SnpRespData_UC</name>
+          <initializer>= 0b010</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1dab6052ac38d3ac01c2b3392d9020fa2cc" prot="public">
+          <name>SnpRespData_UD</name>
+          <initializer>= 0b010</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1da01af6f06eae06e41b1e05ad01c0f9ed7" prot="public">
+          <name>SnpRespData_SC</name>
+          <initializer>= 0b001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1daa895ea710fa561a5e4f78b51ab21d724" prot="public">
+          <name>SnpRespData_SD</name>
+          <initializer>= 0b011</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1da7a52ec1c1f2838b3440061ed442d5b96" prot="public">
+          <name>SnpRespData_I_PD</name>
+          <initializer>= 0b100</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1daeb321e7e5de3fe7d285fc5ed51a0cfb4" prot="public">
+          <name>SnpRespData_UC_PD</name>
+          <initializer>= 0b110</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1da30da3c0eb14a126a11cbe4158d90bce4" prot="public">
+          <name>SnpRespData_SC_PD</name>
+          <initializer>= 0b101</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1dac6f7a1388e07adb9c7c28056abcf62c7" prot="public">
+          <name>SnpRespDataPtl_I_PD</name>
+          <initializer>= 0b100</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1dae8ba5fb20bc610274bc5fd86c6be8cd1" prot="public">
+          <name>SnpRespDataPtl_UD</name>
+          <initializer>= 0b010</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1da5cca4699fc0f15e295c4a57421188b60" prot="public">
+          <name>Comp_I</name>
+          <initializer>= 0b000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1da866c8d947f8eb4a6dea69f1773b5ae59" prot="public">
+          <name>Comp_UC</name>
+          <initializer>= 0b010</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1da0b51c083f6616a910ab446f786158cc4" prot="public">
+          <name>Comp_SC</name>
+          <initializer>= 0b001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1dab7423afa5ffb9fa4459cc8d6915f1ff8" prot="public">
+          <name>CopyBackWrData_I</name>
+          <initializer>= 0b000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1dab8f4bcdecea5772ed727aecfe5d3bd17" prot="public">
+          <name>CopyBackWrData_UC</name>
+          <initializer>= 0b010</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1dab25320f9926a83d0a42ae9319d90ea4c" prot="public">
+          <name>CopyBackWrData_SC</name>
+          <initializer>= 0b001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1daae97ece51bab9e3eaf65522bc96f8927" prot="public">
+          <name>CopyBackWrData_UD_PD</name>
+          <initializer>= 0b110</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1dadf4e7e513ff87c2e66f71e3973578679" prot="public">
+          <name>CopyBackWrData_SD_PD</name>
+          <initializer>= 0b111</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1da9d394382c51d4e542cc89fe431fcc83c" prot="public">
+          <name>NonCopyBackWrData</name>
+          <initializer>= 0b000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1ab2b4b81131e640d80b4665f165b3ff1da8e0fd35ef14c5021c5a8eb5ea7d605b4" prot="public">
+          <name>NCBWrDataCompAck</name>
+          <initializer>= 0b000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="233" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="233" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacechi_1a99ccdced031bd69983204bfc2d3a69ca" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>rsp_optype_e</name>
+        <qualifiedname>chi::rsp_optype_e</qualifiedname>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caa9c103dd74257293329e7998506821e98" prot="public">
+          <name>RespLCrdReturn</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caa0479c92cf7cb782c944dfde379fcc075" prot="public">
+          <name>SnpResp</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caad4615a1b5f47eeedd8f3126586d87305" prot="public">
+          <name>CompAck</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caabf2ff57edf5707d09904859e66d99923" prot="public">
+          <name>RetryAck</name>
+          <initializer>= 0x3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caa5d531a4cf817202fc25eda63906e7974" prot="public">
+          <name>Comp</name>
+          <initializer>= 0x4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caa68ab9bba27b72809332104ed538ccc72" prot="public">
+          <name>CompDBIDResp</name>
+          <initializer>= 0x5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caa3ab52684ab413e474e6431afc6e56b85" prot="public">
+          <name>DBIDResp</name>
+          <initializer>= 0x6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caab40867d6397ae9097c40660ee14cda63" prot="public">
+          <name>PCrdGrant</name>
+          <initializer>= 0x7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caa0eb0960d242c52493df56859b0e192cf" prot="public">
+          <name>ReadReceipt</name>
+          <initializer>= 0x8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caae9ff1838b0623cc0712e4e5c2734193e" prot="public">
+          <name>SnpRespFwded</name>
+          <initializer>= 0x9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caa97efeea674f4b2fb485a9af7803d7d93" prot="public">
+          <name>TagMatch</name>
+          <initializer>= 0xA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caa7af2acb4ac44a11d23c407b02db94429" prot="public">
+          <name>RespSepData</name>
+          <initializer>= 0xB</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caa5a7dacb6e9b5ba37e22f825429355174" prot="public">
+          <name>Persist</name>
+          <initializer>= 0xC</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caac2bcee77214e3d6deb9424ec482de4ae" prot="public">
+          <name>CompPersist</name>
+          <initializer>= 0xD</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caaa93a0badd6f014f1bdb329f2b0539c07" prot="public">
+          <name>DBIDRespOrd</name>
+          <initializer>= 0xE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caab26cefcf101c662e2f29419fd76cadd7" prot="public">
+          <name>StashDone</name>
+          <initializer>= 0x10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caa1cbf09e724e65e66789ae6e22208e435" prot="public">
+          <name>CompStashDone</name>
+          <initializer>= 0x11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caadbb7aa7e448b23a877f6625115cc7032" prot="public">
+          <name>CompCMO</name>
+          <initializer>= 0x14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a99ccdced031bd69983204bfc2d3a69caaccc0377a8afbf50e7094f5c23a8af223" prot="public">
+          <name>INVALID</name>
+          <initializer>= 0x20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="273" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="273" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>rsp_resptype_e</name>
+        <qualifiedname>chi::rsp_resptype_e</qualifiedname>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710a707b0c4f29c851d3a498a8ca54d1cd31" prot="public">
+          <name>SnpResp_I</name>
+          <initializer>= 0b000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710ac05fe1dd2e5f85e282f55177f19e40f5" prot="public">
+          <name>SnpResp_SC</name>
+          <initializer>= 0b001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710aa5b13b181d7c52191a2664962a1e98fd" prot="public">
+          <name>SnpResp_UC</name>
+          <initializer>= 0b010</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710ab9744ca1c02bfb677346429ba883f83f" prot="public">
+          <name>SnpResp_UD</name>
+          <initializer>= 0b010</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710a4e0b3fc334e14f2606f622266d8f0e45" prot="public">
+          <name>SnpResp_SD</name>
+          <initializer>= 0b011</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710a5cca4699fc0f15e295c4a57421188b60" prot="public">
+          <name>Comp_I</name>
+          <initializer>= 0b000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710a866c8d947f8eb4a6dea69f1773b5ae59" prot="public">
+          <name>Comp_UC</name>
+          <initializer>= 0b010</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710a0b51c083f6616a910ab446f786158cc4" prot="public">
+          <name>Comp_SC</name>
+          <initializer>= 0b001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710a84152539f40f9b0e76e25acf554ab62c" prot="public">
+          <name>Comp_UD_PD</name>
+          <initializer>= 0b110</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710ab6432e2c15a095d085c7ed95da6212bc" prot="public">
+          <name>SnpRespData_I</name>
+          <initializer>= 0b000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710afd364bcf95989bdb05cd70e54b6dbd37" prot="public">
+          <name>SnpRespData_UC</name>
+          <initializer>= 0b010</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710ab6052ac38d3ac01c2b3392d9020fa2cc" prot="public">
+          <name>SnpRespData_UD</name>
+          <initializer>= 0b010</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710a01af6f06eae06e41b1e05ad01c0f9ed7" prot="public">
+          <name>SnpRespData_SC</name>
+          <initializer>= 0b001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710aa895ea710fa561a5e4f78b51ab21d724" prot="public">
+          <name>SnpRespData_SD</name>
+          <initializer>= 0b011</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710a7a52ec1c1f2838b3440061ed442d5b96" prot="public">
+          <name>SnpRespData_I_PD</name>
+          <initializer>= 0b100</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710aeb321e7e5de3fe7d285fc5ed51a0cfb4" prot="public">
+          <name>SnpRespData_UC_PD</name>
+          <initializer>= 0b110</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710a30da3c0eb14a126a11cbe4158d90bce4" prot="public">
+          <name>SnpRespData_SC_PD</name>
+          <initializer>= 0b101</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710ac6f7a1388e07adb9c7c28056abcf62c7" prot="public">
+          <name>SnpRespDataPtl_I_PD</name>
+          <initializer>= 0b100</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a9640ccb9c6b8f04797a7303dd4c09710ae8ba5fb20bc610274bc5fd86c6be8cd1" prot="public">
+          <name>SnpRespDataPtl_UD</name>
+          <initializer>= 0b010</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="298" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="298" bodyend="325"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacechi_1a67b178187fe0e784935961d1891e7742" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>rsp_resperrtype_e</name>
+        <qualifiedname>chi::rsp_resperrtype_e</qualifiedname>
+        <enumvalue id="namespacechi_1a67b178187fe0e784935961d1891e7742ae0aa021e21dddbd6d8cecec71e9cf564" prot="public">
+          <name>OK</name>
+          <initializer>= 0b00</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a67b178187fe0e784935961d1891e7742a8536bb2b1b89da9f2f35e211aa4f43c5" prot="public">
+          <name>EXOK</name>
+          <initializer>= 0b01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a67b178187fe0e784935961d1891e7742a5e51fecb0f70cfe60accbe9e2088fdf9" prot="public">
+          <name>DERR</name>
+          <initializer>= 0b10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a67b178187fe0e784935961d1891e7742ab9f966ff78179c98ad6531d6ffbd99bd" prot="public">
+          <name>NDERR</name>
+          <initializer>= 0b11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="327" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="327" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacechi_1a8306db787ecf59cdb8d27649b21b81e6" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>credit_type_e</name>
+        <qualifiedname>chi::credit_type_e</qualifiedname>
+        <enumvalue id="namespacechi_1a8306db787ecf59cdb8d27649b21b81e6a58c0a0e97e6d2f615bc264c2775fda44" prot="public">
+          <name>LINK</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a8306db787ecf59cdb8d27649b21b81e6ace4e1a7286ff585e08bf30898cf6b3eb" prot="public">
+          <name>REQ</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a8306db787ecf59cdb8d27649b21b81e6ace1227f328c9777b5e66fc728ceb4160" prot="public">
+          <name>RESP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a8306db787ecf59cdb8d27649b21b81e6ae44f9e348e41cb272efa87387728571b" prot="public">
+          <name>DATA</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="329" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="329" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacechi_1a205a6cb55a8e8744e83c7274e05d9287" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>dvm_e</name>
+        <qualifiedname>chi::dvm_e</qualifiedname>
+        <enumvalue id="namespacechi_1a205a6cb55a8e8744e83c7274e05d9287a55073830220c1ac8dd23732d20f1a504" prot="public">
+          <name>DVMOpSize</name>
+          <initializer>= 0x3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a205a6cb55a8e8744e83c7274e05d9287a55866653598372222e14ae085a649bbc" prot="public">
+          <name>PacketNumShift</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a205a6cb55a8e8744e83c7274e05d9287a1cf73c56d6f2057ec81e5f52b8181cd8" prot="public">
+          <name>TLBI</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a205a6cb55a8e8744e83c7274e05d9287ab8c5cf0ae396b1122d23353ca772a33f" prot="public">
+          <name>BranchPredictorInvalidate</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a205a6cb55a8e8744e83c7274e05d9287a3d6d46c75db481cfab1c03c9484abbe5" prot="public">
+          <name>PICI</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a205a6cb55a8e8744e83c7274e05d9287a8bef395496f610a6e86f5d06d705180c" prot="public">
+          <name>VICI</name>
+          <initializer>= 0x3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a205a6cb55a8e8744e83c7274e05d9287ad8e87c0927539672f54462c837be0b7f" prot="public">
+          <name>Sync</name>
+          <initializer>= 0x4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a205a6cb55a8e8744e83c7274e05d9287aa24c8b4397ffa8dfe70cb0019f44c648" prot="public">
+          <name>AddressBits</name>
+          <initializer>= 37</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a205a6cb55a8e8744e83c7274e05d9287a36380a285d26a9548fcc2e2cc9ae75da" prot="public">
+          <name>DVMOpMask</name>
+          <initializer>= 0x7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a205a6cb55a8e8744e83c7274e05d9287a41f09dc833704f08f60cec7d90528914" prot="public">
+          <name>DVMOpShift</name>
+          <initializer>= 11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a205a6cb55a8e8744e83c7274e05d9287a6f87f61d39eb573f50ccdd7b88524a97" prot="public">
+          <name>DVMVAValidMask</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacechi_1a205a6cb55a8e8744e83c7274e05d9287af727d4011ef31fb90eeec07a5c78ce14" prot="public">
+          <name>DVMVAValidShift</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="336" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="336" bodyend="357"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacechi_1aaeb521d84ce6dc0d26b127ea298045ca" prot="public" static="no">
+        <type>tlm::tlm_generic_payload</type>
+        <definition>using chi::chi_payload =  tlm::tlm_generic_payload</definition>
+        <argsstring></argsstring>
+        <name>chi_payload</name>
+        <qualifiedname>chi::chi_payload</qualifiedname>
+        <briefdescription>
+<para>aliases for payload and phase types </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="873" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="873" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacechi_1aee9135b7441865a9d9086ee81787706b" prot="public" static="no">
+        <type>tlm::tlm_phase</type>
+        <definition>using chi::chi_phase =  tlm::tlm_phase</definition>
+        <argsstring></argsstring>
+        <name>chi_phase</name>
+        <qualifiedname>chi::chi_phase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="874" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="874" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacechi_1a4ab599a4bfc23b855acb63d1eb9691e2" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename TYPES</type>
+            <defval><ref refid="structchi_1_1chi__protocol__types" kindref="compound">chi::chi_protocol_types</ref></defval>
+          </param>
+        </templateparamlist>
+        <type>tlm::tlm_fw_transport_if&lt; TYPES &gt;</type>
+        <definition>using chi::chi_fw_transport_if =  tlm::tlm_fw_transport_if&lt;TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>chi_fw_transport_if</name>
+        <qualifiedname>chi::chi_fw_transport_if</qualifiedname>
+        <briefdescription>
+<para>alias declaration for the forward interface </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="894" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="894" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacechi_1aaec16bc6524748b5f9ba61e34db7b1a5" prot="public" static="no">
+        <type>sc_core::sc_type_index</type>
+        <definition>using chi::type_index =  sc_core::sc_type_index</definition>
+        <argsstring></argsstring>
+        <name>type_index</name>
+        <qualifiedname>chi::type_index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="919" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="919" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacechi_1af11ff9923e69d3287803643e80aefe1e" prot="public" static="no" mutable="no">
+        <type>std::array&lt; char const  *, 103 &gt;</type>
+        <definition>std::array&lt;char const*, 103&gt; chi::opc2str</definition>
+        <argsstring></argsstring>
+        <name>opc2str</name>
+        <qualifiedname>chi::opc2str</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="25" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" bodystart="25" bodyend="129"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacechi_1a5608b04d9d5c9f10313c19643668d378" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * chi::to_char&lt; req_optype_e &gt;</definition>
+        <argsstring>(req_optype_e v)</argsstring>
+        <name>to_char&lt; req_optype_e &gt;</name>
+        <qualifiedname>chi::to_char&lt; req_optype_e &gt;</qualifiedname>
+        <param>
+          <type>req_optype_e</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="130" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" bodystart="130" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a9c8ef89c747b87a93c27bec911a02b70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * chi::to_char&lt; dat_optype_e &gt;</definition>
+        <argsstring>(dat_optype_e v)</argsstring>
+        <name>to_char&lt; dat_optype_e &gt;</name>
+        <qualifiedname>chi::to_char&lt; dat_optype_e &gt;</qualifiedname>
+        <param>
+          <type>dat_optype_e</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="138" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" bodystart="138" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a472f5c38ba0ca9795ed996c7ea9788c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * chi::to_char&lt; rsp_optype_e &gt;</definition>
+        <argsstring>(rsp_optype_e v)</argsstring>
+        <name>to_char&lt; rsp_optype_e &gt;</name>
+        <qualifiedname>chi::to_char&lt; rsp_optype_e &gt;</qualifiedname>
+        <param>
+          <type>rsp_optype_e</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="165" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" bodystart="165" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a7bdc80423479a9403bcc871dab46628d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * chi::to_char&lt; snp_optype_e &gt;</definition>
+        <argsstring>(snp_optype_e v)</argsstring>
+        <name>to_char&lt; snp_optype_e &gt;</name>
+        <qualifiedname>chi::to_char&lt; snp_optype_e &gt;</qualifiedname>
+        <param>
+          <type>snp_optype_e</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="210" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" bodystart="210" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a86bf76eedec20a1f4b4459806ed7e5ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * chi::to_char&lt; dat_resptype_e &gt;</definition>
+        <argsstring>(dat_resptype_e v)</argsstring>
+        <name>to_char&lt; dat_resptype_e &gt;</name>
+        <qualifiedname>chi::to_char&lt; dat_resptype_e &gt;</qualifiedname>
+        <param>
+          <type>dat_resptype_e</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="255" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" bodystart="255" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a0e8810c4f17d93e51c277a4b1c999e71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * chi::to_char&lt; rsp_resptype_e &gt;</definition>
+        <argsstring>(rsp_resptype_e v)</argsstring>
+        <name>to_char&lt; rsp_resptype_e &gt;</name>
+        <qualifiedname>chi::to_char&lt; rsp_resptype_e &gt;</qualifiedname>
+        <param>
+          <type>rsp_resptype_e</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="288" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" bodystart="288" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a08fa3d06bc6aa03617d6deb154b096b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * chi::to_char&lt; rsp_resperrtype_e &gt;</definition>
+        <argsstring>(rsp_resperrtype_e v)</argsstring>
+        <name>to_char&lt; rsp_resperrtype_e &gt;</name>
+        <qualifiedname>chi::to_char&lt; rsp_resperrtype_e &gt;</qualifiedname>
+        <param>
+          <type>rsp_resperrtype_e</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="304" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" bodystart="304" bodyend="317"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a3efb3583ac702ef42d3d00cd8be70f3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * chi::to_char&lt; credit_type_e &gt;</definition>
+        <argsstring>(credit_type_e v)</argsstring>
+        <name>to_char&lt; credit_type_e &gt;</name>
+        <qualifiedname>chi::to_char&lt; credit_type_e &gt;</qualifiedname>
+        <param>
+          <type>credit_type_e</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="319" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" bodystart="319" bodyend="332"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1aadd48867c60299c5784b81ca7d4cb07e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; chi::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const tlm::tlm_generic_payload &amp;t)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>chi::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const tlm::tlm_generic_payload &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="334" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" bodystart="334" bodyend="347" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" declline="64" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a89f0c4e1e69b456c96aadeb0c655abc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * chi::is_valid_msg&lt; chi::chi_ctrl_extension &gt;</definition>
+        <argsstring>(chi_ctrl_extension *ext)</argsstring>
+        <name>is_valid_msg&lt; chi::chi_ctrl_extension &gt;</name>
+        <qualifiedname>chi::is_valid_msg&lt; chi::chi_ctrl_extension &gt;</qualifiedname>
+        <param>
+          <type><ref refid="structchi_1_1chi__ctrl__extension" kindref="compound">chi_ctrl_extension</ref> *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="348" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" bodystart="348" bodyend="364"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a6307d6e3e17492bf448db06695ded3d9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename E</type>
+          </param>
+        </templateparamlist>
+        <type>E</type>
+        <definition>E chi::into</definition>
+        <argsstring>(typename std::underlying_type&lt; E &gt;::type t)</argsstring>
+        <name>into</name>
+        <qualifiedname>chi::into</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; E &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>helper function to convert integer into class enums <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="35" column="22" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" declline="35" declcolumn="22"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a44231a136ceeaaf6371a584425718435" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename E</type>
+          </param>
+          <param>
+            <type>typename ULT</type>
+            <defval>typename std::underlying_type&lt;E&gt;::type</defval>
+          </param>
+          <param>
+            <type>typename X</type>
+            <defval>typename std::enable_if&lt;std::is_enum&lt;E&gt;::value &amp;&amp; !std::is_convertible&lt;E, ULT&gt;::value, bool&gt;::type</defval>
+          </param>
+        </templateparamlist>
+        <type>ULT</type>
+        <definition>ULT chi::to_int</definition>
+        <argsstring>(E t)</argsstring>
+        <name>to_int</name>
+        <qualifiedname>chi::to_int</qualifiedname>
+        <param>
+          <type>E</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>helper function to convert class enums into integer <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="43" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a5906e38ac11833e446964d6509c5e1a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename E</type>
+          </param>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * chi::to_char</definition>
+        <argsstring>(E t)</argsstring>
+        <name>to_char</name>
+        <qualifiedname>chi::to_char</qualifiedname>
+        <param>
+          <type>E</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>helper function to convert class enums into char string <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="51" column="24" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" declline="51" declcolumn="24"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1ac7b0f4a689f67f59bece9c6aa697b110" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename E</type>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; enable_for_enum&lt; E &gt;::value, bool &gt;::type</type>
+          </param>
+        </templateparamlist>
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; chi::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, E e)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>chi::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>E</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>os</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="59" column="8" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="59" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a62d756666541a9f3f6174c3f1829a8bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>chi::DECLARE_EXTENDED_PHASE</definition>
+        <argsstring>(BEGIN_PARTIAL_DATA)</argsstring>
+        <name>DECLARE_EXTENDED_PHASE</name>
+        <qualifiedname>chi::DECLARE_EXTENDED_PHASE</qualifiedname>
+        <param>
+          <type>BEGIN_PARTIAL_DATA</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>definition of the additional protocol phases </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="887" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" declline="887" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a2fd0c16a3dffc12215c796a40af3a9c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>chi::DECLARE_EXTENDED_PHASE</definition>
+        <argsstring>(END_PARTIAL_DATA)</argsstring>
+        <name>DECLARE_EXTENDED_PHASE</name>
+        <qualifiedname>chi::DECLARE_EXTENDED_PHASE</qualifiedname>
+        <param>
+          <type>END_PARTIAL_DATA</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="888" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" declline="888" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a1326d494ad54586a39f26e845e97569c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>chi::DECLARE_EXTENDED_PHASE</definition>
+        <argsstring>(BEGIN_DATA)</argsstring>
+        <name>DECLARE_EXTENDED_PHASE</name>
+        <qualifiedname>chi::DECLARE_EXTENDED_PHASE</qualifiedname>
+        <param>
+          <type>BEGIN_DATA</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="889" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" declline="889" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1ac1fa501894f20f6dfdb47b13dd35dc4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>chi::DECLARE_EXTENDED_PHASE</definition>
+        <argsstring>(END_DATA)</argsstring>
+        <name>DECLARE_EXTENDED_PHASE</name>
+        <qualifiedname>chi::DECLARE_EXTENDED_PHASE</qualifiedname>
+        <param>
+          <type>END_DATA</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="890" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" declline="890" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a8dd182138396d9f25a3815df0d20ddc9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>chi::DECLARE_EXTENDED_PHASE</definition>
+        <argsstring>(ACK)</argsstring>
+        <name>DECLARE_EXTENDED_PHASE</name>
+        <qualifiedname>chi::DECLARE_EXTENDED_PHASE</qualifiedname>
+        <param>
+          <type>ACK</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="891" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" declline="891" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a128c27a66c077ddae5e09c4abea179b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename EXT</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool chi::is_valid</definition>
+        <argsstring>(EXT &amp;ext)</argsstring>
+        <name>is_valid</name>
+        <qualifiedname>chi::is_valid</qualifiedname>
+        <param>
+          <type>EXT &amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="996" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="996" bodyend="996"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a7975f2de3246f1b5ccac7f644ac560cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename EXT</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool chi::is_valid</definition>
+        <argsstring>(EXT *ext)</argsstring>
+        <name>is_valid</name>
+        <qualifiedname>chi::is_valid</qualifiedname>
+        <param>
+          <type>EXT *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="998" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="998" bodyend="998"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a2804703730d60caa2722c58656d104cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename EXT</type>
+          </param>
+        </templateparamlist>
+        <type>char const *</type>
+        <definition>char const  * chi::is_valid_msg</definition>
+        <argsstring>(EXT *ext)</argsstring>
+        <name>is_valid_msg</name>
+        <qualifiedname>chi::is_valid_msg</qualifiedname>
+        <param>
+          <type>EXT *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="1000" column="24" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" declline="1000" declcolumn="24"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1af5fa8ebd8a13b396ca431df51ab6ea90" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::is_dataless</definition>
+        <argsstring>(const chi::chi_ctrl_extension *req_e)</argsstring>
+        <name>is_dataless</name>
+        <qualifiedname>chi::is_dataless</qualifiedname>
+        <param>
+          <type>const <ref refid="structchi_1_1chi__ctrl__extension" kindref="compound">chi::chi_ctrl_extension</ref> *</type>
+          <declname>req_e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="1002" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1002" bodyend="1034"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1ae1f30ec4e8e46cf199693b1971e35345" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::is_dataless</definition>
+        <argsstring>(const chi::chi_snp_extension *req_e)</argsstring>
+        <name>is_dataless</name>
+        <qualifiedname>chi::is_dataless</qualifiedname>
+        <param>
+          <type>const <ref refid="structchi_1_1chi__snp__extension" kindref="compound">chi::chi_snp_extension</ref> *</type>
+          <declname>req_e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="1036" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1036" bodyend="1065"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1ab1cb2b4afb0ec1b8a1de2083e9cf438f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::is_atomic</definition>
+        <argsstring>(const chi::chi_ctrl_extension *req_e)</argsstring>
+        <name>is_atomic</name>
+        <qualifiedname>chi::is_atomic</qualifiedname>
+        <param>
+          <type>const <ref refid="structchi_1_1chi__ctrl__extension" kindref="compound">chi::chi_ctrl_extension</ref> *</type>
+          <declname>req_e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="1067" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1067" bodyend="1069"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1aa0ce11c7b275a471aada8f3fc79c84a9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::is_request_order</definition>
+        <argsstring>(const chi::chi_ctrl_extension *req_e)</argsstring>
+        <name>is_request_order</name>
+        <qualifiedname>chi::is_request_order</qualifiedname>
+        <param>
+          <type>const <ref refid="structchi_1_1chi__ctrl__extension" kindref="compound">chi::chi_ctrl_extension</ref> *</type>
+          <declname>req_e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="1071" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1071" bodyend="1103"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a0ff8dcc7c2cc307f75579197a0d33c12" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::is_snoopable</definition>
+        <argsstring>(const chi::chi_ctrl_extension *req_e)</argsstring>
+        <name>is_snoopable</name>
+        <qualifiedname>chi::is_snoopable</qualifiedname>
+        <param>
+          <type>const <ref refid="structchi_1_1chi__ctrl__extension" kindref="compound">chi::chi_ctrl_extension</ref> *</type>
+          <declname>req_e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="1104" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1104" bodyend="1126"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1ad8280af89b7e10570366e68ecfb8cec7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>req_optype_e</type>
+        <definition>req_optype_e chi::into&lt; req_optype_e &gt;</definition>
+        <argsstring>(typename std::underlying_type&lt; req_optype_e &gt;::type t)</argsstring>
+        <name>into&lt; req_optype_e &gt;</name>
+        <qualifiedname>chi::into&lt; req_optype_e &gt;</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; req_optype_e &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="1139" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1139" bodyend="1142"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a77ec876369eeac1b3eab27825dfbc6a2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>snp_optype_e</type>
+        <definition>snp_optype_e chi::into&lt; snp_optype_e &gt;</definition>
+        <argsstring>(typename std::underlying_type&lt; snp_optype_e &gt;::type t)</argsstring>
+        <name>into&lt; snp_optype_e &gt;</name>
+        <qualifiedname>chi::into&lt; snp_optype_e &gt;</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; snp_optype_e &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="1144" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1144" bodyend="1147"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a965b66fb9c3e54ea75f43a1ff939dfd9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>dat_optype_e</type>
+        <definition>dat_optype_e chi::into&lt; dat_optype_e &gt;</definition>
+        <argsstring>(typename std::underlying_type&lt; dat_optype_e &gt;::type t)</argsstring>
+        <name>into&lt; dat_optype_e &gt;</name>
+        <qualifiedname>chi::into&lt; dat_optype_e &gt;</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; dat_optype_e &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="1149" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1149" bodyend="1152"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a3bff7e6b8377439822f3568441e22a66" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>dat_resptype_e</type>
+        <definition>dat_resptype_e chi::into&lt; dat_resptype_e &gt;</definition>
+        <argsstring>(typename std::underlying_type&lt; dat_resptype_e &gt;::type t)</argsstring>
+        <name>into&lt; dat_resptype_e &gt;</name>
+        <qualifiedname>chi::into&lt; dat_resptype_e &gt;</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; dat_resptype_e &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="1154" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1154" bodyend="1157"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a2e3911657c25f8074998e5c94b555b12" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>rsp_optype_e</type>
+        <definition>rsp_optype_e chi::into&lt; rsp_optype_e &gt;</definition>
+        <argsstring>(typename std::underlying_type&lt; rsp_optype_e &gt;::type t)</argsstring>
+        <name>into&lt; rsp_optype_e &gt;</name>
+        <qualifiedname>chi::into&lt; rsp_optype_e &gt;</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; rsp_optype_e &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="1159" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1159" bodyend="1163"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a50000aef300ba582472b35533ac38342" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>rsp_resptype_e</type>
+        <definition>rsp_resptype_e chi::into&lt; rsp_resptype_e &gt;</definition>
+        <argsstring>(typename std::underlying_type&lt; rsp_resptype_e &gt;::type t)</argsstring>
+        <name>into&lt; rsp_resptype_e &gt;</name>
+        <qualifiedname>chi::into&lt; rsp_resptype_e &gt;</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; rsp_resptype_e &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="1165" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1165" bodyend="1168"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacechi_1a39c0d27abe0cc4849e277690168da8c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>rsp_resperrtype_e</type>
+        <definition>rsp_resperrtype_e chi::into&lt; rsp_resperrtype_e &gt;</definition>
+        <argsstring>(typename std::underlying_type&lt; rsp_resperrtype_e &gt;::type t)</argsstring>
+        <name>into&lt; rsp_resperrtype_e &gt;</name>
+        <qualifiedname>chi::into&lt; rsp_resperrtype_e &gt;</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; rsp_resperrtype_e &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="1170" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1170" bodyend="1173"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>TLM2.0 components modeling CHI. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>SCV components for CHI.</para>
+<para>LWTR components for CHI. </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="21" column="1"/>
+  </compounddef>
+</doxygen>

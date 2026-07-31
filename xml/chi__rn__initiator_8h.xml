@@ -1,0 +1,599 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="chi__rn__initiator_8h" kind="file" language="C++">
+    <compoundname>chi_rn_initiator.h</compoundname>
+    <includes local="no">cci_configuration</includes>
+    <includes refid="chi__tlm_8h" local="no">chi/chi_tlm.h</includes>
+    <includes refid="ordered__semaphore_8h" local="no">scc/ordered_semaphore.h</includes>
+    <includes refid="peq_8h" local="no">scc/peq.h</includes>
+    <includes refid="sc__variable_8h" local="no">scc/sc_variable.h</includes>
+    <includes local="no">systemc</includes>
+    <includes refid="intor__if_8h" local="no">tlm/scc/pe/intor_if.h</includes>
+    <includes local="no">tlm_utils/peq_with_get.h</includes>
+    <includes local="no">tuple</includes>
+    <includes local="no">unordered_map</includes>
+    <includedby refid="chi__rn__initiator_8cpp" local="no">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.cpp</includedby>
+    <incdepgraph>
+      <node id="34">
+        <label>util/ities.h</label>
+        <link refid="ities_8h_source"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>observer.h</label>
+        <link refid="observer_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>scc/ordered_semaphore.h</label>
+        <link refid="ordered__semaphore_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>scc/peq.h</label>
+        <link refid="peq_8h_source"/>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>report.h</label>
+        <link refid="report_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>sc_variable.h</label>
+        <link refid="sc__variable_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>traceable.h</label>
+        <link refid="traceable_8h_source"/>
+      </node>
+      <node id="19">
+        <label>utilities.h</label>
+        <link refid="utilities_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>tlm/scc/pe/intor_if.h</label>
+        <link refid="intor__if_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>chi/chi_tlm.h</label>
+        <link refid="chi__tlm_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h</label>
+        <link refid="chi__rn__initiator_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>algorithm</label>
+      </node>
+      <node id="4">
+        <label>array</label>
+      </node>
+      <node id="36">
+        <label>assert.h</label>
+      </node>
+      <node id="37">
+        <label>bitset</label>
+      </node>
+      <node id="52">
+        <label>boost/optional.hpp</label>
+      </node>
+      <node id="2">
+        <label>cci_configuration</label>
+      </node>
+      <node id="20">
+        <label>cctype</label>
+      </node>
+      <node id="38">
+        <label>climits</label>
+      </node>
+      <node id="5">
+        <label>cstdint</label>
+      </node>
+      <node id="25">
+        <label>cstring</label>
+      </node>
+      <node id="48">
+        <label>deque</label>
+      </node>
+      <node id="39">
+        <label>fstream</label>
+      </node>
+      <node id="43">
+        <label>functional</label>
+      </node>
+      <node id="26">
+        <label>iomanip</label>
+      </node>
+      <node id="27">
+        <label>iostream</label>
+      </node>
+      <node id="40">
+        <label>iterator</label>
+      </node>
+      <node id="21">
+        <label>limits</label>
+      </node>
+      <node id="24">
+        <label>locale</label>
+      </node>
+      <node id="53">
+        <label>map</label>
+      </node>
+      <node id="22">
+        <label>memory</label>
+      </node>
+      <node id="28">
+        <label>mutex</label>
+      </node>
+      <node id="29">
+        <label>sstream</label>
+      </node>
+      <node id="30">
+        <label>stdexcept</label>
+      </node>
+      <node id="11">
+        <label>string</label>
+      </node>
+      <node id="41">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="49">
+        <label>sysc/communication/sc_semaphore_if.h</label>
+      </node>
+      <node id="12">
+        <label>sysc/communication/sc_signal_ifs.h</label>
+      </node>
+      <node id="13">
+        <label>sysc/datatypes/int/sc_nbdefs.h</label>
+      </node>
+      <node id="14">
+        <label>sysc/kernel/sc_dynamic_processes.h</label>
+      </node>
+      <node id="44">
+        <label>sysc/kernel/sc_event.h</label>
+      </node>
+      <node id="50">
+        <label>sysc/kernel/sc_object.h</label>
+      </node>
+      <node id="15">
+        <label>sysc/kernel/sc_process.h</label>
+      </node>
+      <node id="16">
+        <label>sysc/kernel/sc_process_handle.h</label>
+      </node>
+      <node id="45">
+        <label>sysc/kernel/sc_simcontext.h</label>
+      </node>
+      <node id="31">
+        <label>sysc/kernel/sc_time.h</label>
+      </node>
+      <node id="17">
+        <label>sysc/kernel/sc_ver.h</label>
+      </node>
+      <node id="46">
+        <label>sysc/tracing/sc_trace.h</label>
+      </node>
+      <node id="32">
+        <label>sysc/utils/sc_report.h</label>
+      </node>
+      <node id="23">
+        <label>systemc</label>
+      </node>
+      <node id="6">
+        <label>tlm</label>
+      </node>
+      <node id="55">
+        <label>tlm_utils/peq_with_get.h</label>
+      </node>
+      <node id="56">
+        <label>tuple</label>
+      </node>
+      <node id="7">
+        <label>type_traits</label>
+      </node>
+      <node id="33">
+        <label>unordered_map</label>
+      </node>
+      <node id="42">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.cpp</label>
+        <link refid="chi__rn__initiator_8cpp_source"/>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h</label>
+        <link refid="chi__rn__initiator_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classchi_1_1pe_1_1chi__rn__initiator__b" prot="public">chi::pe::chi_rn_initiator_b</innerclass>
+    <innerclass refid="structchi_1_1pe_1_1chi__rn__initiator__b_1_1tx__state" prot="protected">chi::pe::chi_rn_initiator_b::tx_state</innerclass>
+    <innerclass refid="classchi_1_1pe_1_1chi__rn__initiator" prot="public">chi::pe::chi_rn_initiator</innerclass>
+    <innernamespace refid="namespacechi">chi</innernamespace>
+    <innernamespace refid="namespacechi_1_1pe">chi::pe</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2021<sp/>Arteris<sp/>IP</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cci_configuration&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chi/chi_tlm.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scc/ordered_semaphore.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scc/peq.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scc/sc_variable.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;systemc&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm/scc/pe/intor_if.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm_utils/peq_with_get.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tuple&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacechi" kindref="compound">chi</ref><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pe<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>channel_e<sp/>{<sp/>REQ<sp/>=<sp/>0,<sp/>WDAT,<sp/>SRSP,<sp/>CRSP,<sp/>RDAT,<sp/>SNP,<sp/>CH_CNT<sp/>};</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classchi_1_1pe_1_1chi__rn__initiator__b" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">chi_rn_initiator_b<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>sc_core::sc_module,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classchi_1_1chi__bw__transport__if" kindref="compound">chi::chi_bw_transport_if</ref>&lt;chi::chi_protocol_types&gt;,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1scc_1_1pe_1_1intor__fw__b" kindref="compound">tlm::scc::pe::intor_fw_b</ref><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">payload_type<sp/>=<sp/>chi::chi_protocol_types::tlm_payload_type;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">phase_type<sp/>=<sp/>chi::chi_protocol_types::tlm_phase_type;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">cb_function_t<sp/>=<sp/>std::function&lt;void(chi::pe::channel_e,<sp/>payload_type&amp;)&gt;;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_in&lt;bool&gt;<sp/>clk_i{</highlight><highlight class="stringliteral">&quot;clk_i&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_export&lt;tlm::scc::pe::intor_fw_b&gt;<sp/>fw_i{</highlight><highlight class="stringliteral">&quot;fw_i&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_port&lt;tlm::scc::pe::intor_bw_b,<sp/>1,<sp/>sc_core::SC_ZERO_OR_MORE_BOUND&gt;<sp/>bw_o{</highlight><highlight class="stringliteral">&quot;bw_o&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classchi_1_1pe_1_1chi__rn__initiator__b_1ad90883b4c3aafa84b670184b6d71474c" kindref="member">b_snoop</ref>(payload_type&amp;<sp/>trans,<sp/>sc_core::sc_time&amp;<sp/>t)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm::tlm_sync_enum<sp/>nb_transport_bw(payload_type&amp;<sp/>trans,<sp/>phase_type&amp;<sp/>phase,<sp/>sc_core::sc_time&amp;<sp/>t)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>invalidate_direct_mem_ptr(sc_dt::uint64<sp/>start_range,<sp/>sc_dt::uint64<sp/>end_range)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>get_transferwith_in_bytes()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>transfer_width_in_bytes;<sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a046918449ceeb77b78fb3bbf27383922" kindref="member">transport</ref>(payload_type&amp;<sp/>trans,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>blocking)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classchi_1_1pe_1_1chi__rn__initiator__b_1a9daff32fa40432163b04337e1b7f17a6" kindref="member">snoop_resp</ref>(payload_type&amp;<sp/>trans,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>sync<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>chi_rn_initiator_b(sc_core::sc_module_name<sp/>nm,<sp/>sc_core::sc_port_b&lt;<ref refid="namespacechi_1a4ab599a4bfc23b855acb63d1eb9691e2" kindref="member">chi::chi_fw_transport_if&lt;chi_protocol_types&gt;</ref>&gt;&amp;<sp/>port,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>transfer_width);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~chi_rn_initiator_b();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>chi_rn_initiator_b()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>chi_rn_initiator_b(chi_rn_initiator_b<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>chi_rn_initiator_b(chi_rn_initiator_b&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>chi_rn_initiator_b&amp;<sp/>operator=(chi_rn_initiator_b<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>chi_rn_initiator_b&amp;<sp/>operator=(chi_rn_initiator_b&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param&lt;unsigned&gt;<sp/>src_id{</highlight><highlight class="stringliteral">&quot;src_id&quot;</highlight><highlight class="normal">,<sp/>1};</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param&lt;unsigned&gt;<sp/>tgt_id{</highlight><highlight class="stringliteral">&quot;tgt_id&quot;</highlight><highlight class="normal">,<sp/>0};<sp/></highlight><highlight class="comment">//<sp/>home<sp/>node<sp/>id<sp/>will<sp/>be<sp/>used<sp/>as<sp/>tgt_id<sp/>in<sp/>all<sp/>transaction<sp/>req</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param&lt;bool&gt;<sp/>data_interleaving{</highlight><highlight class="stringliteral">&quot;data_interleaving&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param&lt;bool&gt;<sp/>strict_income_order{</highlight><highlight class="stringliteral">&quot;strict_income_order&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param&lt;bool&gt;<sp/>use_legacy_mapping{</highlight><highlight class="stringliteral">&quot;use_legacy_mapping&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param&lt;unsigned&gt;<sp/>snp_req_limit{</highlight><highlight class="stringliteral">&quot;snp_req_limit&quot;</highlight><highlight class="normal">,<sp/>std::numeric_limits&lt;unsigned&gt;::max()};</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param&lt;unsigned&gt;<sp/>snp_req_credit_limit{</highlight><highlight class="stringliteral">&quot;snp_req_credit_limit&quot;</highlight><highlight class="normal">,<sp/>std::numeric_limits&lt;unsigned&gt;::max()};</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param&lt;unsigned&gt;<sp/>cresp_req_credit_limit{</highlight><highlight class="stringliteral">&quot;cresp_credit_limit&quot;</highlight><highlight class="normal">,<sp/>std::numeric_limits&lt;unsigned&gt;::max()};</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param&lt;unsigned&gt;<sp/>rdat_req_credit_limit{</highlight><highlight class="stringliteral">&quot;rdat_credit_limit&quot;</highlight><highlight class="normal">,<sp/>std::numeric_limits&lt;unsigned&gt;::max()};</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>add_protocol_cb(channel_e<sp/>e,<sp/>cb_function_t<sp/>cb)<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(e<sp/>&lt;<sp/>CH_CNT);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>protocol_cb[e]<sp/>=<sp/>cb;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>get_credit_count(channel_e<sp/>e);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>end_of_elaboration()</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/>clk_if<sp/>=<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal">sc_core::sc_clock*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(clk_i.get_interface());<sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>calculate_beats(payload_type&amp;<sp/>p)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>sc_assert(p.get_data_length()<sp/>&gt;<sp/>0);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>p.get_data_length()<sp/>&lt;<sp/>transfer_width_in_bytes<sp/>?<sp/>1<sp/>:<sp/>p.get_data_length()<sp/>/<sp/>transfer_width_in_bytes;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>snoop_dispatch();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>snoop_handler(payload_type*<sp/>trans);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>transfer_width_in_bytes;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>instance_name;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1ordered__semaphore" kindref="compound">scc::ordered_semaphore</ref><sp/>ReceivedReqCreditCounter{</highlight><highlight class="stringliteral">&quot;ReceivedReqCreditCounter&quot;</highlight><highlight class="normal">,<sp/>0U,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">};<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>L-credits<sp/>provided<sp/>by<sp/>completer(HN)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1ordered__semaphore" kindref="compound">scc::ordered_semaphore</ref><sp/>ReceivedWdatCreditCounter{</highlight><highlight class="stringliteral">&quot;ReceivedWdatCreditCounter&quot;</highlight><highlight class="normal">,<sp/>0U,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">};<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>L-credits<sp/>provided<sp/>by<sp/>completer(HN)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1ordered__semaphore" kindref="compound">scc::ordered_semaphore</ref><sp/>ReceivedSrespCreditCounter{</highlight><highlight class="stringliteral">&quot;ReceivedSrespCreditCounter&quot;</highlight><highlight class="normal">,<sp/>0U,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>L-credits<sp/>provided<sp/>by<sp/>completer(HN)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structscc_1_1sc__variable" kindref="compound">scc::sc_variable&lt;unsigned&gt;</ref><sp/>snp_counter{</highlight><highlight class="stringliteral">&quot;SnpInFlight&quot;</highlight><highlight class="normal">,<sp/>0};</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structscc_1_1sc__variable" kindref="compound">scc::sc_variable&lt;unsigned&gt;</ref><sp/>ProvidedSnpCreditCounter{</highlight><highlight class="stringliteral">&quot;ProvidedSnpCreditCounter&quot;</highlight><highlight class="normal">,<sp/>0};</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structscc_1_1sc__variable" kindref="compound">scc::sc_variable&lt;unsigned&gt;</ref><sp/>ProvidedCrespCreditCounter{</highlight><highlight class="stringliteral">&quot;ProvidedCrespCreditCounter&quot;</highlight><highlight class="normal">,<sp/>0};</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structscc_1_1sc__variable" kindref="compound">scc::sc_variable&lt;unsigned&gt;</ref><sp/>ProvidedRdatCreditCounter{</highlight><highlight class="stringliteral">&quot;ProvidedRdatCreditCounter&quot;</highlight><highlight class="normal">,<sp/>0};</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>grant_credit(credit_type_e<sp/>type,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>amount<sp/>=<sp/>1);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_port_b&lt;chi::chi_fw_transport_if&lt;chi_protocol_types&gt;&gt;&amp;<sp/>socket_fw;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="structchi_1_1pe_1_1chi__rn__initiator__b_1_1tx__state" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">tx_state<sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structscc_1_1peq" kindref="compound">scc::peq&lt;std::tuple&lt;payload_type*, tlm::tlm_phase&gt;</ref>&gt;<sp/>peq;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tx_state(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>name)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>peq(sc_core::sc_gen_unique_name(name.c_str()))<sp/>{}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;uintptr_t,<sp/>tx_state*&gt;<sp/>tx_state_by_trans;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;tx_state*&gt;<sp/>tx_state_pool;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;unsigned,<sp/>scc::ordered_semaphore&gt;<sp/>active_tx_by_id;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1ordered__semaphore" kindref="compound">scc::ordered_semaphore</ref><sp/>strict_order_sem{1};</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm_utils::peq_with_get&lt;payload_type&gt;<sp/>snp_peq{</highlight><highlight class="stringliteral">&quot;snp_peq&quot;</highlight><highlight class="normal">},<sp/>snp_dispatch_que{</highlight><highlight class="stringliteral">&quot;snp_dispatch_que&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>thread_avail{0},<sp/>thread_active{0};</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>scc::ordered_semaphore<sp/>req_order{1};</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>scc::ordered_semaphore<sp/>req_chnl{1};</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>scc::ordered_semaphore<sp/>wdat_chnl{1};</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>scc::ordered_semaphore<sp/>prio_wdat_chnl{1};</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>scc::ordered_semaphore<sp/>sresp_chnl{1};</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>scc::ordered_semaphore<sp/>prio_sresp_chnl{1};</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_event<sp/>any_tx_finished;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_time<sp/>clk_period{10,<sp/>sc_core::SC_NS};</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>send_wdata(payload_type&amp;<sp/>trans,<sp/>chi::pe::chi_rn_initiator_b::tx_state*<sp/>txs);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>handle_snoop_response(payload_type&amp;<sp/>trans,<sp/>chi::pe::chi_rn_initiator_b::tx_state*<sp/>txs);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>send_comp_ack(payload_type&amp;<sp/>trans,<sp/><ref refid="structchi_1_1pe_1_1chi__rn__initiator__b_1_1tx__state" kindref="compound">tx_state</ref>*&amp;<sp/>txs);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>clk_counter();</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>get_clk_cnt()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_clock_counter;<sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>create_data_ext(payload_type&amp;<sp/>trans);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>send_packet(tlm::tlm_phase<sp/>phase,<sp/>payload_type&amp;<sp/>trans,<sp/>chi::pe::chi_rn_initiator_b::tx_state*<sp/>txs);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>exec_read_write_protocol(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>txn_id,<sp/>payload_type&amp;<sp/>trans,<sp/>chi::pe::chi_rn_initiator_b::tx_state*&amp;<sp/>txs);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>exec_atomic_protocol(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>txn_id,<sp/>payload_type&amp;<sp/>trans,<sp/>chi::pe::chi_rn_initiator_b::tx_state*&amp;<sp/>txs);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>finish_cresp_response(payload_type&amp;<sp/>trans);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>update_data_extension(chi::chi_data_extension*<sp/>data_ext,<sp/>payload_type&amp;<sp/>trans);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>m_clock_counter{0};</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>m_prev_clk_cnt{0};</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_clock*<sp/>clk_if{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>peq_cnt{0};</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>scc::sc_variable&lt;unsigned&gt;<sp/>tx_waiting{</highlight><highlight class="stringliteral">&quot;TxWaiting4Id&quot;</highlight><highlight class="normal">,<sp/>0};</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>scc::sc_variable&lt;unsigned&gt;<sp/>tx_waiting4crd{</highlight><highlight class="stringliteral">&quot;TxWaiting4Credit&quot;</highlight><highlight class="normal">,<sp/>0};</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>scc::sc_variable&lt;unsigned&gt;<sp/>tx_outstanding{</highlight><highlight class="stringliteral">&quot;TxOutstanding&quot;</highlight><highlight class="normal">,<sp/>0};</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>std::array&lt;cb_function_t,<sp/>chi::pe::CH_CNT&gt;<sp/>protocol_cb;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>BUSWIDTH<sp/>=<sp/>32,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES<sp/>=<sp/>chi::chi_protocol_types,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sc_core::sc_port_policy<sp/>POL<sp/>=<sp/>sc_core::SC_ONE_OR_MORE_BOUND&gt;</highlight></codeline>
+<codeline lineno="209" refid="classchi_1_1pe_1_1chi__rn__initiator" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classchi_1_1pe_1_1chi__rn__initiator_1a5c9c6ad121757ef6827c916b78903e5c" kindref="member">chi_rn_initiator</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>chi_rn_initiator_b<sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">base<sp/>=<sp/>chi_rn_initiator_b;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">payload_type<sp/>=<sp/>base::payload_type;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">phase_type<sp/>=<sp/>base::phase_type;</highlight></codeline>
+<codeline lineno="219" refid="classchi_1_1pe_1_1chi__rn__initiator_1a5c9c6ad121757ef6827c916b78903e5c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classchi_1_1pe_1_1chi__rn__initiator_1a5c9c6ad121757ef6827c916b78903e5c" kindref="member">chi_rn_initiator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sc_core::sc_module_name&amp;<sp/>nm,<sp/><ref refid="structchi_1_1chi__initiator__socket" kindref="compound">chi::chi_initiator_socket&lt;BUSWIDTH, TYPES, N, POL&gt;</ref>&amp;<sp/>socket_)</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>chi_rn_initiator_b(nm,<sp/>socket_.get_base_port(),<sp/>BUSWIDTH)</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>socket(socket_)<sp/>{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>socket(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;instance_name<sp/>=<sp/>socket.name();</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classchi_1_1pe_1_1chi__rn__initiator_1a5c9c6ad121757ef6827c916b78903e5c" kindref="member">chi_rn_initiator</ref>()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classchi_1_1pe_1_1chi__rn__initiator_1a5c9c6ad121757ef6827c916b78903e5c" kindref="member">chi_rn_initiator</ref>(<ref refid="classchi_1_1pe_1_1chi__rn__initiator" kindref="compound">chi_rn_initiator</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classchi_1_1pe_1_1chi__rn__initiator_1a5c9c6ad121757ef6827c916b78903e5c" kindref="member">chi_rn_initiator</ref>(<ref refid="classchi_1_1pe_1_1chi__rn__initiator" kindref="compound">chi_rn_initiator</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classchi_1_1pe_1_1chi__rn__initiator" kindref="compound">chi_rn_initiator</ref>&amp;<sp/>operator=(<ref refid="classchi_1_1pe_1_1chi__rn__initiator" kindref="compound">chi_rn_initiator</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classchi_1_1pe_1_1chi__rn__initiator" kindref="compound">chi_rn_initiator</ref>&amp;<sp/>operator=(<ref refid="classchi_1_1pe_1_1chi__rn__initiator" kindref="compound">chi_rn_initiator</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structchi_1_1chi__initiator__socket" kindref="compound">chi::chi_initiator_socket&lt;BUSWIDTH, TYPES, N, POL&gt;</ref>&amp;<sp/>socket;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>pe<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>chi<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h"/>
+  </compounddef>
+</doxygen>

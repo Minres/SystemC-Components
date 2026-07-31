@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1tlm__mm__traits_3_01cxs_1_1cxs__packet__types_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::tlm_mm_traits&lt; cxs::cxs_packet_types &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structtlm_1_1scc_1_1tlm__mm__traits_3_01cxs_1_1cxs__packet__types_01_4_1a2075d3ea4aaace82fb76b7dd0a540a6a" prot="public" static="no">
+        <type><ref refid="classtlm_1_1nw_1_1tlm__base__mm__interface" kindref="compound">tlm::nw::tlm_base_mm_interface</ref></type>
+        <definition>using tlm::scc::tlm_mm_traits&lt; cxs::cxs_packet_types &gt;::mm_if_type =  tlm::nw::tlm_base_mm_interface</definition>
+        <argsstring></argsstring>
+        <name>mm_if_type</name>
+        <qualifiedname>tlm::scc::tlm_mm_traits&lt; cxs::cxs_packet_types &gt;::mm_if_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="90" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtlm_1_1scc_1_1tlm__mm__traits_3_01cxs_1_1cxs__packet__types_01_4_1aecce6bf076e91cb1265b000f7081f170" prot="public" static="no">
+        <type><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base" kindref="compound">tlm::nw::tlm_network_payload_base</ref></type>
+        <definition>using tlm::scc::tlm_mm_traits&lt; cxs::cxs_packet_types &gt;::payload_base =  tlm::nw::tlm_network_payload_base</definition>
+        <argsstring></argsstring>
+        <name>payload_base</name>
+        <qualifiedname>tlm::scc::tlm_mm_traits&lt; cxs::cxs_packet_types &gt;::payload_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="91" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="89" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="89" bodyend="92"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1tlm__mm__traits_3_01cxs_1_1cxs__packet__types_01_4_1a2075d3ea4aaace82fb76b7dd0a540a6a" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm_traits&lt; cxs::cxs_packet_types &gt;</scope><name>mm_if_type</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__mm__traits_3_01cxs_1_1cxs__packet__types_01_4_1aecce6bf076e91cb1265b000f7081f170" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm_traits&lt; cxs::cxs_packet_types &gt;</scope><name>payload_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1checker_1_1checker__if" kind="struct" language="C++" prot="public" abstract="yes">
+    <compoundname>axi::checker::checker_if</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1checker_1_1checker__if_1a435aa3d9f703cf9075e749b490abfa97" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void axi::checker::checker_if&lt; TYPES &gt;::fw_pre</definition>
+        <argsstring>(typename TYPES::tlm_payload_type const &amp;trans, typename TYPES::tlm_phase_type const &amp;phase)=0</argsstring>
+        <name>fw_pre</name>
+        <qualifiedname>axi::checker::checker_if::fw_pre</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type const &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_phase_type const &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/checker_if.h" line="24" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1checker_1_1checker__if_1a3c761383b3a23710d23797972fdf012a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void axi::checker::checker_if&lt; TYPES &gt;::fw_post</definition>
+        <argsstring>(typename TYPES::tlm_payload_type const &amp;trans, typename TYPES::tlm_phase_type const &amp;phase, tlm::tlm_sync_enum rstat)=0</argsstring>
+        <name>fw_post</name>
+        <qualifiedname>axi::checker::checker_if::fw_post</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type const &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_phase_type const &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_sync_enum</type>
+          <declname>rstat</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/checker_if.h" line="25" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1checker_1_1checker__if_1aeb8d2b125ba8f609ff9aa7a844f9c0f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void axi::checker::checker_if&lt; TYPES &gt;::bw_pre</definition>
+        <argsstring>(typename TYPES::tlm_payload_type const &amp;trans, typename TYPES::tlm_phase_type const &amp;phase)=0</argsstring>
+        <name>bw_pre</name>
+        <qualifiedname>axi::checker::checker_if::bw_pre</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type const &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_phase_type const &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/checker_if.h" line="27" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1checker_1_1checker__if_1a2db5a9a5538dee9aa89549ecb2f96e60" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void axi::checker::checker_if&lt; TYPES &gt;::bw_post</definition>
+        <argsstring>(typename TYPES::tlm_payload_type const &amp;trans, typename TYPES::tlm_phase_type const &amp;phase, tlm::tlm_sync_enum rstat)=0</argsstring>
+        <name>bw_post</name>
+        <qualifiedname>axi::checker::checker_if::bw_post</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type const &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_phase_type const &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_sync_enum</type>
+          <declname>rstat</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/checker_if.h" line="28" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1checker_1_1checker__if_1a138b1bd8eda6cafd60759237814c54ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual axi::checker::checker_if&lt; TYPES &gt;::~checker_if</definition>
+        <argsstring>()=default</argsstring>
+        <name>~checker_if</name>
+        <qualifiedname>axi::checker::checker_if::~checker_if</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/checker_if.h" line="30" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/checker_if.h" line="23" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/checker_if.h" bodystart="23" bodyend="31"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1checker_1_1checker__if_1a2db5a9a5538dee9aa89549ecb2f96e60" prot="public" virt="pure-virtual"><scope>axi::checker::checker_if</scope><name>bw_post</name></member>
+      <member refid="structaxi_1_1checker_1_1checker__if_1aeb8d2b125ba8f609ff9aa7a844f9c0f1" prot="public" virt="pure-virtual"><scope>axi::checker::checker_if</scope><name>bw_pre</name></member>
+      <member refid="structaxi_1_1checker_1_1checker__if_1a3c761383b3a23710d23797972fdf012a" prot="public" virt="pure-virtual"><scope>axi::checker::checker_if</scope><name>fw_post</name></member>
+      <member refid="structaxi_1_1checker_1_1checker__if_1a435aa3d9f703cf9075e749b490abfa97" prot="public" virt="pure-virtual"><scope>axi::checker::checker_if</scope><name>fw_pre</name></member>
+      <member refid="structaxi_1_1checker_1_1checker__if_1a138b1bd8eda6cafd60759237814c54ef" prot="public" virt="virtual"><scope>axi::checker::checker_if</scope><name>~checker_if</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

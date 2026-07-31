@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1stream__redirection" kind="class" language="C++" prot="public">
+    <compoundname>scc::stream_redirection</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::stringbuf</basecompoundref>
+    <includes refid="report_8h" local="no">report.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classscc_1_1stream__redirection_1a7088b6421b223b574d698e6c15bd3def" prot="protected" static="no" mutable="no">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; scc::stream_redirection::os</definition>
+        <argsstring></argsstring>
+        <name>os</name>
+        <qualifiedname>scc::stream_redirection::os</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="531" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="531" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1stream__redirection_1a675f98b7fd60fbfe02de265430472e02" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7ca" kindref="member">log</ref></type>
+        <definition>log scc::stream_redirection::level</definition>
+        <argsstring></argsstring>
+        <name>level</name>
+        <qualifiedname>scc::stream_redirection::level</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="532" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="532" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1stream__redirection_1ac2b01ef40c78a158caaf885f93dec40c" prot="protected" static="no" mutable="no">
+        <type>std::streambuf *</type>
+        <definition>std::streambuf* scc::stream_redirection::old_buf</definition>
+        <argsstring></argsstring>
+        <name>old_buf</name>
+        <qualifiedname>scc::stream_redirection::old_buf</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="533" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="533" bodyend="533"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1stream__redirection_1af5122c6b8fbe10efe8fd660547e95ba3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::stream_redirection::stream_redirection</definition>
+        <argsstring>(std::ostream &amp;os, log level)</argsstring>
+        <name>stream_redirection</name>
+        <qualifiedname>scc::stream_redirection::stream_redirection</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacescc_1ae81cd4d55a12064f9fb15af3ca60c7ca" kindref="member">log</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>constructor redirecting the given stream to a SystemC log message of given llog level </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>os</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the stream to be redirected </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the log level to use </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="506" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1stream__redirection_1a1bc2c33e51ae0d7e59748b7816f7c0b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::stream_redirection::stream_redirection</definition>
+        <argsstring>(stream_redirection const &amp;)=delete</argsstring>
+        <name>stream_redirection</name>
+        <qualifiedname>scc::stream_redirection::stream_redirection</qualifiedname>
+        <param>
+          <type>stream_redirection const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="508" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1stream__redirection_1a3439b08614a42a9b6d97eddcbad989fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classscc_1_1stream__redirection_1af5122c6b8fbe10efe8fd660547e95ba3" kindref="member">stream_redirection</ref> &amp;</type>
+        <definition>stream_redirection &amp; scc::stream_redirection::operator=</definition>
+        <argsstring>(stream_redirection const &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::stream_redirection::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classscc_1_1stream__redirection_1af5122c6b8fbe10efe8fd660547e95ba3" kindref="member">stream_redirection</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="510" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1stream__redirection_1a98ddd308a4dc97af77b33c1238ee2b4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::stream_redirection::stream_redirection</definition>
+        <argsstring>(stream_redirection &amp;&amp;)=delete</argsstring>
+        <name>stream_redirection</name>
+        <qualifiedname>scc::stream_redirection::stream_redirection</qualifiedname>
+        <param>
+          <type>stream_redirection &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="512" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1stream__redirection_1ae4c92a5e2d6a403085dc39b9d6db7b46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classscc_1_1stream__redirection_1af5122c6b8fbe10efe8fd660547e95ba3" kindref="member">stream_redirection</ref> &amp;</type>
+        <definition>stream_redirection &amp; scc::stream_redirection::operator=</definition>
+        <argsstring>(stream_redirection &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::stream_redirection::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classscc_1_1stream__redirection_1af5122c6b8fbe10efe8fd660547e95ba3" kindref="member">stream_redirection</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="514" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1stream__redirection_1a323892996356db87de0490293205e3c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::stream_redirection::~stream_redirection</definition>
+        <argsstring>()</argsstring>
+        <name>~stream_redirection</name>
+        <qualifiedname>scc::stream_redirection::~stream_redirection</qualifiedname>
+        <briefdescription>
+<para>destructor restoring the output stream buffer </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="520" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="341" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1stream__redirection_1a94126354b3e1b3c36bd464d22ec8a73b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::stream_redirection::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <qualifiedname>scc::stream_redirection::reset</qualifiedname>
+        <briefdescription>
+<para>reset the stream redirection and restore output buffer of the stream </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="526" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="345" bodyend="348"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classscc_1_1stream__redirection_1a02f60007cb53ba38a7725ad12a96680b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::streamsize</type>
+        <definition>auto scc::stream_redirection::xsputn</definition>
+        <argsstring>(const char_type *s, std::streamsize n) override</argsstring>
+        <name>xsputn</name>
+        <qualifiedname>scc::stream_redirection::xsputn</qualifiedname>
+        <param>
+          <type>const char_type *</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>std::streamsize</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="529" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="350" bodyend="356"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1stream__redirection_1a1fae423b440cf656c7aefaa2e25efc48" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>auto scc::stream_redirection::sync</definition>
+        <argsstring>() override</argsstring>
+        <name>sync</name>
+        <qualifiedname>scc::stream_redirection::sync</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="530" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.cpp" bodystart="375" bodyend="387"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>stream redirector </para>
+    </briefdescription>
+    <detaileddescription>
+<para>the stream redirector allows to redirect std::cout and std::cerr into SystemC log messages </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>scc::stream_redirection</label>
+        <link refid="classscc_1_1stream__redirection"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::stringbuf</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>scc::stream_redirection</label>
+        <link refid="classscc_1_1stream__redirection"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::stringbuf</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="497" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="497" bodyend="534"/>
+    <listofallmembers>
+      <member refid="classscc_1_1stream__redirection_1a675f98b7fd60fbfe02de265430472e02" prot="protected" virt="non-virtual"><scope>scc::stream_redirection</scope><name>level</name></member>
+      <member refid="classscc_1_1stream__redirection_1ac2b01ef40c78a158caaf885f93dec40c" prot="protected" virt="non-virtual"><scope>scc::stream_redirection</scope><name>old_buf</name></member>
+      <member refid="classscc_1_1stream__redirection_1a3439b08614a42a9b6d97eddcbad989fc" prot="public" virt="non-virtual"><scope>scc::stream_redirection</scope><name>operator=</name></member>
+      <member refid="classscc_1_1stream__redirection_1ae4c92a5e2d6a403085dc39b9d6db7b46" prot="public" virt="non-virtual"><scope>scc::stream_redirection</scope><name>operator=</name></member>
+      <member refid="classscc_1_1stream__redirection_1a7088b6421b223b574d698e6c15bd3def" prot="protected" virt="non-virtual"><scope>scc::stream_redirection</scope><name>os</name></member>
+      <member refid="classscc_1_1stream__redirection_1a94126354b3e1b3c36bd464d22ec8a73b" prot="public" virt="non-virtual"><scope>scc::stream_redirection</scope><name>reset</name></member>
+      <member refid="classscc_1_1stream__redirection_1af5122c6b8fbe10efe8fd660547e95ba3" prot="public" virt="non-virtual"><scope>scc::stream_redirection</scope><name>stream_redirection</name></member>
+      <member refid="classscc_1_1stream__redirection_1a1bc2c33e51ae0d7e59748b7816f7c0b9" prot="public" virt="non-virtual"><scope>scc::stream_redirection</scope><name>stream_redirection</name></member>
+      <member refid="classscc_1_1stream__redirection_1a98ddd308a4dc97af77b33c1238ee2b4e" prot="public" virt="non-virtual"><scope>scc::stream_redirection</scope><name>stream_redirection</name></member>
+      <member refid="classscc_1_1stream__redirection_1a1fae423b440cf656c7aefaa2e25efc48" prot="protected" virt="non-virtual"><scope>scc::stream_redirection</scope><name>sync</name></member>
+      <member refid="classscc_1_1stream__redirection_1a02f60007cb53ba38a7725ad12a96680b" prot="protected" virt="non-virtual"><scope>scc::stream_redirection</scope><name>xsputn</name></member>
+      <member refid="classscc_1_1stream__redirection_1a323892996356db87de0490293205e3c6" prot="public" virt="non-virtual"><scope>scc::stream_redirection</scope><name>~stream_redirection</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1fsm_1_1WaitAck" kind="struct" language="C++" prot="public">
+    <compoundname>axi::fsm::WaitAck</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">bsc::state&lt; WaitAck, AxiProtocolFsm &gt;</basecompoundref>
+    <includes refid="protocol__fsm_8h" local="no">protocol_fsm.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structaxi_1_1fsm_1_1WaitAck_1a85b5de91def66db4f36d4dcfbd36f948" prot="public" static="no">
+        <type>bsc::transition&lt; <ref refid="structaxi_1_1fsm_1_1AckRecv" kindref="compound">AckRecv</ref>, <ref refid="structaxi_1_1fsm_1_1Idle" kindref="compound">Idle</ref> &gt;</type>
+        <definition>typedef bsc::transition&lt;AckRecv, Idle&gt; axi::fsm::WaitAck::reactions</definition>
+        <argsstring></argsstring>
+        <name>reactions</name>
+        <qualifiedname>axi::fsm::WaitAck::reactions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="182" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1WaitAck_1ad2892e34b79b3f3860ef361cef9887f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::fsm::WaitAck::WaitAck</definition>
+        <argsstring>(my_context ctx)</argsstring>
+        <name>WaitAck</name>
+        <qualifiedname>axi::fsm::WaitAck::WaitAck</qualifiedname>
+        <param>
+          <type>my_context</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="176" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="176" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1WaitAck_1ae2741dd85754e2e2166e42077ab4e84e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::fsm::WaitAck::~WaitAck</definition>
+        <argsstring>()</argsstring>
+        <name>~WaitAck</name>
+        <qualifiedname>axi::fsm::WaitAck::~WaitAck</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="178" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="178" bodyend="181"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>waiting for ack in case of ACE access </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::fsm::WaitAck</label>
+        <link refid="structaxi_1_1fsm_1_1WaitAck"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>bsc::state&lt; WaitAck, AxiProtocolFsm &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::fsm::WaitAck</label>
+        <link refid="structaxi_1_1fsm_1_1WaitAck"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>bsc::state&lt; WaitAck, AxiProtocolFsm &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="175" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="175" bodyend="183"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1fsm_1_1WaitAck_1a85b5de91def66db4f36d4dcfbd36f948" prot="public" virt="non-virtual"><scope>axi::fsm::WaitAck</scope><name>reactions</name></member>
+      <member refid="structaxi_1_1fsm_1_1WaitAck_1ad2892e34b79b3f3860ef361cef9887f0" prot="public" virt="non-virtual"><scope>axi::fsm::WaitAck</scope><name>WaitAck</name></member>
+      <member refid="structaxi_1_1fsm_1_1WaitAck_1ae2741dd85754e2e2166e42077ab4e84e" prot="public" virt="non-virtual"><scope>axi::fsm::WaitAck</scope><name>~WaitAck</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

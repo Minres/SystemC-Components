@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceobi_1_1pin" kind="namespace" language="C++">
+    <compoundname>obi::pin</compoundname>
+    <innerclass refid="classobi_1_1pin_1_1target" prot="public">obi::pin::target</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin/target.h" line="39" column="1"/>
+  </compounddef>
+</doxygen>

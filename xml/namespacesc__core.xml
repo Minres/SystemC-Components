@@ -1,0 +1,409 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacesc__core" kind="namespace" language="C++">
+    <compoundname>sc_core</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="sc__variable_8h_1a7ae95af098b16cf439ef8c1fb296afc8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void sc_core::sc_trace</definition>
+        <argsstring>(sc_trace_file *tf, const ::scc::sc_variable&lt; T &gt; &amp;object, const char *name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>sc_core::sc_trace</qualifiedname>
+        <param>
+          <type>sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structscc_1_1sc__variable" kindref="compound">::scc::sc_variable</ref>&lt; T &gt; &amp;</type>
+          <declname>object</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="550" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="550" bodyend="550"/>
+      </memberdef>
+      <memberdef kind="function" id="sc__variable_8h_1a08714fd59d477d4ce67a73b79f3716a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void sc_core::sc_trace</definition>
+        <argsstring>(sc_trace_file *tf, const ::scc::sc_variable&lt; T &gt; *object, const char *name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>sc_core::sc_trace</qualifiedname>
+        <param>
+          <type>sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structscc_1_1sc__variable" kindref="compound">::scc::sc_variable</ref>&lt; T &gt; *</type>
+          <declname>object</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="551" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="551" bodyend="551"/>
+      </memberdef>
+      <memberdef kind="function" id="sc__variable_8h_1a0a44f306a2276ebde0368602ab67e1af" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void sc_core::sc_trace</definition>
+        <argsstring>(sc_trace_file *tf, const ::scc::sc_ref_variable&lt; T &gt; &amp;object, const char *name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>sc_core::sc_trace</qualifiedname>
+        <param>
+          <type>sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structscc_1_1sc__ref__variable" kindref="compound">::scc::sc_ref_variable</ref>&lt; T &gt; &amp;</type>
+          <declname>object</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="553" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="553" bodyend="553"/>
+      </memberdef>
+      <memberdef kind="function" id="sc__variable_8h_1a4e9649aa091727186332c64ca0b012ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void sc_core::sc_trace</definition>
+        <argsstring>(sc_trace_file *tf, const ::scc::sc_ref_variable&lt; T &gt; *object, const char *name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>sc_core::sc_trace</qualifiedname>
+        <param>
+          <type>sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structscc_1_1sc__ref__variable" kindref="compound">::scc::sc_ref_variable</ref>&lt; T &gt; *</type>
+          <declname>object</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="554" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="554" bodyend="554"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8cpp_1aad8fa6b42d5414c0f1aa0a999676e460" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sc_core::sc_trace</definition>
+        <argsstring>(sc_trace_file *tf, const sc_time &amp;t, const std::string &amp;name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>sc_core::sc_trace</qualifiedname>
+        <param>
+          <type>sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.cpp" line="22" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.cpp" bodystart="22" bodyend="24" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" declline="72" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8cpp_1aca4e6c67928f010f00e1c05f55f90713" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void sc_core::sc_trace</definition>
+        <argsstring>(sc_trace_file *tf, const sc_in&lt; sc_time &gt; &amp;port, const std::string &amp;name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>sc_core::sc_trace</qualifiedname>
+        <param>
+          <type>sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const sc_in&lt; sc_time &gt; &amp;</type>
+          <declname>value</declname>
+          <defname>port</defname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>trace function for sc_time </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the trace file </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the data to trace </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the hierarchical name of the data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.cpp" line="27" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.cpp" bodystart="27" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8cpp_1a69c07dead8767448f00c4148262274b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void sc_core::sc_trace</definition>
+        <argsstring>(sc_trace_file *tf, const sc_inout&lt; sc_time &gt; &amp;port, const std::string &amp;name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>sc_core::sc_trace</qualifiedname>
+        <param>
+          <type>sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const sc_inout&lt; sc_time &gt; &amp;</type>
+          <declname>value</declname>
+          <defname>port</defname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>trace function for sc_time</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the trace file </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the port carrying the data to trace </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the hierarchical name of the data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.cpp" line="39" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.cpp" bodystart="39" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1a1cf63b86021de8361485dbdadac3cfe2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void sc_core::sc_trace</definition>
+        <argsstring>(sc_core::sc_trace_file *&amp;, const sc_core::sc_event &amp;, const char *)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>sc_core::sc_trace</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *&amp;</type>
+        </param>
+        <param>
+          <type>const sc_core::sc_event &amp;</type>
+        </param>
+        <param>
+          <type>const char *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>compatibility for SC2.3.1 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="78" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1abb61a02929219e2c99cd7da2c10b2884" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void sc_core::sc_trace</definition>
+        <argsstring>(sc_trace_file *tf, const sc_in&lt; sc_time &gt; &amp;value, const std::string &amp;name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>sc_core::sc_trace</qualifiedname>
+        <param>
+          <type>sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const sc_in&lt; sc_time &gt; &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>trace function for sc_time </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the trace file </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the data to trace </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the hierarchical name of the data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="88" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.cpp" bodystart="27" bodyend="37" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" declline="88" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1a0f22c1032ca0c984e92c064f223852ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void sc_core::sc_trace</definition>
+        <argsstring>(sc_trace_file *tf, const sc_inout&lt; sc_time &gt; &amp;value, const std::string &amp;name)</argsstring>
+        <name>sc_trace</name>
+        <qualifiedname>sc_core::sc_trace</qualifiedname>
+        <param>
+          <type>sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <param>
+          <type>const sc_inout&lt; sc_time &gt; &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>trace function for sc_time</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the trace file </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the port carrying the data to trace </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the hierarchical name of the data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" line="96" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.cpp" bodystart="39" bodyend="49" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/utilities.h" declline="96" declcolumn="17"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" line="27" column="1"/>
+  </compounddef>
+</doxygen>

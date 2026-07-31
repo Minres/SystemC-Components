@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="socket__width__adapter_8h" kind="file" language="C++">
+    <compoundname>socket_width_adapter.h</compoundname>
+    <includes local="no">tlm</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/socket_width_adapter.h</label>
+        <link refid="socket__width__adapter_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classscc_1_1socket__width__adapter" prot="public">scc::socket_width_adapter</innerclass>
+    <innernamespace refid="namespacescc">scc</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2024<sp/>MINRES<sp/>Technologies<sp/>GmbH</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SCC_SOCKET_WIDTH_ADAPTER_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SCC_SOCKET_WIDTH_ADAPTER_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacescc" kindref="compound">scc</ref><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>TGT_BUSWIDTH<sp/>=<sp/>32,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>INTOR_BUSWIDTH<sp/>=<sp/>32,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES<sp/>=<sp/>tlm::tlm_base_protocol_types,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sc_core::sc_port_policy<sp/>POL<sp/>=<sp/>sc_core::SC_ONE_OR_MORE_BOUND&gt;</highlight></codeline>
+<codeline lineno="43" refid="classscc_1_1socket__width__adapter" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classscc_1_1socket__width__adapter_1a1bc0b6a6a443a8f323f708641cf83988" kindref="member">socket_width_adapter</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>sc_core::sc_module,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>tlm::tlm_fw_transport_if&lt;TYPES&gt;,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>tlm::tlm_bw_transport_if&lt;TYPES&gt;<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">tlm_payload_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES::tlm_payload_type;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">tlm_phase_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES::tlm_phase_type;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">target_socket_type<sp/>=<sp/>tlm::tlm_target_socket&lt;TGT_BUSWIDTH,<sp/>TYPES,<sp/>N,<sp/>POL&gt;;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">initiator_socket_type<sp/>=<sp/>tlm::tlm_initiator_socket&lt;INTOR_BUSWIDTH,<sp/>TYPES,<sp/>N,<sp/>POL&gt;;</highlight></codeline>
+<codeline lineno="54" refid="classscc_1_1socket__width__adapter_1a3d63918734ef0298535a34db71541369" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>target_socket_type<sp/><ref refid="classscc_1_1socket__width__adapter_1a3d63918734ef0298535a34db71541369" kindref="member">tsck</ref>{</highlight><highlight class="stringliteral">&quot;tsck&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="60" refid="classscc_1_1socket__width__adapter_1ada8e7cc8898557c23ee95b76fa936e46" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>initiator_socket_type<sp/><ref refid="classscc_1_1socket__width__adapter_1ada8e7cc8898557c23ee95b76fa936e46" kindref="member">isck</ref>{</highlight><highlight class="stringliteral">&quot;isck&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="66" refid="classscc_1_1socket__width__adapter_1a1bc0b6a6a443a8f323f708641cf83988" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1socket__width__adapter_1a1bc0b6a6a443a8f323f708641cf83988" kindref="member">socket_width_adapter</ref>(sc_core::sc_module_name<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>nm)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>sc_core::sc_module(nm)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classscc_1_1socket__width__adapter_1a3d63918734ef0298535a34db71541369" kindref="member">tsck</ref>.bind(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classscc_1_1socket__width__adapter_1ada8e7cc8898557c23ee95b76fa936e46" kindref="member">isck</ref>.bind(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1socket__width__adapter_1a1bc0b6a6a443a8f323f708641cf83988" kindref="member">socket_width_adapter</ref>()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1socket__width__adapter_1a1bc0b6a6a443a8f323f708641cf83988" kindref="member">socket_width_adapter</ref>(<ref refid="classscc_1_1socket__width__adapter" kindref="compound">socket_width_adapter</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1socket__width__adapter_1a1bc0b6a6a443a8f323f708641cf83988" kindref="member">socket_width_adapter</ref>(<ref refid="classscc_1_1socket__width__adapter" kindref="compound">socket_width_adapter</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80" refid="classscc_1_1socket__width__adapter_1aff20e5ff77ff1a30b9938ddf6c16bb6e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1socket__width__adapter_1aff20e5ff77ff1a30b9938ddf6c16bb6e" kindref="member">~socket_width_adapter</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm::tlm_sync_enum<sp/>nb_transport_fw(tlm_payload_type&amp;<sp/>trans,<sp/>tlm_phase_type&amp;<sp/>phase,<sp/>sc_core::sc_time&amp;<sp/>t)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1socket__width__adapter_1ada8e7cc8898557c23ee95b76fa936e46" kindref="member">isck</ref>-&gt;nb_transport_fw(trans,<sp/>phase,<sp/>t);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>b_transport(tlm_payload_type&amp;<sp/>trans,<sp/>sc_core::sc_time&amp;<sp/>t)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/><ref refid="classscc_1_1socket__width__adapter_1ada8e7cc8898557c23ee95b76fa936e46" kindref="member">isck</ref>-&gt;b_transport(trans,<sp/>t);<sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>get_direct_mem_ptr(tlm_payload_type&amp;<sp/>trans,<sp/>tlm::tlm_dmi&amp;<sp/>dmi_data)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1socket__width__adapter_1ada8e7cc8898557c23ee95b76fa936e46" kindref="member">isck</ref>-&gt;get_direct_mem_ptr(trans,<sp/>dmi_data);<sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>transport_dbg(tlm_payload_type&amp;<sp/>trans)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1socket__width__adapter_1ada8e7cc8898557c23ee95b76fa936e46" kindref="member">isck</ref>-&gt;transport_dbg(trans);<sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm::tlm_sync_enum<sp/>nb_transport_bw(tlm_payload_type&amp;<sp/>trans,<sp/>tlm_phase_type&amp;<sp/>phase,<sp/>sc_core::sc_time&amp;<sp/>t)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1socket__width__adapter_1a3d63918734ef0298535a34db71541369" kindref="member">tsck</ref>-&gt;nb_transport_bw(trans,<sp/>phase,<sp/>t);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>invalidate_direct_mem_ptr(sc_dt::uint64<sp/>start_range,<sp/>sc_dt::uint64<sp/>end_range)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classscc_1_1socket__width__adapter_1a3d63918734ef0298535a34db71541369" kindref="member">tsck</ref>-&gt;invalidate_direct_mem_ptr(start_range,<sp/>end_range);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>_SCC_SOCKET_WIDTH_ADAPTER_H_</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/socket_width_adapter.h"/>
+  </compounddef>
+</doxygen>

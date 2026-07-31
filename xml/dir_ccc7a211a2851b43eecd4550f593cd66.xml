@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_ccc7a211a2851b43eecd4550f593cd66" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk</compoundname>
+    <innerfile refid="global__time__keeper_8cpp">global_time_keeper.cpp</innerfile>
+    <innerfile refid="global__time__keeper_8h">global_time_keeper.h</innerfile>
+    <innerfile refid="sc__time__syncronizer_8cpp">sc_time_syncronizer.cpp</innerfile>
+    <innerfile refid="sc__time__syncronizer_8h">sc_time_syncronizer.h</innerfile>
+    <innerfile refid="src_2sysc_2tlm_2scc_2qk_2types_8h">types.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/"/>
+  </compounddef>
+</doxygen>

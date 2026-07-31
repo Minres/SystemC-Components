@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1Logger" kind="class" language="C++" prot="public">
+    <compoundname>scc::Logger</compoundname>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classscc_1_1Logger_1a677ec812f5396cea81c6183cc2efa2eb" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string scc::Logger::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <qualifiedname>scc::Logger::name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.cpp" line="37" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.cpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1Logger_1a5e723f20ea33546a66e1217f3f10ebe4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::Logger::Logger</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>Logger</name>
+        <qualifiedname>scc::Logger::Logger</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.cpp" line="31" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.cpp" bodystart="31" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1Logger_1ab79e205d842a5fe80789dcd3e15af20e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::Logger::log</definition>
+        <argsstring>(std::string const &amp;msg) const</argsstring>
+        <name>log</name>
+        <qualifiedname>scc::Logger::log</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.cpp" line="33" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.cpp" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1Logger_1a5a0363767f2442a8eef0e7f9627970c7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string scc::Logger::get_name</definition>
+        <argsstring>() const</argsstring>
+        <name>get_name</name>
+        <qualifiedname>scc::Logger::get_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.cpp" line="34" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.cpp" bodystart="34" bodyend="34"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.cpp" line="29" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.cpp" bodystart="29" bodyend="38"/>
+    <listofallmembers>
+      <member refid="classscc_1_1Logger_1a5a0363767f2442a8eef0e7f9627970c7" prot="public" virt="non-virtual"><scope>scc::Logger</scope><name>get_name</name></member>
+      <member refid="classscc_1_1Logger_1ab79e205d842a5fe80789dcd3e15af20e" prot="public" virt="non-virtual"><scope>scc::Logger</scope><name>log</name></member>
+      <member refid="classscc_1_1Logger_1a5e723f20ea33546a66e1217f3f10ebe4" prot="public" virt="non-virtual"><scope>scc::Logger</scope><name>Logger</name></member>
+      <member refid="classscc_1_1Logger_1a677ec812f5396cea81c6183cc2efa2eb" prot="private" virt="non-virtual"><scope>scc::Logger</scope><name>name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

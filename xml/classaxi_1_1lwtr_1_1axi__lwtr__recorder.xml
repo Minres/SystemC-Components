@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classaxi_1_1lwtr_1_1axi__lwtr__recorder" kind="class" language="C++" prot="public">
+    <compoundname>axi::lwtr::axi_lwtr_recorder</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref refid="classaxi_1_1lwtr_1_1axi__lwtr" prot="public" virt="non-virtual">axi::lwtr::axi_lwtr&lt; axi::axi_protocol_types &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>unsigned</type>
+        <declname>BUSWIDTH</declname>
+        <defname>BUSWIDTH</defname>
+        <defval>32</defval>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval><ref refid="structaxi_1_1axi__protocol__types" kindref="compound">axi::axi_protocol_types</ref></defval>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>N</declname>
+        <defname>N</defname>
+        <defval>1</defval>
+      </param>
+      <param>
+        <type>sc_core::sc_port_policy</type>
+        <declname>POL</declname>
+        <defname>POL</defname>
+        <defval>sc_core::SC_ONE_OR_MORE_BOUND</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr__recorder_1ac5c78b5cabe71023116824144d910d11" prot="public" static="no" mutable="no">
+        <type><ref refid="structaxi_1_1axi__target__socket" kindref="compound">axi::axi_target_socket</ref>&lt; BUSWIDTH, TYPES, N, POL &gt;</type>
+        <definition>axi::axi_target_socket&lt;BUSWIDTH, TYPES, N, POL&gt; axi::lwtr::axi_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;::ts</definition>
+        <argsstring></argsstring>
+        <name>ts</name>
+        <qualifiedname>axi::lwtr::axi_lwtr_recorder::ts</qualifiedname>
+        <initializer>{&quot;ts&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="289" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="289" bodyend="289"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr__recorder_1a55c296e6dc1e8739ff30c98597e24122" prot="public" static="no" mutable="no">
+        <type><ref refid="structaxi_1_1axi__initiator__socket" kindref="compound">axi::axi_initiator_socket</ref>&lt; BUSWIDTH, TYPES, N, POL &gt;</type>
+        <definition>axi::axi_initiator_socket&lt;BUSWIDTH, TYPES, N, POL&gt; axi::lwtr::axi_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;::is</definition>
+        <argsstring></argsstring>
+        <name>is</name>
+        <qualifiedname>axi::lwtr::axi_lwtr_recorder::is</qualifiedname>
+        <initializer>{&quot;is&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="290" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="290" bodyend="290"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classaxi_1_1lwtr_1_1axi__lwtr__recorder_1a052bcb832350fce225c08266055f170b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::lwtr::axi_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;::axi_lwtr_recorder</definition>
+        <argsstring>(sc_core::sc_module_name nm, bool recording_enabled=true, tx_db *tr_db=tx_db::get_default_db())</argsstring>
+        <name>axi_lwtr_recorder</name>
+        <qualifiedname>axi::lwtr::axi_lwtr_recorder::axi_lwtr_recorder</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>recording_enabled</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>tx_db *</type>
+          <declname>tr_db</declname>
+          <defval>tx_db::get_default_db()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="292" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="292" bodyend="299"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5">
+        <label>axi::axi_bw_transport_if&lt; axi::axi_protocol_types &gt;</label>
+      </node>
+      <node id="4">
+        <label>axi::axi_fw_transport_if&lt; axi::axi_protocol_types &gt;</label>
+      </node>
+      <node id="3">
+        <label>axi::lwtr::axi_lwtr&lt; axi::axi_protocol_types &gt;</label>
+        <link refid="classaxi_1_1lwtr_1_1axi__lwtr"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>axi::lwtr::axi_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classaxi_1_1lwtr_1_1axi__lwtr__recorder"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5">
+        <label>axi::axi_bw_transport_if&lt; axi::axi_protocol_types &gt;</label>
+      </node>
+      <node id="4">
+        <label>axi::axi_fw_transport_if&lt; axi::axi_protocol_types &gt;</label>
+      </node>
+      <node id="8">
+        <label>axi::axi_initiator_socket&lt; 32, axi::axi_protocol_types, 1, sc_core::SC_ONE_OR_MORE_BOUND &gt;</label>
+        <link refid="structaxi_1_1axi__initiator__socket"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>axi::axi_target_socket&lt; 32, axi::axi_protocol_types, 1, sc_core::SC_ONE_OR_MORE_BOUND &gt;</label>
+        <link refid="structaxi_1_1axi__target__socket"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>axi::lwtr::axi_lwtr&lt; axi::axi_protocol_types &gt;</label>
+        <link refid="classaxi_1_1lwtr_1_1axi__lwtr"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>axi::lwtr::axi_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classaxi_1_1lwtr_1_1axi__lwtr__recorder"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>ts</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>is</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="9">
+        <label>tlm::tlm_base_initiator_socket&lt; BUSWIDTH, axi_fw_transport_if&lt; axi::axi_protocol_types &gt;, axi_bw_transport_if&lt; axi::axi_protocol_types &gt;, N, POL &gt;</label>
+      </node>
+      <node id="7">
+        <label>tlm::tlm_base_target_socket&lt; BUSWIDTH, axi_fw_transport_if&lt; axi::axi_protocol_types &gt;, axi_bw_transport_if&lt; axi::axi_protocol_types &gt;, N, POL &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="287" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="287" bodyend="300"/>
+    <listofallmembers>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a263167af3b7d2545cdb94a4c510854a2" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>axi_lwtr</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr__recorder_1a052bcb832350fce225c08266055f170b" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>axi_lwtr_recorder</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a146eef73b4e2a94505b623372dcd8492" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>b_transport</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1ab4de76d8f411487b65f664f37fe24290" prot="protected" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>bw_port</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1aa1c48ae7f1ce5b148a58fa5e0c854b3b" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>enableBlTracing</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a084f6f2db2b4fca3b003727a3dbe097b" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>enableDmiTracing</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a52a0014d7d6c8551b473feca7197df79" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>enableNbTracing</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a8a979b3deab40029fdf74fc198b7ff4b" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>enableProtocolChecker</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a7fc13ab53503ee20a1cc22ffe93b7efe" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>enableTimedTracing</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a8ee6d06b28e34e83e65a043eb68e1180" prot="protected" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>fw_port</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a2a8bf4c59ad37b5df84b51c9a3f6d1af" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>get_direct_mem_ptr</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1ad6aa96d3cf4ab212ec5f522c2c93494c" prot="protected" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>initialize_streams</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a3f876bcec4a916c0d14cb533c6cc3aa9" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>invalidate_direct_mem_ptr</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr__recorder_1a55c296e6dc1e8739ff30c98597e24122" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>is</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a70ddb9f0a978d56ed2e7279b7adab6f4" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>isRecordingBlockingTxEnabled</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a0f5e67b5a91c13990e690a2a5e88244a" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>isRecordingNonBlockingTxEnabled</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a3043f76da29f02dad154035de29cc5c0" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>nb_transport_bw</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a07c2b8d161b823b9bad35d7be7e28877" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>nb_transport_fw</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1aec81df8621f26dd639e4d0715cb23e2b" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>rd_response_timeout</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1aae9b9ba9215a46f5769defc426eede60" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>transport_dbg</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr__recorder_1ac5c78b5cabe71023116824144d910d11" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>ts</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1af654fc8e0ce6e47ac51ec686011b05ac" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>wr_response_timeout</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a2fbf8f59d6ade5fadd104e449c649554" prot="public" virt="virtual"><scope>axi::lwtr::axi_lwtr_recorder</scope><name>~axi_lwtr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

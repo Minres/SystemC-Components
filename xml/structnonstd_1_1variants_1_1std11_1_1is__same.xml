@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1std11_1_1is__same" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::std11::is_same</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>class U</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="structnonstd_1_1variants_1_1std11_1_1is__same_1a97c0bfffe3e765a3766247e84dda08cf" prot="public" static="no" strong="no">
+        <type></type>
+        <name>V</name>
+        <qualifiedname>nonstd::variants::std11::is_same::V</qualifiedname>
+        <enumvalue id="structnonstd_1_1variants_1_1std11_1_1is__same_1a97c0bfffe3e765a3766247e84dda08cfa22e6d2f63873b1f8d8e3c511c4475224" prot="public">
+          <name>value</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="496" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="496" bodyend="496"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="495" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="495" bodyend="497"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1std11_1_1is__same_1a97c0bfffe3e765a3766247e84dda08cf" prot="public" virt="non-virtual"><scope>nonstd::variants::std11::is_same</scope><name>V</name></member>
+      <member refid="structnonstd_1_1variants_1_1std11_1_1is__same_1a97c0bfffe3e765a3766247e84dda08cfa22e6d2f63873b1f8d8e3c511c4475224" prot="public" virt="non-virtual"><scope>nonstd::variants::std11::is_same</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

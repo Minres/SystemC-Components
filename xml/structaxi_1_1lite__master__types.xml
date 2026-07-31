@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1lite__master__types" kind="struct" language="C++" prot="public">
+    <compoundname>axi::lite_master_types</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structaxi_1_1lite__master__types_1a3ff70b3eca6242f2809001da31f1dcb3" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_out&lt; T &gt;</type>
+        <definition>using axi::lite_master_types::m2s_t =  sc_core::sc_out&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>m2s_t</name>
+        <qualifiedname>axi::lite_master_types::m2s_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="37" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1lite__master__types_1a6b59a057538b8b0c7e6c4b71d0d7c09a" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_in&lt; T &gt;</type>
+        <definition>using axi::lite_master_types::s2m_t =  sc_core::sc_in&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>s2m_t</name>
+        <qualifiedname>axi::lite_master_types::s2m_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="38" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1lite__master__types_1a91c2e82b240e324329860f31c1bcb45b" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classscc_1_1sc__out__opt" kindref="compound">scc::sc_out_opt</ref>&lt; T &gt;</type>
+        <definition>using axi::lite_master_types::m2s_full_t =  scc::sc_out_opt&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>m2s_full_t</name>
+        <qualifiedname>axi::lite_master_types::m2s_full_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="39" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1lite__master__types_1a7d0654fa8f30aed9e7bb183ca46b07d0" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classscc_1_1sc__in__opt" kindref="compound">scc::sc_in_opt</ref>&lt; T &gt;</type>
+        <definition>using axi::lite_master_types::s2m_full_t =  scc::sc_in_opt&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>s2m_full_t</name>
+        <qualifiedname>axi::lite_master_types::s2m_full_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="40" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1lite__master__types_1a659818383da7f5a9b68208ea1709e4aa" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classscc_1_1sc__out__opt" kindref="compound">scc::sc_out_opt</ref>&lt; T &gt;</type>
+        <definition>using axi::lite_master_types::m2s_opt_t =  scc::sc_out_opt&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>m2s_opt_t</name>
+        <qualifiedname>axi::lite_master_types::m2s_opt_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="41" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1lite__master__types_1ae0771aa04cc126b44fa4e4f965712674" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classscc_1_1sc__in__opt" kindref="compound">scc::sc_in_opt</ref>&lt; T &gt;</type>
+        <definition>using axi::lite_master_types::s2m_opt_t =  scc::sc_in_opt&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>s2m_opt_t</name>
+        <qualifiedname>axi::lite_master_types::s2m_opt_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="42" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="36" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="36" bodyend="43"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1lite__master__types_1a91c2e82b240e324329860f31c1bcb45b" prot="public" virt="non-virtual"><scope>axi::lite_master_types</scope><name>m2s_full_t</name></member>
+      <member refid="structaxi_1_1lite__master__types_1a659818383da7f5a9b68208ea1709e4aa" prot="public" virt="non-virtual"><scope>axi::lite_master_types</scope><name>m2s_opt_t</name></member>
+      <member refid="structaxi_1_1lite__master__types_1a3ff70b3eca6242f2809001da31f1dcb3" prot="public" virt="non-virtual"><scope>axi::lite_master_types</scope><name>m2s_t</name></member>
+      <member refid="structaxi_1_1lite__master__types_1a7d0654fa8f30aed9e7bb183ca46b07d0" prot="public" virt="non-virtual"><scope>axi::lite_master_types</scope><name>s2m_full_t</name></member>
+      <member refid="structaxi_1_1lite__master__types_1ae0771aa04cc126b44fa4e4f965712674" prot="public" virt="non-virtual"><scope>axi::lite_master_types</scope><name>s2m_opt_t</name></member>
+      <member refid="structaxi_1_1lite__master__types_1a6b59a057538b8b0c7e6c4b71d0d7c09a" prot="public" virt="non-virtual"><scope>axi::lite_master_types</scope><name>s2m_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

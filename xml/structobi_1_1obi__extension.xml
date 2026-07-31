@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structobi_1_1obi__extension" kind="struct" language="C++" prot="public">
+    <compoundname>obi::obi_extension</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_extension&lt; obi_extension &gt;</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structobi_1_1obi__extension_1a18d883a2d1102418b51c5a8e4144a159" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t obi::obi_extension::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <qualifiedname>obi::obi_extension::id</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" line="53" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="variable" id="structobi_1_1obi__extension_1aa4217561ada8853e8d0c0ef752ace584" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t obi::obi_extension::auser</definition>
+        <argsstring></argsstring>
+        <name>auser</name>
+        <qualifiedname>obi::obi_extension::auser</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" line="54" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" bodystart="54" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="variable" id="structobi_1_1obi__extension_1a8f4e24181b85b509cb277380842a6060" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t obi::obi_extension::duser</definition>
+        <argsstring></argsstring>
+        <name>duser</name>
+        <qualifiedname>obi::obi_extension::duser</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" line="55" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" bodystart="55" bodyend="55"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structobi_1_1obi__extension_1ae4d65928ab823397d713e8af4ff85ef8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t obi::obi_extension::get_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_id</name>
+        <qualifiedname>obi::obi_extension::get_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" line="29" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="structobi_1_1obi__extension_1aa2c829a8ea9f56c9c04f404191404e13" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void obi::obi_extension::set_id</definition>
+        <argsstring>(uint32_t)</argsstring>
+        <name>set_id</name>
+        <qualifiedname>obi::obi_extension::set_id</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <defname>unsignedInt</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" line="30" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="structobi_1_1obi__extension_1a2a442ca1aa7b89a65aa03fa91a19919c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t obi::obi_extension::get_auser</definition>
+        <argsstring>() const</argsstring>
+        <name>get_auser</name>
+        <qualifiedname>obi::obi_extension::get_auser</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" line="32" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" bodystart="64" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="structobi_1_1obi__extension_1adff530e582aff4745ae6538bc5c905a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void obi::obi_extension::set_auser</definition>
+        <argsstring>(uint32_t)</argsstring>
+        <name>set_auser</name>
+        <qualifiedname>obi::obi_extension::set_auser</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <defname>unsignedInt</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" line="33" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" bodystart="66" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="structobi_1_1obi__extension_1aaf49da2b9f910e8d18ca82be3bdbe9c0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t obi::obi_extension::get_duser</definition>
+        <argsstring>() const</argsstring>
+        <name>get_duser</name>
+        <qualifiedname>obi::obi_extension::get_duser</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" line="35" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="structobi_1_1obi__extension_1a4e862a61d4d5e7bff02873c05287ea8f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void obi::obi_extension::set_duser</definition>
+        <argsstring>(uint32_t)</argsstring>
+        <name>set_duser</name>
+        <qualifiedname>obi::obi_extension::set_duser</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <defname>unsignedInt</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" line="36" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="structobi_1_1obi__extension_1aa6e3f928744fc04fcd739ab568d6acd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>obi::obi_extension::obi_extension</definition>
+        <argsstring>()=default</argsstring>
+        <name>obi_extension</name>
+        <qualifiedname>obi::obi_extension::obi_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" line="38" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structobi_1_1obi__extension_1acac2dad02a6ea13435e04276b6c624b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>obi::obi_extension::obi_extension</definition>
+        <argsstring>(const obi_extension &amp;o)=default</argsstring>
+        <name>obi_extension</name>
+        <qualifiedname>obi::obi_extension::obi_extension</qualifiedname>
+        <param>
+          <type>const obi_extension &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" line="40" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structobi_1_1obi__extension_1adbab62f468251850bd589b155965f957" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_extension_base *</type>
+        <definition>tlm::tlm_extension_base * obi::obi_extension::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <qualifiedname>obi::obi_extension::clone</qualifiedname>
+        <briefdescription>
+<para>the clone function to create deep copies of </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>pointer to heap-allocated extension </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" line="45" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="structobi_1_1obi__extension_1a67ae04794e6735897201e7dad1ce41fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void obi::obi_extension::copy_from</definition>
+        <argsstring>(tlm::tlm_extension_base const &amp;ext) override</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>obi::obi_extension::copy_from</qualifiedname>
+        <param>
+          <type>tlm::tlm_extension_base const &amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+<para>deep copy all values from ext </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ext</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" line="50" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" bodystart="72" bodyend="76"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>obi::obi_extension</label>
+        <link refid="structobi_1_1obi__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; obi_extension &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>obi::obi_extension</label>
+        <link refid="structobi_1_1obi__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; obi_extension &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" line="27" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" bodystart="27" bodyend="56"/>
+    <listofallmembers>
+      <member refid="structobi_1_1obi__extension_1aa4217561ada8853e8d0c0ef752ace584" prot="private" virt="non-virtual"><scope>obi::obi_extension</scope><name>auser</name></member>
+      <member refid="structobi_1_1obi__extension_1adbab62f468251850bd589b155965f957" prot="public" virt="non-virtual"><scope>obi::obi_extension</scope><name>clone</name></member>
+      <member refid="structobi_1_1obi__extension_1a67ae04794e6735897201e7dad1ce41fc" prot="public" virt="non-virtual"><scope>obi::obi_extension</scope><name>copy_from</name></member>
+      <member refid="structobi_1_1obi__extension_1a8f4e24181b85b509cb277380842a6060" prot="private" virt="non-virtual"><scope>obi::obi_extension</scope><name>duser</name></member>
+      <member refid="structobi_1_1obi__extension_1a2a442ca1aa7b89a65aa03fa91a19919c" prot="public" virt="non-virtual"><scope>obi::obi_extension</scope><name>get_auser</name></member>
+      <member refid="structobi_1_1obi__extension_1aaf49da2b9f910e8d18ca82be3bdbe9c0" prot="public" virt="non-virtual"><scope>obi::obi_extension</scope><name>get_duser</name></member>
+      <member refid="structobi_1_1obi__extension_1ae4d65928ab823397d713e8af4ff85ef8" prot="public" virt="non-virtual"><scope>obi::obi_extension</scope><name>get_id</name></member>
+      <member refid="structobi_1_1obi__extension_1a18d883a2d1102418b51c5a8e4144a159" prot="private" virt="non-virtual"><scope>obi::obi_extension</scope><name>id</name></member>
+      <member refid="structobi_1_1obi__extension_1aa6e3f928744fc04fcd739ab568d6acd3" prot="public" virt="non-virtual"><scope>obi::obi_extension</scope><name>obi_extension</name></member>
+      <member refid="structobi_1_1obi__extension_1acac2dad02a6ea13435e04276b6c624b3" prot="public" virt="non-virtual"><scope>obi::obi_extension</scope><name>obi_extension</name></member>
+      <member refid="structobi_1_1obi__extension_1adff530e582aff4745ae6538bc5c905a7" prot="public" virt="non-virtual"><scope>obi::obi_extension</scope><name>set_auser</name></member>
+      <member refid="structobi_1_1obi__extension_1a4e862a61d4d5e7bff02873c05287ea8f" prot="public" virt="non-virtual"><scope>obi::obi_extension</scope><name>set_duser</name></member>
+      <member refid="structobi_1_1obi__extension_1aa2c829a8ea9f56c9c04f404191404e13" prot="public" virt="non-virtual"><scope>obi::obi_extension</scope><name>set_id</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

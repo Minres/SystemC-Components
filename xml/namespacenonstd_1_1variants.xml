@@ -1,0 +1,1577 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacenonstd_1_1variants" kind="namespace" language="C++">
+    <compoundname>nonstd::variants</compoundname>
+    <innerclass refid="classnonstd_1_1variants_1_1variant" prot="public">nonstd::variants::variant</innerclass>
+    <innerclass refid="classnonstd_1_1variants_1_1monostate" prot="public">nonstd::variants::monostate</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1variant__size" prot="public">nonstd::variants::variant_size</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1variant__size_3_01variant_3_01T0_00_01T1_00_01T2_00_01T3_00_01T4_00_6272b42b753462b1a85131797a1f5377" prot="public">nonstd::variants::variant_size&lt; variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1variant__alternative" prot="public">nonstd::variants::variant_alternative</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1variant__alternative_3_01K_00_01variant_3_01T0_00_01T1_00_01T2_00_01d205f92b9568fe59dfd6319e341bbc8f" prot="public">nonstd::variants::variant_alternative&lt; K, variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &gt;</innerclass>
+    <innernamespace refid="namespacenonstd_1_1variants_1_1detail">nonstd::variants::detail</innernamespace>
+    <innernamespace refid="namespacenonstd_1_1variants_1_1std11">nonstd::variants::std11</innernamespace>
+    <innernamespace refid="namespacenonstd_1_1variants_1_1std17">nonstd::variants::std17</innernamespace>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="variant_8hpp_1a4de85ff888ad9dbfc6de6852c782520c" prot="public" static="yes" mutable="no">
+        <type>const std::size_t</type>
+        <definition>const std::size_t nonstd::variants::variant_npos</definition>
+        <argsstring></argsstring>
+        <name>variant_npos</name>
+        <qualifiedname>nonstd::variants::variant_npos</qualifiedname>
+        <initializer>= static_cast&lt;std::size_t&gt;(-1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="1319" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="1319" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="variant_8hpp_1ad065fa9436a3345f31aeae719c2c827a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>variant_constexpr bool</type>
+        <definition>variant_constexpr bool nonstd::variants::operator&lt;</definition>
+        <argsstring>(monostate, monostate) variant_noexcept</argsstring>
+        <name>operator&lt;</name>
+        <qualifiedname>nonstd::variants::operator&lt;</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1monostate" kindref="compound">monostate</ref></type>
+        </param>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1monostate" kindref="compound">monostate</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="1265" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="1265" bodyend="1265"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a9060fcbc091f0a5b2c989061007f7c3c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>variant_constexpr bool</type>
+        <definition>variant_constexpr bool nonstd::variants::operator&gt;</definition>
+        <argsstring>(monostate, monostate) variant_noexcept</argsstring>
+        <name>operator&gt;</name>
+        <qualifiedname>nonstd::variants::operator&gt;</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1monostate" kindref="compound">monostate</ref></type>
+        </param>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1monostate" kindref="compound">monostate</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="1266" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="1266" bodyend="1266"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1abefc45b2e9a80ddbd0271ae1c5239d37" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>variant_constexpr bool</type>
+        <definition>variant_constexpr bool nonstd::variants::operator&lt;=</definition>
+        <argsstring>(monostate, monostate) variant_noexcept</argsstring>
+        <name>operator&lt;=</name>
+        <qualifiedname>nonstd::variants::operator&lt;=</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1monostate" kindref="compound">monostate</ref></type>
+        </param>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1monostate" kindref="compound">monostate</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="1267" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="1267" bodyend="1267"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a45d8dc52d2849179b29d081fa0055ea1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>variant_constexpr bool</type>
+        <definition>variant_constexpr bool nonstd::variants::operator&gt;=</definition>
+        <argsstring>(monostate, monostate) variant_noexcept</argsstring>
+        <name>operator&gt;=</name>
+        <qualifiedname>nonstd::variants::operator&gt;=</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1monostate" kindref="compound">monostate</ref></type>
+        </param>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1monostate" kindref="compound">monostate</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="1268" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="1268" bodyend="1268"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a7e41c9b24e1916c41a8d9a17b565866d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>variant_constexpr bool</type>
+        <definition>variant_constexpr bool nonstd::variants::operator==</definition>
+        <argsstring>(monostate, monostate) variant_noexcept</argsstring>
+        <name>operator==</name>
+        <qualifiedname>nonstd::variants::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1monostate" kindref="compound">monostate</ref></type>
+        </param>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1monostate" kindref="compound">monostate</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="1269" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="1269" bodyend="1269"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a5eac1aa2bb65ca8d423a2a4b2a08fa86" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>variant_constexpr bool</type>
+        <definition>variant_constexpr bool nonstd::variants::operator!=</definition>
+        <argsstring>(monostate, monostate) variant_noexcept</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>nonstd::variants::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1monostate" kindref="compound">monostate</ref></type>
+        </param>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1monostate" kindref="compound">monostate</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="1270" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="1270" bodyend="1270"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a7c7a8fcf6658074d0a96ba1d49ee27cd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+          <param>
+            <type>class T8</type>
+          </param>
+          <param>
+            <type>class T9</type>
+          </param>
+          <param>
+            <type>class T10</type>
+          </param>
+          <param>
+            <type>class T11</type>
+          </param>
+          <param>
+            <type>class T12</type>
+          </param>
+          <param>
+            <type>class T13</type>
+          </param>
+          <param>
+            <type>class T14</type>
+          </param>
+          <param>
+            <type>class T15</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool nonstd::variants::holds_alternative</definition>
+        <argsstring>(variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;v) variant_noexcept</argsstring>
+        <name>holds_alternative</name>
+        <qualifiedname>nonstd::variants::holds_alternative</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2173" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2173" bodyend="2175"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1ac1caa950fce1ed0288937b16eb5e8d65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class R</type>
+          </param>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+          <param>
+            <type>class T8</type>
+          </param>
+          <param>
+            <type>class T9</type>
+          </param>
+          <param>
+            <type>class T10</type>
+          </param>
+          <param>
+            <type>class T11</type>
+          </param>
+          <param>
+            <type>class T12</type>
+          </param>
+          <param>
+            <type>class T13</type>
+          </param>
+          <param>
+            <type>class T14</type>
+          </param>
+          <param>
+            <type>class T15</type>
+          </param>
+        </templateparamlist>
+        <type>R &amp;</type>
+        <definition>R &amp; nonstd::variants::get</definition>
+        <argsstring>(variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &amp;v, nonstd_lite_in_place_type_t(R)=nonstd_lite_in_place_type(R))</argsstring>
+        <name>get</name>
+        <qualifiedname>nonstd::variants::get</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>nonstd_lite_in_place_type_t(R)</type>
+          <defval>nonstd_lite_in_place_type(R)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2179" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2179" bodyend="2182"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1ad7ba2a12496f38455bf28551a0c44f18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class R</type>
+          </param>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+          <param>
+            <type>class T8</type>
+          </param>
+          <param>
+            <type>class T9</type>
+          </param>
+          <param>
+            <type>class T10</type>
+          </param>
+          <param>
+            <type>class T11</type>
+          </param>
+          <param>
+            <type>class T12</type>
+          </param>
+          <param>
+            <type>class T13</type>
+          </param>
+          <param>
+            <type>class T14</type>
+          </param>
+          <param>
+            <type>class T15</type>
+          </param>
+        </templateparamlist>
+        <type>R const &amp;</type>
+        <definition>R const  &amp; nonstd::variants::get</definition>
+        <argsstring>(variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;v, nonstd_lite_in_place_type_t(R)=nonstd_lite_in_place_type(R))</argsstring>
+        <name>get</name>
+        <qualifiedname>nonstd::variants::get</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>nonstd_lite_in_place_type_t(R)</type>
+          <defval>nonstd_lite_in_place_type(R)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2186" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2186" bodyend="2189"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a42ecf3e440508e780cc1104afb49472d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>std::size_t</type>
+            <declname>K</declname>
+            <defname>K</defname>
+          </param>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+          <param>
+            <type>class T8</type>
+          </param>
+          <param>
+            <type>class T9</type>
+          </param>
+          <param>
+            <type>class T10</type>
+          </param>
+          <param>
+            <type>class T11</type>
+          </param>
+          <param>
+            <type>class T12</type>
+          </param>
+          <param>
+            <type>class T13</type>
+          </param>
+          <param>
+            <type>class T14</type>
+          </param>
+          <param>
+            <type>class T15</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structnonstd_1_1variants_1_1variant__alternative" kindref="compound">variant_alternative</ref>&lt; K, <ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &gt;::type &amp;</type>
+        <definition>variant_alternative&lt; K, variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &gt;::type &amp; nonstd::variants::get</definition>
+        <argsstring>(variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &amp;v, nonstd_lite_in_place_index_t(K)=nonstd_lite_in_place_index(K))</argsstring>
+        <name>get</name>
+        <qualifiedname>nonstd::variants::get</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>nonstd_lite_in_place_index_t(K)</type>
+          <defval>nonstd_lite_in_place_index(K)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2194" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2194" bodyend="2204"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1acee0a14e9cbb7f2f4a40ac925a3decaa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>std::size_t</type>
+            <declname>K</declname>
+            <defname>K</defname>
+          </param>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+          <param>
+            <type>class T8</type>
+          </param>
+          <param>
+            <type>class T9</type>
+          </param>
+          <param>
+            <type>class T10</type>
+          </param>
+          <param>
+            <type>class T11</type>
+          </param>
+          <param>
+            <type>class T12</type>
+          </param>
+          <param>
+            <type>class T13</type>
+          </param>
+          <param>
+            <type>class T14</type>
+          </param>
+          <param>
+            <type>class T15</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structnonstd_1_1variants_1_1variant__alternative" kindref="compound">variant_alternative</ref>&lt; K, <ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &gt;::type const &amp;</type>
+        <definition>variant_alternative&lt; K, variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &gt;::type const  &amp; nonstd::variants::get</definition>
+        <argsstring>(variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;v, nonstd_lite_in_place_index_t(K)=nonstd_lite_in_place_index(K))</argsstring>
+        <name>get</name>
+        <qualifiedname>nonstd::variants::get</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>nonstd_lite_in_place_index_t(K)</type>
+          <defval>nonstd_lite_in_place_index(K)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2209" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2209" bodyend="2219"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a4156da6a4648c5400e2d9d318c555748" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+          <param>
+            <type>class T8</type>
+          </param>
+          <param>
+            <type>class T9</type>
+          </param>
+          <param>
+            <type>class T10</type>
+          </param>
+          <param>
+            <type>class T11</type>
+          </param>
+          <param>
+            <type>class T12</type>
+          </param>
+          <param>
+            <type>class T13</type>
+          </param>
+          <param>
+            <type>class T14</type>
+          </param>
+          <param>
+            <type>class T15</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structnonstd_1_1variants_1_1std11_1_1add__pointer" kindref="compound">std11::add_pointer</ref>&lt; T &gt;::type</type>
+        <definition>std11::add_pointer&lt; T &gt;::type nonstd::variants::get_if</definition>
+        <argsstring>(variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; *pv, nonstd_lite_in_place_type_t(T)=nonstd_lite_in_place_type(T))</argsstring>
+        <name>get_if</name>
+        <qualifiedname>nonstd::variants::get_if</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; *</type>
+          <declname>pv</declname>
+        </param>
+        <param>
+          <type>nonstd_lite_in_place_type_t(T)</type>
+          <defval>nonstd_lite_in_place_type(T)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2271" column="43" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2271" bodyend="2276"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a13b21917b7abef2de10b2c3e4a4ac117" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+          <param>
+            <type>class T8</type>
+          </param>
+          <param>
+            <type>class T9</type>
+          </param>
+          <param>
+            <type>class T10</type>
+          </param>
+          <param>
+            <type>class T11</type>
+          </param>
+          <param>
+            <type>class T12</type>
+          </param>
+          <param>
+            <type>class T13</type>
+          </param>
+          <param>
+            <type>class T14</type>
+          </param>
+          <param>
+            <type>class T15</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structnonstd_1_1variants_1_1std11_1_1add__pointer" kindref="compound">std11::add_pointer</ref>&lt; constT &gt;::type</type>
+        <definition>std11::add_pointer&lt; constT &gt;::type nonstd::variants::get_if</definition>
+        <argsstring>(variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const *pv, nonstd_lite_in_place_type_t(T)=nonstd_lite_in_place_type(T))</argsstring>
+        <name>get_if</name>
+        <qualifiedname>nonstd::variants::get_if</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const *</type>
+          <declname>pv</declname>
+        </param>
+        <param>
+          <type>nonstd_lite_in_place_type_t(T)</type>
+          <defval>nonstd_lite_in_place_type(T)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2281" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2281" bodyend="2286"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1ae2fc6a957b05e5ca8a42dddd0af8c6f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>std::size_t</type>
+            <declname>K</declname>
+            <defname>K</defname>
+          </param>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+          <param>
+            <type>class T8</type>
+          </param>
+          <param>
+            <type>class T9</type>
+          </param>
+          <param>
+            <type>class T10</type>
+          </param>
+          <param>
+            <type>class T11</type>
+          </param>
+          <param>
+            <type>class T12</type>
+          </param>
+          <param>
+            <type>class T13</type>
+          </param>
+          <param>
+            <type>class T14</type>
+          </param>
+          <param>
+            <type>class T15</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structnonstd_1_1variants_1_1std11_1_1add__pointer" kindref="compound">std11::add_pointer</ref>&lt; typenamevariant_alternative&lt; K, <ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &gt;::type &gt;::type</type>
+        <definition>std11::add_pointer&lt; typenamevariant_alternative&lt; K, variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &gt;::type &gt;::type nonstd::variants::get_if</definition>
+        <argsstring>(variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; *pv, nonstd_lite_in_place_index_t(K)=nonstd_lite_in_place_index(K))</argsstring>
+        <name>get_if</name>
+        <qualifiedname>nonstd::variants::get_if</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; *</type>
+          <declname>pv</declname>
+        </param>
+        <param>
+          <type>nonstd_lite_in_place_index_t(K)</type>
+          <defval>nonstd_lite_in_place_index(K)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2292" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2292" bodyend="2295"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1abc8c55fd647a390d6256dfee9cf0d2f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>std::size_t</type>
+            <declname>K</declname>
+            <defname>K</defname>
+          </param>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+          <param>
+            <type>class T8</type>
+          </param>
+          <param>
+            <type>class T9</type>
+          </param>
+          <param>
+            <type>class T10</type>
+          </param>
+          <param>
+            <type>class T11</type>
+          </param>
+          <param>
+            <type>class T12</type>
+          </param>
+          <param>
+            <type>class T13</type>
+          </param>
+          <param>
+            <type>class T14</type>
+          </param>
+          <param>
+            <type>class T15</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structnonstd_1_1variants_1_1std11_1_1add__pointer" kindref="compound">std11::add_pointer</ref>&lt; consttypenamevariant_alternative&lt; K, <ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &gt;::type &gt;::type</type>
+        <definition>std11::add_pointer&lt; consttypenamevariant_alternative&lt; K, variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &gt;::type &gt;::type nonstd::variants::get_if</definition>
+        <argsstring>(variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const *pv, nonstd_lite_in_place_index_t(K)=nonstd_lite_in_place_index(K))</argsstring>
+        <name>get_if</name>
+        <qualifiedname>nonstd::variants::get_if</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const *</type>
+          <declname>pv</declname>
+        </param>
+        <param>
+          <type>nonstd_lite_in_place_index_t(K)</type>
+          <defval>nonstd_lite_in_place_index(K)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2301" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2301" bodyend="2304"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a1b01caeae7425cfbf1d9405ccf785caf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+          <param>
+            <type>class T8</type>
+          </param>
+          <param>
+            <type>class T9</type>
+          </param>
+          <param>
+            <type>class T10</type>
+          </param>
+          <param>
+            <type>class T11</type>
+          </param>
+          <param>
+            <type>class T12</type>
+          </param>
+          <param>
+            <type>class T13</type>
+          </param>
+          <param>
+            <type>class T14</type>
+          </param>
+          <param>
+            <type>class T15</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void nonstd::variants::swap</definition>
+        <argsstring>(variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &amp;a, variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &amp;b)</argsstring>
+        <name>swap</name>
+        <qualifiedname>nonstd::variants::swap</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2327" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2327" bodyend="2334"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a69fb41bbb0207aa8d5ebdc577c20e002" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename R</type>
+          </param>
+          <param>
+            <type>typename Visitor</type>
+          </param>
+          <param>
+            <type>typename V1</type>
+          </param>
+        </templateparamlist>
+        <type>R</type>
+        <definition>R nonstd::variants::visit</definition>
+        <argsstring>(const Visitor &amp;v, V1 const &amp;arg1)</argsstring>
+        <name>visit</name>
+        <qualifiedname>nonstd::variants::visit</qualifiedname>
+        <param>
+          <type>const Visitor &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>V1 const &amp;</type>
+          <declname>arg1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2573" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2573" bodyend="2575"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a0f9ef0fccfe613dd441345063a704c63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename R</type>
+          </param>
+          <param>
+            <type>typename Visitor</type>
+          </param>
+          <param>
+            <type>typename V1</type>
+          </param>
+          <param>
+            <type>typename V2</type>
+          </param>
+        </templateparamlist>
+        <type>R</type>
+        <definition>R nonstd::variants::visit</definition>
+        <argsstring>(const Visitor &amp;v, V1 const &amp;arg1, V2 const &amp;arg2)</argsstring>
+        <name>visit</name>
+        <qualifiedname>nonstd::variants::visit</qualifiedname>
+        <param>
+          <type>const Visitor &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>V1 const &amp;</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>V2 const &amp;</type>
+          <declname>arg2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2577" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2577" bodyend="2579"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a805f96b589b990c507ff9c625612e0b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename R</type>
+          </param>
+          <param>
+            <type>typename Visitor</type>
+          </param>
+          <param>
+            <type>typename V1</type>
+          </param>
+          <param>
+            <type>typename V2</type>
+          </param>
+          <param>
+            <type>typename V3</type>
+          </param>
+        </templateparamlist>
+        <type>R</type>
+        <definition>R nonstd::variants::visit</definition>
+        <argsstring>(const Visitor &amp;v, V1 const &amp;arg1, V2 const &amp;arg2, V3 const &amp;arg3)</argsstring>
+        <name>visit</name>
+        <qualifiedname>nonstd::variants::visit</qualifiedname>
+        <param>
+          <type>const Visitor &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>V1 const &amp;</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>V2 const &amp;</type>
+          <declname>arg2</declname>
+        </param>
+        <param>
+          <type>V3 const &amp;</type>
+          <declname>arg3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2582" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2582" bodyend="2584"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a2dc0b7f61e33f91ea229ea25ef2601ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename R</type>
+          </param>
+          <param>
+            <type>typename Visitor</type>
+          </param>
+          <param>
+            <type>typename V1</type>
+          </param>
+          <param>
+            <type>typename V2</type>
+          </param>
+          <param>
+            <type>typename V3</type>
+          </param>
+          <param>
+            <type>typename V4</type>
+          </param>
+        </templateparamlist>
+        <type>R</type>
+        <definition>R nonstd::variants::visit</definition>
+        <argsstring>(const Visitor &amp;v, V1 const &amp;arg1, V2 const &amp;arg2, V3 const &amp;arg3, V4 const &amp;arg4)</argsstring>
+        <name>visit</name>
+        <qualifiedname>nonstd::variants::visit</qualifiedname>
+        <param>
+          <type>const Visitor &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>V1 const &amp;</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>V2 const &amp;</type>
+          <declname>arg2</declname>
+        </param>
+        <param>
+          <type>V3 const &amp;</type>
+          <declname>arg3</declname>
+        </param>
+        <param>
+          <type>V4 const &amp;</type>
+          <declname>arg4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2587" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2587" bodyend="2589"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a608a5a59ba79206ff36f246e5db28ecd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename R</type>
+          </param>
+          <param>
+            <type>typename Visitor</type>
+          </param>
+          <param>
+            <type>typename V1</type>
+          </param>
+          <param>
+            <type>typename V2</type>
+          </param>
+          <param>
+            <type>typename V3</type>
+          </param>
+          <param>
+            <type>typename V4</type>
+          </param>
+          <param>
+            <type>typename V5</type>
+          </param>
+        </templateparamlist>
+        <type>R</type>
+        <definition>R nonstd::variants::visit</definition>
+        <argsstring>(const Visitor &amp;v, V1 const &amp;arg1, V2 const &amp;arg2, V3 const &amp;arg3, V4 const &amp;arg4, V5 const &amp;arg5)</argsstring>
+        <name>visit</name>
+        <qualifiedname>nonstd::variants::visit</qualifiedname>
+        <param>
+          <type>const Visitor &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>V1 const &amp;</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>V2 const &amp;</type>
+          <declname>arg2</declname>
+        </param>
+        <param>
+          <type>V3 const &amp;</type>
+          <declname>arg3</declname>
+        </param>
+        <param>
+          <type>V4 const &amp;</type>
+          <declname>arg4</declname>
+        </param>
+        <param>
+          <type>V5 const &amp;</type>
+          <declname>arg5</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2592" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2592" bodyend="2594"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a7688fdbd537b73dba94290987cf84b60" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+          <param>
+            <type>class T8</type>
+          </param>
+          <param>
+            <type>class T9</type>
+          </param>
+          <param>
+            <type>class T10</type>
+          </param>
+          <param>
+            <type>class T11</type>
+          </param>
+          <param>
+            <type>class T12</type>
+          </param>
+          <param>
+            <type>class T13</type>
+          </param>
+          <param>
+            <type>class T14</type>
+          </param>
+          <param>
+            <type>class T15</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool nonstd::variants::operator==</definition>
+        <argsstring>(variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;v, variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;w)</argsstring>
+        <name>operator==</name>
+        <qualifiedname>nonstd::variants::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;</type>
+          <declname>w</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2688" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2688" bodyend="2696"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a76c854388f2fa573edd87e86947f00a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+          <param>
+            <type>class T8</type>
+          </param>
+          <param>
+            <type>class T9</type>
+          </param>
+          <param>
+            <type>class T10</type>
+          </param>
+          <param>
+            <type>class T11</type>
+          </param>
+          <param>
+            <type>class T12</type>
+          </param>
+          <param>
+            <type>class T13</type>
+          </param>
+          <param>
+            <type>class T14</type>
+          </param>
+          <param>
+            <type>class T15</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool nonstd::variants::operator!=</definition>
+        <argsstring>(variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;v, variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;w)</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>nonstd::variants::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;</type>
+          <declname>w</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2700" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2700" bodyend="2703"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a9d8ce4a943a3eac5325991e960a17b0f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+          <param>
+            <type>class T8</type>
+          </param>
+          <param>
+            <type>class T9</type>
+          </param>
+          <param>
+            <type>class T10</type>
+          </param>
+          <param>
+            <type>class T11</type>
+          </param>
+          <param>
+            <type>class T12</type>
+          </param>
+          <param>
+            <type>class T13</type>
+          </param>
+          <param>
+            <type>class T14</type>
+          </param>
+          <param>
+            <type>class T15</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool nonstd::variants::operator&lt;</definition>
+        <argsstring>(variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;v, variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;w)</argsstring>
+        <name>operator&lt;</name>
+        <qualifiedname>nonstd::variants::operator&lt;</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;</type>
+          <declname>w</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2707" column="8" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2707" bodyend="2719"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a0f9f03c0ceb62225274e601f3ae772ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+          <param>
+            <type>class T8</type>
+          </param>
+          <param>
+            <type>class T9</type>
+          </param>
+          <param>
+            <type>class T10</type>
+          </param>
+          <param>
+            <type>class T11</type>
+          </param>
+          <param>
+            <type>class T12</type>
+          </param>
+          <param>
+            <type>class T13</type>
+          </param>
+          <param>
+            <type>class T14</type>
+          </param>
+          <param>
+            <type>class T15</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool nonstd::variants::operator&gt;</definition>
+        <argsstring>(variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;v, variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;w)</argsstring>
+        <name>operator&gt;</name>
+        <qualifiedname>nonstd::variants::operator&gt;</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;</type>
+          <declname>w</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2723" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2723" bodyend="2726"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a633b708776998bfeec250e2a0d46faba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+          <param>
+            <type>class T8</type>
+          </param>
+          <param>
+            <type>class T9</type>
+          </param>
+          <param>
+            <type>class T10</type>
+          </param>
+          <param>
+            <type>class T11</type>
+          </param>
+          <param>
+            <type>class T12</type>
+          </param>
+          <param>
+            <type>class T13</type>
+          </param>
+          <param>
+            <type>class T14</type>
+          </param>
+          <param>
+            <type>class T15</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool nonstd::variants::operator&lt;=</definition>
+        <argsstring>(variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;v, variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;w)</argsstring>
+        <name>operator&lt;=</name>
+        <qualifiedname>nonstd::variants::operator&lt;=</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;</type>
+          <declname>w</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2730" column="8" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2730" bodyend="2733"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a1adc1870ca23954c03900b88c1ea0f92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+          <param>
+            <type>class T8</type>
+          </param>
+          <param>
+            <type>class T9</type>
+          </param>
+          <param>
+            <type>class T10</type>
+          </param>
+          <param>
+            <type>class T11</type>
+          </param>
+          <param>
+            <type>class T12</type>
+          </param>
+          <param>
+            <type>class T13</type>
+          </param>
+          <param>
+            <type>class T14</type>
+          </param>
+          <param>
+            <type>class T15</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool nonstd::variants::operator&gt;=</definition>
+        <argsstring>(variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;v, variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;w)</argsstring>
+        <name>operator&gt;=</name>
+        <qualifiedname>nonstd::variants::operator&gt;=</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type><ref refid="classnonstd_1_1variants_1_1variant" kindref="compound">variant</ref>&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; const &amp;</type>
+          <declname>w</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2737" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2737" bodyend="2740"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="183" column="1"/>
+  </compounddef>
+</doxygen>

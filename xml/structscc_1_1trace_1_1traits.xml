@@ -1,0 +1,356 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1trace_1_1traits" kind="struct" language="C++" prot="public">
+    <compoundname>scc::trace::traits</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1a9211c7262b64ed993f66bbeb9089b25c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>trace_type</type>
+        <definition>static trace_type scc::trace::traits&lt; T &gt;::get_type</definition>
+        <argsstring>()</argsstring>
+        <name>get_type</name>
+        <qualifiedname>scc::trace::traits::get_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="33" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1aef33780f2a20ccea1a9ad53f854c15c1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>static unsigned scc::trace::traits&lt; T &gt;::get_bits</definition>
+        <argsstring>(T const &amp;)</argsstring>
+        <name>get_bits</name>
+        <qualifiedname>scc::trace::traits::get_bits</qualifiedname>
+        <param>
+          <type>T const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="34" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="34" bodyend="34"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1a9eb2e32d0102f08176473f9348cd6b2f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>trace_type</type>
+        <definition>trace_type scc::trace::traits&lt; sc_dt::sc_fxval &gt;::get_type</definition>
+        <argsstring>()</argsstring>
+        <name>get_type</name>
+        <qualifiedname>scc::trace::traits::get_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="37" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1aaacc06ec3f02806b2d3e62222ae79527" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>trace_type</type>
+        <definition>trace_type scc::trace::traits&lt; sc_dt::sc_fxval_fast &gt;::get_type</definition>
+        <argsstring>()</argsstring>
+        <name>get_type</name>
+        <qualifiedname>scc::trace::traits::get_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="38" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1afd27038bdbc8ebbacc5bcda3f8d6eb58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>trace_type</type>
+        <definition>trace_type scc::trace::traits&lt; sc_dt::sc_fxnum &gt;::get_type</definition>
+        <argsstring>()</argsstring>
+        <name>get_type</name>
+        <qualifiedname>scc::trace::traits::get_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="39" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="39" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1a4a58bbc93beaef7f535fce35a34404db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>trace_type</type>
+        <definition>trace_type scc::trace::traits&lt; sc_dt::sc_fxnum_fast &gt;::get_type</definition>
+        <argsstring>()</argsstring>
+        <name>get_type</name>
+        <qualifiedname>scc::trace::traits::get_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="40" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1ab9e7e06915b580cde6fefa15d6f8fdad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::trace::traits&lt; bool &gt;::get_bits</definition>
+        <argsstring>(bool const &amp;)</argsstring>
+        <name>get_bits</name>
+        <qualifiedname>scc::trace::traits::get_bits</qualifiedname>
+        <param>
+          <type>bool const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="42" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1a6218fc97a725565897a0d7e033fca308" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::trace::traits&lt; sc_dt::sc_bit &gt;::get_bits</definition>
+        <argsstring>(sc_dt::sc_bit const &amp;)</argsstring>
+        <name>get_bits</name>
+        <qualifiedname>scc::trace::traits::get_bits</qualifiedname>
+        <param>
+          <type>sc_dt::sc_bit const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="43" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1a54216539e22f8df91db6f30813c88feb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::trace::traits&lt; sc_dt::sc_logic &gt;::get_bits</definition>
+        <argsstring>(sc_dt::sc_logic const &amp;)</argsstring>
+        <name>get_bits</name>
+        <qualifiedname>scc::trace::traits::get_bits</qualifiedname>
+        <param>
+          <type>sc_dt::sc_logic const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="44" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1a7a4ecad575da98302fd818b1846946eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::trace::traits&lt; sc_dt::sc_bv_base &gt;::get_bits</definition>
+        <argsstring>(sc_dt::sc_bv_base const &amp;o)</argsstring>
+        <name>get_bits</name>
+        <qualifiedname>scc::trace::traits::get_bits</qualifiedname>
+        <param>
+          <type>sc_dt::sc_bv_base const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="45" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1a20d3e640c4d0d9e305e99ca8f6034aaf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::trace::traits&lt; sc_dt::sc_lv_base &gt;::get_bits</definition>
+        <argsstring>(sc_dt::sc_lv_base const &amp;o)</argsstring>
+        <name>get_bits</name>
+        <qualifiedname>scc::trace::traits::get_bits</qualifiedname>
+        <param>
+          <type>sc_dt::sc_lv_base const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="46" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1a59f17018c91e86f06b60eb5a9477cfd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::trace::traits&lt; sc_dt::sc_int_base &gt;::get_bits</definition>
+        <argsstring>(sc_dt::sc_int_base const &amp;o)</argsstring>
+        <name>get_bits</name>
+        <qualifiedname>scc::trace::traits::get_bits</qualifiedname>
+        <param>
+          <type>sc_dt::sc_int_base const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="47" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1a56cd0fbe7dcb267f73e01af91a9079e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::trace::traits&lt; sc_dt::sc_uint_base &gt;::get_bits</definition>
+        <argsstring>(sc_dt::sc_uint_base const &amp;o)</argsstring>
+        <name>get_bits</name>
+        <qualifiedname>scc::trace::traits::get_bits</qualifiedname>
+        <param>
+          <type>sc_dt::sc_uint_base const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="48" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1a0227277342a0308aec99bdedfe0a93f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::trace::traits&lt; sc_dt::sc_signed &gt;::get_bits</definition>
+        <argsstring>(sc_dt::sc_signed const &amp;o)</argsstring>
+        <name>get_bits</name>
+        <qualifiedname>scc::trace::traits::get_bits</qualifiedname>
+        <param>
+          <type>sc_dt::sc_signed const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="49" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1aa79158506f39f8f8b0f77db1efb884e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::trace::traits&lt; sc_dt::sc_unsigned &gt;::get_bits</definition>
+        <argsstring>(sc_dt::sc_unsigned const &amp;o)</argsstring>
+        <name>get_bits</name>
+        <qualifiedname>scc::trace::traits::get_bits</qualifiedname>
+        <param>
+          <type>sc_dt::sc_unsigned const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="50" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1a3f53b9fb3ff7bff6bd33cb0cbe41ffac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::trace::traits&lt; sc_dt::sc_fxval &gt;::get_bits</definition>
+        <argsstring>(sc_dt::sc_fxval const &amp;)</argsstring>
+        <name>get_bits</name>
+        <qualifiedname>scc::trace::traits::get_bits</qualifiedname>
+        <param>
+          <type>sc_dt::sc_fxval const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="51" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1ae93a7d790e6111458b5c8515e83e51d5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::trace::traits&lt; sc_dt::sc_fxval_fast &gt;::get_bits</definition>
+        <argsstring>(sc_dt::sc_fxval_fast const &amp;)</argsstring>
+        <name>get_bits</name>
+        <qualifiedname>scc::trace::traits::get_bits</qualifiedname>
+        <param>
+          <type>sc_dt::sc_fxval_fast const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="52" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1abd333f65dd1a8b402487ae477571373f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::trace::traits&lt; sc_dt::sc_fxnum &gt;::get_bits</definition>
+        <argsstring>(sc_dt::sc_fxnum const &amp;)</argsstring>
+        <name>get_bits</name>
+        <qualifiedname>scc::trace::traits::get_bits</qualifiedname>
+        <param>
+          <type>sc_dt::sc_fxnum const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="55" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1traits_1a9cb020868db295a61e1da9fb59b6a660" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::trace::traits&lt; sc_dt::sc_fxnum_fast &gt;::get_bits</definition>
+        <argsstring>(sc_dt::sc_fxnum_fast const &amp;o)</argsstring>
+        <name>get_bits</name>
+        <qualifiedname>scc::trace::traits::get_bits</qualifiedname>
+        <param>
+          <type>sc_dt::sc_fxnum_fast const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="56" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="56" bodyend="56"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="32" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="32" bodyend="35"/>
+    <listofallmembers>
+      <member refid="structscc_1_1trace_1_1traits_1aef33780f2a20ccea1a9ad53f854c15c1" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_bits</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1ab9e7e06915b580cde6fefa15d6f8fdad" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_bits</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1a6218fc97a725565897a0d7e033fca308" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_bits</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1a54216539e22f8df91db6f30813c88feb" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_bits</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1a7a4ecad575da98302fd818b1846946eb" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_bits</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1a20d3e640c4d0d9e305e99ca8f6034aaf" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_bits</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1a59f17018c91e86f06b60eb5a9477cfd8" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_bits</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1a56cd0fbe7dcb267f73e01af91a9079e9" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_bits</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1a0227277342a0308aec99bdedfe0a93f3" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_bits</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1aa79158506f39f8f8b0f77db1efb884e7" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_bits</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1a3f53b9fb3ff7bff6bd33cb0cbe41ffac" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_bits</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1ae93a7d790e6111458b5c8515e83e51d5" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_bits</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1abd333f65dd1a8b402487ae477571373f" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_bits</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1a9cb020868db295a61e1da9fb59b6a660" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_bits</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1a9211c7262b64ed993f66bbeb9089b25c" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_type</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1a9eb2e32d0102f08176473f9348cd6b2f" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_type</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1aaacc06ec3f02806b2d3e62222ae79527" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_type</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1afd27038bdbc8ebbacc5bcda3f8d6eb58" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_type</name></member>
+      <member refid="structscc_1_1trace_1_1traits_1a4a58bbc93beaef7f535fce35a34404db" prot="public" virt="non-virtual"><scope>scc::trace::traits</scope><name>get_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1ext__attribute" kind="class" language="C++" prot="public">
+    <compoundname>scc::ext_attribute</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_attribute&lt; T &gt;</basecompoundref>
+    <includes refid="ext__attribute_8h" local="no">ext_attribute.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classscc_1_1ext__attribute_1a38636fda05671423045e2a0f49e4dcdc" prot="public" static="no">
+        <type>sc_core::sc_attribute&lt; T &gt;</type>
+        <definition>using scc::ext_attribute&lt; T &gt;::base_type =  sc_core::sc_attribute&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>base_type</name>
+        <qualifiedname>scc::ext_attribute::base_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ext_attribute.h" line="41" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ext_attribute.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classscc_1_1ext__attribute_1af35c55ab9286e3e905b362066b08e308" prot="public" static="no" mutable="no">
+        <type>const sc_core::sc_module *</type>
+        <definition>const sc_core::sc_module* scc::ext_attribute&lt; T &gt;::owner</definition>
+        <argsstring></argsstring>
+        <name>owner</name>
+        <qualifiedname>scc::ext_attribute::owner</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the owner of this attribute (a backward reference) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ext_attribute.h" line="80" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ext_attribute.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1ext__attribute_1adaa716a4eaf4a609ce0402bb4da8924f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::ext_attribute&lt; T &gt;::ext_attribute</definition>
+        <argsstring>(const std::string &amp;name_, sc_core::sc_module *owner)</argsstring>
+        <name>ext_attribute</name>
+        <qualifiedname>scc::ext_attribute::ext_attribute</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name_</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_module *</type>
+          <declname>owner</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>create an extended attribute based on name and owner with default value</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name_</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>owner</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ext_attribute.h" line="48" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ext_attribute.h" bodystart="48" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1ext__attribute_1ac301bb0ec0bafbac9d896e61fdd138fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::ext_attribute&lt; T &gt;::ext_attribute</definition>
+        <argsstring>(const std::string &amp;name_, const T &amp;value_, sc_core::sc_module *owner)</argsstring>
+        <name>ext_attribute</name>
+        <qualifiedname>scc::ext_attribute::ext_attribute</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name_</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value_</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_module *</type>
+          <declname>owner</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>create an extended attribute based on name, value and owner</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name_</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value_</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>owner</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ext_attribute.h" line="61" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ext_attribute.h" bodystart="61" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1ext__attribute_1a4603dd6236ff618f3cb081ca10b4dbce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::ext_attribute&lt; T &gt;::ext_attribute</definition>
+        <argsstring>(const ext_attribute&lt; T &gt; &amp;a)=delete</argsstring>
+        <name>ext_attribute</name>
+        <qualifiedname>scc::ext_attribute::ext_attribute</qualifiedname>
+        <param>
+          <type>const ext_attribute&lt; T &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>no copy constructor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ext_attribute.h" line="72" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1ext__attribute_1aa56016653b90ea8778827a47d86c8fbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::ext_attribute&lt; T &gt;::~ext_attribute</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ext_attribute</name>
+        <qualifiedname>scc::ext_attribute::~ext_attribute</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>a default destructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ext_attribute.h" line="76" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>extended sc_attribute </para>
+    </briefdescription>
+    <detaileddescription>
+<para>extended attribute inheriting from sc_attribute. The attribute consults with the <ref refid="classscc_1_1configurer" kindref="compound">scc::configurer</ref> to retrieve a default value upon construction</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type name of value to hold in the attribute </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_attribute&lt; T &gt;</label>
+      </node>
+      <node id="1">
+        <label>scc::ext_attribute&lt; T &gt;</label>
+        <link refid="classscc_1_1ext__attribute"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_attribute&lt; T &gt;</label>
+      </node>
+      <node id="1">
+        <label>scc::ext_attribute&lt; T &gt;</label>
+        <link refid="classscc_1_1ext__attribute"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ext_attribute.h" line="39" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ext_attribute.h" bodystart="39" bodyend="81"/>
+    <listofallmembers>
+      <member refid="classscc_1_1ext__attribute_1a38636fda05671423045e2a0f49e4dcdc" prot="public" virt="non-virtual"><scope>scc::ext_attribute</scope><name>base_type</name></member>
+      <member refid="classscc_1_1ext__attribute_1adaa716a4eaf4a609ce0402bb4da8924f" prot="public" virt="non-virtual"><scope>scc::ext_attribute</scope><name>ext_attribute</name></member>
+      <member refid="classscc_1_1ext__attribute_1ac301bb0ec0bafbac9d896e61fdd138fd" prot="public" virt="non-virtual"><scope>scc::ext_attribute</scope><name>ext_attribute</name></member>
+      <member refid="classscc_1_1ext__attribute_1a4603dd6236ff618f3cb081ca10b4dbce" prot="public" virt="non-virtual"><scope>scc::ext_attribute</scope><name>ext_attribute</name></member>
+      <member refid="classscc_1_1ext__attribute_1af35c55ab9286e3e905b362066b08e308" prot="public" virt="non-virtual"><scope>scc::ext_attribute</scope><name>owner</name></member>
+      <member refid="classscc_1_1ext__attribute_1aa56016653b90ea8778827a47d86c8fbc" prot="public" virt="non-virtual"><scope>scc::ext_attribute</scope><name>~ext_attribute</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

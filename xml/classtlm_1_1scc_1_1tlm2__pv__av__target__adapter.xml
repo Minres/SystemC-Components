@@ -1,0 +1,482 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::tlm2_pv_av_target_adapter</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_fw_transport_if&lt; tlm_base_protocol_types &gt;</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_bw_transport_if&lt; tlm_base_protocol_types &gt;</basecompoundref>
+    <includes refid="tlm2__pv__av_8h" local="no">tlm2_pv_av.h</includes>
+    <templateparamlist>
+      <param>
+        <type>unsigned int</type>
+        <declname>BUSWIDTH</declname>
+        <defname>BUSWIDTH</defname>
+        <defval>32</defval>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval>tlm_base_protocol_types</defval>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>N</declname>
+        <defname>N</defname>
+        <defval>1</defval>
+      </param>
+      <param>
+        <type>sc_core::sc_port_policy</type>
+        <declname>POL</declname>
+        <defname>POL</defname>
+        <defval>sc_core::SC_ONE_OR_MORE_BOUND</defval>
+      </param>
+      <param>
+        <type>typename TSOCKET_TYPE</type>
+        <defval>tlm::tlm_target_socket&lt;BUSWIDTH, TYPES, N, POL&gt;</defval>
+      </param>
+      <param>
+        <type>typename ISOCKET_TYPE</type>
+        <defval>tlm::tlm_initiator_socket&lt;BUSWIDTH, TYPES, N, POL&gt;</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a91677e77b3687b0afd5d970f02af54af" prot="public" static="no">
+        <type>typename TYPES::tlm_payload_type</type>
+        <definition>using tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::tlm_payload_type =  typename TYPES::tlm_payload_type</definition>
+        <argsstring></argsstring>
+        <name>tlm_payload_type</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::tlm_payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="44" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1aee82cca95a3c244b672eed1177913126" prot="public" static="no">
+        <type>typename TYPES::tlm_phase_type</type>
+        <definition>using tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::tlm_phase_type =  typename TYPES::tlm_phase_type</definition>
+        <argsstring></argsstring>
+        <name>tlm_phase_type</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::tlm_phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="45" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1af37997d42a61b17c8d249fca2c8a2134" prot="public" static="no">
+        <type>TSOCKET_TYPE</type>
+        <definition>using tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::target_socket_type =  TSOCKET_TYPE</definition>
+        <argsstring></argsstring>
+        <name>target_socket_type</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::target_socket_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="46" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a4a11013df070b14fcd6a48f8d32d7d90" prot="public" static="no">
+        <type>ISOCKET_TYPE</type>
+        <definition>using tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::initiator_socket_type =  ISOCKET_TYPE</definition>
+        <argsstring></argsstring>
+        <name>initiator_socket_type</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::initiator_socket_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="47" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1af322fd335a0129794fcddc5f7decabc5" prot="public" static="no" mutable="no">
+        <type>target_socket_type</type>
+        <definition>target_socket_type tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::tsck</definition>
+        <argsstring></argsstring>
+        <name>tsck</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::tsck</qualifiedname>
+        <initializer>{&quot;tsck&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the TLM2 target socket </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="51" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="51" bodyend="51"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a1de7433e4d2c23996c2575f14009e326" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; initiator_socket_type &gt;</type>
+        <definition>std::unique_ptr&lt;initiator_socket_type&gt; tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::pv_isck</definition>
+        <argsstring></argsstring>
+        <name>pv_isck</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::pv_isck</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="128" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a095d6e15e37f7f51d6e9dbbca5d8482d" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; initiator_socket_type &gt;</type>
+        <definition>std::unique_ptr&lt;initiator_socket_type&gt; tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::av_isck</definition>
+        <argsstring></argsstring>
+        <name>av_isck</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::av_isck</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="129" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a2de4251788f55d651091390a2ae9ac5c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::tlm2_pv_av_target_adapter</definition>
+        <argsstring>()</argsstring>
+        <name>tlm2_pv_av_target_adapter</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::tlm2_pv_av_target_adapter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor with default name. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="56" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="56" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a0fa55aec1284b4e6bfc2f2866c14a8ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::tlm2_pv_av_target_adapter</definition>
+        <argsstring>(sc_core::sc_module_name const &amp;nm)</argsstring>
+        <name>tlm2_pv_av_target_adapter</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::tlm2_pv_av_target_adapter</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the module. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="63" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="63" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a5df6bf6b05dc4da5f7ac0a059bc5331a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::bind_pv</definition>
+        <argsstring>(target_socket_type &amp;tsck)</argsstring>
+        <name>bind_pv</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::bind_pv</qualifiedname>
+        <param>
+          <type>target_socket_type &amp;</type>
+          <declname>tsck</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Binds the pv initiator socket of the adapter to the given target socket. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tsck</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target socket to bind to. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="71" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="71" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1ad0f9b7bae9b7749247e8d28441edfeea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::bind_av</definition>
+        <argsstring>(TSOCKET_TYPE &amp;tsck)</argsstring>
+        <name>bind_av</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::bind_av</qualifiedname>
+        <param>
+          <type>TSOCKET_TYPE &amp;</type>
+          <declname>tsck</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Binds the av initiator socket of adapter to the given target socket. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tsck</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target socket to bind to. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="80" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="80" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a34decc7dfd65b50fe19785ac4912b01f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::~tlm2_pv_av_target_adapter</definition>
+        <argsstring>()=default</argsstring>
+        <name>~tlm2_pv_av_target_adapter</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::~tlm2_pv_av_target_adapter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>virtual destructor. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="88" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a66c61e58a6dccfa1cac118b63adbfc6e" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::nb_transport_fw</definition>
+        <argsstring>(tlm_payload_type &amp;trans, tlm_phase_type &amp;phase, sc_core::sc_time &amp;t)</argsstring>
+        <name>nb_transport_fw</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::nb_transport_fw</qualifiedname>
+        <param>
+          <type>tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>tlm_phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="91" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="91" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1af4d4d52cd61cf66a28af116518d05aba" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::b_transport</definition>
+        <argsstring>(tlm_payload_type &amp;trans, sc_core::sc_time &amp;t)</argsstring>
+        <name>b_transport</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::b_transport</qualifiedname>
+        <param>
+          <type>tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="98" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="98" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a63a1f48a0feacf82a75b3cbdd8c89937" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::get_direct_mem_ptr</definition>
+        <argsstring>(tlm_payload_type &amp;trans, tlm_dmi &amp;dmi_data)</argsstring>
+        <name>get_direct_mem_ptr</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::get_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>tlm_dmi &amp;</type>
+          <declname>dmi_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="105" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="105" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1ac3e1c60ec712b5f4a559e6a1093c7a1b" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::transport_dbg</definition>
+        <argsstring>(tlm_payload_type &amp;trans)</argsstring>
+        <name>transport_dbg</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::transport_dbg</qualifiedname>
+        <param>
+          <type>tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="113" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="113" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1ac0ea59ffc3ccc6cadc5624ff5d6a3519" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::nb_transport_bw</definition>
+        <argsstring>(tlm_payload_type &amp;trans, tlm_phase_type &amp;phase, sc_core::sc_time &amp;t)</argsstring>
+        <name>nb_transport_bw</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::nb_transport_bw</qualifiedname>
+        <param>
+          <type>tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>tlm_phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="120" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="120" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1aad4194c03d8c6519127a7607fc15eb1c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;::invalidate_direct_mem_ptr</definition>
+        <argsstring>(sc_dt::uint64 start_range, sc_dt::uint64 end_range)</argsstring>
+        <name>invalidate_direct_mem_ptr</name>
+        <qualifiedname>tlm::scc::tlm2_pv_av_target_adapter::invalidate_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>start_range</declname>
+        </param>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>end_range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="124" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="124" bodyend="126"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A simple target adapter that splits incoming requests into AV and PV requests. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This adapter can be used to connect a TLM2_PV_AV initiator to a TLM2_AV and/or TLM2_PV target. It splits incoming requests into AV and PV requests based on the access type (blocking/non-blocking).</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>BUSWIDTH</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The width of the data bus in bits. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;</label>
+        <link refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_bw_transport_if&lt; tlm_base_protocol_types &gt;</label>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_fw_transport_if&lt; tlm_base_protocol_types &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;</label>
+        <link refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_bw_transport_if&lt; tlm_base_protocol_types &gt;</label>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_fw_transport_if&lt; tlm_base_protocol_types &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" line="40" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h" bodystart="42" bodyend="130"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a095d6e15e37f7f51d6e9dbbca5d8482d" prot="private" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>av_isck</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1af4d4d52cd61cf66a28af116518d05aba" prot="private" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>b_transport</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1ad0f9b7bae9b7749247e8d28441edfeea" prot="public" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>bind_av</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a5df6bf6b05dc4da5f7ac0a059bc5331a" prot="public" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>bind_pv</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a63a1f48a0feacf82a75b3cbdd8c89937" prot="private" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>get_direct_mem_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a4a11013df070b14fcd6a48f8d32d7d90" prot="public" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>initiator_socket_type</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1aad4194c03d8c6519127a7607fc15eb1c" prot="private" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>invalidate_direct_mem_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1ac0ea59ffc3ccc6cadc5624ff5d6a3519" prot="private" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>nb_transport_bw</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a66c61e58a6dccfa1cac118b63adbfc6e" prot="private" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>nb_transport_fw</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a1de7433e4d2c23996c2575f14009e326" prot="private" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>pv_isck</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1af37997d42a61b17c8d249fca2c8a2134" prot="public" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>target_socket_type</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a2de4251788f55d651091390a2ae9ac5c" prot="public" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>tlm2_pv_av_target_adapter</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a0fa55aec1284b4e6bfc2f2866c14a8ea" prot="public" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>tlm2_pv_av_target_adapter</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a91677e77b3687b0afd5d970f02af54af" prot="public" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>tlm_payload_type</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1aee82cca95a3c244b672eed1177913126" prot="public" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>tlm_phase_type</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1ac3e1c60ec712b5f4a559e6a1093c7a1b" prot="private" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>transport_dbg</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1af322fd335a0129794fcddc5f7decabc5" prot="public" virt="non-virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>tsck</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a34decc7dfd65b50fe19785ac4912b01f" prot="public" virt="virtual"><scope>tlm::scc::tlm2_pv_av_target_adapter</scope><name>~tlm2_pv_av_target_adapter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

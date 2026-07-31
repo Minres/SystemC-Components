@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1tlm__mm" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::tlm_mm</compoundname>
+    <basecompoundref refid="classtlm_1_1scc_1_1tlm__mm__t" prot="public" virt="non-virtual">tlm::scc::tlm_mm_t&lt; tlm_base_protocol_types, true, std::conditional&lt; std::is_base_of&lt; tlm::tlm_generic_payload, tlm_base_protocol_types::tlm_payload_type &gt;::value, tlm::tlm_mm_interface, tlm_mm_traits&lt; tlm_base_protocol_types &gt;::mm_if_type &gt;::type &gt;</basecompoundref>
+    <includes refid="tlm__mm_8h" local="no">tlm_mm.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+        <defval>tlm_base_protocol_types</defval>
+      </param>
+      <param>
+        <type>bool</type>
+        <declname>CLEANUP_DATA</declname>
+        <defname>CLEANUP_DATA</defname>
+        <defval>true</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__mm_1ad96d412a19c84b6d945e939d313f361a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structtlm_1_1scc_1_1tlm__mm" kindref="compound">tlm_mm</ref> &amp;</type>
+        <definition>tlm_mm&lt; TYPES, CLEANUP_DATA &gt; &amp; tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;::get</definition>
+        <argsstring>()</argsstring>
+        <name>get</name>
+        <qualifiedname>tlm::scc::tlm_mm::get</qualifiedname>
+        <briefdescription>
+<para>accessor function of the singleton </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="335" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="338" bodyend="341"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>a tlm memory manager </para>
+    </briefdescription>
+    <detaileddescription>
+<para>a tlm payload memory manager as singleton</para>
+<para>This memory manager can be used as singleton or as local memory manager. It uses the pool_allocator as singleton to maximize reuse</para>
+<para>This memory manager can be used as singleton. It uses the pool_allocator as singleton to maximize reuse </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>std::conditional&lt; std::is_base_of&lt; tlm::tlm_generic_payload, tlm_base_protocol_types::tlm_payload_type &gt;::value, tlm::tlm_mm_interface, tlm_mm_traits&lt; tlm_base_protocol_types &gt;::mm_if_type &gt;::type</label>
+      </node>
+      <node id="1">
+        <label>tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__mm"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::tlm_mm_t&lt; tlm_base_protocol_types, true, std::conditional&lt; std::is_base_of&lt; tlm::tlm_generic_payload, tlm_base_protocol_types::tlm_payload_type &gt;::value, tlm::tlm_mm_interface, tlm_mm_traits&lt; tlm_base_protocol_types &gt;::mm_if_type &gt;::type &gt;</label>
+        <link refid="classtlm_1_1scc_1_1tlm__mm__t"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>std::conditional&lt; std::is_base_of&lt; tlm::tlm_generic_payload, tlm_base_protocol_types::tlm_payload_type &gt;::value, tlm::tlm_mm_interface, tlm_mm_traits&lt; tlm_base_protocol_types &gt;::mm_if_type &gt;::type</label>
+      </node>
+      <node id="1">
+        <label>tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__mm"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::tlm_mm_t&lt; tlm_base_protocol_types, true, std::conditional&lt; std::is_base_of&lt; tlm::tlm_generic_payload, tlm_base_protocol_types::tlm_payload_type &gt;::value, tlm::tlm_mm_interface, tlm_mm_traits&lt; tlm_base_protocol_types &gt;::mm_if_type &gt;::type &gt;</label>
+        <link refid="classtlm_1_1scc_1_1tlm__mm__t"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="327" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="330" bodyend="336"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1af66490a12805bd7712add347b7c938fc" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm</scope><name>allocate</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1ac0414b08b6fd2e414db68b2e7b6255a1" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm</scope><name>free</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__mm_1ad96d412a19c84b6d945e939d313f361a" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm</scope><name>get</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1adc52bc8bd4d5e293910353bc88a60688" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm</scope><name>operator=</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1a3bdae6df2c3950aea908157f73c96dd0" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm</scope><name>tlm_mm_t</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1ac434bf5f88a8c0dfadbb754e3028a719" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm</scope><name>~tlm_mm_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

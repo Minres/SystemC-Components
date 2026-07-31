@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>tlm::scc::lwtr::lwtr4tlm2_extension_registry_if</compoundname>
+    <includes refid="lwtr4tlm2__extension__registry_8h" local="no">lwtr4tlm2_extension_registry.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+        <defval>tlm::tlm_base_protocol_types</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if_1ae72d3fa9889743d4bd4b8cb807a3b01d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void tlm::scc::lwtr::lwtr4tlm2_extension_registry_if&lt; TYPES &gt;::recordBeginTx</definition>
+        <argsstring>(::lwtr::tx_handle &amp;handle, typename TYPES::tlm_payload_type &amp;trans)=0</argsstring>
+        <name>recordBeginTx</name>
+        <qualifiedname>tlm::scc::lwtr::lwtr4tlm2_extension_registry_if::recordBeginTx</qualifiedname>
+        <reimplementedby refid="classtlm_1_1scc_1_1lwtr_1_1tlm__id__ext__recording_1a4f206de074c92b529f9ddb9b985cd903">recordBeginTx</reimplementedby>
+        <param>
+          <type>::lwtr::tx_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+<para>recording attributes in extensions at the beginning, it is intended to be overload as it does nothing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" line="40" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if_1a7f29770201f0f1539b77c30992c87b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void tlm::scc::lwtr::lwtr4tlm2_extension_registry_if&lt; TYPES &gt;::recordEndTx</definition>
+        <argsstring>(::lwtr::tx_handle &amp;handle, typename TYPES::tlm_payload_type &amp;trans)=0</argsstring>
+        <name>recordEndTx</name>
+        <qualifiedname>tlm::scc::lwtr::lwtr4tlm2_extension_registry_if::recordEndTx</qualifiedname>
+        <reimplementedby refid="classtlm_1_1scc_1_1lwtr_1_1tlm__id__ext__recording_1ad7238120be40b7f8cb8b5234e1552b10">recordEndTx</reimplementedby>
+        <param>
+          <type>::lwtr::tx_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+<para>recording attributes in extensions at the end, it is intended to be overload as it does nothing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" line="46" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if_1a0fefc09af4ce9a015fb438ce5fefb44c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual tlm::scc::lwtr::lwtr4tlm2_extension_registry_if&lt; TYPES &gt;::~lwtr4tlm2_extension_registry_if</definition>
+        <argsstring>()=default</argsstring>
+        <name>~lwtr4tlm2_extension_registry_if</name>
+        <qualifiedname>tlm::scc::lwtr::lwtr4tlm2_extension_registry_if::~lwtr4tlm2_extension_registry_if</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" line="48" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The TLM transaction extensions recorder interface. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This interface is used by the TLM transaction recorder. It can be used to register custom recorder functionality to also record the payload extensions </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" line="34" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" bodystart="34" bodyend="49"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if_1ae72d3fa9889743d4bd4b8cb807a3b01d" prot="public" virt="pure-virtual"><scope>tlm::scc::lwtr::lwtr4tlm2_extension_registry_if</scope><name>recordBeginTx</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if_1a7f29770201f0f1539b77c30992c87b51" prot="public" virt="pure-virtual"><scope>tlm::scc::lwtr::lwtr4tlm2_extension_registry_if</scope><name>recordEndTx</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if_1a0fefc09af4ce9a015fb438ce5fefb44c" prot="public" virt="virtual"><scope>tlm::scc::lwtr::lwtr4tlm2_extension_registry_if</scope><name>~lwtr4tlm2_extension_registry_if</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

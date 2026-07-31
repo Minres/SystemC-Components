@@ -1,0 +1,271 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structchi_1_1common" kind="struct" language="C++" prot="public">
+    <compoundname>chi::common</compoundname>
+    <includes refid="chi__tlm_8h" local="no">chi_tlm.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structchi_1_1common_1a4d68265efc1c46209be03713a08b7b5f" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t chi::common::qos</definition>
+        <argsstring></argsstring>
+        <name>qos</name>
+        <qualifiedname>chi::common::qos</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="408" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="408" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1common_1a0a5e744cdb9f6ad7d7ddea857d66ab25" prot="private" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t chi::common::src_id</definition>
+        <argsstring></argsstring>
+        <name>src_id</name>
+        <qualifiedname>chi::common::src_id</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="409" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="409" bodyend="409"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1common_1a438effe4e9ba275a3ab621f051f81e78" prot="private" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t chi::common::txn_id</definition>
+        <argsstring></argsstring>
+        <name>txn_id</name>
+        <qualifiedname>chi::common::txn_id</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="410" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="410" bodyend="410"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structchi_1_1common_1a20dbee656da681b4b990c252759bd237" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::common::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <qualifiedname>chi::common::reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="365" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1common_1a3d7c5760428b76acf41d085af3eb3ba9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>chi::common::common</definition>
+        <argsstring>()=default</argsstring>
+        <name>common</name>
+        <qualifiedname>chi::common::common</qualifiedname>
+        <briefdescription>
+<para>the constructori </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="368" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1common_1aa395331db239f2879788d4609018d06d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structchi_1_1common_1a3d7c5760428b76acf41d085af3eb3ba9" kindref="member">common</ref> &amp;</type>
+        <definition>common &amp; chi::common::operator=</definition>
+        <argsstring>(const common &amp;o)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>chi::common::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="structchi_1_1common_1a3d7c5760428b76acf41d085af3eb3ba9" kindref="member">common</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+<para>reset all data member to their default </para>
+        </briefdescription>
+        <detaileddescription>
+<para>copy assignment operator <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>o</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>reference to self </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="375" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="375" bodyend="380"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1common_1a9dab821722426f60b1283af82a6473bb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::common::set_txn_id</definition>
+        <argsstring>(unsigned int)</argsstring>
+        <name>set_txn_id</name>
+        <qualifiedname>chi::common::set_txn_id</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <defname>txn_id</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set the transition id value of REQ,WDAT,RDAT and CRSP a particular channel <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TxnID of the channel </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="385" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1180" bodyend="1183"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1common_1aedd7d4be7a9234fda65b0c5003568e3f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int chi::common::get_txn_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_txn_id</name>
+        <qualifiedname>chi::common::get_txn_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the transition id value of a particular channel <simplesect kind="return"><para>the TxnID </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="389" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1187" bodyend="1187"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1common_1a0cbcd78ba17006ca9b5e13584102c9aa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::common::set_src_id</definition>
+        <argsstring>(unsigned int)</argsstring>
+        <name>set_src_id</name>
+        <qualifiedname>chi::common::set_src_id</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <defname>src_id</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set the source id value of REQ,WDAT,RDAT and CRSP a particular channel <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TxnID of the channel </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="393" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1191" bodyend="1191"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1common_1a0f209a98c16fab546bb236f7325e6c5b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int chi::common::get_src_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_src_id</name>
+        <qualifiedname>chi::common::get_src_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the source id value of a particular channel <simplesect kind="return"><para>the SrcID </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="397" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1195" bodyend="1195"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1common_1ac3a195bf7d4ba983ff914a3de5f8e082" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::common::set_qos</definition>
+        <argsstring>(uint8_t qos)</argsstring>
+        <name>set_qos</name>
+        <qualifiedname>chi::common::set_qos</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>qos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set the chi qos value of a particular channel <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>chi</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>qos value of the REQ,WDAT,RDAT and CRSP channel </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="401" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1199" bodyend="1199"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1common_1ae938ef15e1de44b649a48a8679e73dce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int chi::common::get_qos</definition>
+        <argsstring>() const</argsstring>
+        <name>get_qos</name>
+        <qualifiedname>chi::common::get_qos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the chi qos value of a particular channel <simplesect kind="return"><para>chi qos value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="405" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1203" bodyend="1203"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>common : This structure contains common fields for all the 4 structures of &apos;request&apos;, &apos;<ref refid="structchi_1_1snp__request" kindref="compound">snp_request</ref>&apos;, &apos;data&apos; packet as well as &apos;response&apos; </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="363" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="363" bodyend="411"/>
+    <listofallmembers>
+      <member refid="structchi_1_1common_1a3d7c5760428b76acf41d085af3eb3ba9" prot="public" virt="non-virtual"><scope>chi::common</scope><name>common</name></member>
+      <member refid="structchi_1_1common_1ae938ef15e1de44b649a48a8679e73dce" prot="public" virt="non-virtual"><scope>chi::common</scope><name>get_qos</name></member>
+      <member refid="structchi_1_1common_1a0f209a98c16fab546bb236f7325e6c5b" prot="public" virt="non-virtual"><scope>chi::common</scope><name>get_src_id</name></member>
+      <member refid="structchi_1_1common_1aedd7d4be7a9234fda65b0c5003568e3f" prot="public" virt="non-virtual"><scope>chi::common</scope><name>get_txn_id</name></member>
+      <member refid="structchi_1_1common_1aa395331db239f2879788d4609018d06d" prot="public" virt="non-virtual"><scope>chi::common</scope><name>operator=</name></member>
+      <member refid="structchi_1_1common_1a4d68265efc1c46209be03713a08b7b5f" prot="private" virt="non-virtual"><scope>chi::common</scope><name>qos</name></member>
+      <member refid="structchi_1_1common_1a20dbee656da681b4b990c252759bd237" prot="public" virt="non-virtual"><scope>chi::common</scope><name>reset</name></member>
+      <member refid="structchi_1_1common_1ac3a195bf7d4ba983ff914a3de5f8e082" prot="public" virt="non-virtual"><scope>chi::common</scope><name>set_qos</name></member>
+      <member refid="structchi_1_1common_1a0cbcd78ba17006ca9b5e13584102c9aa" prot="public" virt="non-virtual"><scope>chi::common</scope><name>set_src_id</name></member>
+      <member refid="structchi_1_1common_1a9dab821722426f60b1283af82a6473bb" prot="public" virt="non-virtual"><scope>chi::common</scope><name>set_txn_id</name></member>
+      <member refid="structchi_1_1common_1a0a5e744cdb9f6ad7d7ddea857d66ab25" prot="private" virt="non-virtual"><scope>chi::common</scope><name>src_id</name></member>
+      <member refid="structchi_1_1common_1a438effe4e9ba275a3ab621f051f81e78" prot="private" virt="non-virtual"><scope>chi::common</scope><name>txn_id</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

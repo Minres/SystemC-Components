@@ -1,0 +1,400 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1range__lut" kind="class" language="C++" prot="public">
+    <compoundname>util::range_lut</compoundname>
+    <includes refid="range__lut_8h" local="no">range_lut.h</includes>
+    <innerclass refid="structutil_1_1range__lut_1_1lut__entry" prot="public">util::range_lut::lut_entry</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classutil_1_1range__lut_1af0a2482a6758bd63bc610b424075a98e" prot="public" static="no" strong="no">
+        <type></type>
+        <name>entry_type</name>
+        <qualifiedname>util::range_lut::entry_type</qualifiedname>
+        <enumvalue id="classutil_1_1range__lut_1af0a2482a6758bd63bc610b424075a98eacf7fb6ab7c2e455f398a70a1836ced99" prot="public">
+          <name>BEGIN_RANGE</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classutil_1_1range__lut_1af0a2482a6758bd63bc610b424075a98ea7e99fb6c5b28a7c8bc3ff7bc676b2849" prot="public">
+          <name>END_RANGE</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classutil_1_1range__lut_1af0a2482a6758bd63bc610b424075a98ea31f9749a7620ca6653b38b7042164a95" prot="public">
+          <name>SINGLE_BYTE_RANGE</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>the type of lut entry </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="40" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classutil_1_1range__lut_1a7addfc426727f3daabba8d6c819da160" prot="public" static="no">
+        <type>typename std::map&lt; uint64_t, <ref refid="structutil_1_1range__lut_1_1lut__entry" kindref="compound">lut_entry</ref> &gt;::const_iterator</type>
+        <definition>using util::range_lut&lt; T &gt;::const_iterator =  typename std::map&lt;uint64_t, lut_entry&gt;::const_iterator</definition>
+        <argsstring></argsstring>
+        <name>const_iterator</name>
+        <qualifiedname>util::range_lut::const_iterator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="109" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classutil_1_1range__lut_1ae10ec7cb5121b7d9719136c2fd40e9c4" prot="public" static="no" mutable="no">
+        <type>const T</type>
+        <definition>const T util::range_lut&lt; T &gt;::null_entry</definition>
+        <argsstring></argsstring>
+        <name>null_entry</name>
+        <qualifiedname>util::range_lut::null_entry</qualifiedname>
+        <briefdescription>
+<para>the null entry </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="107" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classutil_1_1range__lut_1afaae1bf453a7ca473691dfd8d5d38e6d" prot="protected" static="no" mutable="no">
+        <type>std::map&lt; uint64_t, <ref refid="structutil_1_1range__lut_1_1lut__entry" kindref="compound">lut_entry</ref> &gt;</type>
+        <definition>std::map&lt;uint64_t, lut_entry&gt; util::range_lut&lt; T &gt;::m_lut</definition>
+        <argsstring></argsstring>
+        <name>m_lut</name>
+        <qualifiedname>util::range_lut::m_lut</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="119" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="119" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1range__lut_1a67ed97e57463275aba35f2f9987d8222" prot="protected" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t util::range_lut&lt; T &gt;::m_size</definition>
+        <argsstring></argsstring>
+        <name>m_size</name>
+        <qualifiedname>util::range_lut::m_size</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="120" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="120" bodyend="120"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classutil_1_1range__lut_1aeb054e263479aeffdf90ccd93f95180d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>util::range_lut&lt; T &gt;::range_lut</definition>
+        <argsstring>(T const &amp;null_entry)</argsstring>
+        <name>range_lut</name>
+        <qualifiedname>util::range_lut::range_lut</qualifiedname>
+        <param>
+          <type>T const &amp;</type>
+          <declname>null_entry</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>constructor or the lookup table</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>null_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the entry to be used for empty slots </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="52" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="52" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1range__lut_1a6029c217eb995fcc1948d8c2a11ba09f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::range_lut&lt; T &gt;::addEntry</definition>
+        <argsstring>(T const &amp;i, uint64_t base_addr, uint64_t size)</argsstring>
+        <name>addEntry</name>
+        <qualifiedname>util::range_lut::addEntry</qualifiedname>
+        <param>
+          <type>T const &amp;</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>base_addr</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>add an T to the lut covering the range starting at base_addr until base_addr+size-1</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the entry </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>base_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the base address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the size of the occupied range </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="62" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="135" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1range__lut_1a7b7ad72a4d8d204f73e91b28264a9746" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool util::range_lut&lt; T &gt;::removeEntry</definition>
+        <argsstring>(T i)</argsstring>
+        <name>removeEntry</name>
+        <qualifiedname>util::range_lut::removeEntry</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>remove an entry with value i of type T</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the entry to be found </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the entry is found and removed, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="69" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="150" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1range__lut_1a1bb740c8dd9d2981ba6e4fd19b0991e5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t util::range_lut&lt; T &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>util::range_lut::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get number of entries in the lookup table</para>
+<para><simplesect kind="return"><para>the size of the underlying container </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="75" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1range__lut_1a00b5f04f8f8e65353ca8c2ba31e456f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::range_lut&lt; T &gt;::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <qualifiedname>util::range_lut::clear</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>remove all entries from the lut </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="79" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="79" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1range__lut_1ae15b0076effece78d601899869b92525" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>T util::range_lut&lt; T &gt;::getEntry</definition>
+        <argsstring>(uint64_t addr) const</argsstring>
+        <name>getEntry</name>
+        <qualifiedname>util::range_lut::getEntry</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the entry T associated with a given address</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the address </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the entry belonging to the address </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="89" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="89" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1range__lut_1a67c15e6b45263973d0d8d6acd67cdc01" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::range_lut&lt; T &gt;::validate</definition>
+        <argsstring>() const</argsstring>
+        <name>validate</name>
+        <qualifiedname>util::range_lut::validate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>validate the lookup table wrt. overlaps </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="98" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="169" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1range__lut_1a0c28a218793815a94551a714248f844c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string util::range_lut&lt; T &gt;::toString</definition>
+        <argsstring>() const</argsstring>
+        <name>toString</name>
+        <qualifiedname>util::range_lut::toString</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>create a textual representation of the address map (address range-&gt;entry association)</para>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="105" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="196" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1range__lut_1a1bba38f902ad61032e059e41ddfaca6f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const_iterator</type>
+        <definition>const_iterator util::range_lut&lt; T &gt;::begin</definition>
+        <argsstring>() const</argsstring>
+        <name>begin</name>
+        <qualifiedname>util::range_lut::begin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="111" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="111" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1range__lut_1a0a2c741e3617fad610b2c12c0abb92df" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const_iterator</type>
+        <definition>const_iterator util::range_lut&lt; T &gt;::end</definition>
+        <argsstring>() const</argsstring>
+        <name>end</name>
+        <qualifiedname>util::range_lut::end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="113" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="113" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1range__lut_1a89bded08608e7ca3dac2dfe380472e85" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const_iterator</type>
+        <definition>const_iterator util::range_lut&lt; T &gt;::lower_bound</definition>
+        <argsstring>(uint64_t base) const</argsstring>
+        <name>lower_bound</name>
+        <qualifiedname>util::range_lut::lower_bound</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>base</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="115" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="115" bodyend="115"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>range based lookup table </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="37" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="37" bodyend="121"/>
+    <listofallmembers>
+      <member refid="classutil_1_1range__lut_1a6029c217eb995fcc1948d8c2a11ba09f" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>addEntry</name></member>
+      <member refid="classutil_1_1range__lut_1a1bba38f902ad61032e059e41ddfaca6f" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>begin</name></member>
+      <member refid="classutil_1_1range__lut_1af0a2482a6758bd63bc610b424075a98eacf7fb6ab7c2e455f398a70a1836ced99" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>BEGIN_RANGE</name></member>
+      <member refid="classutil_1_1range__lut_1a00b5f04f8f8e65353ca8c2ba31e456f1" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>clear</name></member>
+      <member refid="classutil_1_1range__lut_1a7addfc426727f3daabba8d6c819da160" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>const_iterator</name></member>
+      <member refid="classutil_1_1range__lut_1a0a2c741e3617fad610b2c12c0abb92df" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>end</name></member>
+      <member refid="classutil_1_1range__lut_1af0a2482a6758bd63bc610b424075a98ea7e99fb6c5b28a7c8bc3ff7bc676b2849" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>END_RANGE</name></member>
+      <member refid="classutil_1_1range__lut_1af0a2482a6758bd63bc610b424075a98e" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>entry_type</name></member>
+      <member refid="classutil_1_1range__lut_1ae15b0076effece78d601899869b92525" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>getEntry</name></member>
+      <member refid="classutil_1_1range__lut_1a89bded08608e7ca3dac2dfe380472e85" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>lower_bound</name></member>
+      <member refid="classutil_1_1range__lut_1afaae1bf453a7ca473691dfd8d5d38e6d" prot="protected" virt="non-virtual"><scope>util::range_lut</scope><name>m_lut</name></member>
+      <member refid="classutil_1_1range__lut_1a67ed97e57463275aba35f2f9987d8222" prot="protected" virt="non-virtual"><scope>util::range_lut</scope><name>m_size</name></member>
+      <member refid="classutil_1_1range__lut_1ae10ec7cb5121b7d9719136c2fd40e9c4" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>null_entry</name></member>
+      <member refid="classutil_1_1range__lut_1aeb054e263479aeffdf90ccd93f95180d" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>range_lut</name></member>
+      <member refid="classutil_1_1range__lut_1a7b7ad72a4d8d204f73e91b28264a9746" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>removeEntry</name></member>
+      <member refid="classutil_1_1range__lut_1af0a2482a6758bd63bc610b424075a98ea31f9749a7620ca6653b38b7042164a95" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>SINGLE_BYTE_RANGE</name></member>
+      <member refid="classutil_1_1range__lut_1a1bb740c8dd9d2981ba6e4fd19b0991e5" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>size</name></member>
+      <member refid="classutil_1_1range__lut_1a0c28a218793815a94551a714248f844c" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>toString</name></member>
+      <member refid="classutil_1_1range__lut_1a67c15e6b45263973d0d8d6acd67cdc01" prot="public" virt="non-virtual"><scope>util::range_lut</scope><name>validate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

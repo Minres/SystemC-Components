@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_0d6b32aa0e305bb96fd06302989beaa2" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb</compoundname>
+    <innerdir refid="dir_700e6c86fdf1e2afe4cb1e6f7e5f76ea">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe</innerdir>
+    <innerdir refid="dir_a65ea13ea95096ffbee51c5db9814035">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pin</innerdir>
+    <innerfile refid="apb__tlm_8cpp">apb_tlm.cpp</innerfile>
+    <innerfile refid="apb__tlm_8h">apb_tlm.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,465 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classrigtorp_1_1SPSCQueue" kind="class" language="C++" prot="public">
+    <compoundname>rigtorp::SPSCQueue</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>typename Allocator</type>
+        <defval>std::allocator&lt;T&gt;</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classrigtorp_1_1SPSCQueue_1a540c8ada645c3e0df422bc299fc2e667" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>size_t</type>
+        <definition>size_t rigtorp::SPSCQueue&lt; T, Allocator &gt;::kCacheLineSize</definition>
+        <argsstring></argsstring>
+        <name>kCacheLineSize</name>
+        <qualifiedname>rigtorp::SPSCQueue::kCacheLineSize</qualifiedname>
+        <initializer>= 64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="191" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classrigtorp_1_1SPSCQueue_1a538cdbfbf43d5516b237613f530b0b02" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>size_t</type>
+        <definition>size_t rigtorp::SPSCQueue&lt; T, Allocator &gt;::kPadding</definition>
+        <argsstring></argsstring>
+        <name>kPadding</name>
+        <qualifiedname>rigtorp::SPSCQueue::kPadding</qualifiedname>
+        <initializer>= (kCacheLineSize - 1) / sizeof(T) + 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="195" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="195" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classrigtorp_1_1SPSCQueue_1aaa0a66be88c9b91a65ac321e8f7125c2" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t rigtorp::SPSCQueue&lt; T, Allocator &gt;::capacity_</definition>
+        <argsstring></argsstring>
+        <name>capacity_</name>
+        <qualifiedname>rigtorp::SPSCQueue::capacity_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="198" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classrigtorp_1_1SPSCQueue_1ae20db0392f737c0d41dae4e6b3fbcf36" prot="private" static="no" mutable="no">
+        <type>T *</type>
+        <definition>T* rigtorp::SPSCQueue&lt; T, Allocator &gt;::slots_</definition>
+        <argsstring></argsstring>
+        <name>slots_</name>
+        <qualifiedname>rigtorp::SPSCQueue::slots_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="199" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classrigtorp_1_1SPSCQueue_1a847c99f6ec2c0c967ed25bf640b7303a" prot="private" static="no" mutable="no">
+        <type>Allocator</type>
+        <definition>Allocator rigtorp::SPSCQueue&lt; T, Allocator &gt;::allocator_</definition>
+        <argsstring></argsstring>
+        <name>allocator_</name>
+        <qualifiedname>rigtorp::SPSCQueue::allocator_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="203" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classrigtorp_1_1SPSCQueue_1a1f503a56f7855473d414cde14e84e5cf" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; size_t &gt;</type>
+        <definition>std::atomic&lt;size_t&gt; rigtorp::SPSCQueue&lt; T, Allocator &gt;::writeIdx_</definition>
+        <argsstring></argsstring>
+        <name>writeIdx_</name>
+        <qualifiedname>rigtorp::SPSCQueue::writeIdx_</qualifiedname>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="209" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="209" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="variable" id="classrigtorp_1_1SPSCQueue_1ad7f185574917fe4113567fae098b45f6" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t rigtorp::SPSCQueue&lt; T, Allocator &gt;::readIdxCache_</definition>
+        <argsstring></argsstring>
+        <name>readIdxCache_</name>
+        <qualifiedname>rigtorp::SPSCQueue::readIdxCache_</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="210" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classrigtorp_1_1SPSCQueue_1ad7c740d414028fc34d16e5239e0800ed" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; size_t &gt;</type>
+        <definition>std::atomic&lt;size_t&gt; rigtorp::SPSCQueue&lt; T, Allocator &gt;::readIdx_</definition>
+        <argsstring></argsstring>
+        <name>readIdx_</name>
+        <qualifiedname>rigtorp::SPSCQueue::readIdx_</qualifiedname>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="211" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="211" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="variable" id="classrigtorp_1_1SPSCQueue_1a6cdc95482f483ece42e4b8581f92eb13" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t rigtorp::SPSCQueue&lt; T, Allocator &gt;::writeIdxCache_</definition>
+        <argsstring></argsstring>
+        <name>writeIdxCache_</name>
+        <qualifiedname>rigtorp::SPSCQueue::writeIdxCache_</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="212" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="212" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classrigtorp_1_1SPSCQueue_1a8f396d6106a64c61d2b1418bd83ec1ae" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>rigtorp::SPSCQueue&lt; T, Allocator &gt;::SPSCQueue</definition>
+        <argsstring>(const size_t capacity, const Allocator &amp;allocator=Allocator())</argsstring>
+        <name>SPSCQueue</name>
+        <qualifiedname>rigtorp::SPSCQueue::SPSCQueue</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>capacity</declname>
+        </param>
+        <param>
+          <type>const Allocator &amp;</type>
+          <declname>allocator</declname>
+          <defval>Allocator()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="56" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="56" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classrigtorp_1_1SPSCQueue_1ae27620625b29b245e07f3907b595a0a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>rigtorp::SPSCQueue&lt; T, Allocator &gt;::~SPSCQueue</definition>
+        <argsstring>()</argsstring>
+        <name>~SPSCQueue</name>
+        <qualifiedname>rigtorp::SPSCQueue::~SPSCQueue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="86" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="86" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classrigtorp_1_1SPSCQueue_1a1f070bf1b39b4c16ee67b1b06aa09eb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>rigtorp::SPSCQueue&lt; T, Allocator &gt;::SPSCQueue</definition>
+        <argsstring>(const SPSCQueue &amp;)=delete</argsstring>
+        <name>SPSCQueue</name>
+        <qualifiedname>rigtorp::SPSCQueue::SPSCQueue</qualifiedname>
+        <param>
+          <type>const SPSCQueue &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="94" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classrigtorp_1_1SPSCQueue_1a2de96eea89787f80cf716e21d62ec4ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>SPSCQueue &amp;</type>
+        <definition>SPSCQueue &amp; rigtorp::SPSCQueue&lt; T, Allocator &gt;::operator=</definition>
+        <argsstring>(const SPSCQueue &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>rigtorp::SPSCQueue::operator=</qualifiedname>
+        <param>
+          <type>const SPSCQueue &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="95" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classrigtorp_1_1SPSCQueue_1a7cb01e60bebdca19c51a87186a0996b8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" noexceptexpression="std::is_nothrow_constructible&lt; T, Args &amp;&amp;... &gt;::value" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void rigtorp::SPSCQueue&lt; T, Allocator &gt;::emplace</definition>
+        <argsstring>(Args &amp;&amp;... args)</argsstring>
+        <name>emplace</name>
+        <qualifiedname>rigtorp::SPSCQueue::emplace</qualifiedname>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="97" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="97" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classrigtorp_1_1SPSCQueue_1aa4b09656d2d82fad3d6fe39e010616e8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" noexceptexpression="std::is_nothrow_constructible&lt; T, Args &amp;&amp;... &gt;::value" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>RIGTORP_NODISCARD bool</type>
+        <definition>RIGTORP_NODISCARD bool rigtorp::SPSCQueue&lt; T, Allocator &gt;::try_emplace</definition>
+        <argsstring>(Args &amp;&amp;... args)</argsstring>
+        <name>try_emplace</name>
+        <qualifiedname>rigtorp::SPSCQueue::try_emplace</qualifiedname>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="112" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="112" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="classrigtorp_1_1SPSCQueue_1a8f33fc60939abe07b41a047b31b151b1" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" noexceptexpression="std::is_nothrow_copy_constructible&lt; T &gt;::value" virt="non-virtual">
+        <type>void</type>
+        <definition>void rigtorp::SPSCQueue&lt; T, Allocator &gt;::push</definition>
+        <argsstring>(const T &amp;v)</argsstring>
+        <name>push</name>
+        <qualifiedname>rigtorp::SPSCQueue::push</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="130" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="130" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classrigtorp_1_1SPSCQueue_1a41b51e28235fe9e545fd669e28542dda" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" noexceptexpression="std::is_nothrow_constructible&lt; T, P &amp;&amp; &gt;::value" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename P</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if&lt;std::is_constructible&lt;T, P&amp;&amp;&gt;::value&gt;::type</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void rigtorp::SPSCQueue&lt; T, Allocator &gt;::push</definition>
+        <argsstring>(P &amp;&amp;v)</argsstring>
+        <name>push</name>
+        <qualifiedname>rigtorp::SPSCQueue::push</qualifiedname>
+        <param>
+          <type>P &amp;&amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="136" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="136" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="classrigtorp_1_1SPSCQueue_1aef53733b4e551a957d299f5b8ccfcde6" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" noexceptexpression="std::is_nothrow_copy_constructible&lt; T &gt;::value" virt="non-virtual">
+        <type>RIGTORP_NODISCARD bool</type>
+        <definition>RIGTORP_NODISCARD bool rigtorp::SPSCQueue&lt; T, Allocator &gt;::try_push</definition>
+        <argsstring>(const T &amp;v)</argsstring>
+        <name>try_push</name>
+        <qualifiedname>rigtorp::SPSCQueue::try_push</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="140" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="140" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classrigtorp_1_1SPSCQueue_1a4476184b42c793fd5ed0b17194528684" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" noexceptexpression="std::is_nothrow_constructible&lt; T, P &amp;&amp; &gt;::value" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename P</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if&lt;std::is_constructible&lt;T, P&amp;&amp;&gt;::value&gt;::type</defval>
+          </param>
+        </templateparamlist>
+        <type>RIGTORP_NODISCARD bool</type>
+        <definition>RIGTORP_NODISCARD bool rigtorp::SPSCQueue&lt; T, Allocator &gt;::try_push</definition>
+        <argsstring>(P &amp;&amp;v)</argsstring>
+        <name>try_push</name>
+        <qualifiedname>rigtorp::SPSCQueue::try_push</qualifiedname>
+        <param>
+          <type>P &amp;&amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="146" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="146" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classrigtorp_1_1SPSCQueue_1a105f8b1f08a98c584d76ddc189f2c6db" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>RIGTORP_NODISCARD T *</type>
+        <definition>RIGTORP_NODISCARD T * rigtorp::SPSCQueue&lt; T, Allocator &gt;::front</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>front</name>
+        <qualifiedname>rigtorp::SPSCQueue::front</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="150" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="150" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="classrigtorp_1_1SPSCQueue_1ad2d2ea247248cce7cd953a5ef80a5313" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void rigtorp::SPSCQueue&lt; T, Allocator &gt;::pop</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>pop</name>
+        <qualifiedname>rigtorp::SPSCQueue::pop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="161" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="161" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="classrigtorp_1_1SPSCQueue_1a8654f86b715aa4d960357a1252580a86" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>RIGTORP_NODISCARD size_t</type>
+        <definition>RIGTORP_NODISCARD size_t rigtorp::SPSCQueue&lt; T, Allocator &gt;::size</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>size</name>
+        <qualifiedname>rigtorp::SPSCQueue::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="173" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="173" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="classrigtorp_1_1SPSCQueue_1a43d1cb15ff3996aff7323f234a2e76c9" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>RIGTORP_NODISCARD bool</type>
+        <definition>RIGTORP_NODISCARD bool rigtorp::SPSCQueue&lt; T, Allocator &gt;::empty</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>empty</name>
+        <qualifiedname>rigtorp::SPSCQueue::empty</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="181" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="181" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="classrigtorp_1_1SPSCQueue_1a840bd65a63f777fca48b694dc2caba06" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>RIGTORP_NODISCARD size_t</type>
+        <definition>RIGTORP_NODISCARD size_t rigtorp::SPSCQueue&lt; T, Allocator &gt;::capacity</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>capacity</name>
+        <qualifiedname>rigtorp::SPSCQueue::capacity</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="185" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="185" bodyend="185"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" line="44" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/rigtorp/SPSCQueue.h" bodystart="44" bodyend="213"/>
+    <listofallmembers>
+      <member refid="classrigtorp_1_1SPSCQueue_1a847c99f6ec2c0c967ed25bf640b7303a" prot="private" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>allocator_</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1a840bd65a63f777fca48b694dc2caba06" prot="public" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>capacity</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1aaa0a66be88c9b91a65ac321e8f7125c2" prot="private" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>capacity_</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1a7cb01e60bebdca19c51a87186a0996b8" prot="public" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>emplace</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1a43d1cb15ff3996aff7323f234a2e76c9" prot="public" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>empty</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1a105f8b1f08a98c584d76ddc189f2c6db" prot="public" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>front</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1a540c8ada645c3e0df422bc299fc2e667" prot="private" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>kCacheLineSize</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1a538cdbfbf43d5516b237613f530b0b02" prot="private" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>kPadding</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1a2de96eea89787f80cf716e21d62ec4ae" prot="public" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>operator=</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1ad2d2ea247248cce7cd953a5ef80a5313" prot="public" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>pop</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1a8f33fc60939abe07b41a047b31b151b1" prot="public" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>push</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1a41b51e28235fe9e545fd669e28542dda" prot="public" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>push</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1ad7c740d414028fc34d16e5239e0800ed" prot="private" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>readIdx_</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1ad7f185574917fe4113567fae098b45f6" prot="private" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>readIdxCache_</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1a8654f86b715aa4d960357a1252580a86" prot="public" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>size</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1ae20db0392f737c0d41dae4e6b3fbcf36" prot="private" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>slots_</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1a8f396d6106a64c61d2b1418bd83ec1ae" prot="public" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>SPSCQueue</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1a1f070bf1b39b4c16ee67b1b06aa09eb7" prot="public" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>SPSCQueue</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1aa4b09656d2d82fad3d6fe39e010616e8" prot="public" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>try_emplace</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1aef53733b4e551a957d299f5b8ccfcde6" prot="public" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>try_push</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1a4476184b42c793fd5ed0b17194528684" prot="public" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>try_push</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1a1f503a56f7855473d414cde14e84e5cf" prot="private" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>writeIdx_</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1a6cdc95482f483ece42e4b8581f92eb13" prot="private" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>writeIdxCache_</name></member>
+      <member refid="classrigtorp_1_1SPSCQueue_1ae27620625b29b245e07f3907b595a0a1" prot="public" virt="non-virtual"><scope>rigtorp::SPSCQueue</scope><name>~SPSCQueue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

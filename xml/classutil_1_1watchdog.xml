@@ -1,0 +1,388 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1watchdog" kind="class" language="C++" prot="public">
+    <compoundname>util::watchdog</compoundname>
+    <includes refid="watchdog_8h" local="no">watchdog.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classutil_1_1watchdog_1a29bcbba2af6fb2654dd05362e1b3afe6" prot="private" static="no" mutable="no">
+        <type>std::chrono::system_clock::duration</type>
+        <definition>std::chrono::system_clock::duration util::watchdog::timeout</definition>
+        <argsstring></argsstring>
+        <name>timeout</name>
+        <qualifiedname>util::watchdog::timeout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="80" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1watchdog_1a16c6d872dda360fa7c2e8010341b4f0d" prot="private" static="no" mutable="no">
+        <type>std::chrono::system_clock::duration</type>
+        <definition>std::chrono::system_clock::duration util::watchdog::sleep_duration</definition>
+        <argsstring></argsstring>
+        <name>sleep_duration</name>
+        <qualifiedname>util::watchdog::sleep_duration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="81" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1watchdog_1a57945bda491e6a2a85ab60464e19e935" prot="private" static="no" mutable="no">
+        <type>std::function&lt; void(void)&gt;</type>
+        <definition>std::function&lt;void(void)&gt; util::watchdog::alarm_cb</definition>
+        <argsstring></argsstring>
+        <name>alarm_cb</name>
+        <qualifiedname>util::watchdog::alarm_cb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="82" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1watchdog_1a64c9d4e913b2fc903ce2025e18a6997b" prot="private" static="no" mutable="no">
+        <type>std::atomic_bool</type>
+        <definition>std::atomic_bool util::watchdog::idle</definition>
+        <argsstring></argsstring>
+        <name>idle</name>
+        <qualifiedname>util::watchdog::idle</qualifiedname>
+        <initializer>{true}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="83" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1watchdog_1a8eb3c0781c20a03bb402a9d7bc51873f" prot="private" static="no" mutable="no">
+        <type>std::atomic_bool</type>
+        <definition>std::atomic_bool util::watchdog::live</definition>
+        <argsstring></argsstring>
+        <name>live</name>
+        <qualifiedname>util::watchdog::live</qualifiedname>
+        <initializer>{true}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="84" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" bodystart="84" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1watchdog_1a456a5bc35c81260b8da14c1b803ad595" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; std::chrono::system_clock::time_point &gt;</type>
+        <definition>std::atomic&lt;std::chrono::system_clock::time_point&gt; util::watchdog::touched</definition>
+        <argsstring></argsstring>
+        <name>touched</name>
+        <qualifiedname>util::watchdog::touched</qualifiedname>
+        <initializer>{std::chrono::system_clock::now()}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="85" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" bodystart="85" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1watchdog_1a61aa4a041ca354d68b3bc306a2750896" prot="private" static="no" mutable="no">
+        <type>std::thread</type>
+        <definition>std::thread util::watchdog::guard_thread</definition>
+        <argsstring></argsstring>
+        <name>guard_thread</name>
+        <qualifiedname>util::watchdog::guard_thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="86" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1watchdog_1a21e22a20533e816dfc0ee8dd374cf3d2" prot="private" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex util::watchdog::guard_mutex</definition>
+        <argsstring></argsstring>
+        <name>guard_mutex</name>
+        <qualifiedname>util::watchdog::guard_mutex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="87" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1watchdog_1acaadf8fb769f8e3f605f062c5d2ac57a" prot="private" static="no" mutable="no">
+        <type>std::condition_variable</type>
+        <definition>std::condition_variable util::watchdog::wakeup</definition>
+        <argsstring></argsstring>
+        <name>wakeup</name>
+        <qualifiedname>util::watchdog::wakeup</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="88" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classutil_1_1watchdog_1a93179f71a1f0e034a003aeff5a2615c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::watchdog::watchdog</definition>
+        <argsstring>(std::chrono::system_clock::duration timeout, std::function&lt; void(void)&gt; alarm_cb, std::chrono::system_clock::duration sleep_duration)</argsstring>
+        <name>watchdog</name>
+        <qualifiedname>util::watchdog::watchdog</qualifiedname>
+        <param>
+          <type>std::chrono::system_clock::duration</type>
+          <declname>timeout</declname>
+        </param>
+        <param>
+          <type>std::function&lt; void(void)&gt;</type>
+          <declname>alarm_cb</declname>
+        </param>
+        <param>
+          <type>std::chrono::system_clock::duration</type>
+          <declname>sleep_duration</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>constructor <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>until the watch dog is going to expire </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>alarm_cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the function to be called once the watch dog expires, upon expiration the watch dog goes into idle state </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sleep_duration</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the granularity to check expiration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="46" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1watchdog_1a622f4676a2899f943b187ed7ee53996e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::watchdog::watchdog</definition>
+        <argsstring>(std::chrono::system_clock::duration timeout, std::function&lt; void(void)&gt; alarm)</argsstring>
+        <name>watchdog</name>
+        <qualifiedname>util::watchdog::watchdog</qualifiedname>
+        <param>
+          <type>std::chrono::system_clock::duration</type>
+          <declname>timeout</declname>
+        </param>
+        <param>
+          <type>std::function&lt; void(void)&gt;</type>
+          <declname>alarm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>timeout until the watch dog is going to expire </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>alarm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the function to be called once the watch dog expires, upon expiration the watch dog goes into idle state </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="54" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1watchdog_1a78359b436e131f8d4fe4cc75b28455a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>watchdog::~watchdog</definition>
+        <argsstring>()</argsstring>
+        <name>~watchdog</name>
+        <qualifiedname>util::watchdog::~watchdog</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>destructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="58" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.cpp" bodystart="36" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1watchdog_1ab490828c7fe845097e16ae58319640e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::watchdog::watchdog</definition>
+        <argsstring>(const watchdog &amp;)=delete</argsstring>
+        <name>watchdog</name>
+        <qualifiedname>util::watchdog::watchdog</qualifiedname>
+        <param>
+          <type>const watchdog &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="60" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1watchdog_1a7786de38593e5016041cec59bd22f936" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classutil_1_1watchdog_1a93179f71a1f0e034a003aeff5a2615c1" kindref="member">watchdog</ref> &amp;</type>
+        <definition>watchdog &amp; util::watchdog::operator=</definition>
+        <argsstring>(const watchdog &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>util::watchdog::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classutil_1_1watchdog_1a93179f71a1f0e034a003aeff5a2615c1" kindref="member">watchdog</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="62" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1watchdog_1abcd7fc9f88948191b73e707562f8f732" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::watchdog::watchdog</definition>
+        <argsstring>(watchdog &amp;&amp;)=delete</argsstring>
+        <name>watchdog</name>
+        <qualifiedname>util::watchdog::watchdog</qualifiedname>
+        <param>
+          <type>watchdog &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="64" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1watchdog_1ab1371c673dab1a16cff7202de84c9463" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classutil_1_1watchdog_1a93179f71a1f0e034a003aeff5a2615c1" kindref="member">watchdog</ref> &amp;</type>
+        <definition>watchdog &amp; util::watchdog::operator=</definition>
+        <argsstring>(watchdog &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>util::watchdog::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classutil_1_1watchdog_1a93179f71a1f0e034a003aeff5a2615c1" kindref="member">watchdog</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="66" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1watchdog_1a2f3493572954ec31e29320fee295ea71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void watchdog::arm</definition>
+        <argsstring>()</argsstring>
+        <name>arm</name>
+        <qualifiedname>util::watchdog::arm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>arms the watch dog </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="71" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.cpp" bodystart="66" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1watchdog_1a9b78661f83153ffd8a9de24111294ff7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void watchdog::re_arm</definition>
+        <argsstring>()</argsstring>
+        <name>re_arm</name>
+        <qualifiedname>util::watchdog::re_arm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>re-arms the watch dog </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="75" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.cpp" bodystart="72" bodyend="72"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classutil_1_1watchdog_1acf1a33c66947adb6400488cb84ea5ba3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void watchdog::guard</definition>
+        <argsstring>()</argsstring>
+        <name>guard</name>
+        <qualifiedname>util::watchdog::guard</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="78" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.cpp" bodystart="42" bodyend="64"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>a watch dog based on <ulink url="https://github.com/didenko/TimeoutGuard">https://github.com/didenko/TimeoutGuard</ulink> </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" line="37" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/watchdog.h" bodystart="37" bodyend="89"/>
+    <listofallmembers>
+      <member refid="classutil_1_1watchdog_1a57945bda491e6a2a85ab60464e19e935" prot="private" virt="non-virtual"><scope>util::watchdog</scope><name>alarm_cb</name></member>
+      <member refid="classutil_1_1watchdog_1a2f3493572954ec31e29320fee295ea71" prot="public" virt="non-virtual"><scope>util::watchdog</scope><name>arm</name></member>
+      <member refid="classutil_1_1watchdog_1acf1a33c66947adb6400488cb84ea5ba3" prot="private" virt="non-virtual"><scope>util::watchdog</scope><name>guard</name></member>
+      <member refid="classutil_1_1watchdog_1a21e22a20533e816dfc0ee8dd374cf3d2" prot="private" virt="non-virtual"><scope>util::watchdog</scope><name>guard_mutex</name></member>
+      <member refid="classutil_1_1watchdog_1a61aa4a041ca354d68b3bc306a2750896" prot="private" virt="non-virtual"><scope>util::watchdog</scope><name>guard_thread</name></member>
+      <member refid="classutil_1_1watchdog_1a64c9d4e913b2fc903ce2025e18a6997b" prot="private" virt="non-virtual"><scope>util::watchdog</scope><name>idle</name></member>
+      <member refid="classutil_1_1watchdog_1a8eb3c0781c20a03bb402a9d7bc51873f" prot="private" virt="non-virtual"><scope>util::watchdog</scope><name>live</name></member>
+      <member refid="classutil_1_1watchdog_1a7786de38593e5016041cec59bd22f936" prot="public" virt="non-virtual"><scope>util::watchdog</scope><name>operator=</name></member>
+      <member refid="classutil_1_1watchdog_1ab1371c673dab1a16cff7202de84c9463" prot="public" virt="non-virtual"><scope>util::watchdog</scope><name>operator=</name></member>
+      <member refid="classutil_1_1watchdog_1a9b78661f83153ffd8a9de24111294ff7" prot="public" virt="non-virtual"><scope>util::watchdog</scope><name>re_arm</name></member>
+      <member refid="classutil_1_1watchdog_1a16c6d872dda360fa7c2e8010341b4f0d" prot="private" virt="non-virtual"><scope>util::watchdog</scope><name>sleep_duration</name></member>
+      <member refid="classutil_1_1watchdog_1a29bcbba2af6fb2654dd05362e1b3afe6" prot="private" virt="non-virtual"><scope>util::watchdog</scope><name>timeout</name></member>
+      <member refid="classutil_1_1watchdog_1a456a5bc35c81260b8da14c1b803ad595" prot="private" virt="non-virtual"><scope>util::watchdog</scope><name>touched</name></member>
+      <member refid="classutil_1_1watchdog_1acaadf8fb769f8e3f605f062c5d2ac57a" prot="private" virt="non-virtual"><scope>util::watchdog</scope><name>wakeup</name></member>
+      <member refid="classutil_1_1watchdog_1a93179f71a1f0e034a003aeff5a2615c1" prot="public" virt="non-virtual"><scope>util::watchdog</scope><name>watchdog</name></member>
+      <member refid="classutil_1_1watchdog_1a622f4676a2899f943b187ed7ee53996e" prot="public" virt="non-virtual"><scope>util::watchdog</scope><name>watchdog</name></member>
+      <member refid="classutil_1_1watchdog_1ab490828c7fe845097e16ae58319640e6" prot="public" virt="non-virtual"><scope>util::watchdog</scope><name>watchdog</name></member>
+      <member refid="classutil_1_1watchdog_1abcd7fc9f88948191b73e707562f8f732" prot="public" virt="non-virtual"><scope>util::watchdog</scope><name>watchdog</name></member>
+      <member refid="classutil_1_1watchdog_1a78359b436e131f8d4fe4cc75b28455a7" prot="public" virt="non-virtual"><scope>util::watchdog</scope><name>~watchdog</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

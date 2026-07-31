@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tcp4tlm_1_1RequestPayloadTraits" kind="struct" language="C++" prot="public">
+    <compoundname>scc::tcp4tlm::RequestPayloadTraits</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1RequestPayloadTraits_1aaf49dcac7a503569119c48993f134fa9" prot="public" static="yes" mutable="no">
+        <type>const RequestPayload</type>
+        <definition>const RequestPayload scc::tcp4tlm::RequestPayloadTraits&lt; T &gt;::enum_value</definition>
+        <argsstring></argsstring>
+        <name>enum_value</name>
+        <qualifiedname>scc::tcp4tlm::RequestPayloadTraits::enum_value</qualifiedname>
+        <initializer>= RequestPayload_NONE</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="130" column="67" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="130" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="130" bodyend="130"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tcp4tlm_1_1RequestPayloadTraits_1aaf49dcac7a503569119c48993f134fa9" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::RequestPayloadTraits</scope><name>enum_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

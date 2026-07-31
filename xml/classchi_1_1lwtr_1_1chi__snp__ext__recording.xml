@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classchi_1_1lwtr_1_1chi__snp__ext__recording" kind="class" language="C++" prot="public">
+    <compoundname>chi::lwtr::chi_snp_ext_recording</compoundname>
+    <basecompoundref refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if" prot="public" virt="non-virtual">tlm::scc::lwtr::lwtr4tlm2_extension_registry_if&lt; chi_protocol_types &gt;</basecompoundref>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classchi_1_1lwtr_1_1chi__snp__ext__recording_1aac255bacefd8a5f4704094a908744ef7" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::lwtr::chi_snp_ext_recording::recordBeginTx</definition>
+        <argsstring>(::lwtr::tx_handle &amp;handle, chi_protocol_types::tlm_payload_type &amp;trans) override</argsstring>
+        <name>recordBeginTx</name>
+        <qualifiedname>chi::lwtr::chi_snp_ext_recording::recordBeginTx</qualifiedname>
+        <param>
+          <type>::lwtr::tx_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>chi_protocol_types::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" line="175" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" bodystart="175" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1lwtr_1_1chi__snp__ext__recording_1a306c444b7fdcd8b8286822c72a603f57" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::lwtr::chi_snp_ext_recording::recordEndTx</definition>
+        <argsstring>(::lwtr::tx_handle &amp;handle, chi_protocol_types::tlm_payload_type &amp;trans) override</argsstring>
+        <name>recordEndTx</name>
+        <qualifiedname>chi::lwtr::chi_snp_ext_recording::recordEndTx</qualifiedname>
+        <param>
+          <type>::lwtr::tx_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>chi_protocol_types::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" line="179" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" bodystart="179" bodyend="179"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>chi::lwtr::chi_snp_ext_recording</label>
+        <link refid="classchi_1_1lwtr_1_1chi__snp__ext__recording"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::lwtr::lwtr4tlm2_extension_registry_if&lt; chi_protocol_types &gt;</label>
+        <link refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>chi::lwtr::chi_snp_ext_recording</label>
+        <link refid="classchi_1_1lwtr_1_1chi__snp__ext__recording"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::lwtr::lwtr4tlm2_extension_registry_if&lt; chi_protocol_types &gt;</label>
+        <link refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" line="174" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" bodystart="174" bodyend="180"/>
+    <listofallmembers>
+      <member refid="classchi_1_1lwtr_1_1chi__snp__ext__recording_1aac255bacefd8a5f4704094a908744ef7" prot="private" virt="non-virtual"><scope>chi::lwtr::chi_snp_ext_recording</scope><name>recordBeginTx</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if_1ae72d3fa9889743d4bd4b8cb807a3b01d" prot="public" virt="pure-virtual" ambiguityscope="tlm::scc::lwtr::lwtr4tlm2_extension_registry_if&lt; chi_protocol_types &gt;::"><scope>chi::lwtr::chi_snp_ext_recording</scope><name>recordBeginTx</name></member>
+      <member refid="classchi_1_1lwtr_1_1chi__snp__ext__recording_1a306c444b7fdcd8b8286822c72a603f57" prot="private" virt="non-virtual"><scope>chi::lwtr::chi_snp_ext_recording</scope><name>recordEndTx</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if_1a7f29770201f0f1539b77c30992c87b51" prot="public" virt="pure-virtual" ambiguityscope="tlm::scc::lwtr::lwtr4tlm2_extension_registry_if&lt; chi_protocol_types &gt;::"><scope>chi::lwtr::chi_snp_ext_recording</scope><name>recordEndTx</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if_1a0fefc09af4ce9a015fb438ce5fefb44c" prot="public" virt="virtual"><scope>chi::lwtr::chi_snp_ext_recording</scope><name>~lwtr4tlm2_extension_registry_if</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

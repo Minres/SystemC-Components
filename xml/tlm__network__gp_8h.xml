@@ -1,0 +1,493 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="tlm__network__gp_8h" kind="file" language="C++">
+    <compoundname>tlm_network_gp.h</compoundname>
+    <includes refid="tlm__array_8h" local="yes">tlm_array.h</includes>
+    <includes local="no">deque</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h</includes>
+    <includes local="no">cstdint</includes>
+    <includedby refid="axis__tlm_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h</includedby>
+    <includedby refid="cxs__tlm_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h</includedby>
+    <includedby refid="eth__tlm_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h</includedby>
+    <includedby refid="spi__tlm_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/spi/spi_tlm.h</includedby>
+    <includedby refid="tlm__network_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network.h</includedby>
+    <includedby refid="tlm__network__sockets_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>tlm_array.h</label>
+        <link refid="tlm__array_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h</label>
+        <link refid="tlm__network__gp_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>cstdint</label>
+      </node>
+      <node id="4">
+        <label>deque</label>
+      </node>
+      <node id="5">
+        <label>tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h</label>
+        <link refid="axis__tlm_8h_source"/>
+      </node>
+      <node id="4">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp</label>
+        <link refid="cxs__tlm_8cpp_source"/>
+      </node>
+      <node id="3">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h</label>
+        <link refid="cxs__tlm_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/scv/tlm_recorder_module.h</label>
+        <link refid="interfaces_2cxs_2scv_2tlm__recorder__module_8h_source"/>
+      </node>
+      <node id="6">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/scv/tlm_recording.h</label>
+        <link refid="tlm__recording_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.cpp</label>
+        <link refid="eth__tlm_8cpp_source"/>
+      </node>
+      <node id="7">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h</label>
+        <link refid="eth__tlm_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/spi/spi_tlm.h</label>
+        <link refid="spi__tlm_8h_source"/>
+      </node>
+      <node id="12">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.cpp</label>
+        <link refid="nw_2scv_2tlm__recorder_8cpp_source"/>
+      </node>
+      <node id="13">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h</label>
+        <link refid="nw_2scv_2tlm__recorder_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder_module.h</label>
+        <link refid="sysc_2tlm_2nw_2scv_2tlm__recorder__module_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h</label>
+        <link refid="nw_2target__mixin_8h_source"/>
+      </node>
+      <node id="10">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network.h</label>
+        <link refid="tlm__network_8h_source"/>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h</label>
+        <link refid="tlm__network__gp_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h</label>
+        <link refid="tlm__network__sockets_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classtlm_1_1nw_1_1tlm__base__mm__interface" prot="public">tlm::nw::tlm_base_mm_interface</innerclass>
+    <innerclass refid="structtlm_1_1nw_1_1tlm__network__payload__base" prot="public">tlm::nw::tlm_network_payload_base</innerclass>
+    <innerclass refid="structtlm_1_1nw_1_1tlm__network__payload" prot="public">tlm::nw::tlm_network_payload</innerclass>
+    <innerclass refid="structtlm_1_1nw_1_1tlm__network__payload_1_1gp__mm" prot="public">tlm::nw::tlm_network_payload::gp_mm</innerclass>
+    <innernamespace refid="namespacetlm">tlm</innernamespace>
+    <innernamespace refid="namespacetlm_1_1nw">tlm::nw</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2024<sp/>MINRES<sp/>Technologies<sp/>GmbH</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_TLM_NW_TLM_NETWROK_GP_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_TLM_NW_TLM_NETWROK_GP_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;tlm_array.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;deque&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>CWR_SYSTEMC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm_h/tlm_generic_payload/tlm_gp.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm" kindref="compound">tlm</ref><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm_1_1nw" kindref="compound">nw</ref><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base" kindref="compound">tlm_network_payload_base</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classtlm_1_1nw_1_1tlm__base__mm__interface" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classtlm_1_1nw_1_1tlm__base__mm__interface" kindref="compound">tlm_base_mm_interface</ref><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>free(<ref refid="structtlm_1_1nw_1_1tlm__network__payload__base" kindref="compound">tlm_network_payload_base</ref>*)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classtlm_1_1nw_1_1tlm__base__mm__interface" kindref="compound">~tlm_base_mm_interface</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="52" refid="structtlm_1_1nw_1_1tlm__network__payload__base" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1ab177f24d8544436b7af9f3c95d1d641c" kindref="member">tlm_network_payload_base</ref><sp/>{</highlight></codeline>
+<codeline lineno="58" refid="structtlm_1_1nw_1_1tlm__network__payload__base_1ab177f24d8544436b7af9f3c95d1d641c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1ab177f24d8544436b7af9f3c95d1d641c" kindref="member">tlm_network_payload_base</ref>()</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1ab177f24d8544436b7af9f3c95d1d641c" kindref="member">tlm_network_payload_base</ref>(nullptr)<sp/>{}</highlight></codeline>
+<codeline lineno="67" refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a18e488e7029fcd201bbed7a9b3ec261b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a18e488e7029fcd201bbed7a9b3ec261b" kindref="member">tlm_network_payload_base</ref>(<ref refid="classtlm_1_1nw_1_1tlm__base__mm__interface" kindref="compound">tlm_base_mm_interface</ref>*<sp/>mm)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>m_extensions(max_num_extensions())</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>m_mm(mm)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>m_ref_count(0){};</highlight></codeline>
+<codeline lineno="74" refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a2cc8c7ed055f721b715c3c77ddf98d76" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a2cc8c7ed055f721b715c3c77ddf98d76" kindref="member">~tlm_network_payload_base</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>m_extensions.size();<sp/>i++)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(m_extensions[i])</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_extensions[i]-&gt;free();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86" refid="structtlm_1_1nw_1_1tlm__network__payload__base_1adb2698084ef05cbbd02bee41edec31cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1adb2698084ef05cbbd02bee41edec31cf" kindref="member">reset</ref>()<sp/>{<sp/>m_extensions.free_entire_cache();<sp/>}</highlight></codeline>
+<codeline lineno="92" refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a0707869bc67bb455921db0e53c2c8e6c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a0707869bc67bb455921db0e53c2c8e6c" kindref="member">acquire</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sc_assert(m_mm<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_ref_count++;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102" refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a6c9e43a01c588c248797ac1afe735185" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a6c9e43a01c588c248797ac1afe735185" kindref="member">release</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sc_assert(m_mm<sp/>!=<sp/>0<sp/>&amp;&amp;<sp/>m_ref_count<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(--m_ref_count<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_mm-&gt;free(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114" refid="structtlm_1_1nw_1_1tlm__network__payload__base_1af3fe35b68770e434bbd49940e4def45f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1af3fe35b68770e434bbd49940e4def45f" kindref="member">get_ref_count</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_ref_count;<sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>set_mm(<ref refid="classtlm_1_1nw_1_1tlm__base__mm__interface" kindref="compound">tlm_base_mm_interface</ref>*<sp/>mm)<sp/>{<sp/>m_mm<sp/>=<sp/>mm;<sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>has_mm()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_mm<sp/>!=<sp/>0;<sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>copy_extensions_from(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1ab177f24d8544436b7af9f3c95d1d641c" kindref="member">tlm_network_payload_base</ref>&amp;<sp/>other);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>update_extensions_from(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1ab177f24d8544436b7af9f3c95d1d641c" kindref="member">tlm_network_payload_base</ref>&amp;<sp/>other);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Free<sp/>all<sp/>extensions.<sp/>Useful<sp/>when<sp/>reusing<sp/>a<sp/>cloned<sp/>transaction<sp/>that<sp/>doesn&apos;t<sp/>have<sp/>memory<sp/>manager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>normal<sp/>and<sp/>sticky<sp/>extensions<sp/>are<sp/>freed<sp/>and<sp/>extension<sp/>array<sp/>cleared.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>free_all_extensions();</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Stick<sp/>the<sp/>pointer<sp/>to<sp/>an<sp/>extension<sp/>into<sp/>the<sp/>vector,<sp/>return<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>previous<sp/>value:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/>T*<sp/>set_extension(T*<sp/>ext)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">T*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(set_extension(T::ID,<sp/>ext));<sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>non-templatized<sp/>version<sp/>with<sp/>manual<sp/>index:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm_extension_base*<sp/>set_extension(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index,<sp/>tlm_extension_base*<sp/>ext);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Stick<sp/>the<sp/>pointer<sp/>to<sp/>an<sp/>extension<sp/>into<sp/>the<sp/>vector,<sp/>return<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>previous<sp/>value<sp/>and<sp/>schedule<sp/>its<sp/>release</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/>T*<sp/>set_auto_extension(T*<sp/>ext)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">T*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(set_auto_extension(T::ID,<sp/>ext));<sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>non-templatized<sp/>version<sp/>with<sp/>manual<sp/>index:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm_extension_base*<sp/>set_auto_extension(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index,<sp/>tlm_extension_base*<sp/>ext);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>for<sp/>an<sp/>extension,<sp/>ext<sp/>will<sp/>point<sp/>to<sp/>0<sp/>if<sp/>not<sp/>present</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>get_extension(T*&amp;<sp/>ext)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/>ext<sp/>=<sp/>get_extension&lt;T&gt;();<sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/>T*<sp/>get_extension()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">T*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(get_extension(T::ID));<sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Non-templatized<sp/>version<sp/>with<sp/>manual<sp/>index:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm_extension_base*<sp/>get_extension(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>call<sp/>just<sp/>removes<sp/>the<sp/>extension<sp/>from<sp/>the<sp/>txn<sp/>but<sp/>does<sp/>not</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>call<sp/>free()<sp/>or<sp/>tells<sp/>the<sp/>MM<sp/>to<sp/>do<sp/>so</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>it<sp/>return<sp/>false<sp/>if<sp/>there<sp/>was<sp/>active<sp/>MM<sp/>so<sp/>you<sp/>are<sp/>now<sp/>in<sp/>an<sp/>unsafe<sp/>situation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>recommended<sp/>use:<sp/>when<sp/>100%<sp/>sure<sp/>there<sp/>is<sp/>no<sp/>MM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>clear_extension(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T*<sp/>ext)<sp/>{<sp/>clear_extension&lt;T&gt;();<sp/>}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>call<sp/>just<sp/>removes<sp/>the<sp/>extension<sp/>from<sp/>the<sp/>txn<sp/>but<sp/>does<sp/>not</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>call<sp/>free()<sp/>or<sp/>tells<sp/>the<sp/>MM<sp/>to<sp/>do<sp/>so</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>it<sp/>return<sp/>false<sp/>if<sp/>there<sp/>was<sp/>active<sp/>MM<sp/>so<sp/>you<sp/>are<sp/>now<sp/>in<sp/>an<sp/>unsafe<sp/>situation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>recommended<sp/>use:<sp/>when<sp/>100%<sp/>sure<sp/>there<sp/>is<sp/>no<sp/>MM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>clear_extension()<sp/>{<sp/>clear_extension(T::ID);<sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>call<sp/>removes<sp/>the<sp/>extension<sp/>from<sp/>the<sp/>txn<sp/>and<sp/>does</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>call<sp/>free()<sp/>or<sp/>tells<sp/>the<sp/>MM<sp/>to<sp/>do<sp/>so<sp/>when<sp/>the<sp/>txn<sp/>is<sp/>finally<sp/>done</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>recommended<sp/>use:<sp/>when<sp/>not<sp/>sure<sp/>there<sp/>is<sp/>no<sp/>MM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>release_extension(T*<sp/>ext)<sp/>{<sp/>release_extension&lt;T&gt;();<sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>call<sp/>removes<sp/>the<sp/>extension<sp/>from<sp/>the<sp/>txn<sp/>and<sp/>does</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>call<sp/>free()<sp/>or<sp/>tells<sp/>the<sp/>MM<sp/>to<sp/>do<sp/>so<sp/>when<sp/>the<sp/>txn<sp/>is<sp/>finally<sp/>done</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>recommended<sp/>use:<sp/>when<sp/>not<sp/>sure<sp/>there<sp/>is<sp/>no<sp/>MM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>release_extension()<sp/>{<sp/>release_extension(T::ID);<sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>get_extension_count()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_extensions.size();<sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Non-templatized<sp/>version<sp/>with<sp/>manual<sp/>index</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>clear_extension(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Non-templatized<sp/>version<sp/>with<sp/>manual<sp/>index</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>release_extension(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>sure<sp/>the<sp/>extension<sp/>array<sp/>is<sp/>large<sp/>enough.<sp/>Can<sp/>be<sp/>called<sp/>once<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>an<sp/>initiator<sp/>module<sp/>(before<sp/>issuing<sp/>the<sp/>first<sp/>transaction)<sp/>to<sp/>make</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>sure<sp/>that<sp/>the<sp/>extension<sp/>array<sp/>is<sp/>of<sp/>correct<sp/>size.<sp/>This<sp/>is<sp/>only<sp/>needed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>the<sp/>initiator<sp/>cannot<sp/>guarantee<sp/>that<sp/>the<sp/>generic<sp/>payload<sp/>object<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>allocated<sp/>after<sp/>C++<sp/>static<sp/>construction<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>resize_extensions();</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm::nw::tlm_array&lt;tlm_extension_base*&gt;<sp/>m_extensions;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm_base_mm_interface*<sp/>m_mm;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>m_ref_count;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="199" refid="structtlm_1_1nw_1_1tlm__network__payload" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>CMDENUM&gt;<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a060f577ff3ab6e5cff7ca54aaa5d26c8" kindref="member">tlm_network_payload</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1ab177f24d8544436b7af9f3c95d1d641c" kindref="member">tlm_network_payload_base</ref><sp/>{</highlight></codeline>
+<codeline lineno="205" refid="structtlm_1_1nw_1_1tlm__network__payload_1a060f577ff3ab6e5cff7ca54aaa5d26c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a060f577ff3ab6e5cff7ca54aaa5d26c8" kindref="member">tlm_network_payload</ref>();</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a060f577ff3ab6e5cff7ca54aaa5d26c8" kindref="member">tlm_network_payload</ref>(<ref refid="classtlm_1_1nw_1_1tlm__base__mm__interface" kindref="compound">tlm_base_mm_interface</ref>*<sp/>mm);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a060f577ff3ab6e5cff7ca54aaa5d26c8" kindref="member">tlm_network_payload</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a060f577ff3ab6e5cff7ca54aaa5d26c8" kindref="member">tlm_network_payload&lt;CMDENUM&gt;</ref>&amp;<sp/>x)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220" refid="structtlm_1_1nw_1_1tlm__network__payload_1ab194e370159101d188e4659820a95e88" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1ab194e370159101d188e4659820a95e88" kindref="member">~tlm_network_payload</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="228" refid="structtlm_1_1nw_1_1tlm__network__payload_1a1f11ed5e4bacf8e328554619e18e1c9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a1f11ed5e4bacf8e328554619e18e1c9f" kindref="member">deep_copy_from</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a060f577ff3ab6e5cff7ca54aaa5d26c8" kindref="member">tlm_network_payload</ref>&amp;<sp/>other);</highlight></codeline>
+<codeline lineno="236" refid="structtlm_1_1nw_1_1tlm__network__payload_1a178f26fc9fccff510d576ef23b02db30" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>CMDENUM<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a178f26fc9fccff510d576ef23b02db30" kindref="member">get_command</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_command;<sp/>}</highlight></codeline>
+<codeline lineno="244" refid="structtlm_1_1nw_1_1tlm__network__payload_1a8c2fb50ad5fd790b1fdceb3ae07a85a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a8c2fb50ad5fd790b1fdceb3ae07a85a9" kindref="member">set_command</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>CMDENUM<sp/>command)<sp/>{<sp/>m_command<sp/>=<sp/>command;<sp/>}</highlight></codeline>
+<codeline lineno="252" refid="structtlm_1_1nw_1_1tlm__network__payload_1a79b753604f9facb4d534b65192f610e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint8_t&gt;<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a79b753604f9facb4d534b65192f610e8" kindref="member">get_data</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_data;<sp/>}</highlight></codeline>
+<codeline lineno="260" refid="structtlm_1_1nw_1_1tlm__network__payload_1a2d6f067295298c7f3596ce5f2926f8fc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint8_t&gt;&amp;<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a2d6f067295298c7f3596ce5f2926f8fc" kindref="member">get_data</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_data;<sp/>}</highlight></codeline>
+<codeline lineno="268" refid="structtlm_1_1nw_1_1tlm__network__payload_1accff7d40fbb5c911fef45ba3ef41c791" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1accff7d40fbb5c911fef45ba3ef41c791" kindref="member">set_data</ref>(std::vector&lt;uint8_t&gt;<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>value)<sp/>{<sp/>m_data<sp/>=<sp/>value;<sp/>}</highlight></codeline>
+<codeline lineno="276" refid="structtlm_1_1nw_1_1tlm__network__payload_1a30abd065f6596fdc77efce838f219a7f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a30abd065f6596fdc77efce838f219a7f" kindref="member">set_data</ref>(std::vector&lt;uint8_t&gt;&amp;&amp;<sp/>value)<sp/>{<sp/>m_data<sp/>=<sp/>std::move(value);<sp/>}</highlight></codeline>
+<codeline lineno="284" refid="structtlm_1_1nw_1_1tlm__network__payload_1ae4be615ce910ec53c9353c8f0b29cfef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1ae4be615ce910ec53c9353c8f0b29cfef" kindref="member">is_response_ok</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(m_response_status<sp/>&gt;<sp/>0);<sp/>}</highlight></codeline>
+<codeline lineno="292" refid="structtlm_1_1nw_1_1tlm__network__payload_1a538487c4381d5d3505ad445775b37469" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a538487c4381d5d3505ad445775b37469" kindref="member">is_response_error</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(m_response_status<sp/>&lt;=<sp/>0);<sp/>}</highlight></codeline>
+<codeline lineno="300" refid="structtlm_1_1nw_1_1tlm__network__payload_1a7dacbc9656a32b84e65daecd43308c2e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm_response_status<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a7dacbc9656a32b84e65daecd43308c2e" kindref="member">get_response_status</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_response_status;<sp/>}</highlight></codeline>
+<codeline lineno="308" refid="structtlm_1_1nw_1_1tlm__network__payload_1aa09734c199248e19d1eab45f4f63bfe0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1aa09734c199248e19d1eab45f4f63bfe0" kindref="member">set_response_status</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>tlm_response_status<sp/>response_status)<sp/>{<sp/>m_response_status<sp/>=<sp/>response_status;<sp/>}</highlight></codeline>
+<codeline lineno="316" refid="structtlm_1_1nw_1_1tlm__network__payload_1a979da11b1a6b3fe8d503969724a19adf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a979da11b1a6b3fe8d503969724a19adf" kindref="member">get_response_string</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318" refid="structtlm_1_1nw_1_1tlm__network__payload_1_1gp__mm" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1_1gp__mm" kindref="compound">gp_mm</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classtlm_1_1nw_1_1tlm__base__mm__interface" kindref="compound">tlm_base_mm_interface</ref><sp/>{</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a060f577ff3ab6e5cff7ca54aaa5d26c8" kindref="member">tlm_network_payload&lt;CMDENUM&gt;</ref>*<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a6a04c11d3ffe4e07b352e59cefdbdba7" kindref="member">create</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(pool.size())<sp/>{</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>pool.front();</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pool.pop_front();</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a060f577ff3ab6e5cff7ca54aaa5d26c8" kindref="member">tlm_network_payload&lt;CMDENUM&gt;</ref>(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>free(<ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1ab177f24d8544436b7af9f3c95d1d641c" kindref="member">tlm_network_payload_base</ref>*<sp/>gp)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>t<sp/>=<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal"><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a060f577ff3ab6e5cff7ca54aaa5d26c8" kindref="member">tlm_network_payload&lt;CMDENUM&gt;</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(gp);</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>t-&gt;free_all_extensions();</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pool.push_back(t);</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1_1gp__mm" kindref="compound">~gp_mm</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>n<sp/>:<sp/>pool)</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>n;</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::deque&lt;tlm_network_payload&lt;CMDENUM&gt;*&gt;<sp/>pool;</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="347" refid="structtlm_1_1nw_1_1tlm__network__payload_1a6a04c11d3ffe4e07b352e59cefdbdba7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a060f577ff3ab6e5cff7ca54aaa5d26c8" kindref="member">tlm_network_payload&lt;CMDENUM&gt;</ref>*<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a6a04c11d3ffe4e07b352e59cefdbdba7" kindref="member">create</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">thread_local</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1_1gp__mm" kindref="compound">gp_mm</ref><sp/>mm;</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mm.create();</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload" kindref="compound">tlm_network_payload&lt;CMDENUM&gt;</ref>&amp;<sp/>operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload" kindref="compound">tlm_network_payload&lt;CMDENUM&gt;</ref>&amp;<sp/>x)<sp/>{</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_command<sp/>=<sp/>x.m_command;</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_data<sp/>=<sp/>x.m_data;</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_response_status<sp/>=<sp/>x.m_response_status;</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/>CMDENUM<sp/>m_command;</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint8_t&gt;<sp/>m_data;</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm_response_status<sp/>m_response_status;</highlight></codeline>
+<codeline lineno="362"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>CMDENUM&gt;</highlight></codeline>
+<codeline lineno="365" refid="structtlm_1_1nw_1_1tlm__network__payload_1a060f577ff3ab6e5cff7ca54aaa5d26c8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a060f577ff3ab6e5cff7ca54aaa5d26c8" kindref="member">tlm_network_payload&lt;CMDENUM&gt;::tlm_network_payload</ref>()</highlight></codeline>
+<codeline lineno="366"><highlight class="normal">:<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1ab177f24d8544436b7af9f3c95d1d641c" kindref="member">tlm_network_payload_base</ref>()</highlight></codeline>
+<codeline lineno="367"><highlight class="normal">,<sp/>m_command(static_cast&lt;CMDENUM&gt;(0))</highlight></codeline>
+<codeline lineno="368"><highlight class="normal">,<sp/>m_response_status(TLM_OK_RESPONSE)<sp/>{}</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>CMDENUM&gt;</highlight></codeline>
+<codeline lineno="371" refid="structtlm_1_1nw_1_1tlm__network__payload_1ac602147300770f281378d9e81ce82ce5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a060f577ff3ab6e5cff7ca54aaa5d26c8" kindref="member">tlm_network_payload&lt;CMDENUM&gt;::tlm_network_payload</ref>(<ref refid="classtlm_1_1nw_1_1tlm__base__mm__interface" kindref="compound">tlm_base_mm_interface</ref>*<sp/>mm)</highlight></codeline>
+<codeline lineno="372"><highlight class="normal">:<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1ab177f24d8544436b7af9f3c95d1d641c" kindref="member">tlm_network_payload_base</ref>(mm)</highlight></codeline>
+<codeline lineno="373"><highlight class="normal">,<sp/>m_command(static_cast&lt;CMDENUM&gt;(0))</highlight></codeline>
+<codeline lineno="374"><highlight class="normal">,<sp/>m_response_status(TLM_OK_RESPONSE)<sp/>{}</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>tlm_network_payload_base::free_all_extensions()<sp/>{</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/>m_extensions.free_entire_cache();</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>m_extensions.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(m_extensions[i])<sp/>{</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_extensions[i]-&gt;free();</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_extensions[i]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="384"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="386" refid="structtlm_1_1nw_1_1tlm__network__payload_1a1f11ed5e4bacf8e328554619e18e1c9f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>CMDENUM&gt;<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a1f11ed5e4bacf8e328554619e18e1c9f" kindref="member">tlm_network_payload&lt;CMDENUM&gt;::deep_copy_from</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a060f577ff3ab6e5cff7ca54aaa5d26c8" kindref="member">tlm_network_payload</ref>&amp;<sp/>other)<sp/>{</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/>m_command<sp/>=<sp/>other.<ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a178f26fc9fccff510d576ef23b02db30" kindref="member">get_command</ref>();</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/>m_response_status<sp/>=<sp/>other.<ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a7dacbc9656a32b84e65daecd43308c2e" kindref="member">get_response_status</ref>();</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/>m_data<sp/>=<sp/>other.<ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a79b753604f9facb4d534b65192f610e8" kindref="member">get_data</ref>();</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/>copy_extensions_from(other);</highlight></codeline>
+<codeline lineno="391"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"></highlight></codeline>
+<codeline lineno="393" refid="structtlm_1_1nw_1_1tlm__network__payload_1a979da11b1a6b3fe8d503969724a19adf" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>CMDENUM&gt;<sp/>std::string<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload_1a979da11b1a6b3fe8d503969724a19adf" kindref="member">tlm_network_payload&lt;CMDENUM&gt;::get_response_string</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(m_response_status)<sp/>{</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TLM_OK_RESPONSE:</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;TLM_OK_RESPONSE&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TLM_INCOMPLETE_RESPONSE:</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;TLM_INCOMPLETE_RESPONSE&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TLM_GENERIC_ERROR_RESPONSE:</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;TLM_GENERIC_ERROR_RESPONSE&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TLM_ADDRESS_ERROR_RESPONSE:</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;TLM_ADDRESS_ERROR_RESPONSE&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TLM_COMMAND_ERROR_RESPONSE:</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;TLM_COMMAND_ERROR_RESPONSE&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TLM_BURST_ERROR_RESPONSE:</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;TLM_BURST_ERROR_RESPONSE&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="407"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TLM_BYTE_ENABLE_ERROR_RESPONSE:</highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;TLM_BYTE_ENABLE_ERROR_RESPONSE&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;TLM_UNKNOWN_RESPONSE&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="411"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"></highlight></codeline>
+<codeline lineno="413"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>tlm_extension_base*<sp/>tlm_network_payload_base::set_extension(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index,<sp/>tlm_extension_base*<sp/>ext)<sp/>{</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_assert(index<sp/>&lt;<sp/>m_extensions.size());</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm_extension_base*<sp/>tmp<sp/>=<sp/>m_extensions[index];</highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/>m_extensions[index]<sp/>=<sp/>ext;</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tmp;</highlight></codeline>
+<codeline lineno="418"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"></highlight></codeline>
+<codeline lineno="420"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>tlm_extension_base*<sp/>tlm_network_payload_base::set_auto_extension(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index,<sp/>tlm_extension_base*<sp/>ext)<sp/>{</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_assert(index<sp/>&lt;<sp/>m_extensions.size());</highlight></codeline>
+<codeline lineno="422"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm_extension_base*<sp/>tmp<sp/>=<sp/>m_extensions[index];</highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/>m_extensions[index]<sp/>=<sp/>ext;</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!tmp)</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_extensions.insert_in_cache(&amp;m_extensions[index]);</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_assert(m_mm<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tmp;</highlight></codeline>
+<codeline lineno="428"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"></highlight></codeline>
+<codeline lineno="430"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>tlm_extension_base*<sp/>tlm_network_payload_base::get_extension(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_assert(index<sp/>&lt;<sp/>m_extensions.size());</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_extensions[index];</highlight></codeline>
+<codeline lineno="433"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"></highlight></codeline>
+<codeline lineno="435"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>tlm_network_payload_base::clear_extension(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index)<sp/>{</highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_assert(index<sp/>&lt;<sp/>m_extensions.size());</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"><sp/><sp/><sp/><sp/>m_extensions[index]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">tlm_extension_base*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0);</highlight></codeline>
+<codeline lineno="438"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"></highlight></codeline>
+<codeline lineno="440"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>tlm_network_payload_base::release_extension(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index)<sp/>{</highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_assert(index<sp/>&lt;<sp/>m_extensions.size());</highlight></codeline>
+<codeline lineno="442"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(m_mm)<sp/>{</highlight></codeline>
+<codeline lineno="443"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_extensions.insert_in_cache(&amp;m_extensions[index]);</highlight></codeline>
+<codeline lineno="444"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="445"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_extensions[index]-&gt;free();</highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_extensions[index]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">tlm_extension_base*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0);</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="448"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="449"><highlight class="normal"></highlight></codeline>
+<codeline lineno="450"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>tlm_network_payload_base::update_extensions_from(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base" kindref="compound">tlm_network_payload_base</ref>&amp;<sp/>other)<sp/>{</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>deep<sp/>copy<sp/>extensions<sp/>that<sp/>are<sp/>already<sp/>present</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_assert(m_extensions.size()<sp/>&lt;=<sp/>other.m_extensions.size());</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>m_extensions.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(other.m_extensions[i])<sp/>{<sp/></highlight><highlight class="comment">//<sp/>original<sp/>has<sp/>extension<sp/>i</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="455"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(m_extensions[i])<sp/>{<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>have<sp/>it<sp/>too.<sp/>copy.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="456"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_extensions[i]-&gt;copy_from(*other.m_extensions[i]);</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="458"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="459"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="460"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="461"><highlight class="normal"></highlight></codeline>
+<codeline lineno="462"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>tlm_network_payload_base::copy_extensions_from(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base" kindref="compound">tlm_network_payload_base</ref>&amp;<sp/>other)<sp/>{</highlight></codeline>
+<codeline lineno="463"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>deep<sp/>copy<sp/>extensions<sp/>(sticky<sp/>and<sp/>non-sticky)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="464"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(m_extensions.size()<sp/>&lt;<sp/>other.m_extensions.size())</highlight></codeline>
+<codeline lineno="465"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_extensions.expand(other.m_extensions.size());</highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>other.m_extensions.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="467"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(other.m_extensions[i])<sp/>{<sp/></highlight><highlight class="comment">//<sp/>original<sp/>has<sp/>extension<sp/>i</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="468"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!m_extensions[i])<sp/>{<sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>don&apos;t:<sp/>clone.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="469"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_base*<sp/>ext<sp/>=<sp/>other.m_extensions[i]-&gt;clone();</highlight></codeline>
+<codeline lineno="470"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ext)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>extension<sp/>may<sp/>not<sp/>be<sp/>clonable.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="471"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(has_mm())<sp/>{<sp/></highlight><highlight class="comment">//<sp/>mm<sp/>can<sp/>take<sp/>care<sp/>of<sp/>removing<sp/>cloned<sp/>extensions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="472"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_auto_extension(i,<sp/>ext);</highlight></codeline>
+<codeline lineno="473"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="comment">//<sp/>no<sp/>mm,<sp/>user<sp/>will<sp/>call<sp/>free_all_extensions().</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="474"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_extension(i,<sp/>ext);</highlight></codeline>
+<codeline lineno="475"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="comment">//<sp/>We<sp/>already<sp/>have<sp/>such<sp/>extension.<sp/>Copy<sp/>original<sp/>over<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="478"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_extensions[i]-&gt;copy_from(*other.m_extensions[i]);</highlight></codeline>
+<codeline lineno="479"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="480"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="482"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="483"><highlight class="normal"></highlight></codeline>
+<codeline lineno="484"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>tlm_network_payload_base::resize_extensions()<sp/>{<sp/>m_extensions.expand(max_num_extensions());<sp/>}</highlight></codeline>
+<codeline lineno="485"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>nw</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="486"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>tlm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="487"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_TLM_NW_TLM_NETWROK_GP_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h"/>
+  </compounddef>
+</doxygen>

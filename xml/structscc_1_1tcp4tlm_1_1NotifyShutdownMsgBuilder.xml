@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tcp4tlm_1_1NotifyShutdownMsgBuilder" kind="struct" language="C++" prot="public">
+    <compoundname>scc::tcp4tlm::NotifyShutdownMsgBuilder</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm_1_1NotifyShutdownMsgBuilder_1a4e5bbe806f9247e6c4eb7b89e765a848" prot="public" static="no">
+        <type>NotifyShutdownMsg</type>
+        <definition>typedef NotifyShutdownMsg scc::tcp4tlm::NotifyShutdownMsgBuilder::Table</definition>
+        <argsstring></argsstring>
+        <name>Table</name>
+        <qualifiedname>scc::tcp4tlm::NotifyShutdownMsgBuilder::Table</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="247" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="247" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1NotifyShutdownMsgBuilder_1af4591d02ab02ada7b36fbc15b421dcc5" prot="public" static="no" mutable="no">
+        <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+        <definition>::flatbuffers::FlatBufferBuilder&amp; scc::tcp4tlm::NotifyShutdownMsgBuilder::fbb_</definition>
+        <argsstring></argsstring>
+        <name>fbb_</name>
+        <qualifiedname>scc::tcp4tlm::NotifyShutdownMsgBuilder::fbb_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="248" column="38" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="248" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1NotifyShutdownMsgBuilder_1aa3d1910d5f3f660f47c84736691eb9c1" prot="public" static="no" mutable="no">
+        <type>::flatbuffers::uoffset_t</type>
+        <definition>::flatbuffers::uoffset_t scc::tcp4tlm::NotifyShutdownMsgBuilder::start_</definition>
+        <argsstring></argsstring>
+        <name>start_</name>
+        <qualifiedname>scc::tcp4tlm::NotifyShutdownMsgBuilder::start_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="249" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="249" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1NotifyShutdownMsgBuilder_1aaec504102ac58048e247244bef6c4201" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::NotifyShutdownMsgBuilder::add_id</definition>
+        <argsstring>(uint32_t id)</argsstring>
+        <name>add_id</name>
+        <qualifiedname>scc::tcp4tlm::NotifyShutdownMsgBuilder::add_id</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="250" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="250" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1NotifyShutdownMsgBuilder_1a5b2a2f7f81579434c5637a865886bff7" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tcp4tlm::NotifyShutdownMsgBuilder::NotifyShutdownMsgBuilder</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb)</argsstring>
+        <name>NotifyShutdownMsgBuilder</name>
+        <qualifiedname>scc::tcp4tlm::NotifyShutdownMsgBuilder::NotifyShutdownMsgBuilder</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="251" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="251" bodyend="254"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1NotifyShutdownMsgBuilder_1a82d5091e044bb9d6e7a6b138f90b447c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>::flatbuffers::Offset&lt; NotifyShutdownMsg &gt;</type>
+        <definition>::flatbuffers::Offset&lt; NotifyShutdownMsg &gt; scc::tcp4tlm::NotifyShutdownMsgBuilder::Finish</definition>
+        <argsstring>()</argsstring>
+        <name>Finish</name>
+        <qualifiedname>scc::tcp4tlm::NotifyShutdownMsgBuilder::Finish</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="255" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="255" bodyend="259"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="246" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="246" bodyend="260"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tcp4tlm_1_1NotifyShutdownMsgBuilder_1aaec504102ac58048e247244bef6c4201" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::NotifyShutdownMsgBuilder</scope><name>add_id</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1NotifyShutdownMsgBuilder_1af4591d02ab02ada7b36fbc15b421dcc5" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::NotifyShutdownMsgBuilder</scope><name>fbb_</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1NotifyShutdownMsgBuilder_1a82d5091e044bb9d6e7a6b138f90b447c" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::NotifyShutdownMsgBuilder</scope><name>Finish</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1NotifyShutdownMsgBuilder_1a5b2a2f7f81579434c5637a865886bff7" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::NotifyShutdownMsgBuilder</scope><name>NotifyShutdownMsgBuilder</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1NotifyShutdownMsgBuilder_1aa3d1910d5f3f660f47c84736691eb9c1" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::NotifyShutdownMsgBuilder</scope><name>start_</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1NotifyShutdownMsgBuilder_1a4e5bbe806f9247e6c4eb7b89e765a848" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::NotifyShutdownMsgBuilder</scope><name>Table</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

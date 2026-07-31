@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1sc__variable__vector" kind="struct" language="C++" prot="public">
+    <compoundname>scc::sc_variable_vector</compoundname>
+    <includes refid="sc__variable_8h" local="no">sc_variable.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1sc__variable__vector_1a0bf2e9b859f1d661759e52d75a3ecf38" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string scc::sc_variable_vector&lt; T &gt;::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <qualifiedname>scc::sc_variable_vector::name</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="429" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="429" bodyend="429"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1sc__variable__vector_1ad21159a033d62934e6ddaf23a9a058db" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; &gt; &gt;</type>
+        <definition>std::vector&lt;std::unique_ptr&lt;sc_variable&lt;T&gt; &gt; &gt; scc::sc_variable_vector&lt; T &gt;::values</definition>
+        <argsstring></argsstring>
+        <name>values</name>
+        <qualifiedname>scc::sc_variable_vector::values</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="430" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="430" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1sc__variable__vector_1af124ea19b7ba5d5ea95b939f8012d6cd" prot="private" static="no" mutable="no">
+        <type>std::function&lt; <ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; *(char const  *, size_t)&gt;</type>
+        <definition>std::function&lt;sc_variable&lt;T&gt;*(char const*, size_t)&gt; scc::sc_variable_vector&lt; T &gt;::creator</definition>
+        <argsstring></argsstring>
+        <name>creator</name>
+        <qualifiedname>scc::sc_variable_vector::creator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="431" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="431" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1sc__variable__vector_1a12a7ccd81422701dc04c73922fcdcdfa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_variable_vector&lt; T &gt;::sc_variable_vector</definition>
+        <argsstring>(std::string const &amp;name, size_t size)</argsstring>
+        <name>sc_variable_vector</name>
+        <qualifiedname>scc::sc_variable_vector::sc_variable_vector</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="372" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="372" bodyend="375"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable__vector_1a98fa3a2c3cc2899304e1db8a368ac923" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_variable_vector&lt; T &gt;::sc_variable_vector</definition>
+        <argsstring>(std::string const &amp;name, size_t size, T const &amp;def_val)</argsstring>
+        <name>sc_variable_vector</name>
+        <qualifiedname>scc::sc_variable_vector::sc_variable_vector</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>T const &amp;</type>
+          <declname>def_val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="377" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="377" bodyend="380"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable__vector_1a13a91b630fcd9f1b06805c5155985f94" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_variable_vector&lt; T &gt;::sc_variable_vector</definition>
+        <argsstring>(std::string const &amp;name, size_t size, std::function&lt; sc_variable&lt; T &gt; *(char const *, size_t)&gt; creator)</argsstring>
+        <name>sc_variable_vector</name>
+        <qualifiedname>scc::sc_variable_vector::sc_variable_vector</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>std::function&lt; <ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; *(char const *, size_t)&gt;</type>
+          <declname>creator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="382" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="382" bodyend="385"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable__vector_1a7db33b915bc2c37331ca408ef6c72866" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t scc::sc_variable_vector&lt; T &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>scc::sc_variable_vector::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="387" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="387" bodyend="387"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable__vector_1ab36019c7b65c34938ca1b1b31c544fbe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_variable_vector&lt; T &gt;::resize</definition>
+        <argsstring>(size_t sz)</argsstring>
+        <name>resize</name>
+        <qualifiedname>scc::sc_variable_vector::resize</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>sz</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="389" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="389" bodyend="392"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable__vector_1a63214e7bb8c50fc477592eb231aa28ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_variable_vector&lt; T &gt;::resize</definition>
+        <argsstring>(size_t sz, T const &amp;def_val)</argsstring>
+        <name>resize</name>
+        <qualifiedname>scc::sc_variable_vector::resize</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>sz</declname>
+        </param>
+        <param>
+          <type>T const &amp;</type>
+          <declname>def_val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="394" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="394" bodyend="404"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable__vector_1a019c666c70992c7bbe1890e09aac8e5e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_variable_vector&lt; T &gt;::is_valid</definition>
+        <argsstring>(size_t idx) const</argsstring>
+        <name>is_valid</name>
+        <qualifiedname>scc::sc_variable_vector::is_valid</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="406" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="406" bodyend="406"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable__vector_1afb7e745cb68c2b00a88d02c9a150dcb5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; &amp;</type>
+        <definition>sc_variable&lt; T &gt; &amp; scc::sc_variable_vector&lt; T &gt;::operator[]</definition>
+        <argsstring>(size_t idx)</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>scc::sc_variable_vector::operator[]</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="408" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="408" bodyend="421"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable__vector_1acb5e99de896c62a8efcbc89ea905f2d4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>&lt; T &gt; const &amp;</type>
+        <definition>sc_variable&lt; T &gt; const  &amp; scc::sc_variable_vector&lt; T &gt;::operator[]</definition>
+        <argsstring>(size_t idx) const</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>scc::sc_variable_vector::operator[]</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="423" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="423" bodyend="426"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>a vector holding <ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref>. It can be used as a sparse array by providing a creator function or as a normal vector when providing a default value upon creating or resizing</para>
+<para><simplesect kind="note"><para>after end of elaboration the size of the vector cannot be change. It is also not possible to add elements e.g. when using as a sparse array.</para>
+</simplesect>
+<parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="370" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="370" bodyend="432"/>
+    <listofallmembers>
+      <member refid="structscc_1_1sc__variable__vector_1af124ea19b7ba5d5ea95b939f8012d6cd" prot="private" virt="non-virtual"><scope>scc::sc_variable_vector</scope><name>creator</name></member>
+      <member refid="structscc_1_1sc__variable__vector_1a019c666c70992c7bbe1890e09aac8e5e" prot="public" virt="non-virtual"><scope>scc::sc_variable_vector</scope><name>is_valid</name></member>
+      <member refid="structscc_1_1sc__variable__vector_1a0bf2e9b859f1d661759e52d75a3ecf38" prot="private" virt="non-virtual"><scope>scc::sc_variable_vector</scope><name>name</name></member>
+      <member refid="structscc_1_1sc__variable__vector_1afb7e745cb68c2b00a88d02c9a150dcb5" prot="public" virt="non-virtual"><scope>scc::sc_variable_vector</scope><name>operator[]</name></member>
+      <member refid="structscc_1_1sc__variable__vector_1acb5e99de896c62a8efcbc89ea905f2d4" prot="public" virt="non-virtual"><scope>scc::sc_variable_vector</scope><name>operator[]</name></member>
+      <member refid="structscc_1_1sc__variable__vector_1ab36019c7b65c34938ca1b1b31c544fbe" prot="public" virt="non-virtual"><scope>scc::sc_variable_vector</scope><name>resize</name></member>
+      <member refid="structscc_1_1sc__variable__vector_1a63214e7bb8c50fc477592eb231aa28ea" prot="public" virt="non-virtual"><scope>scc::sc_variable_vector</scope><name>resize</name></member>
+      <member refid="structscc_1_1sc__variable__vector_1a12a7ccd81422701dc04c73922fcdcdfa" prot="public" virt="non-virtual"><scope>scc::sc_variable_vector</scope><name>sc_variable_vector</name></member>
+      <member refid="structscc_1_1sc__variable__vector_1a98fa3a2c3cc2899304e1db8a368ac923" prot="public" virt="non-virtual"><scope>scc::sc_variable_vector</scope><name>sc_variable_vector</name></member>
+      <member refid="structscc_1_1sc__variable__vector_1a13a91b630fcd9f1b06805c5155985f94" prot="public" virt="non-virtual"><scope>scc::sc_variable_vector</scope><name>sc_variable_vector</name></member>
+      <member refid="structscc_1_1sc__variable__vector_1a7db33b915bc2c37331ca408ef6c72866" prot="public" virt="non-virtual"><scope>scc::sc_variable_vector</scope><name>size</name></member>
+      <member refid="structscc_1_1sc__variable__vector_1ad21159a033d62934e6ddaf23a9a058db" prot="private" virt="non-virtual"><scope>scc::sc_variable_vector</scope><name>values</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

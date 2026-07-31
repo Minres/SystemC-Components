@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1traceable" kind="class" language="C++" prot="public">
+    <compoundname>scc::traceable</compoundname>
+    <derivedcompoundref refid="classscc_1_1impl_1_1sc__register" prot="public" virt="non-virtual">scc::impl::sc_register&lt; typename impl::helper&lt; DATATYPE &gt;::Type &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classscc_1_1impl_1_1sc__register" prot="public" virt="non-virtual">scc::impl::sc_register&lt; DATATYPE &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classscc_1_1ordered__semaphore" prot="public" virt="non-virtual">scc::ordered_semaphore</derivedcompoundref>
+    <includes refid="traceable_8h" local="no">traceable.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1traceable_1afde2a0855aa2875f63b72b9db329551c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::traceable::traceable</definition>
+        <argsstring>()=default</argsstring>
+        <name>traceable</name>
+        <qualifiedname>scc::traceable::traceable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/traceable.h" line="33" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1traceable_1a1af8970cc881c520704bfb0440cbdbaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual scc::traceable::~traceable</definition>
+        <argsstring>()=default</argsstring>
+        <name>~traceable</name>
+        <qualifiedname>scc::traceable::~traceable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/traceable.h" line="35" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1traceable_1a88d6b5b574c0a0714c954888836ea750" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool scc::traceable::is_trace_enabled</definition>
+        <argsstring>() const</argsstring>
+        <name>is_trace_enabled</name>
+        <qualifiedname>scc::traceable::is_trace_enabled</qualifiedname>
+        <reimplementedby refid="classscc_1_1impl_1_1sc__register_1a66984eca71ad32bd856248091994b57b">is_trace_enabled</reimplementedby>
+        <reimplementedby refid="classscc_1_1impl_1_1sc__register_1a66984eca71ad32bd856248091994b57b">is_trace_enabled</reimplementedby>
+        <reimplementedby refid="classscc_1_1ordered__semaphore_1a8807655ed7a787cf7dbf5c8bb9080871">is_trace_enabled</reimplementedby>
+        <briefdescription>
+<para>returns of this component shall be traced </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this component shall be traced </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/traceable.h" line="42" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/traceable.h" bodystart="42" bodyend="42"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>interface defining a traceable component </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This overlaps with the trace function of sc_core::sc_object. In fact it serves as a signaling interface </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>scc::impl::sc_register&lt; DATATYPE &gt;</label>
+        <link refid="classscc_1_1impl_1_1sc__register"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>scc::impl::sc_register&lt; typename impl::helper&lt; DATATYPE &gt;::Type &gt;</label>
+        <link refid="classscc_1_1impl_1_1sc__register"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>scc::ordered_semaphore</label>
+        <link refid="classscc_1_1ordered__semaphore"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>scc::ordered_semaphore_t&lt; CAPACITY &gt;</label>
+        <link refid="structscc_1_1ordered__semaphore__t"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>scc::ordered_semaphore_t&lt; 1 &gt;</label>
+        <link refid="structscc_1_1ordered__semaphore__t"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>scc::sc_register_masked&lt; DATATYPE, WRMASK, RDMASK &gt;</label>
+        <link refid="classscc_1_1sc__register__masked"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>scc::traceable</label>
+        <link refid="structscc_1_1traceable"/>
+      </node>
+    </inheritancegraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/traceable.h" line="32" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/traceable.h" bodystart="32" bodyend="43"/>
+    <listofallmembers>
+      <member refid="structscc_1_1traceable_1a88d6b5b574c0a0714c954888836ea750" prot="public" virt="virtual"><scope>scc::traceable</scope><name>is_trace_enabled</name></member>
+      <member refid="structscc_1_1traceable_1afde2a0855aa2875f63b72b9db329551c" prot="public" virt="non-virtual"><scope>scc::traceable</scope><name>traceable</name></member>
+      <member refid="structscc_1_1traceable_1a1af8970cc881c520704bfb0440cbdbaf" prot="public" virt="virtual"><scope>scc::traceable</scope><name>~traceable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

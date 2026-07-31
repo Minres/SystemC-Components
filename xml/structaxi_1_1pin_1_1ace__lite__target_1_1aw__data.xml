@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data" kind="struct" language="C++" prot="private">
+    <compoundname>axi::pin::ace_lite_target::aw_data</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1ae25afc0d6aa795ac7fbb5edde2d1b919" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="98" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a8a60c5e0bf34f9285e59550099bd4eee" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::addr</definition>
+        <argsstring></argsstring>
+        <name>addr</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::addr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="99" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a40ef50e3569f67cfcda2239b6037a14f" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::prot</definition>
+        <argsstring></argsstring>
+        <name>prot</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::prot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="100" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a8c6a140d8062efb2c7aa3a4411cd09d0" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="101" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a2ddffea647c79e11640f4c905cfeb61f" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::cache</definition>
+        <argsstring></argsstring>
+        <name>cache</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::cache</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="102" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1af44014aa009eb081f1b7d289be0b15f5" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::burst</definition>
+        <argsstring></argsstring>
+        <name>burst</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::burst</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="103" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1af59f929e63fd63c53eee6aac6ebf5e86" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::qos</definition>
+        <argsstring></argsstring>
+        <name>qos</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::qos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="104" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a3ca43cc24330a51e3c4c2c306a9925f5" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::region</definition>
+        <argsstring></argsstring>
+        <name>region</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::region</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="105" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1ab25801d693e5bedb256cca1280e41947" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::len</definition>
+        <argsstring></argsstring>
+        <name>len</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::len</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="106" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1acba847258911a5611ef2e004d4715085" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::domain</definition>
+        <argsstring></argsstring>
+        <name>domain</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::domain</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="107" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1aa7530c407704b5bdc44b291f5a338af9" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::snoop</definition>
+        <argsstring></argsstring>
+        <name>snoop</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::snoop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="108" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1ab38d4b9b604a006e60624818ac846fb3" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::bar</definition>
+        <argsstring></argsstring>
+        <name>bar</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::bar</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="109" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a36e42fe7553c04f2bab098a9e59f1583" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::unique</definition>
+        <argsstring></argsstring>
+        <name>unique</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::unique</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="110" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a5447660fa6ec0fe9c527bc61191c0bdb" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::stashnid</definition>
+        <argsstring></argsstring>
+        <name>stashnid</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::stashnid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="111" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a91a0f842fcb57a47fd3534c6267984d4" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::stashlpid</definition>
+        <argsstring></argsstring>
+        <name>stashlpid</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::stashlpid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="112" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a5eed98971bc6e9ea8cede42e9ca436c7" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::lock</definition>
+        <argsstring></argsstring>
+        <name>lock</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::lock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="113" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a7665a6e5827738c747cd017e2c7fd90f" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t axi::pin::ace_lite_target&lt; CFG &gt;::aw_data::user</definition>
+        <argsstring></argsstring>
+        <name>user</name>
+        <qualifiedname>axi::pin::ace_lite_target::aw_data::user</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="114" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" line="97" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h" bodystart="97" bodyend="115"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a8a60c5e0bf34f9285e59550099bd4eee" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>addr</name></member>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1ab38d4b9b604a006e60624818ac846fb3" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>bar</name></member>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1af44014aa009eb081f1b7d289be0b15f5" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>burst</name></member>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a2ddffea647c79e11640f4c905cfeb61f" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>cache</name></member>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1acba847258911a5611ef2e004d4715085" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>domain</name></member>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1ae25afc0d6aa795ac7fbb5edde2d1b919" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>id</name></member>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1ab25801d693e5bedb256cca1280e41947" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>len</name></member>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a5eed98971bc6e9ea8cede42e9ca436c7" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>lock</name></member>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a40ef50e3569f67cfcda2239b6037a14f" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>prot</name></member>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1af59f929e63fd63c53eee6aac6ebf5e86" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>qos</name></member>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a3ca43cc24330a51e3c4c2c306a9925f5" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>region</name></member>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a8c6a140d8062efb2c7aa3a4411cd09d0" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>size</name></member>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1aa7530c407704b5bdc44b291f5a338af9" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>snoop</name></member>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a91a0f842fcb57a47fd3534c6267984d4" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>stashlpid</name></member>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a5447660fa6ec0fe9c527bc61191c0bdb" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>stashnid</name></member>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a36e42fe7553c04f2bab098a9e59f1583" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>unique</name></member>
+      <member refid="structaxi_1_1pin_1_1ace__lite__target_1_1aw__data_1a7665a6e5827738c747cd017e2c7fd90f" prot="public" virt="non-virtual"><scope>axi::pin::ace_lite_target::aw_data</scope><name>user</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

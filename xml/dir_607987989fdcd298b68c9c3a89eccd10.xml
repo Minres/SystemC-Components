@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_607987989fdcd298b68c9c3a89eccd10" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi</compoundname>
+    <innerdir refid="dir_f4da812976f6ede53b8b4007f8afe31f">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/pin</innerdir>
+    <innerfile refid="obi__tlm_8h">obi_tlm.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/"/>
+  </compounddef>
+</doxygen>

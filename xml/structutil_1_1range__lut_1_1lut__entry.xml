@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structutil_1_1range__lut_1_1lut__entry" kind="struct" language="C++" prot="public">
+    <compoundname>util::range_lut::lut_entry</compoundname>
+    <includes refid="range__lut_8h" local="no">range_lut.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structutil_1_1range__lut_1_1lut__entry_1a3d57c53bdc681f6ad07538ed9606cb05" prot="public" static="no" mutable="no">
+        <type>T</type>
+        <definition>T util::range_lut&lt; T &gt;::lut_entry::index</definition>
+        <argsstring></argsstring>
+        <name>index</name>
+        <qualifiedname>util::range_lut::lut_entry::index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="43" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structutil_1_1range__lut_1_1lut__entry_1ae3ff91c1258c860ebfde8264d9800dab" prot="public" static="no" mutable="no">
+        <type><ref refid="classutil_1_1range__lut_1af0a2482a6758bd63bc610b424075a98e" kindref="member">entry_type</ref></type>
+        <definition>entry_type util::range_lut&lt; T &gt;::lut_entry::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>util::range_lut::lut_entry::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="44" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the lut entry </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="42" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="42" bodyend="45"/>
+    <listofallmembers>
+      <member refid="structutil_1_1range__lut_1_1lut__entry_1a3d57c53bdc681f6ad07538ed9606cb05" prot="public" virt="non-virtual"><scope>util::range_lut::lut_entry</scope><name>index</name></member>
+      <member refid="structutil_1_1range__lut_1_1lut__entry_1ae3ff91c1258c860ebfde8264d9800dab" prot="public" virt="non-virtual"><scope>util::range_lut::lut_entry</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

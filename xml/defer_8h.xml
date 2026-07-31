@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="defer_8h" kind="file" language="C++">
+    <compoundname>defer.h</compoundname>
+    <innerclass refid="structUtil_1_1TagClassForLambda" prot="public">Util::TagClassForLambda</innerclass>
+    <innerclass refid="structUtil_1_1CallOnScopeExit" prot="public">Util::CallOnScopeExit</innerclass>
+    <innernamespace refid="namespaceUtil">Util</innernamespace>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="defer_8h_1a25d04465009681e5b4d15d49f9b321fb" prot="public" static="no">
+        <name>DEFER</name>
+        <initializer>const auto DEFER_CAT_ID(callOnScopeExit, __LINE__) = (Util::tagClassForLambda)-&gt;*[&amp;]()</initializer>
+        <briefdescription>
+<para>Defer following code until enclosing scope is exited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Copyright (c) 2015-2018, Pavlo M, <ulink url="https://github.com/olvap80">https://github.com/olvap80</ulink> All rights reserved.</para>
+<para>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</para>
+<para>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</para>
+<para>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</para>
+<para>Neither the name of deferpp nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</para>
+<para>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. Usage: DEFER{ some_code_to_be_deferred }; Remember that some_code_to_be_deferred shall not allow exceptions to be propagated out of curly braces </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" line="37" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="defer_8h_1ae274297e57d998eba643fdbc89c82996" prot="public" static="no">
+        <name>DEFER_CAT_ID</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>DEFER_CAT_ID_EXPANDED_HELPER(a, b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" line="43" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="defer_8h_1ad37c153d472c989e6d48a0e274495e44" prot="public" static="no">
+        <name>DEFER_CAT_ID_EXPANDED_HELPER</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>a##b</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" line="45" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>UTIL_DEFER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UTIL_DEFER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFER<sp/>const<sp/>auto<sp/>DEFER_CAT_ID(callOnScopeExit,<sp/>__LINE__)<sp/>=<sp/>(Util::tagClassForLambda)-&gt;*[&amp;]()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Implementation<sp/>details<sp/>follow</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Helper<sp/>macro<sp/>to<sp/>expand<sp/>and<sp/>concatenate<sp/>macro<sp/>arguments<sp/>into<sp/>combined<sp/>identifier</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFER_CAT_ID(a,<sp/>b)<sp/>DEFER_CAT_ID_EXPANDED_HELPER(a,<sp/>b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>helper<sp/>macro<sp/>to<sp/>concatenate<sp/>expanded<sp/>macro<sp/>arguments</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFER_CAT_ID_EXPANDED_HELPER(a,<sp/>b)<sp/>a##b</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Util<sp/>{</highlight></codeline>
+<codeline lineno="49" refid="structUtil_1_1TagClassForLambda" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">TagClassForLambda<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>TagClassForLambda()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="structUtil_1_1TagClassForLambda" kindref="compound">TagClassForLambda</ref><sp/>tagClassForLambda;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="structUtil_1_1CallOnScopeExit" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Lambda&gt;<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structUtil_1_1CallOnScopeExit_1a8e24ac5152a7cdf0674948a9d4831ace" kindref="member">CallOnScopeExit</ref><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="structUtil_1_1CallOnScopeExit_1a8e24ac5152a7cdf0674948a9d4831ace" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="structUtil_1_1CallOnScopeExit_1a8e24ac5152a7cdf0674948a9d4831ace" kindref="member">CallOnScopeExit</ref>(Lambda<sp/>initialLambda)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>lambda(initialLambda)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>isOwner(true)<sp/>{}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="structUtil_1_1CallOnScopeExit_1a65862889c72505f5f9e072fb9b2d27b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structUtil_1_1CallOnScopeExit_1a65862889c72505f5f9e072fb9b2d27b5" kindref="member">CallOnScopeExit</ref>(<ref refid="structUtil_1_1CallOnScopeExit_1a8e24ac5152a7cdf0674948a9d4831ace" kindref="member">CallOnScopeExit</ref>&amp;&amp;<sp/>other)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>lambda(other.lambda)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>isOwner(true)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other.isOwner<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ensure<sp/>copy<sp/>changes<sp/>go<sp/>only<sp/>through<sp/>move<sp/>constructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structUtil_1_1CallOnScopeExit_1a8e24ac5152a7cdf0674948a9d4831ace" kindref="member">CallOnScopeExit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structUtil_1_1CallOnScopeExit" kindref="compound">CallOnScopeExit</ref>&amp;<sp/>other)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structUtil_1_1CallOnScopeExit" kindref="compound">CallOnScopeExit</ref>&amp;<sp/>operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structUtil_1_1CallOnScopeExit" kindref="compound">CallOnScopeExit</ref>&amp;<sp/>other)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="structUtil_1_1CallOnScopeExit_1ad3c9a7b9e35923247ea3ad0345bba97a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structUtil_1_1CallOnScopeExit_1ad3c9a7b9e35923247ea3ad0345bba97a" kindref="member">~CallOnScopeExit</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(isOwner)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>condition<sp/>is<sp/>usually<sp/>optimized<sp/>away</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lambda();</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Lambda<sp/>lambda;<sp/></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isOwner;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="86"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Lambda&gt;<sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>CallOnScopeExit&lt;Lambda&gt;<sp/>operator-&gt;*(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TagClassForLambda&amp;,<sp/>Lambda<sp/>lambda)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>CallOnScopeExit&lt;Lambda&gt;(lambda);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Util</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>UTIL_DEFER_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h"/>
+  </compounddef>
+</doxygen>

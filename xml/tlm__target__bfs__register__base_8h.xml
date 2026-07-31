@@ -1,0 +1,1006 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="tlm__target__bfs__register__base_8h" kind="file" language="C++">
+    <compoundname>tlm_target_bfs_register_base.h</compoundname>
+    <includes local="no">algorithm</includes>
+    <includes local="no">cstddef</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">string</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">boost/preprocessor/arithmetic/add.hpp</includes>
+    <includes local="no">boost/preprocessor/arithmetic/mul.hpp</includes>
+    <includes local="no">boost/preprocessor/cat.hpp</includes>
+    <includes local="no">boost/preprocessor/facilities/overload.hpp</includes>
+    <includes local="no">boost/preprocessor/punctuation/comma_if.hpp</includes>
+    <includes local="no">boost/preprocessor/repetition/repeat.hpp</includes>
+    <includes local="no">boost/preprocessor/stringize.hpp</includes>
+    <includes local="no">boost/preprocessor/tuple/elem.hpp</includes>
+    <includes refid="resetable_8h" local="yes">resetable.h</includes>
+    <includes refid="resource__access__if_8h" local="yes">resource_access_if.h</includes>
+    <includes local="yes">sysc/kernel/sc_module_name.h</includes>
+    <includes local="yes">sysc/kernel/sc_object.h</includes>
+    <includes refid="tlm__target_8h" local="yes">tlm_target.h</includes>
+    <incdepgraph>
+      <node id="38">
+        <label>util/delegate.h</label>
+        <link refid="delegate_8h_source"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>ities.h</label>
+        <link refid="ities_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>util/pool_allocator.h</label>
+        <link refid="pool__allocator_8h_source"/>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>util/range_lut.h</label>
+        <link refid="range__lut_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>resetable.h</label>
+        <link refid="resetable_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>resource_access_if.h</label>
+        <link refid="resource__access__if_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>tlm_target.h</label>
+        <link refid="tlm__target_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h</label>
+        <link refid="tlm__target__bfs__register__base_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>scc/utilities.h</label>
+        <link refid="utilities_8h_source"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>tlm/scc/memory_map_collector.h</label>
+        <link refid="memory__map__collector_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>tlm_extension_recording_registry.h</label>
+        <link refid="tlm__extension__recording__registry_8h_source"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>tlm/scc/scv/tlm_rec_target_socket.h</label>
+        <link refid="tlm__rec__target__socket_8h_source"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>tlm/scc/scv/tlm_recorder.h</label>
+        <link refid="scc_2scv_2tlm__recorder_8h_source"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>tlm_recording_extension.h</label>
+        <link refid="tlm__recording__extension_8h_source"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>tlm/scc/target_mixin.h</label>
+        <link refid="scc_2target__mixin_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>tlm/scc/tlm_mm.h</label>
+        <link refid="tlm__mm_8h_source"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>algorithm</label>
+      </node>
+      <node id="23">
+        <label>array</label>
+      </node>
+      <node id="50">
+        <label>assert.h</label>
+      </node>
+      <node id="51">
+        <label>bitset</label>
+      </node>
+      <node id="7">
+        <label>boost/preprocessor/arithmetic/add.hpp</label>
+      </node>
+      <node id="8">
+        <label>boost/preprocessor/arithmetic/mul.hpp</label>
+      </node>
+      <node id="9">
+        <label>boost/preprocessor/cat.hpp</label>
+      </node>
+      <node id="10">
+        <label>boost/preprocessor/facilities/overload.hpp</label>
+      </node>
+      <node id="11">
+        <label>boost/preprocessor/punctuation/comma_if.hpp</label>
+      </node>
+      <node id="12">
+        <label>boost/preprocessor/repetition/repeat.hpp</label>
+      </node>
+      <node id="13">
+        <label>boost/preprocessor/stringize.hpp</label>
+      </node>
+      <node id="14">
+        <label>boost/preprocessor/tuple/elem.hpp</label>
+      </node>
+      <node id="39">
+        <label>cassert</label>
+      </node>
+      <node id="28">
+        <label>cci_configuration</label>
+      </node>
+      <node id="24">
+        <label>cctype</label>
+      </node>
+      <node id="52">
+        <label>climits</label>
+      </node>
+      <node id="3">
+        <label>cstddef</label>
+      </node>
+      <node id="17">
+        <label>cstdint</label>
+      </node>
+      <node id="56">
+        <label>deque</label>
+      </node>
+      <node id="53">
+        <label>fstream</label>
+      </node>
+      <node id="4">
+        <label>functional</label>
+      </node>
+      <node id="64">
+        <label>iomanip</label>
+      </node>
+      <node id="65">
+        <label>iostream</label>
+      </node>
+      <node id="54">
+        <label>iterator</label>
+      </node>
+      <node id="25">
+        <label>limits</label>
+      </node>
+      <node id="29">
+        <label>locale</label>
+      </node>
+      <node id="66">
+        <label>map</label>
+      </node>
+      <node id="26">
+        <label>memory</label>
+      </node>
+      <node id="57">
+        <label>mutex</label>
+      </node>
+      <node id="40">
+        <label>new</label>
+      </node>
+      <node id="45">
+        <label>regex</label>
+      </node>
+      <node id="43">
+        <label>scv-tr.h</label>
+      </node>
+      <node id="31">
+        <label>sstream</label>
+      </node>
+      <node id="32">
+        <label>stdexcept</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="55">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="46">
+        <label>sysc/kernel/sc_dynamic_processes.h</label>
+      </node>
+      <node id="19">
+        <label>sysc/kernel/sc_module_name.h</label>
+      </node>
+      <node id="20">
+        <label>sysc/kernel/sc_object.h</label>
+      </node>
+      <node id="18">
+        <label>sysc/kernel/sc_time.h</label>
+      </node>
+      <node id="27">
+        <label>systemc</label>
+      </node>
+      <node id="33">
+        <label>tlm</label>
+      </node>
+      <node id="62">
+        <label>tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h</label>
+      </node>
+      <node id="59">
+        <label>tlm_utils/peq_with_cb_and_phase.h</label>
+      </node>
+      <node id="61">
+        <label>tlm_utils/peq_with_get.h</label>
+      </node>
+      <node id="41">
+        <label>type_traits</label>
+      </node>
+      <node id="58">
+        <label>unordered_map</label>
+      </node>
+      <node id="37">
+        <label>unordered_set</label>
+      </node>
+      <node id="42">
+        <label>utility</label>
+      </node>
+      <node id="6">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classscc_1_1abstract__bitfield" prot="public">scc::abstract_bitfield</innerclass>
+    <innerclass refid="classscc_1_1bitfield__register" prot="public">scc::bitfield_register</innerclass>
+    <innerclass refid="classscc_1_1bitfield" prot="public">scc::bitfield</innerclass>
+    <innerclass refid="classscc_1_1tlm__target__bfs__register__base" prot="public">scc::tlm_target_bfs_register_base</innerclass>
+    <innernamespace refid="namespacescc">scc</innernamespace>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="tlm__target__bfs__register__base_8h_1a879b777d60c66d4a64238c1375e56df0" prot="public" static="no">
+        <name>ID_SCC_TLM_TARGET_BFS_REGISTER_BASE</name>
+        <initializer>&quot;scc: <ref refid="namespacetlm" kindref="compound">tlm</ref> target bitfield support register base&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>@Author: Philip Dachs @Date: 2019-06-19T12:30:13+02:00 @Filename: <ref refid="tlm__target__bfs__register__base_8h_source" kindref="compound">tlm_target_bfs_register_base.h</ref> @Last modified by: Johannes Geier (contact: <ulink url="mailto:johannes.geier@tum.de">johannes.geier@tum.de</ulink>) @Last modified time: 2021-01-20T18:11:00+02:00 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="48" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tlm__target__bfs__register__base_8h_1a01d825342fe17ca22f74caebf085cb3e" prot="public" static="no">
+        <name>BITFIELD_ARRAY_ELEMENT</name>
+        <param><defname>z</defname></param>
+        <param><defname>i</defname></param>
+        <param><defname>elem</defname></param>
+        <initializer>    BOOST_PP_COMMA_IF(i) {                                                                                                                 \
+        getRegister(BOOST_PP_TUPLE_ELEM(0, elem)),                                                                                         \
+            BOOST_PP_TUPLE_ELEM(1, elem)                                                                                                   \
+                BOOST_PP_STRINGIZE(i), BOOST_PP_TUPLE_ELEM(2, elem) + i *BOOST_PP_TUPLE_ELEM(3, elem), BOOST_PP_TUPLE_ELEM(3, elem),       \
+                                   BOOST_PP_TUPLE_ELEM(4, elem) BOOST_PP_STRINGIZE(i) BOOST_PP_TUPLE_ELEM(5, elem)                         \
+    }</initializer>
+        <briefdescription>
+<para>Implementation detail. Not for general use. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current index </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Tuple of (regname, basename, offset, size, uridbase)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+generates the following code <programlisting><codeline><highlight class="normal">{getRegister(&lt;regname&gt;),<sp/>&lt;basename&gt;&quot;&lt;i&gt;&quot;,<sp/>&lt;offset&gt;<sp/>+<sp/>&lt;size&gt;<sp/>*<sp/>&lt;i&gt;,<sp/>&lt;size&gt;,</highlight></codeline>
+<codeline><highlight class="normal">&lt;uridbase&gt;&quot;&lt;i&gt;&quot;&lt;uridpostfix&gt;}<sp/></highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="429" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="429" bodyend="435"/>
+      </memberdef>
+      <memberdef kind="define" id="tlm__target__bfs__register__base_8h_1a0118543f23e143a0331e39dda8cda4b7" prot="public" static="no">
+        <name>BITFIELD_ARRAY</name>
+        <param><defname>regname</defname></param>
+        <param><defname>basename</defname></param>
+        <param><defname>offset</defname></param>
+        <param><defname>size</defname></param>
+        <param><defname>uridbase</defname></param>
+        <param><defname>count</defname></param>
+        <initializer>    BOOST_PP_REPEAT(count, BITFIELD_ARRAY_ELEMENT, (regname, basename, offset, size, uridbase, ))</initializer>
+        <briefdescription>
+<para>Generates multiple bitfield definitions packed in one register. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>repeats the following pattern <computeroutput>count</computeroutput> times: <programlisting><codeline><highlight class="normal">{getRegister(&lt;regname&gt;),<sp/>&lt;basename&gt;&quot;&lt;i&gt;&quot;,<sp/>&lt;offset&gt;<sp/>+<sp/>&lt;size&gt;<sp/>*<sp/>&lt;i&gt;,<sp/>&lt;size&gt;,</highlight></codeline>
+<codeline><highlight class="normal">&lt;uridbase&gt;&quot;&lt;i&gt;&quot;}<sp/></highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>regname</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the register the bitfields are part of </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>basename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Prefix of the bitfield name. Resulting name is <computeroutput>&lt;basename&gt;&lt;i&gt;</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Offset in bits of the first generated bitfield </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size in bits of each bitfield </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>uridbase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Prefix of the urids. Resulting urid is <computeroutput>&lt;uridbase&gt;&lt;i&gt;</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of bitfields to generate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="453" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="453" bodyend="454"/>
+      </memberdef>
+      <memberdef kind="define" id="tlm__target__bfs__register__base_8h_1a7a87d386b18b340a18422ca71db42cb5" prot="public" static="no">
+        <name>BITFIELD_ARRAY_POSTFIX</name>
+        <param><defname>regname</defname></param>
+        <param><defname>basename</defname></param>
+        <param><defname>offset</defname></param>
+        <param><defname>size</defname></param>
+        <param><defname>uridbase</defname></param>
+        <param><defname>uridpostfix</defname></param>
+        <param><defname>count</defname></param>
+        <initializer>    BOOST_PP_REPEAT(count, BITFIELD_ARRAY_ELEMENT, (regname, basename, offset, size, uridbase, uridpostfix))</initializer>
+        <briefdescription>
+<para>See BITFIELD_ARRAY. Adds possibility to append postfix to urid pattern. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>uridpostfix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Postfix of the urids. Resulting urid is <computeroutput>&lt;uridbase&gt;&lt;i&gt;&lt;uridpostfix&gt;</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="463" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="463" bodyend="464"/>
+      </memberdef>
+      <memberdef kind="define" id="tlm__target__bfs__register__base_8h_1ac285e2dbc0a8a9dc7b53512b7f4af222" prot="public" static="no">
+        <name>REGISTER_ARRAY_ELEMENT</name>
+        <param><defname>z</defname></param>
+        <param><defname>i</defname></param>
+        <param><defname>elem</defname></param>
+        <initializer>    BOOST_PP_COMMA_IF(i) {                                                                                                                 \
+        BOOST_PP_TUPLE_ELEM(0, elem)                                                                                                       \
+        BOOST_PP_STRINGIZE(i), BOOST_PP_TUPLE_ELEM(1, elem) + i* BOOST_PP_TUPLE_ELEM(2, elem)                                              \
+    }</initializer>
+        <briefdescription>
+<para>Implementation detail. Not for general use. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current index </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Tuple of (basename, offset, size)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+generates the following code: <programlisting><codeline><highlight class="normal">{&lt;basename&gt;&quot;&lt;i&gt;&quot;,<sp/>&lt;offset&gt;<sp/>+<sp/>&lt;i&gt;<sp/>*<sp/>&lt;size&gt;}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="477" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="477" bodyend="481"/>
+      </memberdef>
+      <memberdef kind="define" id="tlm__target__bfs__register__base_8h_1ada236cdae27f0a60eb76b9ae3c8c7898" prot="public" static="no">
+        <name>REGISTER_ARRAY</name>
+        <param><defname>basename</defname></param>
+        <param><defname>offset</defname></param>
+        <param><defname>size</defname></param>
+        <param><defname>count</defname></param>
+        <initializer>BOOST_PP_REPEAT(count, REGISTER_ARRAY_ELEMENT, (basename, offset, size))</initializer>
+        <briefdescription>
+<para>Generates multiple register definitions. repeats the following pattern <computeroutput>count</computeroutput> times: </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">{&lt;basename&gt;&quot;&lt;i&gt;&quot;,<sp/>&lt;offset&gt;<sp/>+<sp/>&lt;i&gt;<sp/>*<sp/>&lt;size&gt;}</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>basename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Prefix of the register name. Resulting name is <computeroutput>&lt;basename&gt;&lt;i&gt;</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Offset in bytes of the first register. Only decimal numbers are supported </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size in bytes of each register </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of registers to generate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="497" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="497" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2021,<sp/>2021<sp/>Chair<sp/>of<sp/>Electronic<sp/>Design<sp/>Automation,<sp/>TU<sp/>Munich</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__SCC_TLM_TARGET_BFS_REGISTER_BASE_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SCC_TLM_TARGET_BFS_REGISTER_BASE_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/preprocessor/arithmetic/add.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/preprocessor/arithmetic/mul.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/preprocessor/cat.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/preprocessor/facilities/overload.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/preprocessor/punctuation/comma_if.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/preprocessor/repetition/repeat.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/preprocessor/stringize.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/preprocessor/tuple/elem.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;resetable.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;resource_access_if.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sysc/kernel/sc_module_name.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sysc/kernel/sc_object.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;tlm_target.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ID_SCC_TLM_TARGET_BFS_REGISTER_BASE<sp/>&quot;scc:<sp/>tlm<sp/>target<sp/>bitfield<sp/>support<sp/>register<sp/>base&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacescc" kindref="compound">scc</ref><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classscc_1_1abstract__bitfield" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>datatype_t&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">abstract_bitfield<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>abstract_bitfield(std::string<sp/>name,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bitOffset,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bitSize,<sp/>std::string<sp/>urid)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>bitOffset{bitOffset}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>bitSize{bitSize}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>name{std::move(name)}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>urid{std::move(urid)}<sp/>{}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>write(datatype_t&amp;<sp/>valueToWrite)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>datatype_t<sp/>read()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~abstract_bitfield()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>affected(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>byteOffset,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>byteLength)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(byteOffset<sp/>*<sp/>8<sp/>&lt;<sp/>bitOffset<sp/>+<sp/>bitSize)<sp/>&amp;&amp;<sp/>(bitOffset<sp/>&lt;<sp/>(byteOffset<sp/>+<sp/>byteLength)<sp/>*<sp/>8);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>datatype_t<sp/>mask()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((1ULL<sp/>&lt;&lt;<sp/>bitSize)<sp/>-<sp/>1)<sp/>&lt;&lt;<sp/>bitOffset;<sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bitOffset;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bitSize;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>name;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>urid;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classscc_1_1bitfield__register" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>datatype_t&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classscc_1_1bitfield__register_1acc6109e4236ac6df2989d91377d65281" kindref="member">bitfield_register</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>sc_core::sc_object,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1resource__access__if" kindref="compound">scc::resource_access_if</ref><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="99" refid="classscc_1_1bitfield__register_1acc6109e4236ac6df2989d91377d65281" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1bitfield__register_1acc6109e4236ac6df2989d91377d65281" kindref="member">bitfield_register</ref>(sc_core::sc_module_name<sp/>name,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>offset,<sp/>datatype_t<sp/>resetValue<sp/>=<sp/>0,<sp/>datatype_t<sp/>writeMask<sp/>=<sp/>-1,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>datatype_t<sp/>readMask<sp/>=<sp/>-1)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>sc_core::sc_object{name}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>offset{offset}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>resetValue{resetValue}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>writeMask{writeMask}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>readMask{readMask}<sp/>{}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="classscc_1_1bitfield__register_1a53025a4faf810398fdc81de12ff13a30" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">*<sp/><ref refid="classscc_1_1bitfield__register_1a53025a4faf810398fdc81de12ff13a30" kindref="member">full_name</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>name();<sp/>};</highlight></codeline>
+<codeline lineno="114" refid="classscc_1_1bitfield__register_1a648f082879bf572e7ce41b39b750c5ca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield__register_1a648f082879bf572e7ce41b39b750c5ca" kindref="member">size</ref>()<sp/>const<sp/>noexcept</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(datatype_t);<sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="classscc_1_1bitfield__register_1a42ba983ea8228973c81996031225c084" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield__register_1a42ba983ea8228973c81996031225c084" kindref="member">reset</ref>()</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/>storage<sp/>=<sp/>resetValue;<sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>write(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/>data,<sp/>std::size_t<sp/>length,<sp/>uint64_t<sp/>offset,<sp/>sc_core::sc_time&amp;<sp/>d)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(</highlight><highlight class="stringliteral">&quot;Access<sp/>out<sp/>of<sp/>range&quot;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>offset<sp/>+<sp/>length<sp/>&lt;=<sp/>this-&gt;<ref refid="classscc_1_1bitfield__register_1a648f082879bf572e7ce41b39b750c5ca" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>valueToWrite{storage};</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(data,<sp/>data<sp/>+<sp/>length,<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">uint8_t*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;valueToWrite)<sp/>+<sp/>offset);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;&amp;<sp/>bitfield<sp/>:<sp/>bitfields)<sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(bitfield.get().affected(offset,<sp/>length))<sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>mask<sp/>=<sp/>bitfield.get().mask();</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bits<sp/>=<sp/>(valueToWrite<sp/>&amp;<sp/>mask)<sp/>&gt;&gt;<sp/>bitfield.get().bitOffset;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bitfield.get().write(bits);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>valueToWrite<sp/>=<sp/>(valueToWrite<sp/>&amp;<sp/>~mask)<sp/>|<sp/>((bits<sp/>&lt;&lt;<sp/>bitfield.get().bitOffset)<sp/>&amp;<sp/>mask);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(writeCallback)</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>writeCallback(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>valueToWrite);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>storage<sp/>=<sp/>(valueToWrite<sp/>&amp;<sp/>writeMask)<sp/>|<sp/>(storage<sp/>&amp;<sp/>~writeMask);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>read(uint8_t*<sp/>data,<sp/>std::size_t<sp/>length,<sp/>uint64_t<sp/>offset,<sp/>sc_core::sc_time&amp;<sp/>d)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(</highlight><highlight class="stringliteral">&quot;Access<sp/>out<sp/>of<sp/>range&quot;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>offset<sp/>+<sp/>length<sp/>&lt;=<sp/>this-&gt;<ref refid="classscc_1_1bitfield__register_1a648f082879bf572e7ce41b39b750c5ca" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>result{storage};</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>&amp;=<sp/>readMask;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;&amp;<sp/>bitfield<sp/>:<sp/>bitfields)<sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(bitfield.get().affected(offset,<sp/>length))<sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bitfieldValue<sp/>=<sp/>bitfield.get().read();</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>mask<sp/>=<sp/>bitfield.get().mask();</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>(result<sp/>&amp;<sp/>~mask)<sp/>|<sp/>((bitfieldValue<sp/>&lt;&lt;<sp/>bitfield.get().bitOffset)<sp/>&amp;<sp/>mask);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(readCallback)</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>readCallback(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>result);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>begin<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">uint8_t*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;result)<sp/>+<sp/>offset;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(begin,<sp/>begin<sp/>+<sp/>length,<sp/>data);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="classscc_1_1bitfield__register_1a2d1bc4059c09327a21d9539dca879a07" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield__register_1a2d1bc4059c09327a21d9539dca879a07" kindref="member">write_dbg</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/>data,<sp/>std::size_t<sp/>length,<sp/>uint64_t<sp/>offset<sp/>=<sp/>0)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(</highlight><highlight class="stringliteral">&quot;Offset<sp/>out<sp/>of<sp/>range&quot;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>offset<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(length<sp/>!=<sp/>this-&gt;<ref refid="classscc_1_1bitfield__register_1a648f082879bf572e7ce41b39b750c5ca" kindref="member">size</ref>())</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(data,<sp/>data<sp/>+<sp/>length,<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">uint8_t*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;storage));</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="classscc_1_1bitfield__register_1a847ea7fff0ba047c4cb5bd79a773e077" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield__register_1a847ea7fff0ba047c4cb5bd79a773e077" kindref="member">read_dbg</ref>(uint8_t*<sp/>data,<sp/>std::size_t<sp/>length,<sp/>uint64_t<sp/>offset<sp/>=<sp/>0)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(</highlight><highlight class="stringliteral">&quot;Offset<sp/>out<sp/>of<sp/>range&quot;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>offset<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(length<sp/>!=<sp/>this-&gt;<ref refid="classscc_1_1bitfield__register_1a648f082879bf572e7ce41b39b750c5ca" kindref="member">size</ref>())</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>storagePtr<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">uint8_t*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;storage);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(storagePtr,<sp/>storagePtr<sp/>+<sp/>length,<sp/>data);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="classscc_1_1bitfield__register_1ac1f66cb5c4cd232ce9e0ec139a60f19a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>datatype_t<sp/><ref refid="classscc_1_1bitfield__register_1ac1f66cb5c4cd232ce9e0ec139a60f19a" kindref="member">get</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>storage;<sp/>}</highlight></codeline>
+<codeline lineno="178" refid="classscc_1_1bitfield__register_1aca70099c9c53461ff31d6f0fff3d83f4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield__register_1aca70099c9c53461ff31d6f0fff3d83f4" kindref="member">put</ref>(datatype_t<sp/>value)<sp/>{<sp/>storage<sp/>=<sp/>value;<sp/>}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>registerBitfield(<ref refid="classscc_1_1abstract__bitfield" kindref="compound">abstract_bitfield&lt;datatype_t&gt;</ref>&amp;<sp/><ref refid="classscc_1_1bitfield" kindref="compound">bitfield</ref>)<sp/>{<sp/>bitfields.push_back(<ref refid="classscc_1_1bitfield" kindref="compound">bitfield</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185" refid="classscc_1_1bitfield__register_1ae6a2d64769de1723ef5b8df4b53b4b9a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>datatype_t()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>storage;<sp/>}</highlight></codeline>
+<codeline lineno="189" refid="classscc_1_1bitfield__register_1abad8c82a566e8ca0b993a5a15b8d7266" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1bitfield__register_1acc6109e4236ac6df2989d91377d65281" kindref="member">bitfield_register&lt;datatype_t&gt;</ref>&amp;<sp/><ref refid="classscc_1_1bitfield__register_1abad8c82a566e8ca0b993a5a15b8d7266" kindref="member">operator=</ref>(datatype_t<sp/>other)<sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>storage<sp/>=<sp/>other;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205" refid="classscc_1_1bitfield__register_1a07ac94af2d7b7ef4c6dfdd4d6b7e1bf8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield__register_1a07ac94af2d7b7ef4c6dfdd4d6b7e1bf8" kindref="member">setWriteCallback</ref>(std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(<ref refid="classscc_1_1bitfield__register_1acc6109e4236ac6df2989d91377d65281" kindref="member">bitfield_register&lt;datatype_t&gt;</ref>&amp;,<sp/>datatype_t&amp;<sp/>valueToWrite)&gt;<sp/>callback)<sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>writeCallback<sp/>=<sp/>std::move(callback);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215" refid="classscc_1_1bitfield__register_1af4cfd62eaec146af87541c895a18c245" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield__register_1af4cfd62eaec146af87541c895a18c245" kindref="member">setReadCallback</ref>(std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield__register_1acc6109e4236ac6df2989d91377d65281" kindref="member">bitfield_register&lt;datatype_t&gt;</ref>&amp;,<sp/>datatype_t&amp;<sp/>result)&gt;<sp/>callback)<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>readCallback<sp/>=<sp/>std::move(callback);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>offset;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>datatype_t<sp/>resetValue;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>datatype_t<sp/>writeMask;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>datatype_t<sp/>readMask;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>datatype_t<sp/>storage;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void(<ref refid="classscc_1_1bitfield__register" kindref="compound">bitfield_register&lt;datatype_t&gt;</ref>&amp;,<sp/>datatype_t&amp;)&gt;<sp/>writeCallback;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield__register" kindref="compound">bitfield_register&lt;datatype_t&gt;</ref>&amp;,<sp/>datatype_t&amp;)&gt;<sp/>readCallback;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::reference_wrapper&lt;abstract_bitfield&lt;datatype_t&gt;&gt;&gt;<sp/>bitfields;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232" refid="classscc_1_1bitfield" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>datatype_t&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classscc_1_1bitfield_1a256b6099c78d62b0159c48978b38e4fe" kindref="member">bitfield</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>abstract_bitfield&lt;datatype_t&gt;<sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>Access<sp/>{<sp/>RW,<sp/>ReadOnly<sp/>};</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">abstract_bitfield&lt;datatype_t&gt;::mask;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">abstract_bitfield&lt;datatype_t&gt;::bitOffset;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>constexpr<sp/>//TODO:<sp/>requires<sp/>c++14</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248" refid="classscc_1_1bitfield_1a256b6099c78d62b0159c48978b38e4fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1bitfield_1a256b6099c78d62b0159c48978b38e4fe" kindref="member">bitfield</ref>(<ref refid="classscc_1_1bitfield__register" kindref="compound">bitfield_register&lt;datatype_t&gt;</ref>&amp;<sp/>reg,<sp/>std::string<sp/>name,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bitOffset,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bitSize,<sp/>std::string<sp/>urid,<sp/>Access<sp/>access<sp/>=<sp/>RW)</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>reg{reg}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>abstract_bitfield&lt;datatype_t&gt;{std::move(name),<sp/>bitOffset,<sp/>bitSize,<sp/>std::move(urid)}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>access{access}<sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reg.registerBitfield(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1bitfield_1a256b6099c78d62b0159c48978b38e4fe" kindref="member">bitfield</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield_1a256b6099c78d62b0159c48978b38e4fe" kindref="member">bitfield</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1bitfield_1a256b6099c78d62b0159c48978b38e4fe" kindref="member">bitfield</ref>&amp;<sp/>operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield_1a256b6099c78d62b0159c48978b38e4fe" kindref="member">bitfield</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>write(datatype_t&amp;<sp/>valueToWrite)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(writeCallback)</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>writeCallback(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>valueToWrite);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(access<sp/>==<sp/>ReadOnly)</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>valueToWrite<sp/>=<sp/><ref refid="classscc_1_1bitfield_1abbd2079bb71109a238791d08e9f0a10a" kindref="member">get</ref>();</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>datatype_t<sp/>read()</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(readCallback)</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>readCallback(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield_1abbd2079bb71109a238791d08e9f0a10a" kindref="member">get</ref>();</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273" refid="classscc_1_1bitfield_1abbd2079bb71109a238791d08e9f0a10a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>datatype_t<sp/><ref refid="classscc_1_1bitfield_1abbd2079bb71109a238791d08e9f0a10a" kindref="member">get</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(reg.get()<sp/>&amp;<sp/>mask())<sp/>&gt;&gt;<sp/>bitOffset;<sp/>}</highlight></codeline>
+<codeline lineno="277" refid="classscc_1_1bitfield_1a12f0048000120c9d7adf22e4881beb56" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield_1a12f0048000120c9d7adf22e4881beb56" kindref="member">put</ref>(datatype_t<sp/>value)<sp/>{<sp/>reg.put((reg.get()<sp/>&amp;<sp/>~mask())<sp/>|<sp/>((value<sp/>&lt;&lt;<sp/>bitOffset)<sp/>&amp;<sp/>mask()));<sp/>}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282" refid="classscc_1_1bitfield_1a6e68b95b37c79b7ec74aa144ecf3102e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>datatype_t()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield_1abbd2079bb71109a238791d08e9f0a10a" kindref="member">get</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="286" refid="classscc_1_1bitfield_1af0372008c7734c26ac0e61bfa578c19e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1bitfield_1a256b6099c78d62b0159c48978b38e4fe" kindref="member">bitfield&lt;datatype_t&gt;</ref>&amp;<sp/><ref refid="classscc_1_1bitfield_1af0372008c7734c26ac0e61bfa578c19e" kindref="member">operator=</ref>(datatype_t<sp/>other)<sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classscc_1_1bitfield_1a12f0048000120c9d7adf22e4881beb56" kindref="member">put</ref>(other);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302" refid="classscc_1_1bitfield_1a696615233e023071aabd9ad17297b122" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield_1a696615233e023071aabd9ad17297b122" kindref="member">setWriteCallback</ref>(std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(<ref refid="classscc_1_1bitfield_1a256b6099c78d62b0159c48978b38e4fe" kindref="member">bitfield&lt;datatype_t&gt;</ref>&amp;,<sp/>datatype_t&amp;<sp/>valueToWrite)&gt;<sp/>callback)<sp/>{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>writeCallback<sp/>=<sp/>std::move(callback);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="312" refid="classscc_1_1bitfield_1a17076d9f7ff1dc53a0a459e0b7f52fa5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield_1a17076d9f7ff1dc53a0a459e0b7f52fa5" kindref="member">setReadCallback</ref>(std::function&lt;datatype_t(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield_1a256b6099c78d62b0159c48978b38e4fe" kindref="member">bitfield&lt;datatype_t&gt;</ref>&amp;)&gt;<sp/>callback)<sp/>{<sp/>readCallback<sp/>=<sp/>std::move(callback);<sp/>}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1bitfield__register" kindref="compound">bitfield_register&lt;datatype_t&gt;</ref>&amp;<sp/>reg;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/>Access<sp/>access;</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void(<ref refid="classscc_1_1bitfield" kindref="compound">bitfield&lt;datatype_t&gt;</ref>&amp;,<sp/>datatype_t&amp;)&gt;<sp/>writeCallback;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;datatype_t(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield" kindref="compound">bitfield&lt;datatype_t&gt;</ref>&amp;)&gt;<sp/>readCallback;</highlight></codeline>
+<codeline lineno="320"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="330" refid="classscc_1_1tlm__target__bfs__register__base" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>derived_t,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>use_URID<sp/>=<sp/>false&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">tlm_target_bfs_register_base<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>sc_core::sc_object,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1resetable" kindref="compound">scc::resetable</ref><sp/>{</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm_target_bfs_register_base(sc_core::sc_module_name<sp/>name)</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>sc_core::sc_object{name}<sp/>{}</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>busw</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">th&gt;<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>registerResources(<ref refid="classscc_1_1tlm__target" kindref="compound">scc::tlm_target&lt;buswidth&gt;</ref>&amp;<sp/>target)<sp/>{</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;&amp;<sp/>reg<sp/>:<sp/>asDerived().registers)<sp/>{</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>target.<ref refid="classscc_1_1tlm__target_1a8afaa2a7f59441bdb979b162b1d719f8" kindref="member">addResource</ref>(reg,<sp/>reg.offset);</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classscc_1_1resetable_1a828a6d1d71fedb05d4613df1d1d27f73" kindref="member">register_resource</ref>(&amp;reg);</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347" refid="classscc_1_1tlm__target__bfs__register__base_1a483fa886a7c58eef6ad6324f34ff6cc9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1bitfield__register" kindref="compound">bitfield_register&lt;uint32_t&gt;</ref>&amp;<sp/><ref refid="classscc_1_1tlm__target__bfs__register__base_1a483fa886a7c58eef6ad6324f34ff6cc9" kindref="member">getRegister</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>name)<sp/>{</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>found<sp/>=<sp/>std::find_if(asDerived().registers.begin(),<sp/>asDerived().registers.end(),</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[name](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield__register" kindref="compound">bitfield_register&lt;uint32_t&gt;</ref>&amp;<sp/>reg)<sp/>{<sp/>return<sp/>name.compare(reg.basename())<sp/>==<sp/>0;<sp/>});</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(found<sp/>==<sp/>asDerived().registers.end())<sp/>{</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SC_REPORT_FATAL(ID_SCC_TLM_TARGET_BFS_REGISTER_BASE,<sp/>(</highlight><highlight class="stringliteral">&quot;Register<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>name<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>not<sp/>found&quot;</highlight><highlight class="normal">).c_str());</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*found;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="363" refid="classscc_1_1tlm__target__bfs__register__base_1a8de33ec4c09c7562b15022757e1cf7ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1bitfield" kindref="compound">bitfield&lt;uint32_t&gt;</ref>&amp;<sp/><ref refid="classscc_1_1tlm__target__bfs__register__base_1a8de33ec4c09c7562b15022757e1cf7ed" kindref="member">getBitfieldByName</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>regname,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>name)<sp/>{</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>found<sp/>=</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::find_if(asDerived().bitfields.begin(),<sp/>asDerived().bitfields.end(),<sp/>[regname,<sp/>name](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield" kindref="compound">bitfield&lt;uint32_t&gt;</ref>&amp;<sp/>bf)<sp/>{</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>regname.compare(bf.reg.basename())<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>name<sp/>==<sp/>bf.name;</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(found<sp/>==<sp/>asDerived().bitfields.end())<sp/>{</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SC_REPORT_FATAL(ID_SCC_TLM_TARGET_BFS_REGISTER_BASE,<sp/>(</highlight><highlight class="stringliteral">&quot;Bitfield<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>name<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>in<sp/>register<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>regname<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>not<sp/>found&quot;</highlight><highlight class="normal">).c_str());</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*found;</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="380" refid="classscc_1_1tlm__target__bfs__register__base_1a64ae7a0d3cc179f11fdaefc59cbeefff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1bitfield" kindref="compound">bitfield&lt;uint32_t&gt;</ref>&amp;<sp/><ref refid="classscc_1_1tlm__target__bfs__register__base_1a64ae7a0d3cc179f11fdaefc59cbeefff" kindref="member">getBitfieldById</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>urid)<sp/>{</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>found<sp/>=<sp/>std::find_if(asDerived().bitfields.begin(),<sp/>asDerived().bitfields.end(),</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[urid](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1bitfield" kindref="compound">bitfield&lt;uint32_t&gt;</ref>&amp;<sp/>bf)<sp/>{<sp/>return<sp/>urid<sp/>==<sp/>bf.urid;<sp/>});</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(found<sp/>==<sp/>asDerived().bitfields.end())<sp/>{</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SC_REPORT_FATAL(ID_SCC_TLM_TARGET_BFS_REGISTER_BASE,<sp/>(</highlight><highlight class="stringliteral">&quot;Bitfield<sp/>with<sp/>urid<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>urid<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>not<sp/>found&quot;</highlight><highlight class="normal">).c_str());</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*found;</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399" refid="classscc_1_1tlm__target__bfs__register__base_1a9a7f4f68d97b498e78c7567376a31b6a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1bitfield" kindref="compound">bitfield&lt;uint32_t&gt;</ref>&amp;<sp/><ref refid="classscc_1_1tlm__target__bfs__register__base_1a9a7f4f68d97b498e78c7567376a31b6a" kindref="member">getBitfield</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>regname,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>urid)<sp/>{</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(use_URID)<sp/>{</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1tlm__target__bfs__register__base_1a64ae7a0d3cc179f11fdaefc59cbeefff" kindref="member">getBitfieldById</ref>(urid);</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classscc_1_1bitfield" kindref="compound">bitfield&lt;uint32_t&gt;</ref>&amp;<sp/>result<sp/>=<sp/><ref refid="classscc_1_1tlm__target__bfs__register__base_1a8de33ec4c09c7562b15022757e1cf7ed" kindref="member">getBitfieldByName</ref>(regname,<sp/>name);</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(result.urid<sp/>!=<sp/>urid)<sp/>{</highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SC_REPORT_WARNING(ID_SCC_TLM_TARGET_BFS_REGISTER_BASE,</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="stringliteral">&quot;URID<sp/>of<sp/>register<sp/>is<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>result.urid<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>but<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>urid<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>was<sp/>passed&quot;</highlight><highlight class="normal">).c_str());</highlight></codeline>
+<codeline lineno="407"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="411"><highlight class="normal"></highlight></codeline>
+<codeline lineno="412"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/>derived_t&amp;<sp/>asDerived()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">derived_t&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(*this);<sp/>}</highlight></codeline>
+<codeline lineno="414"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"></highlight></codeline>
+<codeline lineno="416"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="417"><highlight class="normal"></highlight></codeline>
+<codeline lineno="429"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BITFIELD_ARRAY_ELEMENT(z,<sp/>i,<sp/>elem)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="430"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>BOOST_PP_COMMA_IF(i)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="431"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>getRegister(BOOST_PP_TUPLE_ELEM(0,<sp/>elem)),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="432"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_PP_TUPLE_ELEM(1,<sp/>elem)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="433"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_PP_STRINGIZE(i),<sp/>BOOST_PP_TUPLE_ELEM(2,<sp/>elem)<sp/>+<sp/>i<sp/>*BOOST_PP_TUPLE_ELEM(3,<sp/>elem),<sp/>BOOST_PP_TUPLE_ELEM(3,<sp/>elem),<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="434"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_PP_TUPLE_ELEM(4,<sp/>elem)<sp/>BOOST_PP_STRINGIZE(i)<sp/>BOOST_PP_TUPLE_ELEM(5,<sp/>elem)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="435"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="436"><highlight class="normal"></highlight></codeline>
+<codeline lineno="453"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BITFIELD_ARRAY(regname,<sp/>basename,<sp/>offset,<sp/>size,<sp/>uridbase,<sp/>count)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="454"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>BOOST_PP_REPEAT(count,<sp/>BITFIELD_ARRAY_ELEMENT,<sp/>(regname,<sp/>basename,<sp/>offset,<sp/>size,<sp/>uridbase,<sp/>))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="455"><highlight class="normal"></highlight></codeline>
+<codeline lineno="463"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BITFIELD_ARRAY_POSTFIX(regname,<sp/>basename,<sp/>offset,<sp/>size,<sp/>uridbase,<sp/>uridpostfix,<sp/>count)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="464"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>BOOST_PP_REPEAT(count,<sp/>BITFIELD_ARRAY_ELEMENT,<sp/>(regname,<sp/>basename,<sp/>offset,<sp/>size,<sp/>uridbase,<sp/>uridpostfix))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="465"><highlight class="normal"></highlight></codeline>
+<codeline lineno="477"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REGISTER_ARRAY_ELEMENT(z,<sp/>i,<sp/>elem)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="478"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>BOOST_PP_COMMA_IF(i)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="479"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_PP_TUPLE_ELEM(0,<sp/>elem)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="480"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_PP_STRINGIZE(i),<sp/>BOOST_PP_TUPLE_ELEM(1,<sp/>elem)<sp/>+<sp/>i*<sp/>BOOST_PP_TUPLE_ELEM(2,<sp/>elem)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="481"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="482"><highlight class="normal"></highlight></codeline>
+<codeline lineno="497"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REGISTER_ARRAY(basename,<sp/>offset,<sp/>size,<sp/>count)<sp/>BOOST_PP_REPEAT(count,<sp/>REGISTER_ARRAY_ELEMENT,<sp/>(basename,<sp/>offset,<sp/>size))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="498"><highlight class="normal"></highlight></codeline>
+<codeline lineno="499"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__SCC_TLM_TARGET_BFS_REGISTER_BASE_H__</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h"/>
+  </compounddef>
+</doxygen>

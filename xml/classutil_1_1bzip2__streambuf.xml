@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1bzip2__streambuf" kind="class" language="C++" prot="public">
+    <compoundname>util::bzip2_streambuf</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::streambuf</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classutil_1_1bzip2__streambuf_1a70959674f58f200ff0bb575bd086a060" prot="private" static="no" mutable="no">
+        <type>FILE *</type>
+        <definition>FILE* util::bzip2_streambuf::file_</definition>
+        <argsstring></argsstring>
+        <name>file_</name>
+        <qualifiedname>util::bzip2_streambuf::file_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bzip2_streambuf.h" line="42" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bzip2_streambuf.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1bzip2__streambuf_1a3b85b6db12c35c613e66ecfb90e1f982" prot="private" static="no" mutable="no">
+        <type>BZFILE *</type>
+        <definition>BZFILE* util::bzip2_streambuf::bz_</definition>
+        <argsstring></argsstring>
+        <name>bz_</name>
+        <qualifiedname>util::bzip2_streambuf::bz_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bzip2_streambuf.h" line="43" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bzip2_streambuf.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1bzip2__streambuf_1a3aec684e9e189abe496d403a6fb9a2af" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int util::bzip2_streambuf::bzerror_</definition>
+        <argsstring></argsstring>
+        <name>bzerror_</name>
+        <qualifiedname>util::bzip2_streambuf::bzerror_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bzip2_streambuf.h" line="44" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bzip2_streambuf.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1bzip2__streambuf_1abecae25a079be6fccf2c499eac6a10ed" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; char &gt;</type>
+        <definition>std::vector&lt;char&gt; util::bzip2_streambuf::buffer_</definition>
+        <argsstring></argsstring>
+        <name>buffer_</name>
+        <qualifiedname>util::bzip2_streambuf::buffer_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bzip2_streambuf.h" line="45" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bzip2_streambuf.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classutil_1_1bzip2__streambuf_1a32f7184336c3e774f9b8e7afde3ecb2d" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::bzip2_streambuf::bzip2_streambuf</definition>
+        <argsstring>(const std::string &amp;path)</argsstring>
+        <name>bzip2_streambuf</name>
+        <qualifiedname>util::bzip2_streambuf::bzip2_streambuf</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bzip2_streambuf.h" line="34" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bzip2_streambuf.cpp" bodystart="19" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1bzip2__streambuf_1a89926830b65b97f4362768ab96bd1ef2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::bzip2_streambuf::~bzip2_streambuf</definition>
+        <argsstring>() override</argsstring>
+        <name>~bzip2_streambuf</name>
+        <qualifiedname>util::bzip2_streambuf::~bzip2_streambuf</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bzip2_streambuf.h" line="36" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bzip2_streambuf.cpp" bodystart="32" bodyend="38"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classutil_1_1bzip2__streambuf_1a664f95a426299e11d9ca4fd7c50d9aba" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int_type</type>
+        <definition>auto util::bzip2_streambuf::underflow</definition>
+        <argsstring>() override</argsstring>
+        <name>underflow</name>
+        <qualifiedname>util::bzip2_streambuf::underflow</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bzip2_streambuf.h" line="39" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bzip2_streambuf.cpp" bodystart="40" bodyend="50"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>std::streambuf</label>
+      </node>
+      <node id="1">
+        <label>util::bzip2_streambuf</label>
+        <link refid="classutil_1_1bzip2__streambuf"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>std::streambuf</label>
+      </node>
+      <node id="1">
+        <label>util::bzip2_streambuf</label>
+        <link refid="classutil_1_1bzip2__streambuf"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bzip2_streambuf.h" line="32" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bzip2_streambuf.h" bodystart="32" bodyend="46"/>
+    <listofallmembers>
+      <member refid="classutil_1_1bzip2__streambuf_1abecae25a079be6fccf2c499eac6a10ed" prot="private" virt="non-virtual"><scope>util::bzip2_streambuf</scope><name>buffer_</name></member>
+      <member refid="classutil_1_1bzip2__streambuf_1a3b85b6db12c35c613e66ecfb90e1f982" prot="private" virt="non-virtual"><scope>util::bzip2_streambuf</scope><name>bz_</name></member>
+      <member refid="classutil_1_1bzip2__streambuf_1a3aec684e9e189abe496d403a6fb9a2af" prot="private" virt="non-virtual"><scope>util::bzip2_streambuf</scope><name>bzerror_</name></member>
+      <member refid="classutil_1_1bzip2__streambuf_1a32f7184336c3e774f9b8e7afde3ecb2d" prot="public" virt="non-virtual"><scope>util::bzip2_streambuf</scope><name>bzip2_streambuf</name></member>
+      <member refid="classutil_1_1bzip2__streambuf_1a70959674f58f200ff0bb575bd086a060" prot="private" virt="non-virtual"><scope>util::bzip2_streambuf</scope><name>file_</name></member>
+      <member refid="classutil_1_1bzip2__streambuf_1a664f95a426299e11d9ca4fd7c50d9aba" prot="protected" virt="non-virtual"><scope>util::bzip2_streambuf</scope><name>underflow</name></member>
+      <member refid="classutil_1_1bzip2__streambuf_1a89926830b65b97f4362768ab96bd1ef2" prot="public" virt="non-virtual"><scope>util::bzip2_streambuf</scope><name>~bzip2_streambuf</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

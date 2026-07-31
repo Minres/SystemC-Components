@@ -1,0 +1,502 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="simple__ace__target_8h" kind="file" language="C++">
+    <compoundname>simple_ace_target.h</compoundname>
+    <includes refid="ace__target__pe_8h" local="no">axi/pe/ace_target_pe.h</includes>
+    <incdepgraph>
+      <node id="36">
+        <label>util/ities.h</label>
+        <link refid="ities_8h_source"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>scc/fifo_w_cb.h</label>
+        <link refid="fifo__w__cb_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>mt19937_rng.h</label>
+        <link refid="sysc_2scc_2mt19937__rng_8h_source"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>observer.h</label>
+        <link refid="observer_8h_source"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>scc/ordered_semaphore.h</label>
+        <link refid="ordered__semaphore_8h_source"/>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>scc/peq.h</label>
+        <link refid="peq_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>scc/report.h</label>
+        <link refid="report_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>scc/sc_attribute_randomized.h</label>
+        <link refid="sc__attribute__randomized_8h_source"/>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>sc_variable.h</label>
+        <link refid="sc__variable_8h_source"/>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>traceable.h</label>
+        <link refid="traceable_8h_source"/>
+      </node>
+      <node id="22">
+        <label>utilities.h</label>
+        <link refid="utilities_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>tlm/scc/pe/intor_if.h</label>
+        <link refid="intor__if_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>tlm/scc/tlm_gp_shared.h</label>
+        <link refid="tlm__gp__shared_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>axi/axi_tlm.h</label>
+        <link refid="axi__tlm_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>axi/fsm/base.h</label>
+        <link refid="base_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>types.h</label>
+        <link refid="third__party_2axi__chi_2axi_2fsm_2types_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>axi/pe/ace_target_pe.h</label>
+        <link refid="ace__target__pe_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_ace_target.h</label>
+        <link refid="simple__ace__target_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>algorithm</label>
+      </node>
+      <node id="3">
+        <label>array</label>
+      </node>
+      <node id="38">
+        <label>assert.h</label>
+      </node>
+      <node id="39">
+        <label>bitset</label>
+      </node>
+      <node id="16">
+        <label>boost/optional.hpp</label>
+      </node>
+      <node id="25">
+        <label>cci_configuration</label>
+      </node>
+      <node id="23">
+        <label>cctype</label>
+      </node>
+      <node id="40">
+        <label>climits</label>
+      </node>
+      <node id="7">
+        <label>cstdint</label>
+      </node>
+      <node id="27">
+        <label>cstring</label>
+      </node>
+      <node id="12">
+        <label>deque</label>
+      </node>
+      <node id="41">
+        <label>fstream</label>
+      </node>
+      <node id="10">
+        <label>functional</label>
+      </node>
+      <node id="28">
+        <label>iomanip</label>
+      </node>
+      <node id="29">
+        <label>iostream</label>
+      </node>
+      <node id="42">
+        <label>iterator</label>
+      </node>
+      <node id="17">
+        <label>limits</label>
+      </node>
+      <node id="26">
+        <label>locale</label>
+      </node>
+      <node id="18">
+        <label>map</label>
+      </node>
+      <node id="24">
+        <label>memory</label>
+      </node>
+      <node id="30">
+        <label>mutex</label>
+      </node>
+      <node id="62">
+        <label>random</label>
+      </node>
+      <node id="31">
+        <label>sstream</label>
+      </node>
+      <node id="32">
+        <label>stdexcept</label>
+      </node>
+      <node id="47">
+        <label>string</label>
+      </node>
+      <node id="43">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="14">
+        <label>sysc/communication/sc_prim_channel.h</label>
+      </node>
+      <node id="58">
+        <label>sysc/communication/sc_semaphore_if.h</label>
+      </node>
+      <node id="48">
+        <label>sysc/communication/sc_signal_ifs.h</label>
+      </node>
+      <node id="49">
+        <label>sysc/datatypes/int/sc_nbdefs.h</label>
+      </node>
+      <node id="63">
+        <label>sysc/kernel/sc_attribute.h</label>
+      </node>
+      <node id="50">
+        <label>sysc/kernel/sc_dynamic_processes.h</label>
+      </node>
+      <node id="54">
+        <label>sysc/kernel/sc_event.h</label>
+      </node>
+      <node id="59">
+        <label>sysc/kernel/sc_object.h</label>
+      </node>
+      <node id="51">
+        <label>sysc/kernel/sc_process.h</label>
+      </node>
+      <node id="52">
+        <label>sysc/kernel/sc_process_handle.h</label>
+      </node>
+      <node id="55">
+        <label>sysc/kernel/sc_simcontext.h</label>
+      </node>
+      <node id="33">
+        <label>sysc/kernel/sc_time.h</label>
+      </node>
+      <node id="53">
+        <label>sysc/kernel/sc_ver.h</label>
+      </node>
+      <node id="56">
+        <label>sysc/tracing/sc_trace.h</label>
+      </node>
+      <node id="34">
+        <label>sysc/utils/sc_report.h</label>
+      </node>
+      <node id="19">
+        <label>systemc</label>
+      </node>
+      <node id="8">
+        <label>tlm</label>
+      </node>
+      <node id="65">
+        <label>tlm_utils/peq_with_cb_and_phase.h</label>
+      </node>
+      <node id="9">
+        <label>type_traits</label>
+      </node>
+      <node id="35">
+        <label>unordered_map</label>
+      </node>
+      <node id="66">
+        <label>unordered_set</label>
+      </node>
+      <node id="20">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classaxi_1_1pe_1_1simple__ace__target" prot="public">axi::pe::simple_ace_target</innerclass>
+    <innernamespace refid="namespaceaxi">axi</innernamespace>
+    <innernamespace refid="namespaceaxi_1_1pe">axi::pe</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2020<sp/>Arteris<sp/>IP</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.axi_util.cpp</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;axi/pe/ace_target_pe.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceaxi" kindref="compound">axi</ref><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceaxi_1_1pe" kindref="compound">pe</ref><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>BUSWIDTH<sp/>=<sp/>32,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES<sp/>=<sp/>axi::axi_protocol_types,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sc_core::sc_port_policy<sp/>POL<sp/>=<sp/>sc_core::SC_ONE_OR_MORE_BOUND&gt;</highlight></codeline>
+<codeline lineno="28" refid="classaxi_1_1pe_1_1simple__ace__target" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classaxi_1_1pe_1_1simple__ace__target_1a6ba3fdb7ad9c049d876814d0fe836926" kindref="member">simple_ace_target</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classaxi_1_1pe_1_1ace__target__pe_1a82790b1a10222ec1ba65ba11d4d176ee" kindref="member">ace_target_pe</ref><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">base<sp/>=<sp/><ref refid="classaxi_1_1pe_1_1ace__target__pe_1a82790b1a10222ec1ba65ba11d4d176ee" kindref="member">ace_target_pe</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">payload_type<sp/>=<sp/>base::payload_type;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">phase_type<sp/>=<sp/>base::phase_type;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classaxi_1_1pe_1_1simple__ace__target_1a6ba3fdb7ad9c049d876814d0fe836926" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaxi_1_1pe_1_1simple__ace__target_1a6ba3fdb7ad9c049d876814d0fe836926" kindref="member">simple_ace_target</ref>(<ref refid="structaxi_1_1ace__target__socket" kindref="compound">axi::ace_target_socket&lt;BUSWIDTH, TYPES, N, POL&gt;</ref>&amp;<sp/>socket)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="comment">//<sp/>@suppress(&quot;Class<sp/>members<sp/>should<sp/>be<sp/>properly<sp/>initialized&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classaxi_1_1pe_1_1simple__ace__target_1a6ba3fdb7ad9c049d876814d0fe836926" kindref="member">simple_ace_target</ref>(sc_core::sc_gen_unique_name(</highlight><highlight class="stringliteral">&quot;simple_ace_target&quot;</highlight><highlight class="normal">),<sp/>socket)<sp/>{}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaxi_1_1pe_1_1simple__ace__target_1a6ba3fdb7ad9c049d876814d0fe836926" kindref="member">simple_ace_target</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sc_core::sc_module_name&amp;<sp/>nm,<sp/><ref refid="structaxi_1_1ace__target__socket" kindref="compound">axi::ace_target_socket&lt;BUSWIDTH, TYPES, N, POL&gt;</ref>&amp;<sp/>socket)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classaxi_1_1pe_1_1ace__target__pe" kindref="compound">ace_target_pe</ref>(nm,<sp/>BUSWIDTH)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>socket(socket)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>socket(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;instance_name<sp/>=<sp/>name();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaxi_1_1pe_1_1simple__ace__target_1a6ba3fdb7ad9c049d876814d0fe836926" kindref="member">simple_ace_target</ref>()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaxi_1_1pe_1_1simple__ace__target_1a6ba3fdb7ad9c049d876814d0fe836926" kindref="member">simple_ace_target</ref>(<ref refid="classaxi_1_1pe_1_1simple__ace__target_1a6ba3fdb7ad9c049d876814d0fe836926" kindref="member">simple_ace_target</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaxi_1_1pe_1_1simple__ace__target_1a6ba3fdb7ad9c049d876814d0fe836926" kindref="member">simple_ace_target</ref>(<ref refid="classaxi_1_1pe_1_1simple__ace__target_1a6ba3fdb7ad9c049d876814d0fe836926" kindref="member">simple_ace_target</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaxi_1_1pe_1_1simple__ace__target_1a6ba3fdb7ad9c049d876814d0fe836926" kindref="member">simple_ace_target</ref>&amp;<sp/>operator=(<ref refid="classaxi_1_1pe_1_1simple__ace__target_1a6ba3fdb7ad9c049d876814d0fe836926" kindref="member">simple_ace_target</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaxi_1_1pe_1_1simple__ace__target_1a6ba3fdb7ad9c049d876814d0fe836926" kindref="member">simple_ace_target</ref>&amp;<sp/>operator=(<ref refid="classaxi_1_1pe_1_1simple__ace__target_1a6ba3fdb7ad9c049d876814d0fe836926" kindref="member">simple_ace_target</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1ace__target__socket" kindref="compound">axi::ace_target_socket&lt;BUSWIDTH, TYPES, N, POL&gt;</ref>&amp;<sp/>socket;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>end_of_elaboration()</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>base::end_of_elaboration();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_bw_interface(socket.get_base_port().operator-&gt;());</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>pe</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>axi</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_ace_target.h"/>
+  </compounddef>
+</doxygen>

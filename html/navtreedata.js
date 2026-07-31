@@ -25,12 +25,24 @@
 var NAVTREE =
 [
   [ "scc", "index.html", [
-    [ "SystemC-Components (SCC)", "index.html#autotoc_md6", null ],
-    [ "Build notes", "index.html#autotoc_md7", null ],
-    [ "Build instructions using conan", "index.html#autotoc_md8", null ],
-    [ "On Linux", "index.html#autotoc_md9", null ],
-    [ "On Windows", "index.html#autotoc_md10", null ],
-    [ "Build instructions using install script", "index.html#autotoc_md11", null ],
+    [ "SystemC-Components (SCC)", "index.html#autotoc_md16", null ],
+    [ "Build notes", "index.html#autotoc_md17", null ],
+    [ "Build instructions using conan", "index.html#autotoc_md18", null ],
+    [ "On Linux", "index.html#autotoc_md19", null ],
+    [ "On Windows", "index.html#autotoc_md20", null ],
+    [ "Build instructions using install script", "index.html#autotoc_md21", null ],
+    [ "Building and installing SCC for Cadence Xcelium", "index.html#autotoc_md22", null ],
+    [ "tcp4tlm_bridge Functionality", "md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge.html", [
+      [ "Main Interfaces", "md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge.html#autotoc_md1", null ],
+      [ "Connection Setup", "md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge.html#autotoc_md2", null ],
+      [ "Forwarding Local TLM Transactions", "md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge.html#autotoc_md3", null ],
+      [ "Handling Remote Messages", "md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge.html#autotoc_md4", null ],
+      [ "Replaying Remote Bus Operations Locally", "md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge.html#autotoc_md5", null ],
+      [ "Time Synchronization", "md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge.html#autotoc_md6", null ],
+      [ "Signal Messages", "md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge.html#autotoc_md7", null ],
+      [ "Shutdown", "md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge.html#autotoc_md8", null ],
+      [ "Summary", "md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2src_2components_2scc_2tcp4tlm__bridge.html#autotoc_md9", null ]
+    ] ],
     [ "Todo List", "todo.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Topics", "topics.html", "topics" ],
@@ -67,20 +79,20 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "DEFINE_ENUM4CCI-example.html",
-"classaxi_1_1pe_1_1axi__initiator__b.html#ad34dbc64f4e93f4d013085824d0c1c22",
-"classchi_1_1scv_1_1chi__trx__recorder.html#ad36625a7cded51df300fa849456ddb66",
-"classscc_1_1ext__attribute.html#a4603dd6236ff618f3cb081ca10b4dbce",
-"classscc_1_1tlm__target__bfs__base.html",
-"classtlm_1_1scc_1_1scv_1_1tlm__recorder.html#a4dce159d9d7a3649441fc832637a1d8c",
-"classutil_1_1ring__buffer.html#a59e8741eb81d021ea9356bbac9374bff",
-"group__scc-common.html#gaf80fd6c5d795233c91425d97070f5edf",
-"sc__logic__7_8h_source.html",
-"structaxi_1_1axi4__extension.html",
-"structaxi_1_1response.html#aca030a28fd36e54836c12e2ca8bd3304",
-"structnonstd_1_1variants_1_1detail_1_1S13.html",
-"structscc_1_1router.html#a4c5d4657273941220741aa55752c9df0",
-"structtilelink_1_1tilelink__extension.html",
-"tl__tlm_8h_source.html"
+"classaxi_1_1pe_1_1axi__initiator__b.html#ad0044e9da5769782ec7412d7cb4ddf69",
+"classlogging_1_1Log.html#a2911f9872e2ef611d4c3eb9183bf4c5e",
+"classscc_1_1hierarchy__dumper.html",
+"classscc_1_1tlm__target__bfs__register__base.html#a483fa886a7c58eef6ad6324f34ff6cc9",
+"classtlm_1_1scc_1_1scv_1_1tlm__recorder.html#addbd1c4f24bb3189ebf84b4c4e05ade6",
+"classutil_1_1ring__buffer.html#a99626adbbc6531b561bd2df154699468",
+"gzip__streambuf_8h_source.html",
+"quantum__keeper__mt_8h_source.html",
+"structaxi_1_1axi4.html#a622b9252cf7e8a3f2a921fbabf51b8ef",
+"structaxi_1_1request.html#aef3ae2ab0351948a3248bbb6e238c5c1",
+"structnonstd_1_1detail_1_1is__optional__impl.html",
+"structscc_1_1dmi__mgr.html#a38781126d957bc249eab5ccb4ed57f15",
+"structscc_1_1tcp4tlm__bridge_1_1timed__task.html",
+"structtlm_1_1scc_1_1lwtr_1_1link__pred__ext.html#a59867147351ca96cfefef93610173108"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

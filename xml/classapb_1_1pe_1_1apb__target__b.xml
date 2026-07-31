@@ -1,0 +1,502 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classapb_1_1pe_1_1apb__target__b" kind="class" language="C++" prot="public">
+    <compoundname>apb::pe::apb_target_b</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</basecompoundref>
+    <derivedcompoundref refid="classapb_1_1pe_1_1apb__target" prot="public" virt="non-virtual">apb::pe::apb_target&lt; BUSWIDTH, TYPES, N, POL &gt;</derivedcompoundref>
+    <includes refid="apb__target_8h" local="no">apb_target.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classapb_1_1pe_1_1apb__target__b_1a534cab311d2f65b6d360e32405e617a0" prot="public" static="no">
+        <type>tlm::tlm_base_protocol_types::tlm_payload_type</type>
+        <definition>using apb::pe::apb_target_b::payload_type =  tlm::tlm_base_protocol_types::tlm_payload_type</definition>
+        <argsstring></argsstring>
+        <name>payload_type</name>
+        <qualifiedname>apb::pe::apb_target_b::payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="36" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classapb_1_1pe_1_1apb__target__b_1a42412537fbc1774777ec616750d70dd6" prot="public" static="no">
+        <type>tlm::tlm_base_protocol_types::tlm_phase_type</type>
+        <definition>using apb::pe::apb_target_b::phase_type =  tlm::tlm_base_protocol_types::tlm_phase_type</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>apb::pe::apb_target_b::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="37" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__target__b_1adc72b42c87c37214faaad1a4682721eb" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; apb::pe::apb_target_b::clk_i</definition>
+        <argsstring></argsstring>
+        <name>clk_i</name>
+        <qualifiedname>apb::pe::apb_target_b::clk_i</qualifiedname>
+        <initializer>{&quot;clk_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="39" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="39" bodyend="39"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__target__b_1aba2951cf257348906542f5be7a20239e" prot="protected" static="no" mutable="no">
+        <type>tlm::tlm_generic_payload *</type>
+        <definition>tlm::tlm_generic_payload* apb::pe::apb_target_b::active_tx</definition>
+        <argsstring></argsstring>
+        <name>active_tx</name>
+        <qualifiedname>apb::pe::apb_target_b::active_tx</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="81" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="81" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__target__b_1a45fa4440231832d6b634268a0b988ebd" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_port_b&lt; tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt; &gt; &amp;</type>
+        <definition>sc_core::sc_port_b&lt;tlm::tlm_bw_transport_if&lt;tlm::tlm_base_protocol_types&gt; &gt;&amp; apb::pe::apb_target_b::socket_bw</definition>
+        <argsstring></argsstring>
+        <name>socket_bw</name>
+        <qualifiedname>apb::pe::apb_target_b::socket_bw</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="83" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__target__b_1a3724f08d32974c53b8146f270a595884" prot="protected" static="no" mutable="no">
+        <type>std::function&lt; unsigned(payload_type &amp;trans)&gt;</type>
+        <definition>std::function&lt;unsigned(payload_type&amp; trans)&gt; apb::pe::apb_target_b::operation_cb</definition>
+        <argsstring></argsstring>
+        <name>operation_cb</name>
+        <qualifiedname>apb::pe::apb_target_b::operation_cb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="84" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__target__b_1ab905a25776996fe25b7e8030ba5dd14f" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_clock *</type>
+        <definition>sc_core::sc_clock* apb::pe::apb_target_b::clk_if</definition>
+        <argsstring></argsstring>
+        <name>clk_if</name>
+        <qualifiedname>apb::pe::apb_target_b::clk_if</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="85" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="85" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__target__b_1a97e6e42e71cc787cf432fd8570a19303" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_process_handle</type>
+        <definition>sc_core::sc_process_handle apb::pe::apb_target_b::mhndl</definition>
+        <argsstring></argsstring>
+        <name>mhndl</name>
+        <qualifiedname>apb::pe::apb_target_b::mhndl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="87" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target__b_1a82690c72793fe8a829abe6ee61ad258f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>apb::pe::apb_target_b::SC_HAS_PROCESS</definition>
+        <argsstring>(apb_target_b)</argsstring>
+        <name>SC_HAS_PROCESS</name>
+        <qualifiedname>apb::pe::apb_target_b::SC_HAS_PROCESS</qualifiedname>
+        <param>
+          <type><ref refid="classapb_1_1pe_1_1apb__target__b_1a829c710b4f11717de2957931d53a7a71" kindref="member">apb_target_b</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="34" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target__b_1a47b1eda5accb4c78cbc72c4e72c5fb18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void apb_target_b::b_transport</definition>
+        <argsstring>(payload_type &amp;trans, sc_core::sc_time &amp;t) override</argsstring>
+        <name>b_transport</name>
+        <qualifiedname>apb::pe::apb_target_b::b_transport</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="41" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.cpp" bodystart="42" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target__b_1a23d0a6db70e7583f8ab18f3e00e95efd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm_sync_enum apb_target_b::nb_transport_fw</definition>
+        <argsstring>(payload_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t) override</argsstring>
+        <name>nb_transport_fw</name>
+        <qualifiedname>apb::pe::apb_target_b::nb_transport_fw</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="43" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.cpp" bodystart="53" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target__b_1a890d12f8e3632b57399726eb535d7ee8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool apb_target_b::get_direct_mem_ptr</definition>
+        <argsstring>(payload_type &amp;trans, tlm::tlm_dmi &amp;dmi_data) override</argsstring>
+        <name>get_direct_mem_ptr</name>
+        <qualifiedname>apb::pe::apb_target_b::get_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_dmi &amp;</type>
+          <declname>dmi_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="45" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.cpp" bodystart="76" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target__b_1aa05fdb83ba4a7914af3bc6678496afb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int apb_target_b::transport_dbg</definition>
+        <argsstring>(payload_type &amp;trans) override</argsstring>
+        <name>transport_dbg</name>
+        <qualifiedname>apb::pe::apb_target_b::transport_dbg</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="47" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.cpp" bodystart="81" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target__b_1aaeae28bc8b7e56cfc3157132323f609e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void apb::pe::apb_target_b::set_operation_cb</definition>
+        <argsstring>(std::function&lt; unsigned(payload_type &amp;trans)&gt; cb)</argsstring>
+        <name>set_operation_cb</name>
+        <qualifiedname>apb::pe::apb_target_b::set_operation_cb</qualifiedname>
+        <param>
+          <type>std::function&lt; unsigned(payload_type &amp;trans)&gt;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Set the operation callback function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This callback is invoked once a transaction arrives. This function is not allowed to block and returns the latency of the operation i.e. the duration until the reponse phase starts <xrefsect id="todo_1_todo000002"><xreftitle>Todo</xreftitle><xrefdescription><para>refine API</para>
+</xrefdescription></xrefsect></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the callback function </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="58" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target__b_1a829c710b4f11717de2957931d53a7a71" prot="protected" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>apb::pe::apb_target_b::apb_target_b</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm, sc_core::sc_port_b&lt; tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt; &gt; &amp;port, size_t transfer_width)</argsstring>
+        <name>apb_target_b</name>
+        <qualifiedname>apb::pe::apb_target_b::apb_target_b</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_port_b&lt; tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt; &gt; &amp;</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>transfer_width</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the constructor. Protected as it should only be called by derived classes</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the module name </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>transfer_width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="68" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target__b_1aa743a9b1eec1c66b471ef4e677a0c906" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>apb::pe::apb_target_b::apb_target_b</definition>
+        <argsstring>()=delete</argsstring>
+        <name>apb_target_b</name>
+        <qualifiedname>apb::pe::apb_target_b::apb_target_b</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="71" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target__b_1aa4b405daedb83a298e8ed6b62c8fe1c4" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>apb::pe::apb_target_b::apb_target_b</definition>
+        <argsstring>(apb_target_b const &amp;)=delete</argsstring>
+        <name>apb_target_b</name>
+        <qualifiedname>apb::pe::apb_target_b::apb_target_b</qualifiedname>
+        <param>
+          <type>apb_target_b const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="73" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target__b_1a336d6cce276a5961b54f61baaad47b15" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>apb::pe::apb_target_b::apb_target_b</definition>
+        <argsstring>(apb_target_b &amp;&amp;)=delete</argsstring>
+        <name>apb_target_b</name>
+        <qualifiedname>apb::pe::apb_target_b::apb_target_b</qualifiedname>
+        <param>
+          <type>apb_target_b &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="75" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target__b_1a76a31c72687e7a1fcd687fda99e7c2f9" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classapb_1_1pe_1_1apb__target__b_1a829c710b4f11717de2957931d53a7a71" kindref="member">apb_target_b</ref> &amp;</type>
+        <definition>apb_target_b &amp; apb::pe::apb_target_b::operator=</definition>
+        <argsstring>(apb_target_b const &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>apb::pe::apb_target_b::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classapb_1_1pe_1_1apb__target__b_1a829c710b4f11717de2957931d53a7a71" kindref="member">apb_target_b</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="77" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target__b_1a2bbf85eee978eaa7ee9b5d3fe7326e52" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classapb_1_1pe_1_1apb__target__b_1a829c710b4f11717de2957931d53a7a71" kindref="member">apb_target_b</ref> &amp;</type>
+        <definition>apb_target_b &amp; apb::pe::apb_target_b::operator=</definition>
+        <argsstring>(apb_target_b &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>apb::pe::apb_target_b::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classapb_1_1pe_1_1apb__target__b_1a829c710b4f11717de2957931d53a7a71" kindref="member">apb_target_b</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="79" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target__b_1aed8e09876e15e0843435ebf03725cae0" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void apb_target_b::response</definition>
+        <argsstring>()</argsstring>
+        <name>response</name>
+        <qualifiedname>apb::pe::apb_target_b::response</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="82" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.cpp" bodystart="83" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target__b_1ad7f7855a299ffe404c4e6a0bbafefde8" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void apb_target_b::end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_elaboration</name>
+        <qualifiedname>apb::pe::apb_target_b::end_of_elaboration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="86" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.cpp" bodystart="40" bodyend="40"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>the target protocol engine base class </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>apb::pe::apb_target&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classapb_1_1pe_1_1apb__target"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>apb::pe::apb_target_b</label>
+        <link refid="classapb_1_1pe_1_1apb__target__b"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>apb::pe::apb_target_b</label>
+        <link refid="classapb_1_1pe_1_1apb__target__b"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="31" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="31" bodyend="88"/>
+    <listofallmembers>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1aba2951cf257348906542f5be7a20239e" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>active_tx</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a829c710b4f11717de2957931d53a7a71" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>apb_target_b</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1aa743a9b1eec1c66b471ef4e677a0c906" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>apb_target_b</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1aa4b405daedb83a298e8ed6b62c8fe1c4" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>apb_target_b</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a336d6cce276a5961b54f61baaad47b15" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>apb_target_b</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a47b1eda5accb4c78cbc72c4e72c5fb18" prot="public" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>b_transport</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1adc72b42c87c37214faaad1a4682721eb" prot="public" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>clk_i</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1ab905a25776996fe25b7e8030ba5dd14f" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>clk_if</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1ad7f7855a299ffe404c4e6a0bbafefde8" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>end_of_elaboration</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a890d12f8e3632b57399726eb535d7ee8" prot="public" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>get_direct_mem_ptr</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a97e6e42e71cc787cf432fd8570a19303" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>mhndl</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a23d0a6db70e7583f8ab18f3e00e95efd" prot="public" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>nb_transport_fw</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a3724f08d32974c53b8146f270a595884" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>operation_cb</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a76a31c72687e7a1fcd687fda99e7c2f9" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>operator=</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a2bbf85eee978eaa7ee9b5d3fe7326e52" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>operator=</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a534cab311d2f65b6d360e32405e617a0" prot="public" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>payload_type</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a42412537fbc1774777ec616750d70dd6" prot="public" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>phase_type</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1aed8e09876e15e0843435ebf03725cae0" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>response</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a82690c72793fe8a829abe6ee61ad258f" prot="public" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1aaeae28bc8b7e56cfc3157132323f609e" prot="public" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>set_operation_cb</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a45fa4440231832d6b634268a0b988ebd" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>socket_bw</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1aa05fdb83ba4a7914af3bc6678496afb3" prot="public" virt="non-virtual"><scope>apb::pe::apb_target_b</scope><name>transport_dbg</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

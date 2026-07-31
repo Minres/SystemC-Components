@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1tlm__mm__traits_3_01tlm_1_1nw_1_1scv_1_1impl_1_1tlm__recording__types_3_01TYPES_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::tlm_mm_traits&lt; tlm::nw::scv::impl::tlm_recording_types&lt; TYPES &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structtlm_1_1scc_1_1tlm__mm__traits_3_01tlm_1_1nw_1_1scv_1_1impl_1_1tlm__recording__types_3_01TYPES_01_4_01_4_1a429be558a5fc43fa0843b2dadf97f5a5" prot="public" static="no">
+        <type><ref refid="classtlm_1_1nw_1_1tlm__base__mm__interface" kindref="compound">tlm::nw::tlm_base_mm_interface</ref></type>
+        <definition>using tlm::scc::tlm_mm_traits&lt; tlm::nw::scv::impl::tlm_recording_types&lt; TYPES &gt; &gt;::mm_if_type =  tlm::nw::tlm_base_mm_interface</definition>
+        <argsstring></argsstring>
+        <name>mm_if_type</name>
+        <qualifiedname>tlm::scc::tlm_mm_traits&lt; tlm::nw::scv::impl::tlm_recording_types&lt; TYPES &gt; &gt;::mm_if_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" line="72" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtlm_1_1scc_1_1tlm__mm__traits_3_01tlm_1_1nw_1_1scv_1_1impl_1_1tlm__recording__types_3_01TYPES_01_4_01_4_1a5046d187bfeac4814128a2cce0c112b7" prot="public" static="no">
+        <type><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base" kindref="compound">tlm::nw::tlm_network_payload_base</ref></type>
+        <definition>using tlm::scc::tlm_mm_traits&lt; tlm::nw::scv::impl::tlm_recording_types&lt; TYPES &gt; &gt;::payload_base =  tlm::nw::tlm_network_payload_base</definition>
+        <argsstring></argsstring>
+        <name>payload_base</name>
+        <qualifiedname>tlm::scc::tlm_mm_traits&lt; tlm::nw::scv::impl::tlm_recording_types&lt; TYPES &gt; &gt;::payload_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" line="73" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" line="71" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" bodystart="71" bodyend="74"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1tlm__mm__traits_3_01tlm_1_1nw_1_1scv_1_1impl_1_1tlm__recording__types_3_01TYPES_01_4_01_4_1a429be558a5fc43fa0843b2dadf97f5a5" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm_traits&lt; tlm::nw::scv::impl::tlm_recording_types&lt; TYPES &gt; &gt;</scope><name>mm_if_type</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__mm__traits_3_01tlm_1_1nw_1_1scv_1_1impl_1_1tlm__recording__types_3_01TYPES_01_4_01_4_1a5046d187bfeac4814128a2cce0c112b7" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm_traits&lt; tlm::nw::scv::impl::tlm_recording_types&lt; TYPES &gt; &gt;</scope><name>payload_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

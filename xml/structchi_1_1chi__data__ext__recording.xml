@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structchi_1_1chi__data__ext__recording" kind="struct" language="C++" prot="public">
+    <compoundname>chi::chi_data_ext_recording</compoundname>
+    <basecompoundref refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if" prot="public" virt="non-virtual">tlm::scc::scv::tlm_extensions_recording_if&lt; chi::chi_protocol_types &gt;</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structchi_1_1chi__data__ext__recording_1a0325e0f3ee95f4263dca95c1ab01dbe7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>chi::chi_data_ext_recording::chi_data_ext_recording</definition>
+        <argsstring>()</argsstring>
+        <name>chi_data_ext_recording</name>
+        <qualifiedname>chi::chi_data_ext_recording::chi_data_ext_recording</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="476" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" bodystart="476" bodyend="476"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structchi_1_1chi__data__ext__recording_1a4b522e62c157a11766eca662cc8d3c90" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void chi::chi_data_ext_recording::recordBeginTx</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;handle, chi::chi_protocol_types::tlm_payload_type &amp;trans)</argsstring>
+        <name>recordBeginTx</name>
+        <qualifiedname>chi::chi_data_ext_recording::recordBeginTx</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>chi::chi_protocol_types::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="478" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" bodystart="478" bodyend="481"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>chi::chi_data_ext_recording</label>
+        <link refid="structchi_1_1chi__data__ext__recording"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::scv::tlm_extensions_recording_if&lt; chi::chi_protocol_types &gt;</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>chi::chi_data_ext_recording</label>
+        <link refid="structchi_1_1chi__data__ext__recording"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::scv::tlm_extensions_recording_if&lt; chi::chi_protocol_types &gt;</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>recordBegin</edgelabel>
+          <edgelabel>recordEnd</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>util::delegate&lt; void(SCVNS scv_tr_handle &amp;, typename chi::chi_protocol_types::tlm_payload_type &amp;)&gt;</label>
+        <link refid="classutil_1_1delegate"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" line="474" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.cpp" bodystart="474" bodyend="482"/>
+    <listofallmembers>
+      <member refid="structchi_1_1chi__data__ext__recording_1a0325e0f3ee95f4263dca95c1ab01dbe7" prot="public" virt="non-virtual"><scope>chi::chi_data_ext_recording</scope><name>chi_data_ext_recording</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a92a87b3b15db1e40349efcfdc5a24a3a" prot="public" virt="non-virtual"><scope>chi::chi_data_ext_recording</scope><name>record_tx_fct</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a424d7503eb14ef2332c270b323bab885" prot="protected" virt="non-virtual"><scope>chi::chi_data_ext_recording</scope><name>recordBegin</name></member>
+      <member refid="structchi_1_1chi__data__ext__recording_1a4b522e62c157a11766eca662cc8d3c90" prot="public" virt="non-virtual"><scope>chi::chi_data_ext_recording</scope><name>recordBeginTx</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a07f6b3f1e99994310cf0d289ceccad53" prot="public" virt="non-virtual" ambiguityscope="tlm::scc::scv::tlm_extensions_recording_if&lt; chi::chi_protocol_types &gt;::"><scope>chi::chi_data_ext_recording</scope><name>recordBeginTx</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1afebebeac142f601640e82de835d19631" prot="protected" virt="non-virtual"><scope>chi::chi_data_ext_recording</scope><name>recordEnd</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a25e59c20d51c2259723ad993e1da859f" prot="public" virt="non-virtual"><scope>chi::chi_data_ext_recording</scope><name>recordEndTx</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classaxi_1_1scv_1_1axitlm__recorder__module" kind="class" language="C++" prot="public">
+    <compoundname>axi::scv::axitlm_recorder_module</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">BASE</basecompoundref>
+    <includes refid="axi_2scv_2recorder__modules_8h" local="no">recorder_modules.h</includes>
+    <templateparamlist>
+      <param>
+        <type>unsigned int</type>
+        <declname>BUSWIDTH</declname>
+        <defname>BUSWIDTH</defname>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+      </param>
+      <param>
+        <type>typename BASE</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classaxi_1_1scv_1_1axitlm__recorder__module_1a871bc3fa876e66f69d0e7398839a4392" prot="public" static="no" mutable="no">
+        <type>BASE::template target_socket_type&lt; BUSWIDTH &gt;</type>
+        <definition>BASE::template target_socket_type&lt;BUSWIDTH&gt; axi::scv::axitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;::tsckt</definition>
+        <argsstring></argsstring>
+        <name>tsckt</name>
+        <qualifiedname>axi::scv::axitlm_recorder_module::tsckt</qualifiedname>
+        <initializer>{&quot;tsckt&quot;}</initializer>
+        <briefdescription>
+<para>The target socket of the recorder to be bound to the initiator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" line="38" column="48" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1scv_1_1axitlm__recorder__module_1a8c54f3cf74136e2dd8b33e5ea1f82baa" prot="public" static="no" mutable="no">
+        <type>BASE::template initiator_socket_type&lt; BUSWIDTH &gt;</type>
+        <definition>BASE::template initiator_socket_type&lt;BUSWIDTH&gt; axi::scv::axitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;::isckt</definition>
+        <argsstring></argsstring>
+        <name>isckt</name>
+        <qualifiedname>axi::scv::axitlm_recorder_module::isckt</qualifiedname>
+        <initializer>{&quot;isckt&quot;}</initializer>
+        <briefdescription>
+<para>The initiator to be bound to the target socket. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" line="40" column="51" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" bodystart="40" bodyend="40"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classaxi_1_1scv_1_1axitlm__recorder__module_1a79ad1650b1fdac2efacfda89f1cfebfd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::scv::axitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;::SC_HAS_PROCESS</definition>
+        <argsstring>(axitlm_recorder_module)</argsstring>
+        <name>SC_HAS_PROCESS</name>
+        <qualifiedname>axi::scv::axitlm_recorder_module::SC_HAS_PROCESS</qualifiedname>
+        <param>
+          <type><ref refid="classaxi_1_1scv_1_1axitlm__recorder__module_1ad2f95cf723799f140e301f93e97237f6" kindref="member">axitlm_recorder_module</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" line="36" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1scv_1_1axitlm__recorder__module_1ad2f95cf723799f140e301f93e97237f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::scv::axitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;::axitlm_recorder_module</definition>
+        <argsstring>(sc_core::sc_module_name name, bool recording_enabled=true, SCVNS scv_tr_db *tr_db=SCVNS scv_tr_db::get_default_db())</argsstring>
+        <name>axitlm_recorder_module</name>
+        <qualifiedname>axi::scv::axitlm_recorder_module::axitlm_recorder_module</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>recording_enabled</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>SCVNS scv_tr_db *</type>
+          <declname>tr_db</declname>
+          <defval>SCVNS scv_tr_db::get_default_db()</defval>
+        </param>
+        <briefdescription>
+<para>The constructor of the component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the SystemC module name of the recorder </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tr_db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a transaction recording database. If none is provided the default one is retrieved. If this database is not initialized (e.g. by not calling scv_tr_db::set_default_db() ) recording is disabled. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" line="50" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" bodystart="50" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1scv_1_1axitlm__recorder__module_1a50f4e806eddd5c9826623a4181a787d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::scv::axitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;::~axitlm_recorder_module</definition>
+        <argsstring>()</argsstring>
+        <name>~axitlm_recorder_module</name>
+        <qualifiedname>axi::scv::axitlm_recorder_module::~axitlm_recorder_module</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" line="59" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1scv_1_1axitlm__recorder__module_1ac7587d1605904aca0234d159ab146389" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>BASE::template target_socket_type&lt; BUSWIDTH &gt;::base_type::fw_interface_type *</type>
+        <definition>BASE::template target_socket_type&lt; BUSWIDTH &gt;::base_type::fw_interface_type * axi::scv::axitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;::get_fw_if</definition>
+        <argsstring>() override</argsstring>
+        <name>get_fw_if</name>
+        <qualifiedname>axi::scv::axitlm_recorder_module::get_fw_if</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" line="61" column="79" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" bodystart="61" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1scv_1_1axitlm__recorder__module_1a39bf1df24e01769636232d02aa5be6e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>BASE::template target_socket_type&lt; BUSWIDTH &gt;::base_type::bw_interface_type *</type>
+        <definition>BASE::template target_socket_type&lt; BUSWIDTH &gt;::base_type::bw_interface_type * axi::scv::axitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;::get_bw_if</definition>
+        <argsstring>() override</argsstring>
+        <name>get_bw_if</name>
+        <qualifiedname>axi::scv::axitlm_recorder_module::get_bw_if</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" line="65" column="79" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" bodystart="65" bodyend="67"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classaxi_1_1scv_1_1axitlm__recorder__module_1a880a24e02398937add1a588745b2bfd8" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::scv::axitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;::start_of_simulation</definition>
+        <argsstring>() override</argsstring>
+        <name>start_of_simulation</name>
+        <qualifiedname>axi::scv::axitlm_recorder_module::start_of_simulation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" line="70" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" bodystart="70" bodyend="70"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The TLM2 transaction recorder. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This module records all TLM transaction to a SCV transaction stream for further viewing and analysis. The handle of the created transaction is storee in an tlm_extension so that another instance of the scv_tlm2_recorder e.g. further down the opath can link to it. The transaction recorder is simply bound between an existing pair of initiator and target sockets </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>BASE</label>
+      </node>
+      <node id="1">
+        <label>axi::scv::axitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;</label>
+        <link refid="classaxi_1_1scv_1_1axitlm__recorder__module"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>BASE</label>
+      </node>
+      <node id="1">
+        <label>axi::scv::axitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;</label>
+        <link refid="classaxi_1_1scv_1_1axitlm__recorder__module"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" line="34" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" bodystart="34" bodyend="71"/>
+    <listofallmembers>
+      <member refid="classaxi_1_1scv_1_1axitlm__recorder__module_1ad2f95cf723799f140e301f93e97237f6" prot="public" virt="non-virtual"><scope>axi::scv::axitlm_recorder_module</scope><name>axitlm_recorder_module</name></member>
+      <member refid="classaxi_1_1scv_1_1axitlm__recorder__module_1a39bf1df24e01769636232d02aa5be6e7" prot="public" virt="non-virtual"><scope>axi::scv::axitlm_recorder_module</scope><name>get_bw_if</name></member>
+      <member refid="classaxi_1_1scv_1_1axitlm__recorder__module_1ac7587d1605904aca0234d159ab146389" prot="public" virt="non-virtual"><scope>axi::scv::axitlm_recorder_module</scope><name>get_fw_if</name></member>
+      <member refid="classaxi_1_1scv_1_1axitlm__recorder__module_1a8c54f3cf74136e2dd8b33e5ea1f82baa" prot="public" virt="non-virtual"><scope>axi::scv::axitlm_recorder_module</scope><name>isckt</name></member>
+      <member refid="classaxi_1_1scv_1_1axitlm__recorder__module_1a79ad1650b1fdac2efacfda89f1cfebfd" prot="public" virt="non-virtual"><scope>axi::scv::axitlm_recorder_module</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="classaxi_1_1scv_1_1axitlm__recorder__module_1a880a24e02398937add1a588745b2bfd8" prot="private" virt="non-virtual"><scope>axi::scv::axitlm_recorder_module</scope><name>start_of_simulation</name></member>
+      <member refid="classaxi_1_1scv_1_1axitlm__recorder__module_1a871bc3fa876e66f69d0e7398839a4392" prot="public" virt="non-virtual"><scope>axi::scv::axitlm_recorder_module</scope><name>tsckt</name></member>
+      <member refid="classaxi_1_1scv_1_1axitlm__recorder__module_1a50f4e806eddd5c9826623a4181a787d7" prot="public" virt="non-virtual"><scope>axi::scv::axitlm_recorder_module</scope><name>~axitlm_recorder_module</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

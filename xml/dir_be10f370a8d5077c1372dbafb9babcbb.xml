@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_be10f370a8d5077c1372dbafb9babcbb" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs</compoundname>
+    <innerdir refid="dir_039154e88f9dbd64186e9904d4ca359a">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/scv</innerdir>
+    <innerfile refid="cxs__tlm_8cpp">cxs_tlm.cpp</innerfile>
+    <innerfile refid="cxs__tlm_8h">cxs_tlm.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/"/>
+  </compounddef>
+</doxygen>

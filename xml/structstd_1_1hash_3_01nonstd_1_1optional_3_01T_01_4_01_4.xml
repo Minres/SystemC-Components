@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structstd_1_1hash_3_01nonstd_1_1optional_3_01T_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>std::hash&lt; nonstd::optional&lt; T &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structstd_1_1hash_3_01nonstd_1_1optional_3_01T_01_4_01_4_1a73af21a0b5859627f170f49d714caa75" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>::std::size_t</type>
+        <definition>::std::size_t std::hash&lt; nonstd::optional&lt; T &gt; &gt;::operator()</definition>
+        <argsstring>(const nonstd::optional&lt; T &gt; &amp;o) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>std::hash&lt; nonstd::optional&lt; T &gt; &gt;::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="classnonstd_1_1optional" kindref="compound">nonstd::optional</ref>&lt; T &gt; &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1643" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1643" bodyend="1648"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1642" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1642" bodyend="1649"/>
+    <listofallmembers>
+      <member refid="structstd_1_1hash_3_01nonstd_1_1optional_3_01T_01_4_01_4_1a73af21a0b5859627f170f49d714caa75" prot="public" virt="non-virtual"><scope>std::hash&lt; nonstd::optional&lt; T &gt; &gt;</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

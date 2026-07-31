@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1xz__stream" kind="class" language="C++" prot="public">
+    <compoundname>util::xz_stream</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::istream</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classutil_1_1xz__stream_1a692d2a6d7cd0040bbc4ed3a120d0a39f" prot="private" static="no" mutable="no">
+        <type><ref refid="classutil_1_1xz__streambuf" kindref="compound">xz_streambuf</ref></type>
+        <definition>xz_streambuf util::xz_stream::buf_</definition>
+        <argsstring></argsstring>
+        <name>buf_</name>
+        <qualifiedname>util::xz_stream::buf_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" line="59" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classutil_1_1xz__stream_1abd8c875101be8e038059c79fe4884d8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::xz_stream::xz_stream</definition>
+        <argsstring>()=delete</argsstring>
+        <name>xz_stream</name>
+        <qualifiedname>util::xz_stream::xz_stream</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" line="51" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1xz__stream_1a218340f94dd85b667886c111811fad46" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>util::xz_stream::xz_stream</definition>
+        <argsstring>(const std::string &amp;path)</argsstring>
+        <name>xz_stream</name>
+        <qualifiedname>util::xz_stream::xz_stream</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" line="52" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" bodystart="52" bodyend="56"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>std::istream</label>
+      </node>
+      <node id="1">
+        <label>util::xz_stream</label>
+        <link refid="classutil_1_1xz__stream"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>std::istream</label>
+      </node>
+      <node id="1">
+        <label>util::xz_stream</label>
+        <link refid="classutil_1_1xz__stream"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" line="49" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" bodystart="49" bodyend="60"/>
+    <listofallmembers>
+      <member refid="classutil_1_1xz__stream_1a692d2a6d7cd0040bbc4ed3a120d0a39f" prot="private" virt="non-virtual"><scope>util::xz_stream</scope><name>buf_</name></member>
+      <member refid="classutil_1_1xz__stream_1abd8c875101be8e038059c79fe4884d8b" prot="public" virt="non-virtual"><scope>util::xz_stream</scope><name>xz_stream</name></member>
+      <member refid="classutil_1_1xz__stream_1a218340f94dd85b667886c111811fad46" prot="public" virt="non-virtual"><scope>util::xz_stream</scope><name>xz_stream</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

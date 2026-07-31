@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1detail_1_1optional__storage__base" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::detail::optional_storage_base</compoundname>
+    <derivedcompoundref refid="structnonstd_1_1detail_1_1optional__operations__base" prot="public" virt="non-virtual">nonstd::detail::optional_operations_base&lt; T &gt;</derivedcompoundref>
+    <innerclass refid="structnonstd_1_1detail_1_1optional__storage__base_1_1dummy" prot="public">nonstd::detail::optional_storage_base::dummy</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>bool</type>
+        <defval>::std::is_trivially_destructible&lt;T&gt;::value</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnonstd_1_1detail_1_1optional__storage__base_1a2741d9046cf25ed644ca69ec5367c6c3" prot="public" static="no" mutable="no">
+        <type><ref refid="structnonstd_1_1detail_1_1optional__storage__base_1_1dummy" kindref="compound">dummy</ref></type>
+        <definition>dummy nonstd::detail::optional_storage_base&lt; T, bool &gt;::m_dummy</definition>
+        <argsstring></argsstring>
+        <name>m_dummy</name>
+        <qualifiedname>nonstd::detail::optional_storage_base::m_dummy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="307" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="307" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnonstd_1_1detail_1_1optional__storage__base_1aaee6e740ef1d863a76adf9553f4958ef" prot="public" static="no" mutable="no">
+        <type>T</type>
+        <definition>T nonstd::detail::optional_storage_base&lt; T, bool &gt;::m_value</definition>
+        <argsstring></argsstring>
+        <name>m_value</name>
+        <qualifiedname>nonstd::detail::optional_storage_base::m_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="308" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="308" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnonstd_1_1detail_1_1optional__storage__base_1a7eeb9746608ab8e2dbb0070fc44b964a" prot="public" static="no" mutable="no">
+        <type>union <ref refid="structnonstd_1_1detail_1_1optional__storage__base" kindref="compound">nonstd::detail::optional_storage_base</ref></type>
+        <definition>union nonstd::detail::optional_storage_base nonstd::detail::optional_storage_base&lt; T, bool &gt;</definition>
+        <argsstring></argsstring>
+        <name></name>
+        <qualifiedname>nonstd::detail::optional_storage_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="309" column="5"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnonstd_1_1detail_1_1optional__storage__base_1a6c5e1ff12440d39b33b5117c976e3e03" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool nonstd::detail::optional_storage_base&lt; T, bool &gt;::m_has_value</definition>
+        <argsstring></argsstring>
+        <name>m_has_value</name>
+        <qualifiedname>nonstd::detail::optional_storage_base::m_has_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="311" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="311" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__storage__base_1a6191d025339379e6aa86ade2780cb0e8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>TL_OPTIONAL_11_CONSTEXPR</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR nonstd::detail::optional_storage_base&lt; T, bool &gt;::optional_storage_base</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>optional_storage_base</name>
+        <qualifiedname>nonstd::detail::optional_storage_base::optional_storage_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="289" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="289" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__storage__base_1abbccb81d22407a68a534e49cb122d35e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>U</declname>
+            <defname>U</defname>
+          </param>
+        </templateparamlist>
+        <type>TL_OPTIONAL_11_CONSTEXPR</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR nonstd::detail::optional_storage_base&lt; T, bool &gt;::optional_storage_base</definition>
+        <argsstring>(in_place_t, U &amp;&amp;... u)</argsstring>
+        <name>optional_storage_base</name>
+        <qualifiedname>nonstd::detail::optional_storage_base::optional_storage_base</qualifiedname>
+        <param>
+          <type><ref refid="structnonstd_1_1in__place__t" kindref="compound">in_place_t</ref></type>
+        </param>
+        <param>
+          <type>U &amp;&amp;...</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="294" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="294" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__storage__base_1a9205e8aa707495ca296fd1efbb973802" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>nonstd::detail::optional_storage_base&lt; T, bool &gt;::~optional_storage_base</definition>
+        <argsstring>()</argsstring>
+        <name>~optional_storage_base</name>
+        <qualifiedname>nonstd::detail::optional_storage_base::~optional_storage_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="298" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="298" bodyend="303"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="8">
+        <label>nonstd::detail::optional_copy_assign_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__copy__assign__base"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>nonstd::detail::optional_copy_assign_base&lt; T, false &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__copy__assign__base_3_01T_00_01false_01_4"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>nonstd::detail::optional_copy_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__copy__base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>nonstd::detail::optional_copy_base&lt; T, false &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__copy__base_3_01T_00_01false_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>nonstd::detail::optional_move_assign_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__move__assign__base"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>nonstd::detail::optional_move_assign_base&lt; T, false &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__move__assign__base_3_01T_00_01false_01_4"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>nonstd::detail::optional_move_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__move__base"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>nonstd::detail::optional_move_base&lt; T, false &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__move__base_3_01T_00_01false_01_4"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>nonstd::detail::optional_operations_base&lt; T &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__operations__base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>nonstd::detail::optional_storage_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__storage__base"/>
+      </node>
+      <node id="12">
+        <label>nonstd::optional&lt; T &amp; &gt;</label>
+        <link refid="classnonstd_1_1optional_3_01T_01_6_01_4"/>
+        <childnode refid="10" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>nonstd::optional&lt; T &gt;</label>
+        <link refid="classnonstd_1_1optional"/>
+        <childnode refid="10" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>nonstd::optional&lt; fixup_void&lt; invoke_result_t&lt; F, U &gt; &gt; &gt;</label>
+        <link refid="classnonstd_1_1optional"/>
+        <childnode refid="10" relation="private-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>nonstd::detail::optional_storage_base&lt; T, bool &gt;::dummy</label>
+        <link refid="structnonstd_1_1detail_1_1optional__storage__base_1_1dummy"/>
+      </node>
+      <node id="1">
+        <label>nonstd::detail::optional_storage_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__storage__base"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_dummy</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="288" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="288" bodyend="312"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1detail_1_1optional__storage__base_1a2741d9046cf25ed644ca69ec5367c6c3" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_storage_base</scope><name>m_dummy</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__storage__base_1a6c5e1ff12440d39b33b5117c976e3e03" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_storage_base</scope><name>m_has_value</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__storage__base_1aaee6e740ef1d863a76adf9553f4958ef" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_storage_base</scope><name>m_value</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__storage__base_1a6191d025339379e6aa86ade2780cb0e8" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_storage_base</scope><name>optional_storage_base</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__storage__base_1abbccb81d22407a68a534e49cb122d35e" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_storage_base</scope><name>optional_storage_base</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__storage__base_1a9205e8aa707495ca296fd1efbb973802" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_storage_base</scope><name>~optional_storage_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

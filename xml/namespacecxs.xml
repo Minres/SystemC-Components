@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacecxs" kind="namespace" language="C++">
+    <compoundname>cxs</compoundname>
+    <innerclass refid="structcxs_1_1cxs__ext__record" prot="public">cxs::cxs_ext_record</innerclass>
+    <innerclass refid="structcxs_1_1cxs__ext__recording" prot="public">cxs::cxs_ext_recording</innerclass>
+    <innerclass refid="structcxs_1_1cxs__flit__payload" prot="public">cxs::cxs_flit_payload</innerclass>
+    <innerclass refid="structcxs_1_1cxs__flit__types" prot="public">cxs::cxs_flit_types</innerclass>
+    <innerclass refid="structcxs_1_1cxs__packet__payload" prot="public">cxs::cxs_packet_payload</innerclass>
+    <innerclass refid="structcxs_1_1cxs__packet__types" prot="public">cxs::cxs_packet_types</innerclass>
+    <innerclass refid="structcxs_1_1cxs__packet__extension" prot="public">cxs::cxs_packet_extension</innerclass>
+    <innerclass refid="structcxs_1_1cxs__transmitter" prot="public">cxs::cxs_transmitter</innerclass>
+    <innerclass refid="structcxs_1_1cxs__receiver" prot="public">cxs::cxs_receiver</innerclass>
+    <innerclass refid="structcxs_1_1cxs__channel" prot="public">cxs::cxs_channel</innerclass>
+    <innernamespace refid="namespacecxs_1_1scv">cxs::scv</innernamespace>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacecxs_1a2a48ca5bafba6f24ee047ad50409d472" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>CXS_CMD</name>
+        <qualifiedname>cxs::CXS_CMD</qualifiedname>
+        <enumvalue id="namespacecxs_1a2a48ca5bafba6f24ee047ad50409d472a4b250ce6879f295f3a5bb0b8bc80c0b1" prot="public">
+          <name>FLIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacecxs_1a2a48ca5bafba6f24ee047ad50409d472ae3968aae02e78599276f2759bc8f268b" prot="public">
+          <name>CREDIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacecxs_1a2a48ca5bafba6f24ee047ad50409d472a3d309ec5320e299a059089cc9b2d4d76" prot="public">
+          <name>CRDRTN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="33" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacecxs_1a3a7ba06b5ad1e1c5faf791f88be61577" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>CXS_PKT</name>
+        <qualifiedname>cxs::CXS_PKT</qualifiedname>
+        <enumvalue id="namespacecxs_1a3a7ba06b5ad1e1c5faf791f88be61577ae44f9e348e41cb272efa87387728571b" prot="public">
+          <name>DATA</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="64" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="64" bodyend="64"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacecxs_1a4f14381fa3a1f1620117798c32fe27d2" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>unsigned</type>
+            <declname>PHITWIDTH</declname>
+            <defname>PHITWIDTH</defname>
+            <defval>256</defval>
+          </param>
+          <param>
+            <type>int</type>
+            <declname>N</declname>
+            <defname>N</defname>
+            <defval>1</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structtlm_1_1nw_1_1tlm__network__initiator__socket" kindref="compound">tlm::nw::tlm_network_initiator_socket</ref>&lt; PHITWIDTH, CXS_CMD, <ref refid="structcxs_1_1cxs__flit__types" kindref="compound">cxs_flit_types</ref>, N &gt;</type>
+        <definition>using cxs::cxs_flit_initiator_socket =  tlm::nw::tlm_network_initiator_socket&lt;PHITWIDTH, CXS_CMD, cxs_flit_types, N&gt;</definition>
+        <argsstring></argsstring>
+        <name>cxs_flit_initiator_socket</name>
+        <qualifiedname>cxs::cxs_flit_initiator_socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="98" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacecxs_1a41e41c84a49f62afd5fd349e6c99944d" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>unsigned</type>
+            <declname>PHITWIDTH</declname>
+            <defname>PHITWIDTH</defname>
+            <defval>256</defval>
+          </param>
+          <param>
+            <type>int</type>
+            <declname>N</declname>
+            <defname>N</defname>
+            <defval>1</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structtlm_1_1nw_1_1tlm__network__target__socket" kindref="compound">tlm::nw::tlm_network_target_socket</ref>&lt; PHITWIDTH, CXS_CMD, <ref refid="structcxs_1_1cxs__flit__types" kindref="compound">cxs_flit_types</ref>, N &gt;</type>
+        <definition>using cxs::cxs_flit_target_socket =  tlm::nw::tlm_network_target_socket&lt;PHITWIDTH, CXS_CMD, cxs_flit_types, N&gt;</definition>
+        <argsstring></argsstring>
+        <name>cxs_flit_target_socket</name>
+        <qualifiedname>cxs::cxs_flit_target_socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="100" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacecxs_1abbacb75cd5bd472cf2ec9c4cf8220cd3" prot="public" static="no">
+        <type><ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr" kindref="compound">tlm::scc::tlm_payload_shared_ptr</ref>&lt; <ref refid="structcxs_1_1cxs__flit__payload" kindref="compound">cxs_flit_payload</ref> &gt;</type>
+        <definition>using cxs::cxs_flit_shared_ptr =  tlm::scc::tlm_payload_shared_ptr&lt;cxs_flit_payload&gt;</definition>
+        <argsstring></argsstring>
+        <name>cxs_flit_shared_ptr</name>
+        <qualifiedname>cxs::cxs_flit_shared_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="101" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacecxs_1ab0dc93afa0138751f3760ed35b2de5a2" prot="public" static="no">
+        <type><ref refid="structtlm_1_1scc_1_1tlm__mm" kindref="compound">tlm::scc::tlm_mm</ref>&lt; <ref refid="structcxs_1_1cxs__flit__types" kindref="compound">cxs_flit_types</ref>, false &gt;</type>
+        <definition>using cxs::cxs_flit_mm =  tlm::scc::tlm_mm&lt;cxs_flit_types, false&gt;</definition>
+        <argsstring></argsstring>
+        <name>cxs_flit_mm</name>
+        <qualifiedname>cxs::cxs_flit_mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="102" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacecxs_1aae777354387570bb000cb74c146ff8ed" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>N</declname>
+            <defname>N</defname>
+            <defval>1</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structtlm_1_1nw_1_1tlm__network__initiator__socket" kindref="compound">tlm::nw::tlm_network_initiator_socket</ref>&lt; 8, CXS_PKT, <ref refid="structcxs_1_1cxs__packet__types" kindref="compound">cxs_packet_types</ref>, N &gt;</type>
+        <definition>using cxs::cxs_pkt_initiator_socket =  tlm::nw::tlm_network_initiator_socket&lt;8, CXS_PKT, cxs_packet_types, N&gt;</definition>
+        <argsstring></argsstring>
+        <name>cxs_pkt_initiator_socket</name>
+        <qualifiedname>cxs::cxs_pkt_initiator_socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="104" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacecxs_1a33682371ca8dc042357f8c5ce727b2d1" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>N</declname>
+            <defname>N</defname>
+            <defval>1</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structtlm_1_1nw_1_1tlm__network__target__socket" kindref="compound">tlm::nw::tlm_network_target_socket</ref>&lt; 8, CXS_PKT, <ref refid="structcxs_1_1cxs__packet__types" kindref="compound">cxs_packet_types</ref>, N &gt;</type>
+        <definition>using cxs::cxs_pkt_target_socket =  tlm::nw::tlm_network_target_socket&lt;8, CXS_PKT, cxs_packet_types, N&gt;</definition>
+        <argsstring></argsstring>
+        <name>cxs_pkt_target_socket</name>
+        <qualifiedname>cxs::cxs_pkt_target_socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="105" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacecxs_1aca94ff885093dc9da36b0d88be8f8166" prot="public" static="no">
+        <type><ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr" kindref="compound">tlm::scc::tlm_payload_shared_ptr</ref>&lt; <ref refid="structcxs_1_1cxs__packet__payload" kindref="compound">cxs_packet_payload</ref> &gt;</type>
+        <definition>using cxs::cxs_pkt_shared_ptr =  tlm::scc::tlm_payload_shared_ptr&lt;cxs_packet_payload&gt;</definition>
+        <argsstring></argsstring>
+        <name>cxs_pkt_shared_ptr</name>
+        <qualifiedname>cxs::cxs_pkt_shared_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="106" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacecxs_1a4c7584d841af7137d76c84a95153399a" prot="public" static="no">
+        <type><ref refid="structtlm_1_1scc_1_1tlm__mm" kindref="compound">tlm::scc::tlm_mm</ref>&lt; <ref refid="structcxs_1_1cxs__packet__types" kindref="compound">cxs_packet_types</ref>, false &gt;</type>
+        <definition>using cxs::cxs_pkt_mm =  tlm::scc::tlm_mm&lt;cxs_packet_types, false&gt;</definition>
+        <argsstring></argsstring>
+        <name>cxs_pkt_mm</name>
+        <qualifiedname>cxs::cxs_pkt_mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="107" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacecxs_1ac0aa30f454ad8714425d013a45776137" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool cxs::registered</definition>
+        <argsstring></argsstring>
+        <name>registered</name>
+        <qualifiedname>cxs::registered</qualifiedname>
+        <initializer>= register_extensions()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" line="69" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" bodystart="69" bodyend="-1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" declline="78" declcolumn="13"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacecxs_1a2e3945485c1bf6ff86fa69b339700b6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool cxs::register_extensions</definition>
+        <argsstring>()</argsstring>
+        <name>register_extensions</name>
+        <qualifiedname>cxs::register_extensions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" line="59" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" bodystart="59" bodyend="68" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" declline="77" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>CXS TLM utilities. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>CXS. </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" line="23" column="1"/>
+  </compounddef>
+</doxygen>

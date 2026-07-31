@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacetlm" kind="namespace" language="C++">
+    <compoundname>tlm</compoundname>
+    <innernamespace refid="namespacetlm_1_1scc">tlm::scc</innernamespace>
+    <innernamespace refid="namespacetlm_1_1nw">tlm::nw</innernamespace>
+    <innernamespace refid="namespacetlm_1_1tlm__base__protocol__types">tlm::tlm_base_protocol_types</innernamespace>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacetlm_1a30096ff386663f79e069d4cbcd76b49f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::operator==</definition>
+        <argsstring>(tlm_dmi const &amp;o1, tlm_dmi const &amp;o2)</argsstring>
+        <name>operator==</name>
+        <qualifiedname>tlm::operator==</qualifiedname>
+        <param>
+          <type>tlm_dmi const &amp;</type>
+          <declname>o1</declname>
+        </param>
+        <param>
+          <type>tlm_dmi const &amp;</type>
+          <declname>o2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="20" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" bodystart="20" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1ac52aeb04805036142a0bcc25dce8418f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::operator!=</definition>
+        <argsstring>(tlm_dmi const &amp;o1, tlm_dmi const &amp;o2)</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>tlm::operator!=</qualifiedname>
+        <param>
+          <type>tlm_dmi const &amp;</type>
+          <declname>o1</declname>
+        </param>
+        <param>
+          <type>tlm_dmi const &amp;</type>
+          <declname>o2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="24" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" bodystart="24" bodyend="24"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>SystemC TLM. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The SystemC Transaction Level Model (TLM) Network TLM utilities.</para>
+<para>LWTR components for TLM2 </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/dmi_mgr.h" line="19" column="1"/>
+  </compounddef>
+</doxygen>

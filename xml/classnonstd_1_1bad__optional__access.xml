@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classnonstd_1_1bad__optional__access" kind="class" language="C++" prot="public">
+    <compoundname>nonstd::bad_optional_access</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::exception</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classnonstd_1_1bad__optional__access_1a89337883e99201f2df8980e28f24ef3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>nonstd::bad_optional_access::bad_optional_access</definition>
+        <argsstring>()=default</argsstring>
+        <name>bad_optional_access</name>
+        <qualifiedname>nonstd::bad_optional_access::bad_optional_access</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="566" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1bad__optional__access_1a43a50c74352b036799ed31da7af32844" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * nonstd::bad_optional_access::what</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>what</name>
+        <qualifiedname>nonstd::bad_optional_access::what</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="567" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="567" bodyend="567"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>nonstd::bad_optional_access</label>
+        <link refid="classnonstd_1_1bad__optional__access"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::exception</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>nonstd::bad_optional_access</label>
+        <link refid="classnonstd_1_1bad__optional__access"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::exception</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="564" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="564" bodyend="568"/>
+    <listofallmembers>
+      <member refid="classnonstd_1_1bad__optional__access_1a89337883e99201f2df8980e28f24ef3b" prot="public" virt="non-virtual"><scope>nonstd::bad_optional_access</scope><name>bad_optional_access</name></member>
+      <member refid="classnonstd_1_1bad__optional__access_1a43a50c74352b036799ed31da7af32844" prot="public" virt="non-virtual"><scope>nonstd::bad_optional_access</scope><name>what</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1sc__thread__pool" kind="class" language="C++" prot="public">
+    <compoundname>scc::sc_thread_pool</compoundname>
+    <basecompoundref prot="private" virt="non-virtual">sc_core::sc_object</basecompoundref>
+    <includes refid="sc__thread__pool_8h" local="no">sc_thread_pool.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classscc_1_1sc__thread__pool_1adc7e574ce9fe52b86187ce528dfdae09" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; unsigned &gt;</type>
+        <definition>cci::cci_param&lt;unsigned&gt; scc::sc_thread_pool::max_concurrent_threads</definition>
+        <argsstring></argsstring>
+        <name>max_concurrent_threads</name>
+        <qualifiedname>scc::sc_thread_pool::max_concurrent_threads</qualifiedname>
+        <initializer>{&quot;max_concurrent_threads&quot;, 16}</initializer>
+        <briefdescription>
+<para>The maximum number of concurrent threads in the thread pool. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This parameter allows users to specify the maximum number of concurrent threads that can be active in the thread pool at any given time. By default, the maximum number of concurrent threads is set to 16. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_thread_pool.h" line="47" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_thread_pool.h" bodystart="47" bodyend="47"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classscc_1_1sc__thread__pool_1ab73f4b7b4d515ec4dbb002e615c6fab3" prot="private" static="no" mutable="no">
+        <type><ref refid="structscc_1_1peq" kindref="compound">scc::peq</ref>&lt; std::function&lt; void(void)&gt; &gt;</type>
+        <definition>scc::peq&lt;std::function&lt;void(void)&gt; &gt; scc::sc_thread_pool::dispatch_queue</definition>
+        <argsstring></argsstring>
+        <name>dispatch_queue</name>
+        <qualifiedname>scc::sc_thread_pool::dispatch_queue</qualifiedname>
+        <initializer>{&quot;dispatch_queue&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_thread_pool.h" line="67" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_thread_pool.h" bodystart="67" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1sc__thread__pool_1a4a62fe4f6943a5e048e8862a33787a8f" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned scc::sc_thread_pool::thread_avail</definition>
+        <argsstring></argsstring>
+        <name>thread_avail</name>
+        <qualifiedname>scc::sc_thread_pool::thread_avail</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_thread_pool.h" line="68" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_thread_pool.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1sc__thread__pool_1a19a8c47d373f08f191f3d3099e7f4703" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned scc::sc_thread_pool::thread_active</definition>
+        <argsstring></argsstring>
+        <name>thread_active</name>
+        <qualifiedname>scc::sc_thread_pool::thread_active</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_thread_pool.h" line="68" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_thread_pool.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1sc__thread__pool_1a5df0c401e92858cac3fd1d7297d9ba20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_thread_pool::sc_thread_pool</definition>
+        <argsstring>()</argsstring>
+        <name>sc_thread_pool</name>
+        <qualifiedname>scc::sc_thread_pool::sc_thread_pool</qualifiedname>
+        <briefdescription>
+<para>Constructor for the <ref refid="classscc_1_1sc__thread__pool" kindref="compound">sc_thread_pool</ref> class. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_thread_pool.h" line="51" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_thread_pool.cpp" bodystart="27" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__thread__pool_1ac2bed106c27d4a43703385b9b0f4d619" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>scc::sc_thread_pool::~sc_thread_pool</definition>
+        <argsstring>()</argsstring>
+        <name>~sc_thread_pool</name>
+        <qualifiedname>scc::sc_thread_pool::~sc_thread_pool</qualifiedname>
+        <briefdescription>
+<para>Destructor for the <ref refid="classscc_1_1sc__thread__pool" kindref="compound">sc_thread_pool</ref> class. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_thread_pool.h" line="55" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__thread__pool_1a1ae0dacb15ff4e65ae2b0b5d4e569b65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_thread_pool::execute</definition>
+        <argsstring>(std::function&lt; void(void)&gt; fct)</argsstring>
+        <name>execute</name>
+        <qualifiedname>scc::sc_thread_pool::execute</qualifiedname>
+        <param>
+          <type>std::function&lt; void(void)&gt;</type>
+          <declname>fct</declname>
+        </param>
+        <briefdescription>
+<para>Execute the given function in a separate SC_THREAD. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method submits the given function to be executed in a separate thread. The function will be executed concurrently with other tasks submitted to the thread pool.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The function to be executed. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_thread_pool.h" line="64" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_thread_pool.cpp" bodystart="32" bodyend="49"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A thread pool for executing tasks concurrently. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classscc_1_1sc__thread__pool" kindref="compound">sc_thread_pool</ref> class provides a mechanism for executing SystemC tasks concurrently using a pool of worker SC_THREADs. It allows users to specify the maximum number of concurrent threads and provides a simple interface for submitting tasks to be executed.</para>
+<para><simplesect kind="author"><para>Your Name </para>
+</simplesect>
+<simplesect kind="date"><para>YYYY-MM-DD </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_thread_pool</label>
+        <link refid="classscc_1_1sc__thread__pool"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_thread_pool</label>
+        <link refid="classscc_1_1sc__thread__pool"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_thread_pool.h" line="39" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_thread_pool.h" bodystart="39" bodyend="69"/>
+    <listofallmembers>
+      <member refid="classscc_1_1sc__thread__pool_1ab73f4b7b4d515ec4dbb002e615c6fab3" prot="private" virt="non-virtual"><scope>scc::sc_thread_pool</scope><name>dispatch_queue</name></member>
+      <member refid="classscc_1_1sc__thread__pool_1a1ae0dacb15ff4e65ae2b0b5d4e569b65" prot="public" virt="non-virtual"><scope>scc::sc_thread_pool</scope><name>execute</name></member>
+      <member refid="classscc_1_1sc__thread__pool_1adc7e574ce9fe52b86187ce528dfdae09" prot="public" virt="non-virtual"><scope>scc::sc_thread_pool</scope><name>max_concurrent_threads</name></member>
+      <member refid="classscc_1_1sc__thread__pool_1a5df0c401e92858cac3fd1d7297d9ba20" prot="public" virt="non-virtual"><scope>scc::sc_thread_pool</scope><name>sc_thread_pool</name></member>
+      <member refid="classscc_1_1sc__thread__pool_1a19a8c47d373f08f191f3d3099e7f4703" prot="private" virt="non-virtual"><scope>scc::sc_thread_pool</scope><name>thread_active</name></member>
+      <member refid="classscc_1_1sc__thread__pool_1a4a62fe4f6943a5e048e8862a33787a8f" prot="private" virt="non-virtual"><scope>scc::sc_thread_pool</scope><name>thread_avail</name></member>
+      <member refid="classscc_1_1sc__thread__pool_1ac2bed106c27d4a43703385b9b0f4d619" prot="public" virt="virtual"><scope>scc::sc_thread_pool</scope><name>~sc_thread_pool</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

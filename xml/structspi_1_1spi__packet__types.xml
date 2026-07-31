@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structspi_1_1spi__packet__types" kind="struct" language="C++" prot="public">
+    <compoundname>spi::spi_packet_types</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structspi_1_1spi__packet__types_1a79e177fd354c3cd44d3a79ee7f2dcebe" prot="public" static="no">
+        <type><ref refid="structspi_1_1spi__packet__payload" kindref="compound">spi_packet_payload</ref></type>
+        <definition>using spi::spi_packet_types::tlm_payload_type =  spi_packet_payload</definition>
+        <argsstring></argsstring>
+        <name>tlm_payload_type</name>
+        <qualifiedname>spi::spi_packet_types::tlm_payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/spi/spi_tlm.h" line="61" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/spi/spi_tlm.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structspi_1_1spi__packet__types_1a1fff12694807fb7a8c0a4c66bab2c612" prot="public" static="no">
+        <type>::tlm::tlm_phase</type>
+        <definition>using spi::spi_packet_types::tlm_phase_type =  ::tlm::tlm_phase</definition>
+        <argsstring></argsstring>
+        <name>tlm_phase_type</name>
+        <qualifiedname>spi::spi_packet_types::tlm_phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/spi/spi_tlm.h" line="62" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/spi/spi_tlm.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/spi/spi_tlm.h" line="60" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/spi/spi_tlm.h" bodystart="60" bodyend="63"/>
+    <listofallmembers>
+      <member refid="structspi_1_1spi__packet__types_1a79e177fd354c3cd44d3a79ee7f2dcebe" prot="public" virt="non-virtual"><scope>spi::spi_packet_types</scope><name>tlm_payload_type</name></member>
+      <member refid="structspi_1_1spi__packet__types_1a1fff12694807fb7a8c0a4c66bab2c612" prot="public" virt="non-virtual"><scope>spi::spi_packet_types</scope><name>tlm_phase_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

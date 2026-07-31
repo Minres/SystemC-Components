@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_7ccbfd23fc50d4b5cbc3fada7d7470b5" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace</compoundname>
+    <innerfile refid="gz__writer_8hh">gz_writer.hh</innerfile>
+    <innerfile refid="types_8hh">types.hh</innerfile>
+    <innerfile refid="vcd__trace_8hh">vcd_trace.hh</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/"/>
+  </compounddef>
+</doxygen>

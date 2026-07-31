@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -101,6 +101,10 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a TLM2.0 router for loosly-timed (LT) models  <a href="structscc_1_1router.html#details">More...</a><br /></td></tr>
 <tr class="memitem:socket_5Fwidth_5Fadapter" id="r_socket_5Fwidth_5Fadapter"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1socket__width__adapter.html">socket_width_adapter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classscc_1_1socket__width__adapter.html" title="The socket_width_adapter class is a TLM (Transaction-Level Modeling) socket width adapter.">socket_width_adapter</a> class is a TLM (Transaction-Level Modeling) socket width adapter.  <a href="classscc_1_1socket__width__adapter.html#details">More...</a><br /></td></tr>
+<tr class="memitem:tcp4tlm_5Fbridge" id="r_tcp4tlm_5Fbridge"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1tcp4tlm__bridge.html">tcp4tlm_bridge</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bidirectional bridge for tunneling loosely timed TLM traffic over a TCP connection.  <a href="structscc_1_1tcp4tlm__bridge.html#details">More...</a><br /></td></tr>
+<tr class="memitem:tcp4tlm_5Fclient" id="r_tcp4tlm_5Fclient"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1tcp4tlm__client.html">tcp4tlm_client</a></td></tr>
+<tr class="memitem:tcp4tlm_5Fserver" id="r_tcp4tlm_5Fserver"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1tcp4tlm__server.html">tcp4tlm_server</a></td></tr>
 <tr class="memitem:addr_5Frange" id="r_addr_5Frange"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1addr__range.html">addr_range</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">struct representing address range  <a href="structscc_1_1addr__range.html#details">More...</a><br /></td></tr>
 <tr class="memitem:tlm_5Ftarget" id="r_tlm_5Ftarget"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tlm__target.html">tlm_target</a></td></tr>
@@ -265,6 +269,7 @@ Functions</h2></td></tr>
 <tr class="memitem:af8863724e83e5f3653b28901d4f2838d" id="r_af8863724e83e5f3653b28901d4f2838d"><td class="memTemplParams" colspan="2"><a id="af8863724e83e5f3653b28901d4f2838d" name="af8863724e83e5f3653b28901d4f2838d"></a>
 template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT&gt; </td></tr>
 <tr class="memitem:af8863724e83e5f3653b28901d4f2838d template"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><b>handle_operation</b> (<a class="el" href="classscc_1_1memory.html">memory</a>&lt; SIZE, BUSWIDTH &gt; &amp;, tlm::tlm_generic_payload &amp;, sc_core::sc_time &amp;delay)</td></tr>
+<tr class="memitem:adb1fb85d9a320b3339ff7081966d696c" id="r_adb1fb85d9a320b3339ff7081966d696c"><td class="memItemLeft" align="right" valign="top">long long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb1fb85d9a320b3339ff7081966d696c">get_time_of_day_us</a> ()</td></tr>
 <tr class="memitem:a03eb872bb1271b74892a6c2ddff59044" id="r_a03eb872bb1271b74892a6c2ddff59044"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03eb872bb1271b74892a6c2ddff59044">init_cci</a> (std::string name)</td></tr>
 <tr class="memitem:af837755465d0c4911efaa87d2824e96a" id="r_af837755465d0c4911efaa87d2824e96a"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:af837755465d0c4911efaa87d2824e96a template"><td class="memItemLeft" align="right" valign="top">_min_max_restriction&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af837755465d0c4911efaa87d2824e96a">min_max_restriction</a> (T min, T max)</td></tr>
@@ -448,7 +453,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00178">178</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00182">182</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -466,7 +471,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00176">176</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00180">180</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -502,7 +507,7 @@ template&lt;typename DATATYPE&gt; </div>
 
 <p>import the implementation into the scc namespace </p>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00338">338</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00354">354</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -597,7 +602,7 @@ template&lt;typename DATATYPE&gt; </div>
 
 <p>enum defining the log levels </p>
 
-<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00086">86</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00088">88</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
 
 </div>
 </div>
@@ -674,7 +679,7 @@ template&lt;typename DATATYPE&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the log level </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00101">101</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00103">103</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
 
 </div>
 </div>
@@ -1063,7 +1068,7 @@ template&lt;typename T&gt; </div>
 <p>get the global verbosity level </p>
 <dl class="section return"><dt>Returns</dt><dd>the global verbosity level </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00324">324</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00326">326</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
 
 </div>
 </div>
@@ -1117,7 +1122,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00348">348</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00350">350</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
 
 </div>
 </div>
@@ -1139,7 +1144,34 @@ template&lt;typename T&gt; </div>
 <p>get the SystemC logging level </p>
 <dl class="section return"><dt>Returns</dt><dd>the logging level </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="report_8cpp_source.html#l00524">524</a> of file <a class="el" href="report_8cpp_source.html">report.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8cpp_source.html#l00533">533</a> of file <a class="el" href="report_8cpp_source.html">report.cpp</a>.</p>
+
+</div>
+</div>
+<a id="adb1fb85d9a320b3339ff7081966d696c" name="adb1fb85d9a320b3339ff7081966d696c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb1fb85d9a320b3339ff7081966d696c">&#9670;&#160;</a></span>get_time_of_day_us()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long long int scc::get_time_of_day_us </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="tcp4tlm__bridge_8cpp_source.html#l00253">253</a> of file <a class="el" href="tcp4tlm__bridge_8cpp_source.html">tcp4tlm_bridge.cpp</a>.</p>
 
 </div>
 </div>
@@ -1379,7 +1411,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00733">733</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00738">738</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
 
 </div>
 </div>
@@ -1492,7 +1524,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="report_8cpp_source.html#l00510">510</a> of file <a class="el" href="report_8cpp_source.html">report.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8cpp_source.html#l00518">518</a> of file <a class="el" href="report_8cpp_source.html">report.cpp</a>.</p>
 
 </div>
 </div>
@@ -1530,7 +1562,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="report_8cpp_source.html#l00502">502</a> of file <a class="el" href="report_8cpp_source.html">report.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8cpp_source.html#l00510">510</a> of file <a class="el" href="report_8cpp_source.html">report.cpp</a>.</p>
 
 </div>
 </div>
@@ -1552,7 +1584,7 @@ template&lt;typename T&gt; </div>
 <p>get the state of the SCC logging system </p>
 <dl class="section return"><dt>Returns</dt><dd>true if the logging system has been initialized </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="report_8cpp_source.html#l00500">500</a> of file <a class="el" href="report_8cpp_source.html">report.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8cpp_source.html#l00508">508</a> of file <a class="el" href="report_8cpp_source.html">report.cpp</a>.</p>
 
 </div>
 </div>
@@ -2029,7 +2061,7 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00297">297</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00298">298</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
 
 </div>
 </div>
@@ -2054,7 +2086,7 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00301">301</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00302">302</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
 
 </div>
 </div>
@@ -2079,7 +2111,7 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00295">295</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00296">296</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
 
 </div>
 </div>
@@ -2104,7 +2136,7 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00299">299</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00300">300</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
 
 </div>
 </div>
@@ -2129,7 +2161,7 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00296">296</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00297">297</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
 
 </div>
 </div>
@@ -2154,7 +2186,7 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00300">300</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00301">301</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
 
 </div>
 </div>
@@ -2179,7 +2211,7 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00298">298</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00299">299</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
 
 </div>
 </div>
@@ -2204,7 +2236,7 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00302">302</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00303">303</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
 
 </div>
 </div>
@@ -2295,7 +2327,7 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>reference to the stream for chaining </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00131">131</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00133">133</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
 
 </div>
 </div>
@@ -2336,7 +2368,7 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the input stream </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00114">114</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00116">116</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
 
 </div>
 </div>
@@ -2530,7 +2562,7 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="report_8cpp_source.html#l00488">488</a> of file <a class="el" href="report_8cpp_source.html">report.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8cpp_source.html#l00496">496</a> of file <a class="el" href="report_8cpp_source.html">report.cpp</a>.</p>
 
 </div>
 </div>
@@ -2549,7 +2581,7 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="report_8cpp_source.html#l00490">490</a> of file <a class="el" href="report_8cpp_source.html">report.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8cpp_source.html#l00498">498</a> of file <a class="el" href="report_8cpp_source.html">report.cpp</a>.</p>
 
 </div>
 </div>
@@ -2966,7 +2998,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="report_8cpp_source.html#l00516">516</a> of file <a class="el" href="report_8cpp_source.html">report.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8cpp_source.html#l00524">524</a> of file <a class="el" href="report_8cpp_source.html">report.cpp</a>.</p>
 
 </div>
 </div>
@@ -3139,7 +3171,7 @@ template&lt;typename T&gt; </div>
 
 <p>a mutex needed to syncronize verbosity manipulations </p>
 
-<p class="definition">Definition at line <a class="el" href="report_8cpp_source.html#l00326">326</a> of file <a class="el" href="report_8cpp_source.html">report.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8cpp_source.html#l00333">333</a> of file <a class="el" href="report_8cpp_source.html">report.cpp</a>.</p>
 
 </div>
 </div>

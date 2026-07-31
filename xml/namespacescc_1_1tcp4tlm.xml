@@ -1,0 +1,1828 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacescc_1_1tcp4tlm" kind="namespace" language="C++">
+    <compoundname>scc::tcp4tlm</compoundname>
+    <innerclass refid="classscc_1_1tcp4tlm_1_1client" prot="public">scc::tcp4tlm::client</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1i__server" prot="public">scc::tcp4tlm::i_server</innerclass>
+    <innerclass refid="classscc_1_1tcp4tlm_1_1message__buffer" prot="public">scc::tcp4tlm::message_buffer</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1RequestPayloadTraits" prot="public">scc::tcp4tlm::RequestPayloadTraits</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1RequestPayloadTraits_3_01scc_1_1tcp4tlm_1_1NotifyEndpointMsg_01_4" prot="public">scc::tcp4tlm::RequestPayloadTraits&lt; scc::tcp4tlm::NotifyEndpointMsg &gt;</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1RequestPayloadTraits_3_01scc_1_1tcp4tlm_1_1NotifyShutdownMsg_01_4" prot="public">scc::tcp4tlm::RequestPayloadTraits&lt; scc::tcp4tlm::NotifyShutdownMsg &gt;</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1RequestPayloadTraits_3_01scc_1_1tcp4tlm_1_1SyncMsg_01_4" prot="public">scc::tcp4tlm::RequestPayloadTraits&lt; scc::tcp4tlm::SyncMsg &gt;</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1RequestPayloadTraits_3_01scc_1_1tcp4tlm_1_1BusOpMsg_01_4" prot="public">scc::tcp4tlm::RequestPayloadTraits&lt; scc::tcp4tlm::BusOpMsg &gt;</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1RequestPayloadTraits_3_01scc_1_1tcp4tlm_1_1SigOpMsg_01_4" prot="public">scc::tcp4tlm::RequestPayloadTraits&lt; scc::tcp4tlm::SigOpMsg &gt;</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1RequestPayloadTraits_3_01scc_1_1tcp4tlm_1_1LogMsg_01_4" prot="public">scc::tcp4tlm::RequestPayloadTraits&lt; scc::tcp4tlm::LogMsg &gt;</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1ResponsePayloadTraits" prot="public">scc::tcp4tlm::ResponsePayloadTraits</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1ResponsePayloadTraits_3_01scc_1_1tcp4tlm_1_1ResponseMsg_01_4" prot="public">scc::tcp4tlm::ResponsePayloadTraits&lt; scc::tcp4tlm::ResponseMsg &gt;</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1ResponsePayloadTraits_3_01scc_1_1tcp4tlm_1_1BusDataMsg_01_4" prot="public">scc::tcp4tlm::ResponsePayloadTraits&lt; scc::tcp4tlm::BusDataMsg &gt;</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1FLATBUFFERS__FINAL__CLASS" prot="public">scc::tcp4tlm::FLATBUFFERS_FINAL_CLASS</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder" prot="public">scc::tcp4tlm::NotifyEndpointMsgBuilder</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1NotifyShutdownMsgBuilder" prot="public">scc::tcp4tlm::NotifyShutdownMsgBuilder</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1SyncMsgBuilder" prot="public">scc::tcp4tlm::SyncMsgBuilder</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1BusOpMsgBuilder" prot="public">scc::tcp4tlm::BusOpMsgBuilder</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1ResponseMsgBuilder" prot="public">scc::tcp4tlm::ResponseMsgBuilder</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1BusDataMsgBuilder" prot="public">scc::tcp4tlm::BusDataMsgBuilder</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1SigOpMsgBuilder" prot="public">scc::tcp4tlm::SigOpMsgBuilder</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1LogMsgBuilder" prot="public">scc::tcp4tlm::LogMsgBuilder</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1RequestEnvelopeBuilder" prot="public">scc::tcp4tlm::RequestEnvelopeBuilder</innerclass>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder" prot="public">scc::tcp4tlm::ResponseEnvelopeBuilder</innerclass>
+    <innerclass refid="classscc_1_1tcp4tlm_1_1connection" prot="public">scc::tcp4tlm::connection</innerclass>
+    <innerclass refid="classscc_1_1tcp4tlm_1_1server" prot="public">scc::tcp4tlm::server</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="messages__generated_8h_1a891b77048d45a0516cbb4d3ac590ba1e" prot="public" static="no" strong="no">
+        <type>uint8_t</type>
+        <name>ResponseStatus</name>
+        <qualifiedname>scc::tcp4tlm::ResponseStatus</qualifiedname>
+        <enumvalue id="messages__generated_8h_1a891b77048d45a0516cbb4d3ac590ba1ea7df0927b3c3231bc4d91de573fee303f" prot="public">
+          <name>ResponseStatus_OK</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a891b77048d45a0516cbb4d3ac590ba1eae8f0b80dcf21974ff1f3b94d94d7d046" prot="public">
+          <name>ResponseStatus_ACCEPTED</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a891b77048d45a0516cbb4d3ac590ba1ea3ba8399b179e38384e066bae92ed31de" prot="public">
+          <name>ResponseStatus_DELAYED</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a891b77048d45a0516cbb4d3ac590ba1eaf5b23e5b2947912703af4636ce4911e8" prot="public">
+          <name>ResponseStatus_DECLINED</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a891b77048d45a0516cbb4d3ac590ba1eae685fd859e09e8e24cdf5d5495a5a9f3" prot="public">
+          <name>ResponseStatus_FAILURE</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a891b77048d45a0516cbb4d3ac590ba1eab1a7a6949020d6d7a040e32621dfb444" prot="public">
+          <name>ResponseStatus_MIN</name>
+          <initializer>= ResponseStatus_OK</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a891b77048d45a0516cbb4d3ac590ba1eab240e740fb9fe27ba6201ab9c88aca6d" prot="public">
+          <name>ResponseStatus_MAX</name>
+          <initializer>= ResponseStatus_FAILURE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="46" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="46" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="enum" id="messages__generated_8h_1a1bf859f92c1c86347a39e55867024e46" prot="public" static="no" strong="no">
+        <type>uint8_t</type>
+        <name>BusAccessType</name>
+        <qualifiedname>scc::tcp4tlm::BusAccessType</qualifiedname>
+        <enumvalue id="messages__generated_8h_1a1bf859f92c1c86347a39e55867024e46af96e5de2c11e0384fdf81e71e49cac03" prot="public">
+          <name>BusAccessType_NORMAL_ACC</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a1bf859f92c1c86347a39e55867024e46a56bb56b3b600ea740377d63f12f17320" prot="public">
+          <name>BusAccessType_DEBUG_ACC</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a1bf859f92c1c86347a39e55867024e46abb1033bd4cf91b9eda7e39166ab7487e" prot="public">
+          <name>BusAccessType_MIN</name>
+          <initializer>= BusAccessType_NORMAL_ACC</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a1bf859f92c1c86347a39e55867024e46a10c720d31ac59d179b82310ec7bf589f" prot="public">
+          <name>BusAccessType_MAX</name>
+          <initializer>= BusAccessType_DEBUG_ACC</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="74" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="74" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="enum" id="messages__generated_8h_1a23a62bcc45dff0feffb0084d6adfa3a4" prot="public" static="no" strong="no">
+        <type>uint8_t</type>
+        <name>RequestPayload</name>
+        <qualifiedname>scc::tcp4tlm::RequestPayload</qualifiedname>
+        <enumvalue id="messages__generated_8h_1a23a62bcc45dff0feffb0084d6adfa3a4ad78deb649b3c6133e1642cd1019328ac" prot="public">
+          <name>RequestPayload_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a23a62bcc45dff0feffb0084d6adfa3a4a2ec9d2996f44ed4efc580ef9c603aa22" prot="public">
+          <name>RequestPayload_NotifyEndpointMsg</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a23a62bcc45dff0feffb0084d6adfa3a4ac7ded6c0d1c471b271c7dfc199688dff" prot="public">
+          <name>RequestPayload_NotifyShutdownMsg</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a23a62bcc45dff0feffb0084d6adfa3a4a3dd7b12060a1e4d3a72ea3337b0bb836" prot="public">
+          <name>RequestPayload_SyncMsg</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a23a62bcc45dff0feffb0084d6adfa3a4a2015192350f12c7e34b5ba441fc35ff3" prot="public">
+          <name>RequestPayload_BusOpMsg</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a23a62bcc45dff0feffb0084d6adfa3a4a37310c0d68f059a25f630d93c8b3628f" prot="public">
+          <name>RequestPayload_SigOpMsg</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a23a62bcc45dff0feffb0084d6adfa3a4a8f1135a601fe01c8284d415c4a68c3f1" prot="public">
+          <name>RequestPayload_LogMsg</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a23a62bcc45dff0feffb0084d6adfa3a4a7a7d250da43f0b871fd9147bd23a7c4b" prot="public">
+          <name>RequestPayload_MIN</name>
+          <initializer>= RequestPayload_NONE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a23a62bcc45dff0feffb0084d6adfa3a4a03ec818dffae68fe1dedff42d499d581" prot="public">
+          <name>RequestPayload_MAX</name>
+          <initializer>= RequestPayload_LogMsg</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="98" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="98" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="enum" id="messages__generated_8h_1a0939f01b33127d28b7ac7fdcafe628f1" prot="public" static="no" strong="no">
+        <type>uint8_t</type>
+        <name>ResponsePayload</name>
+        <qualifiedname>scc::tcp4tlm::ResponsePayload</qualifiedname>
+        <enumvalue id="messages__generated_8h_1a0939f01b33127d28b7ac7fdcafe628f1aa8e88d0dd1ab3aa21dea8cf5617bf1f2" prot="public">
+          <name>ResponsePayload_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a0939f01b33127d28b7ac7fdcafe628f1a17a0ffe31d58c5b1e1a65e444b7783d5" prot="public">
+          <name>ResponsePayload_ResponseMsg</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a0939f01b33127d28b7ac7fdcafe628f1a480452a075f08937a4051c684d0a1bb7" prot="public">
+          <name>ResponsePayload_BusDataMsg</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a0939f01b33127d28b7ac7fdcafe628f1a3ae391cdf48052c052f1632e06f1aa8e" prot="public">
+          <name>ResponsePayload_MIN</name>
+          <initializer>= ResponsePayload_NONE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="messages__generated_8h_1a0939f01b33127d28b7ac7fdcafe628f1ab4208cf48bcc11c676bffa9cfaae7bea" prot="public">
+          <name>ResponsePayload_MAX</name>
+          <initializer>= ResponsePayload_BusDataMsg</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="152" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="152" bodyend="158"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="messages_8h_1a6e311ee2d616d6dc6fae1e3a1169d5ba" prot="public" static="no">
+        <type><ref refid="classscc_1_1tcp4tlm_1_1message__buffer" kindref="compound">message_buffer</ref>&lt; RequestEnvelope &gt;</type>
+        <definition>using scc::tcp4tlm::request_message =  message_buffer&lt;RequestEnvelope&gt;</definition>
+        <argsstring></argsstring>
+        <name>request_message</name>
+        <qualifiedname>scc::tcp4tlm::request_message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="62" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="messages_8h_1a546819970e0a59d70a74a9237695b3d1" prot="public" static="no">
+        <type><ref refid="classscc_1_1tcp4tlm_1_1message__buffer" kindref="compound">message_buffer</ref>&lt; ResponseEnvelope &gt;</type>
+        <definition>using scc::tcp4tlm::response_message =  message_buffer&lt;ResponseEnvelope&gt;</definition>
+        <argsstring></argsstring>
+        <name>response_message</name>
+        <qualifiedname>scc::tcp4tlm::response_message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="63" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="messages_8h_1a14b7816c22f9dc8dda71b2f93520d72d" prot="public" static="no">
+        <type>ResponseStatus</type>
+        <definition>using scc::tcp4tlm::response_status =  ResponseStatus</definition>
+        <argsstring></argsstring>
+        <name>response_status</name>
+        <qualifiedname>scc::tcp4tlm::response_status</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="64" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="messages_8h_1a16b0b80c2f92773fb94d845504cc8f8a" prot="public" static="no">
+        <type>BusAccessType</type>
+        <definition>using scc::tcp4tlm::bus_access_type =  BusAccessType</definition>
+        <argsstring></argsstring>
+        <name>bus_access_type</name>
+        <qualifiedname>scc::tcp4tlm::bus_access_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="65" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="messages_8h_1ae395b0b8a627235ea3e19d9eff07f9e9" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>response_status</type>
+        <definition>response_status scc::tcp4tlm::ok</definition>
+        <argsstring></argsstring>
+        <name>ok</name>
+        <qualifiedname>scc::tcp4tlm::ok</qualifiedname>
+        <initializer>= ResponseStatus_OK</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="67" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="messages_8h_1af040ec32b3896443d923f834a983368b" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>response_status</type>
+        <definition>response_status scc::tcp4tlm::accepted</definition>
+        <argsstring></argsstring>
+        <name>accepted</name>
+        <qualifiedname>scc::tcp4tlm::accepted</qualifiedname>
+        <initializer>= ResponseStatus_ACCEPTED</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="68" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="messages_8h_1a60a968ef6495c69b67ab79387ed4d81e" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>response_status</type>
+        <definition>response_status scc::tcp4tlm::delayed</definition>
+        <argsstring></argsstring>
+        <name>delayed</name>
+        <qualifiedname>scc::tcp4tlm::delayed</qualifiedname>
+        <initializer>= ResponseStatus_DELAYED</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="69" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="messages_8h_1a99368d00a71b11ba1f00c486a68d04e8" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>response_status</type>
+        <definition>response_status scc::tcp4tlm::declined</definition>
+        <argsstring></argsstring>
+        <name>declined</name>
+        <qualifiedname>scc::tcp4tlm::declined</qualifiedname>
+        <initializer>= ResponseStatus_DECLINED</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="70" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="messages_8h_1a002cc809156d8472a672f9332f94c084" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>response_status</type>
+        <definition>response_status scc::tcp4tlm::failure</definition>
+        <argsstring></argsstring>
+        <name>failure</name>
+        <qualifiedname>scc::tcp4tlm::failure</qualifiedname>
+        <initializer>= ResponseStatus_FAILURE</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="71" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="messages_8h_1ab27a278c9d2cd7e8b300b29398e8b4be" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>bus_access_type</type>
+        <definition>bus_access_type scc::tcp4tlm::normal_acc</definition>
+        <argsstring></argsstring>
+        <name>normal_acc</name>
+        <qualifiedname>scc::tcp4tlm::normal_acc</qualifiedname>
+        <initializer>= BusAccessType_NORMAL_ACC</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="73" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="messages_8h_1af904075c3e2c59990f3eba9626a35ca8" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>bus_access_type</type>
+        <definition>bus_access_type scc::tcp4tlm::debug_acc</definition>
+        <argsstring></argsstring>
+        <name>debug_acc</name>
+        <qualifiedname>scc::tcp4tlm::debug_acc</qualifiedname>
+        <initializer>= BusAccessType_DEBUG_ACC</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="74" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="messages_8h_1a13efb5eba6bdc81dfbb98dff7cc3ae9c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * scc::tcp4tlm::get_status_str</definition>
+        <argsstring>(response_status status)</argsstring>
+        <name>get_status_str</name>
+        <qualifiedname>scc::tcp4tlm::get_status_str</qualifiedname>
+        <param>
+          <type>response_status</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="76" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="76" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1a54a8d885472e18967c0d4d1d4c738c63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t scc::tcp4tlm::next_request_id</definition>
+        <argsstring>()</argsstring>
+        <name>next_request_id</name>
+        <qualifiedname>scc::tcp4tlm::next_request_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="78" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="78" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1af57bee5a72f97c75e3b0554968fe6d38" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Root</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classscc_1_1tcp4tlm_1_1message__buffer" kindref="compound">message_buffer</ref>&lt; Root &gt;</type>
+        <definition>message_buffer&lt; Root &gt; scc::tcp4tlm::make_message</definition>
+        <argsstring>(flatbuffers::FlatBufferBuilder &amp;builder)</argsstring>
+        <name>make_message</name>
+        <qualifiedname>scc::tcp4tlm::make_message</qualifiedname>
+        <param>
+          <type>flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="83" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="83" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1a63087d3e2357d1abc0f9323e5ae3d54f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>request_message</type>
+        <definition>request_message scc::tcp4tlm::make_request</definition>
+        <argsstring>(RequestPayload payload_type, flatbuffers::Offset&lt; void &gt; payload, flatbuffers::FlatBufferBuilder &amp;builder)</argsstring>
+        <name>make_request</name>
+        <qualifiedname>scc::tcp4tlm::make_request</qualifiedname>
+        <param>
+          <type>RequestPayload</type>
+          <declname>payload_type</declname>
+        </param>
+        <param>
+          <type>flatbuffers::Offset&lt; void &gt;</type>
+          <declname>payload</declname>
+        </param>
+        <param>
+          <type>flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="88" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="88" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1ab876d904ff33273d55ddf7a05e1d675c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>response_message</type>
+        <definition>response_message scc::tcp4tlm::make_response_message</definition>
+        <argsstring>(ResponsePayload payload_type, flatbuffers::Offset&lt; void &gt; payload, flatbuffers::FlatBufferBuilder &amp;builder)</argsstring>
+        <name>make_response_message</name>
+        <qualifiedname>scc::tcp4tlm::make_response_message</qualifiedname>
+        <param>
+          <type>ResponsePayload</type>
+          <declname>payload_type</declname>
+        </param>
+        <param>
+          <type>flatbuffers::Offset&lt; void &gt;</type>
+          <declname>payload</declname>
+        </param>
+        <param>
+          <type>flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="95" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="95" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1a7ff22d3428fe8fb18cd059676f25569b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>request_message</type>
+        <definition>request_message scc::tcp4tlm::make_notify_endpoint_msg</definition>
+        <argsstring>(const std::string &amp;hostname, uint16_t port, uint32_t id=next_request_id())</argsstring>
+        <name>make_notify_endpoint_msg</name>
+        <qualifiedname>scc::tcp4tlm::make_notify_endpoint_msg</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>hostname</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+          <defval>next_request_id()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="102" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="102" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1a1202731518a65ed0373f4463249b53cd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>request_message</type>
+        <definition>request_message scc::tcp4tlm::make_notify_shutdown_msg</definition>
+        <argsstring>(uint32_t id=next_request_id())</argsstring>
+        <name>make_notify_shutdown_msg</name>
+        <qualifiedname>scc::tcp4tlm::make_notify_shutdown_msg</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+          <defval>next_request_id()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="108" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="108" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1a8ef67e4058c32705408be54435652523" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>request_message</type>
+        <definition>request_message scc::tcp4tlm::make_sync_msg</definition>
+        <argsstring>(uint64_t time_stamp, uint32_t id=next_request_id())</argsstring>
+        <name>make_sync_msg</name>
+        <qualifiedname>scc::tcp4tlm::make_sync_msg</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>time_stamp</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+          <defval>next_request_id()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="114" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="114" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1ad0644301ec7707b530ef04b4ebcb8c97" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>request_message</type>
+        <definition>request_message scc::tcp4tlm::make_bus_op_msg</definition>
+        <argsstring>(uint64_t time_stamp, uint64_t time_offset, bus_access_type type, uint32_t index, uint64_t address, uint32_t size, bool no_response, const std::vector&lt; uint8_t &gt; &amp;data, const std::vector&lt; uint8_t &gt; &amp;byte_enable, uint32_t id=next_request_id())</argsstring>
+        <name>make_bus_op_msg</name>
+        <qualifiedname>scc::tcp4tlm::make_bus_op_msg</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>time_stamp</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>time_offset</declname>
+        </param>
+        <param>
+          <type>bus_access_type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>no_response</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; uint8_t &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; uint8_t &gt; &amp;</type>
+          <declname>byte_enable</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+          <defval>next_request_id()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="120" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="120" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1ad2e444b2a8253dff344e5248d05c009f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>request_message</type>
+        <definition>request_message scc::tcp4tlm::make_sig_op_msg</definition>
+        <argsstring>(uint64_t time_stamp, uint32_t index, uint8_t value, uint32_t id=next_request_id())</argsstring>
+        <name>make_sig_op_msg</name>
+        <qualifiedname>scc::tcp4tlm::make_sig_op_msg</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>time_stamp</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+          <defval>next_request_id()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="128" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="128" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1a7066c1e48bb51619167c86829dcff69d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>request_message</type>
+        <definition>request_message scc::tcp4tlm::make_log_msg</definition>
+        <argsstring>(const std::string &amp;msg, uint32_t id=next_request_id())</argsstring>
+        <name>make_log_msg</name>
+        <qualifiedname>scc::tcp4tlm::make_log_msg</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+          <defval>next_request_id()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="134" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="134" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1a04c3a3e2da780278b9ba5f5f9fab55c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t scc::tcp4tlm::get_request_id</definition>
+        <argsstring>(const RequestEnvelope *req)</argsstring>
+        <name>get_request_id</name>
+        <qualifiedname>scc::tcp4tlm::get_request_id</qualifiedname>
+        <param>
+          <type>const RequestEnvelope *</type>
+          <declname>req</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="140" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="140" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1aedf7aa29a22387f9e06ccfe709b72d90" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>response_status</type>
+        <definition>response_status scc::tcp4tlm::get_status</definition>
+        <argsstring>(const ResponseEnvelope *resp)</argsstring>
+        <name>get_status</name>
+        <qualifiedname>scc::tcp4tlm::get_status</qualifiedname>
+        <param>
+          <type>const ResponseEnvelope *</type>
+          <declname>resp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="162" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="162" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1a3a72cff19be4a8195056202223c8d5a8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t scc::tcp4tlm::get_req_id</definition>
+        <argsstring>(const ResponseEnvelope *resp)</argsstring>
+        <name>get_req_id</name>
+        <qualifiedname>scc::tcp4tlm::get_req_id</qualifiedname>
+        <param>
+          <type>const ResponseEnvelope *</type>
+          <declname>resp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="176" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="176" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1aff3e225ba9e40dc81bee9bfe8b983bfe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::belongs_to</definition>
+        <argsstring>(const ResponseEnvelope *resp, const RequestEnvelope *req)</argsstring>
+        <name>belongs_to</name>
+        <qualifiedname>scc::tcp4tlm::belongs_to</qualifiedname>
+        <param>
+          <type>const ResponseEnvelope *</type>
+          <declname>resp</declname>
+        </param>
+        <param>
+          <type>const RequestEnvelope *</type>
+          <declname>req</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="190" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="190" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1ad63e9fb129c0990c31de4d322075b38b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>response_message</type>
+        <definition>response_message scc::tcp4tlm::make_response</definition>
+        <argsstring>(uint32_t req_id, response_status status=ok)</argsstring>
+        <name>make_response</name>
+        <qualifiedname>scc::tcp4tlm::make_response</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>req_id</declname>
+        </param>
+        <param>
+          <type>response_status</type>
+          <declname>status</declname>
+          <defval>ok</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="192" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="192" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1afc2233505ed016a0860f8ddfc991ce1b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>response_message</type>
+        <definition>response_message scc::tcp4tlm::make_response</definition>
+        <argsstring>(const RequestEnvelope *req, response_status status=ok)</argsstring>
+        <name>make_response</name>
+        <qualifiedname>scc::tcp4tlm::make_response</qualifiedname>
+        <param>
+          <type>const RequestEnvelope *</type>
+          <declname>req</declname>
+        </param>
+        <param>
+          <type>response_status</type>
+          <declname>status</declname>
+          <defval>ok</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="198" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="198" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1a27eeedbfcf38726ff5a028157fd61433" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>response_message</type>
+        <definition>response_message scc::tcp4tlm::make_bus_data_msg</definition>
+        <argsstring>(uint32_t req_id, const std::vector&lt; uint8_t &gt; &amp;data, response_status status=ok)</argsstring>
+        <name>make_bus_data_msg</name>
+        <qualifiedname>scc::tcp4tlm::make_bus_data_msg</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>req_id</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; uint8_t &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>response_status</type>
+          <declname>status</declname>
+          <defval>ok</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="202" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="202" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="messages_8h_1aa25326b9818330c463f5714876e3ad9c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>response_message</type>
+        <definition>response_message scc::tcp4tlm::make_bus_data_msg</definition>
+        <argsstring>(const RequestEnvelope *req, const std::vector&lt; uint8_t &gt; &amp;data, response_status status=ok)</argsstring>
+        <name>make_bus_data_msg</name>
+        <qualifiedname>scc::tcp4tlm::make_bus_data_msg</qualifiedname>
+        <param>
+          <type>const RequestEnvelope *</type>
+          <declname>req</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; uint8_t &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>response_status</type>
+          <declname>status</declname>
+          <defval>ok</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="208" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="208" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1ab8c0ebe9ce65295d1ae76d438afb847f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const ResponseStatus(&amp;</type>
+        <definition>const ResponseStatus(&amp; scc::tcp4tlm::EnumValuesResponseStatus</definition>
+        <argsstring>())[5]</argsstring>
+        <name>EnumValuesResponseStatus</name>
+        <qualifiedname>scc::tcp4tlm::EnumValuesResponseStatus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="56" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="56" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a2c7386efba9b901e6d0191867125af81" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *const *</type>
+        <definition>const char *const  * scc::tcp4tlm::EnumNamesResponseStatus</definition>
+        <argsstring>()</argsstring>
+        <name>EnumNamesResponseStatus</name>
+        <qualifiedname>scc::tcp4tlm::EnumNamesResponseStatus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="62" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="62" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a4cbda9d6fddac8070faa4d2830d116c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * scc::tcp4tlm::EnumNameResponseStatus</definition>
+        <argsstring>(ResponseStatus e)</argsstring>
+        <name>EnumNameResponseStatus</name>
+        <qualifiedname>scc::tcp4tlm::EnumNameResponseStatus</qualifiedname>
+        <param>
+          <type>ResponseStatus</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="67" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="67" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1aff751d7dd1a3a9b0fc676e74eadd2562" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const BusAccessType(&amp;</type>
+        <definition>const BusAccessType(&amp; scc::tcp4tlm::EnumValuesBusAccessType</definition>
+        <argsstring>())[2]</argsstring>
+        <name>EnumValuesBusAccessType</name>
+        <qualifiedname>scc::tcp4tlm::EnumValuesBusAccessType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="81" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="81" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1ae5b8e321874026398a90fdf650988242" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *const *</type>
+        <definition>const char *const  * scc::tcp4tlm::EnumNamesBusAccessType</definition>
+        <argsstring>()</argsstring>
+        <name>EnumNamesBusAccessType</name>
+        <qualifiedname>scc::tcp4tlm::EnumNamesBusAccessType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="86" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="86" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a6f17571de49118412314b2d81612a6c1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * scc::tcp4tlm::EnumNameBusAccessType</definition>
+        <argsstring>(BusAccessType e)</argsstring>
+        <name>EnumNameBusAccessType</name>
+        <qualifiedname>scc::tcp4tlm::EnumNameBusAccessType</qualifiedname>
+        <param>
+          <type>BusAccessType</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="91" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="91" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a511c664460fd9fc0b8553b104fda40eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const RequestPayload(&amp;</type>
+        <definition>const RequestPayload(&amp; scc::tcp4tlm::EnumValuesRequestPayload</definition>
+        <argsstring>())[7]</argsstring>
+        <name>EnumValuesRequestPayload</name>
+        <qualifiedname>scc::tcp4tlm::EnumValuesRequestPayload</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="110" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="110" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a737cfec6990eb03006dbce84b494f0a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *const *</type>
+        <definition>const char *const  * scc::tcp4tlm::EnumNamesRequestPayload</definition>
+        <argsstring>()</argsstring>
+        <name>EnumNamesRequestPayload</name>
+        <qualifiedname>scc::tcp4tlm::EnumNamesRequestPayload</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="117" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="117" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a450c1a144b081f53e17d77c6628db40e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * scc::tcp4tlm::EnumNameRequestPayload</definition>
+        <argsstring>(RequestPayload e)</argsstring>
+        <name>EnumNameRequestPayload</name>
+        <qualifiedname>scc::tcp4tlm::EnumNameRequestPayload</qualifiedname>
+        <param>
+          <type>RequestPayload</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="123" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="123" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a5e9b6e3f5a32425c051083edf11b9e1b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::VerifyRequestPayload</definition>
+        <argsstring>(::flatbuffers::Verifier &amp;verifier, const void *obj, RequestPayload type)</argsstring>
+        <name>VerifyRequestPayload</name>
+        <qualifiedname>scc::tcp4tlm::VerifyRequestPayload</qualifiedname>
+        <param>
+          <type>::flatbuffers::Verifier &amp;</type>
+          <declname>verifier</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>RequestPayload</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="713" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="713" bodyend="745" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" declline="148" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a92d19e53466b274f4f8072a2e30abeea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::VerifyRequestPayloadVector</definition>
+        <argsstring>(::flatbuffers::Verifier &amp;verifier, const ::flatbuffers::Vector&lt;::flatbuffers::Offset&lt; void &gt; &gt; *values, const ::flatbuffers::Vector&lt; uint8_t &gt; *types)</argsstring>
+        <name>VerifyRequestPayloadVector</name>
+        <qualifiedname>scc::tcp4tlm::VerifyRequestPayloadVector</qualifiedname>
+        <param>
+          <type>::flatbuffers::Verifier &amp;</type>
+          <declname>verifier</declname>
+        </param>
+        <param>
+          <type>const ::flatbuffers::Vector&lt;::flatbuffers::Offset&lt; void &gt; &gt; *</type>
+          <declname>values</declname>
+        </param>
+        <param>
+          <type>const ::flatbuffers::Vector&lt; uint8_t &gt; *</type>
+          <declname>types</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="747" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="747" bodyend="759" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" declline="149" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a44a5286048f03bf9f2b4225a19c26d24" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const ResponsePayload(&amp;</type>
+        <definition>const ResponsePayload(&amp; scc::tcp4tlm::EnumValuesResponsePayload</definition>
+        <argsstring>())[3]</argsstring>
+        <name>EnumValuesResponsePayload</name>
+        <qualifiedname>scc::tcp4tlm::EnumValuesResponsePayload</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="160" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="160" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1acb5d0a62e15f4a30fc0704622c6623bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *const *</type>
+        <definition>const char *const  * scc::tcp4tlm::EnumNamesResponsePayload</definition>
+        <argsstring>()</argsstring>
+        <name>EnumNamesResponsePayload</name>
+        <qualifiedname>scc::tcp4tlm::EnumNamesResponsePayload</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="165" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="165" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1aa084742904d50912e6908152bbab2dc7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * scc::tcp4tlm::EnumNameResponsePayload</definition>
+        <argsstring>(ResponsePayload e)</argsstring>
+        <name>EnumNameResponsePayload</name>
+        <qualifiedname>scc::tcp4tlm::EnumNameResponsePayload</qualifiedname>
+        <param>
+          <type>ResponsePayload</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="170" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="170" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a2b200dcb6c10963109339ff50131ab2e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::VerifyResponsePayload</definition>
+        <argsstring>(::flatbuffers::Verifier &amp;verifier, const void *obj, ResponsePayload type)</argsstring>
+        <name>VerifyResponsePayload</name>
+        <qualifiedname>scc::tcp4tlm::VerifyResponsePayload</qualifiedname>
+        <param>
+          <type>::flatbuffers::Verifier &amp;</type>
+          <declname>verifier</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>ResponsePayload</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="761" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="761" bodyend="777" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" declline="187" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a74678ce4946a98f01992e4f924f71d8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::VerifyResponsePayloadVector</definition>
+        <argsstring>(::flatbuffers::Verifier &amp;verifier, const ::flatbuffers::Vector&lt;::flatbuffers::Offset&lt; void &gt; &gt; *values, const ::flatbuffers::Vector&lt; uint8_t &gt; *types)</argsstring>
+        <name>VerifyResponsePayloadVector</name>
+        <qualifiedname>scc::tcp4tlm::VerifyResponsePayloadVector</qualifiedname>
+        <param>
+          <type>::flatbuffers::Verifier &amp;</type>
+          <declname>verifier</declname>
+        </param>
+        <param>
+          <type>const ::flatbuffers::Vector&lt;::flatbuffers::Offset&lt; void &gt; &gt; *</type>
+          <declname>values</declname>
+        </param>
+        <param>
+          <type>const ::flatbuffers::Vector&lt; uint8_t &gt; *</type>
+          <declname>types</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="779" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="779" bodyend="791" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" declline="188" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a9e0858cb3c73410484c15b1abffa7778" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>inline ::flatbuffers::Offset&lt; NotifyEndpointMsg &gt;</type>
+        <definition>inline ::flatbuffers::Offset&lt; NotifyEndpointMsg &gt; scc::tcp4tlm::CreateNotifyEndpointMsg</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb, uint32_t id=0, ::flatbuffers::Offset&lt;::flatbuffers::String &gt; hostname=0, uint16_t port=0)</argsstring>
+        <name>CreateNotifyEndpointMsg</name>
+        <qualifiedname>scc::tcp4tlm::CreateNotifyEndpointMsg</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>::flatbuffers::Offset&lt;::flatbuffers::String &gt;</type>
+          <declname>hostname</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>port</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="221" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="221" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a1e8f70df58da172130156ad68c1fe251" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>inline ::flatbuffers::Offset&lt; NotifyEndpointMsg &gt;</type>
+        <definition>inline ::flatbuffers::Offset&lt; NotifyEndpointMsg &gt; scc::tcp4tlm::CreateNotifyEndpointMsgDirect</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb, uint32_t id=0, const char *hostname=nullptr, uint16_t port=0)</argsstring>
+        <name>CreateNotifyEndpointMsgDirect</name>
+        <qualifiedname>scc::tcp4tlm::CreateNotifyEndpointMsgDirect</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>hostname</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>port</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="231" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="231" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1aa566cdef5dc076cba339d6ddb5b797c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>inline ::flatbuffers::Offset&lt; NotifyShutdownMsg &gt;</type>
+        <definition>inline ::flatbuffers::Offset&lt; NotifyShutdownMsg &gt; scc::tcp4tlm::CreateNotifyShutdownMsg</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb, uint32_t id=0)</argsstring>
+        <name>CreateNotifyShutdownMsg</name>
+        <qualifiedname>scc::tcp4tlm::CreateNotifyShutdownMsg</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="262" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="262" bodyend="266"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a59f8304c7e5577883630db1c81e6eefa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>inline ::flatbuffers::Offset&lt; SyncMsg &gt;</type>
+        <definition>inline ::flatbuffers::Offset&lt; SyncMsg &gt; scc::tcp4tlm::CreateSyncMsg</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb, uint32_t id=0, uint64_t time_stamp=0)</argsstring>
+        <name>CreateSyncMsg</name>
+        <qualifiedname>scc::tcp4tlm::CreateSyncMsg</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>time_stamp</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="296" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="296" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a7d83f97ab378ead48a2dbcd51fbd6710" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>inline ::flatbuffers::Offset&lt; BusOpMsg &gt;</type>
+        <definition>inline ::flatbuffers::Offset&lt; BusOpMsg &gt; scc::tcp4tlm::CreateBusOpMsg</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb, uint32_t id=0, uint64_t time_stamp=0, uint64_t time_offset=0, scc::tcp4tlm::BusAccessType type=scc::tcp4tlm::BusAccessType_NORMAL_ACC, uint32_t index=0, uint64_t address=0, uint32_t size=0, bool no_response=false, ::flatbuffers::Offset&lt;::flatbuffers::Vector&lt; uint8_t &gt; &gt; data=0, ::flatbuffers::Offset&lt;::flatbuffers::Vector&lt; uint8_t &gt; &gt; byte_enable=0)</argsstring>
+        <name>CreateBusOpMsg</name>
+        <qualifiedname>scc::tcp4tlm::CreateBusOpMsg</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>time_stamp</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>time_offset</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>scc::tcp4tlm::BusAccessType</type>
+          <declname>type</declname>
+          <defval>scc::tcp4tlm::BusAccessType_NORMAL_ACC</defval>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>index</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>address</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>size</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>no_response</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>::flatbuffers::Offset&lt;::flatbuffers::Vector&lt; uint8_t &gt; &gt;</type>
+          <declname>data</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>::flatbuffers::Offset&lt;::flatbuffers::Vector&lt; uint8_t &gt; &gt;</type>
+          <declname>byte_enable</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="364" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="364" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a87e5b7bae1cd64e985aeb11cb40d593b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>inline ::flatbuffers::Offset&lt; BusOpMsg &gt;</type>
+        <definition>inline ::flatbuffers::Offset&lt; BusOpMsg &gt; scc::tcp4tlm::CreateBusOpMsgDirect</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb, uint32_t id=0, uint64_t time_stamp=0, uint64_t time_offset=0, scc::tcp4tlm::BusAccessType type=scc::tcp4tlm::BusAccessType_NORMAL_ACC, uint32_t index=0, uint64_t address=0, uint32_t size=0, bool no_response=false, const std::vector&lt; uint8_t &gt; *data=nullptr, const std::vector&lt; uint8_t &gt; *byte_enable=nullptr)</argsstring>
+        <name>CreateBusOpMsgDirect</name>
+        <qualifiedname>scc::tcp4tlm::CreateBusOpMsgDirect</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>time_stamp</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>time_offset</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>scc::tcp4tlm::BusAccessType</type>
+          <declname>type</declname>
+          <defval>scc::tcp4tlm::BusAccessType_NORMAL_ACC</defval>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>index</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>address</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>size</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>no_response</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>const std::vector&lt; uint8_t &gt; *</type>
+          <declname>data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const std::vector&lt; uint8_t &gt; *</type>
+          <declname>byte_enable</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="384" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="384" bodyend="393"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1aace99cf07e138cf4d9e0669d1ab8605f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>inline ::flatbuffers::Offset&lt; ResponseMsg &gt;</type>
+        <definition>inline ::flatbuffers::Offset&lt; ResponseMsg &gt; scc::tcp4tlm::CreateResponseMsg</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb, scc::tcp4tlm::ResponseStatus status=scc::tcp4tlm::ResponseStatus_OK, uint32_t req_id=0)</argsstring>
+        <name>CreateResponseMsg</name>
+        <qualifiedname>scc::tcp4tlm::CreateResponseMsg</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <param>
+          <type>scc::tcp4tlm::ResponseStatus</type>
+          <declname>status</declname>
+          <defval>scc::tcp4tlm::ResponseStatus_OK</defval>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>req_id</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="425" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="425" bodyend="432"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1ae1a0f4ce6defcf153b654f756caab076" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>inline ::flatbuffers::Offset&lt; BusDataMsg &gt;</type>
+        <definition>inline ::flatbuffers::Offset&lt; BusDataMsg &gt; scc::tcp4tlm::CreateBusDataMsg</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb, scc::tcp4tlm::ResponseStatus status=scc::tcp4tlm::ResponseStatus_OK, uint32_t req_id=0, ::flatbuffers::Offset&lt;::flatbuffers::Vector&lt; uint8_t &gt; &gt; data=0)</argsstring>
+        <name>CreateBusDataMsg</name>
+        <qualifiedname>scc::tcp4tlm::CreateBusDataMsg</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <param>
+          <type>scc::tcp4tlm::ResponseStatus</type>
+          <declname>status</declname>
+          <defval>scc::tcp4tlm::ResponseStatus_OK</defval>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>req_id</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>::flatbuffers::Offset&lt;::flatbuffers::Vector&lt; uint8_t &gt; &gt;</type>
+          <declname>data</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="467" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="467" bodyend="476"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1ad15d2105cfdc2318fe5f45432be18a8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>inline ::flatbuffers::Offset&lt; BusDataMsg &gt;</type>
+        <definition>inline ::flatbuffers::Offset&lt; BusDataMsg &gt; scc::tcp4tlm::CreateBusDataMsgDirect</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb, scc::tcp4tlm::ResponseStatus status=scc::tcp4tlm::ResponseStatus_OK, uint32_t req_id=0, const std::vector&lt; uint8_t &gt; *data=nullptr)</argsstring>
+        <name>CreateBusDataMsgDirect</name>
+        <qualifiedname>scc::tcp4tlm::CreateBusDataMsgDirect</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <param>
+          <type>scc::tcp4tlm::ResponseStatus</type>
+          <declname>status</declname>
+          <defval>scc::tcp4tlm::ResponseStatus_OK</defval>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>req_id</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const std::vector&lt; uint8_t &gt; *</type>
+          <declname>data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="478" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="478" bodyend="483"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1ab8e8c3257bad5aea6c349748633d4713" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>inline ::flatbuffers::Offset&lt; SigOpMsg &gt;</type>
+        <definition>inline ::flatbuffers::Offset&lt; SigOpMsg &gt; scc::tcp4tlm::CreateSigOpMsg</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb, uint32_t id=0, uint64_t time_stamp=0, uint32_t index=0, uint8_t value=0)</argsstring>
+        <name>CreateSigOpMsg</name>
+        <qualifiedname>scc::tcp4tlm::CreateSigOpMsg</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>time_stamp</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>index</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="518" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="518" bodyend="526"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a8baadf3984b1e56b5ea392bf271b5cb9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>inline ::flatbuffers::Offset&lt; LogMsg &gt;</type>
+        <definition>inline ::flatbuffers::Offset&lt; LogMsg &gt; scc::tcp4tlm::CreateLogMsg</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb, uint32_t id=0, ::flatbuffers::Offset&lt;::flatbuffers::String &gt; msg=0)</argsstring>
+        <name>CreateLogMsg</name>
+        <qualifiedname>scc::tcp4tlm::CreateLogMsg</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>::flatbuffers::Offset&lt;::flatbuffers::String &gt;</type>
+          <declname>msg</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="556" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="556" bodyend="562"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a659e465eff818e5fe275236444c24472" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>inline ::flatbuffers::Offset&lt; LogMsg &gt;</type>
+        <definition>inline ::flatbuffers::Offset&lt; LogMsg &gt; scc::tcp4tlm::CreateLogMsgDirect</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb, uint32_t id=0, const char *msg=nullptr)</argsstring>
+        <name>CreateLogMsgDirect</name>
+        <qualifiedname>scc::tcp4tlm::CreateLogMsgDirect</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="564" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="564" bodyend="568"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1ae456eeed94780ef94cabd311c7c7961b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const scc::tcp4tlm::NotifyEndpointMsg *</type>
+        <definition>const scc::tcp4tlm::NotifyEndpointMsg * scc::tcp4tlm::RequestEnvelope::payload_as&lt; scc::tcp4tlm::NotifyEndpointMsg &gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>RequestEnvelope::payload_as&lt; scc::tcp4tlm::NotifyEndpointMsg &gt;</name>
+        <qualifiedname>scc::tcp4tlm::payload_as&lt; scc::tcp4tlm::NotifyEndpointMsg &gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="606" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="606" bodyend="608"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a4a14222bba1c36cc54732adf23cd65ab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const scc::tcp4tlm::NotifyShutdownMsg *</type>
+        <definition>const scc::tcp4tlm::NotifyShutdownMsg * scc::tcp4tlm::RequestEnvelope::payload_as&lt; scc::tcp4tlm::NotifyShutdownMsg &gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>RequestEnvelope::payload_as&lt; scc::tcp4tlm::NotifyShutdownMsg &gt;</name>
+        <qualifiedname>scc::tcp4tlm::payload_as&lt; scc::tcp4tlm::NotifyShutdownMsg &gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="610" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="610" bodyend="612"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1afd5dbf8f6a35d8c88e6aa09a9d10f04c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const scc::tcp4tlm::SyncMsg *</type>
+        <definition>const scc::tcp4tlm::SyncMsg * scc::tcp4tlm::RequestEnvelope::payload_as&lt; scc::tcp4tlm::SyncMsg &gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>RequestEnvelope::payload_as&lt; scc::tcp4tlm::SyncMsg &gt;</name>
+        <qualifiedname>scc::tcp4tlm::payload_as&lt; scc::tcp4tlm::SyncMsg &gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="614" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="614" bodyend="614"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1ac408a83a4da5f38605c783dff6f468ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const scc::tcp4tlm::BusOpMsg *</type>
+        <definition>const scc::tcp4tlm::BusOpMsg * scc::tcp4tlm::RequestEnvelope::payload_as&lt; scc::tcp4tlm::BusOpMsg &gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>RequestEnvelope::payload_as&lt; scc::tcp4tlm::BusOpMsg &gt;</name>
+        <qualifiedname>scc::tcp4tlm::payload_as&lt; scc::tcp4tlm::BusOpMsg &gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="616" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="616" bodyend="618"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a49bc418b94eccc5f6ce9cf0c5fdc141e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const scc::tcp4tlm::SigOpMsg *</type>
+        <definition>const scc::tcp4tlm::SigOpMsg * scc::tcp4tlm::RequestEnvelope::payload_as&lt; scc::tcp4tlm::SigOpMsg &gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>RequestEnvelope::payload_as&lt; scc::tcp4tlm::SigOpMsg &gt;</name>
+        <qualifiedname>scc::tcp4tlm::payload_as&lt; scc::tcp4tlm::SigOpMsg &gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="620" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="620" bodyend="622"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1af32fbb15f9bc4cb57007ae9364f7a389" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const scc::tcp4tlm::LogMsg *</type>
+        <definition>const scc::tcp4tlm::LogMsg * scc::tcp4tlm::RequestEnvelope::payload_as&lt; scc::tcp4tlm::LogMsg &gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>RequestEnvelope::payload_as&lt; scc::tcp4tlm::LogMsg &gt;</name>
+        <qualifiedname>scc::tcp4tlm::payload_as&lt; scc::tcp4tlm::LogMsg &gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="624" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="624" bodyend="624"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a7d07fcd9da50915806a0ce6b2b19eafc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>inline ::flatbuffers::Offset&lt; RequestEnvelope &gt;</type>
+        <definition>inline ::flatbuffers::Offset&lt; RequestEnvelope &gt; scc::tcp4tlm::CreateRequestEnvelope</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb, scc::tcp4tlm::RequestPayload payload_type=scc::tcp4tlm::RequestPayload_NONE, ::flatbuffers::Offset&lt; void &gt; payload=0)</argsstring>
+        <name>CreateRequestEnvelope</name>
+        <qualifiedname>scc::tcp4tlm::CreateRequestEnvelope</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <param>
+          <type>scc::tcp4tlm::RequestPayload</type>
+          <declname>payload_type</declname>
+          <defval>scc::tcp4tlm::RequestPayload_NONE</defval>
+        </param>
+        <param>
+          <type>::flatbuffers::Offset&lt; void &gt;</type>
+          <declname>payload</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="646" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="646" bodyend="652"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a44144e26c7f626d580d6c127a1e30db1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const scc::tcp4tlm::ResponseMsg *</type>
+        <definition>const scc::tcp4tlm::ResponseMsg * scc::tcp4tlm::ResponseEnvelope::payload_as&lt; scc::tcp4tlm::ResponseMsg &gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>ResponseEnvelope::payload_as&lt; scc::tcp4tlm::ResponseMsg &gt;</name>
+        <qualifiedname>scc::tcp4tlm::payload_as&lt; scc::tcp4tlm::ResponseMsg &gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="676" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="676" bodyend="678"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1a012c9d4490e9f9dc6a1de88395f89da5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const scc::tcp4tlm::BusDataMsg *</type>
+        <definition>const scc::tcp4tlm::BusDataMsg * scc::tcp4tlm::ResponseEnvelope::payload_as&lt; scc::tcp4tlm::BusDataMsg &gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>ResponseEnvelope::payload_as&lt; scc::tcp4tlm::BusDataMsg &gt;</name>
+        <qualifiedname>scc::tcp4tlm::payload_as&lt; scc::tcp4tlm::BusDataMsg &gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="680" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="680" bodyend="682"/>
+      </memberdef>
+      <memberdef kind="function" id="messages__generated_8h_1af8cdb9f59f1cc295af96c2646f55e85c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>inline ::flatbuffers::Offset&lt; ResponseEnvelope &gt;</type>
+        <definition>inline ::flatbuffers::Offset&lt; ResponseEnvelope &gt; scc::tcp4tlm::CreateResponseEnvelope</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb, scc::tcp4tlm::ResponsePayload payload_type=scc::tcp4tlm::ResponsePayload_NONE, ::flatbuffers::Offset&lt; void &gt; payload=0)</argsstring>
+        <name>CreateResponseEnvelope</name>
+        <qualifiedname>scc::tcp4tlm::CreateResponseEnvelope</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <param>
+          <type>scc::tcp4tlm::ResponsePayload</type>
+          <declname>payload_type</declname>
+          <defval>scc::tcp4tlm::ResponsePayload_NONE</defval>
+        </param>
+        <param>
+          <type>::flatbuffers::Offset&lt; void &gt;</type>
+          <declname>payload</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="704" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="704" bodyend="711"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="26" column="1"/>
+  </compounddef>
+</doxygen>

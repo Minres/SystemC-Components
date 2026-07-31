@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1nw_1_1tlm__network__baseprotocol__types" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::nw::tlm_network_baseprotocol_types</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structtlm_1_1nw_1_1tlm__network__baseprotocol__types_1a8a81a9aacd0706a3b0944341ea57e6f3" prot="public" static="no">
+        <type><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base" kindref="compound">tlm_network_payload_base</ref></type>
+        <definition>using tlm::nw::tlm_network_baseprotocol_types::tlm_payload_type =  tlm_network_payload_base</definition>
+        <argsstring></argsstring>
+        <name>tlm_payload_type</name>
+        <qualifiedname>tlm::nw::tlm_network_baseprotocol_types::tlm_payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="48" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtlm_1_1nw_1_1tlm__network__baseprotocol__types_1add8e25b35d017845cff42286c2e92bc5" prot="public" static="no">
+        <type>::tlm::tlm_phase</type>
+        <definition>using tlm::nw::tlm_network_baseprotocol_types::tlm_phase_type =  ::tlm::tlm_phase</definition>
+        <argsstring></argsstring>
+        <name>tlm_phase_type</name>
+        <qualifiedname>tlm::nw::tlm_network_baseprotocol_types::tlm_phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="49" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="47" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" bodystart="47" bodyend="50"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1nw_1_1tlm__network__baseprotocol__types_1a8a81a9aacd0706a3b0944341ea57e6f3" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_baseprotocol_types</scope><name>tlm_payload_type</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__baseprotocol__types_1add8e25b35d017845cff42286c2e92bc5" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_baseprotocol_types</scope><name>tlm_phase_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_59422ad75c8e16288d77472341c4057a" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink</compoundname>
+    <innerdir refid="dir_6bd46abdbefde7662991b7759efe6773">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin</innerdir>
+    <innerdir refid="dir_d648b3bed8e4186603991deced033d16">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv</innerdir>
+    <innerfile refid="tilelink_2signal__if_8h">signal_if.h</innerfile>
+    <innerfile refid="tl__tlm_8cpp">tl_tlm.cpp</innerfile>
+    <innerfile refid="tl__tlm_8h">tl_tlm.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/"/>
+  </compounddef>
+</doxygen>

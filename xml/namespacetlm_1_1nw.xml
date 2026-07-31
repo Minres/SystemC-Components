@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacetlm_1_1nw" kind="namespace" language="C++">
+    <compoundname>tlm::nw</compoundname>
+    <innerclass refid="classtlm_1_1nw_1_1initiator__mixin" prot="public">tlm::nw::initiator_mixin</innerclass>
+    <innerclass refid="classtlm_1_1nw_1_1target__mixin" prot="public">tlm::nw::target_mixin</innerclass>
+    <innerclass refid="classtlm_1_1nw_1_1tlm__array" prot="public">tlm::nw::tlm_array</innerclass>
+    <innerclass refid="classtlm_1_1nw_1_1tlm__base__mm__interface" prot="public">tlm::nw::tlm_base_mm_interface</innerclass>
+    <innerclass refid="structtlm_1_1nw_1_1tlm__network__payload__base" prot="public">tlm::nw::tlm_network_payload_base</innerclass>
+    <innerclass refid="structtlm_1_1nw_1_1tlm__network__payload" prot="public">tlm::nw::tlm_network_payload</innerclass>
+    <innerclass refid="classtlm_1_1nw_1_1tlm__network__gp" prot="public">tlm::nw::tlm_network_gp</innerclass>
+    <innerclass refid="structtlm_1_1nw_1_1tlm__network__baseprotocol__types" prot="public">tlm::nw::tlm_network_baseprotocol_types</innerclass>
+    <innerclass refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if" prot="public">tlm::nw::tlm_network_fw_transport_if</innerclass>
+    <innerclass refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if" prot="public">tlm::nw::tlm_network_bw_transport_if</innerclass>
+    <innerclass refid="structtlm_1_1nw_1_1tlm__network__initiator__socket" prot="public">tlm::nw::tlm_network_initiator_socket</innerclass>
+    <innerclass refid="structtlm_1_1nw_1_1tlm__network__target__socket" prot="public">tlm::nw::tlm_network_target_socket</innerclass>
+    <innernamespace refid="namespacetlm_1_1nw_1_1scv">tlm::nw::scv</innernamespace>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacetlm_1_1nw_1a7ee56801a07d527b7c303ad61a176789" prot="public" static="no">
+        <type>sc_core::sc_type_index</type>
+        <definition>using tlm::nw::type_index =  sc_core::sc_type_index</definition>
+        <argsstring></argsstring>
+        <name>type_index</name>
+        <qualifiedname>tlm::nw::type_index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="73" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacetlm_1_1nw_1af7f74ab30e3612f87db7c1d1e873e856" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>const char *const</type>
+        <definition>const char* const tlm::nw::tlm_array&lt; T &gt;::kind_string</definition>
+        <argsstring></argsstring>
+        <name>tlm_array&lt; T &gt;::kind_string</name>
+        <qualifiedname>tlm::nw::kind_string</qualifiedname>
+        <initializer>= &quot;tlm_array&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" line="100" column="40" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacetlm_1_1nw_1acca78dfb87551181f4c8f3868bff1dc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::nw::DECLARE_EXTENDED_PHASE</definition>
+        <argsstring>(REQUEST)</argsstring>
+        <name>DECLARE_EXTENDED_PHASE</name>
+        <qualifiedname>tlm::nw::DECLARE_EXTENDED_PHASE</qualifiedname>
+        <param>
+          <type>REQUEST</type>
+        </param>
+        <briefdescription>
+<para>Definition of the additional protocol phases. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="55" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" declline="55" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1nw_1a1df4bee75c18792dbd75c1309e08a263" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::nw::DECLARE_EXTENDED_PHASE</definition>
+        <argsstring>(CONFIRM)</argsstring>
+        <name>DECLARE_EXTENDED_PHASE</name>
+        <qualifiedname>tlm::nw::DECLARE_EXTENDED_PHASE</qualifiedname>
+        <param>
+          <type>CONFIRM</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="56" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" declline="56" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1nw_1a07200e73865759dc3f74c3548c99b282" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::nw::DECLARE_EXTENDED_PHASE</definition>
+        <argsstring>(INDICATION)</argsstring>
+        <name>DECLARE_EXTENDED_PHASE</name>
+        <qualifiedname>tlm::nw::DECLARE_EXTENDED_PHASE</qualifiedname>
+        <param>
+          <type>INDICATION</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="57" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" declline="57" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1nw_1adb16dc8e7c567adc0111af07253e4b90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::nw::DECLARE_EXTENDED_PHASE</definition>
+        <argsstring>(RESPONSE)</argsstring>
+        <name>DECLARE_EXTENDED_PHASE</name>
+        <qualifiedname>tlm::nw::DECLARE_EXTENDED_PHASE</qualifiedname>
+        <param>
+          <type>RESPONSE</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="58" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" declline="58" declcolumn="1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>SCC TLM utilities. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The SystemC Transaction Level Model (TLM) Network TLM utilities. </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="544" column="1"/>
+  </compounddef>
+</doxygen>

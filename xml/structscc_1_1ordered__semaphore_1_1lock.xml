@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1ordered__semaphore_1_1lock" kind="struct" language="C++" prot="public">
+    <compoundname>scc::ordered_semaphore::lock</compoundname>
+    <includes refid="ordered__semaphore_8h" local="no">ordered_semaphore.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1ordered__semaphore_1_1lock_1aa137eefb2fac3c78e06b5a88874289de" prot="private" static="no" mutable="no">
+        <type><ref refid="classscc_1_1ordered__semaphore" kindref="compound">scc::ordered_semaphore</ref> &amp;</type>
+        <definition>scc::ordered_semaphore&amp; scc::ordered_semaphore::lock::sem</definition>
+        <argsstring></argsstring>
+        <name>sem</name>
+        <qualifiedname>scc::ordered_semaphore::lock::sem</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h" line="178" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1ordered__semaphore_1_1lock_1a79e844ce501252fc50d30fb6da87ff04" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::ordered_semaphore::lock::owned</definition>
+        <argsstring></argsstring>
+        <name>owned</name>
+        <qualifiedname>scc::ordered_semaphore::lock::owned</qualifiedname>
+        <initializer>{true}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h" line="179" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h" bodystart="179" bodyend="179"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1ordered__semaphore_1_1lock_1a661d917637b9b8495c3156c95fb06373" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::ordered_semaphore::lock::lock</definition>
+        <argsstring>(scc::ordered_semaphore &amp;sem)</argsstring>
+        <name>lock</name>
+        <qualifiedname>scc::ordered_semaphore::lock::lock</qualifiedname>
+        <param>
+          <type><ref refid="classscc_1_1ordered__semaphore" kindref="compound">scc::ordered_semaphore</ref> &amp;</type>
+          <declname>sem</declname>
+        </param>
+        <briefdescription>
+<para>lock the given semahore, wait if not free </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the semaphore </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h" line="152" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h" bodystart="152" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1ordered__semaphore_1_1lock_1aef9d8a7aca9bcc88b1e55205ce268d7c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::ordered_semaphore::lock::lock</definition>
+        <argsstring>(scc::ordered_semaphore &amp;sem, unsigned prio)</argsstring>
+        <name>lock</name>
+        <qualifiedname>scc::ordered_semaphore::lock::lock</qualifiedname>
+        <param>
+          <type><ref refid="classscc_1_1ordered__semaphore" kindref="compound">scc::ordered_semaphore</ref> &amp;</type>
+          <declname>sem</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>prio</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h" line="156" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h" bodystart="156" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1ordered__semaphore_1_1lock_1a1e82713ace8671b89422efd56e60d4c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::ordered_semaphore::lock::~lock</definition>
+        <argsstring>()</argsstring>
+        <name>~lock</name>
+        <qualifiedname>scc::ordered_semaphore::lock::~lock</qualifiedname>
+        <briefdescription>
+<para>destructor, unlock the semaphore if still locked </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h" line="165" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h" bodystart="165" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1ordered__semaphore_1_1lock_1addbedb802fb22102a1ab2e2fcbe25a0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::ordered_semaphore::lock::release</definition>
+        <argsstring>()</argsstring>
+        <name>release</name>
+        <qualifiedname>scc::ordered_semaphore::lock::release</qualifiedname>
+        <briefdescription>
+<para>unlock the semaphore </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h" line="171" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h" bodystart="171" bodyend="175"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>a lock for the semaphore </para>
+    </briefdescription>
+    <detaileddescription>
+<para>it allows to use lock/unlock a semaphore in RTTI style </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h" line="145" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/ordered_semaphore.h" bodystart="145" bodyend="180"/>
+    <listofallmembers>
+      <member refid="structscc_1_1ordered__semaphore_1_1lock_1a661d917637b9b8495c3156c95fb06373" prot="public" virt="non-virtual"><scope>scc::ordered_semaphore::lock</scope><name>lock</name></member>
+      <member refid="structscc_1_1ordered__semaphore_1_1lock_1aef9d8a7aca9bcc88b1e55205ce268d7c" prot="public" virt="non-virtual"><scope>scc::ordered_semaphore::lock</scope><name>lock</name></member>
+      <member refid="structscc_1_1ordered__semaphore_1_1lock_1a79e844ce501252fc50d30fb6da87ff04" prot="private" virt="non-virtual"><scope>scc::ordered_semaphore::lock</scope><name>owned</name></member>
+      <member refid="structscc_1_1ordered__semaphore_1_1lock_1addbedb802fb22102a1ab2e2fcbe25a0a" prot="public" virt="non-virtual"><scope>scc::ordered_semaphore::lock</scope><name>release</name></member>
+      <member refid="structscc_1_1ordered__semaphore_1_1lock_1aa137eefb2fac3c78e06b5a88874289de" prot="private" virt="non-virtual"><scope>scc::ordered_semaphore::lock</scope><name>sem</name></member>
+      <member refid="structscc_1_1ordered__semaphore_1_1lock_1a1e82713ace8671b89422efd56e60d4c2" prot="public" virt="non-virtual"><scope>scc::ordered_semaphore::lock</scope><name>~lock</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

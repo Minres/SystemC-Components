@@ -1,0 +1,338 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1pool__allocator" kind="class" language="C++" prot="public">
+    <compoundname>util::pool_allocator</compoundname>
+    <includes refid="pool__allocator_8h" local="no">pool_allocator.h</includes>
+    <templateparamlist>
+      <param>
+        <type>size_t</type>
+        <declname>ELEM_SIZE</declname>
+        <defname>ELEM_SIZE</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>CHUNK_SIZE</declname>
+        <defname>CHUNK_SIZE</defname>
+        <defval>4096</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classutil_1_1pool__allocator_1a1e6b23e423d2c2f58b5f9d3f29591466" prot="private" static="no">
+        <type>uint8_t[ELEM_SIZE]</type>
+        <definition>using util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::chunk_type =  uint8_t[ELEM_SIZE]</definition>
+        <argsstring></argsstring>
+        <name>chunk_type</name>
+        <qualifiedname>util::pool_allocator::chunk_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="84" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classutil_1_1pool__allocator_1a14ca268f17923f1c69b3394bf5a2c1b2" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::array&lt; chunk_type, CHUNK_SIZE &gt; * &gt;</type>
+        <definition>std::vector&lt;std::array&lt;chunk_type, CHUNK_SIZE&gt;*&gt; util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::chunks</definition>
+        <argsstring></argsstring>
+        <name>chunks</name>
+        <qualifiedname>util::pool_allocator::chunks</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="85" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" bodystart="85" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1pool__allocator_1a236e4daac87b25d50734afabb5c5c52d" prot="private" static="no" mutable="no">
+        <type>std::deque&lt; void * &gt;</type>
+        <definition>std::deque&lt;void*&gt; util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::free_list</definition>
+        <argsstring></argsstring>
+        <name>free_list</name>
+        <qualifiedname>util::pool_allocator::free_list</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="86" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" bodystart="86" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1pool__allocator_1a8585addeb0a2d0226bb3d9cb89365375" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; void *, uint64_t &gt;</type>
+        <definition>std::unordered_map&lt;void*, uint64_t&gt; util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::used_blocks</definition>
+        <argsstring></argsstring>
+        <name>used_blocks</name>
+        <qualifiedname>util::pool_allocator::used_blocks</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="87" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" bodystart="87" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1pool__allocator_1a865baaffabf2669d24314b666518388c" prot="private" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::debug_memory</definition>
+        <argsstring></argsstring>
+        <name>debug_memory</name>
+        <qualifiedname>util::pool_allocator::debug_memory</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="91" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" bodystart="91" bodyend="91"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classutil_1_1pool__allocator_1a6c368c0e9903f4114b13d754ea372a92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::allocate</definition>
+        <argsstring>(uint64_t id=0)</argsstring>
+        <name>allocate</name>
+        <qualifiedname>util::pool_allocator::allocate</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>id</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="51" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" bodystart="229" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1pool__allocator_1a75221c7398c7e1307212316253a4fa81" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::free</definition>
+        <argsstring>(void *p)</argsstring>
+        <name>free</name>
+        <qualifiedname>util::pool_allocator::free</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>pit the memory back into the pool </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>p</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="58" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" bodystart="240" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1pool__allocator_1a521ccb696fbaa1f1ead5557a43260dfb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::resize</definition>
+        <argsstring>()</argsstring>
+        <name>resize</name>
+        <qualifiedname>util::pool_allocator::resize</qualifiedname>
+        <briefdescription>
+<para>add CHUNK_SIZE elements to the pool </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="64" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" bodystart="248" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1pool__allocator_1a48778bf1f833a7135386a2fb4fa6d534" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::pool_allocator</definition>
+        <argsstring>(const pool_allocator &amp;)=delete</argsstring>
+        <name>pool_allocator</name>
+        <qualifiedname>util::pool_allocator::pool_allocator</qualifiedname>
+        <param>
+          <type>const pool_allocator &amp;</type>
+        </param>
+        <briefdescription>
+<para>deleted constructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="66" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1pool__allocator_1a657914cb48ad3ec30e9bccf213ff7253" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::pool_allocator</definition>
+        <argsstring>(pool_allocator &amp;&amp;)=delete</argsstring>
+        <name>pool_allocator</name>
+        <qualifiedname>util::pool_allocator::pool_allocator</qualifiedname>
+        <param>
+          <type>pool_allocator &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>deleted constructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="68" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1pool__allocator_1aafa0a60e495e413894ca3734e4631fdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::~pool_allocator</definition>
+        <argsstring>()</argsstring>
+        <name>~pool_allocator</name>
+        <qualifiedname>util::pool_allocator::~pool_allocator</qualifiedname>
+        <briefdescription>
+<para>deleted destructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="70" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" bodystart="200" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1pool__allocator_1a412e57f16183cfa6b1462eb90006869e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classutil_1_1pool__allocator_1a48778bf1f833a7135386a2fb4fa6d534" kindref="member">pool_allocator</ref> &amp;</type>
+        <definition>pool_allocator &amp; util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::operator=</definition>
+        <argsstring>(const pool_allocator &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>util::pool_allocator::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classutil_1_1pool__allocator_1a48778bf1f833a7135386a2fb4fa6d534" kindref="member">pool_allocator</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>deleted assignment operator </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="72" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1pool__allocator_1a56b5fc78cb7f882719ea7c39308d6c6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classutil_1_1pool__allocator_1a48778bf1f833a7135386a2fb4fa6d534" kindref="member">pool_allocator</ref> &amp;</type>
+        <definition>pool_allocator &amp; util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::operator=</definition>
+        <argsstring>(pool_allocator &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>util::pool_allocator::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classutil_1_1pool__allocator_1a48778bf1f833a7135386a2fb4fa6d534" kindref="member">pool_allocator</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>deleted assignment operator </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="74" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1pool__allocator_1a746eb0c07fbc80872a6384c1a73e0a3b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::get_capacity</definition>
+        <argsstring>()</argsstring>
+        <name>get_capacity</name>
+        <qualifiedname>util::pool_allocator::get_capacity</qualifiedname>
+        <briefdescription>
+<para>get the number of allocated bytes </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="78" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" bodystart="255" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1pool__allocator_1a9a0f7cb7f9db3e1b065962e4e5abeed0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::get_free_entries_count</definition>
+        <argsstring>()</argsstring>
+        <name>get_free_entries_count</name>
+        <qualifiedname>util::pool_allocator::get_free_entries_count</qualifiedname>
+        <briefdescription>
+<para>get the number of free elements </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="80" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" bodystart="259" bodyend="261"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classutil_1_1pool__allocator_1a543eb3f270945e564997d0afaf0713dd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classutil_1_1pool__allocator_1a48778bf1f833a7135386a2fb4fa6d534" kindref="member">pool_allocator</ref> &amp;</type>
+        <definition>pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt; &amp; util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::get</definition>
+        <argsstring>()</argsstring>
+        <name>get</name>
+        <qualifiedname>util::pool_allocator::get</qualifiedname>
+        <briefdescription>
+<para>pool allocator getter </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="76" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" bodystart="195" bodyend="198"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classutil_1_1pool__allocator_1ae4a131705012c29492773577d7c480d2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;::pool_allocator</definition>
+        <argsstring>()=default</argsstring>
+        <name>pool_allocator</name>
+        <qualifiedname>util::pool_allocator::pool_allocator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="83" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>a generic pool allocator singleton not being MT-safe </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="43" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" bodystart="43" bodyend="93"/>
+    <listofallmembers>
+      <member refid="classutil_1_1pool__allocator_1a6c368c0e9903f4114b13d754ea372a92" prot="public" virt="non-virtual"><scope>util::pool_allocator</scope><name>allocate</name></member>
+      <member refid="classutil_1_1pool__allocator_1a1e6b23e423d2c2f58b5f9d3f29591466" prot="private" virt="non-virtual"><scope>util::pool_allocator</scope><name>chunk_type</name></member>
+      <member refid="classutil_1_1pool__allocator_1a14ca268f17923f1c69b3394bf5a2c1b2" prot="private" virt="non-virtual"><scope>util::pool_allocator</scope><name>chunks</name></member>
+      <member refid="classutil_1_1pool__allocator_1a865baaffabf2669d24314b666518388c" prot="private" virt="non-virtual"><scope>util::pool_allocator</scope><name>debug_memory</name></member>
+      <member refid="classutil_1_1pool__allocator_1a75221c7398c7e1307212316253a4fa81" prot="public" virt="non-virtual"><scope>util::pool_allocator</scope><name>free</name></member>
+      <member refid="classutil_1_1pool__allocator_1a236e4daac87b25d50734afabb5c5c52d" prot="private" virt="non-virtual"><scope>util::pool_allocator</scope><name>free_list</name></member>
+      <member refid="classutil_1_1pool__allocator_1a543eb3f270945e564997d0afaf0713dd" prot="public" virt="non-virtual"><scope>util::pool_allocator</scope><name>get</name></member>
+      <member refid="classutil_1_1pool__allocator_1a746eb0c07fbc80872a6384c1a73e0a3b" prot="public" virt="non-virtual"><scope>util::pool_allocator</scope><name>get_capacity</name></member>
+      <member refid="classutil_1_1pool__allocator_1a9a0f7cb7f9db3e1b065962e4e5abeed0" prot="public" virt="non-virtual"><scope>util::pool_allocator</scope><name>get_free_entries_count</name></member>
+      <member refid="classutil_1_1pool__allocator_1a412e57f16183cfa6b1462eb90006869e" prot="public" virt="non-virtual"><scope>util::pool_allocator</scope><name>operator=</name></member>
+      <member refid="classutil_1_1pool__allocator_1a56b5fc78cb7f882719ea7c39308d6c6f" prot="public" virt="non-virtual"><scope>util::pool_allocator</scope><name>operator=</name></member>
+      <member refid="classutil_1_1pool__allocator_1a48778bf1f833a7135386a2fb4fa6d534" prot="public" virt="non-virtual"><scope>util::pool_allocator</scope><name>pool_allocator</name></member>
+      <member refid="classutil_1_1pool__allocator_1a657914cb48ad3ec30e9bccf213ff7253" prot="public" virt="non-virtual"><scope>util::pool_allocator</scope><name>pool_allocator</name></member>
+      <member refid="classutil_1_1pool__allocator_1ae4a131705012c29492773577d7c480d2" prot="private" virt="non-virtual"><scope>util::pool_allocator</scope><name>pool_allocator</name></member>
+      <member refid="classutil_1_1pool__allocator_1a521ccb696fbaa1f1ead5557a43260dfb" prot="public" virt="non-virtual"><scope>util::pool_allocator</scope><name>resize</name></member>
+      <member refid="classutil_1_1pool__allocator_1a8585addeb0a2d0226bb3d9cb89365375" prot="private" virt="non-virtual"><scope>util::pool_allocator</scope><name>used_blocks</name></member>
+      <member refid="classutil_1_1pool__allocator_1aafa0a60e495e413894ca3734e4631fdb" prot="public" virt="non-virtual"><scope>util::pool_allocator</scope><name>~pool_allocator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

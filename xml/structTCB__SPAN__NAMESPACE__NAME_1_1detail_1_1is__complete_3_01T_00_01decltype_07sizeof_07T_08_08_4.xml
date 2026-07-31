@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__complete_3_01T_00_01decltype_07sizeof_07T_08_08_4" kind="struct" language="C++" prot="public">
+    <compoundname>TCB_SPAN_NAMESPACE_NAME::detail::is_complete&lt; T, decltype(sizeof(T))&gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::false_type</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">std::true_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>TCB_SPAN_NAMESPACE_NAME::detail::is_complete&lt; T, decltype(sizeof(T))&gt;</label>
+        <link refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__complete_3_01T_00_01decltype_07sizeof_07T_08_08_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
+      <node id="3">
+        <label>std::true_type</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>TCB_SPAN_NAMESPACE_NAME::detail::is_complete&lt; T, decltype(sizeof(T))&gt;</label>
+        <link refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__complete_3_01T_00_01decltype_07sizeof_07T_08_08_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
+      <node id="3">
+        <label>std::true_type</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="244" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="244" bodyend="244"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

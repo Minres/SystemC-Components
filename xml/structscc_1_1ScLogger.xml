@@ -1,0 +1,373 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1ScLogger" kind="struct" language="C++" prot="public">
+    <compoundname>scc::ScLogger</compoundname>
+    <includes refid="report_8h" local="no">report.h</includes>
+    <templateparamlist>
+      <param>
+        <type>sc_core::sc_severity</type>
+        <declname>SEVERITY</declname>
+        <defname>SEVERITY</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="structscc_1_1ScLogger_1a550a4d9de67a12667e247d49a9db8fe3" prot="protected" static="no" mutable="no">
+        <type>std::ostringstream</type>
+        <definition>std::ostringstream scc::ScLogger&lt; SEVERITY &gt;::os</definition>
+        <argsstring></argsstring>
+        <name>os</name>
+        <qualifiedname>scc::ScLogger::os</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="441" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="441" bodyend="441"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1ScLogger_1a13c8c7d537ddebeb418273acacaebef2" prot="protected" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* scc::ScLogger&lt; SEVERITY &gt;::t</definition>
+        <argsstring></argsstring>
+        <name>t</name>
+        <qualifiedname>scc::ScLogger::t</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="442" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="442" bodyend="442"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1ScLogger_1a28428c9af702841a7a803a537f718bb1" prot="protected" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* scc::ScLogger&lt; SEVERITY &gt;::file</definition>
+        <argsstring></argsstring>
+        <name>file</name>
+        <qualifiedname>scc::ScLogger::file</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="443" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="443" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1ScLogger_1a92b9e7b288ff75db3ebc82cee4b333ec" prot="protected" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int scc::ScLogger&lt; SEVERITY &gt;::line</definition>
+        <argsstring></argsstring>
+        <name>line</name>
+        <qualifiedname>scc::ScLogger::line</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="444" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="444" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1ScLogger_1ae055b4fa49b6e9ca46acb44d8a72cf42" prot="protected" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int scc::ScLogger&lt; SEVERITY &gt;::level</definition>
+        <argsstring></argsstring>
+        <name>level</name>
+        <qualifiedname>scc::ScLogger::level</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="445" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="445" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1ScLogger_1afc3d0c8bcfabad46d738ebac4e9892ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::ScLogger&lt; SEVERITY &gt;::ScLogger</definition>
+        <argsstring>(const char *file, int line, int verbosity=sc_core::SC_MEDIUM)</argsstring>
+        <name>ScLogger</name>
+        <qualifiedname>scc::ScLogger::ScLogger</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>verbosity</declname>
+          <defval>sc_core::SC_MEDIUM</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>where the log entry originates </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number where the log entry originates </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>verbosity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the log level </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="368" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="368" bodyend="372"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1ScLogger_1a4d92f18ea4fc9072121342e161c74fc9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::ScLogger&lt; SEVERITY &gt;::ScLogger</definition>
+        <argsstring>()=delete</argsstring>
+        <name>ScLogger</name>
+        <qualifiedname>scc::ScLogger::ScLogger</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="374" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1ScLogger_1aba460dd4f3870b3c914d78a90b1fa894" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::ScLogger&lt; SEVERITY &gt;::ScLogger</definition>
+        <argsstring>(const ScLogger &amp;)=delete</argsstring>
+        <name>ScLogger</name>
+        <qualifiedname>scc::ScLogger::ScLogger</qualifiedname>
+        <param>
+          <type>const ScLogger &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="376" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1ScLogger_1ad8857ab3386b8aebdec6fde617053069" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::ScLogger&lt; SEVERITY &gt;::ScLogger</definition>
+        <argsstring>(ScLogger &amp;&amp;)=delete</argsstring>
+        <name>ScLogger</name>
+        <qualifiedname>scc::ScLogger::ScLogger</qualifiedname>
+        <param>
+          <type>ScLogger &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="378" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1ScLogger_1ac3f5d2332e5ee0f4809d1c7a2fda2d65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1ScLogger_1afc3d0c8bcfabad46d738ebac4e9892ce" kindref="member">ScLogger</ref> &amp;</type>
+        <definition>ScLogger &amp; scc::ScLogger&lt; SEVERITY &gt;::operator=</definition>
+        <argsstring>(const ScLogger &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::ScLogger::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="structscc_1_1ScLogger_1afc3d0c8bcfabad46d738ebac4e9892ce" kindref="member">ScLogger</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="380" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1ScLogger_1aeafd29d8d0c1d7576a9eea04415f2af2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structscc_1_1ScLogger_1afc3d0c8bcfabad46d738ebac4e9892ce" kindref="member">ScLogger</ref> &amp;</type>
+        <definition>ScLogger &amp; scc::ScLogger&lt; SEVERITY &gt;::operator=</definition>
+        <argsstring>(ScLogger &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::ScLogger::operator=</qualifiedname>
+        <param>
+          <type><ref refid="structscc_1_1ScLogger_1afc3d0c8bcfabad46d738ebac4e9892ce" kindref="member">ScLogger</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="382" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1ScLogger_1a5ef804d70184bd9a9a90f1cb44db5621" prot="public" static="no" const="no" explicit="no" inline="yes" noexceptexpression="false" virt="virtual">
+        <type></type>
+        <definition>virtual scc::ScLogger&lt; SEVERITY &gt;::~ScLogger</definition>
+        <argsstring>()</argsstring>
+        <name>~ScLogger</name>
+        <qualifiedname>scc::ScLogger::~ScLogger</qualifiedname>
+        <briefdescription>
+<para>the destructor generating the SystemC report </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="388" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="388" bodyend="399"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1ScLogger_1ad729b5edfc3589af27ae8963fcda3684" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structscc_1_1ScLogger_1afc3d0c8bcfabad46d738ebac4e9892ce" kindref="member">ScLogger</ref> &amp;</type>
+        <definition>ScLogger &amp; scc::ScLogger&lt; SEVERITY &gt;::type</definition>
+        <argsstring>()</argsstring>
+        <name>type</name>
+        <qualifiedname>scc::ScLogger::type</qualifiedname>
+        <briefdescription>
+<para>reset the category of the log entry </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>reference to self for chaining </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="406" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="406" bodyend="409"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1ScLogger_1a2258e1b208c45f3be95507666a1ad9fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structscc_1_1ScLogger_1afc3d0c8bcfabad46d738ebac4e9892ce" kindref="member">ScLogger</ref> &amp;</type>
+        <definition>ScLogger &amp; scc::ScLogger&lt; SEVERITY &gt;::type</definition>
+        <argsstring>(char const *t)</argsstring>
+        <name>type</name>
+        <qualifiedname>scc::ScLogger::type</qualifiedname>
+        <param>
+          <type>char const *</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>set the category of the log entry </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of th elog entry </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>reference to self for chaining </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="417" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="417" bodyend="420"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1ScLogger_1a6202c3aa0c8c599aa20309115cff6243" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structscc_1_1ScLogger_1afc3d0c8bcfabad46d738ebac4e9892ce" kindref="member">ScLogger</ref> &amp;</type>
+        <definition>ScLogger &amp; scc::ScLogger&lt; SEVERITY &gt;::type</definition>
+        <argsstring>(std::string const &amp;t)</argsstring>
+        <name>type</name>
+        <qualifiedname>scc::ScLogger::type</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>set the category of the log entry </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of th elog entry </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>reference to self for chaining </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="428" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="428" bodyend="431"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1ScLogger_1a76ea0ccd13c351ee2474eeb4485c7608" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; scc::ScLogger&lt; SEVERITY &gt;::get</definition>
+        <argsstring>()</argsstring>
+        <name>get</name>
+        <qualifiedname>scc::ScLogger::get</qualifiedname>
+        <briefdescription>
+<para>get the underlying ostringstream </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the output stream collecting the log message </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="438" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="438" bodyend="438"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the logger class </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="structscc_1_1ScLogger" kindref="compound">ScLogger</ref> creates a RTTI based output stream to be used similar to std::cout</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>SEVERITY</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" line="359" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/report.h" bodystart="359" bodyend="446"/>
+    <listofallmembers>
+      <member refid="structscc_1_1ScLogger_1a28428c9af702841a7a803a537f718bb1" prot="protected" virt="non-virtual"><scope>scc::ScLogger</scope><name>file</name></member>
+      <member refid="structscc_1_1ScLogger_1a76ea0ccd13c351ee2474eeb4485c7608" prot="public" virt="non-virtual"><scope>scc::ScLogger</scope><name>get</name></member>
+      <member refid="structscc_1_1ScLogger_1ae055b4fa49b6e9ca46acb44d8a72cf42" prot="protected" virt="non-virtual"><scope>scc::ScLogger</scope><name>level</name></member>
+      <member refid="structscc_1_1ScLogger_1a92b9e7b288ff75db3ebc82cee4b333ec" prot="protected" virt="non-virtual"><scope>scc::ScLogger</scope><name>line</name></member>
+      <member refid="structscc_1_1ScLogger_1ac3f5d2332e5ee0f4809d1c7a2fda2d65" prot="public" virt="non-virtual"><scope>scc::ScLogger</scope><name>operator=</name></member>
+      <member refid="structscc_1_1ScLogger_1aeafd29d8d0c1d7576a9eea04415f2af2" prot="public" virt="non-virtual"><scope>scc::ScLogger</scope><name>operator=</name></member>
+      <member refid="structscc_1_1ScLogger_1a550a4d9de67a12667e247d49a9db8fe3" prot="protected" virt="non-virtual"><scope>scc::ScLogger</scope><name>os</name></member>
+      <member refid="structscc_1_1ScLogger_1afc3d0c8bcfabad46d738ebac4e9892ce" prot="public" virt="non-virtual"><scope>scc::ScLogger</scope><name>ScLogger</name></member>
+      <member refid="structscc_1_1ScLogger_1a4d92f18ea4fc9072121342e161c74fc9" prot="public" virt="non-virtual"><scope>scc::ScLogger</scope><name>ScLogger</name></member>
+      <member refid="structscc_1_1ScLogger_1aba460dd4f3870b3c914d78a90b1fa894" prot="public" virt="non-virtual"><scope>scc::ScLogger</scope><name>ScLogger</name></member>
+      <member refid="structscc_1_1ScLogger_1ad8857ab3386b8aebdec6fde617053069" prot="public" virt="non-virtual"><scope>scc::ScLogger</scope><name>ScLogger</name></member>
+      <member refid="structscc_1_1ScLogger_1a13c8c7d537ddebeb418273acacaebef2" prot="protected" virt="non-virtual"><scope>scc::ScLogger</scope><name>t</name></member>
+      <member refid="structscc_1_1ScLogger_1ad729b5edfc3589af27ae8963fcda3684" prot="public" virt="non-virtual"><scope>scc::ScLogger</scope><name>type</name></member>
+      <member refid="structscc_1_1ScLogger_1a2258e1b208c45f3be95507666a1ad9fd" prot="public" virt="non-virtual"><scope>scc::ScLogger</scope><name>type</name></member>
+      <member refid="structscc_1_1ScLogger_1a6202c3aa0c8c599aa20309115cff6243" prot="public" virt="non-virtual"><scope>scc::ScLogger</scope><name>type</name></member>
+      <member refid="structscc_1_1ScLogger_1a5ef804d70184bd9a9a90f1cb44db5621" prot="public" virt="virtual"><scope>scc::ScLogger</scope><name>~ScLogger</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_6fda102129831cc243b35ab9aed78b5b" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin</compoundname>
+    <innerfile refid="ahb_2pin_2initiator_8h">initiator.h</innerfile>
+    <innerfile refid="ahb_2pin_2target_8h">target.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/"/>
+  </compounddef>
+</doxygen>

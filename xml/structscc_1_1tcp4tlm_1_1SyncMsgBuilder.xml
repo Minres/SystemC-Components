@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tcp4tlm_1_1SyncMsgBuilder" kind="struct" language="C++" prot="public">
+    <compoundname>scc::tcp4tlm::SyncMsgBuilder</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm_1_1SyncMsgBuilder_1aa41fdb110763f63a54d470e80b0fda76" prot="public" static="no">
+        <type>SyncMsg</type>
+        <definition>typedef SyncMsg scc::tcp4tlm::SyncMsgBuilder::Table</definition>
+        <argsstring></argsstring>
+        <name>Table</name>
+        <qualifiedname>scc::tcp4tlm::SyncMsgBuilder::Table</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="280" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="280" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1SyncMsgBuilder_1a27def3b66e413dd19103518db573583e" prot="public" static="no" mutable="no">
+        <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+        <definition>::flatbuffers::FlatBufferBuilder&amp; scc::tcp4tlm::SyncMsgBuilder::fbb_</definition>
+        <argsstring></argsstring>
+        <name>fbb_</name>
+        <qualifiedname>scc::tcp4tlm::SyncMsgBuilder::fbb_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="281" column="38" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1SyncMsgBuilder_1a575afa07258d259c1bea77e01fa2505d" prot="public" static="no" mutable="no">
+        <type>::flatbuffers::uoffset_t</type>
+        <definition>::flatbuffers::uoffset_t scc::tcp4tlm::SyncMsgBuilder::start_</definition>
+        <argsstring></argsstring>
+        <name>start_</name>
+        <qualifiedname>scc::tcp4tlm::SyncMsgBuilder::start_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="282" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="282" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1SyncMsgBuilder_1ac29fdf503e79ec8782fe6c43d3ba5d12" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::SyncMsgBuilder::add_id</definition>
+        <argsstring>(uint32_t id)</argsstring>
+        <name>add_id</name>
+        <qualifiedname>scc::tcp4tlm::SyncMsgBuilder::add_id</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="283" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="283" bodyend="283"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1SyncMsgBuilder_1a3154673aab5ac0c8e5163ad903dcec4d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::SyncMsgBuilder::add_time_stamp</definition>
+        <argsstring>(uint64_t time_stamp)</argsstring>
+        <name>add_time_stamp</name>
+        <qualifiedname>scc::tcp4tlm::SyncMsgBuilder::add_time_stamp</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>time_stamp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="284" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="284" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1SyncMsgBuilder_1a977191b63d7cd24624123d1e8c45ccd1" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tcp4tlm::SyncMsgBuilder::SyncMsgBuilder</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb)</argsstring>
+        <name>SyncMsgBuilder</name>
+        <qualifiedname>scc::tcp4tlm::SyncMsgBuilder::SyncMsgBuilder</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="285" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="285" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1SyncMsgBuilder_1a86dc6fa7a94f95d9206868c4df82b332" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>::flatbuffers::Offset&lt; SyncMsg &gt;</type>
+        <definition>::flatbuffers::Offset&lt; SyncMsg &gt; scc::tcp4tlm::SyncMsgBuilder::Finish</definition>
+        <argsstring>()</argsstring>
+        <name>Finish</name>
+        <qualifiedname>scc::tcp4tlm::SyncMsgBuilder::Finish</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="289" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="289" bodyend="293"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="279" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="279" bodyend="294"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tcp4tlm_1_1SyncMsgBuilder_1ac29fdf503e79ec8782fe6c43d3ba5d12" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::SyncMsgBuilder</scope><name>add_id</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1SyncMsgBuilder_1a3154673aab5ac0c8e5163ad903dcec4d" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::SyncMsgBuilder</scope><name>add_time_stamp</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1SyncMsgBuilder_1a27def3b66e413dd19103518db573583e" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::SyncMsgBuilder</scope><name>fbb_</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1SyncMsgBuilder_1a86dc6fa7a94f95d9206868c4df82b332" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::SyncMsgBuilder</scope><name>Finish</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1SyncMsgBuilder_1a575afa07258d259c1bea77e01fa2505d" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::SyncMsgBuilder</scope><name>start_</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1SyncMsgBuilder_1a977191b63d7cd24624123d1e8c45ccd1" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::SyncMsgBuilder</scope><name>SyncMsgBuilder</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1SyncMsgBuilder_1aa41fdb110763f63a54d470e80b0fda76" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::SyncMsgBuilder</scope><name>Table</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,27 @@
+<map id="tlm::scc::scv::tlm_extension_record_if" name="tlm::scc::scv::tlm_extension_record_if">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,321,148,361"/>
+<area shape="rect" id="Node000002" href="$structaxi_1_1scv_1_1ace__ext__record.html" title=" " alt="" coords="196,5,361,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,307,90,249,111,178,126,141,144,105,167,71,194,41,214,29,217,33,198,45,171,75,149,108,130,143,116,180,95,251,85,307"/>
+<area shape="rect" id="Node000003" href="$structaxi_1_1scv_1_1axi3__ext__record.html" title=" " alt="" coords="215,55,342,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="84,306,99,262,122,208,153,153,194,105,213,92,217,96,198,109,157,156,126,210,104,263,89,308"/>
+<area shape="rect" id="Node000004" href="$structaxi_1_1scv_1_1axi4__ext__record.html" title=" " alt="" coords="215,119,342,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="91,307,132,238,161,201,194,169,214,157,217,161,198,173,165,205,136,241,95,310"/>
+<area shape="rect" id="Node000005" href="$structchi_1_1chi__ctrl__ext__record.html" title=" " alt="" coords="200,184,357,209"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="99,308,141,263,167,240,195,220,222,207,224,212,197,224,170,244,144,266,103,312"/>
+<area shape="rect" id="Node000006" href="$structchi_1_1chi__data__credit__ext__record.html" title=" " alt="" coords="211,234,346,274"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="131,312,195,284,224,272,226,276,197,288,133,317"/>
+<area shape="rect" id="Node000007" href="$structchi_1_1chi__data__ext__record.html" title=" " alt="" coords="197,299,361,324"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="161,326,196,321,197,326,162,331"/>
+<area shape="rect" id="Node000008" href="$structchi_1_1chi__req__credit__ext__record.html" title=" " alt="" coords="215,349,343,389"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="162,350,215,357,214,362,161,355"/>
+<area shape="rect" id="Node000009" href="$structchi_1_1chi__resp__credit__ext__record.html" title=" " alt="" coords="211,413,346,453"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="128,365,197,398,225,410,223,415,195,403,126,369"/>
+<area shape="rect" id="Node000010" href="$structchi_1_1chi__snp__ext__record.html" title=" " alt="" coords="199,477,359,503"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="102,370,143,418,169,442,197,462,224,475,222,480,195,467,166,446,139,421,98,373"/>
+<area shape="rect" id="Node000011" href="$structcxs_1_1cxs__ext__record.html" title=" " alt="" coords="209,527,349,552"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="94,372,134,443,163,480,198,512,221,524,218,529,194,516,159,484,130,446,90,375"/>
+<area shape="rect" id="Node000012" href="$structtilelink_1_1tlc__ext__record.html" title=" " alt="" coords="205,576,353,601"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="89,374,104,416,127,467,158,518,198,561,219,574,216,578,194,565,153,521,122,470,99,418,84,375"/>
+<area shape="rect" id="Node000013" href="$structtlm_1_1scc_1_1scv_1_1tlm__id__ext__record.html" title=" " alt="" coords="217,626,340,666"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="87,373,99,425,121,488,153,553,174,584,198,611,219,626,216,630,194,615,170,587,149,556,116,490,94,426,81,375"/>
+</map>

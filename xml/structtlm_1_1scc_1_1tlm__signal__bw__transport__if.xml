@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1tlm__signal__bw__transport__if" kind="struct" language="C++" prot="public" abstract="yes">
+    <compoundname>tlm::scc::tlm_signal_bw_transport_if</compoundname>
+    <basecompoundref prot="public" virt="virtual">sc_core::sc_interface</basecompoundref>
+    <derivedcompoundref refid="structtlm_1_1scc_1_1tlm__signal" prot="public" virt="non-virtual">tlm::scc::tlm_signal&lt; SIG, TYPES, N &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename SIG</type>
+        <defval>bool</defval>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval><ref refid="structtlm_1_1scc_1_1tlm__signal__baseprotocol__types" kindref="compound">tlm_signal_baseprotocol_types</ref>&lt;SIG&gt;</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structtlm_1_1scc_1_1tlm__signal__bw__transport__if_1a623c2ab0cab829ffc7f218f93f250a0c" prot="public" static="no">
+        <type>TYPES</type>
+        <definition>typedef TYPES tlm::scc::tlm_signal_bw_transport_if&lt; SIG, TYPES &gt;::protocol_types</definition>
+        <argsstring></argsstring>
+        <name>protocol_types</name>
+        <qualifiedname>tlm::scc::tlm_signal_bw_transport_if::protocol_types</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" line="53" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__bw__transport__if_1ac25bdb10270b0b8b17a1ba15c8a0a0a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>virtual::tlm::tlm_sync_enum</type>
+        <definition>virtual::tlm::tlm_sync_enum tlm::scc::tlm_signal_bw_transport_if&lt; SIG, TYPES &gt;::nb_transport_bw</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;, ::tlm::tlm_phase &amp;, sc_core::sc_time &amp;)=0</argsstring>
+        <name>nb_transport_bw</name>
+        <qualifiedname>tlm::scc::tlm_signal_bw_transport_if::nb_transport_bw</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+        </param>
+        <param>
+          <type>::tlm::tlm_phase &amp;</type>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" line="54" column="34"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="3">
+        <label>tlm::scc::tlm_signal&lt; SIG, TYPES, N &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__signal"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::tlm_signal_bw_transport_if&lt; SIG, TYPES &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__signal__bw__transport__if"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="1">
+        <label>tlm::scc::tlm_signal_bw_transport_if&lt; SIG, TYPES &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__signal__bw__transport__if"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" line="52" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" bodystart="52" bodyend="55"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__bw__transport__if_1ac25bdb10270b0b8b17a1ba15c8a0a0a9" prot="public" virt="pure-virtual"><scope>tlm::scc::tlm_signal_bw_transport_if</scope><name>nb_transport_bw</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__bw__transport__if_1a623c2ab0cab829ffc7f218f93f250a0c" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_bw_transport_if</scope><name>protocol_types</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

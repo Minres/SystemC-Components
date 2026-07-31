@@ -1,0 +1,563 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classapb_1_1pe_1_1apb__initiator__b" kind="class" language="C++" prot="public">
+    <compoundname>apb::pe::apb_initiator_b</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</basecompoundref>
+    <derivedcompoundref refid="classapb_1_1pe_1_1apb__initiator" prot="public" virt="non-virtual">apb::pe::apb_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</derivedcompoundref>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classapb_1_1pe_1_1apb__initiator__b_1a84b54507cb5e40a5c2a35f2e33b45b31" prot="public" static="no">
+        <type>tlm::tlm_generic_payload</type>
+        <definition>using apb::pe::apb_initiator_b::payload_type =  tlm::tlm_generic_payload</definition>
+        <argsstring></argsstring>
+        <name>payload_type</name>
+        <qualifiedname>apb::pe::apb_initiator_b::payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="34" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classapb_1_1pe_1_1apb__initiator__b_1af9a60f3f34a5afe9f6be7f2647fe2bc4" prot="public" static="no">
+        <type>tlm::tlm_phase</type>
+        <definition>using apb::pe::apb_initiator_b::phase_type =  tlm::tlm_phase</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>apb::pe::apb_initiator_b::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="35" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__initiator__b_1a6be25a17ecba28e7a458730a7f2eed13" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; apb::pe::apb_initiator_b::clk_i</definition>
+        <argsstring></argsstring>
+        <name>clk_i</name>
+        <qualifiedname>apb::pe::apb_initiator_b::clk_i</qualifiedname>
+        <initializer>{&quot;clk_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="37" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" bodystart="37" bodyend="37"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__initiator__b_1a6e667009afcaeabe60c4624ed632e246" prot="protected" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t apb::pe::apb_initiator_b::transfer_width_in_bytes</definition>
+        <argsstring></argsstring>
+        <name>transfer_width_in_bytes</name>
+        <qualifiedname>apb::pe::apb_initiator_b::transfer_width_in_bytes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="71" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__initiator__b_1a14e7c2cc76bc2376487a633325928089" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_port_b&lt; tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt; &gt; &amp;</type>
+        <definition>sc_core::sc_port_b&lt;tlm::tlm_fw_transport_if&lt;tlm::tlm_base_protocol_types&gt; &gt;&amp; apb::pe::apb_initiator_b::socket_fw</definition>
+        <argsstring></argsstring>
+        <name>socket_fw</name>
+        <qualifiedname>apb::pe::apb_initiator_b::socket_fw</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="73" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__initiator__b_1a5586441bca9c9768c811ef0f922c367b" prot="protected" static="no" mutable="no">
+        <type><ref refid="structscc_1_1peq" kindref="compound">scc::peq</ref>&lt; std::tuple&lt; payload_type *, tlm::tlm_phase &gt; &gt;</type>
+        <definition>scc::peq&lt;std::tuple&lt;payload_type*, tlm::tlm_phase&gt; &gt; apb::pe::apb_initiator_b::peq</definition>
+        <argsstring></argsstring>
+        <name>peq</name>
+        <qualifiedname>apb::pe::apb_initiator_b::peq</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="75" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__initiator__b_1a6b330d2a8c7173f892fbb7469dfe2202" prot="protected" static="no" mutable="no">
+        <type><ref refid="structscc_1_1ordered__semaphore__t" kindref="compound">scc::ordered_semaphore_t</ref>&lt; 1 &gt;</type>
+        <definition>scc::ordered_semaphore_t&lt;1&gt; apb::pe::apb_initiator_b::chnl</definition>
+        <argsstring></argsstring>
+        <name>chnl</name>
+        <qualifiedname>apb::pe::apb_initiator_b::chnl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="77" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__initiator__b_1a0e4e05b4750652438baf0a43b59c0e10" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event apb::pe::apb_initiator_b::any_tx_finished</definition>
+        <argsstring></argsstring>
+        <name>any_tx_finished</name>
+        <qualifiedname>apb::pe::apb_initiator_b::any_tx_finished</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="79" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__initiator__b_1a98770a8c1d78da31def67b83d83f420c" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time apb::pe::apb_initiator_b::clk_period</definition>
+        <argsstring></argsstring>
+        <name>clk_period</name>
+        <qualifiedname>apb::pe::apb_initiator_b::clk_period</qualifiedname>
+        <initializer>{10, sc_core::SC_NS}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="81" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" bodystart="81" bodyend="81"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__initiator__b_1a5750ca742d2d599a679ac9c7e720f8e5" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_clock *</type>
+        <definition>sc_core::sc_clock* apb::pe::apb_initiator_b::clk_if</definition>
+        <argsstring></argsstring>
+        <name>clk_if</name>
+        <qualifiedname>apb::pe::apb_initiator_b::clk_if</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="84" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" bodystart="84" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__initiator__b_1a746dba0147ab9d4e82632caa1619f3b3" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned apb::pe::apb_initiator_b::m_clock_counter</definition>
+        <argsstring></argsstring>
+        <name>m_clock_counter</name>
+        <qualifiedname>apb::pe::apb_initiator_b::m_clock_counter</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="87" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" bodystart="87" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__initiator__b_1a8c9233505240cae0d5536183e987cc40" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned apb::pe::apb_initiator_b::m_prev_clk_cnt</definition>
+        <argsstring></argsstring>
+        <name>m_prev_clk_cnt</name>
+        <qualifiedname>apb::pe::apb_initiator_b::m_prev_clk_cnt</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="88" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__initiator__b_1adf8ba236890f83468201a6f2eef32105" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>apb::pe::apb_initiator_b::SC_HAS_PROCESS</definition>
+        <argsstring>(apb_initiator_b)</argsstring>
+        <name>SC_HAS_PROCESS</name>
+        <qualifiedname>apb::pe::apb_initiator_b::SC_HAS_PROCESS</qualifiedname>
+        <param>
+          <type>apb_initiator_b</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="32" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__initiator__b_1a8187f95358ce14fe59d0cbeac56900c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum apb_initiator_b::nb_transport_bw</definition>
+        <argsstring>(payload_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t) override</argsstring>
+        <name>nb_transport_bw</name>
+        <qualifiedname>apb::pe::apb_initiator_b::nb_transport_bw</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="39" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.cpp" bodystart="39" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__initiator__b_1a3c6f88533c193d52750dfe6b959a903b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void apb_initiator_b::invalidate_direct_mem_ptr</definition>
+        <argsstring>(sc_dt::uint64 start_range, sc_dt::uint64 end_range) override</argsstring>
+        <name>invalidate_direct_mem_ptr</name>
+        <qualifiedname>apb::pe::apb_initiator_b::invalidate_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>start_range</declname>
+        </param>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>end_range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="41" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.cpp" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__initiator__b_1a2233848946241d16f2ac1e11db6dc6eb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t apb::pe::apb_initiator_b::get_transferwith_in_bytes</definition>
+        <argsstring>() const</argsstring>
+        <name>get_transferwith_in_bytes</name>
+        <qualifiedname>apb::pe::apb_initiator_b::get_transferwith_in_bytes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="43" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__initiator__b_1a1aacf83984c112e3351845fc6648c12a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void apb_initiator_b::transport</definition>
+        <argsstring>(payload_type &amp;trans, bool blocking)</argsstring>
+        <name>transport</name>
+        <qualifiedname>apb::pe::apb_initiator_b::transport</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>blocking</declname>
+        </param>
+        <briefdescription>
+<para>The forward transport function. It behaves blocking and is re-entrant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function initiates the forward transport either using b_transport() if blocking=true or the nb_transport_* interface.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the transaction to send </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>blocking</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>execute in using the blocking interface </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="53" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.cpp" bodystart="47" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__initiator__b_1af015bb7f9194269819c10efc0c430b07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>apb_initiator_b::apb_initiator_b</definition>
+        <argsstring>(sc_core::sc_module_name nm, sc_core::sc_port_b&lt; tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt; &gt; &amp;port, size_t transfer_width, bool coherent)</argsstring>
+        <name>apb_initiator_b</name>
+        <qualifiedname>apb::pe::apb_initiator_b::apb_initiator_b</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_port_b&lt; tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt; &gt; &amp;</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>transfer_width</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>coherent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="55" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.cpp" bodystart="30" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__initiator__b_1a6a242403d76d6a00ab101e54e9cd2561" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>apb_initiator_b::~apb_initiator_b</definition>
+        <argsstring>()</argsstring>
+        <name>~apb_initiator_b</name>
+        <qualifiedname>apb::pe::apb_initiator_b::~apb_initiator_b</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="58" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__initiator__b_1a829de7e7e82ff720845fddbef083ce15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>apb::pe::apb_initiator_b::apb_initiator_b</definition>
+        <argsstring>()=delete</argsstring>
+        <name>apb_initiator_b</name>
+        <qualifiedname>apb::pe::apb_initiator_b::apb_initiator_b</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="60" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__initiator__b_1ab58abe5f60ef551efb57a02bc03ca2bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>apb::pe::apb_initiator_b::apb_initiator_b</definition>
+        <argsstring>(apb_initiator_b const &amp;)=delete</argsstring>
+        <name>apb_initiator_b</name>
+        <qualifiedname>apb::pe::apb_initiator_b::apb_initiator_b</qualifiedname>
+        <param>
+          <type>apb_initiator_b const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="62" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__initiator__b_1a177876cc98737af24213bcb99188fe6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>apb::pe::apb_initiator_b::apb_initiator_b</definition>
+        <argsstring>(apb_initiator_b &amp;&amp;)=delete</argsstring>
+        <name>apb_initiator_b</name>
+        <qualifiedname>apb::pe::apb_initiator_b::apb_initiator_b</qualifiedname>
+        <param>
+          <type>apb_initiator_b &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="64" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__initiator__b_1a5bf37504a7dbe83dae4ff1fb0f1dd1c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>apb_initiator_b &amp;</type>
+        <definition>apb_initiator_b &amp; apb::pe::apb_initiator_b::operator=</definition>
+        <argsstring>(apb_initiator_b const &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>apb::pe::apb_initiator_b::operator=</qualifiedname>
+        <param>
+          <type>apb_initiator_b const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="66" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__initiator__b_1aa9a8181580a12a22772512acf7de409f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>apb_initiator_b &amp;</type>
+        <definition>apb_initiator_b &amp; apb::pe::apb_initiator_b::operator=</definition>
+        <argsstring>(apb_initiator_b &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>apb::pe::apb_initiator_b::operator=</qualifiedname>
+        <param>
+          <type>apb_initiator_b &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="68" column="21"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__initiator__b_1a23cd689086b6349e28fa0f29184e5ffa" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void apb::pe::apb_initiator_b::end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_elaboration</name>
+        <qualifiedname>apb::pe::apb_initiator_b::end_of_elaboration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="85" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" bodystart="85" bodyend="85"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>apb::pe::apb_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classapb_1_1pe_1_1apb__initiator"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>apb::pe::apb_initiator_b</label>
+        <link refid="classapb_1_1pe_1_1apb__initiator__b"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>apb::pe::apb_initiator_b</label>
+        <link refid="classapb_1_1pe_1_1apb__initiator__b"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>peq</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>chnl</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="5">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="8">
+        <label>sc_core::sc_semaphore_if</label>
+      </node>
+      <node id="7">
+        <label>scc::ordered_semaphore</label>
+        <link refid="classscc_1_1ordered__semaphore"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>scc::ordered_semaphore_t&lt; 1 &gt;</label>
+        <link refid="structscc_1_1ordered__semaphore__t"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>scc::peq&lt; std::tuple&lt; payload_type *, tlm::tlm_phase &gt; &gt;</label>
+        <link refid="structscc_1_1peq"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>scc::traceable</label>
+        <link refid="structscc_1_1traceable"/>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" line="29" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_initiator.h" bodystart="29" bodyend="89"/>
+    <listofallmembers>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a0e4e05b4750652438baf0a43b59c0e10" prot="protected" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>any_tx_finished</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1af015bb7f9194269819c10efc0c430b07" prot="public" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>apb_initiator_b</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a829de7e7e82ff720845fddbef083ce15" prot="public" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>apb_initiator_b</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1ab58abe5f60ef551efb57a02bc03ca2bf" prot="public" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>apb_initiator_b</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a177876cc98737af24213bcb99188fe6e" prot="public" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>apb_initiator_b</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a6b330d2a8c7173f892fbb7469dfe2202" prot="protected" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>chnl</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a6be25a17ecba28e7a458730a7f2eed13" prot="public" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>clk_i</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a5750ca742d2d599a679ac9c7e720f8e5" prot="private" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>clk_if</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a98770a8c1d78da31def67b83d83f420c" prot="protected" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>clk_period</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a23cd689086b6349e28fa0f29184e5ffa" prot="private" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>end_of_elaboration</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a2233848946241d16f2ac1e11db6dc6eb" prot="public" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>get_transferwith_in_bytes</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a3c6f88533c193d52750dfe6b959a903b" prot="public" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>invalidate_direct_mem_ptr</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a746dba0147ab9d4e82632caa1619f3b3" prot="private" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>m_clock_counter</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a8c9233505240cae0d5536183e987cc40" prot="private" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>m_prev_clk_cnt</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a8187f95358ce14fe59d0cbeac56900c0" prot="public" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>nb_transport_bw</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a5bf37504a7dbe83dae4ff1fb0f1dd1c6" prot="public" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>operator=</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1aa9a8181580a12a22772512acf7de409f" prot="public" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>operator=</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a84b54507cb5e40a5c2a35f2e33b45b31" prot="public" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>payload_type</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a5586441bca9c9768c811ef0f922c367b" prot="protected" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>peq</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1af9a60f3f34a5afe9f6be7f2647fe2bc4" prot="public" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>phase_type</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1adf8ba236890f83468201a6f2eef32105" prot="public" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a14e7c2cc76bc2376487a633325928089" prot="protected" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>socket_fw</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a6e667009afcaeabe60c4624ed632e246" prot="protected" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>transfer_width_in_bytes</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a1aacf83984c112e3351845fc6648c12a" prot="public" virt="non-virtual"><scope>apb::pe::apb_initiator_b</scope><name>transport</name></member>
+      <member refid="classapb_1_1pe_1_1apb__initiator__b_1a6a242403d76d6a00ab101e54e9cd2561" prot="public" virt="virtual"><scope>apb::pe::apb_initiator_b</scope><name>~apb_initiator_b</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

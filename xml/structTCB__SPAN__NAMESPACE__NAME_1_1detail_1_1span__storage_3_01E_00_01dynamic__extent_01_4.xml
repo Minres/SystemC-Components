@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_3_01E_00_01dynamic__extent_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, dynamic_extent &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename E</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_3_01E_00_01dynamic__extent_01_4_1a9e1669b53858975661dacd4eae3c5c4b" prot="public" static="no" mutable="no">
+        <type>E *</type>
+        <definition>E* TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, dynamic_extent &gt;::ptr</definition>
+        <argsstring></argsstring>
+        <name>ptr</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, dynamic_extent &gt;::ptr</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="181" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_3_01E_00_01dynamic__extent_01_4_1aef0c689be866d909927c501560eaf14d" prot="public" static="no" mutable="no">
+        <type>std::size_t</type>
+        <definition>std::size_t TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, dynamic_extent &gt;::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, dynamic_extent &gt;::size</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="182" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_3_01E_00_01dynamic__extent_01_4_1a62e1fa5efdcd3734fa60a86f6ab9e908" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, dynamic_extent &gt;::span_storage</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>span_storage</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, dynamic_extent &gt;::span_storage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="175" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_3_01E_00_01dynamic__extent_01_4_1a48f7c2ac0fed3b78c6e5afa48d062584" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, dynamic_extent &gt;::span_storage</definition>
+        <argsstring>(E *p_ptr, std::size_t p_size) noexcept</argsstring>
+        <name>span_storage</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, dynamic_extent &gt;::span_storage</qualifiedname>
+        <param>
+          <type>E *</type>
+          <declname>p_ptr</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>p_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="177" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="177" bodyend="179"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="174" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="174" bodyend="183"/>
+    <listofallmembers>
+      <member refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_3_01E_00_01dynamic__extent_01_4_1a9e1669b53858975661dacd4eae3c5c4b" prot="public" virt="non-virtual"><scope>TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, dynamic_extent &gt;</scope><name>ptr</name></member>
+      <member refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_3_01E_00_01dynamic__extent_01_4_1aef0c689be866d909927c501560eaf14d" prot="public" virt="non-virtual"><scope>TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, dynamic_extent &gt;</scope><name>size</name></member>
+      <member refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_3_01E_00_01dynamic__extent_01_4_1a62e1fa5efdcd3734fa60a86f6ab9e908" prot="public" virt="non-virtual"><scope>TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, dynamic_extent &gt;</scope><name>span_storage</name></member>
+      <member refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_3_01E_00_01dynamic__extent_01_4_1a48f7c2ac0fed3b78c6e5afa48d062584" prot="public" virt="non-virtual"><scope>TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, dynamic_extent &gt;</scope><name>span_storage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

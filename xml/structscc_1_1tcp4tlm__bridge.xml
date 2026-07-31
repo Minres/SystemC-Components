@@ -1,0 +1,947 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tcp4tlm__bridge" kind="struct" language="C++" prot="public">
+    <compoundname>scc::tcp4tlm_bridge</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref refid="classscc_1_1tcp4tlm_1_1server" prot="protected" virt="non-virtual">scc::tcp4tlm::server&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;</basecompoundref>
+    <basecompoundref refid="classscc_1_1tcp4tlm_1_1client" prot="protected" virt="non-virtual">scc::tcp4tlm::client&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;</basecompoundref>
+    <includes refid="tcp4tlm__bridge_8h" local="no">tcp4tlm_bridge.h</includes>
+    <innerclass refid="structscc_1_1tcp4tlm__bridge_1_1timed__task" prot="protected">scc::tcp4tlm_bridge::timed_task</innerclass>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm__bridge_1a08a0fe4200cdd632798c219837a74406" prot="public" static="no">
+        <type><ref refid="classscc_1_1tcp4tlm_1_1connection" kindref="compound">tcp4tlm::connection</ref>&lt; tcp4tlm::response_message, tcp4tlm::request_message &gt;</type>
+        <definition>typedef tcp4tlm::connection&lt;tcp4tlm::response_message, tcp4tlm::request_message&gt; scc::tcp4tlm_bridge::connection_type</definition>
+        <argsstring></argsstring>
+        <name>connection_type</name>
+        <qualifiedname>scc::tcp4tlm_bridge::connection_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="96" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm__bridge_1a1bdb410bdc12ef60786bc4ffea96fdda" prot="public" static="no">
+        <type>std::shared_ptr&lt; connection_type &gt;</type>
+        <definition>typedef std::shared_ptr&lt;connection_type&gt; scc::tcp4tlm_bridge::con_ptr</definition>
+        <argsstring></argsstring>
+        <name>con_ptr</name>
+        <qualifiedname>scc::tcp4tlm_bridge::con_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="97" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-type">
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm__bridge_1a88021cd3f0b8783bc9e5d4a9aaa52290" prot="protected" static="no">
+        <type>std::packaged_task&lt; bool(void)&gt;</type>
+        <definition>using scc::tcp4tlm_bridge::callback_task =  std::packaged_task&lt;bool(void)&gt;</definition>
+        <argsstring></argsstring>
+        <name>callback_task</name>
+        <qualifiedname>scc::tcp4tlm_bridge::callback_task</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="127" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1ad511fc5928a64f6362f41fae727015a0" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; scc::tcp4tlm_bridge::is_connection_server</definition>
+        <argsstring></argsstring>
+        <name>is_connection_server</name>
+        <qualifiedname>scc::tcp4tlm_bridge::is_connection_server</qualifiedname>
+        <initializer>{&quot;is_connection_server&quot;, false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>this governs the sequence of connection:<itemizedlist>
+<listitem><para>if false: it first starts the server, connects to remote and sends a NotifyEndpointMsg</para>
+</listitem><listitem><para>if true: it starts the server, waits for a NotifyEndpointMsg and then connects the client </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="78" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1ac1b9a9f06c1da1cda8ce48302489f03f" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; std::string &gt;</type>
+        <definition>cci::cci_param&lt;std::string&gt; scc::tcp4tlm_bridge::other_host_name</definition>
+        <argsstring></argsstring>
+        <name>other_host_name</name>
+        <qualifiedname>scc::tcp4tlm_bridge::other_host_name</qualifiedname>
+        <initializer>{&quot;other_host_name&quot;, &quot;&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="79" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="79" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1a64d24eedffe3e0737062efae23db2267" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; unsigned &gt;</type>
+        <definition>cci::cci_param&lt;unsigned&gt; scc::tcp4tlm_bridge::other_host_port</definition>
+        <argsstring></argsstring>
+        <name>other_host_port</name>
+        <qualifiedname>scc::tcp4tlm_bridge::other_host_port</qualifiedname>
+        <initializer>{&quot;other_host_port&quot;, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="80" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1a761dfe9e9e12dabc3f4de3d1a77870da" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; unsigned &gt;</type>
+        <definition>cci::cci_param&lt;unsigned&gt; scc::tcp4tlm_bridge::this_host_port</definition>
+        <argsstring></argsstring>
+        <name>this_host_port</name>
+        <qualifiedname>scc::tcp4tlm_bridge::this_host_port</qualifiedname>
+        <initializer>{&quot;this_host_port&quot;, 32000u}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="81" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="81" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1a2c70a76662bc279fdbdc10f3ad0d977c" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; scc::tcp4tlm_bridge::wall_time_simulation_speed</definition>
+        <argsstring></argsstring>
+        <name>wall_time_simulation_speed</name>
+        <qualifiedname>scc::tcp4tlm_bridge::wall_time_simulation_speed</qualifiedname>
+        <initializer>{&quot;wall_time_simulation_speed&quot;, false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="82" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="82" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1ab3658d33c5658acbc8906eef9ddc4284" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; scc::tcp4tlm_bridge::write_no_response</definition>
+        <argsstring></argsstring>
+        <name>write_no_response</name>
+        <qualifiedname>scc::tcp4tlm_bridge::write_no_response</qualifiedname>
+        <initializer>{&quot;write_no_response&quot;, false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="83" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1a47ebf8a37b88e29878ca4efe73bc4d62" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; scc::tcp4tlm_bridge::no_systemc_sync</definition>
+        <argsstring></argsstring>
+        <name>no_systemc_sync</name>
+        <qualifiedname>scc::tcp4tlm_bridge::no_systemc_sync</qualifiedname>
+        <initializer>{&quot;no_systemc_sync&quot;, false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="84" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="84" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1ad8c8fcc8b4a619ac363cfe71f4a4ae61" prot="public" static="no" mutable="no">
+        <type>tlm_utils::simple_target_socket&lt; tcp4tlm_bridge, ::scc::LT &gt;</type>
+        <definition>tlm_utils::simple_target_socket&lt;tcp4tlm_bridge, ::scc::LT&gt; scc::tcp4tlm_bridge::tsckt</definition>
+        <argsstring></argsstring>
+        <name>tsckt</name>
+        <qualifiedname>scc::tcp4tlm_bridge::tsckt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="86" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1ae265a653040f6e7512f524b17609dbd8" prot="public" static="no" mutable="no">
+        <type>tlm_utils::simple_initiator_socket&lt; tcp4tlm_bridge, ::scc::LT &gt;</type>
+        <definition>tlm_utils::simple_initiator_socket&lt;tcp4tlm_bridge, ::scc::LT&gt; scc::tcp4tlm_bridge::isckt</definition>
+        <argsstring></argsstring>
+        <name>isckt</name>
+        <qualifiedname>scc::tcp4tlm_bridge::isckt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="88" column="40" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1ac235ef17f4d2e148982075a4a63d2891" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_vector&lt; sc_core::sc_out&lt; bool &gt; &gt;</type>
+        <definition>sc_core::sc_vector&lt;sc_core::sc_out&lt;bool&gt; &gt; scc::tcp4tlm_bridge::signals</definition>
+        <argsstring></argsstring>
+        <name>signals</name>
+        <qualifiedname>scc::tcp4tlm_bridge::signals</qualifiedname>
+        <initializer>{&quot;signals&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="90" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="90" bodyend="90"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1ac6acf8f63e8aab672d8c8d8399e90d42" prot="protected" static="no" mutable="no">
+        <type><ref refid="structscc_1_1async__queue" kindref="compound">scc::async_queue</ref>&lt; <ref refid="structscc_1_1tcp4tlm__bridge_1_1timed__task" kindref="compound">timed_task</ref> &gt;</type>
+        <definition>scc::async_queue&lt;timed_task&gt; scc::tcp4tlm_bridge::task_que</definition>
+        <argsstring></argsstring>
+        <name>task_que</name>
+        <qualifiedname>scc::tcp4tlm_bridge::task_que</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="132" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1aa1870510bc94ad2522d9d12f4c72b814" prot="protected" static="no" mutable="no">
+        <type><ref refid="structscc_1_1peq" kindref="compound">scc::peq</ref>&lt; callback_task &gt;</type>
+        <definition>scc::peq&lt;callback_task&gt; scc::tcp4tlm_bridge::timed_task_que</definition>
+        <argsstring></argsstring>
+        <name>timed_task_que</name>
+        <qualifiedname>scc::tcp4tlm_bridge::timed_task_que</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="133" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1a661be2cc0c6d70ea038acd7c463e1347" prot="protected" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex scc::tcp4tlm_bridge::con_est_mtx</definition>
+        <argsstring></argsstring>
+        <name>con_est_mtx</name>
+        <qualifiedname>scc::tcp4tlm_bridge::con_est_mtx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="134" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1af9eea5f00d7f7771a2f890518a0f9f46" prot="protected" static="no" mutable="no">
+        <type>std::condition_variable</type>
+        <definition>std::condition_variable scc::tcp4tlm_bridge::con_est_sig</definition>
+        <argsstring></argsstring>
+        <name>con_est_sig</name>
+        <qualifiedname>scc::tcp4tlm_bridge::con_est_sig</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="135" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1a7985e4e4dbba549f830592488a856854" prot="protected" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; scc::tcp4tlm_bridge::con_est</definition>
+        <argsstring></argsstring>
+        <name>con_est</name>
+        <qualifiedname>scc::tcp4tlm_bridge::con_est</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="136" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="136" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1a6c38225a46114df56316dca3ae0d5135" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event scc::tcp4tlm_bridge::shutdown_evt</definition>
+        <argsstring></argsstring>
+        <name>shutdown_evt</name>
+        <qualifiedname>scc::tcp4tlm_bridge::shutdown_evt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="137" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1a8585b2ef5e7e929d018c0a60ad9d0587" prot="protected" static="no" mutable="no">
+        <type><ref refid="classrigtorp_1_1SPSCQueue" kindref="compound">rigtorp::SPSCQueue</ref>&lt; sc_core::sc_time &gt;</type>
+        <definition>rigtorp::SPSCQueue&lt;sc_core::sc_time&gt; scc::tcp4tlm_bridge::next_time_stamp</definition>
+        <argsstring></argsstring>
+        <name>next_time_stamp</name>
+        <qualifiedname>scc::tcp4tlm_bridge::next_time_stamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="138" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1af0446a3bbb455b1cd57400ecd57b5aa0" prot="protected" static="no" mutable="no">
+        <type>unsigned long long</type>
+        <definition>unsigned long long scc::tcp4tlm_bridge::sync</definition>
+        <argsstring></argsstring>
+        <name>sync</name>
+        <qualifiedname>scc::tcp4tlm_bridge::sync</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="139" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1a436020c14b79bc47706935039e21296b" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; tcp4tlm::response_message &gt;</type>
+        <definition>std::shared_ptr&lt;tcp4tlm::response_message&gt; scc::tcp4tlm_bridge::resp_msg</definition>
+        <argsstring></argsstring>
+        <name>resp_msg</name>
+        <qualifiedname>scc::tcp4tlm_bridge::resp_msg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="149" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1a8aedb2a15737edb0bdaf1a3c086f348a" prot="protected" static="no" mutable="no">
+        <type>tlm_utils::tlm_quantumkeeper</type>
+        <definition>tlm_utils::tlm_quantumkeeper scc::tcp4tlm_bridge::quantumkeeper</definition>
+        <argsstring></argsstring>
+        <name>quantumkeeper</name>
+        <qualifiedname>scc::tcp4tlm_bridge::quantumkeeper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="150" column="34" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1a8d35be72f261ab8e68691b6ed7d50e95" prot="protected" static="no" mutable="no">
+        <type><ref refid="structtlm_1_1scc_1_1tlm__mm" kindref="compound">tlm::scc::tlm_mm</ref>&lt; tlm::tlm_base_protocol_types, false &gt;</type>
+        <definition>tlm::scc::tlm_mm&lt;tlm::tlm_base_protocol_types, false&gt; scc::tcp4tlm_bridge::mm</definition>
+        <argsstring></argsstring>
+        <name>mm</name>
+        <qualifiedname>scc::tcp4tlm_bridge::mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="151" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1a9c3c326c773e40eccfe37df72f4d4519" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::tcp4tlm_bridge::SC_HAS_PROCESS</definition>
+        <argsstring>(tcp4tlm_bridge)</argsstring>
+        <name>SC_HAS_PROCESS</name>
+        <qualifiedname>scc::tcp4tlm_bridge::SC_HAS_PROCESS</qualifiedname>
+        <param>
+          <type>tcp4tlm_bridge</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="72" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1ad8bd980339d323fcebe0d6f5508a49ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::tcp4tlm_bridge::tcp4tlm_bridge</definition>
+        <argsstring>(sc_core::sc_module_name name, size_t no_of_ports=0)</argsstring>
+        <name>tcp4tlm_bridge</name>
+        <qualifiedname>scc::tcp4tlm_bridge::tcp4tlm_bridge</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>no_of_ports</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="92" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.cpp" bodystart="40" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1a0c191c839e3ac0be3de79b72029c7f17" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>scc::tcp4tlm_bridge::~tcp4tlm_bridge</definition>
+        <argsstring>()</argsstring>
+        <name>~tcp4tlm_bridge</name>
+        <qualifiedname>scc::tcp4tlm_bridge::~tcp4tlm_bridge</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="94" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.cpp" bodystart="90" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1aa1279929c45cbf318f33dbfaf4ae5d67" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_bridge::server_send_completed</definition>
+        <argsstring>(con_ptr &amp;con, bool established=false) override</argsstring>
+        <name>server_send_completed</name>
+        <qualifiedname>scc::tcp4tlm_bridge::server_send_completed</qualifiedname>
+        <param>
+          <type>con_ptr &amp;</type>
+          <declname>con</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>established</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="99" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="99" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1a7bb01adf115c1484ce8f5e9771f1b209" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_bridge::server_receive_completed</definition>
+        <argsstring>(con_ptr &amp;con, const tcp4tlm::request_message *const result) override</argsstring>
+        <name>server_receive_completed</name>
+        <qualifiedname>scc::tcp4tlm_bridge::server_receive_completed</qualifiedname>
+        <param>
+          <type>con_ptr &amp;</type>
+          <declname>con</declname>
+        </param>
+        <param>
+          <type>const tcp4tlm::request_message *const</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="105" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.cpp" bodystart="343" bodyend="455"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1a3599c3a2829ed641d6c93e6955273df0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_bridge::start_server</definition>
+        <argsstring>()</argsstring>
+        <name>start_server</name>
+        <qualifiedname>scc::tcp4tlm_bridge::start_server</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="107" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="107" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1a473c3b25f2717f53f47f30d98b087388" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_bridge::wait4connection</definition>
+        <argsstring>()</argsstring>
+        <name>wait4connection</name>
+        <qualifiedname>scc::tcp4tlm_bridge::wait4connection</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="112" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="112" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1a1e90403e4060c54f38e0c2fbc419dd65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm_bridge::is_connection_established</definition>
+        <argsstring>()</argsstring>
+        <name>is_connection_established</name>
+        <qualifiedname>scc::tcp4tlm_bridge::is_connection_established</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="120" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="120" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1a992867b65210f5508684b8534d99f98a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_bridge::end_connection</definition>
+        <argsstring>()</argsstring>
+        <name>end_connection</name>
+        <qualifiedname>scc::tcp4tlm_bridge::end_connection</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="122" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="200" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1a0df2da21203dcee0a281dcaca84bd47a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_event const &amp;</type>
+        <definition>sc_core::sc_event const  &amp; scc::tcp4tlm_bridge::get_shutdown_event</definition>
+        <argsstring>() const</argsstring>
+        <name>get_shutdown_event</name>
+        <qualifiedname>scc::tcp4tlm_bridge::get_shutdown_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="124" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="124" bodyend="124"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1a9dc0b74bf2a66b2c471ff9773a4d2202" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_bridge::btransport_cb</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;, sc_core::sc_time &amp;)</argsstring>
+        <name>btransport_cb</name>
+        <qualifiedname>scc::tcp4tlm_bridge::btransport_cb</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <defname>gp</defname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <defname>delay</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="140" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.cpp" bodystart="175" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1a9f83477fe6d5ed1a178f303212497963" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::tcp4tlm_bridge::transport_dbg_cb</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;)</argsstring>
+        <name>transport_dbg_cb</name>
+        <qualifiedname>scc::tcp4tlm_bridge::transport_dbg_cb</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <defname>gp</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="141" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.cpp" bodystart="169" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1adc10e91d2504345d750eab17d184523f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_bridge::do_access</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;gp, sc_core::sc_time &amp;delay, bool debug=false)</argsstring>
+        <name>do_access</name>
+        <qualifiedname>scc::tcp4tlm_bridge::do_access</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>gp</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>debug</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="142" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.cpp" bodystart="177" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1ab51382e51b664b0ebc9af0da53fc3b05" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_bridge::timing_thread</definition>
+        <argsstring>()</argsstring>
+        <name>timing_thread</name>
+        <qualifiedname>scc::tcp4tlm_bridge::timing_thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="143" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.cpp" bodystart="263" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1ad0b12c5306d9bc7a529128091fdadbc6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_bridge::process_task_que</definition>
+        <argsstring>()</argsstring>
+        <name>process_task_que</name>
+        <qualifiedname>scc::tcp4tlm_bridge::process_task_que</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="144" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.cpp" bodystart="457" bodyend="471"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1a54b15500c46e8584a7f11922f4d22f5a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_bridge::process_timed_task_que</definition>
+        <argsstring>()</argsstring>
+        <name>process_timed_task_que</name>
+        <qualifiedname>scc::tcp4tlm_bridge::process_timed_task_que</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="145" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.cpp" bodystart="473" bodyend="480"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1a7c1ad07ab0b5d4307ec3505850aa3c99" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_bridge::end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_elaboration</name>
+        <qualifiedname>scc::tcp4tlm_bridge::end_of_elaboration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="146" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.cpp" bodystart="101" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1ac6932f4b45da6ad2615f77367a7975e4" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_bridge::start_of_simulation</definition>
+        <argsstring>() override</argsstring>
+        <name>start_of_simulation</name>
+        <qualifiedname>scc::tcp4tlm_bridge::start_of_simulation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="147" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.cpp" bodystart="106" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1a9a4c2de221fc4f98a6d7370f6a145c64" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_bridge::end_of_simulation</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_simulation</name>
+        <qualifiedname>scc::tcp4tlm_bridge::end_of_simulation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="148" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.cpp" bodystart="128" bodyend="167"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1a2087a81c3cfb7b1ff92f72142ef29294" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::scc::tlm_gp_shared_ptr</type>
+        <definition>tlm::scc::tlm_gp_shared_ptr scc::tcp4tlm_bridge::init_gp</definition>
+        <argsstring>(const tcp4tlm::BusOpMsg *const msg)</argsstring>
+        <name>init_gp</name>
+        <qualifiedname>scc::tcp4tlm_bridge::init_gp</qualifiedname>
+        <param>
+          <type>const tcp4tlm::BusOpMsg *const</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="154" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.cpp" bodystart="325" bodyend="341"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__bridge_1ad7b5449744d80306628fb47fb754d260" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tcp4tlm::request_message</type>
+        <definition>tcp4tlm::request_message scc::tcp4tlm_bridge::get_notify_endpoint_msg</definition>
+        <argsstring>(boost::asio::ip::tcp::endpoint &amp;ep)</argsstring>
+        <name>get_notify_endpoint_msg</name>
+        <qualifiedname>scc::tcp4tlm_bridge::get_notify_endpoint_msg</qualifiedname>
+        <param>
+          <type>boost::asio::ip::tcp::endpoint &amp;</type>
+          <declname>ep</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="160" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="160" bodyend="163"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Bidirectional bridge for tunneling loosely timed TLM traffic over a TCP connection. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The bridge is both a SystemC/TLM component and a TCP endpoint. Its target socket accepts local TLM generic payloads and serializes them into tcp4tlm FlatBuffer messages which are sent to a peer bridge. Conversely, incoming BusOpMsg requests are converted back into TLM generic payloads, scheduled in SystemC time, and forwarded through the initiator socket to the local model.</para>
+<para>Two bridge instances form a bidirectional connection. Depending on the is_connection_server parameter, an instance either waits for a peer endpoint notification or actively connects to the configured peer and sends its own listening endpoint via NotifyEndpointMsg. Once connected, the bridge exchanges BusOpMsg, BusDataMsg, response, SyncMsg, SigOpMsg, and NotifyShutdownMsg messages to carry bus accesses, read data, status responses, simulation time synchronization, signal updates, and orderly shutdown.</para>
+<para>TLM reads wait for a BusDataMsg response and copy the returned data into the original payload. TLM writes send the payload data and either wait for a status response or complete immediately when write_no_response is enabled. Debug transport is represented as a BusOpMsg with debug access type.</para>
+<para>The timing threads coordinate message execution with SystemC simulation time. In simulated-time mode, remote timestamps drive local advancement. In wall-time mode, the bridge can pace simulation against elapsed wall clock time. The no_systemc_sync parameter bypasses timestamp-based task scheduling. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="5">
+        <label>scc::tcp4tlm::client&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;</label>
+        <link refid="classscc_1_1tcp4tlm_1_1client"/>
+      </node>
+      <node id="4">
+        <label>scc::tcp4tlm::i_server&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;</label>
+        <link refid="structscc_1_1tcp4tlm_1_1i__server"/>
+      </node>
+      <node id="3">
+        <label>scc::tcp4tlm::server&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;</label>
+        <link refid="classscc_1_1tcp4tlm_1_1server"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>scc::tcp4tlm_bridge</label>
+        <link refid="structscc_1_1tcp4tlm__bridge"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="protected-inheritance">
+        </childnode>
+        <childnode refid="5" relation="protected-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="14">
+        <label>rigtorp::SPSCQueue&lt; sc_core::sc_time &gt;</label>
+        <link refid="classrigtorp_1_1SPSCQueue"/>
+      </node>
+      <node id="11">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="13">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="9">
+        <label>sc_core::sc_prim_channel</label>
+      </node>
+      <node id="8">
+        <label>scc::async_queue&lt; scc::tcp4tlm_bridge::timed_task &gt;</label>
+        <link refid="structscc_1_1async__queue"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>scc::async_source_if&lt; scc::tcp4tlm_bridge::timed_task &gt;</label>
+        <link refid="structscc_1_1async__source__if"/>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>scc::peq&lt; callback_task &gt;</label>
+        <link refid="structscc_1_1peq"/>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>scc::tcp4tlm::client&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;</label>
+        <link refid="classscc_1_1tcp4tlm_1_1client"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>trace_conn</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>scc::tcp4tlm::connection&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;</label>
+        <link refid="classscc_1_1tcp4tlm_1_1connection"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>scc::tcp4tlm::i_server&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;</label>
+        <link refid="structscc_1_1tcp4tlm_1_1i__server"/>
+      </node>
+      <node id="3">
+        <label>scc::tcp4tlm::server&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;</label>
+        <link refid="classscc_1_1tcp4tlm_1_1server"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>scc::tcp4tlm_bridge</label>
+        <link refid="structscc_1_1tcp4tlm__bridge"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="protected-inheritance">
+        </childnode>
+        <childnode refid="5" relation="protected-inheritance">
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>task_que</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>timed_task_que</edgelabel>
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>next_time_stamp</edgelabel>
+        </childnode>
+        <childnode refid="15" relation="usage">
+          <edgelabel>mm</edgelabel>
+        </childnode>
+      </node>
+      <node id="17">
+        <label>std::conditional&lt; std::is_base_of&lt; tlm::tlm_generic_payload, tlm::tlm_base_protocol_types::tlm_payload_type &gt;::value, tlm::tlm_mm_interface, tlm_mm_traits&lt; tlm::tlm_base_protocol_types &gt;::mm_if_type &gt;::type</label>
+      </node>
+      <node id="7">
+        <label>std::enable_shared_from_this&lt; connection&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt; &gt;</label>
+      </node>
+      <node id="15">
+        <label>tlm::scc::tlm_mm&lt; tlm::tlm_base_protocol_types, false &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__mm"/>
+        <childnode refid="16" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>tlm::scc::tlm_mm_t&lt; tlm::tlm_base_protocol_types, CLEANUP_DATA, std::conditional&lt; std::is_base_of&lt; tlm::tlm_generic_payload, tlm::tlm_base_protocol_types::tlm_payload_type &gt;::value, tlm::tlm_mm_interface, tlm_mm_traits&lt; tlm::tlm_base_protocol_types &gt;::mm_if_type &gt;::type &gt;</label>
+        <link refid="classtlm_1_1scc_1_1tlm__mm__t"/>
+        <childnode refid="17" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="69" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="71" bodyend="186"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a9dc0b74bf2a66b2c471ff9773a4d2202" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>btransport_cb</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a88021cd3f0b8783bc9e5d4a9aaa52290" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>callback_task</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1ad8e717fd40444916ad394ce2e4ffe6c8" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>client</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a3ba15e800274a7d144866c6ab286dbc6" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>client_connection</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a7985e4e4dbba549f830592488a856854" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>con_est</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a661be2cc0c6d70ea038acd7c463e1347" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>con_est_mtx</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1af9eea5f00d7f7771a2f890518a0f9f46" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>con_est_sig</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a1bdb410bdc12ef60786bc4ffea96fdda" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>con_ptr</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a8f63e908728a8357398474229cd49768" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>configure</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a4d61fece72b91124521e6d9fded035df" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>connect</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a08a0fe4200cdd632798c219837a74406" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>connection_type</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1a4394ae5d2ce57876523df722bea58a95" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>create_new_session</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1adc10e91d2504345d750eab17d184523f" prot="protected" virt="virtual"><scope>scc::tcp4tlm_bridge</scope><name>do_access</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a992867b65210f5508684b8534d99f98a" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>end_connection</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a7c1ad07ab0b5d4307ec3505850aa3c99" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>end_of_elaboration</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a9a4c2de221fc4f98a6d7370f6a145c64" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>end_of_simulation</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1aafca7dcfa8bb84717c034c912922bfca" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>get_acceptor</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1a894b80061e6cdb3525d3e9e4318727d5" prot="protected" virt="virtual"><scope>scc::tcp4tlm_bridge</scope><name>get_io_service</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1ad7b5449744d80306628fb47fb754d260" prot="private" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>get_notify_endpoint_msg</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a0df2da21203dcee0a281dcaca84bd47a" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>get_shutdown_event</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1aeac9f08b086097e18259c932d39f5d63" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>host</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a2087a81c3cfb7b1ff92f72142ef29294" prot="private" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>init_gp</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1aa12049f977faa55b13d869c32acd75fd" prot="protected" virt="non-virtual" ambiguityscope="scc::"><scope>scc::tcp4tlm_bridge</scope><name>io_service</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a59927df69b2a7b97765d84fe1ca0137c" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>is_connected</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a1e90403e4060c54f38e0c2fbc419dd65" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>is_connection_established</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1ad511fc5928a64f6362f41fae727015a0" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>is_connection_server</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a95eab46113139b253404151fe89f8014" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>is_local_socket</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1adaa4b0dd68ff731084de3a2520ff591a" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>is_remote_connected</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1ae9a3cd755a19529748af708b44dec85b" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>is_server_running</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1af9765ffeeb4c4d713da4d5fe89ed41c6" prot="protected" virt="virtual"><scope>scc::tcp4tlm_bridge</scope><name>is_shutdown_requested</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1ae265a653040f6e7512f524b17609dbd8" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>isckt</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a71ab4158266724c61974323691ab0cfd" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>local_connection</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a8d35be72f261ab8e68691b6ed7d50e95" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>mm</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a8585b2ef5e7e929d018c0a60ad9d0587" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>next_time_stamp</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a47ebf8a37b88e29878ca4efe73bc4d62" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>no_systemc_sync</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1ac1b9a9f06c1da1cda8ce48302489f03f" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>other_host_name</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a64d24eedffe3e0737062efae23db2267" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>other_host_port</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1adc3e3e83b40ab64dcb08bf30710989ba" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>port</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1ad0b12c5306d9bc7a529128091fdadbc6" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>process_task_que</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a54b15500c46e8584a7f11922f4d22f5a" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>process_timed_task_que</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a8aedb2a15737edb0bdaf1a3c086f348a" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>quantumkeeper</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1a442a7254485b3a19f4b150bdeb1385c4" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>request_shutdown</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a436020c14b79bc47706935039e21296b" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>resp_msg</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a9f3e0dc3e22cc57a5a394b9b4b19d40a" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>retry_count</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a9c3c326c773e40eccfe37df72f4d4519" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1a83674e8f19a01b1290dc3ec89017df68" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>server</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a7bb01adf115c1484ce8f5e9771f1b209" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>server_receive_completed</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1i__server_1a8ad78c8673bc3ddb342d144ca3066826" prot="protected" virt="pure-virtual" ambiguityscope="scc::tcp4tlm::server&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;::"><scope>scc::tcp4tlm_bridge</scope><name>server_receive_completed</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1aa1279929c45cbf318f33dbfaf4ae5d67" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>server_send_completed</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1i__server_1a1b3c1ff55f25aa46afd5ae27fedac09a" prot="protected" virt="pure-virtual" ambiguityscope="scc::tcp4tlm::server&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;::"><scope>scc::tcp4tlm_bridge</scope><name>server_send_completed</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1ae9ed35716ff1d3ab31c8402a7bbf181e" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>set_acceptor_endpoint</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a03da0b6f7f39696c02b039cb9468f407" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>setup_endpoint</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a6c38225a46114df56316dca3ae0d5135" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>shutdown_evt</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1af35979d5b42442afab6f02e412f7b464" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>shutdown_server</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1ac235ef17f4d2e148982075a4a63d2891" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>signals</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1ac6932f4b45da6ad2615f77367a7975e4" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>start_of_simulation</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a3599c3a2829ed641d6c93e6955273df0" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>start_server</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1acbe854c9bd5063190f62cd9a58418302" prot="protected" virt="non-virtual" ambiguityscope="scc::tcp4tlm::server&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;::"><scope>scc::tcp4tlm_bridge</scope><name>start_server</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1af0446a3bbb455b1cd57400ecd57b5aa0" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>sync</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1ac6acf8f63e8aab672d8c8d8399e90d42" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>task_que</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1ad8bd980339d323fcebe0d6f5508a49ef" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>tcp4tlm_bridge</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a761dfe9e9e12dabc3f4de3d1a77870da" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>this_host_port</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1aa1870510bc94ad2522d9d12f4c72b814" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>timed_task_que</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1ab51382e51b664b0ebc9af0da53fc3b05" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>timing_thread</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1afd2cb36c766e71fe5e7ab0c22320067b" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>trace_conn</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a9f83477fe6d5ed1a178f303212497963" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>transport_dbg_cb</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1ad8c8fcc8b4a619ac363cfe71f4a4ae61" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>tsckt</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a473c3b25f2717f53f47f30d98b087388" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>wait4connection</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a2c70a76662bc279fdbdc10f3ad0d977c" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>wall_time_simulation_speed</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1ab3658d33c5658acbc8906eef9ddc4284" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge</scope><name>write_no_response</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a9815f8b16e3fe5545707575cc180620b" prot="protected" virt="virtual"><scope>scc::tcp4tlm_bridge</scope><name>~client</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1i__server_1ae1af04685ba43e452e8da974358e5e9c" prot="protected" virt="virtual"><scope>scc::tcp4tlm_bridge</scope><name>~i_server</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1a11f8a7a15a15a2b48b0c975f9d3deb9d" prot="protected" virt="virtual"><scope>scc::tcp4tlm_bridge</scope><name>~server</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1a0c191c839e3ac0be3de79b72029c7f17" prot="public" virt="virtual"><scope>scc::tcp4tlm_bridge</scope><name>~tcp4tlm_bridge</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

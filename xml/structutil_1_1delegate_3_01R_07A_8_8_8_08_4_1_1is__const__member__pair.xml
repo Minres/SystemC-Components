@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structutil_1_1delegate_3_01R_07A_8_8_8_08_4_1_1is__const__member__pair" kind="struct" language="C++" prot="private">
+    <compoundname>util::delegate&lt; R(A...)&gt;::is_const_member_pair</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::false_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
+      <node id="1">
+        <label>util::delegate&lt; R(A...)&gt;::is_const_member_pair&lt; typename &gt;</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
+      <node id="1">
+        <label>util::delegate&lt; R(A...)&gt;::is_const_member_pair&lt; typename &gt;</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/delegate.h" line="226" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/delegate.h" bodystart="226" bodyend="226"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

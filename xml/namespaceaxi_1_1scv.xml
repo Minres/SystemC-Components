@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceaxi_1_1scv" kind="namespace" language="C++">
+    <compoundname>axi::scv</compoundname>
+    <innerclass refid="classaxi_1_1scv_1_1ace__rec__initiator__socket" prot="public">axi::scv::ace_rec_initiator_socket</innerclass>
+    <innerclass refid="classaxi_1_1scv_1_1ace__recorder" prot="public">axi::scv::ace_recorder</innerclass>
+    <innerclass refid="structaxi_1_1scv_1_1tlm__id__ext__recording" prot="public">axi::scv::tlm_id_ext_recording</innerclass>
+    <innerclass refid="structaxi_1_1scv_1_1axi3__ext__record" prot="public">axi::scv::axi3_ext_record</innerclass>
+    <innerclass refid="structaxi_1_1scv_1_1axi3__ext__recording" prot="public">axi::scv::axi3_ext_recording</innerclass>
+    <innerclass refid="structaxi_1_1scv_1_1axi4__ext__record" prot="public">axi::scv::axi4_ext_record</innerclass>
+    <innerclass refid="structaxi_1_1scv_1_1axi4__ext__recording" prot="public">axi::scv::axi4_ext_recording</innerclass>
+    <innerclass refid="structaxi_1_1scv_1_1ace__ext__record" prot="public">axi::scv::ace_ext_record</innerclass>
+    <innerclass refid="structaxi_1_1scv_1_1ace__ext__recording" prot="public">axi::scv::ace_ext_recording</innerclass>
+    <innerclass refid="classaxi_1_1scv_1_1axi__rec__initiator__socket" prot="public">axi::scv::axi_rec_initiator_socket</innerclass>
+    <innerclass refid="classaxi_1_1scv_1_1axi__rec__target__socket" prot="public">axi::scv::axi_rec_target_socket</innerclass>
+    <innerclass refid="classaxi_1_1scv_1_1axi__recorder" prot="public">axi::scv::axi_recorder</innerclass>
+    <innerclass refid="classaxi_1_1scv_1_1axitlm__recorder__module" prot="public">axi::scv::axitlm_recorder_module</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="axi_2scv_2recorder__modules_8h_1ac6d739b3f0aeb8248a29c515ade3d4b3" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>unsigned int</type>
+            <declname>BUSWIDTH</declname>
+            <defname>BUSWIDTH</defname>
+            <defval>32</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classaxi_1_1scv_1_1axitlm__recorder__module" kindref="compound">axitlm_recorder_module</ref>&lt; BUSWIDTH, <ref refid="structaxi_1_1axi__protocol__types" kindref="compound">axi::axi_protocol_types</ref>, <ref refid="classaxi_1_1scv_1_1axi__recorder" kindref="compound">axi_recorder</ref>&lt; <ref refid="structaxi_1_1axi__protocol__types" kindref="compound">axi::axi_protocol_types</ref> &gt; &gt;</type>
+        <definition>using axi::scv::axi_recorder_module =  axitlm_recorder_module&lt;BUSWIDTH, axi::axi_protocol_types, axi_recorder&lt;axi::axi_protocol_types&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>axi_recorder_module</name>
+        <qualifiedname>axi::scv::axi_recorder_module</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" line="74" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="axi_2scv_2recorder__modules_8h_1a3513de72dbd97cdb7b4a65042f01bb4e" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>unsigned int</type>
+            <declname>BUSWIDTH</declname>
+            <defname>BUSWIDTH</defname>
+            <defval>32</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classaxi_1_1scv_1_1axitlm__recorder__module" kindref="compound">axitlm_recorder_module</ref>&lt; BUSWIDTH, <ref refid="structaxi_1_1axi__protocol__types" kindref="compound">axi::axi_protocol_types</ref>, <ref refid="classaxi_1_1scv_1_1ace__recorder" kindref="compound">ace_recorder</ref>&lt; <ref refid="structaxi_1_1axi__protocol__types" kindref="compound">axi::axi_protocol_types</ref> &gt; &gt;</type>
+        <definition>using axi::scv::ace_recorder_module =  axitlm_recorder_module&lt;BUSWIDTH, axi::axi_protocol_types, ace_recorder&lt;axi::axi_protocol_types&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>ace_recorder_module</name>
+        <qualifiedname>axi::scv::ace_recorder_module</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" line="77" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/recorder_modules.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="axi__ace__scv_8cpp_1aaf845a585673a00b5e448bf5c5faa29d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool axi::scv::registered</definition>
+        <argsstring></argsstring>
+        <name>registered</name>
+        <qualifiedname>axi::scv::registered</qualifiedname>
+        <initializer>= register_extensions()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" line="238" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" bodystart="238" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="ace__recorder_8h_1a9fe54830f5c73eff5973035dfa6fc7d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool axi::scv::register_extensions</definition>
+        <argsstring>()</argsstring>
+        <name>register_extensions</name>
+        <qualifiedname>axi::scv::register_extensions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" line="204" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" bodystart="204" bodyend="237" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_recorder.h" declline="39" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/ace_rec_sockets.h" line="23" column="1"/>
+  </compounddef>
+</doxygen>

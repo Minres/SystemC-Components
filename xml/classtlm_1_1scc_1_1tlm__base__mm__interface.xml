@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1tlm__base__mm__interface" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>tlm::scc::tlm_base_mm_interface</compoundname>
+    <derivedcompoundref refid="structtlm_1_1scc_1_1tlm__signal__gp_1_1gp__mm" prot="public" virt="non-virtual">tlm::scc::tlm_signal_gp&lt; SIG &gt;::gp_mm</derivedcompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__base__mm__interface_1a598082f1cb8eb098a3c96095cea69223" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void tlm::scc::tlm_base_mm_interface::free</definition>
+        <argsstring>(tlm_generic_payload_base *)=0</argsstring>
+        <name>free</name>
+        <qualifiedname>tlm::scc::tlm_base_mm_interface::free</qualifiedname>
+        <reimplementedby refid="structtlm_1_1scc_1_1tlm__signal__gp_1_1gp__mm_1a8ad209b24bc86b9bc21e5c2db593b785">free</reimplementedby>
+        <param>
+          <type><ref refid="structtlm_1_1scc_1_1tlm__generic__payload__base" kindref="compound">tlm_generic_payload_base</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="36" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__base__mm__interface_1acc501995dc08c730b240ad9b5effc360" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual tlm::scc::tlm_base_mm_interface::~tlm_base_mm_interface</definition>
+        <argsstring>()</argsstring>
+        <name>~tlm_base_mm_interface</name>
+        <qualifiedname>tlm::scc::tlm_base_mm_interface::~tlm_base_mm_interface</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="37" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="37" bodyend="37"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::scc::tlm_base_mm_interface</label>
+        <link refid="classtlm_1_1scc_1_1tlm__base__mm__interface"/>
+      </node>
+      <node id="2">
+        <label>tlm::scc::tlm_signal_gp&lt; SIG &gt;::gp_mm</label>
+        <link refid="structtlm_1_1scc_1_1tlm__signal__gp_1_1gp__mm"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="34" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="34" bodyend="38"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1tlm__base__mm__interface_1a598082f1cb8eb098a3c96095cea69223" prot="public" virt="pure-virtual"><scope>tlm::scc::tlm_base_mm_interface</scope><name>free</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__base__mm__interface_1acc501995dc08c730b240ad9b5effc360" prot="public" virt="virtual"><scope>tlm::scc::tlm_base_mm_interface</scope><name>~tlm_base_mm_interface</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

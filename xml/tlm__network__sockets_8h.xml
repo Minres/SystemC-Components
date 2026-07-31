@@ -1,0 +1,402 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="tlm__network__sockets_8h" kind="file" language="C++">
+    <compoundname>tlm_network_sockets.h</compoundname>
+    <includes refid="tlm__network__gp_8h" local="yes">tlm_network_gp.h</includes>
+    <includes local="no">sysc/kernel/sc_object.h</includes>
+    <includes refid="tlm__mm_8h" local="no">tlm/scc/tlm_mm.h</includes>
+    <includes local="no">tlm</includes>
+    <includedby refid="axis__tlm_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h</includedby>
+    <includedby refid="cxs__tlm_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h</includedby>
+    <includedby refid="eth__tlm_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h</includedby>
+    <includedby refid="spi__tlm_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/spi/spi_tlm.h</includedby>
+    <includedby refid="nw_2scv_2tlm__recorder_8cpp" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.cpp</includedby>
+    <includedby refid="nw_2scv_2tlm__recorder_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h</includedby>
+    <includedby refid="sysc_2tlm_2nw_2scv_2tlm__recorder__module_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder_module.h</includedby>
+    <includedby refid="nw_2target__mixin_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h</includedby>
+    <includedby refid="tlm__network_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network.h</includedby>
+    <incdepgraph>
+      <node id="13">
+        <label>ities.h</label>
+        <link refid="ities_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>util/pool_allocator.h</label>
+        <link refid="pool__allocator_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm_array.h</label>
+        <link refid="tlm__array_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm_network_gp.h</label>
+        <link refid="tlm__network__gp_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h</label>
+        <link refid="tlm__network__sockets_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>tlm/scc/tlm_mm.h</label>
+        <link refid="tlm__mm_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>algorithm</label>
+      </node>
+      <node id="15">
+        <label>array</label>
+      </node>
+      <node id="16">
+        <label>assert.h</label>
+      </node>
+      <node id="17">
+        <label>bitset</label>
+      </node>
+      <node id="18">
+        <label>cctype</label>
+      </node>
+      <node id="19">
+        <label>climits</label>
+      </node>
+      <node id="7">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>deque</label>
+      </node>
+      <node id="20">
+        <label>fstream</label>
+      </node>
+      <node id="21">
+        <label>iterator</label>
+      </node>
+      <node id="22">
+        <label>limits</label>
+      </node>
+      <node id="23">
+        <label>memory</label>
+      </node>
+      <node id="26">
+        <label>mutex</label>
+      </node>
+      <node id="24">
+        <label>sstream</label>
+      </node>
+      <node id="25">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="8">
+        <label>sysc/kernel/sc_object.h</label>
+      </node>
+      <node id="10">
+        <label>tlm</label>
+      </node>
+      <node id="6">
+        <label>tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h</label>
+      </node>
+      <node id="11">
+        <label>type_traits</label>
+      </node>
+      <node id="27">
+        <label>unordered_map</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h</label>
+        <link refid="axis__tlm_8h_source"/>
+      </node>
+      <node id="4">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp</label>
+        <link refid="cxs__tlm_8cpp_source"/>
+      </node>
+      <node id="3">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h</label>
+        <link refid="cxs__tlm_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/scv/tlm_recorder_module.h</label>
+        <link refid="interfaces_2cxs_2scv_2tlm__recorder__module_8h_source"/>
+      </node>
+      <node id="6">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/scv/tlm_recording.h</label>
+        <link refid="tlm__recording_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.cpp</label>
+        <link refid="eth__tlm_8cpp_source"/>
+      </node>
+      <node id="7">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h</label>
+        <link refid="eth__tlm_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/spi/spi_tlm.h</label>
+        <link refid="spi__tlm_8h_source"/>
+      </node>
+      <node id="10">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.cpp</label>
+        <link refid="nw_2scv_2tlm__recorder_8cpp_source"/>
+      </node>
+      <node id="11">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h</label>
+        <link refid="nw_2scv_2tlm__recorder_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder_module.h</label>
+        <link refid="sysc_2tlm_2nw_2scv_2tlm__recorder__module_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h</label>
+        <link refid="nw_2target__mixin_8h_source"/>
+      </node>
+      <node id="14">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network.h</label>
+        <link refid="tlm__network_8h_source"/>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h</label>
+        <link refid="tlm__network__sockets_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structtlm_1_1nw_1_1tlm__network__baseprotocol__types" prot="public">tlm::nw::tlm_network_baseprotocol_types</innerclass>
+    <innerclass refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if" prot="public">tlm::nw::tlm_network_fw_transport_if</innerclass>
+    <innerclass refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if" prot="public">tlm::nw::tlm_network_bw_transport_if</innerclass>
+    <innerclass refid="structtlm_1_1nw_1_1tlm__network__initiator__socket" prot="public">tlm::nw::tlm_network_initiator_socket</innerclass>
+    <innerclass refid="structtlm_1_1nw_1_1tlm__network__target__socket" prot="public">tlm::nw::tlm_network_target_socket</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__mm__traits_3_01tlm_1_1nw_1_1tlm__network__baseprotocol__types_01_4" prot="public">tlm::scc::tlm_mm_traits&lt; tlm::nw::tlm_network_baseprotocol_types &gt;</innerclass>
+    <innernamespace refid="namespacetlm_1_1nw">tlm::nw</innernamespace>
+    <innernamespace refid="namespacetlm">tlm</innernamespace>
+    <innernamespace refid="namespacetlm_1_1scc">tlm::scc</innernamespace>
+    <briefdescription>
+<para>The SystemC Transaction Level Model (TLM) Network TLM utilities. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2024<sp/>MINRES<sp/>Technologies<sp/>GmbH</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_TLM_NW_TLM_NETWORK_SOCKETS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_TLM_NW_TLM_NETWORK_SOCKETS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;tlm_network_gp.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sysc/kernel/sc_object.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm/scc/tlm_mm.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>CWR_SYSTEMC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm_h/tlm_sockets/tlm_initiator_socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm_h/tlm_sockets/tlm_target_socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm" kindref="compound">tlm</ref><sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm_1_1nw" kindref="compound">nw</ref><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classtlm_1_1nw_1_1tlm__network__gp" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>SIG&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classtlm_1_1nw_1_1tlm__network__gp" kindref="compound">tlm_network_gp</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="structtlm_1_1nw_1_1tlm__network__baseprotocol__types" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1nw_1_1tlm__network__baseprotocol__types" kindref="compound">tlm_network_baseprotocol_types</ref><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">tlm_payload_type<sp/>=<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base" kindref="compound">tlm_network_payload_base</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">tlm_phase_type<sp/>=<sp/>::tlm::tlm_phase;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="namespacetlm_1_1nw_1acca78dfb87551181f4c8f3868bff1dc0" refkind="member"><highlight class="normal"><ref refid="namespacetlm_1_1nw_1acca78dfb87551181f4c8f3868bff1dc0" kindref="member">DECLARE_EXTENDED_PHASE</ref>(REQUEST);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><ref refid="namespacetlm_1_1nw_1acca78dfb87551181f4c8f3868bff1dc0" kindref="member">DECLARE_EXTENDED_PHASE</ref>(CONFIRM);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><ref refid="namespacetlm_1_1nw_1acca78dfb87551181f4c8f3868bff1dc0" kindref="member">DECLARE_EXTENDED_PHASE</ref>(INDICATION);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><ref refid="namespacetlm_1_1nw_1acca78dfb87551181f4c8f3868bff1dc0" kindref="member">DECLARE_EXTENDED_PHASE</ref>(RESPONSE);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES<sp/>=<sp/>tlm_network_baseprotocol_types&gt;</highlight></codeline>
+<codeline lineno="61" refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if" kindref="compound">tlm_network_fw_transport_if</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>tlm::tlm_blocking_transport_if&lt;typename<sp/>TYPES::tlm_payload_type&gt;,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>tlm::tlm_fw_nonblocking_transport_if&lt;typename<sp/>TYPES::tlm_payload_type&gt;,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>tlm::tlm_transport_dbg_if&lt;typename<sp/>TYPES::tlm_payload_type&gt;<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>TYPES<sp/>protocol_types;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES<sp/>=<sp/>tlm_network_baseprotocol_types&gt;</highlight></codeline>
+<codeline lineno="68" refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if" kindref="compound">tlm_network_bw_transport_if</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>tlm::tlm_bw_nonblocking_transport_if&lt;typename<sp/>TYPES::tlm_payload_type&gt;<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>TYPES<sp/>protocol_types;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>SC_VERSION_MAJOR<sp/>&lt;<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">type_index<sp/>=<sp/>sc_core::sc_type_index;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">type_index<sp/>=<sp/>std::type_index;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>PHITWIDTH,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>CMDENUM,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES<sp/>=<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__baseprotocol__types" kindref="compound">tlm_network_baseprotocol_types</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sc_core::sc_port_policy<sp/>POL<sp/>=<sp/>sc_core::SC_ONE_OR_MORE_BOUND&gt;</highlight></codeline>
+<codeline lineno="87" refid="structtlm_1_1nw_1_1tlm__network__initiator__socket" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1nw_1_1tlm__network__initiator__socket_1a391e89b97835a46bd986fcdb081ce5eb" kindref="member">tlm_network_initiator_socket</ref></highlight></codeline>
+<codeline lineno="88"><highlight class="normal">:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>tlm_base_initiator_socket&lt;0,<sp/>tlm_network_fw_transport_if&lt;TYPES&gt;,<sp/>tlm_network_bw_transport_if&lt;TYPES&gt;,<sp/>N,<sp/>POL&gt;<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">protocol_types<sp/>=<sp/>TYPES;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">transaction_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES::tlm_payload_type;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">phase_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES::tlm_phase_type;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">base_class<sp/>=<sp/>tlm_base_initiator_socket&lt;0,<sp/>tlm_network_fw_transport_if&lt;TYPES&gt;,<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if" kindref="compound">tlm_network_bw_transport_if&lt;TYPES&gt;</ref>,<sp/>N,<sp/>POL&gt;;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">fw_interface_type<sp/>=<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if" kindref="compound">tlm_network_fw_transport_if&lt;TYPES&gt;</ref>;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">bw_interface_type<sp/>=<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if" kindref="compound">tlm_network_bw_transport_if&lt;TYPES&gt;</ref>;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">port_type<sp/>=<sp/>sc_core::sc_port&lt;fw_interface_type,<sp/>N,<sp/>POL&gt;;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">export_type<sp/>=<sp/>sc_core::sc_export&lt;bw_interface_type&gt;;</highlight></codeline>
+<codeline lineno="106" refid="structtlm_1_1nw_1_1tlm__network__initiator__socket_1a391e89b97835a46bd986fcdb081ce5eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__initiator__socket_1a391e89b97835a46bd986fcdb081ce5eb" kindref="member">tlm_network_initiator_socket</ref>()</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>tlm_base_initiator_socket&lt;0,<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if" kindref="compound">tlm_network_fw_transport_if</ref>&lt;TYPES&gt;,<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if" kindref="compound">tlm_network_bw_transport_if</ref>&lt;TYPES&gt;,<sp/>N,<sp/>POL&gt;()<sp/>{}</highlight></codeline>
+<codeline lineno="115" refid="structtlm_1_1nw_1_1tlm__network__initiator__socket_1a1f1adec1830f9c31a5a45c73715de9a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__initiator__socket_1a1f1adec1830f9c31a5a45c73715de9a5" kindref="member">tlm_network_initiator_socket</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name)</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>tlm_base_initiator_socket&lt;0,<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if" kindref="compound">tlm_network_fw_transport_if</ref>&lt;TYPES&gt;,<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if" kindref="compound">tlm_network_bw_transport_if</ref>&lt;TYPES&gt;,<sp/>N,<sp/>POL&gt;(name)<sp/>{}</highlight></codeline>
+<codeline lineno="120" refid="structtlm_1_1nw_1_1tlm__network__initiator__socket_1a560b5114e08dbf3350c337d039a02e2c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__initiator__socket_1a560b5114e08dbf3350c337d039a02e2c" kindref="member">~tlm_network_initiator_socket</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="124" refid="structtlm_1_1nw_1_1tlm__network__initiator__socket_1a216863bf6a278c36011e880350db620f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__initiator__socket_1a216863bf6a278c36011e880350db620f" kindref="member">kind</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;tlm_network_initiator_socket&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="128" refid="structtlm_1_1nw_1_1tlm__network__initiator__socket_1a8290a731d4e784f122b10868afed6242" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>type_index<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__initiator__socket_1a8290a731d4e784f122b10868afed6242" kindref="member">get_protocol_types</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(TYPES);<sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>PHITWIDTH,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>CMDENUM,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES<sp/>=<sp/>tlm_network_baseprotocol_types,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sc_core::sc_port_policy<sp/>POL<sp/>=<sp/>sc_core::SC_ONE_OR_MORE_BOUND&gt;</highlight></codeline>
+<codeline lineno="139" refid="structtlm_1_1nw_1_1tlm__network__target__socket" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1nw_1_1tlm__network__target__socket_1ac06862d4b64aa2ad9bc43801f6539e31" kindref="member">tlm_network_target_socket</ref></highlight></codeline>
+<codeline lineno="140"><highlight class="normal">:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>::tlm::tlm_base_target_socket&lt;0,<sp/>tlm_network_fw_transport_if&lt;TYPES&gt;,<sp/>tlm_network_bw_transport_if&lt;TYPES&gt;,<sp/>N,<sp/>POL&gt;<sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">protocol_types<sp/>=<sp/>TYPES;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">transaction_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES::tlm_payload_type;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">phase_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES::tlm_phase_type;</highlight></codeline>
+<codeline lineno="150" refid="structtlm_1_1nw_1_1tlm__network__target__socket_1ac06862d4b64aa2ad9bc43801f6539e31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__target__socket_1ac06862d4b64aa2ad9bc43801f6539e31" kindref="member">tlm_network_target_socket</ref>()</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>tlm_base_target_socket&lt;0,<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if" kindref="compound">tlm_network_fw_transport_if</ref>&lt;TYPES&gt;,<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if" kindref="compound">tlm_network_bw_transport_if</ref>&lt;TYPES&gt;,<sp/>N,<sp/>POL&gt;()<sp/>{}</highlight></codeline>
+<codeline lineno="157" refid="structtlm_1_1nw_1_1tlm__network__target__socket_1a82b1a66f4d02efa0192c522af1e509a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__target__socket_1a82b1a66f4d02efa0192c522af1e509a0" kindref="member">tlm_network_target_socket</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name)</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>tlm_base_target_socket&lt;0,<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__fw__transport__if" kindref="compound">tlm_network_fw_transport_if</ref>&lt;TYPES&gt;,<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__bw__transport__if" kindref="compound">tlm_network_bw_transport_if</ref>&lt;TYPES&gt;,<sp/>N,<sp/>POL&gt;(name)<sp/>{}</highlight></codeline>
+<codeline lineno="162" refid="structtlm_1_1nw_1_1tlm__network__target__socket_1a9d8b41789027f3431d7817f4f8c18001" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1nw_1_1tlm__network__target__socket_1a9d8b41789027f3431d7817f4f8c18001" kindref="member">~tlm_network_target_socket</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166" refid="structtlm_1_1nw_1_1tlm__network__target__socket_1ada89f12cd8f051c08deb0451f21b0357" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__target__socket_1ada89f12cd8f051c08deb0451f21b0357" kindref="member">kind</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;tlm_network_target_socket&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="170" refid="structtlm_1_1nw_1_1tlm__network__target__socket_1aec042fc9135f3857936e7c1e30484f09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>type_index<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__target__socket_1aec042fc9135f3857936e7c1e30484f09" kindref="member">get_protocol_types</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(TYPES);<sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>nw</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacescc" kindref="compound">scc</ref><sp/>{</highlight></codeline>
+<codeline lineno="174" refid="structtlm_1_1scc_1_1tlm__mm__traits_3_01tlm_1_1nw_1_1tlm__network__baseprotocol__types_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1scc_1_1tlm__mm__traits" kindref="compound">tlm_mm_traits</ref>&lt;<ref refid="namespacetlm" kindref="compound">tlm</ref>::<ref refid="structtlm_1_1nw_1_1tlm__network__baseprotocol__types" kindref="compound">nw::tlm_network_baseprotocol_types</ref>&gt;<sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">mm_if_type<sp/>=<sp/><ref refid="classtlm_1_1nw_1_1tlm__base__mm__interface" kindref="compound">tlm::nw::tlm_base_mm_interface</ref>;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">payload_base<sp/>=<sp/><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base" kindref="compound">tlm::nw::tlm_network_payload_base</ref>;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>tlm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_TLM_NW_TLM_NETWORK_SOCKETS_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h"/>
+  </compounddef>
+</doxygen>

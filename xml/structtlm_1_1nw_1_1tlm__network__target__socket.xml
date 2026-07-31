@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1nw_1_1tlm__network__target__socket" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::nw::tlm_network_target_socket</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_base_target_socket&lt; 0, tlm_network_fw_transport_if&lt; tlm_network_baseprotocol_types &gt;, tlm_network_bw_transport_if&lt; tlm_network_baseprotocol_types &gt;, 1, sc_core::SC_ONE_OR_MORE_BOUND &gt;</basecompoundref>
+    <includes refid="tlm__network__sockets_8h" local="no">tlm_network_sockets.h</includes>
+    <templateparamlist>
+      <param>
+        <type>unsigned</type>
+        <declname>PHITWIDTH</declname>
+        <defname>PHITWIDTH</defname>
+      </param>
+      <param>
+        <type>typename CMDENUM</type>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval><ref refid="structtlm_1_1nw_1_1tlm__network__baseprotocol__types" kindref="compound">tlm_network_baseprotocol_types</ref></defval>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>N</declname>
+        <defname>N</defname>
+        <defval>1</defval>
+      </param>
+      <param>
+        <type>sc_core::sc_port_policy</type>
+        <declname>POL</declname>
+        <defname>POL</defname>
+        <defval>sc_core::SC_ONE_OR_MORE_BOUND</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structtlm_1_1nw_1_1tlm__network__target__socket_1a18116cf2259ed4879a251c90886e6ff2" prot="public" static="no">
+        <type>TYPES</type>
+        <definition>using tlm::nw::tlm_network_target_socket&lt; PHITWIDTH, CMDENUM, TYPES, N, POL &gt;::protocol_types =  TYPES</definition>
+        <argsstring></argsstring>
+        <name>protocol_types</name>
+        <qualifiedname>tlm::nw::tlm_network_target_socket::protocol_types</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="142" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtlm_1_1nw_1_1tlm__network__target__socket_1a80b2a4bd076432247df447e07f90526f" prot="public" static="no">
+        <type>typename TYPES::tlm_payload_type</type>
+        <definition>using tlm::nw::tlm_network_target_socket&lt; PHITWIDTH, CMDENUM, TYPES, N, POL &gt;::transaction_type =  typename TYPES::tlm_payload_type</definition>
+        <argsstring></argsstring>
+        <name>transaction_type</name>
+        <qualifiedname>tlm::nw::tlm_network_target_socket::transaction_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="143" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtlm_1_1nw_1_1tlm__network__target__socket_1a93583c2955371d7ed6cc5367cd03af54" prot="public" static="no">
+        <type>typename TYPES::tlm_phase_type</type>
+        <definition>using tlm::nw::tlm_network_target_socket&lt; PHITWIDTH, CMDENUM, TYPES, N, POL &gt;::phase_type =  typename TYPES::tlm_phase_type</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>tlm::nw::tlm_network_target_socket::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="144" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__target__socket_1ac06862d4b64aa2ad9bc43801f6539e31" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::nw::tlm_network_target_socket&lt; PHITWIDTH, CMDENUM, TYPES, N, POL &gt;::tlm_network_target_socket</definition>
+        <argsstring>()</argsstring>
+        <name>tlm_network_target_socket</name>
+        <qualifiedname>tlm::nw::tlm_network_target_socket::tlm_network_target_socket</qualifiedname>
+        <briefdescription>
+<para>Constructor with default name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes the <ref refid="structtlm_1_1nw_1_1tlm__network__target__socket" kindref="compound">tlm_network_target_socket</ref> object with a default name. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="150" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" bodystart="150" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__target__socket_1a82b1a66f4d02efa0192c522af1e509a0" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::nw::tlm_network_target_socket&lt; PHITWIDTH, CMDENUM, TYPES, N, POL &gt;::tlm_network_target_socket</definition>
+        <argsstring>(const char *name)</argsstring>
+        <name>tlm_network_target_socket</name>
+        <qualifiedname>tlm::nw::tlm_network_target_socket::tlm_network_target_socket</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Constructor with name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes the <ref refid="structtlm_1_1nw_1_1tlm__network__target__socket" kindref="compound">tlm_network_target_socket</ref> object with a default name. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="157" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" bodystart="157" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__target__socket_1a9d8b41789027f3431d7817f4f8c18001" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual tlm::nw::tlm_network_target_socket&lt; PHITWIDTH, CMDENUM, TYPES, N, POL &gt;::~tlm_network_target_socket</definition>
+        <argsstring>()=default</argsstring>
+        <name>~tlm_network_target_socket</name>
+        <qualifiedname>tlm::nw::tlm_network_target_socket::~tlm_network_target_socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>virtual destructor of the <ref refid="structtlm_1_1nw_1_1tlm__network__target__socket" kindref="compound">tlm_network_target_socket</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="162" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__target__socket_1ada89f12cd8f051c08deb0451f21b0357" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>virtual const char * tlm::nw::tlm_network_target_socket&lt; PHITWIDTH, CMDENUM, TYPES, N, POL &gt;::kind</definition>
+        <argsstring>() const</argsstring>
+        <name>kind</name>
+        <qualifiedname>tlm::nw::tlm_network_target_socket::kind</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Provides the <ref refid="structtlm_1_1nw_1_1tlm__network__target__socket_1ada89f12cd8f051c08deb0451f21b0357" kindref="member">kind()</ref> method to retrieve the socket&apos;s kind as string. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="166" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" bodystart="166" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__target__socket_1aec042fc9135f3857936e7c1e30484f09" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>type_index</type>
+        <definition>virtual type_index tlm::nw::tlm_network_target_socket&lt; PHITWIDTH, CMDENUM, TYPES, N, POL &gt;::get_protocol_types</definition>
+        <argsstring>() const</argsstring>
+        <name>get_protocol_types</name>
+        <qualifiedname>tlm::nw::tlm_network_target_socket::get_protocol_types</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the type index of the protocol types associated with this socket. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="170" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" bodystart="170" bodyend="170"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Definition of the <ref refid="structtlm_1_1nw_1_1tlm__network__target__socket" kindref="compound">tlm_network_target_socket</ref> class. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This socket is used to accept transactions from an initiator. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::nw::tlm_network_target_socket&lt; PHITWIDTH, CMDENUM, TYPES, N, POL &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__target__socket"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_base_target_socket&lt; 0, tlm_network_fw_transport_if&lt; tlm_network_baseprotocol_types &gt;, tlm_network_bw_transport_if&lt; tlm_network_baseprotocol_types &gt;, 1, sc_core::SC_ONE_OR_MORE_BOUND &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::nw::tlm_network_target_socket&lt; PHITWIDTH, CMDENUM, TYPES, N, POL &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__target__socket"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_base_target_socket&lt; 0, tlm_network_fw_transport_if&lt; tlm_network_baseprotocol_types &gt;, tlm_network_bw_transport_if&lt; tlm_network_baseprotocol_types &gt;, 1, sc_core::SC_ONE_OR_MORE_BOUND &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" line="139" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_sockets.h" bodystart="140" bodyend="171"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1nw_1_1tlm__network__target__socket_1aec042fc9135f3857936e7c1e30484f09" prot="public" virt="virtual"><scope>tlm::nw::tlm_network_target_socket</scope><name>get_protocol_types</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__target__socket_1ada89f12cd8f051c08deb0451f21b0357" prot="public" virt="virtual"><scope>tlm::nw::tlm_network_target_socket</scope><name>kind</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__target__socket_1a93583c2955371d7ed6cc5367cd03af54" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_target_socket</scope><name>phase_type</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__target__socket_1a18116cf2259ed4879a251c90886e6ff2" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_target_socket</scope><name>protocol_types</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__target__socket_1ac06862d4b64aa2ad9bc43801f6539e31" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_target_socket</scope><name>tlm_network_target_socket</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__target__socket_1a82b1a66f4d02efa0192c522af1e509a0" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_target_socket</scope><name>tlm_network_target_socket</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__target__socket_1a80b2a4bd076432247df447e07f90526f" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_target_socket</scope><name>transaction_type</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__target__socket_1a9d8b41789027f3431d7817f4f8c18001" prot="public" virt="virtual"><scope>tlm::nw::tlm_network_target_socket</scope><name>~tlm_network_target_socket</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

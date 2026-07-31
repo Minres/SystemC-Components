@@ -1,0 +1,601 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1memory" kind="class" language="C++" prot="public">
+    <compoundname>scc::memory</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <derivedcompoundref refid="classscc_1_1ticking__clock" prot="public" virt="non-virtual">scc::ticking_clock&lt; memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, true &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classscc_1_1tickless__clock" prot="public" virt="non-virtual">scc::tickless_clock&lt; memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, false &gt; &gt;</derivedcompoundref>
+    <includes refid="memory_8h" local="no">memory.h</includes>
+    <innerclass refid="structscc_1_1memory_1_1host__map__entry" prot="protected">scc::memory::host_map_entry</innerclass>
+    <templateparamlist>
+      <param>
+        <type>unsigned long long</type>
+        <declname>SIZE</declname>
+        <defname>SIZE</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>BUSWIDTH</declname>
+        <defname>BUSWIDTH</defname>
+        <defval>LT</defval>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>PAGE_ADDR_BITS</declname>
+        <defname>PAGE_ADDR_BITS</defname>
+        <defval>24</defval>
+      </param>
+      <param>
+        <type>bool</type>
+        <declname>USE_CYCLES</declname>
+        <defname>USE_CYCLES</defname>
+        <defval>false</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classscc_1_1memory_1af09e9383c739cbdcb7773be3857e31a2" prot="public" static="no">
+        <type>typename <ref refid="structscc_1_1delay__spec__type" kindref="compound">delay_spec_type</ref>&lt; USE_CYCLES &gt;::type</type>
+        <definition>using scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::delay_type =  typename delay_spec_type&lt;USE_CYCLES&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>delay_type</name>
+        <qualifiedname>scc::memory::delay_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="75" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1memory_1ade668d926bf053631be1c09897f8f4f6" prot="public" static="no">
+        <type><ref refid="classscc_1_1memory_1af75e83ad446e375408b7506def7e6105" kindref="member">memory</ref>&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;</type>
+        <definition>using scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::this_class =  memory&lt;SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES&gt;</definition>
+        <argsstring></argsstring>
+        <name>this_class</name>
+        <qualifiedname>scc::memory::this_class</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="76" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classscc_1_1memory_1a42724399568f19d258e75b8ffc8afaf4" prot="public" static="no" mutable="no">
+        <type><ref refid="classtlm_1_1scc_1_1target__mixin" kindref="compound">tlm::scc::target_mixin</ref>&lt; tlm::tlm_target_socket&lt; BUSWIDTH &gt; &gt;</type>
+        <definition>tlm::scc::target_mixin&lt;tlm::tlm_target_socket&lt;BUSWIDTH&gt; &gt; scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::target</definition>
+        <argsstring></argsstring>
+        <name>target</name>
+        <qualifiedname>scc::memory::target</qualifiedname>
+        <initializer>{&quot;ts&quot;}</initializer>
+        <briefdescription>
+<para>the target socket to connect to TLM </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="79" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="79" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1memory_1a1f7662b73f068f2f95eb27fcd4278f5a" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::allow_dmi</definition>
+        <argsstring></argsstring>
+        <name>allow_dmi</name>
+        <qualifiedname>scc::memory::allow_dmi</qualifiedname>
+        <initializer>{&quot;allow_dmi&quot;, true, &quot;Allow DMI accesses to this <ref refid="classscc_1_1memory_1af75e83ad446e375408b7506def7e6105" kindref="member">memory</ref> if set&quot;}</initializer>
+        <briefdescription>
+<para>allow DMI accesses </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="118" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="118" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1memory_1a92625153fa99f37f97cd115a40fed337" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; delay_type &gt;</type>
+        <definition>cci::cci_param&lt;delay_type&gt; scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::rd_resp_delay</definition>
+        <argsstring></argsstring>
+        <name>rd_resp_delay</name>
+        <qualifiedname>scc::memory::rd_resp_delay</qualifiedname>
+        <initializer>{&quot;rd_resp_delay&quot;, <ref refid="structscc_1_1delay__spec__type" kindref="compound">delay_spec_type</ref>&lt;USE_CYCLES&gt;::get_default_val()}</initializer>
+        <briefdescription>
+<para>read response delay in cycles if USE_CYCLES==true else in sc_core::sc_time </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="122" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="122" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1memory_1ac77708eadfbe7887bf4c192e5c53d101" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; delay_type &gt;</type>
+        <definition>cci::cci_param&lt;delay_type&gt; scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::wr_resp_delay</definition>
+        <argsstring></argsstring>
+        <name>wr_resp_delay</name>
+        <qualifiedname>scc::memory::wr_resp_delay</qualifiedname>
+        <initializer>{&quot;wr_resp_delay&quot;, <ref refid="structscc_1_1delay__spec__type" kindref="compound">delay_spec_type</ref>&lt;USE_CYCLES&gt;::get_default_val()}</initializer>
+        <briefdescription>
+<para>write response delay in cycles if USE_CYCLES==true else in sc_core::sc_time </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="126" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="126" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1memory_1a96fb4d00c25b5da45c37abc3f74c0e5b" prot="public" static="no" mutable="no">
+        <type>std::function&lt; int(this_class &amp;, tlm::tlm_generic_payload &amp;, sc_core::sc_time &amp;delay)&gt;</type>
+        <definition>std::function&lt;int(this_class&amp;, tlm::tlm_generic_payload&amp;, sc_core::sc_time&amp; delay)&gt; scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::operation_cb</definition>
+        <argsstring></argsstring>
+        <name>operation_cb</name>
+        <qualifiedname>scc::memory::operation_cb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="175" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1memory_1a644b062d972ee986b79c07a7b6bdd9f6" prot="public" static="no" mutable="no">
+        <type>std::function&lt; bool(this_class &amp;, tlm::tlm_generic_payload &amp;, tlm::tlm_dmi &amp;)&gt;</type>
+        <definition>std::function&lt;bool(this_class&amp;, tlm::tlm_generic_payload&amp;, tlm::tlm_dmi&amp;)&gt; scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::dmi_cb</definition>
+        <argsstring></argsstring>
+        <name>dmi_cb</name>
+        <qualifiedname>scc::memory::dmi_cb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="176" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" prot="protected" static="no" mutable="no">
+        <type><ref refid="classutil_1_1sparse__array" kindref="compound">util::sparse_array</ref>&lt; uint8_t, SIZE, PAGE_ADDR_BITS &gt;</type>
+        <definition>util::sparse_array&lt;uint8_t, SIZE, PAGE_ADDR_BITS&gt; scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::mem</definition>
+        <argsstring></argsstring>
+        <name>mem</name>
+        <qualifiedname>scc::memory::mem</qualifiedname>
+        <briefdescription>
+<para>the real memory structure </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="157" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1memory_1aa81912512aab378026ed6cfc1c24429e" prot="protected" static="no" mutable="no">
+        <type><ref refid="classutil_1_1range__lut" kindref="compound">util::range_lut</ref>&lt; <ref refid="structscc_1_1memory_1_1host__map__entry" kindref="compound">host_map_entry</ref> &gt;</type>
+        <definition>util::range_lut&lt;host_map_entry&gt; scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::host_mem_lut</definition>
+        <argsstring></argsstring>
+        <name>host_mem_lut</name>
+        <qualifiedname>scc::memory::host_mem_lut</qualifiedname>
+        <initializer>{<ref refid="structscc_1_1memory_1_1host__map__entry" kindref="compound">host_map_entry</ref>{nullptr, 0, 0}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="165" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="165" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1memory_1a6740ec33aa4a52002b6f1d9f03b471ae" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::clk_period</definition>
+        <argsstring></argsstring>
+        <name>clk_period</name>
+        <qualifiedname>scc::memory::clk_period</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="168" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1memory_1af75e83ad446e375408b7506def7e6105" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::memory</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm)</argsstring>
+        <name>memory</name>
+        <qualifiedname>scc::memory::memory</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>constructor with explicit instance name</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nm</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+implementation details /////////////////////////////////////////////////////////////////////////// </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="85" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="203" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1memory_1a9e95d3ec25322c020273b305aea7242d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::set_operation_callback</definition>
+        <argsstring>(std::function&lt; int(memory&lt; SIZE, BUSWIDTH &gt; &amp;, tlm::tlm_generic_payload &amp;, sc_core::sc_time &amp;delay)&gt; cb)</argsstring>
+        <name>set_operation_callback</name>
+        <qualifiedname>scc::memory::set_operation_callback</qualifiedname>
+        <param>
+          <type>std::function&lt; int(<ref refid="classscc_1_1memory_1af75e83ad446e375408b7506def7e6105" kindref="member">memory</ref>&lt; SIZE, BUSWIDTH &gt; &amp;, tlm::tlm_generic_payload &amp;, sc_core::sc_time &amp;delay)&gt;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>allows to register a callback or functor being invoked upon an access to the memory </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the callback function or functor </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="104" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="104" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1memory_1a0109255ac77e8ceeb8c1a3a22bc3373b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::set_dmi_callback</definition>
+        <argsstring>(std::function&lt; bool(memory&lt; SIZE, BUSWIDTH &gt; &amp;, tlm::tlm_generic_payload &amp;, tlm::tlm_dmi &amp;)&gt; cb)</argsstring>
+        <name>set_dmi_callback</name>
+        <qualifiedname>scc::memory::set_dmi_callback</qualifiedname>
+        <param>
+          <type>std::function&lt; bool(<ref refid="classscc_1_1memory_1af75e83ad446e375408b7506def7e6105" kindref="member">memory</ref>&lt; SIZE, BUSWIDTH &gt; &amp;, tlm::tlm_generic_payload &amp;, tlm::tlm_dmi &amp;)&gt;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>allows to register a callback or functor being invoked upon a direct memory access (DMI) to the memory </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the callback function or functor </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="113" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="113" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1memory_1aa53e0821463b77bf9efd099c0d0eb2e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::map_host_memory</definition>
+        <argsstring>(uint64_t base, uint64_t size, uint8_t *ptr)</argsstring>
+        <name>map_host_memory</name>
+        <qualifiedname>scc::memory::map_host_memory</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+<para>maps a given memory into the address range of the TLM memory </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>base address where the memory shall be mapped </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>size of the memory range to map </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the mapped host memory </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="135" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="135" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1memory_1a60a1a8e55b2b351fa39a6fc6fa4dcbeb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::unmap_host_memory</definition>
+        <argsstring>(uint64_t base, uint64_t size)</argsstring>
+        <name>unmap_host_memory</name>
+        <qualifiedname>scc::memory::unmap_host_memory</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>unmpas a host memory mapped into the address range of the TLM memory </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>base address where the memory shall be mapped </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>size of the memory range to map </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="149" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="149" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1memory_1a1435f2eca492121ef54061cf37841727" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::handle_operation</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;trans, sc_core::sc_time &amp;delay)</argsstring>
+        <name>handle_operation</name>
+        <qualifiedname>scc::memory::handle_operation</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>! handle the memory operation independent on interface function used </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="172" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="232" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1memory_1ada3883568c630164cf8680368ba975f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::handle_dmi</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;gp, tlm::tlm_dmi &amp;dmi_data)</argsstring>
+        <name>handle_dmi</name>
+        <qualifiedname>scc::memory::handle_dmi</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>gp</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_dmi &amp;</type>
+          <declname>dmi_data</declname>
+        </param>
+        <briefdescription>
+<para>handle the dmi functionality </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="174" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="337" bodyend="357"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classscc_1_1memory_1a6dc9968aee3b22a81fb4112b9bf0fc0d" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned long long</type>
+        <definition>static constexpr unsigned long long scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::getPageSize</definition>
+        <argsstring>()</argsstring>
+        <name>getPageSize</name>
+        <qualifiedname>scc::memory::getPageSize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="91" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="91" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1memory_1a1cbf76da779307e937eb3d2276023f9f" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned long long</type>
+        <definition>static constexpr unsigned long long scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::getSize</definition>
+        <argsstring>()</argsstring>
+        <name>getSize</name>
+        <qualifiedname>scc::memory::getSize</qualifiedname>
+        <briefdescription>
+<para>return the size of the array </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="97" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="97" bodyend="97"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classscc_1_1memory_1ab602a90240740b09936b2ad4295e2eee" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::set_clock_period</definition>
+        <argsstring>(sc_core::sc_time period)</argsstring>
+        <name>set_clock_period</name>
+        <qualifiedname>scc::memory::set_clock_period</qualifiedname>
+        <param>
+          <type>sc_core::sc_time</type>
+          <declname>period</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="167" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="167" bodyend="167"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>simple TLM2.0 LT memory model </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This model uses the <ref refid="classutil_1_1sparse__array" kindref="compound">util::sparse_array</ref> as backing store. Therefore it can have an arbitrary size since only pages for accessed addresses are allocated. it is possible to map specific host memory ranges to a target memory range. For this the <ref refid="structscc_1_1host__mem__map__extension" kindref="compound">scc::host_mem_map_extension</ref> hs to be used in conjunction with the TLM_IGNORE_COMMAND. The extension carries the pointer to the host memory to be used while the generic payload address and length indicate the size of the memory block</para>
+<para>TODO: add some more parameters to configure allowed access types (rw, read only)</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>SIZE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>size of the memery </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>BUSWIDTH</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>bus width of the socket </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;</label>
+        <link refid="classscc_1_1memory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scc::ticking_clock&lt; memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, true &gt; &gt;</label>
+        <link refid="classscc_1_1ticking__clock"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>scc::tickless_clock&lt; memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, false &gt; &gt;</label>
+        <link refid="classscc_1_1tickless__clock"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="7">
+        <label>scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::host_map_entry</label>
+        <link refid="structscc_1_1memory_1_1host__map__entry"/>
+      </node>
+      <node id="1">
+        <label>scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;</label>
+        <link refid="classscc_1_1memory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>target</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>mem</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>host_mem_lut</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::scc::target_mixin&lt; tlm::tlm_target_socket&lt; LT &gt; &gt;</label>
+        <link refid="classtlm_1_1scc_1_1target__mixin"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_target_socket&lt; LT &gt;</label>
+      </node>
+      <node id="6">
+        <label>util::range_lut&lt; scc::memory::host_map_entry &gt;</label>
+        <link refid="classutil_1_1range__lut"/>
+        <childnode refid="7" relation="usage">
+          <edgelabel>null_entry</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>util::sparse_array&lt; uint8_t, SIZE, 24 &gt;</label>
+        <link refid="classutil_1_1sparse__array"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="73" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="73" bodyend="177"/>
+    <listofallmembers>
+      <member refid="classscc_1_1memory_1a1f7662b73f068f2f95eb27fcd4278f5a" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>allow_dmi</name></member>
+      <member refid="classscc_1_1memory_1a6740ec33aa4a52002b6f1d9f03b471ae" prot="protected" virt="non-virtual"><scope>scc::memory</scope><name>clk_period</name></member>
+      <member refid="classscc_1_1memory_1af09e9383c739cbdcb7773be3857e31a2" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>delay_type</name></member>
+      <member refid="classscc_1_1memory_1a644b062d972ee986b79c07a7b6bdd9f6" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>dmi_cb</name></member>
+      <member refid="classscc_1_1memory_1a6dc9968aee3b22a81fb4112b9bf0fc0d" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>getPageSize</name></member>
+      <member refid="classscc_1_1memory_1a1cbf76da779307e937eb3d2276023f9f" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>getSize</name></member>
+      <member refid="classscc_1_1memory_1ada3883568c630164cf8680368ba975f0" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>handle_dmi</name></member>
+      <member refid="classscc_1_1memory_1a1435f2eca492121ef54061cf37841727" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>handle_operation</name></member>
+      <member refid="classscc_1_1memory_1aa81912512aab378026ed6cfc1c24429e" prot="protected" virt="non-virtual"><scope>scc::memory</scope><name>host_mem_lut</name></member>
+      <member refid="classscc_1_1memory_1aa53e0821463b77bf9efd099c0d0eb2e9" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>map_host_memory</name></member>
+      <member refid="classscc_1_1memory_1a24e59ce53906b572c2a6280faf941bf6" prot="protected" virt="non-virtual"><scope>scc::memory</scope><name>mem</name></member>
+      <member refid="classscc_1_1memory_1af75e83ad446e375408b7506def7e6105" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>memory</name></member>
+      <member refid="classscc_1_1memory_1a96fb4d00c25b5da45c37abc3f74c0e5b" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>operation_cb</name></member>
+      <member refid="classscc_1_1memory_1a92625153fa99f37f97cd115a40fed337" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>rd_resp_delay</name></member>
+      <member refid="classscc_1_1memory_1ab602a90240740b09936b2ad4295e2eee" prot="protected" virt="non-virtual"><scope>scc::memory</scope><name>set_clock_period</name></member>
+      <member refid="classscc_1_1memory_1a0109255ac77e8ceeb8c1a3a22bc3373b" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>set_dmi_callback</name></member>
+      <member refid="classscc_1_1memory_1a9e95d3ec25322c020273b305aea7242d" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>set_operation_callback</name></member>
+      <member refid="classscc_1_1memory_1a42724399568f19d258e75b8ffc8afaf4" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>target</name></member>
+      <member refid="classscc_1_1memory_1ade668d926bf053631be1c09897f8f4f6" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>this_class</name></member>
+      <member refid="classscc_1_1memory_1a60a1a8e55b2b351fa39a6fc6fa4dcbeb" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>unmap_host_memory</name></member>
+      <member refid="classscc_1_1memory_1ac77708eadfbe7887bf4c192e5c53d101" prot="public" virt="non-virtual"><scope>scc::memory</scope><name>wr_resp_delay</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::lwtr::lwtr4tlm2_extension_registry</compoundname>
+    <includes refid="lwtr4tlm2__extension__registry_8h" local="no">lwtr4tlm2_extension_registry.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+        <defval>tlm::tlm_base_protocol_types</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry_1a7584b31e6523cd92e73885af84456eb2" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if" kindref="compound">lwtr4tlm2_extension_registry_if</ref>&lt; TYPES &gt; * &gt;</type>
+        <definition>std::vector&lt;lwtr4tlm2_extension_registry_if&lt;TYPES&gt;*&gt; tlm::scc::lwtr::lwtr4tlm2_extension_registry&lt; TYPES &gt;::ext_rec</definition>
+        <argsstring></argsstring>
+        <name>ext_rec</name>
+        <qualifiedname>tlm::scc::lwtr::lwtr4tlm2_extension_registry::ext_rec</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" line="96" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" bodystart="96" bodyend="96"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry_1a2fdc59d1280c61fe7b9f0858a22926d0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>lwtr4tlm2_extension_registry &amp;</type>
+        <definition>static lwtr4tlm2_extension_registry &amp; tlm::scc::lwtr::lwtr4tlm2_extension_registry&lt; TYPES &gt;::inst</definition>
+        <argsstring>()</argsstring>
+        <name>inst</name>
+        <qualifiedname>tlm::scc::lwtr::lwtr4tlm2_extension_registry::inst</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" line="59" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" bodystart="59" bodyend="62"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry_1aa613b204ded73da3cf1f4a822a73e5ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::lwtr::lwtr4tlm2_extension_registry&lt; TYPES &gt;::register_ext_rec</definition>
+        <argsstring>(size_t id, lwtr4tlm2_extension_registry_if&lt; TYPES &gt; *ext)</argsstring>
+        <name>register_ext_rec</name>
+        <qualifiedname>tlm::scc::lwtr::lwtr4tlm2_extension_registry::register_ext_rec</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if" kindref="compound">lwtr4tlm2_extension_registry_if</ref>&lt; TYPES &gt; *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" line="64" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" bodystart="64" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry_1a665e4ada0a262da3740e98410efc021f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if" kindref="compound">lwtr4tlm2_extension_registry_if</ref>&lt; TYPES &gt; * &gt; &amp;</type>
+        <definition>const std::vector&lt; lwtr4tlm2_extension_registry_if&lt; TYPES &gt; * &gt; &amp; tlm::scc::lwtr::lwtr4tlm2_extension_registry&lt; TYPES &gt;::get</definition>
+        <argsstring>()</argsstring>
+        <name>get</name>
+        <qualifiedname>tlm::scc::lwtr::lwtr4tlm2_extension_registry::get</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" line="74" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry_1a96ada68587860b4ac2339d7a7521bc45" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::lwtr::lwtr4tlm2_extension_registry&lt; TYPES &gt;::recordBeginTx</definition>
+        <argsstring>(size_t id, ::lwtr::tx_handle &amp;handle, typename TYPES::tlm_payload_type &amp;trans)</argsstring>
+        <name>recordBeginTx</name>
+        <qualifiedname>tlm::scc::lwtr::lwtr4tlm2_extension_registry::recordBeginTx</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>::lwtr::tx_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" line="76" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" bodystart="76" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry_1aa74bd3465fe203a0d49a9bd5e8aa4dd9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::lwtr::lwtr4tlm2_extension_registry&lt; TYPES &gt;::recordEndTx</definition>
+        <argsstring>(size_t id, ::lwtr::tx_handle &amp;handle, typename TYPES::tlm_payload_type &amp;trans)</argsstring>
+        <name>recordEndTx</name>
+        <qualifiedname>tlm::scc::lwtr::lwtr4tlm2_extension_registry::recordEndTx</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>::lwtr::tx_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+<para>recording attributes in extensions at the end, it is intended to be overload as it does nothing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" line="85" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" bodystart="85" bodyend="88"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry_1a6171d0d95512a0a6236d8cb32f3a2b73" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::lwtr::lwtr4tlm2_extension_registry&lt; TYPES &gt;::lwtr4tlm2_extension_registry</definition>
+        <argsstring>()=default</argsstring>
+        <name>lwtr4tlm2_extension_registry</name>
+        <qualifiedname>tlm::scc::lwtr::lwtr4tlm2_extension_registry::lwtr4tlm2_extension_registry</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" line="91" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry_1a567748b076dde400669053649c5be9c4" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::lwtr::lwtr4tlm2_extension_registry&lt; TYPES &gt;::~lwtr4tlm2_extension_registry</definition>
+        <argsstring>()</argsstring>
+        <name>~lwtr4tlm2_extension_registry</name>
+        <qualifiedname>tlm::scc::lwtr::lwtr4tlm2_extension_registry::~lwtr4tlm2_extension_registry</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" line="92" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" bodystart="92" bodyend="95"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The TLM transaction extensions recorder registry. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This registry is used by the TLM transaction recorder. It can be used to register custom recorder functionality to also record the payload extensions </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" line="57" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" bodystart="57" bodyend="97"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry_1a7584b31e6523cd92e73885af84456eb2" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::lwtr4tlm2_extension_registry</scope><name>ext_rec</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry_1a665e4ada0a262da3740e98410efc021f" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::lwtr4tlm2_extension_registry</scope><name>get</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry_1a2fdc59d1280c61fe7b9f0858a22926d0" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::lwtr4tlm2_extension_registry</scope><name>inst</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry_1a6171d0d95512a0a6236d8cb32f3a2b73" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::lwtr4tlm2_extension_registry</scope><name>lwtr4tlm2_extension_registry</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry_1a96ada68587860b4ac2339d7a7521bc45" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::lwtr4tlm2_extension_registry</scope><name>recordBeginTx</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry_1aa74bd3465fe203a0d49a9bd5e8aa4dd9" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::lwtr4tlm2_extension_registry</scope><name>recordEndTx</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry_1aa613b204ded73da3cf1f4a822a73e5ee" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::lwtr4tlm2_extension_registry</scope><name>register_ext_rec</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry_1a567748b076dde400669053649c5be9c4" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::lwtr4tlm2_extension_registry</scope><name>~lwtr4tlm2_extension_registry</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

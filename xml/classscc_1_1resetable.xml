@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1resetable" kind="class" language="C++" prot="public">
+    <compoundname>scc::resetable</compoundname>
+    <derivedcompoundref refid="classscc_1_1tlm__target__bfs__register__base" prot="public" virt="non-virtual">scc::tlm_target_bfs_register_base&lt; derived_t, use_URID &gt;</derivedcompoundref>
+    <includes refid="resetable_8h" local="no">resetable.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classscc_1_1resetable_1a8658736cab500724a41a5ad90b280903" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classscc_1_1resource__access__if" kindref="compound">resource_access_if</ref> * &gt;</type>
+        <definition>std::vector&lt;resource_access_if*&gt; scc::resetable::resources</definition>
+        <argsstring></argsstring>
+        <name>resources</name>
+        <qualifiedname>scc::resetable::resources</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resetable.h" line="71" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resetable.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1resetable_1ad2339e261c4368a444cc76f8cb70f69a" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::resetable::_in_reset</definition>
+        <argsstring></argsstring>
+        <name>_in_reset</name>
+        <qualifiedname>scc::resetable::_in_reset</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resetable.h" line="72" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resetable.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1resetable_1a6ec2a1bc4f69c3c3f9e1692b282b46b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual scc::resetable::~resetable</definition>
+        <argsstring>()=default</argsstring>
+        <name>~resetable</name>
+        <qualifiedname>scc::resetable::~resetable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resetable.h" line="34" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1resetable_1af63d28b09f5a7a8a13026970cedc9fee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void scc::resetable::reset_start</definition>
+        <argsstring>()</argsstring>
+        <name>reset_start</name>
+        <qualifiedname>scc::resetable::reset_start</qualifiedname>
+        <briefdescription>
+<para>distributes the begin of the reset to all registered components and set the reset state </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resetable.h" line="40" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resetable.h" bodystart="40" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1resetable_1a08e6d77fb61068a3ae5df6b1634c718c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void scc::resetable::reset_stop</definition>
+        <argsstring>()</argsstring>
+        <name>reset_stop</name>
+        <qualifiedname>scc::resetable::reset_stop</qualifiedname>
+        <briefdescription>
+<para>distributes the end of the reset to all registered components and finishes the reset state </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resetable.h" line="50" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resetable.h" bodystart="50" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1resetable_1a9b7574e6b9bdad38d37fe65df13b67fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::resetable::in_reset</definition>
+        <argsstring>()</argsstring>
+        <name>in_reset</name>
+        <qualifiedname>scc::resetable::in_reset</qualifiedname>
+        <briefdescription>
+<para>get the current state of this reset domain </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if reset state is active </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resetable.h" line="61" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resetable.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1resetable_1a828a6d1d71fedb05d4613df1d1d27f73" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::resetable::register_resource</definition>
+        <argsstring>(resource_access_if *res)</argsstring>
+        <name>register_resource</name>
+        <qualifiedname>scc::resetable::register_resource</qualifiedname>
+        <param>
+          <type><ref refid="classscc_1_1resource__access__if" kindref="compound">resource_access_if</ref> *</type>
+          <declname>res</declname>
+        </param>
+        <briefdescription>
+<para>register a resource with this reset domain </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>res</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the resource belonging to this reset domain </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resetable.h" line="68" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resetable.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>base class for components having a reset </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class forms a reset domain which is a set of components (sc_modules) having the same reset. sc_modules using sc_registers should inherit from this class as well so that all registers get the respective reset. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>scc::resetable</label>
+        <link refid="classscc_1_1resetable"/>
+      </node>
+      <node id="2">
+        <label>scc::tlm_target_bfs_register_base&lt; derived_t, use_URID &gt;</label>
+        <link refid="classscc_1_1tlm__target__bfs__register__base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resetable.h" line="32" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resetable.h" bodystart="32" bodyend="73"/>
+    <listofallmembers>
+      <member refid="classscc_1_1resetable_1ad2339e261c4368a444cc76f8cb70f69a" prot="protected" virt="non-virtual"><scope>scc::resetable</scope><name>_in_reset</name></member>
+      <member refid="classscc_1_1resetable_1a9b7574e6b9bdad38d37fe65df13b67fc" prot="public" virt="non-virtual"><scope>scc::resetable</scope><name>in_reset</name></member>
+      <member refid="classscc_1_1resetable_1a828a6d1d71fedb05d4613df1d1d27f73" prot="public" virt="non-virtual"><scope>scc::resetable</scope><name>register_resource</name></member>
+      <member refid="classscc_1_1resetable_1af63d28b09f5a7a8a13026970cedc9fee" prot="public" virt="virtual"><scope>scc::resetable</scope><name>reset_start</name></member>
+      <member refid="classscc_1_1resetable_1a08e6d77fb61068a3ae5df6b1634c718c" prot="public" virt="virtual"><scope>scc::resetable</scope><name>reset_stop</name></member>
+      <member refid="classscc_1_1resetable_1a8658736cab500724a41a5ad90b280903" prot="protected" virt="non-virtual"><scope>scc::resetable</scope><name>resources</name></member>
+      <member refid="classscc_1_1resetable_1a6ec2a1bc4f69c3c3f9e1692b282b46b9" prot="public" virt="virtual"><scope>scc::resetable</scope><name>~resetable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

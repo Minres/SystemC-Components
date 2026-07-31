@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="sc__clock__ext_8h" kind="file" language="C++">
+    <compoundname>sc_clock_ext.h</compoundname>
+    <includes local="no">cci_configuration</includes>
+    <includes local="no">sysc/communication/sc_clock.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h</label>
+        <link refid="sc__clock__ext_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cci_configuration</label>
+      </node>
+      <node id="3">
+        <label>sysc/communication/sc_clock.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structscc_1_1sc__clock__ext" prot="public">scc::sc_clock_ext</innerclass>
+    <innernamespace refid="namespacescc">scc</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2022<sp/>MINRES<sp/>Technologies<sp/>GmbH</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SCC_SC_CLOCK_EXT_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SCC_SC_CLOCK_EXT_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cci_configuration&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sysc/communication/sc_clock.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacescc" kindref="compound">scc</ref><sp/>{</highlight></codeline>
+<codeline lineno="36" refid="structscc_1_1sc__clock__ext" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">sc_clock_ext<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>sc_core::sc_clock<sp/>{</highlight></codeline>
+<codeline lineno="42" refid="structscc_1_1sc__clock__ext_1a66d153b247dd3829a72ee0059aa67ce4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param&lt;sc_core::sc_time&gt;<sp/><ref refid="structscc_1_1sc__clock__ext_1a66d153b247dd3829a72ee0059aa67ce4" kindref="member">period</ref>;</highlight></codeline>
+<codeline lineno="48" refid="structscc_1_1sc__clock__ext_1ab4ea1e1db2fd87ed23c736406e45f3be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param&lt;double&gt;<sp/><ref refid="structscc_1_1sc__clock__ext_1ab4ea1e1db2fd87ed23c736406e45f3be" kindref="member">duty_cycle</ref>;</highlight></codeline>
+<codeline lineno="54" refid="structscc_1_1sc__clock__ext_1afa74a2dc0d821ce5003e8b5b50a44d04" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param&lt;sc_core::sc_time&gt;<sp/><ref refid="structscc_1_1sc__clock__ext_1afa74a2dc0d821ce5003e8b5b50a44d04" kindref="member">initial_delay</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_clock_ext(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name_,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sc_core::sc_time&amp;<sp/>period_,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>duty_cycle_<sp/>=<sp/>0.5,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sc_core::sc_time&amp;<sp/>start_time_<sp/>=<sp/>sc_core::SC_ZERO_TIME,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>posedge_first_<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>sc_core::sc_clock(name_,<sp/>period_,<sp/>duty_cycle_,<sp/>start_time_,<sp/>posedge_first_)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/><ref refid="structscc_1_1sc__clock__ext_1a66d153b247dd3829a72ee0059aa67ce4" kindref="member">period</ref>(get_cci_name(name_,<sp/></highlight><highlight class="stringliteral">&quot;period&quot;</highlight><highlight class="normal">),<sp/>period_,<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>period<sp/>of<sp/>the<sp/>generated<sp/>clock&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/><ref refid="structscc_1_1sc__clock__ext_1ab4ea1e1db2fd87ed23c736406e45f3be" kindref="member">duty_cycle</ref>(get_cci_name(name_,<sp/></highlight><highlight class="stringliteral">&quot;duty_cycle&quot;</highlight><highlight class="normal">),<sp/>duty_cycle_,<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>duty<sp/>cycle<sp/>of<sp/>the<sp/>generated<sp/>clock&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/><ref refid="structscc_1_1sc__clock__ext_1afa74a2dc0d821ce5003e8b5b50a44d04" kindref="member">initial_delay</ref>(get_cci_name(name_,<sp/></highlight><highlight class="stringliteral">&quot;start_time&quot;</highlight><highlight class="normal">),<sp/>start_time_,<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>start<sp/>time<sp/>of<sp/>the<sp/>generated<sp/>clock&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>period.register_post_write_callback(&amp;sc_clock_ext::period_write_callback,this);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="structscc_1_1sc__clock__ext" kindref="compound">~sc_clock_ext</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>end_of_elaboration()</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>init(<ref refid="structscc_1_1sc__clock__ext_1a66d153b247dd3829a72ee0059aa67ce4" kindref="member">period</ref>.get_value(),<sp/><ref refid="structscc_1_1sc__clock__ext_1ab4ea1e1db2fd87ed23c736406e45f3be" kindref="member">duty_cycle</ref>.get_value(),<sp/><ref refid="structscc_1_1sc__clock__ext_1afa74a2dc0d821ce5003e8b5b50a44d04" kindref="member">initial_delay</ref>.get_value(),<sp/>m_posedge_first);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="structscc_1_1sc__clock__ext_1afa74a2dc0d821ce5003e8b5b50a44d04" kindref="member">initial_delay</ref>.get_value()<sp/>!=<sp/>m_start_time)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(m_posedge_first)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_next_posedge_event.cancel();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_next_posedge_event.notify(<ref refid="structscc_1_1sc__clock__ext_1afa74a2dc0d821ce5003e8b5b50a44d04" kindref="member">initial_delay</ref>.get_value());</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_next_negedge_event.cancel();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_next_negedge_event.notify(<ref refid="structscc_1_1sc__clock__ext_1afa74a2dc0d821ce5003e8b5b50a44d04" kindref="member">initial_delay</ref>.get_value());</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>period_write_callback(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>cci::cci_param_write_event&lt;int&gt;&amp;<sp/>ev)<sp/>{}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::string<sp/>get_cci_name(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>base,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(base)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;_&quot;</highlight><highlight class="normal"><sp/>+<sp/>name;<sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scc</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>of<sp/>scc-sysc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_clock_ext.h"/>
+  </compounddef>
+</doxygen>

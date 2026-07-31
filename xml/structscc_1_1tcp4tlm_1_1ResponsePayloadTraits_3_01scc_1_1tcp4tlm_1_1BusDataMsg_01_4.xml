@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tcp4tlm_1_1ResponsePayloadTraits_3_01scc_1_1tcp4tlm_1_1BusDataMsg_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>scc::tcp4tlm::ResponsePayloadTraits&lt; scc::tcp4tlm::BusDataMsg &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1ResponsePayloadTraits_3_01scc_1_1tcp4tlm_1_1BusDataMsg_01_4_1abc9d66ac3d618a8f2f2eeada3d939ec1" prot="public" static="yes" mutable="no">
+        <type>const ResponsePayload</type>
+        <definition>const ResponsePayload scc::tcp4tlm::ResponsePayloadTraits&lt; scc::tcp4tlm::BusDataMsg &gt;::enum_value</definition>
+        <argsstring></argsstring>
+        <name>enum_value</name>
+        <qualifiedname>scc::tcp4tlm::ResponsePayloadTraits&lt; scc::tcp4tlm::BusDataMsg &gt;::enum_value</qualifiedname>
+        <initializer>= ResponsePayload_BusDataMsg</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="184" column="34" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="183" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="183" bodyend="185"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tcp4tlm_1_1ResponsePayloadTraits_3_01scc_1_1tcp4tlm_1_1BusDataMsg_01_4_1abc9d66ac3d618a8f2f2eeada3d939ec1" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::ResponsePayloadTraits&lt; scc::tcp4tlm::BusDataMsg &gt;</scope><name>enum_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

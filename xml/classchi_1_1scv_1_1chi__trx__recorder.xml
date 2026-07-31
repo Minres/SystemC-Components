@@ -1,0 +1,1249 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classchi_1_1scv_1_1chi__trx__recorder" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>chi::scv::chi_trx_recorder</compoundname>
+    <basecompoundref prot="public" virt="virtual">chi::chi_fw_transport_if&lt; chi::chi_protocol_types &gt;</basecompoundref>
+    <basecompoundref refid="classchi_1_1chi__bw__transport__if" prot="public" virt="virtual">chi::chi_bw_transport_if&lt; chi::chi_protocol_types &gt;</basecompoundref>
+    <derivedcompoundref refid="classchi_1_1scv_1_1chitlm__recorder__module" prot="public" virt="non-virtual">chi::scv::chitlm_recorder_module&lt; BUSWIDTH, chi::chi_protocol_types, chi_trx_recorder&lt; chi::chi_protocol_types &gt; &gt;</derivedcompoundref>
+    <includes refid="chi__recorder_8h" local="no">chi_recorder.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+        <defval><ref refid="structchi_1_1chi__protocol__types" kindref="compound">chi::chi_protocol_types</ref></defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classchi_1_1scv_1_1chi__trx__recorder_1aa1b4ac75784039f1bcdea9b4fd242611" prot="private" static="no" strong="no">
+        <type></type>
+        <name>DIR</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::DIR</qualifiedname>
+        <enumvalue id="classchi_1_1scv_1_1chi__trx__recorder_1aa1b4ac75784039f1bcdea9b4fd242611ac6b006866813fe0d9124323974602806" prot="private">
+          <name>FW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classchi_1_1scv_1_1chi__trx__recorder_1aa1b4ac75784039f1bcdea9b4fd242611a0f3c539da5e7736c92cc70987462ccb9" prot="private">
+          <name>BW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classchi_1_1scv_1_1chi__trx__recorder_1aa1b4ac75784039f1bcdea9b4fd242611a169d1bbb7c3afcb70dcd4b3d03275703" prot="private">
+          <name>DATA</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classchi_1_1scv_1_1chi__trx__recorder_1aa1b4ac75784039f1bcdea9b4fd242611a5d9835691b3cf0ae34640663c5983885" prot="private">
+          <name>ACK</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classchi_1_1scv_1_1chi__trx__recorder_1aa1b4ac75784039f1bcdea9b4fd242611af24efa8433260fb5a94ab3162e616537" prot="private">
+          <name>CREDIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classchi_1_1scv_1_1chi__trx__recorder_1aa1b4ac75784039f1bcdea9b4fd242611a699f7a88ea84a44ceb27ed99cc36116a" prot="private">
+          <name>REQ</name>
+          <initializer>= FW</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classchi_1_1scv_1_1chi__trx__recorder_1aa1b4ac75784039f1bcdea9b4fd242611acc2183a752e79207b88a356d73231c76" prot="private">
+          <name>RESP</name>
+          <initializer>= BW</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="229" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="229" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="enum" id="classchi_1_1scv_1_1chi__trx__recorder_1a39a4510e1797640c8480efe4f803bf76" prot="private" static="no" strong="no">
+        <type></type>
+        <name>TYPE</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::TYPE</qualifiedname>
+        <enumvalue id="classchi_1_1scv_1_1chi__trx__recorder_1a39a4510e1797640c8480efe4f803bf76a5bf480dfabb5a64f4283e0f2b6778f2e" prot="private">
+          <name>READ</name>
+          <initializer>= tlm::TLM_READ_COMMAND</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classchi_1_1scv_1_1chi__trx__recorder_1a39a4510e1797640c8480efe4f803bf76a4c99419973caf4738db3ab74ba55c0a7" prot="private">
+          <name>WRITE</name>
+          <initializer>= tlm::TLM_WRITE_COMMAND</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classchi_1_1scv_1_1chi__trx__recorder_1a39a4510e1797640c8480efe4f803bf76a0ac74851147774f6c9e6a2418182ea13" prot="private">
+          <name>OTHER</name>
+          <initializer>= tlm::TLM_IGNORE_COMMAND</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classchi_1_1scv_1_1chi__trx__recorder_1a39a4510e1797640c8480efe4f803bf76a1c1a079983a7662a138548c9ddf4849d" prot="private">
+          <name>SNOOP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classchi_1_1scv_1_1chi__trx__recorder_1a39a4510e1797640c8480efe4f803bf76a8e774fbd7aec17674c945b08b8d9c33f" prot="private">
+          <name>NO_OF_TYPES</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="230" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="230" bodyend="230"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classchi_1_1scv_1_1chi__trx__recorder_1aea2522156af38eb22ce94e2c94ad32ec" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>unsigned int</type>
+            <declname>BUSWIDTH</declname>
+            <defname>BUSWIDTH</defname>
+            <defval>32</defval>
+          </param>
+          <param>
+            <type>int</type>
+            <declname>N</declname>
+            <defname>N</defname>
+            <defval>1</defval>
+          </param>
+          <param>
+            <type>sc_core::sc_port_policy</type>
+            <declname>POL</declname>
+            <defname>POL</defname>
+            <defval>sc_core::SC_ONE_OR_MORE_BOUND</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structchi_1_1chi__initiator__socket" kindref="compound">chi::chi_initiator_socket</ref>&lt; BUSWIDTH, TYPES, N, POL &gt;</type>
+        <definition>using chi::scv::chi_trx_recorder&lt; TYPES &gt;::initiator_socket_type =  chi::chi_initiator_socket&lt;BUSWIDTH, TYPES, N, POL&gt;</definition>
+        <argsstring></argsstring>
+        <name>initiator_socket_type</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::initiator_socket_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="67" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classchi_1_1scv_1_1chi__trx__recorder_1a6c1339a9f95ed08b996b37184a525148" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>unsigned int</type>
+            <declname>BUSWIDTH</declname>
+            <defname>BUSWIDTH</defname>
+            <defval>32</defval>
+          </param>
+          <param>
+            <type>int</type>
+            <declname>N</declname>
+            <defname>N</defname>
+            <defval>1</defval>
+          </param>
+          <param>
+            <type>sc_core::sc_port_policy</type>
+            <declname>POL</declname>
+            <defname>POL</defname>
+            <defval>sc_core::SC_ONE_OR_MORE_BOUND</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structchi_1_1chi__target__socket" kindref="compound">chi::chi_target_socket</ref>&lt; BUSWIDTH, TYPES, N, POL &gt;</type>
+        <definition>using chi::scv::chi_trx_recorder&lt; TYPES &gt;::target_socket_type =  chi::chi_target_socket&lt;BUSWIDTH, TYPES, N, POL&gt;</definition>
+        <argsstring></argsstring>
+        <name>target_socket_type</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::target_socket_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="70" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1abfd7edc3fafd0723a753b0a357c09820" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::enableBlTracing</definition>
+        <argsstring></argsstring>
+        <name>enableBlTracing</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::enableBlTracing</qualifiedname>
+        <briefdescription>
+<para>the attribute to selectively enable/disable recording of blocking protocol tx </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="73" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a526719c408af28f55a43752ce53485e1" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::enableNbTracing</definition>
+        <argsstring></argsstring>
+        <name>enableNbTracing</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::enableNbTracing</qualifiedname>
+        <briefdescription>
+<para>the attribute to selectively enable/disable recording of non-blocking protocol tx </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="76" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1aa1867edb7cf66ff7890bbd885c1ba43c" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::enableTimedTracing</definition>
+        <argsstring></argsstring>
+        <name>enableTimedTracing</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::enableTimedTracing</qualifiedname>
+        <initializer>{&quot;enableTimedTracing&quot;, true}</initializer>
+        <briefdescription>
+<para>the attribute to selectively enable/disable timed recording </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="79" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="79" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a088d24fc8516a4dc20cd1b4688073949" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::enableDmiTracing</definition>
+        <argsstring></argsstring>
+        <name>enableDmiTracing</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::enableDmiTracing</qualifiedname>
+        <initializer>{&quot;enableDmiTracing&quot;, false}</initializer>
+        <briefdescription>
+<para>the attribute to selectively enable/disable DMI recording </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="82" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="82" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a9530e01c001f2adbd5c1490f9fdf2e63" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::enableTrDbgTracing</definition>
+        <argsstring></argsstring>
+        <name>enableTrDbgTracing</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::enableTrDbgTracing</qualifiedname>
+        <initializer>{&quot;enableTrDbgTracing&quot;, false}</initializer>
+        <briefdescription>
+<para>the attribute to selectively enable/disable transport dbg recording </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="85" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="85" bodyend="85"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1aa9d61e88d0a80b3e6dec600863d7a6a1" prot="private" static="no" mutable="no">
+        <type>SCVNS scv_tr_db *</type>
+        <definition>SCVNS scv_tr_db* chi::scv::chi_trx_recorder&lt; TYPES &gt;::m_db</definition>
+        <argsstring></argsstring>
+        <name>m_db</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::m_db</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>transaction recording database </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="217" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="217" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a6cc8ee87659e8ab2310f3cc1941290d3" prot="private" static="no" mutable="no">
+        <type>SCVNS scv_tr_stream *</type>
+        <definition>SCVNS scv_tr_stream* chi::scv::chi_trx_recorder&lt; TYPES &gt;::b_streamHandle</definition>
+        <argsstring></argsstring>
+        <name>b_streamHandle</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::b_streamHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>blocking transaction recording stream handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="219" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="219" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a303fb742a1af47e69f1183ea6f231f0f" prot="private" static="no" mutable="no">
+        <type>std::array&lt; SCVNS scv_tr_generator&lt; sc_dt::uint64, sc_dt::uint64 &gt; *, 3 &gt;</type>
+        <definition>std::array&lt;SCVNS scv_tr_generator&lt;sc_dt::uint64, sc_dt::uint64&gt;*, 3&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::b_trHandle</definition>
+        <argsstring></argsstring>
+        <name>b_trHandle</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::b_trHandle</qualifiedname>
+        <initializer>{{nullptr, nullptr, nullptr}}</initializer>
+        <briefdescription>
+<para>transaction generator handle for blocking transactions </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="221" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="221" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1af5642cfabef4c43bb6701aee3f2a5bc5" prot="private" static="no" mutable="no">
+        <type>SCVNS scv_tr_stream *</type>
+        <definition>SCVNS scv_tr_stream* chi::scv::chi_trx_recorder&lt; TYPES &gt;::b_streamHandleTimed</definition>
+        <argsstring></argsstring>
+        <name>b_streamHandleTimed</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::b_streamHandleTimed</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>timed blocking transaction recording stream handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="223" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="223" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1ab3b806cdfbce0c1999d93c8305076493" prot="private" static="no" mutable="no">
+        <type>std::array&lt; SCVNS scv_tr_generator&lt;&gt; *, 3 &gt;</type>
+        <definition>std::array&lt;SCVNS scv_tr_generator&lt;&gt;*, 3&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::b_trTimedHandle</definition>
+        <argsstring></argsstring>
+        <name>b_trTimedHandle</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::b_trTimedHandle</qualifiedname>
+        <initializer>{{nullptr, nullptr, nullptr}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>transaction generator handle for blocking transactions with annotated delays </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="226" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="226" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1ae77dd1fd7da0fdc974ddaaca99e20c8b" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, SCVNS scv_tr_handle &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, SCVNS scv_tr_handle&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::btx_handle_map</definition>
+        <argsstring></argsstring>
+        <name>btx_handle_map</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::btx_handle_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="227" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="227" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a98dcc8b2ad08689c84199dc4979b18eb" prot="private" static="no" mutable="no">
+        <type>SCVNS scv_tr_stream *</type>
+        <definition>SCVNS scv_tr_stream* chi::scv::chi_trx_recorder&lt; TYPES &gt;::nb_streamHandle</definition>
+        <argsstring></argsstring>
+        <name>nb_streamHandle</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::nb_streamHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>non-blocking transaction recording stream handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="232" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="232" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a29e629f03865143947a920be08c2db3e" prot="private" static="no" mutable="no">
+        <type>SCVNS scv_tr_stream *</type>
+        <definition>SCVNS scv_tr_stream* chi::scv::chi_trx_recorder&lt; TYPES &gt;::nb_streamHandleTimed</definition>
+        <argsstring></argsstring>
+        <name>nb_streamHandleTimed</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::nb_streamHandleTimed</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>non-blocking transaction recording stream handle with timing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="234" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="234" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1afc5ac4acd0428017627e65e696cbe746" prot="private" static="no" mutable="no">
+        <type>std::array&lt; SCVNS scv_tr_generator&lt; std::string, std::string &gt; *, 2 &gt;</type>
+        <definition>std::array&lt;SCVNS scv_tr_generator&lt;std::string, std::string&gt;*, 2&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::nb_trHandle</definition>
+        <argsstring></argsstring>
+        <name>nb_trHandle</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::nb_trHandle</qualifiedname>
+        <initializer>{{nullptr, nullptr}}</initializer>
+        <briefdescription>
+<para>transaction generator handle for non-blocking transactions </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="236" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="236" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a2d485e4f2abb3aaa741c7225165f422a" prot="private" static="no" mutable="no">
+        <type>std::array&lt; SCVNS scv_tr_generator&lt;&gt; *, 5 &gt;</type>
+        <definition>std::array&lt;SCVNS scv_tr_generator&lt;&gt;*, 5&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::nb_trTimedHandle</definition>
+        <argsstring></argsstring>
+        <name>nb_trTimedHandle</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::nb_trTimedHandle</qualifiedname>
+        <initializer>{{nullptr, nullptr, nullptr, nullptr, nullptr}}</initializer>
+        <briefdescription>
+<para>transaction generator handle for non-blocking transactions with annotated delays </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="238" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="238" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a7d6e82f6090b3260d547fa520a71a998" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, SCVNS scv_tr_handle &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, SCVNS scv_tr_handle&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::nbtx_req_handle_map</definition>
+        <argsstring></argsstring>
+        <name>nbtx_req_handle_map</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::nbtx_req_handle_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="239" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a6fe73658ff7fb2317d2dcc495f81000a" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, SCVNS scv_tr_handle &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, SCVNS scv_tr_handle&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::nbtx_last_req_handle_map</definition>
+        <argsstring></argsstring>
+        <name>nbtx_last_req_handle_map</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::nbtx_last_req_handle_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="240" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a3b1bc1c80522b2e59f78c5cb4f3cb9ce" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, SCVNS scv_tr_handle &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, SCVNS scv_tr_handle&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::nbtx_resp_handle_map</definition>
+        <argsstring></argsstring>
+        <name>nbtx_resp_handle_map</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::nbtx_resp_handle_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="241" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a7caec578d7b33efa10414e27ad7b1b16" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, SCVNS scv_tr_handle &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, SCVNS scv_tr_handle&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::nbtx_last_resp_handle_map</definition>
+        <argsstring></argsstring>
+        <name>nbtx_last_resp_handle_map</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::nbtx_last_resp_handle_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="242" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1ab98716431e375ffca5ec8844cb326cf2" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, SCVNS scv_tr_handle &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, SCVNS scv_tr_handle&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::nbtx_data_handle_map</definition>
+        <argsstring></argsstring>
+        <name>nbtx_data_handle_map</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::nbtx_data_handle_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="243" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a2f93b7d9849582f21358aea72034f86d" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, SCVNS scv_tr_handle &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, SCVNS scv_tr_handle&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::nbtx_last_data_handle_map</definition>
+        <argsstring></argsstring>
+        <name>nbtx_last_data_handle_map</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::nbtx_last_data_handle_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="244" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="244" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a104edb5b39e4be928b1b08f86c440a55" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, SCVNS scv_tr_handle &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, SCVNS scv_tr_handle&gt; chi::scv::chi_trx_recorder&lt; TYPES &gt;::nbtx_ack_handle_map</definition>
+        <argsstring></argsstring>
+        <name>nbtx_ack_handle_map</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::nbtx_ack_handle_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="245" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a0d0bf5bfee7a7b61305773fbf2edfdd8" prot="private" static="no" mutable="no">
+        <type>SCVNS scv_tr_stream *</type>
+        <definition>SCVNS scv_tr_stream* chi::scv::chi_trx_recorder&lt; TYPES &gt;::dmi_streamHandle</definition>
+        <argsstring></argsstring>
+        <name>dmi_streamHandle</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::dmi_streamHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>dmi transaction recording stream handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="247" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="247" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a3a615f330c8009a99e3d0be2cf53a550" prot="private" static="no" mutable="no">
+        <type>SCVNS scv_tr_generator *</type>
+        <definition>SCVNS scv_tr_generator* chi::scv::chi_trx_recorder&lt; TYPES &gt;::dmi_trGetHandle</definition>
+        <argsstring></argsstring>
+        <name>dmi_trGetHandle</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::dmi_trGetHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>transaction generator handle for DMI transactions </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="249" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="249" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1af66f02c9a273b14d93692a8eec7bf220" prot="private" static="no" mutable="no">
+        <type>SCVNS scv_tr_generator&lt; sc_dt::uint64, sc_dt::uint64 &gt; *</type>
+        <definition>SCVNS scv_tr_generator&lt;sc_dt::uint64, sc_dt::uint64&gt;* chi::scv::chi_trx_recorder&lt; TYPES &gt;::dmi_trInvalidateHandle</definition>
+        <argsstring></argsstring>
+        <name>dmi_trInvalidateHandle</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::dmi_trInvalidateHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="250" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="250" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chi__trx__recorder_1a5ee433e102d3bba948a7ab39c8e33973" prot="private" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string chi::scv::chi_trx_recorder&lt; TYPES &gt;::fixed_basename</definition>
+        <argsstring></argsstring>
+        <name>fixed_basename</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::fixed_basename</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="293" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="293" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classchi_1_1scv_1_1chi__trx__recorder_1a2f45963a574faaac5db72da3a77f27e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>tlm::tlm_fw_transport_if&lt; TYPES &gt; *</type>
+        <definition>virtual tlm::tlm_fw_transport_if&lt; TYPES &gt; * chi::scv::chi_trx_recorder&lt; TYPES &gt;::get_fw_if</definition>
+        <argsstring>()=0</argsstring>
+        <name>get_fw_if</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::get_fw_if</qualifiedname>
+        <reimplementedby refid="classchi_1_1scv_1_1chitlm__recorder__module_1ae3750e30797d605a9dbc323747130bcf">get_fw_if</reimplementedby>
+        <briefdescription>
+<para>the port where fw accesses are forwarded to </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="88" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1scv_1_1chi__trx__recorder_1a15d54a18d4af4f7e34cf157ac7b2101e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>tlm::tlm_bw_transport_if&lt; TYPES &gt; *</type>
+        <definition>virtual tlm::tlm_bw_transport_if&lt; TYPES &gt; * chi::scv::chi_trx_recorder&lt; TYPES &gt;::get_bw_if</definition>
+        <argsstring>()=0</argsstring>
+        <name>get_bw_if</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::get_bw_if</qualifiedname>
+        <reimplementedby refid="classchi_1_1scv_1_1chitlm__recorder__module_1a626380f5538e71b7e32952c8d409d936">get_bw_if</reimplementedby>
+        <briefdescription>
+<para>the port where bw accesses are forwarded to </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="91" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1scv_1_1chi__trx__recorder_1aeae3f5fc4249d0e218dd49f8a04ff6be" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>chi::scv::chi_trx_recorder&lt; TYPES &gt;::chi_trx_recorder</definition>
+        <argsstring>(const char *name, bool recording_enabled=true, SCVNS scv_tr_db *tr_db=SCVNS scv_tr_db::get_default_db())</argsstring>
+        <name>chi_trx_recorder</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::chi_trx_recorder</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>recording_enabled</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>SCVNS scv_tr_db *</type>
+          <declname>tr_db</declname>
+          <defval>SCVNS scv_tr_db::get_default_db()</defval>
+        </param>
+        <briefdescription>
+<para>The constructor of the component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the SystemC module name of the recorder </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tr_db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a transaction recording database. If none is provided the default one is retrieved. If this database is not initialized (e.g. by not calling scv_tr_db::set_default_db() ) recording is disabled. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="101" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="101" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1scv_1_1chi__trx__recorder_1aba95185ae5bdcb0721023a51366f8676" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual chi::scv::chi_trx_recorder&lt; TYPES &gt;::~chi_trx_recorder</definition>
+        <argsstring>() override</argsstring>
+        <name>~chi_trx_recorder</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::~chi_trx_recorder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="109" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="109" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1scv_1_1chi__trx__recorder_1abf4f947e50405d4bc4bb723529d617ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum chi::scv::chi_trx_recorder&lt; TYPES &gt;::nb_transport_fw</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, typename TYPES::tlm_phase_type &amp;phase, sc_core::sc_time &amp;delay) override</argsstring>
+        <name>nb_transport_fw</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::nb_transport_fw</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>The non-blocking forward transport function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is forwarded and recorded to a transaction stream named &quot;nb_fw&quot; with current timestamps. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>phase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the current phase of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the annotated delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the sync state of the transaction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="147" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="411" bodyend="478"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1scv_1_1chi__trx__recorder_1a45da345914e35715fa85e490fb92e484" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum chi::scv::chi_trx_recorder&lt; TYPES &gt;::nb_transport_bw</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, typename TYPES::tlm_phase_type &amp;phase, sc_core::sc_time &amp;delay) override</argsstring>
+        <name>nb_transport_bw</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::nb_transport_bw</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>The non-blocking backward transport function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is forwarded and recorded to a transaction stream named &quot;nb_bw&quot; with current timestamps. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>phase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the current phase of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the annotated delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the sync state of the transaction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="158" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="481" bodyend="548"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1scv_1_1chi__trx__recorder_1a58f5f8565f821d0ee9b93ea7fbb80a62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::scv::chi_trx_recorder&lt; TYPES &gt;::b_transport</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, sc_core::sc_time &amp;delay) override</argsstring>
+        <name>b_transport</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::b_transport</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>The blocking transport function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is forwarded and recorded to a transaction stream named &quot;b_tx&quot; with current timestamps. Additionally a &quot;b_tx_timed&quot; is been created recording the transactions at their annotated delay <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the annotated delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="168" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="306" bodyend="356"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1scv_1_1chi__trx__recorder_1a29213010f1a17b9e5971676d39cac104" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::scv::chi_trx_recorder&lt; TYPES &gt;::b_snoop</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, sc_core::sc_time &amp;delay) override</argsstring>
+        <name>b_snoop</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::b_snoop</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>The blocking snoop function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is forwarded and recorded to a transaction stream named &quot;b_tx&quot; with current timestamps. Additionally a &quot;b_tx_timed&quot; is been created recording the transactions at their annotated delay <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the annotated delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="177" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="358" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1scv_1_1chi__trx__recorder_1a4c2571813dbb9d267ad4da3efe37250f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::scv::chi_trx_recorder&lt; TYPES &gt;::get_direct_mem_ptr</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, tlm::tlm_dmi &amp;dmi_data) override</argsstring>
+        <name>get_direct_mem_ptr</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::get_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_dmi &amp;</type>
+          <declname>dmi_data</declname>
+        </param>
+        <briefdescription>
+<para>The direct memory interface forward function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is just forwarded and not recorded. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dmi_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the structure holding the dmi information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>if the dmi structure is valid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="185" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="658" bodyend="669"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1scv_1_1chi__trx__recorder_1a609597d173151fbe7199d49b8d452002" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::scv::chi_trx_recorder&lt; TYPES &gt;::invalidate_direct_mem_ptr</definition>
+        <argsstring>(sc_dt::uint64 start_addr, sc_dt::uint64 end_addr) override</argsstring>
+        <name>invalidate_direct_mem_ptr</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::invalidate_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>start_addr</declname>
+        </param>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>end_addr</declname>
+        </param>
+        <briefdescription>
+<para>The direct memory interface backward function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is just forwarded and not recorded. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>start_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the start address of the memory area being invalid </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the end address of the memory area being invalid </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="192" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="676" bodyend="686"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1scv_1_1chi__trx__recorder_1ab74a7722d1211c436e3623746b74dfa4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int chi::scv::chi_trx_recorder&lt; TYPES &gt;::transport_dbg</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans) override</argsstring>
+        <name>transport_dbg</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::transport_dbg</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+<para>The debug transportfunction. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The debug transport function.</para>
+<para>This type of transaction is just forwarded and not recorded. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the sync state of the transaction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="199" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="693" bodyend="696"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1scv_1_1chi__trx__recorder_1ad36625a7cded51df300fa849456ddb66" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::scv::chi_trx_recorder&lt; TYPES &gt;::isRecordingBlockingTxEnabled</definition>
+        <argsstring>() const</argsstring>
+        <name>isRecordingBlockingTxEnabled</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::isRecordingBlockingTxEnabled</qualifiedname>
+        <briefdescription>
+<para>get the current state of transaction recording </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>if true transaction recording is enabled otherwise transaction recording is bypassed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="205" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="205" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1scv_1_1chi__trx__recorder_1ae29d25f27938195f25583955d2b42d66" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::scv::chi_trx_recorder&lt; TYPES &gt;::isRecordingNonBlockingTxEnabled</definition>
+        <argsstring>() const</argsstring>
+        <name>isRecordingNonBlockingTxEnabled</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::isRecordingNonBlockingTxEnabled</qualifiedname>
+        <briefdescription>
+<para>get the current state of transaction recording </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>if true transaction recording is enabled otherwise transaction recording is bypassed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="211" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="211" bodyend="211"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classchi_1_1scv_1_1chi__trx__recorder_1a7d3e912590703e7dc1c831185781e098" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::scv::chi_trx_recorder&lt; TYPES &gt;::record_nb_timed</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;rec_parts, const typename TYPES::tlm_phase_type &amp;phase, sc_core::sc_time const &amp;ts, SCVNS scv_tr_handle parent, bool is_credit)</argsstring>
+        <name>record_nb_timed</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::record_nb_timed</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>rec_parts</declname>
+        </param>
+        <param>
+          <type>const typename TYPES::tlm_phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time const &amp;</type>
+          <declname>ts</declname>
+        </param>
+        <param>
+          <type>SCVNS scv_tr_handle</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>is_credit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="214" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="551" bodyend="655"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1scv_1_1chi__trx__recorder_1a62e98a9427ac77fe7598a61953dc7e90" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string chi::scv::chi_trx_recorder&lt; TYPES &gt;::phase2string</definition>
+        <argsstring>(const tlm::tlm_phase &amp;p)</argsstring>
+        <name>phase2string</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::phase2string</qualifiedname>
+        <param>
+          <type>const tlm::tlm_phase &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="295" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="295" bodyend="299"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classchi_1_1scv_1_1chi__trx__recorder_1a52bdd5ae89c0f10ce1d947ed5de99c20" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::scv::chi_trx_recorder&lt; TYPES &gt;::initialize_streams</definition>
+        <argsstring>()</argsstring>
+        <name>initialize_streams</name>
+        <qualifiedname>chi::scv::chi_trx_recorder::initialize_streams</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="253" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="253" bodyend="290"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The TLM2 transaction recorder. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This module records all TLM transaction to a SCV transaction stream for further viewing and analysis. The handle of the created transaction is storee in an tlm_extension so that another instance of the chi_recorder e.g. further down the path can link to it. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5">
+        <label>chi::bw_blocking_transport_if&lt; chi::chi_protocol_types::tlm_payload_type &gt;</label>
+        <link refid="classchi_1_1bw__blocking__transport__if"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>chi::chi_bw_transport_if&lt; chi::chi_protocol_types &gt;</label>
+        <link refid="classchi_1_1chi__bw__transport__if"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>chi::chi_fw_transport_if&lt; chi::chi_protocol_types &gt;</label>
+      </node>
+      <node id="1">
+        <label>chi::scv::chi_trx_recorder&lt; TYPES &gt;</label>
+        <link refid="classchi_1_1scv_1_1chi__trx__recorder"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>chi::scv::chitlm_recorder_module&lt; BUSWIDTH, chi::chi_protocol_types, chi_trx_recorder&lt; chi::chi_protocol_types &gt; &gt;</label>
+        <link refid="classchi_1_1scv_1_1chitlm__recorder__module"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_bw_transport_if&lt; chi::chi_protocol_types &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5">
+        <label>chi::bw_blocking_transport_if&lt; chi::chi_protocol_types::tlm_payload_type &gt;</label>
+        <link refid="classchi_1_1bw__blocking__transport__if"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>chi::chi_bw_transport_if&lt; chi::chi_protocol_types &gt;</label>
+        <link refid="classchi_1_1chi__bw__transport__if"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>chi::chi_fw_transport_if&lt; chi::chi_protocol_types &gt;</label>
+      </node>
+      <node id="1">
+        <label>chi::scv::chi_trx_recorder&lt; TYPES &gt;</label>
+        <link refid="classchi_1_1scv_1_1chi__trx__recorder"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_bw_transport_if&lt; chi::chi_protocol_types &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" line="64" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/chi_recorder.h" bodystart="64" bodyend="300"/>
+    <listofallmembers>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1aa1b4ac75784039f1bcdea9b4fd242611a5d9835691b3cf0ae34640663c5983885" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>ACK</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a29213010f1a17b9e5971676d39cac104" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>b_snoop</name></member>
+      <member refid="classchi_1_1bw__blocking__transport__if_1a1a0ef89ad25cb7c823a6191922ba86fb" prot="public" virt="pure-virtual" ambiguityscope="chi::chi_bw_transport_if&lt; chi::chi_protocol_types &gt;::"><scope>chi::scv::chi_trx_recorder</scope><name>b_snoop</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a6cc8ee87659e8ab2310f3cc1941290d3" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>b_streamHandle</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1af5642cfabef4c43bb6701aee3f2a5bc5" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>b_streamHandleTimed</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a58f5f8565f821d0ee9b93ea7fbb80a62" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>b_transport</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a303fb742a1af47e69f1183ea6f231f0f" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>b_trHandle</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1ab3b806cdfbce0c1999d93c8305076493" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>b_trTimedHandle</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1ae77dd1fd7da0fdc974ddaaca99e20c8b" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>btx_handle_map</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1aa1b4ac75784039f1bcdea9b4fd242611a0f3c539da5e7736c92cc70987462ccb9" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>BW</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1aeae3f5fc4249d0e218dd49f8a04ff6be" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>chi_trx_recorder</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1aa1b4ac75784039f1bcdea9b4fd242611af24efa8433260fb5a94ab3162e616537" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>CREDIT</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1aa1b4ac75784039f1bcdea9b4fd242611a169d1bbb7c3afcb70dcd4b3d03275703" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>DATA</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1aa1b4ac75784039f1bcdea9b4fd242611" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>DIR</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a0d0bf5bfee7a7b61305773fbf2edfdd8" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>dmi_streamHandle</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a3a615f330c8009a99e3d0be2cf53a550" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>dmi_trGetHandle</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1af66f02c9a273b14d93692a8eec7bf220" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>dmi_trInvalidateHandle</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1abfd7edc3fafd0723a753b0a357c09820" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>enableBlTracing</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a088d24fc8516a4dc20cd1b4688073949" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>enableDmiTracing</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a526719c408af28f55a43752ce53485e1" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>enableNbTracing</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1aa1867edb7cf66ff7890bbd885c1ba43c" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>enableTimedTracing</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a9530e01c001f2adbd5c1490f9fdf2e63" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>enableTrDbgTracing</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a5ee433e102d3bba948a7ab39c8e33973" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>fixed_basename</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1aa1b4ac75784039f1bcdea9b4fd242611ac6b006866813fe0d9124323974602806" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>FW</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a15d54a18d4af4f7e34cf157ac7b2101e" prot="public" virt="pure-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>get_bw_if</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a4c2571813dbb9d267ad4da3efe37250f" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>get_direct_mem_ptr</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a2f45963a574faaac5db72da3a77f27e6" prot="public" virt="pure-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>get_fw_if</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a52bdd5ae89c0f10ce1d947ed5de99c20" prot="protected" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>initialize_streams</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1aea2522156af38eb22ce94e2c94ad32ec" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>initiator_socket_type</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a609597d173151fbe7199d49b8d452002" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>invalidate_direct_mem_ptr</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1ad36625a7cded51df300fa849456ddb66" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>isRecordingBlockingTxEnabled</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1ae29d25f27938195f25583955d2b42d66" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>isRecordingNonBlockingTxEnabled</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1aa9d61e88d0a80b3e6dec600863d7a6a1" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>m_db</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a98dcc8b2ad08689c84199dc4979b18eb" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>nb_streamHandle</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a29e629f03865143947a920be08c2db3e" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>nb_streamHandleTimed</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a45da345914e35715fa85e490fb92e484" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>nb_transport_bw</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1abf4f947e50405d4bc4bb723529d617ed" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>nb_transport_fw</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1afc5ac4acd0428017627e65e696cbe746" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>nb_trHandle</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a2d485e4f2abb3aaa741c7225165f422a" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>nb_trTimedHandle</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a104edb5b39e4be928b1b08f86c440a55" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>nbtx_ack_handle_map</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1ab98716431e375ffca5ec8844cb326cf2" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>nbtx_data_handle_map</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a2f93b7d9849582f21358aea72034f86d" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>nbtx_last_data_handle_map</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a6fe73658ff7fb2317d2dcc495f81000a" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>nbtx_last_req_handle_map</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a7caec578d7b33efa10414e27ad7b1b16" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>nbtx_last_resp_handle_map</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a7d6e82f6090b3260d547fa520a71a998" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>nbtx_req_handle_map</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a3b1bc1c80522b2e59f78c5cb4f3cb9ce" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>nbtx_resp_handle_map</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a39a4510e1797640c8480efe4f803bf76a8e774fbd7aec17674c945b08b8d9c33f" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>NO_OF_TYPES</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a39a4510e1797640c8480efe4f803bf76a0ac74851147774f6c9e6a2418182ea13" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>OTHER</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a62e98a9427ac77fe7598a61953dc7e90" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>phase2string</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a39a4510e1797640c8480efe4f803bf76a5bf480dfabb5a64f4283e0f2b6778f2e" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>READ</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a7d3e912590703e7dc1c831185781e098" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>record_nb_timed</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1aa1b4ac75784039f1bcdea9b4fd242611a699f7a88ea84a44ceb27ed99cc36116a" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>REQ</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1aa1b4ac75784039f1bcdea9b4fd242611acc2183a752e79207b88a356d73231c76" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>RESP</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a39a4510e1797640c8480efe4f803bf76a1c1a079983a7662a138548c9ddf4849d" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>SNOOP</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a6c1339a9f95ed08b996b37184a525148" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>target_socket_type</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1ab74a7722d1211c436e3623746b74dfa4" prot="public" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>transport_dbg</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a39a4510e1797640c8480efe4f803bf76" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>TYPE</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1a39a4510e1797640c8480efe4f803bf76a4c99419973caf4738db3ab74ba55c0a7" prot="private" virt="non-virtual"><scope>chi::scv::chi_trx_recorder</scope><name>WRITE</name></member>
+      <member refid="classchi_1_1scv_1_1chi__trx__recorder_1aba95185ae5bdcb0721023a51366f8676" prot="public" virt="virtual"><scope>chi::scv::chi_trx_recorder</scope><name>~chi_trx_recorder</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

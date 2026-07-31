@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structahb_1_1pin_1_1initiator_1_1data__phase__desc" kind="struct" language="C++" prot="private">
+    <compoundname>ahb::pin::initiator::data_phase_desc</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structahb_1_1pin_1_1initiator_1_1data__phase__desc_1a46de7f6110a5127bec9e8862a754ef5e" prot="public" static="no" mutable="no">
+        <type>tlm::tlm_generic_payload *</type>
+        <definition>tlm::tlm_generic_payload* ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::data_phase_desc::gp</definition>
+        <argsstring></argsstring>
+        <name>gp</name>
+        <qualifiedname>ahb::pin::initiator::data_phase_desc::gp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="62" column="34" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structahb_1_1pin_1_1initiator_1_1data__phase__desc_1a3b97f06a998e6e607064a9244ae9bf2e" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::data_phase_desc::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>ahb::pin::initiator::data_phase_desc::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="63" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structahb_1_1pin_1_1initiator_1_1data__phase__desc_1a865e2973d2b68ee7b3bc12aea6d0c24e" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned ahb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;::data_phase_desc::length</definition>
+        <argsstring></argsstring>
+        <name>length</name>
+        <qualifiedname>ahb::pin::initiator::data_phase_desc::length</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="64" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="61" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" bodystart="61" bodyend="65"/>
+    <listofallmembers>
+      <member refid="structahb_1_1pin_1_1initiator_1_1data__phase__desc_1a46de7f6110a5127bec9e8862a754ef5e" prot="public" virt="non-virtual"><scope>ahb::pin::initiator::data_phase_desc</scope><name>gp</name></member>
+      <member refid="structahb_1_1pin_1_1initiator_1_1data__phase__desc_1a865e2973d2b68ee7b3bc12aea6d0c24e" prot="public" virt="non-virtual"><scope>ahb::pin::initiator::data_phase_desc</scope><name>length</name></member>
+      <member refid="structahb_1_1pin_1_1initiator_1_1data__phase__desc_1a3b97f06a998e6e607064a9244ae9bf2e" prot="public" virt="non-virtual"><scope>ahb::pin::initiator::data_phase_desc</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

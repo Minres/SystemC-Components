@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1tlm__ext__mm" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::tlm_ext_mm</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">EXT</basecompoundref>
+    <includes refid="tlm__mm_8h" local="no">tlm_mm.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename EXT</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1tlm__ext__mm_1a4f93fb45406030bb9398b47e95651687" prot="public" static="no" mutable="no">
+        <type>friend</type>
+        <definition>friend tlm::scc::tlm_ext_mm&lt; EXT &gt;::tlm_gp_mm</definition>
+        <argsstring></argsstring>
+        <name>tlm_gp_mm</name>
+        <qualifiedname>tlm::scc::tlm_ext_mm::tlm_gp_mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="171" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__ext__mm_1a5511fc11066a095aabae03da0a42e75d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_ext_mm&lt; EXT &gt;::~tlm_ext_mm</definition>
+        <argsstring>()</argsstring>
+        <name>~tlm_ext_mm</name>
+        <qualifiedname>tlm::scc::tlm_ext_mm::~tlm_ext_mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="173" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="173" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__ext__mm_1a9cc8c3e2a0d32dfb569bc9d9edbe8870" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_ext_mm&lt; EXT &gt;::free</definition>
+        <argsstring>() override</argsstring>
+        <name>free</name>
+        <qualifiedname>tlm::scc::tlm_ext_mm::free</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="175" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="175" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__ext__mm_1a69e3bfba9c78bcb75c5cb04e73c816cc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>EXT *</type>
+        <definition>EXT * tlm::scc::tlm_ext_mm&lt; EXT &gt;::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <qualifiedname>tlm::scc::tlm_ext_mm::clone</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="177" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="177" bodyend="177"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__ext__mm_1a6965dd9edf9cb298d98a0b8dfa867657" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>EXT *</type>
+        <definition>static EXT * tlm::scc::tlm_ext_mm&lt; EXT &gt;::create</definition>
+        <argsstring>(Args... args)</argsstring>
+        <name>create</name>
+        <qualifiedname>tlm::scc::tlm_ext_mm::create</qualifiedname>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="179" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="179" bodyend="181"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__ext__mm_1a455dcb1590f128f8e3181447dd96f214" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>tlm::scc::tlm_ext_mm&lt; EXT &gt;::tlm_ext_mm</definition>
+        <argsstring>(Args... args)</argsstring>
+        <name>tlm_ext_mm</name>
+        <qualifiedname>tlm::scc::tlm_ext_mm::tlm_ext_mm</qualifiedname>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="185" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="185" bodyend="186"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Class <ref refid="structtlm_1_1scc_1_1tlm__ext__mm" kindref="compound">tlm_ext_mm</ref> prides a memory manager for TLM extension </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>EXT</label>
+      </node>
+      <node id="1">
+        <label>tlm::scc::tlm_ext_mm&lt; EXT &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__ext__mm"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>EXT</label>
+      </node>
+      <node id="1">
+        <label>tlm::scc::tlm_ext_mm&lt; EXT &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__ext__mm"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="169" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="169" bodyend="187"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1tlm__ext__mm_1a69e3bfba9c78bcb75c5cb04e73c816cc" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_ext_mm</scope><name>clone</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__ext__mm_1a6965dd9edf9cb298d98a0b8dfa867657" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_ext_mm</scope><name>create</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__ext__mm_1a9cc8c3e2a0d32dfb569bc9d9edbe8870" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_ext_mm</scope><name>free</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__ext__mm_1a455dcb1590f128f8e3181447dd96f214" prot="protected" virt="non-virtual"><scope>tlm::scc::tlm_ext_mm</scope><name>tlm_ext_mm</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__ext__mm_1a4f93fb45406030bb9398b47e95651687" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_ext_mm</scope><name>tlm_gp_mm</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__ext__mm_1a5511fc11066a095aabae03da0a42e75d" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_ext_mm</scope><name>~tlm_ext_mm</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1pe_1_1intor__bw" kind="struct" language="C++" prot="public" abstract="yes">
+    <compoundname>tlm::scc::pe::intor_bw</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_interface</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type><ref refid="namespacetlm_1_1scc_1_1pe_1a6a6eec1885e2ecc7d636ae07c13d7287" kindref="member">type</ref></type>
+        <declname>TYPE</declname>
+        <defname>TYPE</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1pe_1_1intor__bw_1af250b11afa4a9e1c6cf76668847bd3be" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>unsigned</type>
+        <definition>virtual unsigned tlm::scc::pe::intor_bw&lt; TYPE &gt;::transport</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;payload)=0</argsstring>
+        <name>transport</name>
+        <qualifiedname>tlm::scc::pe::intor_bw::transport</qualifiedname>
+        <reimplementedby refid="structace__target__pe_1_1bw__intor__impl_1a90ed1a3696a519297b09babd152dd046">transport</reimplementedby>
+        <reimplementedby refid="structaxi__target__pe_1_1bw__intor__impl_1ac36145ea30c4d1382ad962a560e63cb5">transport</reimplementedby>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>payload</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>callback from the pe top if there is a backward transaction e.g. a snoop</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>payload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>object with (optional) extensions return the latency until reponse is sent by the protocol engine </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/intor_if.h" line="58" column="22"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="1">
+        <label>tlm::scc::pe::intor_bw&lt; TYPE &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__bw"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="1">
+        <label>tlm::scc::pe::intor_bw&lt; TYPE &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__bw"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/intor_if.h" line="51" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/intor_if.h" bodystart="51" bodyend="59"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1pe_1_1intor__bw_1af250b11afa4a9e1c6cf76668847bd3be" prot="public" virt="pure-virtual"><scope>tlm::scc::pe::intor_bw</scope><name>transport</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

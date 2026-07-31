@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1scv_1_1tlm__id__ext__recording" kind="struct" language="C++" prot="public">
+    <compoundname>axi::scv::tlm_id_ext_recording</compoundname>
+    <basecompoundref refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if" prot="public" virt="non-virtual">tlm::scc::scv::tlm_extensions_recording_if&lt; axi::axi_protocol_types &gt;</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1scv_1_1tlm__id__ext__recording_1a2ef4b35449f7348456e5d780613d2dfe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::scv::tlm_id_ext_recording::tlm_id_ext_recording</definition>
+        <argsstring>()</argsstring>
+        <name>tlm_id_ext_recording</name>
+        <qualifiedname>axi::scv::tlm_id_ext_recording::tlm_id_ext_recording</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" line="30" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" bodystart="30" bodyend="30"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structaxi_1_1scv_1_1tlm__id__ext__recording_1a3408111d97f8acb06dae10ce1e6caab1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void axi::scv::tlm_id_ext_recording::recordBeginTx</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;handle, axi_protocol_types::tlm_payload_type &amp;trans)</argsstring>
+        <name>recordBeginTx</name>
+        <qualifiedname>axi::scv::tlm_id_ext_recording::recordBeginTx</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>axi_protocol_types::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" line="32" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" bodystart="32" bodyend="35"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::scv::tlm_id_ext_recording</label>
+        <link refid="structaxi_1_1scv_1_1tlm__id__ext__recording"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::scv::tlm_extensions_recording_if&lt; axi::axi_protocol_types &gt;</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::scv::tlm_id_ext_recording</label>
+        <link refid="structaxi_1_1scv_1_1tlm__id__ext__recording"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::scv::tlm_extensions_recording_if&lt; axi::axi_protocol_types &gt;</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>recordBegin</edgelabel>
+          <edgelabel>recordEnd</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>util::delegate&lt; void(SCVNS scv_tr_handle &amp;, typename axi::axi_protocol_types::tlm_payload_type &amp;)&gt;</label>
+        <link refid="classutil_1_1delegate"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" line="28" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" bodystart="28" bodyend="36"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a92a87b3b15db1e40349efcfdc5a24a3a" prot="public" virt="non-virtual"><scope>axi::scv::tlm_id_ext_recording</scope><name>record_tx_fct</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a424d7503eb14ef2332c270b323bab885" prot="protected" virt="non-virtual"><scope>axi::scv::tlm_id_ext_recording</scope><name>recordBegin</name></member>
+      <member refid="structaxi_1_1scv_1_1tlm__id__ext__recording_1a3408111d97f8acb06dae10ce1e6caab1" prot="public" virt="non-virtual"><scope>axi::scv::tlm_id_ext_recording</scope><name>recordBeginTx</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a07f6b3f1e99994310cf0d289ceccad53" prot="public" virt="non-virtual" ambiguityscope="tlm::scc::scv::tlm_extensions_recording_if&lt; axi::axi_protocol_types &gt;::"><scope>axi::scv::tlm_id_ext_recording</scope><name>recordBeginTx</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1afebebeac142f601640e82de835d19631" prot="protected" virt="non-virtual"><scope>axi::scv::tlm_id_ext_recording</scope><name>recordEnd</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a25e59c20d51c2259723ad993e1da859f" prot="public" virt="non-virtual"><scope>axi::scv::tlm_id_ext_recording</scope><name>recordEndTx</name></member>
+      <member refid="structaxi_1_1scv_1_1tlm__id__ext__recording_1a2ef4b35449f7348456e5d780613d2dfe" prot="public" virt="non-virtual"><scope>axi::scv::tlm_id_ext_recording</scope><name>tlm_id_ext_recording</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

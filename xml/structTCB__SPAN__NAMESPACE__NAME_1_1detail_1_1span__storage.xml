@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage" kind="struct" language="C++" prot="public">
+    <compoundname>TCB_SPAN_NAMESPACE_NAME::detail::span_storage</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename E</type>
+      </param>
+      <param>
+        <type>std::size_t</type>
+        <declname>S</declname>
+        <defname>S</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_1ac06bc5b64bafee66082302031c13eca0" prot="public" static="no" mutable="no">
+        <type>E *</type>
+        <definition>E* TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, S &gt;::ptr</definition>
+        <argsstring></argsstring>
+        <name>ptr</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::span_storage::ptr</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="170" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_1a910543bb9f617d05749166a2fa6c3fdd" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>std::size_t</type>
+        <definition>std::size_t TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, S &gt;::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::span_storage::size</qualifiedname>
+        <initializer>= S</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="171" column="34" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_1a62f42edc81ec41745e1a14e6861a835b" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, S &gt;::span_storage</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>span_storage</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::span_storage::span_storage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="165" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_1afd8aa6a1a7d82e6668bed57cd2279c94" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, S &gt;::span_storage</definition>
+        <argsstring>(E *p_ptr, std::size_t) noexcept</argsstring>
+        <name>span_storage</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::span_storage::span_storage</qualifiedname>
+        <param>
+          <type>E *</type>
+          <declname>p_ptr</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="167" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="167" bodyend="168"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="164" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="164" bodyend="172"/>
+    <listofallmembers>
+      <member refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_1ac06bc5b64bafee66082302031c13eca0" prot="public" virt="non-virtual"><scope>TCB_SPAN_NAMESPACE_NAME::detail::span_storage</scope><name>ptr</name></member>
+      <member refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_1a910543bb9f617d05749166a2fa6c3fdd" prot="public" virt="non-virtual"><scope>TCB_SPAN_NAMESPACE_NAME::detail::span_storage</scope><name>size</name></member>
+      <member refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_1a62f42edc81ec41745e1a14e6861a835b" prot="public" virt="non-virtual"><scope>TCB_SPAN_NAMESPACE_NAME::detail::span_storage</scope><name>span_storage</name></member>
+      <member refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_1afd8aa6a1a7d82e6668bed57cd2279c94" prot="public" virt="non-virtual"><scope>TCB_SPAN_NAMESPACE_NAME::detail::span_storage</scope><name>span_storage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

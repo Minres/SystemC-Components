@@ -1,0 +1,1243 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacescv__tr" kind="namespace" language="C++">
+    <compoundname>scv_tr</compoundname>
+    <innerclass refid="structscv__tr_1_1AttrDesc" prot="public">scv_tr::AttrDesc</innerclass>
+    <innerclass refid="classscv__tr_1_1SQLiteDB" prot="public">scv_tr::SQLiteDB</innerclass>
+    <innerclass refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1tlm__command_01_4" prot="public">scv_tr::scv_extensions&lt; tlm::tlm_command &gt;</innerclass>
+    <innerclass refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1tlm__response__status_01_4" prot="public">scv_tr::scv_extensions&lt; tlm::tlm_response_status &gt;</innerclass>
+    <innerclass refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1tlm__gp__option_01_4" prot="public">scv_tr::scv_extensions&lt; tlm::tlm_gp_option &gt;</innerclass>
+    <innerclass refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__phase__enum_01_4" prot="public">scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_phase_enum &gt;</innerclass>
+    <innerclass refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1tlm__sync__enum_01_4" prot="public">scv_tr::scv_extensions&lt; tlm::tlm_sync_enum &gt;</innerclass>
+    <innerclass refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__gp__data_01_4" prot="public">scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_gp_data &gt;</innerclass>
+    <innerclass refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1tlm__dmi_1_1dmi__access__e_01_4" prot="public">scv_tr::scv_extensions&lt; tlm::tlm_dmi::dmi_access_e &gt;</innerclass>
+    <innerclass refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4" prot="public">scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9" prot="public" static="no" strong="no">
+        <type></type>
+        <name>EventType</name>
+        <qualifiedname>scv_tr::EventType</qualifiedname>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a907f31f98ce24fcc8cb788b87c8b1738" prot="public">
+          <name>BEGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330" prot="public">
+          <name>RECORD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668" prot="public">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a907f31f98ce24fcc8cb788b87c8b1738" prot="public">
+          <name>BEGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330" prot="public">
+          <name>RECORD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668" prot="public">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a907f31f98ce24fcc8cb788b87c8b1738" prot="public">
+          <name>BEGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330" prot="public">
+          <name>RECORD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668" prot="public">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a907f31f98ce24fcc8cb788b87c8b1738" prot="public">
+          <name>BEGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330" prot="public">
+          <name>RECORD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668" prot="public">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_binary.cpp" line="81" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_binary.cpp" bodystart="81" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9" prot="public" static="no" strong="no">
+        <type></type>
+        <name>EventType</name>
+        <qualifiedname>scv_tr::EventType</qualifiedname>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a907f31f98ce24fcc8cb788b87c8b1738" prot="public">
+          <name>BEGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330" prot="public">
+          <name>RECORD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668" prot="public">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a907f31f98ce24fcc8cb788b87c8b1738" prot="public">
+          <name>BEGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330" prot="public">
+          <name>RECORD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668" prot="public">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a907f31f98ce24fcc8cb788b87c8b1738" prot="public">
+          <name>BEGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330" prot="public">
+          <name>RECORD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668" prot="public">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a907f31f98ce24fcc8cb788b87c8b1738" prot="public">
+          <name>BEGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330" prot="public">
+          <name>RECORD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668" prot="public">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_lz4.cpp" line="45" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_lz4.cpp" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9" prot="public" static="no" strong="no">
+        <type></type>
+        <name>EventType</name>
+        <qualifiedname>scv_tr::EventType</qualifiedname>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a907f31f98ce24fcc8cb788b87c8b1738" prot="public">
+          <name>BEGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330" prot="public">
+          <name>RECORD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668" prot="public">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a907f31f98ce24fcc8cb788b87c8b1738" prot="public">
+          <name>BEGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330" prot="public">
+          <name>RECORD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668" prot="public">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a907f31f98ce24fcc8cb788b87c8b1738" prot="public">
+          <name>BEGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330" prot="public">
+          <name>RECORD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668" prot="public">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a907f31f98ce24fcc8cb788b87c8b1738" prot="public">
+          <name>BEGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330" prot="public">
+          <name>RECORD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668" prot="public">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_mtc.cpp" line="43" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_mtc.cpp" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9" prot="public" static="no" strong="no">
+        <type></type>
+        <name>EventType</name>
+        <qualifiedname>scv_tr::EventType</qualifiedname>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a907f31f98ce24fcc8cb788b87c8b1738" prot="public">
+          <name>BEGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330" prot="public">
+          <name>RECORD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668" prot="public">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a907f31f98ce24fcc8cb788b87c8b1738" prot="public">
+          <name>BEGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330" prot="public">
+          <name>RECORD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668" prot="public">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a907f31f98ce24fcc8cb788b87c8b1738" prot="public">
+          <name>BEGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330" prot="public">
+          <name>RECORD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668" prot="public">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a907f31f98ce24fcc8cb788b87c8b1738" prot="public">
+          <name>BEGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330" prot="public">
+          <name>RECORD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescv__tr_1ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668" prot="public">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="137" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="137" bodyend="137"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacescv__tr_1acea4e5e50ac6c667b9ec9b9bdef84694" prot="public" static="no">
+        <type>scv_extensions_if::data_type</type>
+        <definition>using scv_tr::data_type =  scv_extensions_if::data_type</definition>
+        <argsstring></argsstring>
+        <name>data_type</name>
+        <qualifiedname>scv_tr::data_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_binary.cpp" line="82" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_binary.cpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacescv__tr_1a0204375586d00e3cdc855fbf2d608f03" prot="public" static="yes" mutable="no">
+        <type>gzFile</type>
+        <definition>gzFile scv_tr::my_text_file_p</definition>
+        <argsstring></argsstring>
+        <name>my_text_file_p</name>
+        <qualifiedname>scv_tr::my_text_file_p</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" line="104" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacescv__tr_1ab8b397cbee69cfc16b25a8e6768fe740" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>auto</type>
+        <definition>auto scv_tr::SQLITEWRAPPER_ERROR</definition>
+        <argsstring></argsstring>
+        <name>SQLITEWRAPPER_ERROR</name>
+        <qualifiedname>scv_tr::SQLITEWRAPPER_ERROR</qualifiedname>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="32" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacescv__tr_1ae52ab41490994d96aaa88507b2ab2d52" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>auto</type>
+        <definition>auto scv_tr::with_transactions</definition>
+        <argsstring></argsstring>
+        <name>with_transactions</name>
+        <qualifiedname>scv_tr::with_transactions</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="33" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacescv__tr_1a32a0e1b4e8461361aa37fef329d8f0d0" prot="public" static="yes" mutable="no">
+        <type><ref refid="classscv__tr_1_1SQLiteDB" kindref="compound">SQLiteDB</ref></type>
+        <definition>SQLiteDB scv_tr::db</definition>
+        <argsstring></argsstring>
+        <name>db</name>
+        <qualifiedname>scv_tr::db</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="132" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacescv__tr_1adeb1d9709791d69771b9194abae62288" prot="public" static="yes" mutable="no">
+        <type>vector&lt; vector&lt; uint64_t &gt; * &gt;</type>
+        <definition>vector&lt;vector&lt;uint64_t&gt;*&gt; scv_tr::concurrencyLevel</definition>
+        <argsstring></argsstring>
+        <name>concurrencyLevel</name>
+        <qualifiedname>scv_tr::concurrencyLevel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="133" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacescv__tr_1a5d2f894e49cd29eddd9fda7a2613b31f" prot="public" static="yes" mutable="no">
+        <type>sqlite3_stmt *</type>
+        <definition>sqlite3_stmt* scv_tr::string_stmt</definition>
+        <argsstring></argsstring>
+        <name>string_stmt</name>
+        <qualifiedname>scv_tr::string_stmt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="134" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacescv__tr_1a54e1553ae838bbf074a6855157348a51" prot="public" static="yes" mutable="no">
+        <type>sqlite3_stmt *</type>
+        <definition>sqlite3_stmt * scv_tr::stream_stmt</definition>
+        <argsstring></argsstring>
+        <name>stream_stmt</name>
+        <qualifiedname>scv_tr::stream_stmt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="134" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacescv__tr_1a69a99098b18ac3822e3ac05390d08b1c" prot="public" static="yes" mutable="no">
+        <type>sqlite3_stmt *</type>
+        <definition>sqlite3_stmt * scv_tr::gen_stmt</definition>
+        <argsstring></argsstring>
+        <name>gen_stmt</name>
+        <qualifiedname>scv_tr::gen_stmt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="134" column="45" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacescv__tr_1a55518ce820aadf6d34a6bd2a668a7a59" prot="public" static="yes" mutable="no">
+        <type>sqlite3_stmt *</type>
+        <definition>sqlite3_stmt * scv_tr::tx_stmt</definition>
+        <argsstring></argsstring>
+        <name>tx_stmt</name>
+        <qualifiedname>scv_tr::tx_stmt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="134" column="54" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacescv__tr_1ab0dd41a00f7b4422b574484da33154b3" prot="public" static="yes" mutable="no">
+        <type>sqlite3_stmt *</type>
+        <definition>sqlite3_stmt * scv_tr::evt_stmt</definition>
+        <argsstring></argsstring>
+        <name>evt_stmt</name>
+        <qualifiedname>scv_tr::evt_stmt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="134" column="62" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacescv__tr_1aee5e6b1f4caaed9a42d856e326cdbcf4" prot="public" static="yes" mutable="no">
+        <type>sqlite3_stmt *</type>
+        <definition>sqlite3_stmt * scv_tr::attr_stmt</definition>
+        <argsstring></argsstring>
+        <name>attr_stmt</name>
+        <qualifiedname>scv_tr::attr_stmt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="134" column="71" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacescv__tr_1aceeca14822b2f00b542676752a336470" prot="public" static="yes" mutable="no">
+        <type>sqlite3_stmt *</type>
+        <definition>sqlite3_stmt * scv_tr::rel_stmt</definition>
+        <argsstring></argsstring>
+        <name>rel_stmt</name>
+        <qualifiedname>scv_tr::rel_stmt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="134" column="81" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacescv__tr_1a160a7eaba3efd8ec954840423e54365d" prot="public" static="yes" mutable="no">
+        <type>std::unordered_map&lt; std::string, uint64_t &gt;</type>
+        <definition>std::unordered_map&lt;std::string, uint64_t&gt; scv_tr::str_map</definition>
+        <argsstring></argsstring>
+        <name>str_map</name>
+        <qualifiedname>scv_tr::str_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="246" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="246" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacescv__tr_1a8b2392f7305bc8ac027513b77d524ccd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scv_tr::scv_tr_binary_init</definition>
+        <argsstring>()</argsstring>
+        <name>scv_tr_binary_init</name>
+        <qualifiedname>scv_tr::scv_tr_binary_init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_binary.cpp" line="543" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_binary.cpp" bodystart="543" bodyend="550"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a959f2eddfcef2f599104d8b9c3bfb9df" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void scv_tr::scv_tr_db_cbf</definition>
+        <argsstring>(const scv_tr_db &amp;_scv_tr_db, scv_tr_db::callback_reason reason, void *user_data_p)</argsstring>
+        <name>scv_tr_db_cbf</name>
+        <qualifiedname>scv_tr::scv_tr_db_cbf</qualifiedname>
+        <param>
+          <type>const scv_tr_db &amp;</type>
+          <declname>_scv_tr_db</declname>
+        </param>
+        <param>
+          <type>scv_tr_db::callback_reason</type>
+          <declname>reason</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data_p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" line="106" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" bodystart="106" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a9d62c008f8ead337f55715c607981d92" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void scv_tr::scv_tr_stream_cbf</definition>
+        <argsstring>(const scv_tr_stream &amp;s, scv_tr_stream::callback_reason reason, void *user_data_p)</argsstring>
+        <name>scv_tr_stream_cbf</name>
+        <qualifiedname>scv_tr::scv_tr_stream_cbf</qualifiedname>
+        <param>
+          <type>const scv_tr_stream &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>scv_tr_stream::callback_reason</type>
+          <declname>reason</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data_p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" line="146" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" bodystart="146" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1aa1103a9737c01eab79e6c50e84957050" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void scv_tr::do_attributes</definition>
+        <argsstring>(bool declare_attributes, bool undefined_values, bool is_record_attribute, std::string &amp;prefix_name, const std::string &amp;exts_kind, const scv_extensions_if *my_exts_p, int *index)</argsstring>
+        <name>do_attributes</name>
+        <qualifiedname>scv_tr::do_attributes</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>declare_attributes</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>undefined_values</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>is_record_attribute</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>prefix_name</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>exts_kind</declname>
+        </param>
+        <param>
+          <type>const scv_extensions_if *</type>
+          <declname>my_exts_p</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" line="161" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" bodystart="161" bodyend="398"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a1bab0d3503b66a26d602bc94b1d8a830" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void scv_tr::scv_tr_generator_cbf</definition>
+        <argsstring>(const scv_tr_generator_base &amp;g, scv_tr_generator_base::callback_reason reason, void *user_data_p)</argsstring>
+        <name>scv_tr_generator_cbf</name>
+        <qualifiedname>scv_tr::scv_tr_generator_cbf</qualifiedname>
+        <param>
+          <type>const scv_tr_generator_base &amp;</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>scv_tr_generator_base::callback_reason</type>
+          <declname>reason</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data_p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" line="402" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" bodystart="402" bodyend="431"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a1dbde53eb19c10c04f12a48efb98373f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void scv_tr::scv_tr_handle_cbf</definition>
+        <argsstring>(const scv_tr_handle &amp;t, scv_tr_handle::callback_reason reason, void *user_data_p)</argsstring>
+        <name>scv_tr_handle_cbf</name>
+        <qualifiedname>scv_tr::scv_tr_handle_cbf</qualifiedname>
+        <param>
+          <type>const scv_tr_handle &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>scv_tr_handle::callback_reason</type>
+          <declname>reason</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data_p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" line="435" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" bodystart="435" bodyend="502"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a3132b164adc23a5fe849eb8ce2c1fe1c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void scv_tr::scv_tr_handle_record_attribute_cbf</definition>
+        <argsstring>(const scv_tr_handle &amp;t, const char *attribute_name, const scv_extensions_if *my_exts_p, void *user_data_p)</argsstring>
+        <name>scv_tr_handle_record_attribute_cbf</name>
+        <qualifiedname>scv_tr::scv_tr_handle_record_attribute_cbf</qualifiedname>
+        <param>
+          <type>const scv_tr_handle &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>attribute_name</declname>
+        </param>
+        <param>
+          <type>const scv_extensions_if *</type>
+          <declname>my_exts_p</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data_p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" line="506" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" bodystart="506" bodyend="531"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1aca906530cf66b8fedcf35dc73fcc6ca1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void scv_tr::scv_tr_handle_relation_cbf</definition>
+        <argsstring>(const scv_tr_handle &amp;tr_1, const scv_tr_handle &amp;tr_2, void *user_data_p, scv_tr_relation_handle_t relation_handle)</argsstring>
+        <name>scv_tr_handle_relation_cbf</name>
+        <qualifiedname>scv_tr::scv_tr_handle_relation_cbf</qualifiedname>
+        <param>
+          <type>const scv_tr_handle &amp;</type>
+          <declname>tr_1</declname>
+        </param>
+        <param>
+          <type>const scv_tr_handle &amp;</type>
+          <declname>tr_2</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data_p</declname>
+        </param>
+        <param>
+          <type>scv_tr_relation_handle_t</type>
+          <declname>relation_handle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" line="535" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" bodystart="535" bodyend="551"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a3573df3b0a771e07ba4520471b65c753" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scv_tr::scv_tr_compressed_init</definition>
+        <argsstring>()</argsstring>
+        <name>scv_tr_compressed_init</name>
+        <qualifiedname>scv_tr::scv_tr_compressed_init</qualifiedname>
+        <briefdescription>
+<para>initializes the infrastructure to use a gzip compressed text based transaction recording database </para>
+        </briefdescription>
+        <detaileddescription>
+<para>TODO: add a multithreaded writer </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" line="556" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_compressed.cpp" bodystart="556" bodyend="563" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_db.h" declline="36" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a32f06dd92b69fc5b665b63172dd62e31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scv_tr::scv_tr_sqlite_init</definition>
+        <argsstring>()</argsstring>
+        <name>scv_tr_sqlite_init</name>
+        <qualifiedname>scv_tr::scv_tr_sqlite_init</qualifiedname>
+        <briefdescription>
+<para>initializes the infrastructure to use a SQLite based transaction recording database </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="495" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="495" bodyend="502" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_db.h" declline="28" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a65444428d84300ea1a58592878e20c56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scv_tr::scv_tr_plain_init</definition>
+        <argsstring>()</argsstring>
+        <name>scv_tr_plain_init</name>
+        <qualifiedname>scv_tr::scv_tr_plain_init</qualifiedname>
+        <briefdescription>
+<para>initializes the infrastructure to use a plain text based transaction recording database </para>
+        </briefdescription>
+        <detaileddescription>
+<para>TODO: add a multithreaded writer </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_lz4.cpp" line="402" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_lz4.cpp" bodystart="402" bodyend="409" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_db.h" declline="44" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1afeddfaf192ef3019298e592676f3620f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scv_tr::scv_tr_lz4_init</definition>
+        <argsstring>()</argsstring>
+        <name>scv_tr_lz4_init</name>
+        <qualifiedname>scv_tr::scv_tr_lz4_init</qualifiedname>
+        <briefdescription>
+<para>initializes the infrastructure to use a LZ4 compressed text based transaction recording database </para>
+        </briefdescription>
+        <detaileddescription>
+<para>TODO: add a multithreaded writer </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_lz4.cpp" line="394" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_lz4.cpp" bodystart="394" bodyend="401" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_db.h" declline="52" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a5d155516c7c820f842bc40ae7bc86f40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scv_tr::scv_tr_ftr_init</definition>
+        <argsstring>(bool compressed)</argsstring>
+        <name>scv_tr_ftr_init</name>
+        <qualifiedname>scv_tr::scv_tr_ftr_init</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>compressed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_ftr.cpp" line="250" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_ftr.cpp" bodystart="250" bodyend="267" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_db.h" declline="59" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a15074645e87ec6f7ad6a325d276d631c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scv_tr::scv_tr_mtc_init</definition>
+        <argsstring>()</argsstring>
+        <name>scv_tr_mtc_init</name>
+        <qualifiedname>scv_tr::scv_tr_mtc_init</qualifiedname>
+        <briefdescription>
+<para>initializes the infrastructure to use a compressed text based transaction recording database with a multithreaded writer </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_mtc.cpp" line="327" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_mtc.cpp" bodystart="327" bodyend="334" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_db.h" declline="66" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1acdbb02f8c6d838888b9a2bf3d5fe3bca" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void scv_tr::dbCb</definition>
+        <argsstring>(const scv_tr_db &amp;_scv_tr_db, scv_tr_db::callback_reason reason, void *data)</argsstring>
+        <name>dbCb</name>
+        <qualifiedname>scv_tr::dbCb</qualifiedname>
+        <param>
+          <type>const scv_tr_db &amp;</type>
+          <declname>_scv_tr_db</declname>
+        </param>
+        <param>
+          <type>scv_tr_db::callback_reason</type>
+          <declname>reason</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="149" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="149" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a857679e06c5d236674638a79895c5008" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t scv_tr::getStringId</definition>
+        <argsstring>(std::string const &amp;s)</argsstring>
+        <name>getStringId</name>
+        <qualifiedname>scv_tr::getStringId</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="247" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="247" bodyend="261"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a263103b0be0239459ebb87f00ab51f12" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void scv_tr::streamCb</definition>
+        <argsstring>(const scv_tr_stream &amp;s, scv_tr_stream::callback_reason reason, void *data)</argsstring>
+        <name>streamCb</name>
+        <qualifiedname>scv_tr::streamCb</qualifiedname>
+        <param>
+          <type>const scv_tr_stream &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>scv_tr_stream::callback_reason</type>
+          <declname>reason</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="263" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="263" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a55c348cc11d7faffc804fc8f2bb48ca6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scv_tr::recordAttribute</definition>
+        <argsstring>(uint64_t id, EventType event, const string &amp;name, data_type type, const string &amp;value)</argsstring>
+        <name>recordAttribute</name>
+        <qualifiedname>scv_tr::recordAttribute</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>EventType</type>
+          <declname>event</declname>
+        </param>
+        <param>
+          <type>const string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>data_type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const string &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="279" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="279" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a1016c8d0d9288c9652a99db6ddf2f43b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scv_tr::recordAttribute</definition>
+        <argsstring>(uint64_t id, EventType event, const string &amp;name, data_type type, long long value)</argsstring>
+        <name>recordAttribute</name>
+        <qualifiedname>scv_tr::recordAttribute</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>EventType</type>
+          <declname>event</declname>
+        </param>
+        <param>
+          <type>const string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>data_type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>long long</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="292" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="292" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1ab0b5199c49cd26614106ee2e73cb3ffe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scv_tr::recordAttribute</definition>
+        <argsstring>(uint64_t id, EventType event, const string &amp;name, data_type type, double value)</argsstring>
+        <name>recordAttribute</name>
+        <qualifiedname>scv_tr::recordAttribute</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>EventType</type>
+          <declname>event</declname>
+        </param>
+        <param>
+          <type>const string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>data_type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="296" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="296" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a141fb7b9ad39c502f759b74043294cda" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void scv_tr::recordAttributes</definition>
+        <argsstring>(uint64_t id, EventType eventType, string &amp;prefix, const scv_extensions_if *my_exts_p)</argsstring>
+        <name>recordAttributes</name>
+        <qualifiedname>scv_tr::recordAttributes</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>EventType</type>
+          <declname>eventType</declname>
+        </param>
+        <param>
+          <type>string &amp;</type>
+          <declname>prefix</declname>
+        </param>
+        <param>
+          <type>const scv_extensions_if *</type>
+          <declname>my_exts_p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="300" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="300" bodyend="369"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1af83920bc1bbd04a4deb3a7fe0a4932e2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void scv_tr::generatorCb</definition>
+        <argsstring>(const scv_tr_generator_base &amp;g, scv_tr_generator_base::callback_reason reason, void *data)</argsstring>
+        <name>generatorCb</name>
+        <qualifiedname>scv_tr::generatorCb</qualifiedname>
+        <param>
+          <type>const scv_tr_generator_base &amp;</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>scv_tr_generator_base::callback_reason</type>
+          <declname>reason</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="371" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="371" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a7c5f959cbee888f112f8b8a7b8b727b2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void scv_tr::transactionCb</definition>
+        <argsstring>(const scv_tr_handle &amp;t, scv_tr_handle::callback_reason reason, void *data)</argsstring>
+        <name>transactionCb</name>
+        <qualifiedname>scv_tr::transactionCb</qualifiedname>
+        <param>
+          <type>const scv_tr_handle &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>scv_tr_handle::callback_reason</type>
+          <declname>reason</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="384" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="384" bodyend="465"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1ada90866b4b63091e63a7fc19ff2ee761" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void scv_tr::attributeCb</definition>
+        <argsstring>(const scv_tr_handle &amp;t, const char *name, const scv_extensions_if *ext, void *data)</argsstring>
+        <name>attributeCb</name>
+        <qualifiedname>scv_tr::attributeCb</qualifiedname>
+        <param>
+          <type>const scv_tr_handle &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const scv_extensions_if *</type>
+          <declname>ext</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="467" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="467" bodyend="476"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescv__tr_1a78626c55dbfcbc4c709d0893732e38bc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void scv_tr::relationCb</definition>
+        <argsstring>(const scv_tr_handle &amp;tr_1, const scv_tr_handle &amp;tr_2, void *data, scv_tr_relation_handle_t relation_handle)</argsstring>
+        <name>relationCb</name>
+        <qualifiedname>scv_tr::relationCb</qualifiedname>
+        <param>
+          <type>const scv_tr_handle &amp;</type>
+          <declname>tr_1</declname>
+        </param>
+        <param>
+          <type>const scv_tr_handle &amp;</type>
+          <declname>tr_2</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>scv_tr_relation_handle_t</type>
+          <declname>relation_handle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="478" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="478" bodyend="493"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>SystemC Verification Library (SCV) Transaction Recording. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_binary.cpp" line="34" column="1"/>
+  </compounddef>
+</doxygen>

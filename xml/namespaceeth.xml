@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceeth" kind="namespace" language="C++">
+    <compoundname>eth</compoundname>
+    <innerclass refid="structeth_1_1ethernet__header" prot="public">eth::ethernet_header</innerclass>
+    <innerclass refid="structeth_1_1vlan__tag__8021Q" prot="public">eth::vlan_tag_8021Q</innerclass>
+    <innerclass refid="structeth_1_1ethernet__frame" prot="public">eth::ethernet_frame</innerclass>
+    <innerclass refid="structeth_1_1eth__packet__payload" prot="public">eth::eth_packet_payload</innerclass>
+    <innerclass refid="structeth_1_1eth__packet__types" prot="public">eth::eth_packet_types</innerclass>
+    <innerclass refid="structeth_1_1eth__channel" prot="public">eth::eth_channel</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceeth_1af2f1b692e95d3e82fdb23e1811765e40" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>ether_kind</name>
+        <qualifiedname>eth::ether_kind</qualifiedname>
+        <enumvalue id="namespaceeth_1af2f1b692e95d3e82fdb23e1811765e40a08d81f84b28212f3c1a703a76fae3be8" prot="public">
+          <name>ETHER_TYPE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceeth_1af2f1b692e95d3e82fdb23e1811765e40a0f32ea1e71edb99dee9a3751a7628322" prot="public">
+          <name>LENGTH_8023</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="55" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceeth_1adaa59eceb5d95dabd7e75b2b7a08cb73" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>ETH</name>
+        <qualifiedname>eth::ETH</qualifiedname>
+        <enumvalue id="namespaceeth_1adaa59eceb5d95dabd7e75b2b7a08cb73ac57e921596445b99ab85558984966184" prot="public">
+          <name>FRAME</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="74" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="74" bodyend="74"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceeth_1a76cc9c269104a56021cd599bb958572d" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>N</declname>
+            <defname>N</defname>
+            <defval>1</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structtlm_1_1nw_1_1tlm__network__initiator__socket" kindref="compound">tlm::nw::tlm_network_initiator_socket</ref>&lt; 1, ETH, <ref refid="structeth_1_1eth__packet__types" kindref="compound">eth_packet_types</ref>, N &gt;</type>
+        <definition>using eth::eth_pkt_initiator_socket =  tlm::nw::tlm_network_initiator_socket&lt;1, ETH, eth_packet_types, N&gt;</definition>
+        <argsstring></argsstring>
+        <name>eth_pkt_initiator_socket</name>
+        <qualifiedname>eth::eth_pkt_initiator_socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="116" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceeth_1a5983101a15809a945aa896a8d2f90f72" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>N</declname>
+            <defname>N</defname>
+            <defval>1</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structtlm_1_1nw_1_1tlm__network__target__socket" kindref="compound">tlm::nw::tlm_network_target_socket</ref>&lt; 1, ETH, <ref refid="structeth_1_1eth__packet__types" kindref="compound">eth_packet_types</ref>, N &gt;</type>
+        <definition>using eth::eth_pkt_target_socket =  tlm::nw::tlm_network_target_socket&lt;1, ETH, eth_packet_types, N&gt;</definition>
+        <argsstring></argsstring>
+        <name>eth_pkt_target_socket</name>
+        <qualifiedname>eth::eth_pkt_target_socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="117" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceeth_1ae370f4c2b2cb78c2a4a48abf3dab1ffc" prot="public" static="no">
+        <type><ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr" kindref="compound">tlm::scc::tlm_payload_shared_ptr</ref>&lt; <ref refid="structeth_1_1eth__packet__payload" kindref="compound">eth_packet_payload</ref> &gt;</type>
+        <definition>using eth::eth_pkt_shared_ptr =  tlm::scc::tlm_payload_shared_ptr&lt;eth_packet_payload&gt;</definition>
+        <argsstring></argsstring>
+        <name>eth_pkt_shared_ptr</name>
+        <qualifiedname>eth::eth_pkt_shared_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="118" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceeth_1a752feaf737ef54c6b8285b08f7480fac" prot="public" static="no">
+        <type><ref refid="structtlm_1_1scc_1_1tlm__mm" kindref="compound">tlm::scc::tlm_mm</ref>&lt; <ref refid="structeth_1_1eth__packet__types" kindref="compound">eth_packet_types</ref>, false &gt;</type>
+        <definition>using eth::eth_pkt_mm =  tlm::scc::tlm_mm&lt;eth_packet_types, false&gt;</definition>
+        <argsstring></argsstring>
+        <name>eth_pkt_mm</name>
+        <qualifiedname>eth::eth_pkt_mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="119" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceeth_1a14c47dc37e772d338475cdfad429b2f5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::uint16_t</type>
+        <definition>std::uint16_t eth::bswap16</definition>
+        <argsstring>(std::uint16_t x)</argsstring>
+        <name>bswap16</name>
+        <qualifiedname>eth::bswap16</qualifiedname>
+        <param>
+          <type>std::uint16_t</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="37" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="37" bodyend="37"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ETH TLM utilities. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.cpp" line="2" column="1"/>
+  </compounddef>
+</doxygen>

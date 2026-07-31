@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -66,7 +66,7 @@ $(function(){initNavTree('classutil_1_1sparse__array.html','','classutil_1_1spar
 </div><!--header-->
 <div class="contents">
 
-<p>a sparse array suitable for large sizes with compile time constants for performance  
+<p>a sparse array suitable for large sizes  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>&gt;</code></p>
@@ -97,10 +97,10 @@ Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt;<br />
-class util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt;</div><p>a sparse array suitable for large sizes with compile time constants for performance </p>
+class util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt;</div><p>a sparse array suitable for large sizes </p>
 <p>a simple array which allocates memory in configurable chunks (size of 2^PAGE_ADDR_BITS), used for large sparse arrays. Memory is allocated on demand </p>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00123">123</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00037">37</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
 <a id="ab571fc9dff87068e9c90bdff93c1481f" name="ab571fc9dff87068e9c90bdff93c1481f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab571fc9dff87068e9c90bdff93c1481f">&#9670;&#160;</a></span>page_type</h2>
@@ -116,7 +116,7 @@ template&lt;typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00135">135</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00049">49</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
@@ -147,7 +147,7 @@ template&lt;typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 </div><div class="memdoc">
 <p>the default constructor </p>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00139">139</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00053">53</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
@@ -177,7 +177,7 @@ template&lt;typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 </div><div class="memdoc">
 <p>the destructor </p>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00143">143</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00057">57</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
@@ -215,7 +215,7 @@ template&lt;typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the page is allocated </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00178">178</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00092">92</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
@@ -252,7 +252,7 @@ template&lt;typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>reference to page </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00166">166</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00080">80</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
@@ -289,7 +289,7 @@ template&lt;typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the data type reference </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00153">153</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00067">67</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
@@ -320,7 +320,7 @@ template&lt;typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 <p>get the size of the array</p>
 <dl class="section return"><dt>Returns</dt><dd>the size </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00188">188</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00102">102</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
@@ -347,7 +347,7 @@ template&lt;typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00191">191</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00105">105</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
@@ -373,7 +373,7 @@ template&lt;typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00127">127</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00041">41</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
@@ -399,7 +399,7 @@ template&lt;typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00133">133</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00047">47</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
@@ -425,7 +425,7 @@ template&lt;typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00131">131</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00045">45</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
@@ -451,7 +451,7 @@ template&lt;typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00129">129</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00043">43</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>

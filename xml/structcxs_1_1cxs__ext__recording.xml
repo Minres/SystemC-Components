@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structcxs_1_1cxs__ext__recording" kind="struct" language="C++" prot="public">
+    <compoundname>cxs::cxs_ext_recording</compoundname>
+    <basecompoundref refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if" prot="public" virt="non-virtual">tlm::scc::scv::tlm_extensions_recording_if&lt; cxs_flit_types &gt;</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structcxs_1_1cxs__ext__recording_1ae015369627deb241b2748111c15329de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>cxs::cxs_ext_recording::cxs_ext_recording</definition>
+        <argsstring>()</argsstring>
+        <name>cxs_ext_recording</name>
+        <qualifiedname>cxs::cxs_ext_recording::cxs_ext_recording</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" line="49" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" bodystart="49" bodyend="49"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structcxs_1_1cxs__ext__recording_1a19d1004a5061eea97509bc9c7b452072" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void cxs::cxs_ext_recording::recordBeginTx</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;h, cxs_flit_types::tlm_payload_type &amp;trans)</argsstring>
+        <name>recordBeginTx</name>
+        <qualifiedname>cxs::cxs_ext_recording::recordBeginTx</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type>cxs_flit_types::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" line="51" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" bodystart="51" bodyend="54"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>cxs::cxs_ext_recording</label>
+        <link refid="structcxs_1_1cxs__ext__recording"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::scv::tlm_extensions_recording_if&lt; cxs_flit_types &gt;</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>cxs::cxs_ext_recording</label>
+        <link refid="structcxs_1_1cxs__ext__recording"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::scv::tlm_extensions_recording_if&lt; cxs_flit_types &gt;</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>recordBegin</edgelabel>
+          <edgelabel>recordEnd</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>util::delegate&lt; void(SCVNS scv_tr_handle &amp;, typename cxs_flit_types::tlm_payload_type &amp;)&gt;</label>
+        <link refid="classutil_1_1delegate"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" line="47" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" bodystart="47" bodyend="55"/>
+    <listofallmembers>
+      <member refid="structcxs_1_1cxs__ext__recording_1ae015369627deb241b2748111c15329de" prot="public" virt="non-virtual"><scope>cxs::cxs_ext_recording</scope><name>cxs_ext_recording</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a92a87b3b15db1e40349efcfdc5a24a3a" prot="public" virt="non-virtual"><scope>cxs::cxs_ext_recording</scope><name>record_tx_fct</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a424d7503eb14ef2332c270b323bab885" prot="protected" virt="non-virtual"><scope>cxs::cxs_ext_recording</scope><name>recordBegin</name></member>
+      <member refid="structcxs_1_1cxs__ext__recording_1a19d1004a5061eea97509bc9c7b452072" prot="public" virt="non-virtual"><scope>cxs::cxs_ext_recording</scope><name>recordBeginTx</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a07f6b3f1e99994310cf0d289ceccad53" prot="public" virt="non-virtual" ambiguityscope="tlm::scc::scv::tlm_extensions_recording_if&lt; cxs_flit_types &gt;::"><scope>cxs::cxs_ext_recording</scope><name>recordBeginTx</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1afebebeac142f601640e82de835d19631" prot="protected" virt="non-virtual"><scope>cxs::cxs_ext_recording</scope><name>recordEnd</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a25e59c20d51c2259723ad993e1da859f" prot="public" virt="non-virtual"><scope>cxs::cxs_ext_recording</scope><name>recordEndTx</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

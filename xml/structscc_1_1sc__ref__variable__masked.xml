@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1sc__ref__variable__masked" kind="struct" language="C++" prot="public">
+    <compoundname>scc::sc_ref_variable_masked</compoundname>
+    <basecompoundref refid="structscc_1_1sc__variable__b" prot="public" virt="non-virtual">scc::sc_variable_b</basecompoundref>
+    <includes refid="sc__variable_8h" local="no">sc_variable.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1sc__ref__variable__masked_1ab3a7c4d65560af536c3654c654a46790" prot="public" static="no" mutable="no">
+        <type>const T &amp;</type>
+        <definition>const T&amp; scc::sc_ref_variable_masked&lt; T &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>scc::sc_ref_variable_masked::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="525" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="525" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1sc__ref__variable__masked_1a03e082cb136eb232182b7908dcc2da90" prot="public" static="no" mutable="no">
+        <type>const T</type>
+        <definition>const T scc::sc_ref_variable_masked&lt; T &gt;::mask</definition>
+        <argsstring></argsstring>
+        <name>mask</name>
+        <qualifiedname>scc::sc_ref_variable_masked::mask</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="527" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="527" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable__masked_1a4d56810c1c3b8a6f57ecac6c7c60a90e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_ref_variable_masked&lt; T &gt;::sc_ref_variable_masked</definition>
+        <argsstring>(const std::string &amp;name, const T &amp;value, int width)</argsstring>
+        <name>sc_ref_variable_masked</name>
+        <qualifiedname>scc::sc_ref_variable_masked::sc_ref_variable_masked</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="529" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="529" bodyend="532"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable__masked_1a2ea49c48117780e40a0917f19b7b50ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual scc::sc_ref_variable_masked&lt; T &gt;::~sc_ref_variable_masked</definition>
+        <argsstring>()=default</argsstring>
+        <name>~sc_ref_variable_masked</name>
+        <qualifiedname>scc::sc_ref_variable_masked::~sc_ref_variable_masked</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="534" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable__masked_1a013f216e3370aa812b2c43cb781f748e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string scc::sc_ref_variable_masked&lt; T &gt;::to_string</definition>
+        <argsstring>() const override</argsstring>
+        <name>to_string</name>
+        <qualifiedname>scc::sc_ref_variable_masked::to_string</qualifiedname>
+        <reimplements refid="structscc_1_1sc__variable__b_1a1ddfaa46a276428cb67e83c6a1f7ed28">to_string</reimplements>
+        <briefdescription>
+<para>retrieve the textual representation of the value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="536" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="536" bodyend="540"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable__masked_1a47367b4d37fb6a4b8adf17e19689a77d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void scc::sc_ref_variable_masked&lt; T &gt;::trace</definition>
+        <argsstring>(observer *obs) const override</argsstring>
+        <name>trace</name>
+        <qualifiedname>scc::sc_ref_variable_masked::trace</qualifiedname>
+        <reimplements refid="structscc_1_1sc__variable__b_1ad33499a234cd42b573a776c54b90c5b5">trace</reimplements>
+        <param>
+          <type><ref refid="structscc_1_1observer" kindref="compound">observer</ref> *</type>
+          <declname>obs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="542" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="542" bodyend="542"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable__masked_1a40c7f968b5cab445fcc4bbc1a0fa1ed7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_ref_variable_masked&lt; T &gt;::trace</definition>
+        <argsstring>(sc_core::sc_trace_file *tf) const override</argsstring>
+        <name>trace</name>
+        <qualifiedname>scc::sc_ref_variable_masked::trace</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="544" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="544" bodyend="544"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the <ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref> for a particular plain data type with limited bit width </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the data type of the wrapped value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_ref_variable_masked&lt; T &gt;</label>
+        <link refid="structscc_1_1sc__ref__variable__masked"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>scc::sc_variable_b</label>
+        <link refid="structscc_1_1sc__variable__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_ref_variable_masked&lt; T &gt;</label>
+        <link refid="structscc_1_1sc__ref__variable__masked"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>scc::sc_variable_b</label>
+        <link refid="structscc_1_1sc__variable__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="524" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="524" bodyend="545"/>
+    <listofallmembers>
+      <member refid="structscc_1_1sc__variable__b_1a54e81286d38766d3296fbfdd45a93602" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable_masked</scope><name>kind</name></member>
+      <member refid="structscc_1_1sc__ref__variable__masked_1a03e082cb136eb232182b7908dcc2da90" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable_masked</scope><name>mask</name></member>
+      <member refid="structscc_1_1sc__variable__b_1a0a5e1d1793cc0bf09e522b45f0682336" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable_masked</scope><name>operator=</name></member>
+      <member refid="structscc_1_1sc__variable__b_1aabe3a0678ea946b12c19754e66c815d2" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable_masked</scope><name>operator=</name></member>
+      <member refid="structscc_1_1sc__ref__variable__masked_1a4d56810c1c3b8a6f57ecac6c7c60a90e" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable_masked</scope><name>sc_ref_variable_masked</name></member>
+      <member refid="structscc_1_1sc__variable__b_1adc9d31cb6aa7ca639164fae59948b2df" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable_masked</scope><name>sc_variable_b</name></member>
+      <member refid="structscc_1_1sc__variable__b_1a297b69eb44023b0a8208ebccaf3be74c" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable_masked</scope><name>sc_variable_b</name></member>
+      <member refid="structscc_1_1sc__variable__b_1ae1a37f199e94caba2b8f02cc6c09332f" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable_masked</scope><name>sc_variable_b</name></member>
+      <member refid="structscc_1_1sc__variable__b_1a64a927337d80d2fb5ee45cccb778a90a" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable_masked</scope><name>sc_variable_b</name></member>
+      <member refid="structscc_1_1sc__ref__variable__masked_1a013f216e3370aa812b2c43cb781f748e" prot="public" virt="virtual"><scope>scc::sc_ref_variable_masked</scope><name>to_string</name></member>
+      <member refid="structscc_1_1sc__ref__variable__masked_1a47367b4d37fb6a4b8adf17e19689a77d" prot="public" virt="virtual"><scope>scc::sc_ref_variable_masked</scope><name>trace</name></member>
+      <member refid="structscc_1_1sc__ref__variable__masked_1a40c7f968b5cab445fcc4bbc1a0fa1ed7" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable_masked</scope><name>trace</name></member>
+      <member refid="structscc_1_1sc__ref__variable__masked_1ab3a7c4d65560af536c3654c654a46790" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable_masked</scope><name>value</name></member>
+      <member refid="structscc_1_1sc__ref__variable__masked_1a2ea49c48117780e40a0917f19b7b50ac" prot="public" virt="virtual"><scope>scc::sc_ref_variable_masked</scope><name>~sc_ref_variable_masked</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

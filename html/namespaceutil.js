@@ -1,10 +1,16 @@
 var namespaceutil =
 [
+    [ "ihex", "namespaceutil_1_1ihex.html", [
+      [ "parse", "namespaceutil_1_1ihex.html#a915629a2ddb1f557122d9851a9bd023c", null ]
+    ] ],
     [ "BitFieldMember", "structutil_1_1BitFieldMember.html", null ],
     [ "BitFieldArray", "classutil_1_1BitFieldArray.html", "classutil_1_1BitFieldArray" ],
+    [ "bzip2_streambuf", "classutil_1_1bzip2__streambuf.html", null ],
+    [ "bzip2_stream", "classutil_1_1bzip2__stream.html", null ],
     [ "delegate", "classutil_1_1delegate.html", null ],
     [ "delegate&lt; R(A...)&gt;", "classutil_1_1delegate_3_01R_07A_8_8_8_08_4.html", null ],
-    [ "ihex_parser", "structutil_1_1ihex__parser.html", null ],
+    [ "gzip_streambuf", "classutil_1_1gzip__streambuf.html", null ],
+    [ "gzip_stream", "classutil_1_1gzip__stream.html", null ],
     [ "LoggerDelegate", "structutil_1_1LoggerDelegate.html", null ],
     [ "InstanceLogger", "classutil_1_1InstanceLogger.html", null ],
     [ "IoRedirector", "classutil_1_1IoRedirector.html", null ],
@@ -15,11 +21,14 @@ var namespaceutil =
     [ "stl_pool_allocator", "classutil_1_1stl__pool__allocator.html", "classutil_1_1stl__pool__allocator" ],
     [ "range_lut", "classutil_1_1range__lut.html", "classutil_1_1range__lut" ],
     [ "ring_buffer", "classutil_1_1ring__buffer.html", "classutil_1_1ring__buffer" ],
-    [ "sparse_array_b", "classutil_1_1sparse__array__b.html", "classutil_1_1sparse__array__b" ],
     [ "sparse_array", "classutil_1_1sparse__array.html", "classutil_1_1sparse__array" ],
     [ "thread_pool", "structutil_1_1thread__pool.html", null ],
     [ "thread_syncronizer", "classutil_1_1thread__syncronizer.html", "classutil_1_1thread__syncronizer" ],
     [ "watchdog", "classutil_1_1watchdog.html", "classutil_1_1watchdog" ],
+    [ "xz_streambuf", "classutil_1_1xz__streambuf.html", null ],
+    [ "xz_stream", "classutil_1_1xz__stream.html", null ],
+    [ "zstd_streambuf", "classutil_1_1zstd__streambuf.html", null ],
+    [ "zstd_stream", "classutil_1_1zstd__stream.html", null ],
     [ "base_name", "namespaceutil.html#aeda0346a95dd86507525a9b92a83cb76", null ],
     [ "dir_name", "namespaceutil.html#ac7c86d22733f7e5913f863d13962a7e7", null ],
     [ "file_exists", "namespaceutil.html#ac45479054364f35d457990cc7deab724", null ],

@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacetlm_1_1nw_1_1scv" kind="namespace" language="C++">
+    <compoundname>tlm::nw::scv</compoundname>
+    <innerclass refid="classtlm_1_1nw_1_1scv_1_1tlm__recorder" prot="public">tlm::nw::scv::tlm_recorder</innerclass>
+    <innerclass refid="classtlm_1_1nw_1_1scv_1_1tlm__recorder__module" prot="public">tlm::nw::scv::tlm_recorder_module</innerclass>
+    <innernamespace refid="namespacetlm_1_1nw_1_1scv_1_1impl">tlm::nw::scv::impl</innernamespace>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacetlm_1_1nw_1_1scv_1a31d379650a11c9de1fe5442b188829bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::scv::record</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;handle, cxs::cxs_flit_payload const &amp;o)</argsstring>
+        <name>record</name>
+        <qualifiedname>tlm::nw::scv::record</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type><ref refid="structcxs_1_1cxs__flit__payload" kindref="compound">cxs::cxs_flit_payload</ref> const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/scv/tlm_recording.h" line="38" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/scv/tlm_recording.h" bodystart="38" bodyend="48" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" declline="548" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1nw_1_1scv_1a09c3aae107ab37e494f5a7a09a7dfccc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::scv::record</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;handle, ::cxs::cxs_packet_payload const &amp;o)</argsstring>
+        <name>record</name>
+        <qualifiedname>tlm::nw::scv::record</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type><ref refid="structcxs_1_1cxs__packet__payload" kindref="compound">::cxs::cxs_packet_payload</ref> const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/scv/tlm_recording.h" line="50" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/scv/tlm_recording.h" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1nw_1_1scv_1a662c224618ef0dc0415407d109cfa254" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::scv::record</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;handle, tlm::nw::tlm_network_payload_base &amp;o)</argsstring>
+        <name>record</name>
+        <qualifiedname>tlm::nw::scv::record</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type><ref refid="structtlm_1_1nw_1_1tlm__network__payload__base" kindref="compound">tlm::nw::tlm_network_payload_base</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.cpp" line="25" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.cpp" bodystart="25" bodyend="27" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" declline="42" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1nw_1_1scv_1a2f6c68bf079749d14944526829c2b0d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::scv::record</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;h, tlm::tlm_phase const &amp;e)</argsstring>
+        <name>record</name>
+        <qualifiedname>tlm::nw::scv::record</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_phase const &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" line="40" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1nw_1_1scv_1a58f490a5141952094265b107a6049d69" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::scv::record</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;h, tlm::tlm_sync_enum e)</argsstring>
+        <name>record</name>
+        <qualifiedname>tlm::nw::scv::record</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_sync_enum</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" line="41" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1nw_1_1scv_1ac459e8b10cc396da057eaf6540b60354" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename TYPES</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void tlm::nw::scv::record</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;h, impl::tlm_recording_payload&lt; TYPES &gt; const &amp;e)</argsstring>
+        <name>record</name>
+        <qualifiedname>tlm::nw::scv::record</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type><ref refid="classtlm_1_1nw_1_1scv_1_1impl_1_1tlm__recording__payload" kindref="compound">impl::tlm_recording_payload</ref>&lt; TYPES &gt; const &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" line="65" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" bodystart="65" bodyend="67"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>SCC SCV4TLM classes and functions. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="546" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,5 @@
+<map id="scc::tcp4tlm::connection&lt; TSEND, TREC &gt;" name="scc::tcp4tlm::connection&lt; TSEND, TREC &gt;">
+<area shape="rect" id="Node000001" title="The connection class provides FlatBuffers framing primitives on top of a socket." alt="" coords="5,108,171,148"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="9,5,167,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,74,91,108,85,108,85,74"/>
+</map>

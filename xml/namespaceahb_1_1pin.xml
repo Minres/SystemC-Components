@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceahb_1_1pin" kind="namespace" language="C++">
+    <compoundname>ahb::pin</compoundname>
+    <innerclass refid="classahb_1_1pin_1_1initiator" prot="public">ahb::pin::initiator</innerclass>
+    <innerclass refid="classahb_1_1pin_1_1target" prot="public">ahb::pin::target</innerclass>
+    <briefdescription>
+<para>pin level adapters </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/initiator.h" line="33" column="1"/>
+  </compounddef>
+</doxygen>

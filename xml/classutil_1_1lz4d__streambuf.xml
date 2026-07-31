@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1lz4d__streambuf" kind="class" language="C++" prot="public">
+    <compoundname>util::lz4d_streambuf</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::streambuf</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classutil_1_1lz4d__streambuf_1a998525954448a55700fb7e9443860630" prot="private" static="no" mutable="no">
+        <type>std::istream &amp;</type>
+        <definition>std::istream&amp; util::lz4d_streambuf::src_str</definition>
+        <argsstring></argsstring>
+        <name>src_str</name>
+        <qualifiedname>util::lz4d_streambuf::src_str</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="62" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1lz4d__streambuf_1a8633c2574823faf35c1d9a9362a67222" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; char &gt;</type>
+        <definition>std::vector&lt;char&gt; util::lz4d_streambuf::src_buf</definition>
+        <argsstring></argsstring>
+        <name>src_buf</name>
+        <qualifiedname>util::lz4d_streambuf::src_buf</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="63" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1lz4d__streambuf_1a4385d6624629a49d3cf74ebd108badf5" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; char &gt;</type>
+        <definition>std::vector&lt;char&gt; util::lz4d_streambuf::dest_buf</definition>
+        <argsstring></argsstring>
+        <name>dest_buf</name>
+        <qualifiedname>util::lz4d_streambuf::dest_buf</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="64" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1lz4d__streambuf_1a0f64293fe5e256aa81dfcaeea096a8ed" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t util::lz4d_streambuf::offset</definition>
+        <argsstring></argsstring>
+        <name>offset</name>
+        <qualifiedname>util::lz4d_streambuf::offset</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="65" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1lz4d__streambuf_1ad6907551aaf6a50b78413e6800315d0e" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t util::lz4d_streambuf::src_buf_size</definition>
+        <argsstring></argsstring>
+        <name>src_buf_size</name>
+        <qualifiedname>util::lz4d_streambuf::src_buf_size</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="66" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" bodystart="66" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1lz4d__streambuf_1a3c6af59a04dc93237d60cc0eedf49131" prot="private" static="no" mutable="no">
+        <type>LZ4F_decompressionContext_t</type>
+        <definition>LZ4F_decompressionContext_t util::lz4d_streambuf::ctx</definition>
+        <argsstring></argsstring>
+        <name>ctx</name>
+        <qualifiedname>util::lz4d_streambuf::ctx</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="67" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" bodystart="67" bodyend="67"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classutil_1_1lz4d__streambuf_1a786b4ebfdaab9aef25bf6f7bf96261b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::lz4d_streambuf::lz4d_streambuf</definition>
+        <argsstring>(std::istream &amp;source, size_t buf_size)</argsstring>
+        <name>lz4d_streambuf</name>
+        <qualifiedname>util::lz4d_streambuf::lz4d_streambuf</qualifiedname>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buf_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="50" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.cpp" bodystart="68" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1lz4d__streambuf_1a87672797e0b1da9a82f45b428fd9d3c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::lz4d_streambuf::~lz4d_streambuf</definition>
+        <argsstring>()</argsstring>
+        <name>~lz4d_streambuf</name>
+        <qualifiedname>util::lz4d_streambuf::~lz4d_streambuf</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="52" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.cpp" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1lz4d__streambuf_1a1086a20e73ce8540d04d6cb1f4470b1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int_type</type>
+        <definition>std::streambuf::int_type util::lz4d_streambuf::underflow</definition>
+        <argsstring>() override</argsstring>
+        <name>underflow</name>
+        <qualifiedname>util::lz4d_streambuf::underflow</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="54" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.cpp" bodystart="80" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1lz4d__streambuf_1aa331cab09dbbd3beaf1da81a33c22fb9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::lz4d_streambuf::lz4d_streambuf</definition>
+        <argsstring>(const lz4d_streambuf &amp;)=delete</argsstring>
+        <name>lz4d_streambuf</name>
+        <qualifiedname>util::lz4d_streambuf::lz4d_streambuf</qualifiedname>
+        <param>
+          <type>const lz4d_streambuf &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="56" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1lz4d__streambuf_1a490314e3d06aec1b11b7fa8277463acc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::lz4d_streambuf::lz4d_streambuf</definition>
+        <argsstring>(lz4d_streambuf &amp;&amp;)=delete</argsstring>
+        <name>lz4d_streambuf</name>
+        <qualifiedname>util::lz4d_streambuf::lz4d_streambuf</qualifiedname>
+        <param>
+          <type>lz4d_streambuf &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="57" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1lz4d__streambuf_1ac11a21989da8b074a958c0cd47735bf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>lz4d_streambuf &amp;</type>
+        <definition>lz4d_streambuf &amp; util::lz4d_streambuf::operator=</definition>
+        <argsstring>(const lz4d_streambuf &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>util::lz4d_streambuf::operator=</qualifiedname>
+        <param>
+          <type>const lz4d_streambuf &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="58" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1lz4d__streambuf_1ae5d33683187b3f4da2eb8b137ffc3fc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>lz4d_streambuf &amp;</type>
+        <definition>lz4d_streambuf &amp; util::lz4d_streambuf::operator=</definition>
+        <argsstring>(lz4d_streambuf &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>util::lz4d_streambuf::operator=</qualifiedname>
+        <param>
+          <type>lz4d_streambuf &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="59" column="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>std::streambuf</label>
+      </node>
+      <node id="1">
+        <label>util::lz4d_streambuf</label>
+        <link refid="classutil_1_1lz4d__streambuf"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>std::streambuf</label>
+      </node>
+      <node id="1">
+        <label>util::lz4d_streambuf</label>
+        <link refid="classutil_1_1lz4d__streambuf"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" line="48" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/lz4_streambuf.h" bodystart="48" bodyend="68"/>
+    <listofallmembers>
+      <member refid="classutil_1_1lz4d__streambuf_1a3c6af59a04dc93237d60cc0eedf49131" prot="private" virt="non-virtual"><scope>util::lz4d_streambuf</scope><name>ctx</name></member>
+      <member refid="classutil_1_1lz4d__streambuf_1a4385d6624629a49d3cf74ebd108badf5" prot="private" virt="non-virtual"><scope>util::lz4d_streambuf</scope><name>dest_buf</name></member>
+      <member refid="classutil_1_1lz4d__streambuf_1a786b4ebfdaab9aef25bf6f7bf96261b8" prot="public" virt="non-virtual"><scope>util::lz4d_streambuf</scope><name>lz4d_streambuf</name></member>
+      <member refid="classutil_1_1lz4d__streambuf_1aa331cab09dbbd3beaf1da81a33c22fb9" prot="public" virt="non-virtual"><scope>util::lz4d_streambuf</scope><name>lz4d_streambuf</name></member>
+      <member refid="classutil_1_1lz4d__streambuf_1a490314e3d06aec1b11b7fa8277463acc" prot="public" virt="non-virtual"><scope>util::lz4d_streambuf</scope><name>lz4d_streambuf</name></member>
+      <member refid="classutil_1_1lz4d__streambuf_1a0f64293fe5e256aa81dfcaeea096a8ed" prot="private" virt="non-virtual"><scope>util::lz4d_streambuf</scope><name>offset</name></member>
+      <member refid="classutil_1_1lz4d__streambuf_1ac11a21989da8b074a958c0cd47735bf3" prot="public" virt="non-virtual"><scope>util::lz4d_streambuf</scope><name>operator=</name></member>
+      <member refid="classutil_1_1lz4d__streambuf_1ae5d33683187b3f4da2eb8b137ffc3fc7" prot="public" virt="non-virtual"><scope>util::lz4d_streambuf</scope><name>operator=</name></member>
+      <member refid="classutil_1_1lz4d__streambuf_1a8633c2574823faf35c1d9a9362a67222" prot="private" virt="non-virtual"><scope>util::lz4d_streambuf</scope><name>src_buf</name></member>
+      <member refid="classutil_1_1lz4d__streambuf_1ad6907551aaf6a50b78413e6800315d0e" prot="private" virt="non-virtual"><scope>util::lz4d_streambuf</scope><name>src_buf_size</name></member>
+      <member refid="classutil_1_1lz4d__streambuf_1a998525954448a55700fb7e9443860630" prot="private" virt="non-virtual"><scope>util::lz4d_streambuf</scope><name>src_str</name></member>
+      <member refid="classutil_1_1lz4d__streambuf_1a1086a20e73ce8540d04d6cb1f4470b1b" prot="public" virt="non-virtual"><scope>util::lz4d_streambuf</scope><name>underflow</name></member>
+      <member refid="classutil_1_1lz4d__streambuf_1a87672797e0b1da9a82f45b428fd9d3c8" prot="public" virt="non-virtual"><scope>util::lz4d_streambuf</scope><name>~lz4d_streambuf</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

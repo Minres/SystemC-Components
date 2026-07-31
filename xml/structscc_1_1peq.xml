@@ -1,0 +1,513 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1peq" kind="struct" language="C++" prot="public">
+    <compoundname>scc::peq</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_object</basecompoundref>
+    <includes refid="peq_8h" local="no">peq.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class TYPE</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structscc_1_1peq_1a17fcea4a1eb87829af107ad19f4fe22a" prot="public" static="no">
+        <type>std::pair&lt; const sc_core::sc_time, TYPE &gt;</type>
+        <definition>using scc::peq&lt; TYPE &gt;::pair_type =  std::pair&lt;const sc_core::sc_time, TYPE&gt;</definition>
+        <argsstring></argsstring>
+        <name>pair_type</name>
+        <qualifiedname>scc::peq::pair_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="46" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structscc_1_1peq_1ae9ebba1647aa1f24e0103195099bf263" prot="public" static="no">
+        <type>std::map&lt; const sc_core::sc_time, std::deque&lt; TYPE &gt; * &gt;</type>
+        <definition>using scc::peq&lt; TYPE &gt;::map_type =  std::map&lt;const sc_core::sc_time, std::deque&lt;TYPE&gt;*&gt;</definition>
+        <argsstring></argsstring>
+        <name>map_type</name>
+        <qualifiedname>scc::peq::map_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="47" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1peq_1ac8f83c9442928af7d08b624e449ab127" prot="private" static="no" mutable="no">
+        <type>map_type</type>
+        <definition>map_type scc::peq&lt; TYPE &gt;::m_scheduled_events</definition>
+        <argsstring></argsstring>
+        <name>m_scheduled_events</name>
+        <qualifiedname>scc::peq::m_scheduled_events</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="189" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1peq_1a19c3a28fbcf0bf147132e2bf3b77455b" prot="private" static="no" mutable="no">
+        <type>std::deque&lt; std::deque&lt; TYPE &gt; * &gt;</type>
+        <definition>std::deque&lt;std::deque&lt;TYPE&gt;*&gt; scc::peq&lt; TYPE &gt;::free_pool</definition>
+        <argsstring></argsstring>
+        <name>free_pool</name>
+        <qualifiedname>scc::peq::free_pool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="190" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1peq_1a3e7418d87f9de11c4421fc19671778b9" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event scc::peq&lt; TYPE &gt;::m_event</definition>
+        <argsstring></argsstring>
+        <name>m_event</name>
+        <qualifiedname>scc::peq::m_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="191" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1peq_1a17f21f5cd71520bb845cf3344eb6327a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::peq&lt; TYPE &gt;::peq</definition>
+        <argsstring>()</argsstring>
+        <name>peq</name>
+        <qualifiedname>scc::peq::peq</qualifiedname>
+        <briefdescription>
+<para>default constructor creating a unnamed peq </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="53" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="53" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1peq_1af796cf9195686a381d99f8ff12170c20" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::peq&lt; TYPE &gt;::peq</definition>
+        <argsstring>(const char *name)</argsstring>
+        <name>peq</name>
+        <qualifiedname>scc::peq::peq</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>named peq constructor </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="61" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="61" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1peq_1a59053387a23b6df36a251a48c99d21d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::peq&lt; TYPE &gt;::~peq</definition>
+        <argsstring>()</argsstring>
+        <name>~peq</name>
+        <qualifiedname>scc::peq::~peq</qualifiedname>
+        <briefdescription>
+<para>destructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="68" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="237" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1peq_1a9bbd1130cf192a991e03c3be3d074394" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::peq&lt; TYPE &gt;::notify</definition>
+        <argsstring>(TYPE const &amp;entry, const sc_core::sc_time &amp;t)</argsstring>
+        <name>notify</name>
+        <qualifiedname>scc::peq::notify</qualifiedname>
+        <param>
+          <type>TYPE const &amp;</type>
+          <declname>entry</declname>
+        </param>
+        <param>
+          <type>const sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>non-blocking push. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Inserts entry into the queue with time based notification</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value to insert </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the delay for calling get </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="78" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="78" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1peq_1a2b2b17b1aa3fc7ad31b67885e2d6e6d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::peq&lt; TYPE &gt;::notify</definition>
+        <argsstring>(TYPE &amp;&amp;entry, const sc_core::sc_time &amp;t)</argsstring>
+        <name>notify</name>
+        <qualifiedname>scc::peq::notify</qualifiedname>
+        <param>
+          <type>TYPE &amp;&amp;</type>
+          <declname>entry</declname>
+        </param>
+        <param>
+          <type>const sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="91" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="91" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1peq_1a5cb02388bf7b16ae5a314cb83938bd1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::peq&lt; TYPE &gt;::notify</definition>
+        <argsstring>(TYPE &amp;&amp;entry)</argsstring>
+        <name>notify</name>
+        <qualifiedname>scc::peq::notify</qualifiedname>
+        <param>
+          <type>TYPE &amp;&amp;</type>
+          <declname>entry</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="103" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="103" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1peq_1a39d453a7ca6fb4529e2c2445ed034741" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::peq&lt; TYPE &gt;::notify</definition>
+        <argsstring>(TYPE const &amp;entry)</argsstring>
+        <name>notify</name>
+        <qualifiedname>scc::peq::notify</qualifiedname>
+        <param>
+          <type>TYPE const &amp;</type>
+          <declname>entry</declname>
+        </param>
+        <briefdescription>
+<para>non-blocking push </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Inserts entry into the queue with immediate notification</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value to insert </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="115" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="115" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1peq_1a96f03772cd30574ba45a4b50f39c76c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::optional&lt; TYPE &gt;</type>
+        <definition>boost::optional&lt; TYPE &gt; scc::peq&lt; TYPE &gt;::get_next</definition>
+        <argsstring>()</argsstring>
+        <name>get_next</name>
+        <qualifiedname>scc::peq::get_next</qualifiedname>
+        <briefdescription>
+<para>non-blocking get </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>optional copy of the head element </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="125" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="125" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1peq_1a86fe01b84c045c7b8d0090f1dc588bed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TYPE</type>
+        <definition>TYPE scc::peq&lt; TYPE &gt;::get</definition>
+        <argsstring>()</argsstring>
+        <name>get</name>
+        <qualifiedname>scc::peq::get</qualifiedname>
+        <briefdescription>
+<para>blocking get </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>copy of the next entry. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="142" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="142" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1peq_1afdaac52f71290ee8c038843d728b1704" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_event &amp;</type>
+        <definition>sc_core::sc_event &amp; scc::peq&lt; TYPE &gt;::event</definition>
+        <argsstring>()</argsstring>
+        <name>event</name>
+        <qualifiedname>scc::peq::event</qualifiedname>
+        <briefdescription>
+<para>get the available event </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>reference to the event </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="154" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="154" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1peq_1a89cecdbe837276225356678f6c085f2a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::peq&lt; TYPE &gt;::cancel_all</definition>
+        <argsstring>()</argsstring>
+        <name>cancel_all</name>
+        <qualifiedname>scc::peq::cancel_all</qualifiedname>
+        <briefdescription>
+<para>cancel all events from the event queue </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="160" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="160" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1peq_1a4512c9aad5ce21efcd53575a9609b012" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::peq&lt; TYPE &gt;::has_next</definition>
+        <argsstring>()</argsstring>
+        <name>has_next</name>
+        <qualifiedname>scc::peq::has_next</qualifiedname>
+        <briefdescription>
+<para>check if value is available at current time </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if data is available for <ref refid="structscc_1_1peq_1a86fe01b84c045c7b8d0090f1dc588bed" kindref="member">get()</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="170" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="170" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1peq_1ae2da73e4c528f8de293c03071f8a77fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time scc::peq&lt; TYPE &gt;::get_next_time_stamp</definition>
+        <argsstring>()</argsstring>
+        <name>get_next_time_stamp</name>
+        <qualifiedname>scc::peq::get_next_time_stamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="172" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="172" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1peq_1a8d49bf3f9d005c870ec4ef4ff3c6cf7d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::peq&lt; TYPE &gt;::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <qualifiedname>scc::peq::clear</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="177" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="177" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1peq_1a5021a7447cc1e6d3b96180796971f855" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t scc::peq&lt; TYPE &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>scc::peq::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="186" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="186" bodyend="186"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structscc_1_1peq_1a7c3969c607c4ba1f3f0f9db25b3a99c9" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::peq&lt; TYPE &gt;::insert_entry</definition>
+        <argsstring>(const TYPE &amp;entry, sc_core::sc_time abs_time)</argsstring>
+        <name>insert_entry</name>
+        <qualifiedname>scc::peq::insert_entry</qualifiedname>
+        <param>
+          <type>const TYPE &amp;</type>
+          <declname>entry</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time</type>
+          <declname>abs_time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="193" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="193" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1peq_1ae659ee3da4b986b768c13ef4781c63d4" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::peq&lt; TYPE &gt;::insert_entry</definition>
+        <argsstring>(TYPE &amp;&amp;entry, sc_core::sc_time abs_time)</argsstring>
+        <name>insert_entry</name>
+        <qualifiedname>scc::peq::insert_entry</qualifiedname>
+        <param>
+          <type>TYPE &amp;&amp;</type>
+          <declname>entry</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time</type>
+          <declname>abs_time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="208" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="208" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1peq_1a4671fb038e80d9a75db19735c670f7ed" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TYPE</type>
+        <definition>TYPE scc::peq&lt; TYPE &gt;::get_entry</definition>
+        <argsstring>()</argsstring>
+        <name>get_entry</name>
+        <qualifiedname>scc::peq::get_entry</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="223" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="223" bodyend="234"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>priority event queue </para>
+    </briefdescription>
+    <detaileddescription>
+<para>A simple priority event queue with a copy of the original value</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TYPE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the type name of the object to keep in th equeue </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::peq&lt; TYPE &gt;</label>
+        <link refid="structscc_1_1peq"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::peq&lt; TYPE &gt;</label>
+        <link refid="structscc_1_1peq"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" line="42" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/peq.h" bodystart="42" bodyend="235"/>
+    <listofallmembers>
+      <member refid="structscc_1_1peq_1a89cecdbe837276225356678f6c085f2a" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>cancel_all</name></member>
+      <member refid="structscc_1_1peq_1a8d49bf3f9d005c870ec4ef4ff3c6cf7d" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>clear</name></member>
+      <member refid="structscc_1_1peq_1afdaac52f71290ee8c038843d728b1704" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>event</name></member>
+      <member refid="structscc_1_1peq_1a19c3a28fbcf0bf147132e2bf3b77455b" prot="private" virt="non-virtual"><scope>scc::peq</scope><name>free_pool</name></member>
+      <member refid="structscc_1_1peq_1a86fe01b84c045c7b8d0090f1dc588bed" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>get</name></member>
+      <member refid="structscc_1_1peq_1a4671fb038e80d9a75db19735c670f7ed" prot="private" virt="non-virtual"><scope>scc::peq</scope><name>get_entry</name></member>
+      <member refid="structscc_1_1peq_1a96f03772cd30574ba45a4b50f39c76c8" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>get_next</name></member>
+      <member refid="structscc_1_1peq_1ae2da73e4c528f8de293c03071f8a77fc" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>get_next_time_stamp</name></member>
+      <member refid="structscc_1_1peq_1a4512c9aad5ce21efcd53575a9609b012" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>has_next</name></member>
+      <member refid="structscc_1_1peq_1a7c3969c607c4ba1f3f0f9db25b3a99c9" prot="private" virt="non-virtual"><scope>scc::peq</scope><name>insert_entry</name></member>
+      <member refid="structscc_1_1peq_1ae659ee3da4b986b768c13ef4781c63d4" prot="private" virt="non-virtual"><scope>scc::peq</scope><name>insert_entry</name></member>
+      <member refid="structscc_1_1peq_1a3e7418d87f9de11c4421fc19671778b9" prot="private" virt="non-virtual"><scope>scc::peq</scope><name>m_event</name></member>
+      <member refid="structscc_1_1peq_1ac8f83c9442928af7d08b624e449ab127" prot="private" virt="non-virtual"><scope>scc::peq</scope><name>m_scheduled_events</name></member>
+      <member refid="structscc_1_1peq_1ae9ebba1647aa1f24e0103195099bf263" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>map_type</name></member>
+      <member refid="structscc_1_1peq_1a9bbd1130cf192a991e03c3be3d074394" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>notify</name></member>
+      <member refid="structscc_1_1peq_1a2b2b17b1aa3fc7ad31b67885e2d6e6d0" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>notify</name></member>
+      <member refid="structscc_1_1peq_1a5cb02388bf7b16ae5a314cb83938bd1f" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>notify</name></member>
+      <member refid="structscc_1_1peq_1a39d453a7ca6fb4529e2c2445ed034741" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>notify</name></member>
+      <member refid="structscc_1_1peq_1a17fcea4a1eb87829af107ad19f4fe22a" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>pair_type</name></member>
+      <member refid="structscc_1_1peq_1a17f21f5cd71520bb845cf3344eb6327a" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>peq</name></member>
+      <member refid="structscc_1_1peq_1af796cf9195686a381d99f8ff12170c20" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>peq</name></member>
+      <member refid="structscc_1_1peq_1a5021a7447cc1e6d3b96180796971f855" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>size</name></member>
+      <member refid="structscc_1_1peq_1a59053387a23b6df36a251a48c99d21d4" prot="public" virt="non-virtual"><scope>scc::peq</scope><name>~peq</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

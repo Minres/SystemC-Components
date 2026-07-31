@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacenonstd_1_1detail_1_1swap__adl__tests" kind="namespace" language="C++">
+    <compoundname>nonstd::detail::swap_adl_tests</compoundname>
+    <innerclass refid="structnonstd_1_1detail_1_1swap__adl__tests_1_1tag" prot="public">nonstd::detail::swap_adl_tests::tag</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1swap__adl__tests_1_1is__std__swap__noexcept" prot="public">nonstd::detail::swap_adl_tests::is_std_swap_noexcept</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1swap__adl__tests_1_1is__std__swap__noexcept_3_01T_0fN_0e_4" prot="public">nonstd::detail::swap_adl_tests::is_std_swap_noexcept&lt; T[N]&gt;</innerclass>
+    <innerclass refid="structnonstd_1_1detail_1_1swap__adl__tests_1_1is__adl__swap__noexcept" prot="public">nonstd::detail::swap_adl_tests::is_adl_swap_noexcept</innerclass>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="optional_8hpp_1a1e716ce4488a1d975c6354d23cc7e417" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structnonstd_1_1detail_1_1swap__adl__tests_1_1tag" kindref="compound">tag</ref></type>
+        <definition>tag nonstd::detail::swap_adl_tests::swap</definition>
+        <argsstring>(T &amp;, T &amp;)</argsstring>
+        <name>swap</name>
+        <qualifiedname>nonstd::detail::swap_adl_tests::swap</qualifiedname>
+        <param>
+          <type>T &amp;</type>
+        </param>
+        <param>
+          <type>T &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="193" column="17" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" declline="193" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="optional_8hpp_1a6665c2411109978ab4a27f755a6cfc7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structnonstd_1_1detail_1_1swap__adl__tests_1_1tag" kindref="compound">tag</ref></type>
+        <definition>tag nonstd::detail::swap_adl_tests::swap</definition>
+        <argsstring>(T(&amp;a)[N], T(&amp;b)[N])</argsstring>
+        <name>swap</name>
+        <qualifiedname>nonstd::detail::swap_adl_tests::swap</qualifiedname>
+        <param>
+          <type>T(&amp;)</type>
+          <declname>a</declname>
+          <array>[N]</array>
+        </param>
+        <param>
+          <type>T(&amp;)</type>
+          <declname>b</declname>
+          <array>[N]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="194" column="19" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" declline="194" declcolumn="19"/>
+      </memberdef>
+      <memberdef kind="function" id="optional_8hpp_1a9c9c084611df4bee66e0232e1052fb22" prot="public" static="no" const="no" explicit="no" inline="no" noexceptexpression="false" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class</type>
+          </param>
+        </templateparamlist>
+        <type>std::false_type</type>
+        <definition>std::false_type nonstd::detail::swap_adl_tests::can_swap</definition>
+        <argsstring>(...)</argsstring>
+        <name>can_swap</name>
+        <qualifiedname>nonstd::detail::swap_adl_tests::can_swap</qualifiedname>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="198" column="29" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" declline="198" declcolumn="29"/>
+      </memberdef>
+      <memberdef kind="function" id="optional_8hpp_1a0bd3c4212b6113d7c3519fcedd2b1729" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" noexceptexpression="noexcept(swap(std::declval&lt; T &amp; &gt;(), std::declval&lt; U &amp; &gt;()))" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+          <param>
+            <type>class</type>
+            <defval>decltype(swap(std::declval&lt;T&amp;&gt;(), std::declval&lt;U&amp;&gt;()))</defval>
+          </param>
+        </templateparamlist>
+        <type>std::true_type</type>
+        <definition>std::true_type nonstd::detail::swap_adl_tests::can_swap</definition>
+        <argsstring>(int)</argsstring>
+        <name>can_swap</name>
+        <qualifiedname>nonstd::detail::swap_adl_tests::can_swap</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="200" column="16" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" declline="200" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="optional_8hpp_1a131feb546835637efe23dd9023e440ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class</type>
+          </param>
+        </templateparamlist>
+        <type>std::false_type</type>
+        <definition>std::false_type nonstd::detail::swap_adl_tests::uses_std</definition>
+        <argsstring>(...)</argsstring>
+        <name>uses_std</name>
+        <qualifiedname>nonstd::detail::swap_adl_tests::uses_std</qualifiedname>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="202" column="29" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" declline="202" declcolumn="29"/>
+      </memberdef>
+      <memberdef kind="function" id="optional_8hpp_1ae840c155a5b400183b62965887966fc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>std::is_same&lt; decltype(swap(std::declval&lt; T &amp; &gt;(), std::declval&lt; U &amp; &gt;())), <ref refid="structnonstd_1_1detail_1_1swap__adl__tests_1_1tag" kindref="compound">tag</ref> &gt;</type>
+        <definition>std::is_same&lt; decltype(swap(std::declval&lt; T &amp; &gt;(), std::declval&lt; U &amp; &gt;())), tag &gt; nonstd::detail::swap_adl_tests::uses_std</definition>
+        <argsstring>(int)</argsstring>
+        <name>uses_std</name>
+        <qualifiedname>nonstd::detail::swap_adl_tests::uses_std</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="203" column="32" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" declline="203" declcolumn="32"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="188" column="1"/>
+  </compounddef>
+</doxygen>

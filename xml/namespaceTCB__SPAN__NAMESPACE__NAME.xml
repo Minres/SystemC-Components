@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceTCB__SPAN__NAMESPACE__NAME" kind="namespace" language="C++">
+    <compoundname>TCB_SPAN_NAMESPACE_NAME</compoundname>
+    <innerclass refid="classTCB__SPAN__NAMESPACE__NAME_1_1span" prot="public">TCB_SPAN_NAMESPACE_NAME::span</innerclass>
+    <innernamespace refid="namespaceTCB__SPAN__NAMESPACE__NAME_1_1detail">TCB_SPAN_NAMESPACE_NAME::detail</innernamespace>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="span_8h_1a32a5d55388bdec8308d320d9d5a0a442" prot="public" static="no">
+        <type>unsigned char</type>
+        <definition>using TCB_SPAN_NAMESPACE_NAME::byte =  unsigned char</definition>
+        <argsstring></argsstring>
+        <name>byte</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::byte</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="149" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="span_8h_1aeda6c15ebe482562893915d9734944b3" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>TCB_SPAN_INLINE_VAR constexpr std::size_t</type>
+        <definition>TCB_SPAN_INLINE_VAR constexpr std::size_t TCB_SPAN_NAMESPACE_NAME::dynamic_extent</definition>
+        <argsstring></argsstring>
+        <name>dynamic_extent</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::dynamic_extent</qualifiedname>
+        <initializer>= SIZE_MAX</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="158" column="43" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="span_8h_1a50f1fcc663d9996ea8b3d00f76e1f7ae" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename ElementType</type>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>Extent</declname>
+            <defname>Extent</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classTCB__SPAN__NAMESPACE__NAME_1_1span" kindref="compound">span</ref>&lt; ElementType, Extent &gt;</type>
+        <definition>span&lt; ElementType, Extent &gt; TCB_SPAN_NAMESPACE_NAME::make_span</definition>
+        <argsstring>(span&lt; ElementType, Extent &gt; s) noexcept</argsstring>
+        <name>make_span</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::make_span</qualifiedname>
+        <param>
+          <type><ref refid="classTCB__SPAN__NAMESPACE__NAME_1_1span" kindref="compound">span</ref>&lt; ElementType, Extent &gt;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="422" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="422" bodyend="424"/>
+      </memberdef>
+      <memberdef kind="function" id="span_8h_1a10543fc9bd3b7a98fe37598d2a80e900" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classTCB__SPAN__NAMESPACE__NAME_1_1span" kindref="compound">span</ref>&lt; T, N &gt;</type>
+        <definition>span&lt; T, N &gt; TCB_SPAN_NAMESPACE_NAME::make_span</definition>
+        <argsstring>(T(&amp;arr)[N]) noexcept</argsstring>
+        <name>make_span</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::make_span</qualifiedname>
+        <param>
+          <type>T(&amp;)</type>
+          <declname>arr</declname>
+          <array>[N]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="426" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="426" bodyend="426"/>
+      </memberdef>
+      <memberdef kind="function" id="span_8h_1abe3485a0d5292dc295ac108683b6d1f7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+        </templateparamlist>
+        <type>TCB_SPAN_ARRAY_CONSTEXPR <ref refid="classTCB__SPAN__NAMESPACE__NAME_1_1span" kindref="compound">span</ref>&lt; T, N &gt;</type>
+        <definition>TCB_SPAN_ARRAY_CONSTEXPR span&lt; T, N &gt; TCB_SPAN_NAMESPACE_NAME::make_span</definition>
+        <argsstring>(std::array&lt; T, N &gt; &amp;arr) noexcept</argsstring>
+        <name>make_span</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::make_span</qualifiedname>
+        <param>
+          <type>std::array&lt; T, N &gt; &amp;</type>
+          <declname>arr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="428" column="45" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="428" bodyend="428"/>
+      </memberdef>
+      <memberdef kind="function" id="span_8h_1a5aeccf614cd61e34bd8ecd7f45079a9b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+        </templateparamlist>
+        <type>TCB_SPAN_ARRAY_CONSTEXPR <ref refid="classTCB__SPAN__NAMESPACE__NAME_1_1span" kindref="compound">span</ref>&lt; const T, N &gt;</type>
+        <definition>TCB_SPAN_ARRAY_CONSTEXPR span&lt; const T, N &gt; TCB_SPAN_NAMESPACE_NAME::make_span</definition>
+        <argsstring>(const std::array&lt; T, N &gt; &amp;arr) noexcept</argsstring>
+        <name>make_span</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::make_span</qualifiedname>
+        <param>
+          <type>const std::array&lt; T, N &gt; &amp;</type>
+          <declname>arr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="430" column="45" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="430" bodyend="432"/>
+      </memberdef>
+      <memberdef kind="function" id="span_8h_1ac6596c06f014d4223b929957cea3cd34" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Container</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classTCB__SPAN__NAMESPACE__NAME_1_1span" kindref="compound">span</ref>&lt; typename std::remove_reference&lt; decltype(*::nonstd::detail::data(std::declval&lt; Container &amp; &gt;()))&gt;::type &gt;</type>
+        <definition>span&lt; typename std::remove_reference&lt; decltype(*::nonstd::detail::data(std::declval&lt; Container &amp; &gt;()))&gt;::type &gt; TCB_SPAN_NAMESPACE_NAME::make_span</definition>
+        <argsstring>(Container &amp;cont)</argsstring>
+        <name>make_span</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::make_span</qualifiedname>
+        <param>
+          <type>Container &amp;</type>
+          <declname>cont</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="436" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="436" bodyend="438"/>
+      </memberdef>
+      <memberdef kind="function" id="span_8h_1a7a345a8a2d0b84b9cb78f7f95b759fff" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Container</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classTCB__SPAN__NAMESPACE__NAME_1_1span" kindref="compound">span</ref>&lt; const typename Container::value_type &gt;</type>
+        <definition>span&lt; const typename Container::value_type &gt; TCB_SPAN_NAMESPACE_NAME::make_span</definition>
+        <argsstring>(const Container &amp;cont)</argsstring>
+        <name>make_span</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::make_span</qualifiedname>
+        <param>
+          <type>const Container &amp;</type>
+          <declname>cont</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="440" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="440" bodyend="440"/>
+      </memberdef>
+      <memberdef kind="function" id="span_8h_1a5d4e93eb0bccaae115b0a9729c9fc206" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename ElementType</type>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>Extent</declname>
+            <defname>Extent</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classTCB__SPAN__NAMESPACE__NAME_1_1span" kindref="compound">span</ref>&lt; const byte,((Extent==dynamic_extent) ? dynamic_extent :sizeof(ElementType) *Extent)&gt;</type>
+        <definition>span&lt; const byte,((Extent==dynamic_extent) ? dynamic_extent :sizeof(ElementType) *Extent)&gt; TCB_SPAN_NAMESPACE_NAME::as_bytes</definition>
+        <argsstring>(span&lt; ElementType, Extent &gt; s) noexcept</argsstring>
+        <name>as_bytes</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::as_bytes</qualifiedname>
+        <param>
+          <type><ref refid="classTCB__SPAN__NAMESPACE__NAME_1_1span" kindref="compound">span</ref>&lt; ElementType, Extent &gt;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="444" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="444" bodyend="446"/>
+      </memberdef>
+      <memberdef kind="function" id="span_8h_1a1decb3a15bf4d59908ca6f7d37988262" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ElementType</type>
+          </param>
+          <param>
+            <type>size_t</type>
+            <declname>Extent</declname>
+            <defname>Extent</defname>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt;!std::is_const&lt; ElementType &gt;::value, int &gt;::type</type>
+            <defval>0</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classTCB__SPAN__NAMESPACE__NAME_1_1span" kindref="compound">span</ref>&lt; byte,((Extent==dynamic_extent) ? dynamic_extent :sizeof(ElementType) *Extent)&gt;</type>
+        <definition>span&lt; byte,((Extent==dynamic_extent) ? dynamic_extent :sizeof(ElementType) *Extent)&gt; TCB_SPAN_NAMESPACE_NAME::as_writable_bytes</definition>
+        <argsstring>(span&lt; ElementType, Extent &gt; s) noexcept</argsstring>
+        <name>as_writable_bytes</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::as_writable_bytes</qualifiedname>
+        <param>
+          <type><ref refid="classTCB__SPAN__NAMESPACE__NAME_1_1span" kindref="compound">span</ref>&lt; ElementType, Extent &gt;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="450" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="450" bodyend="452"/>
+      </memberdef>
+      <memberdef kind="function" id="span_8h_1a68c06f1798040809feb6ef90fc110b70" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>std::size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+          <param>
+            <type>typename E</type>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>S</declname>
+            <defname>S</defname>
+          </param>
+        </templateparamlist>
+        <type>decltype(s[N])</type>
+        <definition>decltype(s[N]) TCB_SPAN_NAMESPACE_NAME::get</definition>
+        <argsstring>(span&lt; E, S &gt; s)</argsstring>
+        <name>get</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::get</qualifiedname>
+        <param>
+          <type><ref refid="classTCB__SPAN__NAMESPACE__NAME_1_1span" kindref="compound">span</ref>&lt; E, S &gt;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="454" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="454" bodyend="454"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="69" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1initiator__id__extension" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::initiator_id_extension</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_extension&lt; tlm_id_extension &gt;</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1initiator__id__extension_1af80a14552787d5d93dc150b44e76ea3f" prot="public" static="no" mutable="no">
+        <type>const uint64_t</type>
+        <definition>const uint64_t tlm::scc::initiator_id_extension::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <qualifiedname>tlm::scc::initiator_id_extension::id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" line="76" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1initiator__id__extension_1a51786bc26502ae58f67202e9eef7bd2e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm_extension_base *</type>
+        <definition>tlm_extension_base * tlm::scc::initiator_id_extension::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <qualifiedname>tlm::scc::initiator_id_extension::clone</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" line="65" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1initiator__id__extension_1a40157a2537d15c60669f960933f97e4c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::initiator_id_extension::copy_from</definition>
+        <argsstring>(tlm_extension_base const &amp;from) override</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>tlm::scc::initiator_id_extension::copy_from</qualifiedname>
+        <param>
+          <type>tlm_extension_base const &amp;</type>
+          <declname>from</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" line="66" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" bodystart="66" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1initiator__id__extension_1ae5c7adb91a03ecd271eddfd7d724028a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::initiator_id_extension::initiator_id_extension</definition>
+        <argsstring>(uint64_t i)</argsstring>
+        <name>initiator_id_extension</name>
+        <qualifiedname>tlm::scc::initiator_id_extension::initiator_id_extension</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" line="68" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" bodystart="68" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1initiator__id__extension_1a21c318767cc0473cbc4be0c1da26c1cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::initiator_id_extension::initiator_id_extension</definition>
+        <argsstring>(initiator_id_extension const &amp;o)</argsstring>
+        <name>initiator_id_extension</name>
+        <qualifiedname>tlm::scc::initiator_id_extension::initiator_id_extension</qualifiedname>
+        <param>
+          <type>initiator_id_extension const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" line="71" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" bodystart="71" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1initiator__id__extension_1a52451daff92129f2068e2fded1ddb1ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual tlm::scc::initiator_id_extension::~initiator_id_extension</definition>
+        <argsstring>()=default</argsstring>
+        <name>~initiator_id_extension</name>
+        <qualifiedname>tlm::scc::initiator_id_extension::~initiator_id_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" line="74" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::scc::initiator_id_extension</label>
+        <link refid="structtlm_1_1scc_1_1initiator__id__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; tlm_id_extension &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::scc::initiator_id_extension</label>
+        <link refid="structtlm_1_1scc_1_1initiator__id__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; tlm_id_extension &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" line="64" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" bodystart="64" bodyend="77"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1initiator__id__extension_1a51786bc26502ae58f67202e9eef7bd2e" prot="public" virt="non-virtual"><scope>tlm::scc::initiator_id_extension</scope><name>clone</name></member>
+      <member refid="structtlm_1_1scc_1_1initiator__id__extension_1a40157a2537d15c60669f960933f97e4c" prot="public" virt="non-virtual"><scope>tlm::scc::initiator_id_extension</scope><name>copy_from</name></member>
+      <member refid="structtlm_1_1scc_1_1initiator__id__extension_1af80a14552787d5d93dc150b44e76ea3f" prot="public" virt="non-virtual"><scope>tlm::scc::initiator_id_extension</scope><name>id</name></member>
+      <member refid="structtlm_1_1scc_1_1initiator__id__extension_1ae5c7adb91a03ecd271eddfd7d724028a" prot="public" virt="non-virtual"><scope>tlm::scc::initiator_id_extension</scope><name>initiator_id_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1initiator__id__extension_1a21c318767cc0473cbc4be0c1da26c1cb" prot="public" virt="non-virtual"><scope>tlm::scc::initiator_id_extension</scope><name>initiator_id_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1initiator__id__extension_1a52451daff92129f2068e2fded1ddb1ea" prot="public" virt="virtual"><scope>tlm::scc::initiator_id_extension</scope><name>~initiator_id_extension</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

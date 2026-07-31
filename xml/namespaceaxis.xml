@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceaxis" kind="namespace" language="C++">
+    <compoundname>axis</compoundname>
+    <innerclass refid="structaxis_1_1axis__packet__payload" prot="public">axis::axis_packet_payload</innerclass>
+    <innerclass refid="structaxis_1_1axis__packet__types" prot="public">axis::axis_packet_types</innerclass>
+    <innerclass refid="structaxis_1_1axis__channel" prot="public">axis::axis_channel</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceaxis_1a9b3dcfe716504debf99d0bdf0b0f33c5" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>AXIS_PKT</name>
+        <qualifiedname>axis::AXIS_PKT</qualifiedname>
+        <enumvalue id="namespaceaxis_1a9b3dcfe716504debf99d0bdf0b0f33c5ae44f9e348e41cb272efa87387728571b" prot="public">
+          <name>DATA</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="33" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" bodystart="33" bodyend="33"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceaxis_1a8c96194d8670e0d20bb896116370d86c" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>N</declname>
+            <defname>N</defname>
+            <defval>32</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structtlm_1_1nw_1_1tlm__network__initiator__socket" kindref="compound">tlm::nw::tlm_network_initiator_socket</ref>&lt; N, AXIS_PKT, <ref refid="structaxis_1_1axis__packet__types" kindref="compound">axis_packet_types</ref>, N &gt;</type>
+        <definition>using axis::axis_pkt_initiator_socket =  tlm::nw::tlm_network_initiator_socket&lt;N, AXIS_PKT, axis_packet_types, N&gt;</definition>
+        <argsstring></argsstring>
+        <name>axis_pkt_initiator_socket</name>
+        <qualifiedname>axis::axis_pkt_initiator_socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="66" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxis_1a03c77c3c08a34d2d208b681b7350934e" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>N</declname>
+            <defname>N</defname>
+            <defval>32</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structtlm_1_1nw_1_1tlm__network__target__socket" kindref="compound">tlm::nw::tlm_network_target_socket</ref>&lt; N, AXIS_PKT, <ref refid="structaxis_1_1axis__packet__types" kindref="compound">axis_packet_types</ref>, N &gt;</type>
+        <definition>using axis::axis_pkt_target_socket =  tlm::nw::tlm_network_target_socket&lt;N, AXIS_PKT, axis_packet_types, N&gt;</definition>
+        <argsstring></argsstring>
+        <name>axis_pkt_target_socket</name>
+        <qualifiedname>axis::axis_pkt_target_socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="67" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxis_1ae39e785a4cd40822fa5ce30d1cc14486" prot="public" static="no">
+        <type><ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr" kindref="compound">tlm::scc::tlm_payload_shared_ptr</ref>&lt; <ref refid="structaxis_1_1axis__packet__payload" kindref="compound">axis_packet_payload</ref> &gt;</type>
+        <definition>using axis::axis_pkt_shared_ptr =  tlm::scc::tlm_payload_shared_ptr&lt;axis_packet_payload&gt;</definition>
+        <argsstring></argsstring>
+        <name>axis_pkt_shared_ptr</name>
+        <qualifiedname>axis::axis_pkt_shared_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="68" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceaxis_1a7d3aa476e70c30935481325ebca8ac92" prot="public" static="no">
+        <type><ref refid="structtlm_1_1scc_1_1tlm__mm" kindref="compound">tlm::scc::tlm_mm</ref>&lt; <ref refid="structaxis_1_1axis__packet__types" kindref="compound">axis_packet_types</ref>, false &gt;</type>
+        <definition>using axis::axis_pkt_mm =  tlm::scc::tlm_mm&lt;axis_packet_types, false&gt;</definition>
+        <argsstring></argsstring>
+        <name>axis_pkt_mm</name>
+        <qualifiedname>axis::axis_pkt_mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="69" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>AXIS TLM utilities. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="32" column="1"/>
+  </compounddef>
+</doxygen>

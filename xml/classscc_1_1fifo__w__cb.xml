@@ -1,0 +1,496 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1fifo__w__cb" kind="class" language="C++" prot="public">
+    <compoundname>scc::fifo_w_cb</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_prim_channel</basecompoundref>
+    <includes refid="fifo__w__cb_8h" local="no">fifo_w_cb.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classscc_1_1fifo__w__cb_1a7244e48834829b93fe334c7940521533" prot="protected" static="no" mutable="no">
+        <type>std::deque&lt; T &gt;</type>
+        <definition>std::deque&lt;T&gt; scc::fifo_w_cb&lt; T &gt;::in_queue</definition>
+        <argsstring></argsstring>
+        <name>in_queue</name>
+        <qualifiedname>scc::fifo_w_cb::in_queue</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="109" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="109" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1fifo__w__cb_1ac0cafc885abdf7bae41e631787696d72" prot="protected" static="no" mutable="no">
+        <type>std::deque&lt; T &gt;</type>
+        <definition>std::deque&lt;T&gt; scc::fifo_w_cb&lt; T &gt;::out_queue</definition>
+        <argsstring></argsstring>
+        <name>out_queue</name>
+        <qualifiedname>scc::fifo_w_cb::out_queue</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="110" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="110" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1fifo__w__cb_1a0377b3840b15811d148a198a03c9730d" prot="protected" static="no" mutable="no">
+        <type>std::function&lt; void(void)&gt;</type>
+        <definition>std::function&lt;void(void)&gt; scc::fifo_w_cb&lt; T &gt;::avail_cb</definition>
+        <argsstring></argsstring>
+        <name>avail_cb</name>
+        <qualifiedname>scc::fifo_w_cb::avail_cb</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="111" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="111" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1fifo__w__cb_1a859e4555a5b650077f93a58b046e7968" prot="protected" static="no" mutable="no">
+        <type>std::function&lt; void(void)&gt;</type>
+        <definition>std::function&lt;void(void)&gt; scc::fifo_w_cb&lt; T &gt;::empty_cb</definition>
+        <argsstring></argsstring>
+        <name>empty_cb</name>
+        <qualifiedname>scc::fifo_w_cb::empty_cb</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="112" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="112" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1fifo__w__cb_1a065a85c77c7140627fbb4193784707af" prot="protected" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned scc::fifo_w_cb&lt; T &gt;::available</definition>
+        <argsstring></argsstring>
+        <name>available</name>
+        <qualifiedname>scc::fifo_w_cb::available</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="113" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1fifo__w__cb_1a1d98157e2bb7319c863f6c6e000daad9" prot="protected" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned scc::fifo_w_cb&lt; T &gt;::written</definition>
+        <argsstring></argsstring>
+        <name>written</name>
+        <qualifiedname>scc::fifo_w_cb::written</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="114" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1fifo__w__cb_1ae60b38c1a97620e1f3d2a3c96666f23a" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event scc::fifo_w_cb&lt; T &gt;::data_written_evt</definition>
+        <argsstring></argsstring>
+        <name>data_written_evt</name>
+        <qualifiedname>scc::fifo_w_cb::data_written_evt</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="115" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="115" bodyend="115"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1acf6123fe008e25a9a44ed4a821b82e89" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::fifo_w_cb&lt; T &gt;::fifo_w_cb</definition>
+        <argsstring>()</argsstring>
+        <name>fifo_w_cb</name>
+        <qualifiedname>scc::fifo_w_cb::fifo_w_cb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="40" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="40" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1a4f59f9cbe59c24c1238a2074ec872602" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::fifo_w_cb&lt; T &gt;::fifo_w_cb</definition>
+        <argsstring>(const char *name)</argsstring>
+        <name>fifo_w_cb</name>
+        <qualifiedname>scc::fifo_w_cb::fifo_w_cb</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="43" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="43" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1a3d6b60efe6e416a2eca58c70c70748a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual scc::fifo_w_cb&lt; T &gt;::~fifo_w_cb</definition>
+        <argsstring>()</argsstring>
+        <name>~fifo_w_cb</name>
+        <qualifiedname>scc::fifo_w_cb::~fifo_w_cb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="46" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1a47cf32853d447e206f83363ba04fa1b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::fifo_w_cb&lt; T &gt;::push_back</definition>
+        <argsstring>(T &amp;t)</argsstring>
+        <name>push_back</name>
+        <qualifiedname>scc::fifo_w_cb::push_back</qualifiedname>
+        <param>
+          <type>T &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="48" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="48" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1aa09198b16eff92d8ac66fa3118ba02e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::fifo_w_cb&lt; T &gt;::push_back</definition>
+        <argsstring>(const T &amp;t)</argsstring>
+        <name>push_back</name>
+        <qualifiedname>scc::fifo_w_cb::push_back</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="52" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1a4c1a2240c34748008485baad5ddc7948" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::fifo_w_cb&lt; T &gt;::push_back</definition>
+        <argsstring>(T &amp;&amp;t)</argsstring>
+        <name>push_back</name>
+        <qualifiedname>scc::fifo_w_cb::push_back</qualifiedname>
+        <param>
+          <type>T &amp;&amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="57" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="57" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1ad1528018fc86961123fe89116bd3a123" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; scc::fifo_w_cb&lt; T &gt;::back</definition>
+        <argsstring>()</argsstring>
+        <name>back</name>
+        <qualifiedname>scc::fifo_w_cb::back</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="62" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1a20bb5a203041bd9b1b80cafd4ddb3191" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T &amp;</type>
+        <definition>const T &amp; scc::fifo_w_cb&lt; T &gt;::back</definition>
+        <argsstring>() const</argsstring>
+        <name>back</name>
+        <qualifiedname>scc::fifo_w_cb::back</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="63" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1a3c3e3cb79b1336344ba3ade476af8130" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::fifo_w_cb&lt; T &gt;::pop_front</definition>
+        <argsstring>()</argsstring>
+        <name>pop_front</name>
+        <qualifiedname>scc::fifo_w_cb::pop_front</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="65" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="65" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1a40d44e56e4231a96383aa2b8355732de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; scc::fifo_w_cb&lt; T &gt;::front</definition>
+        <argsstring>()</argsstring>
+        <name>front</name>
+        <qualifiedname>scc::fifo_w_cb::front</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="72" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="72" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1a62062007853e784773f6035c76b19676" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T &amp;</type>
+        <definition>const T &amp; scc::fifo_w_cb&lt; T &gt;::front</definition>
+        <argsstring>() const</argsstring>
+        <name>front</name>
+        <qualifiedname>scc::fifo_w_cb::front</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="73" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="73" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1a31b56f74fdf30872e8a18cd0084d4732" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>T scc::fifo_w_cb&lt; T &gt;::read</definition>
+        <argsstring>()</argsstring>
+        <name>read</name>
+        <qualifiedname>scc::fifo_w_cb::read</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="75" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="75" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1a3b7b924cba8af3c20252f69089c972f3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t scc::fifo_w_cb&lt; T &gt;::avail</definition>
+        <argsstring>() const</argsstring>
+        <name>avail</name>
+        <qualifiedname>scc::fifo_w_cb::avail</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="82" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="82" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1afeb9a825396f23bc0c2815c2153666b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::fifo_w_cb&lt; T &gt;::empty</definition>
+        <argsstring>() const</argsstring>
+        <name>empty</name>
+        <qualifiedname>scc::fifo_w_cb::empty</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="83" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1ad28824990f41d68dfdc3ebd22eff5aa7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::fifo_w_cb&lt; T &gt;::set_avail_cb</definition>
+        <argsstring>(std::function&lt; void(void)&gt; f)</argsstring>
+        <name>set_avail_cb</name>
+        <qualifiedname>scc::fifo_w_cb::set_avail_cb</qualifiedname>
+        <param>
+          <type>std::function&lt; void(void)&gt;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="85" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="85" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1adaca03e6eab0e7ba8fe875da6d9de32d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::fifo_w_cb&lt; T &gt;::set_empty_cb</definition>
+        <argsstring>(std::function&lt; void(void)&gt; f)</argsstring>
+        <name>set_empty_cb</name>
+        <qualifiedname>scc::fifo_w_cb::set_empty_cb</qualifiedname>
+        <param>
+          <type>std::function&lt; void(void)&gt;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="86" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="86" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1a99c7a03e5a5c54ab54f4eea5bede3e9c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_event const &amp;</type>
+        <definition>sc_core::sc_event const  &amp; scc::fifo_w_cb&lt; T &gt;::data_written_event</definition>
+        <argsstring>() const</argsstring>
+        <name>data_written_event</name>
+        <qualifiedname>scc::fifo_w_cb::data_written_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="88" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1a7fe71d60cb5cdff2ac3f01c38a6a3ce0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::fifo_w_cb&lt; T &gt;::num_avail</definition>
+        <argsstring>()</argsstring>
+        <name>num_avail</name>
+        <qualifiedname>scc::fifo_w_cb::num_avail</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="90" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="90" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1ade720fb63d9a8a4de87917c9cdd06578" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::fifo_w_cb&lt; T &gt;::num_written</definition>
+        <argsstring>()</argsstring>
+        <name>num_written</name>
+        <qualifiedname>scc::fifo_w_cb::num_written</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="91" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="91" bodyend="91"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classscc_1_1fifo__w__cb_1aa837fb31c24fe42093bfa6787d072c3b" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void scc::fifo_w_cb&lt; T &gt;::update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <qualifiedname>scc::fifo_w_cb::update</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="95" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="95" bodyend="107"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>fifo with callbacks </para>
+    </briefdescription>
+    <detaileddescription>
+<para>A fifo with callbacks upon running empty or being filled. The registered callbacks are triggered if the fifo is empty or if an element is inserted. This can be used to control the sensitivity of processes reading this fifo.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the type name of the elements to be store in the fifo </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_prim_channel</label>
+      </node>
+      <node id="1">
+        <label>scc::fifo_w_cb&lt; T &gt;</label>
+        <link refid="classscc_1_1fifo__w__cb"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_prim_channel</label>
+      </node>
+      <node id="1">
+        <label>scc::fifo_w_cb&lt; T &gt;</label>
+        <link refid="classscc_1_1fifo__w__cb"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" line="38" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fifo_w_cb.h" bodystart="38" bodyend="116"/>
+    <listofallmembers>
+      <member refid="classscc_1_1fifo__w__cb_1a3b7b924cba8af3c20252f69089c972f3" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>avail</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1a0377b3840b15811d148a198a03c9730d" prot="protected" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>avail_cb</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1a065a85c77c7140627fbb4193784707af" prot="protected" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>available</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1ad1528018fc86961123fe89116bd3a123" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>back</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1a20bb5a203041bd9b1b80cafd4ddb3191" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>back</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1a99c7a03e5a5c54ab54f4eea5bede3e9c" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>data_written_event</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1ae60b38c1a97620e1f3d2a3c96666f23a" prot="protected" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>data_written_evt</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1afeb9a825396f23bc0c2815c2153666b5" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>empty</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1a859e4555a5b650077f93a58b046e7968" prot="protected" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>empty_cb</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1acf6123fe008e25a9a44ed4a821b82e89" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>fifo_w_cb</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1a4f59f9cbe59c24c1238a2074ec872602" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>fifo_w_cb</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1a40d44e56e4231a96383aa2b8355732de" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>front</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1a62062007853e784773f6035c76b19676" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>front</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1a7244e48834829b93fe334c7940521533" prot="protected" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>in_queue</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1a7fe71d60cb5cdff2ac3f01c38a6a3ce0" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>num_avail</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1ade720fb63d9a8a4de87917c9cdd06578" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>num_written</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1ac0cafc885abdf7bae41e631787696d72" prot="protected" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>out_queue</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1a3c3e3cb79b1336344ba3ade476af8130" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>pop_front</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1a47cf32853d447e206f83363ba04fa1b2" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>push_back</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1aa09198b16eff92d8ac66fa3118ba02e9" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>push_back</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1a4c1a2240c34748008485baad5ddc7948" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>push_back</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1a31b56f74fdf30872e8a18cd0084d4732" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>read</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1ad28824990f41d68dfdc3ebd22eff5aa7" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>set_avail_cb</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1adaca03e6eab0e7ba8fe875da6d9de32d" prot="public" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>set_empty_cb</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1aa837fb31c24fe42093bfa6787d072c3b" prot="protected" virt="virtual"><scope>scc::fifo_w_cb</scope><name>update</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1a1d98157e2bb7319c863f6c6e000daad9" prot="protected" virt="non-virtual"><scope>scc::fifo_w_cb</scope><name>written</name></member>
+      <member refid="classscc_1_1fifo__w__cb_1a3d6b60efe6e416a2eca58c70c70748a1" prot="public" virt="virtual"><scope>scc::fifo_w_cb</scope><name>~fifo_w_cb</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

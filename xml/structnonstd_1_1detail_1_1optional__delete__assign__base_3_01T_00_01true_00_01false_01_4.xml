@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1detail_1_1optional__delete__assign__base_3_01T_00_01true_00_01false_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__delete__assign__base_3_01T_00_01true_00_01false_01_4_1a58fa813e8fce6068091c6e6167812b64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;::optional_delete_assign_base</definition>
+        <argsstring>()=default</argsstring>
+        <name>optional_delete_assign_base</name>
+        <qualifiedname>nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;::optional_delete_assign_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="531" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__delete__assign__base_3_01T_00_01true_00_01false_01_4_1a7578040b61a9713f54f915893fa605ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;::optional_delete_assign_base</definition>
+        <argsstring>(const optional_delete_assign_base &amp;)=default</argsstring>
+        <name>optional_delete_assign_base</name>
+        <qualifiedname>nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;::optional_delete_assign_base</qualifiedname>
+        <param>
+          <type>const optional_delete_assign_base &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="532" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__delete__assign__base_3_01T_00_01true_00_01false_01_4_1aca762d44e2b043cfb5d699937886bff9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;::optional_delete_assign_base</definition>
+        <argsstring>(optional_delete_assign_base &amp;&amp;) noexcept=default</argsstring>
+        <name>optional_delete_assign_base</name>
+        <qualifiedname>nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;::optional_delete_assign_base</qualifiedname>
+        <param>
+          <type>optional_delete_assign_base &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="533" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__delete__assign__base_3_01T_00_01true_00_01false_01_4_1a3d1d5f76dcf70e9e041da58f86789191" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>optional_delete_assign_base &amp;</type>
+        <definition>optional_delete_assign_base &amp; nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;::operator=</definition>
+        <argsstring>(const optional_delete_assign_base &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;::operator=</qualifiedname>
+        <param>
+          <type>const optional_delete_assign_base &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="534" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__delete__assign__base_3_01T_00_01true_00_01false_01_4_1a857e1c01b7ed7c35a6cb11c2f55aa491" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>optional_delete_assign_base &amp;</type>
+        <definition>optional_delete_assign_base &amp; nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;::operator=</definition>
+        <argsstring>(optional_delete_assign_base &amp;&amp;) noexcept=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;::operator=</qualifiedname>
+        <param>
+          <type>optional_delete_assign_base &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="535" column="33"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="530" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="530" bodyend="536"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1detail_1_1optional__delete__assign__base_3_01T_00_01true_00_01false_01_4_1a3d1d5f76dcf70e9e041da58f86789191" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;</scope><name>operator=</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__delete__assign__base_3_01T_00_01true_00_01false_01_4_1a857e1c01b7ed7c35a6cb11c2f55aa491" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;</scope><name>operator=</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__delete__assign__base_3_01T_00_01true_00_01false_01_4_1a58fa813e8fce6068091c6e6167812b64" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;</scope><name>optional_delete_assign_base</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__delete__assign__base_3_01T_00_01true_00_01false_01_4_1a7578040b61a9713f54f915893fa605ff" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;</scope><name>optional_delete_assign_base</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__delete__assign__base_3_01T_00_01true_00_01false_01_4_1aca762d44e2b043cfb5d699937886bff9" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_delete_assign_base&lt; T, true, false &gt;</scope><name>optional_delete_assign_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::scv::tlm_recording_extension</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_extension&lt; tlm_recording_extension &gt;</basecompoundref>
+    <includes refid="tlm__recording__extension_8h" local="no">tlm_recording_extension.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension_1a5242db103effdec334d65ce5088e08c9" prot="public" static="no" mutable="no">
+        <type>SCVNS scv_tr_handle</type>
+        <definition>SCVNS scv_tr_handle tlm::scc::scv::tlm_recording_extension::txHandle</definition>
+        <argsstring></argsstring>
+        <name>txHandle</name>
+        <qualifiedname>tlm::scc::scv::tlm_recording_extension::txHandle</qualifiedname>
+        <briefdescription>
+<para>accessor to the SCV transaction handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" line="96" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension_1a0ee6a10dea43ec24292e065954098d6f" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* tlm::scc::scv::tlm_recording_extension::creator</definition>
+        <argsstring></argsstring>
+        <name>creator</name>
+        <qualifiedname>tlm::scc::scv::tlm_recording_extension::creator</qualifiedname>
+        <briefdescription>
+<para>the owner of this transaction </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" line="100" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension_1aa7686552214ed38b79fe838c271bd4c4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>tlm_extension_base *</type>
+        <definition>virtual tlm_extension_base * tlm::scc::scv::tlm_recording_extension::clone</definition>
+        <argsstring>() const</argsstring>
+        <name>clone</name>
+        <qualifiedname>tlm::scc::scv::tlm_recording_extension::clone</qualifiedname>
+        <briefdescription>
+<para>clone the given extension and duplicate the SCV transaction handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" line="67" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" bodystart="67" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension_1a96b874bddabc000d4cfe6816deccfd44" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void tlm::scc::scv::tlm_recording_extension::copy_from</definition>
+        <argsstring>(tlm_extension_base const &amp;from)</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>tlm::scc::scv::tlm_recording_extension::copy_from</qualifiedname>
+        <param>
+          <type>tlm_extension_base const &amp;</type>
+          <declname>from</declname>
+        </param>
+        <briefdescription>
+<para>copy data between extensions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>from</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the source extension. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" line="75" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" bodystart="75" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension_1ab227511212da17b97aa714b01a6efe04" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::scv::tlm_recording_extension::tlm_recording_extension</definition>
+        <argsstring>(SCVNS scv_tr_handle handle, void *creator_)</argsstring>
+        <name>tlm_recording_extension</name>
+        <qualifiedname>tlm::scc::scv::tlm_recording_extension::tlm_recording_extension</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>creator_</declname>
+        </param>
+        <briefdescription>
+<para>constructor storing the handle of the transaction and the owner of this extension </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>handle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the handle of the created SCV transaction. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>creator_</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the pointer to the owner of this extension (usually an instance of scv_tlm2_recorder). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" line="86" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" bodystart="86" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension_1aa218ec05ef29fa6bc982c727f7ca61c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * tlm::scc::scv::tlm_recording_extension::get_creator</definition>
+        <argsstring>()</argsstring>
+        <name>get_creator</name>
+        <qualifiedname>tlm::scc::scv::tlm_recording_extension::get_creator</qualifiedname>
+        <briefdescription>
+<para>accessor to the owner, the property is read only. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" line="92" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" bodystart="92" bodyend="92"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>generic payload extension class holding the handle of the last recorded SCV transaction </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This extension is been used in the tlm2_recorder. The recorder stores the handle to the generated SCV transaction and forwards it along with the generic payload. If the recorder finds an extension containing a valid handle it links the generated SCV transaction to the found one using the <ref refid="namespacetlm_1_1scc_1_1scv_1ae134530def3431d02bd2ce4c9366c948af9c5fa52b6f6953158c50756bab851be" kindref="member">PREDECESSOR_SUCCESSOR</ref> relationship </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::scc::scv::tlm_recording_extension</label>
+        <link refid="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; tlm_recording_extension &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::scc::scv::tlm_recording_extension</label>
+        <link refid="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; tlm_recording_extension &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" line="62" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recording_extension.h" bodystart="62" bodyend="101"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension_1aa7686552214ed38b79fe838c271bd4c4" prot="public" virt="virtual"><scope>tlm::scc::scv::tlm_recording_extension</scope><name>clone</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension_1a96b874bddabc000d4cfe6816deccfd44" prot="public" virt="virtual"><scope>tlm::scc::scv::tlm_recording_extension</scope><name>copy_from</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension_1a0ee6a10dea43ec24292e065954098d6f" prot="private" virt="non-virtual"><scope>tlm::scc::scv::tlm_recording_extension</scope><name>creator</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension_1aa218ec05ef29fa6bc982c727f7ca61c9" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recording_extension</scope><name>get_creator</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension_1ab227511212da17b97aa714b01a6efe04" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recording_extension</scope><name>tlm_recording_extension</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension_1a5242db103effdec334d65ce5088e08c9" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_recording_extension</scope><name>txHandle</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

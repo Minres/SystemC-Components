@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1nw_1_1scv_1_1impl_1_1tlm__recording__types" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::nw::scv::impl::tlm_recording_types</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+        <defval>tlm::tlm_base_protocol_types</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structtlm_1_1nw_1_1scv_1_1impl_1_1tlm__recording__types_1aec18c8b7adf4030e91c8f54688576039" prot="public" static="no">
+        <type><ref refid="classtlm_1_1nw_1_1scv_1_1impl_1_1tlm__recording__payload" kindref="compound">tlm_recording_payload</ref>&lt; TYPES &gt;</type>
+        <definition>using tlm::nw::scv::impl::tlm_recording_types&lt; TYPES &gt;::tlm_payload_type =  tlm_recording_payload&lt;TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>tlm_payload_type</name>
+        <qualifiedname>tlm::nw::scv::impl::tlm_recording_types::tlm_payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" line="61" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtlm_1_1nw_1_1scv_1_1impl_1_1tlm__recording__types_1a50f947d8974a00230facf05e9b850361" prot="public" static="no">
+        <type>typename TYPES::tlm_phase_type</type>
+        <definition>using tlm::nw::scv::impl::tlm_recording_types&lt; TYPES &gt;::tlm_phase_type =  typename TYPES::tlm_phase_type</definition>
+        <argsstring></argsstring>
+        <name>tlm_phase_type</name>
+        <qualifiedname>tlm::nw::scv::impl::tlm_recording_types::tlm_phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" line="62" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" line="60" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/tlm_recorder.h" bodystart="60" bodyend="63"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1nw_1_1scv_1_1impl_1_1tlm__recording__types_1aec18c8b7adf4030e91c8f54688576039" prot="public" virt="non-virtual"><scope>tlm::nw::scv::impl::tlm_recording_types</scope><name>tlm_payload_type</name></member>
+      <member refid="structtlm_1_1nw_1_1scv_1_1impl_1_1tlm__recording__types_1a50f947d8974a00230facf05e9b850361" prot="public" virt="non-virtual"><scope>tlm::nw::scv::impl::tlm_recording_types</scope><name>tlm_phase_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

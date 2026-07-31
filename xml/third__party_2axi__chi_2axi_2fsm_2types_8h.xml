@@ -1,0 +1,377 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="third__party_2axi__chi_2axi_2fsm_2types_8h" kind="file" language="C++">
+    <compoundname>types.h</compoundname>
+    <includes local="no">array</includes>
+    <includes refid="axi__tlm_8h" local="no">axi/axi_tlm.h</includes>
+    <includes local="no">functional</includes>
+    <includes refid="tlm__gp__shared_8h" local="no">tlm/scc/tlm_gp_shared.h</includes>
+    <includedby refid="base_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h</includedby>
+    <includedby refid="protocol__fsm_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h</includedby>
+    <includedby refid="ace__target__pe_8cpp" local="no">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp</includedby>
+    <includedby refid="axi__target__pe_8cpp" local="no">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_target_pe.cpp</includedby>
+    <includedby refid="simple__initiator_8cpp" local="no">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_initiator.cpp</includedby>
+    <incdepgraph>
+      <node id="8">
+        <label>tlm/scc/tlm_gp_shared.h</label>
+        <link refid="tlm__gp__shared_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>axi/axi_tlm.h</label>
+        <link refid="axi__tlm_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h</label>
+        <link refid="third__party_2axi__chi_2axi_2fsm_2types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>array</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="7">
+        <label>functional</label>
+      </node>
+      <node id="5">
+        <label>tlm</label>
+      </node>
+      <node id="6">
+        <label>type_traits</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="28">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.cpp</label>
+        <link refid="src_2interfaces_2axi_2axi__initiator_8cpp_source"/>
+      </node>
+      <node id="27">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h</label>
+        <link refid="src_2interfaces_2axi_2axi__initiator_8h_source"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.cpp</label>
+        <link refid="axi__target_8cpp_source"/>
+      </node>
+      <node id="22">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h</label>
+        <link refid="axi__target_8h_source"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_initiator.h</label>
+        <link refid="ace__initiator_8h_source"/>
+      </node>
+      <node id="4">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_initiator.h</label>
+        <link refid="ace__lite__initiator_8h_source"/>
+      </node>
+      <node id="5">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h</label>
+        <link refid="ace__lite__target_8h_source"/>
+      </node>
+      <node id="6">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_target.h</label>
+        <link refid="ace__target_8h_source"/>
+      </node>
+      <node id="7">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h</label>
+        <link refid="axi4__initiator_8h_source"/>
+      </node>
+      <node id="8">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_target.h</label>
+        <link refid="axi4__target_8h_source"/>
+      </node>
+      <node id="24">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/scc_interfaces.h</label>
+        <link refid="scc__interfaces_8h_source"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/scc.h</label>
+        <link refid="scc_8h_source"/>
+      </node>
+      <node id="9">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp</label>
+        <link refid="base_8cpp_source"/>
+      </node>
+      <node id="2">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h</label>
+        <link refid="base_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h</label>
+        <link refid="protocol__fsm_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h</label>
+        <link refid="third__party_2axi__chi_2axi_2fsm_2types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp</label>
+        <link refid="ace__target__pe_8cpp_source"/>
+      </node>
+      <node id="10">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h</label>
+        <link refid="ace__target__pe_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_initiator.cpp</label>
+        <link refid="third__party_2axi__chi_2axi_2pe_2axi__initiator_8cpp_source"/>
+      </node>
+      <node id="31">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_initiator.h</label>
+        <link refid="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_target_pe.cpp</label>
+        <link refid="axi__target__pe_8cpp_source"/>
+      </node>
+      <node id="13">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_target_pe.h</label>
+        <link refid="axi__target__pe_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.cpp</label>
+        <link refid="ordered__target_8cpp_source"/>
+      </node>
+      <node id="15">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h</label>
+        <link refid="ordered__target_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.cpp</label>
+        <link refid="reordering__target_8cpp_source"/>
+      </node>
+      <node id="17">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h</label>
+        <link refid="reordering__target_8h_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.cpp</label>
+        <link refid="replay__target_8cpp_source"/>
+      </node>
+      <node id="19">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h</label>
+        <link refid="replay__target_8h_source"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_ace_target.h</label>
+        <link refid="simple__ace__target_8h_source"/>
+      </node>
+      <node id="29">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_initiator.cpp</label>
+        <link refid="simple__initiator_8cpp_source"/>
+      </node>
+      <node id="26">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_initiator.h</label>
+        <link refid="simple__initiator_8h_source"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_target.h</label>
+        <link refid="simple__target_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structaxi_1_1fsm_1_1fsm__handle" prot="public">axi::fsm::fsm_handle</innerclass>
+    <innernamespace refid="namespaceaxi">axi</innernamespace>
+    <innernamespace refid="namespaceaxi_1_1fsm">axi::fsm</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2020<sp/>-2022<sp/>Arteris<sp/>IP</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.axi_util.cpp</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;axi/axi_tlm.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm/scc/tlm_gp_shared.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceaxi" kindref="compound">axi</ref><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fsm<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>fsm<sp/>event<sp/>enumerators</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>protocol_time_point_e<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>RequestPhaseBeg<sp/>=<sp/>0,<sp/></highlight><highlight class="comment">//<sp/>only<sp/>for<sp/>triggering<sp/>the<sp/>request<sp/>phase</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>WValidE,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>WReadyE,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>BegPartReqE,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>EndPartReqE,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>BegReqE,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>EndReqE,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>ResponsePhaseBeg,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>BegPartRespE,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>EndPartRespE,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>BegRespE,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>EndRespE,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>Ack,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>CB_CNT</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>evt2str(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>evt)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>lut[]<sp/>=<sp/>{</highlight><highlight class="stringliteral">&quot;RequestPhaseBeg&quot;</highlight><highlight class="normal">,<sp/><sp/></highlight><highlight class="stringliteral">&quot;WValidE&quot;</highlight><highlight class="normal">,<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;WReadyE&quot;</highlight><highlight class="normal">,<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BegPartReqE&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;EndPartReqE&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;BegReqE&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;EndReqE&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ResponsePhaseBeg&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;BegPartRespE&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;EndPartRespE&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;BegRespE&quot;</highlight><highlight class="normal">,<sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;EndRespE&quot;</highlight><highlight class="normal">,<sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Ack&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lut[evt];</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">protocol_cb<sp/>=<sp/>std::array&lt;std::function&lt;void(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)&gt;,<sp/>CB_CNT&gt;;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1AxiProtocolFsm" kindref="compound">AxiProtocolFsm</ref>;</highlight></codeline>
+<codeline lineno="57" refid="structaxi_1_1fsm_1_1fsm__handle" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">fsm_handle<sp/>{</highlight></codeline>
+<codeline lineno="59" refid="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1AxiProtocolFsm" kindref="compound">AxiProtocolFsm</ref>*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" kindref="member">fsm</ref>;</highlight></codeline>
+<codeline lineno="61" refid="structaxi_1_1fsm_1_1fsm__handle_1a4198e085c0adb0dcfafc623aa9890d8b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm::scc::tlm_gp_shared_ptr<sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle_1a4198e085c0adb0dcfafc623aa9890d8b" kindref="member">trans</ref>{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="63" refid="structaxi_1_1fsm_1_1fsm__handle_1a7c7367afac927398add8c4ec3856d85f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle_1a7c7367afac927398add8c4ec3856d85f" kindref="member">beat_count</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="65" refid="structaxi_1_1fsm_1_1fsm__handle_1abdff7e6de49b857153d99cafbc31c634" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle_1abdff7e6de49b857153d99cafbc31c634" kindref="member">is_snoop</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67" refid="structaxi_1_1fsm_1_1fsm__handle_1a492c1c639c3ce74f9ffd917372a43c4a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_event<sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle_1a492c1c639c3ce74f9ffd917372a43c4a" kindref="member">finish</ref>;</highlight></codeline>
+<codeline lineno="69" refid="structaxi_1_1fsm_1_1fsm__handle_1afd9b5e0e1163fda5e7bac40832dc53a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm::scc::tlm_gp_shared_ptr<sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle_1afd9b5e0e1163fda5e7bac40832dc53a8" kindref="member">gp</ref>{};</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>i64;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>i0;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>i1;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>i32;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>p;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>aux;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_time<sp/>start;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>state{0};</highlight></codeline>
+<codeline lineno="83" refid="structaxi_1_1fsm_1_1fsm__handle_1a6bae2451506edbf1a79e5ff6df20985b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle_1a6bae2451506edbf1a79e5ff6df20985b" kindref="member">reset</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle_1a4198e085c0adb0dcfafc623aa9890d8b" kindref="member">trans</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle_1a7c7367afac927398add8c4ec3856d85f" kindref="member">beat_count</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle_1abdff7e6de49b857153d99cafbc31c634" kindref="member">is_snoop</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle_1afd9b5e0e1163fda5e7bac40832dc53a8" kindref="member">gp</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>aux.i64<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>start<sp/>=<sp/>sc_core::SC_ZERO_TIME;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">fsm_handle</ref>();</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">~fsm_handle</ref>();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>fsm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>axi</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h"/>
+  </compounddef>
+</doxygen>

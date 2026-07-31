@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_c5f3a60db2d5a61d49bdf2995fbb374d" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm</compoundname>
+    <innerfile refid="client_8h">client.h</innerfile>
+    <innerfile refid="i__server_8h">i_server.h</innerfile>
+    <innerfile refid="messages_8h">messages.h</innerfile>
+    <innerfile refid="messages__generated_8h">messages_generated.h</innerfile>
+    <innerfile refid="serialized__connection_8h">serialized_connection.h</innerfile>
+    <innerfile refid="server_8h">server.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,516 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="group__scc-common" kind="group">
+    <compoundname>scc-common</compoundname>
+    <title>Common utilities</title>
+    <innernamespace refid="namespaceutil">util</innernamespace>
+    <innernamespace refid="namespacelogging">logging</innernamespace>
+    <sectiondef kind="user-defined">
+      <memberdef kind="function" id="group__scc-common_1ga6c291b56b2230c9bc73e45426e0d7ae3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned int</type>
+            <declname>bit</declname>
+            <defname>bit</defname>
+          </param>
+          <param>
+            <type>unsigned int</type>
+            <declname>width</declname>
+            <defname>width</defname>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>CONSTEXPR std::enable_if&lt; std::is_unsigned&lt; T &gt;::value, T &gt;::type</type>
+        <definition>CONSTEXPR std::enable_if&lt; std::is_unsigned&lt; T &gt;::value, T &gt;::type bit_sub</definition>
+        <argsstring>(T v)</argsstring>
+        <name>bit_sub</name>
+        <param>
+          <type>T</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>extract bit ranges from plain data types </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>bit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>start bit </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>size of the bit field to extract </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>data type carrying the bits </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>value from which the bytes are to be extracted </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the extracted bit. It is of the same data type as the passed value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="72" column="43" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="72" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="group__scc-common_1gaa969522760cc918c98f025f41f061e6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; std::is_unsigned&lt; T &gt;::value, T &gt;::type</type>
+        <definition>std::enable_if&lt; std::is_unsigned&lt; T &gt;::value, T &gt;::type bit_sub</definition>
+        <argsstring>(T v, unsigned int bit, unsigned int width)</argsstring>
+        <name>bit_sub</name>
+        <param>
+          <type>T</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>bit</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>width</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="87" column="45" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="87" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="group__scc-common_1ga9ca8472717a814c463f45dfd878b0512" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned</type>
+            <declname>offset</declname>
+            <defname>offset</defname>
+          </param>
+          <param>
+            <type>typename R</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>R</type>
+        <definition>R _bit_comb</definition>
+        <argsstring>(T v)</argsstring>
+        <name>_bit_comb</name>
+        <param>
+          <type>T</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="127" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="127" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="group__scc-common_1gaaf4e51a9d6d49585e0059868ff37bd83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned</type>
+            <declname>offset</declname>
+            <defname>offset</defname>
+          </param>
+          <param>
+            <type>typename R</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>R</type>
+        <definition>R _bit_comb</definition>
+        <argsstring>(T first, Args... args)</argsstring>
+        <name>_bit_comb</name>
+        <param>
+          <type>T</type>
+          <declname>first</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="128" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="128" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="group__scc-common_1gad432450d5428bdde76d9d2ebfd362d64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename R</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>R</type>
+        <definition>R bit_comb</definition>
+        <argsstring>(T first, Args... args)</argsstring>
+        <name>bit_comb</name>
+        <param>
+          <type>T</type>
+          <declname>first</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>combines the integer arguments into a large integer in an platform independent way, the first argument is the least significant byte <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>R</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the return type of the function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the type of the first parameter of the function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the remainign parameter pack </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>first first argument of type T </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the remaining parameters </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resulting integer value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="140" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="140" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="group__scc-common_1ga0c9494e0dd10f4c4b84d835457012805" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>B</declname>
+            <defname>B</defname>
+          </param>
+        </templateparamlist>
+        <type>CONSTEXPR T</type>
+        <definition>CONSTEXPR T signextend</definition>
+        <argsstring>(const typename std::make_unsigned&lt; T &gt;::type x)</argsstring>
+        <name>signextend</name>
+        <param>
+          <type>const typename std::make_unsigned&lt; T &gt;::type</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>sign-extend a given value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the datatype </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>B</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the numer of signed bits </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the actualö value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the sign-extended value of type T </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="150" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="150" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="group__scc-common_1gaf80fd6c5d795233c91425d97070f5edf" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned int</type>
+            <declname>bit</declname>
+            <defname>bit</defname>
+          </param>
+          <param>
+            <type>unsigned int</type>
+            <declname>width</declname>
+            <defname>width</defname>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::make_signed&lt; T &gt;::type</type>
+        <definition>std::make_signed&lt; T &gt;::type signed_bit_sub</definition>
+        <argsstring>(T v)</argsstring>
+        <name>signed_bit_sub</name>
+        <param>
+          <type>T</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>a function that converts from B bits to T in one operation </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>bit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="169" column="69" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="169" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="group__scc-common_1gae723b01a27788d29f5ee5991f9059cea" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t operator&quot;&quot;_kB</definition>
+        <argsstring>(unsigned long long val)</argsstring>
+        <name>operator&quot;&quot;_kB</name>
+        <param>
+          <type>unsigned long long</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>UDL for kilobyte. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="180" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="180" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="group__scc-common_1ga74a279f3d43c50b21bb9b40a3c415e47" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t operator&quot;&quot;_MB</definition>
+        <argsstring>(unsigned long long val)</argsstring>
+        <name>operator&quot;&quot;_MB</name>
+        <param>
+          <type>unsigned long long</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>UDL for megabyte. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="182" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="182" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="group__scc-common_1gac0bdd3c0a650319e2c7f13553ecbee3f" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t operator&quot;&quot;_GB</definition>
+        <argsstring>(unsigned long long val)</argsstring>
+        <name>operator&quot;&quot;_GB</name>
+        <param>
+          <type>unsigned long long</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>UDL for gigabyte. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="184" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="184" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="group__scc-common_1ga3fcf5b7ca8ab718a08028973b8da63e3" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t operator&quot;&quot;_KiB</definition>
+        <argsstring>(unsigned long long val)</argsstring>
+        <name>operator&quot;&quot;_KiB</name>
+        <param>
+          <type>unsigned long long</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="186" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="186" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="group__scc-common_1gabd3fca4c44d61548b38c09b1e156b25b" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t operator&quot;&quot;_MiB</definition>
+        <argsstring>(unsigned long long val)</argsstring>
+        <name>operator&quot;&quot;_MiB</name>
+        <param>
+          <type>unsigned long long</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>UDL for megabyte. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="188" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="188" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="group__scc-common_1ga61875659979abed3addf48983a9d280c" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t operator&quot;&quot;_GiB</definition>
+        <argsstring>(unsigned long long val)</argsstring>
+        <name>operator&quot;&quot;_GiB</name>
+        <param>
+          <type>unsigned long long</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>UDL for gigabyte. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="190" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="190" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="group__scc-common_1ga2f6f62d45eed2e11af5fedb8936715a3" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t operator&quot;&quot;_TiB</definition>
+        <argsstring>(unsigned long long val)</argsstring>
+        <name>operator&quot;&quot;_TiB</name>
+        <param>
+          <type>unsigned long long</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>UDL for gigabyte. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="192" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="192" bodyend="192"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This module contains generic C++ functions being independent of SystemC </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

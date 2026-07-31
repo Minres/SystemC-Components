@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1trace_1_1vcd__scope__stack" kind="struct" language="C++" prot="public">
+    <compoundname>scc::trace::vcd_scope_stack</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1trace_1_1vcd__scope__stack_1a7d828bdb59d56b2b01c484f1beec53df" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::pair&lt; std::string, T * &gt; &gt;</type>
+        <definition>std::vector&lt;std::pair&lt;std::string, T*&gt; &gt; scc::trace::vcd_scope_stack&lt; T &gt;::m_traces</definition>
+        <argsstring></argsstring>
+        <name>m_traces</name>
+        <qualifiedname>scc::trace::vcd_scope_stack::m_traces</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="120" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="120" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1trace_1_1vcd__scope__stack_1a85a5d91219a75e2ce077fb8ed0d59a0d" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="structscc_1_1trace_1_1vcd__scope__stack" kindref="compound">vcd_scope_stack</ref> * &gt;</type>
+        <definition>std::unordered_map&lt;std::string, vcd_scope_stack*&gt; scc::trace::vcd_scope_stack&lt; T &gt;::m_scopes</definition>
+        <argsstring></argsstring>
+        <name>m_scopes</name>
+        <qualifiedname>scc::trace::vcd_scope_stack::m_scopes</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="121" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="121" bodyend="121"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1trace_1_1vcd__scope__stack_1aa568779f9f323cbd103aed88b8d7bd6d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::trace::vcd_scope_stack&lt; T &gt;::add_trace</definition>
+        <argsstring>(T *trace)</argsstring>
+        <name>add_trace</name>
+        <qualifiedname>scc::trace::vcd_scope_stack::add_trace</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>trace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="63" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="63" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1vcd__scope__stack_1ad8e2102ace0fd8255f41cc388e21c06d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::trace::vcd_scope_stack&lt; T &gt;::print</definition>
+        <argsstring>(FPTR os, const char *scope_name=&quot;SystemC&quot;)</argsstring>
+        <name>print</name>
+        <qualifiedname>scc::trace::vcd_scope_stack::print</qualifiedname>
+        <param>
+          <type>FPTR</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>scope_name</declname>
+          <defval>&quot;SystemC&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="68" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="68" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1vcd__scope__stack_1a08e90ee10d7915ee468c12eafd595b8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::trace::vcd_scope_stack&lt; T &gt;::~vcd_scope_stack</definition>
+        <argsstring>()</argsstring>
+        <name>~vcd_scope_stack</name>
+        <qualifiedname>scc::trace::vcd_scope_stack::~vcd_scope_stack</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="79" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="79" bodyend="82"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structscc_1_1trace_1_1vcd__scope__stack_1a327dac0ec4d16c9d8c43e58fd9965055" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::trace::vcd_scope_stack&lt; T &gt;::add_trace_rec</definition>
+        <argsstring>(std::vector&lt; std::string &gt;::iterator beg, std::vector&lt; std::string &gt;::iterator const &amp;end, T *trace)</argsstring>
+        <name>add_trace_rec</name>
+        <qualifiedname>scc::trace::vcd_scope_stack::add_trace_rec</qualifiedname>
+        <param>
+          <type>std::vector&lt; std::string &gt;::iterator</type>
+          <declname>beg</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;::iterator const &amp;</type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>T *</type>
+          <declname>trace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="85" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="85" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1trace_1_1vcd__scope__stack_1aa44bbef05deb7be0e5bf26960d872561" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::trace::vcd_scope_stack&lt; T &gt;::print_variable_declaration_line</definition>
+        <argsstring>(FPTR os, const char *scoped_name, T *trc)</argsstring>
+        <name>print_variable_declaration_line</name>
+        <qualifiedname>scc::trace::vcd_scope_stack::print_variable_declaration_line</qualifiedname>
+        <param>
+          <type>FPTR</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>scoped_name</declname>
+        </param>
+        <param>
+          <type>T *</type>
+          <declname>trc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="95" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="95" bodyend="118"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="62" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="62" bodyend="122"/>
+    <listofallmembers>
+      <member refid="structscc_1_1trace_1_1vcd__scope__stack_1aa568779f9f323cbd103aed88b8d7bd6d" prot="public" virt="non-virtual"><scope>scc::trace::vcd_scope_stack</scope><name>add_trace</name></member>
+      <member refid="structscc_1_1trace_1_1vcd__scope__stack_1a327dac0ec4d16c9d8c43e58fd9965055" prot="private" virt="non-virtual"><scope>scc::trace::vcd_scope_stack</scope><name>add_trace_rec</name></member>
+      <member refid="structscc_1_1trace_1_1vcd__scope__stack_1a85a5d91219a75e2ce077fb8ed0d59a0d" prot="private" virt="non-virtual"><scope>scc::trace::vcd_scope_stack</scope><name>m_scopes</name></member>
+      <member refid="structscc_1_1trace_1_1vcd__scope__stack_1a7d828bdb59d56b2b01c484f1beec53df" prot="private" virt="non-virtual"><scope>scc::trace::vcd_scope_stack</scope><name>m_traces</name></member>
+      <member refid="structscc_1_1trace_1_1vcd__scope__stack_1ad8e2102ace0fd8255f41cc388e21c06d" prot="public" virt="non-virtual"><scope>scc::trace::vcd_scope_stack</scope><name>print</name></member>
+      <member refid="structscc_1_1trace_1_1vcd__scope__stack_1aa44bbef05deb7be0e5bf26960d872561" prot="private" virt="non-virtual"><scope>scc::trace::vcd_scope_stack</scope><name>print_variable_declaration_line</name></member>
+      <member refid="structscc_1_1trace_1_1vcd__scope__stack_1a08e90ee10d7915ee468c12eafd595b8b" prot="public" virt="non-virtual"><scope>scc::trace::vcd_scope_stack</scope><name>~vcd_scope_stack</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

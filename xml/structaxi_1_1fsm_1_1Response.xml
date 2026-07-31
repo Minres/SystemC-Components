@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1fsm_1_1Response" kind="struct" language="C++" prot="public">
+    <compoundname>axi::fsm::Response</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">bsc::state&lt; Response, AxiProtocolFsm &gt;</basecompoundref>
+    <includes refid="protocol__fsm_8h" local="no">protocol_fsm.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structaxi_1_1fsm_1_1Response_1aba8e73f133ab77cb6d4977aa6410467a" prot="public" static="no">
+        <type>mpl::list&lt; bsc::transition&lt; <ref refid="structaxi_1_1fsm_1_1EndResp" kindref="compound">EndResp</ref>, <ref refid="structaxi_1_1fsm_1_1Idle" kindref="compound">Idle</ref> &gt;, bsc::transition&lt; <ref refid="structaxi_1_1fsm_1_1EndRespNoAck" kindref="compound">EndRespNoAck</ref>, <ref refid="structaxi_1_1fsm_1_1WaitAck" kindref="compound">WaitAck</ref> &gt; &gt;</type>
+        <definition>typedef mpl::list&lt;bsc::transition&lt;EndResp, Idle&gt;, bsc::transition&lt;EndRespNoAck, WaitAck&gt; &gt; axi::fsm::Response::reactions</definition>
+        <argsstring></argsstring>
+        <name>reactions</name>
+        <qualifiedname>axi::fsm::Response::reactions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="172" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="172" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1Response_1a93623125cf7700ebef0c75d55bb5d9b8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::fsm::Response::Response</definition>
+        <argsstring>(my_context ctx)</argsstring>
+        <name>Response</name>
+        <qualifiedname>axi::fsm::Response::Response</qualifiedname>
+        <param>
+          <type>my_context</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="163" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="163" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1Response_1a4ce2feb1782157b72b020793c01a9d87" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::fsm::Response::~Response</definition>
+        <argsstring>()</argsstring>
+        <name>~Response</name>
+        <qualifiedname>axi::fsm::Response::~Response</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="168" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="168" bodyend="171"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the write response or the last read response (beat) </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::fsm::Response</label>
+        <link refid="structaxi_1_1fsm_1_1Response"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>bsc::state&lt; Response, AxiProtocolFsm &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::fsm::Response</label>
+        <link refid="structaxi_1_1fsm_1_1Response"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>bsc::state&lt; Response, AxiProtocolFsm &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="162" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="162" bodyend="173"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1fsm_1_1Response_1aba8e73f133ab77cb6d4977aa6410467a" prot="public" virt="non-virtual"><scope>axi::fsm::Response</scope><name>reactions</name></member>
+      <member refid="structaxi_1_1fsm_1_1Response_1a93623125cf7700ebef0c75d55bb5d9b8" prot="public" virt="non-virtual"><scope>axi::fsm::Response</scope><name>Response</name></member>
+      <member refid="structaxi_1_1fsm_1_1Response_1a4ce2feb1782157b72b020793c01a9d87" prot="public" virt="non-virtual"><scope>axi::fsm::Response</scope><name>~Response</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

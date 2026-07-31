@@ -1,0 +1,297 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1thread__syncronizer" kind="class" language="C++" prot="public">
+    <compoundname>util::thread_syncronizer</compoundname>
+    <includes refid="thread__syncronizer_8h" local="no">thread_syncronizer.h</includes>
+    <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classutil_1_1thread__syncronizer_1a76a6754a439cfdce78ce14722cd5fbaf" prot="private" static="no">
+        <type>std::function&lt; void()&gt;</type>
+        <definition>using util::thread_syncronizer::task_type =  std::function&lt;void()&gt;</definition>
+        <argsstring></argsstring>
+        <name>task_type</name>
+        <qualifiedname>util::thread_syncronizer::task_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" line="40" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classutil_1_1thread__syncronizer_1afe04e91d70b3e92e87decfe9caa2d1c3" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>size_t</type>
+        <definition>size_t util::thread_syncronizer::default_queue_capacity</definition>
+        <argsstring></argsstring>
+        <name>default_queue_capacity</name>
+        <qualifiedname>util::thread_syncronizer::default_queue_capacity</qualifiedname>
+        <initializer>= 1024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" line="38" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classutil_1_1thread__syncronizer_1a2c43a388ddb29045d99eb0036c49b2f0" prot="private" static="no" mutable="no">
+        <type><ref refid="classrigtorp_1_1SPSCQueue" kindref="compound">rigtorp::SPSCQueue</ref>&lt; task_type &gt;</type>
+        <definition>rigtorp::SPSCQueue&lt;task_type&gt; util::thread_syncronizer::tasks_</definition>
+        <argsstring></argsstring>
+        <name>tasks_</name>
+        <qualifiedname>util::thread_syncronizer::tasks_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" line="42" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1thread__syncronizer_1ad89f8c3f6fa9a29e8805843403209d1a" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; util::thread_syncronizer::ready</definition>
+        <argsstring></argsstring>
+        <name>ready</name>
+        <qualifiedname>util::thread_syncronizer::ready</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" line="43" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1thread__syncronizer_1a6c86fed4db309f667f55ee8c4e74458d" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; util::thread_syncronizer::running</definition>
+        <argsstring></argsstring>
+        <name>running</name>
+        <qualifiedname>util::thread_syncronizer::running</qualifiedname>
+        <initializer>{true}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" line="44" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classutil_1_1thread__syncronizer_1ab2cfc122b3f9b9d5cf8d7b9455a6cbca" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>util::thread_syncronizer::thread_syncronizer</definition>
+        <argsstring>(size_t queue_capacity=default_queue_capacity)</argsstring>
+        <name>thread_syncronizer</name>
+        <qualifiedname>util::thread_syncronizer::thread_syncronizer</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>queue_capacity</declname>
+          <defval>default_queue_capacity</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the constructor. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" line="50" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" bodystart="50" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1thread__syncronizer_1afc3793d0f1dea16bcbd39aac902f4b95" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>util::thread_syncronizer::~thread_syncronizer</definition>
+        <argsstring>()</argsstring>
+        <name>~thread_syncronizer</name>
+        <qualifiedname>util::thread_syncronizer::~thread_syncronizer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the destructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" line="55" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1thread__syncronizer_1afe9cfe92bc64216e21ee491c731d1cc2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool util::thread_syncronizer::is_ready</definition>
+        <argsstring>()</argsstring>
+        <name>is_ready</name>
+        <qualifiedname>util::thread_syncronizer::is_ready</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>check if the synchronizer can handle functions</para>
+<para><simplesect kind="return"><para>true if it can handle a new request </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" line="64" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" bodystart="64" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1thread__syncronizer_1a66710dcbc6ee2d2c20658f35647b3c9d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>std::result_of&lt; F(Args...)&gt;::type</type>
+        <definition>std::result_of&lt; F(Args...)&gt;::type util::thread_syncronizer::enqueue_and_wait</definition>
+        <argsstring>(F &amp;&amp;f, Args &amp;&amp;... args)</argsstring>
+        <name>enqueue_and_wait</name>
+        <qualifiedname>util::thread_syncronizer::enqueue_and_wait</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>enqueue a function to be executed in the other thread and wait for completion</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>f</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the functor to execute </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the arguments to pass to the functor </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the result of the function </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" line="75" column="50" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" bodystart="75" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1thread__syncronizer_1a573d8333404bf12d0c9111652de636ac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>std::future&lt; typename std::result_of&lt; F(Args...)&gt;::type &gt;</type>
+        <definition>std::future&lt; typename std::result_of&lt; F(Args...)&gt;::type &gt; util::thread_syncronizer::enqueue</definition>
+        <argsstring>(F &amp;&amp;f, Args &amp;&amp;... args)</argsstring>
+        <name>enqueue</name>
+        <qualifiedname>util::thread_syncronizer::enqueue</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>enqueue a function to be executed in the other thread</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>f</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the functor to execute </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the arguments to pass to the functor </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the future holding the result of the execution </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" line="92" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" bodystart="92" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1thread__syncronizer_1aac46b7f7d839fc15261f46a414cb09f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::thread_syncronizer::execute</definition>
+        <argsstring>()</argsstring>
+        <name>execute</name>
+        <qualifiedname>util::thread_syncronizer::execute</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the next task in queue but do not wait for the next one </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" line="109" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" bodystart="109" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1thread__syncronizer_1af8a538fefc804710640cba138af54631" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::thread_syncronizer::executeNext</definition>
+        <argsstring>()</argsstring>
+        <name>executeNext</name>
+        <qualifiedname>util::thread_syncronizer::executeNext</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the next task in queue or wait for the next one </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" line="124" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" bodystart="124" bodyend="134"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>executes a function syncronized in another thread </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" line="36" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/thread_syncronizer.h" bodystart="36" bodyend="135"/>
+    <listofallmembers>
+      <member refid="classutil_1_1thread__syncronizer_1afe04e91d70b3e92e87decfe9caa2d1c3" prot="private" virt="non-virtual"><scope>util::thread_syncronizer</scope><name>default_queue_capacity</name></member>
+      <member refid="classutil_1_1thread__syncronizer_1a573d8333404bf12d0c9111652de636ac" prot="public" virt="non-virtual"><scope>util::thread_syncronizer</scope><name>enqueue</name></member>
+      <member refid="classutil_1_1thread__syncronizer_1a66710dcbc6ee2d2c20658f35647b3c9d" prot="public" virt="non-virtual"><scope>util::thread_syncronizer</scope><name>enqueue_and_wait</name></member>
+      <member refid="classutil_1_1thread__syncronizer_1aac46b7f7d839fc15261f46a414cb09f7" prot="public" virt="non-virtual"><scope>util::thread_syncronizer</scope><name>execute</name></member>
+      <member refid="classutil_1_1thread__syncronizer_1af8a538fefc804710640cba138af54631" prot="public" virt="non-virtual"><scope>util::thread_syncronizer</scope><name>executeNext</name></member>
+      <member refid="classutil_1_1thread__syncronizer_1afe9cfe92bc64216e21ee491c731d1cc2" prot="public" virt="non-virtual"><scope>util::thread_syncronizer</scope><name>is_ready</name></member>
+      <member refid="classutil_1_1thread__syncronizer_1ad89f8c3f6fa9a29e8805843403209d1a" prot="private" virt="non-virtual"><scope>util::thread_syncronizer</scope><name>ready</name></member>
+      <member refid="classutil_1_1thread__syncronizer_1a6c86fed4db309f667f55ee8c4e74458d" prot="private" virt="non-virtual"><scope>util::thread_syncronizer</scope><name>running</name></member>
+      <member refid="classutil_1_1thread__syncronizer_1a76a6754a439cfdce78ce14722cd5fbaf" prot="private" virt="non-virtual"><scope>util::thread_syncronizer</scope><name>task_type</name></member>
+      <member refid="classutil_1_1thread__syncronizer_1a2c43a388ddb29045d99eb0036c49b2f0" prot="private" virt="non-virtual"><scope>util::thread_syncronizer</scope><name>tasks_</name></member>
+      <member refid="classutil_1_1thread__syncronizer_1ab2cfc122b3f9b9d5cf8d7b9455a6cbca" prot="public" virt="non-virtual"><scope>util::thread_syncronizer</scope><name>thread_syncronizer</name></member>
+      <member refid="classutil_1_1thread__syncronizer_1afc3793d0f1dea16bcbd39aac902f4b95" prot="public" virt="non-virtual"><scope>util::thread_syncronizer</scope><name>~thread_syncronizer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

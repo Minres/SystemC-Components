@@ -1,0 +1,350 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classaxi_1_1pe_1_1tx__reorderer" kind="class" language="C++" prot="public">
+    <compoundname>axi::pe::tx_reorderer</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb" prot="private" virt="non-virtual">tlm::scc::pe::intor_fw_nb</basecompoundref>
+    <innerclass refid="structaxi_1_1pe_1_1tx__reorderer_1_1que__entry" prot="protected">axi::pe::tx_reorderer::que_entry</innerclass>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1tx__reorderer_1ac33a9e5d398ef759c34d6e79e5fa0402" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; axi::pe::tx_reorderer::clk_i</definition>
+        <argsstring></argsstring>
+        <name>clk_i</name>
+        <qualifiedname>axi::pe::tx_reorderer::clk_i</qualifiedname>
+        <initializer>{&quot;clk_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="27" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" bodystart="27" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1tx__reorderer_1acc07c5f049c45e43615232b3f085de56" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_export&lt; <ref refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb" kindref="compound">tlm::scc::pe::intor_fw_nb</ref> &gt;</type>
+        <definition>sc_core::sc_export&lt;tlm::scc::pe::intor_fw_nb&gt; axi::pe::tx_reorderer::fw_i</definition>
+        <argsstring></argsstring>
+        <name>fw_i</name>
+        <qualifiedname>axi::pe::tx_reorderer::fw_i</qualifiedname>
+        <initializer>{&quot;fw_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="29" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" bodystart="29" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1tx__reorderer_1a773039e0990d8cb87486c3788eca8fd4" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_port&lt; <ref refid="structtlm_1_1scc_1_1pe_1_1intor__bw__nb" kindref="compound">tlm::scc::pe::intor_bw_nb</ref>, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</type>
+        <definition>sc_core::sc_port&lt;tlm::scc::pe::intor_bw_nb, 1, sc_core::SC_ZERO_OR_MORE_BOUND&gt; axi::pe::tx_reorderer::bw_o</definition>
+        <argsstring></argsstring>
+        <name>bw_o</name>
+        <qualifiedname>axi::pe::tx_reorderer::bw_o</qualifiedname>
+        <initializer>{&quot;bw_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="31" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" bodystart="31" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1tx__reorderer_1a53975d63f2136a1340e8d1029ad34e52" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_attribute&lt; unsigned &gt;</type>
+        <definition>sc_core::sc_attribute&lt;unsigned&gt; axi::pe::tx_reorderer::min_latency</definition>
+        <argsstring></argsstring>
+        <name>min_latency</name>
+        <qualifiedname>axi::pe::tx_reorderer::min_latency</qualifiedname>
+        <initializer>{&quot;min_latency&quot;, 10}</initializer>
+        <briefdescription>
+<para>the minimum time a transaction will stay in the target </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="33" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1tx__reorderer_1aa14ebf5354f2ef9a9cd5908d5d9d5adb" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_attribute&lt; unsigned &gt;</type>
+        <definition>sc_core::sc_attribute&lt;unsigned&gt; axi::pe::tx_reorderer::max_latency</definition>
+        <argsstring></argsstring>
+        <name>max_latency</name>
+        <qualifiedname>axi::pe::tx_reorderer::max_latency</qualifiedname>
+        <initializer>{&quot;max_latency&quot;, 100}</initializer>
+        <briefdescription>
+<para>the maximum time a transaction is allwed to stay in the target </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="35" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1tx__reorderer_1a08e6706028b47397ea707172926eed6e" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_attribute&lt; unsigned &gt;</type>
+        <definition>sc_core::sc_attribute&lt;unsigned&gt; axi::pe::tx_reorderer::window_size</definition>
+        <argsstring></argsstring>
+        <name>window_size</name>
+        <qualifiedname>axi::pe::tx_reorderer::window_size</qualifiedname>
+        <initializer>{&quot;window_size&quot;, 2}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>minimum number of transaction to start with reordering. If the total number is below the threshold transaction will stay for max_latency </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="38" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1tx__reorderer_1a600473a570ef05ba0b9b94eafc508822" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_attribute&lt; bool &gt;</type>
+        <definition>sc_core::sc_attribute&lt;bool&gt; axi::pe::tx_reorderer::prioritize_by_latency</definition>
+        <argsstring></argsstring>
+        <name>prioritize_by_latency</name>
+        <qualifiedname>axi::pe::tx_reorderer::prioritize_by_latency</qualifiedname>
+        <initializer>{&quot;prioritize_by_latency&quot;, false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>use the waiting time as priority value - the longer a transaction waits the higher the probability becomes to be selected </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="41" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1tx__reorderer_1a53f5685093ebd5e74efc4c3a63d1cf46" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_attribute&lt; bool &gt;</type>
+        <definition>sc_core::sc_attribute&lt;bool&gt; axi::pe::tx_reorderer::prioritize_by_qos</definition>
+        <argsstring></argsstring>
+        <name>prioritize_by_qos</name>
+        <qualifiedname>axi::pe::tx_reorderer::prioritize_by_qos</qualifiedname>
+        <initializer>{&quot;prioritize_by_qos&quot;, false}</initializer>
+        <briefdescription>
+<para>use the QoS field for selection. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="43" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1tx__reorderer_1a9b12ff8377fd2c7c24d1fcfe35011243" prot="protected" static="no" mutable="no">
+        <type>std::array&lt; std::unordered_map&lt; unsigned, std::deque&lt; <ref refid="structaxi_1_1pe_1_1tx__reorderer_1_1que__entry" kindref="compound">que_entry</ref> &gt; &gt;, 3 &gt;</type>
+        <definition>std::array&lt;std::unordered_map&lt;unsigned, std::deque&lt;que_entry&gt; &gt;, 3&gt; axi::pe::tx_reorderer::reorder_buffer</definition>
+        <argsstring></argsstring>
+        <name>reorder_buffer</name>
+        <qualifiedname>axi::pe::tx_reorderer::reorder_buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="69" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classaxi_1_1pe_1_1tx__reorderer_1a5617b49c320ec24fe2b7c106071d0842" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::pe::tx_reorderer::tx_reorderer</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm)</argsstring>
+        <name>tx_reorderer</name>
+        <qualifiedname>axi::pe::tx_reorderer::tx_reorderer</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="45" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.cpp" bodystart="19" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1tx__reorderer_1a35041a8f793102c532bc5c507e4dc405" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void axi::pe::tx_reorderer::transport</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;payload, bool lt_transport=false) override</argsstring>
+        <name>transport</name>
+        <qualifiedname>axi::pe::tx_reorderer::transport</qualifiedname>
+        <reimplements refid="structtlm_1_1scc_1_1pe_1_1intor__fw_1a69f17795eabb5192d5388dd6b67e4109">transport</reimplements>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>payload</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>lt_transport</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the transport of the payload. Independent of the underlying layer this function is blocking</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>payload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>object with (optional) extensions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lt_transport</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>use b_transport instead of nb_transport* </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="52" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.cpp" bodystart="34" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1tx__reorderer_1a089f7096bcf7a4fb137383a5e52af6fe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void axi::pe::tx_reorderer::snoop_resp</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;payload, bool sync=false) override</argsstring>
+        <name>snoop_resp</name>
+        <qualifiedname>axi::pe::tx_reorderer::snoop_resp</qualifiedname>
+        <reimplements refid="structtlm_1_1scc_1_1pe_1_1intor__fw_1a1e85d9861b52f3ec31c17e107ccd852b">snoop_resp</reimplements>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>payload</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>sync</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>send a response to a backward transaction if not immediately answered</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>payload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>object with (optional) extensions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sync</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true send with next rising clock edge of the pe otherwise send it immediately </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="59" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" bodystart="59" bodyend="59"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classaxi_1_1pe_1_1tx__reorderer_1a1c94763898d3fdfa338b5d6263503e8a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::tx_reorderer::clock_cb</definition>
+        <argsstring>()</argsstring>
+        <name>clock_cb</name>
+        <qualifiedname>axi::pe::tx_reorderer::clock_cb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="62" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.cpp" bodystart="42" bodyend="116"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::pe::tx_reorderer</label>
+        <link refid="classaxi_1_1pe_1_1tx__reorderer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="4">
+        <label>tlm::scc::pe::intor_fw&lt; type::NB &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::scc::pe::intor_fw_nb</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::pe::tx_reorderer</label>
+        <link refid="classaxi_1_1pe_1_1tx__reorderer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="4">
+        <label>tlm::scc::pe::intor_fw&lt; type::NB &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::scc::pe::intor_fw_nb</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" line="25" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h" bodystart="25" bodyend="70"/>
+    <listofallmembers>
+      <member refid="classaxi_1_1pe_1_1tx__reorderer_1a773039e0990d8cb87486c3788eca8fd4" prot="public" virt="non-virtual"><scope>axi::pe::tx_reorderer</scope><name>bw_o</name></member>
+      <member refid="classaxi_1_1pe_1_1tx__reorderer_1ac33a9e5d398ef759c34d6e79e5fa0402" prot="public" virt="non-virtual"><scope>axi::pe::tx_reorderer</scope><name>clk_i</name></member>
+      <member refid="classaxi_1_1pe_1_1tx__reorderer_1a1c94763898d3fdfa338b5d6263503e8a" prot="protected" virt="non-virtual"><scope>axi::pe::tx_reorderer</scope><name>clock_cb</name></member>
+      <member refid="classaxi_1_1pe_1_1tx__reorderer_1acc07c5f049c45e43615232b3f085de56" prot="public" virt="non-virtual"><scope>axi::pe::tx_reorderer</scope><name>fw_i</name></member>
+      <member refid="classaxi_1_1pe_1_1tx__reorderer_1aa14ebf5354f2ef9a9cd5908d5d9d5adb" prot="public" virt="non-virtual"><scope>axi::pe::tx_reorderer</scope><name>max_latency</name></member>
+      <member refid="classaxi_1_1pe_1_1tx__reorderer_1a53975d63f2136a1340e8d1029ad34e52" prot="public" virt="non-virtual"><scope>axi::pe::tx_reorderer</scope><name>min_latency</name></member>
+      <member refid="classaxi_1_1pe_1_1tx__reorderer_1a600473a570ef05ba0b9b94eafc508822" prot="public" virt="non-virtual"><scope>axi::pe::tx_reorderer</scope><name>prioritize_by_latency</name></member>
+      <member refid="classaxi_1_1pe_1_1tx__reorderer_1a53f5685093ebd5e74efc4c3a63d1cf46" prot="public" virt="non-virtual"><scope>axi::pe::tx_reorderer</scope><name>prioritize_by_qos</name></member>
+      <member refid="classaxi_1_1pe_1_1tx__reorderer_1a9b12ff8377fd2c7c24d1fcfe35011243" prot="protected" virt="non-virtual"><scope>axi::pe::tx_reorderer</scope><name>reorder_buffer</name></member>
+      <member refid="classaxi_1_1pe_1_1tx__reorderer_1a089f7096bcf7a4fb137383a5e52af6fe" prot="public" virt="virtual"><scope>axi::pe::tx_reorderer</scope><name>snoop_resp</name></member>
+      <member refid="classaxi_1_1pe_1_1tx__reorderer_1a35041a8f793102c532bc5c507e4dc405" prot="public" virt="virtual"><scope>axi::pe::tx_reorderer</scope><name>transport</name></member>
+      <member refid="classaxi_1_1pe_1_1tx__reorderer_1a5617b49c320ec24fe2b7c106071d0842" prot="public" virt="non-virtual"><scope>axi::pe::tx_reorderer</scope><name>tx_reorderer</name></member>
+      <member refid="classaxi_1_1pe_1_1tx__reorderer_1a08e6706028b47397ea707172926eed6e" prot="public" virt="non-virtual"><scope>axi::pe::tx_reorderer</scope><name>window_size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

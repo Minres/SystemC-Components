@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classlogging_1_1Output2FILE" kind="class" language="C++" prot="public">
+    <compoundname>logging::Output2FILE</compoundname>
+    <basecompoundref prot="private" virt="non-virtual">CATEGORY</basecompoundref>
+    <includes refid="logging_8h" local="no">logging.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename CATEGORY</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classlogging_1_1Output2FILE_1a0c0073ef1b7b0e6b9e50d9670f4a833d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::atomic&lt; FILE * &gt; &amp;</type>
+        <definition>static std::atomic&lt; FILE * &gt; &amp; logging::Output2FILE&lt; CATEGORY &gt;::stream</definition>
+        <argsstring>()</argsstring>
+        <name>stream</name>
+        <qualifiedname>logging::Output2FILE::stream</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the file handle of the underlying output file (or stdout)</para>
+<para><simplesect kind="return"><para>the file handle </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="235" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="235" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogging_1_1Output2FILE_1aa08a0eba301cea61c42ee4c1cb14cd65" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::atomic&lt; std::ostream * &gt; &amp;</type>
+        <definition>static std::atomic&lt; std::ostream * &gt; &amp; logging::Output2FILE&lt; CATEGORY &gt;::ostream</definition>
+        <argsstring>()</argsstring>
+        <name>ostream</name>
+        <qualifiedname>logging::Output2FILE::ostream</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="240" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="240" bodyend="243"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogging_1_1Output2FILE_1a750d143f2b07c888ef5d38c3368ba8f4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void logging::Output2FILE&lt; CATEGORY &gt;::output</definition>
+        <argsstring>(const std::string &amp;msg)</argsstring>
+        <name>output</name>
+        <qualifiedname>logging::Output2FILE::output</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>write an output string to the file</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to write </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="249" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="249" bodyend="262"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>the output writer </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>CATEGORY</label>
+      </node>
+      <node id="1">
+        <label>logging::Output2FILE&lt; CATEGORY &gt;</label>
+        <link refid="classlogging_1_1Output2FILE"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>CATEGORY</label>
+      </node>
+      <node id="1">
+        <label>logging::Output2FILE&lt; CATEGORY &gt;</label>
+        <link refid="classlogging_1_1Output2FILE"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="228" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="228" bodyend="263"/>
+    <listofallmembers>
+      <member refid="classlogging_1_1Output2FILE_1aa08a0eba301cea61c42ee4c1cb14cd65" prot="public" virt="non-virtual"><scope>logging::Output2FILE</scope><name>ostream</name></member>
+      <member refid="classlogging_1_1Output2FILE_1a750d143f2b07c888ef5d38c3368ba8f4" prot="public" virt="non-virtual"><scope>logging::Output2FILE</scope><name>output</name></member>
+      <member refid="classlogging_1_1Output2FILE_1a0c0073ef1b7b0e6b9e50d9670f4a833d" prot="public" virt="non-virtual"><scope>logging::Output2FILE</scope><name>stream</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

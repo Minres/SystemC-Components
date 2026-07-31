@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_8400f74b819af6408e1b24b7b1ac1666" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc</compoundname>
+    <innerdir refid="dir_bed8ebd7925b24f23de7138ce76e2425">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv</innerdir>
+    <innerdir refid="dir_7ccbfd23fc50d4b5cbc3fada7d7470b5">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace</innerdir>
+    <innerfile refid="async__event_8h">async_event.h</innerfile>
+    <innerfile refid="async__queue_8h">async_queue.h</innerfile>
+    <innerfile refid="async__thread_8h">async_thread.h</innerfile>
+    <innerfile refid="cci__broker_8cpp">cci_broker.cpp</innerfile>
+    <innerfile refid="cci__broker_8h">cci_broker.h</innerfile>
+    <innerfile refid="cci__param__restricted_8h">cci_param_restricted.h</innerfile>
+    <innerfile refid="cci__util_8h">cci_util.h</innerfile>
+    <innerfile refid="configurable__tracer_8cpp">configurable_tracer.cpp</innerfile>
+    <innerfile refid="configurable__tracer_8h">configurable_tracer.h</innerfile>
+    <innerfile refid="configurer_8cpp">configurer.cpp</innerfile>
+    <innerfile refid="configurer_8h">configurer.h</innerfile>
+    <innerfile refid="configurer__nocci_8cpp">configurer_nocci.cpp</innerfile>
+    <innerfile refid="ext__attribute_8h">ext_attribute.h</innerfile>
+    <innerfile refid="fifo__w__cb_8h">fifo_w_cb.h</innerfile>
+    <innerfile refid="fst__trace_8cpp">fst_trace.cpp</innerfile>
+    <innerfile refid="fst__trace_8hh">fst_trace.hh</innerfile>
+    <innerfile refid="hierarchy__dumper_8cpp">hierarchy_dumper.cpp</innerfile>
+    <innerfile refid="hierarchy__dumper_8h">hierarchy_dumper.h</innerfile>
+    <innerfile refid="mt19937__rng_8cpp">mt19937_rng.cpp</innerfile>
+    <innerfile refid="sysc_2scc_2mt19937__rng_8h">mt19937_rng.h</innerfile>
+    <innerfile refid="observer_8h">observer.h</innerfile>
+    <innerfile refid="ordered__semaphore_8cpp">ordered_semaphore.cpp</innerfile>
+    <innerfile refid="ordered__semaphore_8h">ordered_semaphore.h</innerfile>
+    <innerfile refid="peq_8h">peq.h</innerfile>
+    <innerfile refid="perf__estimator_8cpp">perf_estimator.cpp</innerfile>
+    <innerfile refid="perf__estimator_8h">perf_estimator.h</innerfile>
+    <innerfile refid="python4sc_8cpp">python4sc.cpp</innerfile>
+    <innerfile refid="python4sc_8h">python4sc.h</innerfile>
+    <innerfile refid="report_8cpp">report.cpp</innerfile>
+    <innerfile refid="report_8h">report.h</innerfile>
+    <innerfile refid="sc__attribute__randomized_8h">sc_attribute_randomized.h</innerfile>
+    <innerfile refid="sc__clock__ext_8h">sc_clock_ext.h</innerfile>
+    <innerfile refid="sc__logic__7_8cpp">sc_logic_7.cpp</innerfile>
+    <innerfile refid="sc__logic__7_8h">sc_logic_7.h</innerfile>
+    <innerfile refid="sc__owning__signal_8h">sc_owning_signal.h</innerfile>
+    <innerfile refid="sc__thread__pool_8cpp">sc_thread_pool.cpp</innerfile>
+    <innerfile refid="sc__thread__pool_8h">sc_thread_pool.h</innerfile>
+    <innerfile refid="sc__variable_8h">sc_variable.h</innerfile>
+    <innerfile refid="sc__vcd__trace_8h">sc_vcd_trace.h</innerfile>
+    <innerfile refid="signal__opt__ports_8cpp">signal_opt_ports.cpp</innerfile>
+    <innerfile refid="signal__opt__ports_8h">signal_opt_ports.h</innerfile>
+    <innerfile refid="tick2time_8h">tick2time.h</innerfile>
+    <innerfile refid="time2tick_8h">time2tick.h</innerfile>
+    <innerfile refid="time__n__tick_8cpp">time_n_tick.cpp</innerfile>
+    <innerfile refid="trace_8h">trace.h</innerfile>
+    <innerfile refid="traceable_8h">traceable.h</innerfile>
+    <innerfile refid="tracer_8cpp">tracer.cpp</innerfile>
+    <innerfile refid="tracer_8h">tracer.h</innerfile>
+    <innerfile refid="tracer__base_8cpp">tracer_base.cpp</innerfile>
+    <innerfile refid="tracer__base_8h">tracer_base.h</innerfile>
+    <innerfile refid="utilities_8cpp">utilities.cpp</innerfile>
+    <innerfile refid="utilities_8h">utilities.h</innerfile>
+    <innerfile refid="vcd__mt__trace_8cpp">vcd_mt_trace.cpp</innerfile>
+    <innerfile refid="vcd__mt__trace_8hh">vcd_mt_trace.hh</innerfile>
+    <innerfile refid="vcd__pull__trace_8cpp">vcd_pull_trace.cpp</innerfile>
+    <innerfile refid="vcd__pull__trace_8hh">vcd_pull_trace.hh</innerfile>
+    <innerfile refid="vcd__push__trace_8cpp">vcd_push_trace.cpp</innerfile>
+    <innerfile refid="vcd__push__trace_8hh">vcd_push_trace.hh</innerfile>
+    <innerfile refid="verilator__callbacks_8cpp">verilator_callbacks.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/"/>
+  </compounddef>
+</doxygen>

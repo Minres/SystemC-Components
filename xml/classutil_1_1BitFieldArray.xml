@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1BitFieldArray" kind="class" language="C++" prot="public">
+    <compoundname>util::BitFieldArray</compoundname>
+    <includes refid="bit__field_8h" local="no">bit_field.h</includes>
+    <innerclass refid="classutil_1_1BitFieldArray_1_1Element" prot="public">util::BitFieldArray::Element</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>BaseOffset</declname>
+        <defname>BaseOffset</defname>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>BitsPerItem</declname>
+        <defname>BitsPerItem</defname>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>NumItems</declname>
+        <defname>NumItems</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classutil_1_1BitFieldArray_1a19e52101f21571ec19d9ba794e5c3e4d" prot="public" static="no" mutable="no">
+        <type>T</type>
+        <definition>T util::BitFieldArray&lt; T, BaseOffset, BitsPerItem, NumItems &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>util::BitFieldArray::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bit_field.h" line="93" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bit_field.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classutil_1_1BitFieldArray_1a908def49d9bcaceee18993ca33cfbbd8" prot="public" static="yes" mutable="no">
+        <type>const T</type>
+        <definition>const T util::BitFieldArray&lt; T, BaseOffset, BitsPerItem, NumItems &gt;::Maximum</definition>
+        <argsstring></argsstring>
+        <name>Maximum</name>
+        <qualifiedname>util::BitFieldArray::Maximum</qualifiedname>
+        <initializer>= (T(1) &lt;&lt; BitsPerItem) - 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bit_field.h" line="98" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bit_field.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classutil_1_1BitFieldArray_1ae0e2dbe48fc05eb7f11814d7cab17737" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>T util::BitFieldArray&lt; T, BaseOffset, BitsPerItem, NumItems &gt;::maximum</definition>
+        <argsstring>() const</argsstring>
+        <name>maximum</name>
+        <qualifiedname>util::BitFieldArray::maximum</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bit_field.h" line="99" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bit_field.h" bodystart="99" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1BitFieldArray_1a5726483d5c0d058cd4a745575066fbd0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int util::BitFieldArray&lt; T, BaseOffset, BitsPerItem, NumItems &gt;::numItems</definition>
+        <argsstring>() const</argsstring>
+        <name>numItems</name>
+        <qualifiedname>util::BitFieldArray::numItems</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bit_field.h" line="100" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bit_field.h" bodystart="100" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1BitFieldArray_1a0f4e1c9eed0d01d237ae32acf030beda" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classutil_1_1BitFieldArray_1_1Element" kindref="compound">Element</ref></type>
+        <definition>Element util::BitFieldArray&lt; T, BaseOffset, BitsPerItem, NumItems &gt;::operator[]</definition>
+        <argsstring>(int i)</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>util::BitFieldArray::operator[]</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bit_field.h" line="147" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bit_field.h" bodystart="147" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1BitFieldArray_1a0dcfe3af22452306ba84396ae8f31e38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classutil_1_1BitFieldArray_1_1Element" kindref="compound">Element</ref></type>
+        <definition>const Element util::BitFieldArray&lt; T, BaseOffset, BitsPerItem, NumItems &gt;::operator[]</definition>
+        <argsstring>(int i) const</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>util::BitFieldArray::operator[]</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bit_field.h" line="152" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bit_field.h" bodystart="152" bodyend="155"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>array of bit field elements </para>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classutil_1_1BitFieldArray" kindref="compound">BitFieldArray&lt;&gt;</ref>: Used internally by ADD_BITFIELD_ARRAY macro. All members are public to simplify compliance with sections 9.0.7 and 9.5.1 of the C++11 standard, thereby avoiding undefined behavior. </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bit_field.h" line="91" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bit_field.h" bodystart="91" bodyend="156"/>
+    <listofallmembers>
+      <member refid="classutil_1_1BitFieldArray_1a908def49d9bcaceee18993ca33cfbbd8" prot="public" virt="non-virtual"><scope>util::BitFieldArray</scope><name>Maximum</name></member>
+      <member refid="classutil_1_1BitFieldArray_1ae0e2dbe48fc05eb7f11814d7cab17737" prot="public" virt="non-virtual"><scope>util::BitFieldArray</scope><name>maximum</name></member>
+      <member refid="classutil_1_1BitFieldArray_1a5726483d5c0d058cd4a745575066fbd0" prot="public" virt="non-virtual"><scope>util::BitFieldArray</scope><name>numItems</name></member>
+      <member refid="classutil_1_1BitFieldArray_1a0f4e1c9eed0d01d237ae32acf030beda" prot="public" virt="non-virtual"><scope>util::BitFieldArray</scope><name>operator[]</name></member>
+      <member refid="classutil_1_1BitFieldArray_1a0dcfe3af22452306ba84396ae8f31e38" prot="public" virt="non-virtual"><scope>util::BitFieldArray</scope><name>operator[]</name></member>
+      <member refid="classutil_1_1BitFieldArray_1a19e52101f21571ec19d9ba794e5c3e4d" prot="public" virt="non-virtual"><scope>util::BitFieldArray</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

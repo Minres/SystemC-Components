@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1detail_1_1typelist__contains__unique__type" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::detail::typelist_contains_unique_type</compoundname>
+    <basecompoundref refid="structnonstd_1_1variants_1_1detail_1_1typelist__type__is__unique" prot="public" virt="non-virtual">nonstd::variants::detail::typelist_type_is_unique&lt; List, typelist_index_of&lt; List, T &gt;::value &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class List</type>
+      </param>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>nonstd::variants::detail::typelist_contains_unique_type&lt; List, T &gt;</label>
+        <link refid="structnonstd_1_1variants_1_1detail_1_1typelist__contains__unique__type"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>nonstd::variants::detail::typelist_type_is_unique&lt; List, typelist_index_of&lt; List, T &gt;::value &gt;</label>
+        <link refid="structnonstd_1_1variants_1_1detail_1_1typelist__type__is__unique"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>nonstd::variants::detail::typelist_contains_unique_type&lt; List, T &gt;</label>
+        <link refid="structnonstd_1_1variants_1_1detail_1_1typelist__contains__unique__type"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>nonstd::variants::detail::typelist_type_is_unique&lt; List, typelist_index_of&lt; List, T &gt;::value &gt;</label>
+        <link refid="structnonstd_1_1variants_1_1detail_1_1typelist__type__is__unique"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="819" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="819" bodyend="819"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__type__is__unique_1a83f4560812c68b1c375a5f2529f33b42" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::typelist_contains_unique_type</scope><name>V</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__type__is__unique_1a83f4560812c68b1c375a5f2529f33b42a3dd2141576966c6ce4a8e006cc58ef2f" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::typelist_contains_unique_type</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

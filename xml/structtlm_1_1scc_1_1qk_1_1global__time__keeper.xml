@@ -1,0 +1,586 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1qk_1_1global__time__keeper" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::qk::global_time_keeper</compoundname>
+    <includes refid="global__time__keeper_8h" local="no">global_time_keeper.h</includes>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a39e3a9c9557f18539db86e39e74fd564" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class sc_time_syncronizer</definition>
+        <argsstring></argsstring>
+        <name>sc_time_syncronizer</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::sc_time_syncronizer</qualifiedname>
+        <param>
+          <type>sc_time_syncronizer</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="23" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1ad092cacb4ba81de03ece4424296a5f6e" prot="public" static="no" mutable="no">
+        <type>const sc_core::sc_time</type>
+        <definition>const sc_core::sc_time tlm::scc::qk::global_time_keeper::sc_time_step</definition>
+        <argsstring></argsstring>
+        <name>sc_time_step</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::sc_time_step</qualifiedname>
+        <initializer>= 1_ms</initializer>
+        <briefdescription>
+<para>the maximum timestep the simulator is allowed to do if there are no future events </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="28" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1adfdac5f07d7616c3cc31d463501c86eb" prot="protected" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; tlm::scc::qk::global_time_keeper::stop_it</definition>
+        <argsstring></argsstring>
+        <name>stop_it</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::stop_it</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="109" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="109" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1aeb4805c7163801e7b456c016076bed17" prot="protected" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; tlm::scc::qk::global_time_keeper::update_it</definition>
+        <argsstring></argsstring>
+        <name>update_it</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::update_it</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="110" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="110" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1adb88d326748f2ee8f6c8e6e42e221523" prot="protected" static="no" mutable="no">
+        <type>std::atomic_uint64_t</type>
+        <definition>std::atomic_uint64_t tlm::scc::qk::global_time_keeper::client_min_time</definition>
+        <argsstring></argsstring>
+        <name>client_min_time</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::client_min_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="111" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1aef589486080bc3a5a209252d0fe1b5c6" prot="protected" static="no" mutable="no">
+        <type>std::atomic_uint64_t</type>
+        <definition>std::atomic_uint64_t tlm::scc::qk::global_time_keeper::client_max_time</definition>
+        <argsstring></argsstring>
+        <name>client_max_time</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::client_max_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="112" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a72f760cfc1b2d475952e15b76a6ce570" prot="protected" static="no" mutable="no">
+        <type>std::atomic_uint64_t</type>
+        <definition>std::atomic_uint64_t tlm::scc::qk::global_time_keeper::sc_kernel_time</definition>
+        <argsstring></argsstring>
+        <name>sc_kernel_time</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::sc_kernel_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="113" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a7344384f6d704bf832d817259df8fe3a" prot="protected" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex tlm::scc::qk::global_time_keeper::upd_mtx</definition>
+        <argsstring></argsstring>
+        <name>upd_mtx</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::upd_mtx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="114" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a6fed4e9ef9cdc8b1a449dc7ef7bad086" prot="protected" static="no" mutable="no">
+        <type>std::condition_variable</type>
+        <definition>std::condition_variable tlm::scc::qk::global_time_keeper::update</definition>
+        <argsstring></argsstring>
+        <name>update</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::update</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="115" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a126a949be8891cf55bfeae15e5b7b2e2" prot="protected" static="no" mutable="no">
+        <type><ref refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel" kindref="compound">thread_comms_channel</ref></type>
+        <definition>thread_comms_channel tlm::scc::qk::global_time_keeper::sc_coms_channel</definition>
+        <argsstring></argsstring>
+        <name>sc_coms_channel</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::sc_coms_channel</qualifiedname>
+        <initializer>{-1ULL}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="116" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="116" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a77fa0d7986760cc15da5f78a0b89e5a8" prot="protected" static="no" mutable="no">
+        <type>std::deque&lt; <ref refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel" kindref="compound">thread_comms_channel</ref> &gt;</type>
+        <definition>std::deque&lt;thread_comms_channel&gt; tlm::scc::qk::global_time_keeper::client_coms_channels</definition>
+        <argsstring></argsstring>
+        <name>client_coms_channels</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::client_coms_channels</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="117" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a06162ab76eb7acdc1fea54548fcab342" prot="protected" static="no" mutable="no">
+        <type><ref refid="classrigtorp_1_1SPSCQueue" kindref="compound">rigtorp::SPSCQueue</ref>&lt; std::tuple&lt; size_t, uint64_t, callback_task &gt; &gt;</type>
+        <definition>rigtorp::SPSCQueue&lt;std::tuple&lt;size_t, uint64_t, callback_task&gt; &gt; tlm::scc::qk::global_time_keeper::pending_tasks</definition>
+        <argsstring></argsstring>
+        <name>pending_tasks</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::pending_tasks</qualifiedname>
+        <initializer>{1024}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="118" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="118" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a15a3427b6f9cb386d6e75b2e061d1e13" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tlm::scc::qk::global_time_keeper::started</definition>
+        <argsstring></argsstring>
+        <name>started</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::started</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="119" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a679195dae2fb0979098bff66fd3bfb90" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>global_time_keeper &amp;</type>
+        <definition>static global_time_keeper &amp; tlm::scc::qk::global_time_keeper::get</definition>
+        <argsstring>()</argsstring>
+        <name>get</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::get</qualifiedname>
+        <briefdescription>
+<para>the singleton getter </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper" kindref="compound">global_time_keeper</ref>&amp; </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="34" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="34" bodyend="37"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a88c5f7a152d85e1686dcfdbc06c6f962" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t tlm::scc::qk::global_time_keeper::get_client_min_time_ticks</definition>
+        <argsstring>()</argsstring>
+        <name>get_client_min_time_ticks</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::get_client_min_time_ticks</qualifiedname>
+        <briefdescription>
+<para>Get the minimum time ticks of all client threads (not SystemC). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>uint64_t the absolute number of ticks </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="43" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a07c09411bf79f122d2e26845c006f9b1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t tlm::scc::qk::global_time_keeper::get_client_max_time_ticks</definition>
+        <argsstring>(size_t idx)</argsstring>
+        <name>get_client_max_time_ticks</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::get_client_max_time_ticks</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+<para>Get the maximum time ticks a client thread is allowed to advance. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the id of the client thread, to be obtained using get_channel_index() </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>uint64_t the absolute number of maximum ticks, if no new information it returns -1 </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="50" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a1f24e532370fc856be9aa352599088a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::qk::global_time_keeper::update_client_time_ticks</definition>
+        <argsstring>(size_t idx, uint64_t tick)</argsstring>
+        <name>update_client_time_ticks</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::update_client_time_ticks</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>tick</declname>
+        </param>
+        <briefdescription>
+<para>updates the global time keeper with the local time ticks of a clinet thread </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the id of the client thread, to be obtained using get_channel_index() </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tick</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the absolute number of actual ticks </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="57" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="57" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a9f09220a67f96eb3df0dd60dac2a02d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::qk::global_time_keeper::schedule_task</definition>
+        <argsstring>(size_t idx, std::packaged_task&lt; sc_core::sc_time(void)&gt; &amp;&amp;task, uint64_t when)</argsstring>
+        <name>schedule_task</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::schedule_task</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type>std::packaged_task&lt; sc_core::sc_time(void)&gt; &amp;&amp;</type>
+          <declname>task</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>when</declname>
+        </param>
+        <briefdescription>
+<para>updates the global time keeper with the local time ticks of a clinet thread and schedules a task at this new time point </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the id of the client thread, to be obtained using get_channel_index() </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tick</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the absolute number of actual ticks </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the task to be executed in the SystemC kernel. It shall return the time it used for execution </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="70" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="70" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a23cb1e099525eecf58ee6dd1ba1bdc0c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t tlm::scc::qk::global_time_keeper::get_sc_time_ticks</definition>
+        <argsstring>()</argsstring>
+        <name>get_sc_time_ticks</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::get_sc_time_ticks</qualifiedname>
+        <briefdescription>
+<para>Get the maximum sc time ticks a client thread is allowed to advance. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>uint64_t the absolute number of ticks </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="81" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="81" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a87ce995324c66c7cb3ed052a19899051" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::qk::global_time_keeper::update_sc_time_ticks</definition>
+        <argsstring>(uint64_t tick)</argsstring>
+        <name>update_sc_time_ticks</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::update_sc_time_ticks</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>tick</declname>
+        </param>
+        <briefdescription>
+<para>updates the global time keeper with the local time ticks of the SystemC thread </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tick</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the absolute number of actual SystemC ticks </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="87" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="87" bodyend="92"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a298fd42f5b387febe09434a9cc042b3c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::qk::global_time_keeper::global_time_keeper</definition>
+        <argsstring>()</argsstring>
+        <name>global_time_keeper</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::global_time_keeper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="95" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a1b6efd4efac9cbdbc1ab2c2875682c08" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::qk::global_time_keeper::global_time_keeper</definition>
+        <argsstring>(global_time_keeper const &amp;)=delete</argsstring>
+        <name>global_time_keeper</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::global_time_keeper</qualifiedname>
+        <param>
+          <type>global_time_keeper const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="97" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1ad2e612c438d6f528dab64a442307555f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::qk::global_time_keeper::global_time_keeper</definition>
+        <argsstring>(global_time_keeper &amp;&amp;)=delete</argsstring>
+        <name>global_time_keeper</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::global_time_keeper</qualifiedname>
+        <param>
+          <type>global_time_keeper &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="99" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1afc35d8964096d723b4dc7be9d1ee1ea2" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::qk::global_time_keeper::~global_time_keeper</definition>
+        <argsstring>()</argsstring>
+        <name>~global_time_keeper</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::~global_time_keeper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="101" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.cpp" bodystart="13" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1adb14b696947ffbce2460110cc0f5ca76" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::qk::global_time_keeper::start</definition>
+        <argsstring>()</argsstring>
+        <name>start</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::start</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="103" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.cpp" bodystart="19" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1afc1e22faed700fbe65fc5ab2ea25ad02" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t tlm::scc::qk::global_time_keeper::get_channel_index</definition>
+        <argsstring>()</argsstring>
+        <name>get_channel_index</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::get_channel_index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="105" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.cpp" bodystart="25" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a2581a67b612efdb956235d1588a00319" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::qk::global_time_keeper::sync_local_times</definition>
+        <argsstring>()</argsstring>
+        <name>sync_local_times</name>
+        <qualifiedname>tlm::scc::qk::global_time_keeper::sync_local_times</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="107" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.cpp" bodystart="34" bodyend="91"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the global time keeper, a singleton </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The global time keeper receives actual time stamps of all client threads and calculates the max time they are alloed to advance beyond systemc. All calculations are done based on ticks which is the minimal time step a simulator can do. The SystemC thread is special in that it is time wise always the last/slowest thread. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>rigtorp::SPSCQueue&lt; std::tuple&lt; size_t, uint64_t, callback_task &gt; &gt;</label>
+        <link refid="classrigtorp_1_1SPSCQueue"/>
+      </node>
+      <node id="3">
+        <label>rigtorp::SPSCQueue&lt; tlm::scc::qk::comms_entry &gt;</label>
+        <link refid="classrigtorp_1_1SPSCQueue"/>
+      </node>
+      <node id="1">
+        <label>tlm::scc::qk::global_time_keeper</label>
+        <link refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>sc_coms_channel</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>pending_tasks</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::qk::thread_comms_channel</label>
+        <link refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>client2time_keeper</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" line="22" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h" bodystart="22" bodyend="120"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a77fa0d7986760cc15da5f78a0b89e5a8" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>client_coms_channels</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1aef589486080bc3a5a209252d0fe1b5c6" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>client_max_time</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1adb88d326748f2ee8f6c8e6e42e221523" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>client_min_time</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a679195dae2fb0979098bff66fd3bfb90" prot="public" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>get</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1afc1e22faed700fbe65fc5ab2ea25ad02" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>get_channel_index</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a07c09411bf79f122d2e26845c006f9b1" prot="public" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>get_client_max_time_ticks</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a88c5f7a152d85e1686dcfdbc06c6f962" prot="public" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>get_client_min_time_ticks</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a23cb1e099525eecf58ee6dd1ba1bdc0c" prot="public" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>get_sc_time_ticks</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a298fd42f5b387febe09434a9cc042b3c" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>global_time_keeper</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a1b6efd4efac9cbdbc1ab2c2875682c08" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>global_time_keeper</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1ad2e612c438d6f528dab64a442307555f" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>global_time_keeper</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a06162ab76eb7acdc1fea54548fcab342" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>pending_tasks</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a126a949be8891cf55bfeae15e5b7b2e2" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>sc_coms_channel</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a72f760cfc1b2d475952e15b76a6ce570" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>sc_kernel_time</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1ad092cacb4ba81de03ece4424296a5f6e" prot="public" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>sc_time_step</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a39e3a9c9557f18539db86e39e74fd564" prot="public" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>sc_time_syncronizer</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a9f09220a67f96eb3df0dd60dac2a02d1" prot="public" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>schedule_task</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1adb14b696947ffbce2460110cc0f5ca76" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>start</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a15a3427b6f9cb386d6e75b2e061d1e13" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>started</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1adfdac5f07d7616c3cc31d463501c86eb" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>stop_it</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a2581a67b612efdb956235d1588a00319" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>sync_local_times</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a7344384f6d704bf832d817259df8fe3a" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>upd_mtx</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a6fed4e9ef9cdc8b1a449dc7ef7bad086" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>update</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a1f24e532370fc856be9aa352599088a1" prot="public" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>update_client_time_ticks</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1aeb4805c7163801e7b456c016076bed17" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>update_it</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1a87ce995324c66c7cb3ed052a19899051" prot="public" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>update_sc_time_ticks</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper_1afc35d8964096d723b4dc7be9d1ee1ea2" prot="protected" virt="non-virtual"><scope>tlm::scc::qk::global_time_keeper</scope><name>~global_time_keeper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structchi_1_1pe_1_1chi__rn__initiator__b_1_1tx__state" kind="struct" language="C++" prot="protected">
+    <compoundname>chi::pe::chi_rn_initiator_b::tx_state</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structchi_1_1pe_1_1chi__rn__initiator__b_1_1tx__state_1a2a536cd59f60897761d45c18fac42c39" prot="public" static="no" mutable="no">
+        <type><ref refid="structscc_1_1peq" kindref="compound">scc::peq</ref>&lt; std::tuple&lt; payload_type *, tlm::tlm_phase &gt; &gt;</type>
+        <definition>scc::peq&lt;std::tuple&lt;payload_type*, tlm::tlm_phase&gt; &gt; chi::pe::chi_rn_initiator_b::tx_state::peq</definition>
+        <argsstring></argsstring>
+        <name>peq</name>
+        <qualifiedname>chi::pe::chi_rn_initiator_b::tx_state::peq</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" line="145" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structchi_1_1pe_1_1chi__rn__initiator__b_1_1tx__state_1a8c44e888f26fa9ab04c0f8b4d13b45f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>chi::pe::chi_rn_initiator_b::tx_state::tx_state</definition>
+        <argsstring>(std::string const &amp;name)</argsstring>
+        <name>tx_state</name>
+        <qualifiedname>chi::pe::chi_rn_initiator_b::tx_state::tx_state</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" line="146" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" bodystart="146" bodyend="147"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>chi::pe::chi_rn_initiator_b::tx_state</label>
+        <link refid="structchi_1_1pe_1_1chi__rn__initiator__b_1_1tx__state"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>peq</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="2">
+        <label>scc::peq&lt; std::tuple&lt; payload_type *, tlm::tlm_phase &gt; &gt;</label>
+        <link refid="structscc_1_1peq"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" line="144" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" bodystart="144" bodyend="148"/>
+    <listofallmembers>
+      <member refid="structchi_1_1pe_1_1chi__rn__initiator__b_1_1tx__state_1a2a536cd59f60897761d45c18fac42c39" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator_b::tx_state</scope><name>peq</name></member>
+      <member refid="structchi_1_1pe_1_1chi__rn__initiator__b_1_1tx__state_1a8c44e888f26fa9ab04c0f8b4d13b45f1" prot="public" virt="non-virtual"><scope>chi::pe::chi_rn_initiator_b::tx_state</scope><name>tx_state</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

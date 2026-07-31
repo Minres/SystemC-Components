@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classaxi_1_1axi__initiator" kind="class" language="C++" prot="public">
+    <compoundname>axi::axi_initiator</compoundname>
+    <basecompoundref refid="classaxi_1_1axi__initiator__base" prot="public" virt="non-virtual">axi::axi_initiator_base</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>unsigned int</type>
+        <declname>BUSWIDTH</declname>
+        <defname>BUSWIDTH</defname>
+        <defval>32</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classaxi_1_1axi__initiator_1ab77824e5a56d0e01398efc6e44bf1231" prot="public" static="no" mutable="no">
+        <type><ref refid="structaxi_1_1axi__initiator__socket" kindref="compound">axi::axi_initiator_socket</ref>&lt; BUSWIDTH &gt;</type>
+        <definition>axi::axi_initiator_socket&lt;BUSWIDTH&gt; axi::axi_initiator&lt; BUSWIDTH &gt;::isck</definition>
+        <argsstring></argsstring>
+        <name>isck</name>
+        <qualifiedname>axi::axi_initiator::isck</qualifiedname>
+        <initializer>{&quot;isck&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="67" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" bodystart="67" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1axi__initiator_1af6056f7a91bee2d91f419dc3be6e300e" prot="public" static="no" mutable="no">
+        <type><ref refid="classaxi_1_1pe_1_1simple__axi__initiator" kindref="compound">axi::pe::simple_axi_initiator</ref>&lt; BUSWIDTH &gt;</type>
+        <definition>axi::pe::simple_axi_initiator&lt;BUSWIDTH&gt; axi::axi_initiator&lt; BUSWIDTH &gt;::pe</definition>
+        <argsstring></argsstring>
+        <name>pe</name>
+        <qualifiedname>axi::axi_initiator::pe</qualifiedname>
+        <initializer>{&quot;pe&quot;, isck}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="76" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" bodystart="76" bodyend="76"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classaxi_1_1axi__initiator_1a9e5e62e5cd3127522659f705b2501f2a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::axi_initiator&lt; BUSWIDTH &gt;::axi_initiator</definition>
+        <argsstring>(sc_core::sc_module_name nm)</argsstring>
+        <name>axi_initiator</name>
+        <qualifiedname>axi::axi_initiator::axi_initiator</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="69" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1axi__initiator_1a6e9c168dca5603f87b216d812404bfe0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual axi::axi_initiator&lt; BUSWIDTH &gt;::~axi_initiator</definition>
+        <argsstring>()</argsstring>
+        <name>~axi_initiator</name>
+        <qualifiedname>axi::axi_initiator::~axi_initiator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="74" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" bodystart="74" bodyend="74"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::axi_initiator&lt; BUSWIDTH &gt;</label>
+        <link refid="classaxi_1_1axi__initiator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>axi::axi_initiator_base</label>
+        <link refid="classaxi_1_1axi__initiator__base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>sc_core::sc_module</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="20">
+        <label>axi::axi_bw_transport_if&lt; axi::axi_protocol_types &gt;</label>
+      </node>
+      <node id="1">
+        <label>axi::axi_initiator&lt; BUSWIDTH &gt;</label>
+        <link refid="classaxi_1_1axi__initiator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>isck</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>pe</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>axi::axi_initiator_base</label>
+        <link refid="classaxi_1_1axi__initiator__base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>axi::axi_initiator_socket&lt; 32 &gt;</label>
+        <link refid="structaxi_1_1axi__initiator__socket"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>axi::fsm::base</label>
+        <link refid="structaxi_1_1fsm_1_1base"/>
+        <childnode refid="12" relation="usage">
+          <edgelabel>fsm_event_queue</edgelabel>
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>fsm_clk_queue</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>axi::pe::simple_axi_initiator&lt; 32 &gt;</label>
+        <link refid="classaxi_1_1pe_1_1simple__axi__initiator"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>axi::pe::simple_initiator_b</label>
+        <link refid="classaxi_1_1pe_1_1simple__initiator__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11" relation="protected-inheritance">
+        </childnode>
+        <childnode refid="16" relation="usage">
+          <edgelabel>rd</edgelabel>
+          <edgelabel>snp</edgelabel>
+          <edgelabel>wr</edgelabel>
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>snp_resp_queue</edgelabel>
+        </childnode>
+        <childnode refid="19" relation="usage">
+          <edgelabel>cbpeq</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="3">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="13">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="15">
+        <label>sc_core::sc_prim_channel</label>
+      </node>
+      <node id="17">
+        <label>sc_core::sc_semaphore_if</label>
+      </node>
+      <node id="14">
+        <label>scc::fifo_w_cb&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, payload_type *, unsigned &gt; &gt;</label>
+        <link refid="classscc_1_1fifo__w__cb"/>
+        <childnode refid="15" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>scc::ordered_semaphore</label>
+        <link refid="classscc_1_1ordered__semaphore"/>
+        <childnode refid="17" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+        <childnode refid="18" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>scc::peq&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, payload_type *, bool &gt; &gt;</label>
+        <link refid="structscc_1_1peq"/>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>scc::peq&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, tlm::scc::tlm_payload_shared_ptr&lt; tlm::tlm_generic_payload &gt;, bool &gt; &gt;</label>
+        <link refid="structscc_1_1peq"/>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>scc::traceable</label>
+        <link refid="structscc_1_1traceable"/>
+      </node>
+      <node id="9">
+        <label>tlm::scc::pe::intor_fw&lt; type::BL &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>tlm::scc::pe::intor_fw_b</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw__b"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>tlm::tlm_base_initiator_socket&lt; BUSWIDTH, axi_fw_transport_if&lt; axi_protocol_types &gt;, axi_bw_transport_if&lt; axi_protocol_types &gt;, 1, sc_core::SC_ONE_OR_MORE_BOUND &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="65" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" bodystart="65" bodyend="77"/>
+    <listofallmembers>
+      <member refid="classaxi_1_1axi__initiator_1a9e5e62e5cd3127522659f705b2501f2a" prot="public" virt="non-virtual"><scope>axi::axi_initiator</scope><name>axi_initiator</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1a0ac23c78b2a204c2ee1e88de4ac51dbf" prot="public" virt="non-virtual"><scope>axi::axi_initiator</scope><name>axi_initiator_base</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1ab9edf97fbc658dd389fc066970fcd99c" prot="public" virt="non-virtual"><scope>axi::axi_initiator</scope><name>b_transport</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1af596636ca7b958ffd07705866851a9fc" prot="public" virt="non-virtual"><scope>axi::axi_initiator</scope><name>clk_i</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1ab9acbdbf3ac128f3e0f9faad80f7a5d6" prot="public" virt="non-virtual"><scope>axi::axi_initiator</scope><name>create_axi_trans</name></member>
+      <member refid="classaxi_1_1axi__initiator_1ab77824e5a56d0e01398efc6e44bf1231" prot="public" virt="non-virtual"><scope>axi::axi_initiator</scope><name>isck</name></member>
+      <member refid="classaxi_1_1axi__initiator_1af6056f7a91bee2d91f419dc3be6e300e" prot="public" virt="non-virtual"><scope>axi::axi_initiator</scope><name>pe</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1a30af3412ffb37743306bd55a369f5541" prot="public" virt="non-virtual"><scope>axi::axi_initiator</scope><name>setTxSetupCb</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1a07f214537773f9997981521dadd25c39" prot="public" virt="non-virtual"><scope>axi::axi_initiator</scope><name>tsck</name></member>
+      <member refid="classaxi_1_1axi__initiator_1a6e9c168dca5603f87b216d812404bfe0" prot="public" virt="virtual"><scope>axi::axi_initiator</scope><name>~axi_initiator</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1a6bd03842184e3cb89f5d9157cbfe018b" prot="public" virt="virtual"><scope>axi::axi_initiator</scope><name>~axi_initiator_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

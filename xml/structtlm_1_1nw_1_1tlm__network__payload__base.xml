@@ -1,0 +1,690 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1nw_1_1tlm__network__payload__base" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::nw::tlm_network_payload_base</compoundname>
+    <derivedcompoundref refid="structtlm_1_1nw_1_1tlm__network__payload" prot="public" virt="non-virtual">tlm::nw::tlm_network_payload&lt; AXIS_PKT &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structtlm_1_1nw_1_1tlm__network__payload" prot="public" virt="non-virtual">tlm::nw::tlm_network_payload&lt; CXS_CMD &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structtlm_1_1nw_1_1tlm__network__payload" prot="public" virt="non-virtual">tlm::nw::tlm_network_payload&lt; CXS_PKT &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structtlm_1_1nw_1_1tlm__network__payload" prot="public" virt="non-virtual">tlm::nw::tlm_network_payload&lt; ETH &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structtlm_1_1nw_1_1tlm__network__payload" prot="public" virt="non-virtual">tlm::nw::tlm_network_payload&lt; SPI_PKT &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structtlm_1_1nw_1_1tlm__network__payload" prot="public" virt="non-virtual">tlm::nw::tlm_network_payload&lt; CMDENUM &gt;</derivedcompoundref>
+    <includes refid="tlm__network__gp_8h" local="no">tlm_network_gp.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structtlm_1_1nw_1_1tlm__network__payload__base_1ad2b4634162a602d7c51955e203d932f6" prot="private" static="no" mutable="no">
+        <type><ref refid="classtlm_1_1nw_1_1tlm__array" kindref="compound">tlm::nw::tlm_array</ref>&lt; tlm_extension_base * &gt;</type>
+        <definition>tlm::nw::tlm_array&lt;tlm_extension_base*&gt; tlm::nw::tlm_network_payload_base::m_extensions</definition>
+        <argsstring></argsstring>
+        <name>m_extensions</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::m_extensions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="184" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a5142e875c781f89c221172770b1982e9" prot="private" static="no" mutable="no">
+        <type><ref refid="classtlm_1_1nw_1_1tlm__base__mm__interface" kindref="compound">tlm_base_mm_interface</ref> *</type>
+        <definition>tlm_base_mm_interface* tlm::nw::tlm_network_payload_base::m_mm</definition>
+        <argsstring></argsstring>
+        <name>m_mm</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::m_mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="185" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a9964fb89c2d4126be60da9a3e8e60940" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tlm::nw::tlm_network_payload_base::m_ref_count</definition>
+        <argsstring></argsstring>
+        <name>m_ref_count</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::m_ref_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="186" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1ab177f24d8544436b7af9f3c95d1d641c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::nw::tlm_network_payload_base::tlm_network_payload_base</definition>
+        <argsstring>()</argsstring>
+        <name>tlm_network_payload_base</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::tlm_network_payload_base</qualifiedname>
+        <briefdescription>
+<para>Default constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes the <ref refid="structtlm_1_1nw_1_1tlm__network__payload__base" kindref="compound">tlm_network_payload_base</ref> object with default values. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="58" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="58" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a18e488e7029fcd201bbed7a9b3ec261b" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::nw::tlm_network_payload_base::tlm_network_payload_base</definition>
+        <argsstring>(tlm_base_mm_interface *mm)</argsstring>
+        <name>tlm_network_payload_base</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::tlm_network_payload_base</qualifiedname>
+        <param>
+          <type><ref refid="classtlm_1_1nw_1_1tlm__base__mm__interface" kindref="compound">tlm_base_mm_interface</ref> *</type>
+          <declname>mm</declname>
+        </param>
+        <briefdescription>
+<para>Constructor with memory management interface. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes the <ref refid="structtlm_1_1nw_1_1tlm__network__payload__base" kindref="compound">tlm_network_payload_base</ref> object with a specified memory management interface.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The memory management interface. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="67" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="67" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a2cc8c7ed055f721b715c3c77ddf98d76" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual tlm::nw::tlm_network_payload_base::~tlm_network_payload_base</definition>
+        <argsstring>()</argsstring>
+        <name>~tlm_network_payload_base</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::~tlm_network_payload_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>virtual destructor. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="74" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="74" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1adb2698084ef05cbbd02bee41edec31cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::tlm_network_payload_base::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::reset</qualifiedname>
+        <briefdescription>
+<para>Constructor with memory management interface. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes the <ref refid="structtlm_1_1nw_1_1tlm__network__payload__base" kindref="compound">tlm_network_payload_base</ref> object with a specified memory management interface.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The memory management interface. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="86" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="86" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a0707869bc67bb455921db0e53c2c8e6c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::tlm_network_payload_base::acquire</definition>
+        <argsstring>()</argsstring>
+        <name>acquire</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::acquire</qualifiedname>
+        <briefdescription>
+<para>Acquires a reference to the payload. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Increments the reference count of the payload, indicating that it is being used. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="92" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="92" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a6c9e43a01c588c248797ac1afe735185" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::tlm_network_payload_base::release</definition>
+        <argsstring>()</argsstring>
+        <name>release</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::release</qualifiedname>
+        <briefdescription>
+<para>Releases a reference to the payload. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Decrements the reference count of the payload, indicating that it is no longer being used. If the reference count reaches 0, the payload is freed using the memory management interface. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="102" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="102" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1af3fe35b68770e434bbd49940e4def45f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int tlm::nw::tlm_network_payload_base::get_ref_count</definition>
+        <argsstring>() const</argsstring>
+        <name>get_ref_count</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::get_ref_count</qualifiedname>
+        <briefdescription>
+<para>Gets the reference count of the payload. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the current reference count of the payload.</para>
+<para><simplesect kind="return"><para>The reference count. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="114" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="114" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a57e6c56e8a3b57c1968c47dd1ecd4655" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::tlm_network_payload_base::set_mm</definition>
+        <argsstring>(tlm_base_mm_interface *mm)</argsstring>
+        <name>set_mm</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::set_mm</qualifiedname>
+        <param>
+          <type><ref refid="classtlm_1_1nw_1_1tlm__base__mm__interface" kindref="compound">tlm_base_mm_interface</ref> *</type>
+          <declname>mm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="116" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="116" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a43f9cd78f0820173077ee3d972ad58e1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::nw::tlm_network_payload_base::has_mm</definition>
+        <argsstring>() const</argsstring>
+        <name>has_mm</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::has_mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="117" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="117" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a60e4bb0ef8575255fd8f117816096485" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::tlm_network_payload_base::copy_extensions_from</definition>
+        <argsstring>(const tlm_network_payload_base &amp;other)</argsstring>
+        <name>copy_extensions_from</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::copy_extensions_from</qualifiedname>
+        <param>
+          <type>const <ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1ab177f24d8544436b7af9f3c95d1d641c" kindref="member">tlm_network_payload_base</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="119" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="462" bodyend="482"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a9899a33e50f8d25398f27d720991f875" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::tlm_network_payload_base::update_extensions_from</definition>
+        <argsstring>(const tlm_network_payload_base &amp;other)</argsstring>
+        <name>update_extensions_from</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::update_extensions_from</qualifiedname>
+        <param>
+          <type>const <ref refid="structtlm_1_1nw_1_1tlm__network__payload__base_1ab177f24d8544436b7af9f3c95d1d641c" kindref="member">tlm_network_payload_base</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="121" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="450" bodyend="460"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a5c0614277cc53d82512d9bebd80872b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::tlm_network_payload_base::free_all_extensions</definition>
+        <argsstring>()</argsstring>
+        <name>free_all_extensions</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::free_all_extensions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="124" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="376" bodyend="384"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a27a86c240c0a84e7debe76ac26c47e5a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T *</type>
+        <definition>T * tlm::nw::tlm_network_payload_base::set_extension</definition>
+        <argsstring>(T *ext)</argsstring>
+        <name>set_extension</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::set_extension</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="127" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="127" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1abae6beedbb8625c42ba5ffd5e64d17f8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm_extension_base *</type>
+        <definition>tlm_extension_base * tlm::nw::tlm_network_payload_base::set_extension</definition>
+        <argsstring>(unsigned int index, tlm_extension_base *ext)</argsstring>
+        <name>set_extension</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::set_extension</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>tlm_extension_base *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="130" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="413" bodyend="418"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a46d093b6cf521bf311bf9924633a640a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T *</type>
+        <definition>T * tlm::nw::tlm_network_payload_base::set_auto_extension</definition>
+        <argsstring>(T *ext)</argsstring>
+        <name>set_auto_extension</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::set_auto_extension</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="134" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="134" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a430a9c763b165483b8ff91d335a5a07f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm_extension_base *</type>
+        <definition>tlm_extension_base * tlm::nw::tlm_network_payload_base::set_auto_extension</definition>
+        <argsstring>(unsigned int index, tlm_extension_base *ext)</argsstring>
+        <name>set_auto_extension</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::set_auto_extension</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>tlm_extension_base *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="137" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="420" bodyend="428"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1abdafe0a49b2aa496ce62bf32e51fe39e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void tlm::nw::tlm_network_payload_base::get_extension</definition>
+        <argsstring>(T *&amp;ext) const</argsstring>
+        <name>get_extension</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::get_extension</qualifiedname>
+        <param>
+          <type>T *&amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="140" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="140" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1aa633e36c66250b4cd72ea6cb77e87781" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T *</type>
+        <definition>T * tlm::nw::tlm_network_payload_base::get_extension</definition>
+        <argsstring>() const</argsstring>
+        <name>get_extension</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::get_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="141" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="141" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a10f8175a0f5d0cf75903ce8b4772a5f8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm_extension_base *</type>
+        <definition>tlm_extension_base * tlm::nw::tlm_network_payload_base::get_extension</definition>
+        <argsstring>(unsigned int index) const</argsstring>
+        <name>get_extension</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::get_extension</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="143" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="430" bodyend="433"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a90a475dce8f13f547d9bb4290024b543" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void tlm::nw::tlm_network_payload_base::clear_extension</definition>
+        <argsstring>(const T *ext)</argsstring>
+        <name>clear_extension</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::clear_extension</qualifiedname>
+        <param>
+          <type>const T *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="149" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="149" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a43a1dcb10b3fea1caa14c60e4ed904fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void tlm::nw::tlm_network_payload_base::clear_extension</definition>
+        <argsstring>()</argsstring>
+        <name>clear_extension</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::clear_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="155" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="155" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1acc90a9f4d7c7c32f3eaefb573be80092" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void tlm::nw::tlm_network_payload_base::release_extension</definition>
+        <argsstring>(T *ext)</argsstring>
+        <name>release_extension</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::release_extension</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="160" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="160" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1aae23009bc3f7d36694673cd3ed6a1039" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void tlm::nw::tlm_network_payload_base::release_extension</definition>
+        <argsstring>()</argsstring>
+        <name>release_extension</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::release_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="165" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="165" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a073ff52ad1fdd60cd4d02b2b09327a74" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t tlm::nw::tlm_network_payload_base::get_extension_count</definition>
+        <argsstring>()</argsstring>
+        <name>get_extension_count</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::get_extension_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="167" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="167" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a183826ed02a0a99092a0f33680edffbf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::tlm_network_payload_base::resize_extensions</definition>
+        <argsstring>()</argsstring>
+        <name>resize_extensions</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::resize_extensions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="181" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="484" bodyend="484"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1ad39844c759d5c17260d0d05e1e7cdcab" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::tlm_network_payload_base::clear_extension</definition>
+        <argsstring>(unsigned int index)</argsstring>
+        <name>clear_extension</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::clear_extension</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="171" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="435" bodyend="438"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1nw_1_1tlm__network__payload__base_1a7bbc59bde427d73ce7df1dc1643bea85" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::tlm_network_payload_base::release_extension</definition>
+        <argsstring>(unsigned int index)</argsstring>
+        <name>release_extension</name>
+        <qualifiedname>tlm::nw::tlm_network_payload_base::release_extension</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="173" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="440" bodyend="448"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A base class for TLM network payloads. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="structtlm_1_1nw_1_1tlm__network__payload__base" kindref="compound">tlm_network_payload_base</ref> class provides a foundation for creating custom TLM network payloads. It includes methods for managing extensions, memory management, and response status. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>axis::axis_packet_payload</label>
+        <link refid="structaxis_1_1axis__packet__payload"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>cxs::cxs_flit_payload</label>
+        <link refid="structcxs_1_1cxs__flit__payload"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>cxs::cxs_packet_payload</label>
+        <link refid="structcxs_1_1cxs__packet__payload"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>eth::eth_packet_payload</label>
+        <link refid="structeth_1_1eth__packet__payload"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>spi::spi_packet_payload</label>
+        <link refid="structspi_1_1spi__packet__payload"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>tlm::nw::tlm_network_payload&lt; CMDENUM &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__payload"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::nw::tlm_network_payload&lt; AXIS_PKT &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__payload"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tlm::nw::tlm_network_payload&lt; CXS_CMD &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__payload"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>tlm::nw::tlm_network_payload&lt; CXS_PKT &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__payload"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>tlm::nw::tlm_network_payload&lt; ETH &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__payload"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>tlm::nw::tlm_network_payload&lt; SPI_PKT &gt;</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__payload"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::nw::tlm_network_payload_base</label>
+        <link refid="structtlm_1_1nw_1_1tlm__network__payload__base"/>
+      </node>
+    </inheritancegraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" line="52" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_network_gp.h" bodystart="52" bodyend="187"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a0707869bc67bb455921db0e53c2c8e6c" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>acquire</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a90a475dce8f13f547d9bb4290024b543" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>clear_extension</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a43a1dcb10b3fea1caa14c60e4ed904fb" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>clear_extension</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1ad39844c759d5c17260d0d05e1e7cdcab" prot="private" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>clear_extension</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a60e4bb0ef8575255fd8f117816096485" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>copy_extensions_from</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a5c0614277cc53d82512d9bebd80872b9" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>free_all_extensions</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1abdafe0a49b2aa496ce62bf32e51fe39e" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>get_extension</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1aa633e36c66250b4cd72ea6cb77e87781" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>get_extension</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a10f8175a0f5d0cf75903ce8b4772a5f8" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>get_extension</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a073ff52ad1fdd60cd4d02b2b09327a74" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>get_extension_count</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1af3fe35b68770e434bbd49940e4def45f" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>get_ref_count</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a43f9cd78f0820173077ee3d972ad58e1" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>has_mm</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1ad2b4634162a602d7c51955e203d932f6" prot="private" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>m_extensions</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a5142e875c781f89c221172770b1982e9" prot="private" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>m_mm</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a9964fb89c2d4126be60da9a3e8e60940" prot="private" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>m_ref_count</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a6c9e43a01c588c248797ac1afe735185" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>release</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1acc90a9f4d7c7c32f3eaefb573be80092" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>release_extension</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1aae23009bc3f7d36694673cd3ed6a1039" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>release_extension</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a7bbc59bde427d73ce7df1dc1643bea85" prot="private" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>release_extension</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1adb2698084ef05cbbd02bee41edec31cf" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>reset</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a183826ed02a0a99092a0f33680edffbf" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>resize_extensions</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a46d093b6cf521bf311bf9924633a640a" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>set_auto_extension</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a430a9c763b165483b8ff91d335a5a07f" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>set_auto_extension</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a27a86c240c0a84e7debe76ac26c47e5a" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>set_extension</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1abae6beedbb8625c42ba5ffd5e64d17f8" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>set_extension</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a57e6c56e8a3b57c1968c47dd1ecd4655" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>set_mm</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1ab177f24d8544436b7af9f3c95d1d641c" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>tlm_network_payload_base</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a18e488e7029fcd201bbed7a9b3ec261b" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>tlm_network_payload_base</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a9899a33e50f8d25398f27d720991f875" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>update_extensions_from</name></member>
+      <member refid="structtlm_1_1nw_1_1tlm__network__payload__base_1a2cc8c7ed055f721b715c3c77ddf98d76" prot="public" virt="virtual"><scope>tlm::nw::tlm_network_payload_base</scope><name>~tlm_network_payload_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

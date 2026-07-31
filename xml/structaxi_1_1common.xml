@@ -1,0 +1,314 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1common" kind="struct" language="C++" prot="public">
+    <compoundname>axi::common</compoundname>
+    <derivedcompoundref refid="structaxi_1_1axi__extension" prot="public" virt="non-virtual">axi::axi_extension&lt; ace, ace_response &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structaxi_1_1axi__extension" prot="public" virt="non-virtual">axi::axi_extension&lt; axi3 &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structaxi_1_1axi__extension" prot="public" virt="non-virtual">axi::axi_extension&lt; axi4 &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structaxi_1_1axi__extension" prot="public" virt="non-virtual">axi::axi_extension&lt; REQ, RESP &gt;</derivedcompoundref>
+    <includes refid="axi__tlm_8h" local="no">axi_tlm.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="structaxi_1_1common_1a92f5960863736516ee1059dd94eb396a" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>id_type</name>
+        <qualifiedname>axi::common::id_type</qualifiedname>
+        <enumvalue id="structaxi_1_1common_1a92f5960863736516ee1059dd94eb396aa32f7eee2581c72a5561c21df3013a89a" prot="public">
+          <name>CTRL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structaxi_1_1common_1a92f5960863736516ee1059dd94eb396aae44f9e348e41cb272efa87387728571b" prot="public">
+          <name>DATA</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structaxi_1_1common_1a92f5960863736516ee1059dd94eb396aace1227f328c9777b5e66fc728ceb4160" prot="public">
+          <name>RESP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Since AXI has up to three channels per transaction the id and user fields are denoted by this enum </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="177" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="177" bodyend="177"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="structaxi_1_1common_1a9a427c494fbaacb30d309020e0d651ea" prot="protected" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::common::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <qualifiedname>axi::common::id</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="193" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="193" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1common_1a2eadec66346fe202076a8aa519fcaaf1" prot="protected" static="no" mutable="no">
+        <type>std::array&lt; unsigned, 3 &gt;</type>
+        <definition>std::array&lt;unsigned, 3&gt; axi::common::user</definition>
+        <argsstring></argsstring>
+        <name>user</name>
+        <qualifiedname>axi::common::user</qualifiedname>
+        <initializer>{{0, 0, 0}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="194" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="194" bodyend="194"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1common_1ac0eb6b0bad2f12d122b1167a0e66dc95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::common::common</definition>
+        <argsstring>()=default</argsstring>
+        <name>common</name>
+        <qualifiedname>axi::common::common</qualifiedname>
+        <briefdescription>
+<para>the constructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="161" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1common_1a016f991123261440ba89e51ef4b63ffb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::common::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <qualifiedname>axi::common::reset</qualifiedname>
+        <briefdescription>
+<para>reset all data member to their default </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="163" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1common_1a512b936fc1a7ae445153c47ecf52bdfe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structaxi_1_1common_1ac0eb6b0bad2f12d122b1167a0e66dc95" kindref="member">common</ref> &amp;</type>
+        <definition>common &amp; axi::common::operator=</definition>
+        <argsstring>(const common &amp;o)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>axi::common::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="structaxi_1_1common_1ac0eb6b0bad2f12d122b1167a0e66dc95" kindref="member">common</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+<para>copy assignment operator </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>o</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>reference to self </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="169" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="169" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1common_1a45322e6c2566050f736d20880615ab96" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::common::set_id</definition>
+        <argsstring>(unsigned int value)</argsstring>
+        <name>set_id</name>
+        <qualifiedname>axi::common::set_id</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set the id value of a particular channel <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of the AxID of the ADDR, DATA, and RESP channel </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="180" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1283" bodyend="1283"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1common_1ac4850f96ffed36eaceefd02d9d76f8b3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int axi::common::get_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_id</name>
+        <qualifiedname>axi::common::get_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the id value of a particular channel <simplesect kind="return"><para>the AxID </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="183" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1285" bodyend="1285"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1common_1a4c6295bdd23e17f2d83a3ddddce77eb8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::common::set_user</definition>
+        <argsstring>(id_type chnl, unsigned int value)</argsstring>
+        <name>set_user</name>
+        <qualifiedname>axi::common::set_user</qualifiedname>
+        <param>
+          <type><ref refid="structaxi_1_1common_1a92f5960863736516ee1059dd94eb396a" kindref="member">id_type</ref></type>
+          <declname>chnl</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set the user value of a particular channel <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>chnl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>AxUSER value of the ADDR, DATA, and RESP channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of the user field </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="187" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1287" bodyend="1287"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1common_1a4b0bc3b0ec1f1ead59c78cac493679da" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int axi::common::get_user</definition>
+        <argsstring>(id_type chnl) const</argsstring>
+        <name>get_user</name>
+        <qualifiedname>axi::common::get_user</qualifiedname>
+        <param>
+          <type><ref refid="structaxi_1_1common_1a92f5960863736516ee1059dd94eb396a" kindref="member">id_type</ref></type>
+          <declname>chnl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the user value of a particular channel <simplesect kind="return"><para>AxUSER value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="190" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1289" bodyend="1289"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>the variable part of all requests containing AxID and AxUSER </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>axi::ace_extension</label>
+        <link refid="structaxi_1_1ace__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>axi::axi3_extension</label>
+        <link refid="structaxi_1_1axi3__extension"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>axi::axi4_extension</label>
+        <link refid="structaxi_1_1axi4__extension"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>axi::axi_extension&lt; REQ, RESP &gt;</label>
+        <link refid="structaxi_1_1axi__extension"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>axi::axi_extension&lt; ace, ace_response &gt;</label>
+        <link refid="structaxi_1_1axi__extension"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>axi::axi_extension&lt; axi3 &gt;</label>
+        <link refid="structaxi_1_1axi__extension"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>axi::axi_extension&lt; axi4 &gt;</label>
+        <link refid="structaxi_1_1axi__extension"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>axi::common</label>
+        <link refid="structaxi_1_1common"/>
+      </node>
+    </inheritancegraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="159" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="159" bodyend="195"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1common_1ac0eb6b0bad2f12d122b1167a0e66dc95" prot="public" virt="non-virtual"><scope>axi::common</scope><name>common</name></member>
+      <member refid="structaxi_1_1common_1ac4850f96ffed36eaceefd02d9d76f8b3" prot="public" virt="non-virtual"><scope>axi::common</scope><name>get_id</name></member>
+      <member refid="structaxi_1_1common_1a4b0bc3b0ec1f1ead59c78cac493679da" prot="public" virt="non-virtual"><scope>axi::common</scope><name>get_user</name></member>
+      <member refid="structaxi_1_1common_1a9a427c494fbaacb30d309020e0d651ea" prot="protected" virt="non-virtual"><scope>axi::common</scope><name>id</name></member>
+      <member refid="structaxi_1_1common_1a92f5960863736516ee1059dd94eb396a" prot="public" virt="non-virtual"><scope>axi::common</scope><name>id_type</name></member>
+      <member refid="structaxi_1_1common_1a512b936fc1a7ae445153c47ecf52bdfe" prot="public" virt="non-virtual"><scope>axi::common</scope><name>operator=</name></member>
+      <member refid="structaxi_1_1common_1a016f991123261440ba89e51ef4b63ffb" prot="public" virt="non-virtual"><scope>axi::common</scope><name>reset</name></member>
+      <member refid="structaxi_1_1common_1a45322e6c2566050f736d20880615ab96" prot="public" virt="non-virtual"><scope>axi::common</scope><name>set_id</name></member>
+      <member refid="structaxi_1_1common_1a4c6295bdd23e17f2d83a3ddddce77eb8" prot="public" virt="non-virtual"><scope>axi::common</scope><name>set_user</name></member>
+      <member refid="structaxi_1_1common_1a2eadec66346fe202076a8aa519fcaaf1" prot="protected" virt="non-virtual"><scope>axi::common</scope><name>user</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

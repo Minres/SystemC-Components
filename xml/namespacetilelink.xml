@@ -1,0 +1,739 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacetilelink" kind="namespace" language="C++">
+    <compoundname>tilelink</compoundname>
+    <innerclass refid="structtilelink_1_1master__types" prot="public">tilelink::master_types</innerclass>
+    <innerclass refid="structtilelink_1_1slave__types" prot="public">tilelink::slave_types</innerclass>
+    <innerclass refid="structtilelink_1_1signal__types" prot="public">tilelink::signal_types</innerclass>
+    <innerclass refid="structtilelink_1_1select__if" prot="public">tilelink::select_if</innerclass>
+    <innerclass refid="structtilelink_1_1select__if_3_01true_00_01T_00_01S_01_4" prot="public">tilelink::select_if&lt; true, T, S &gt;</innerclass>
+    <innerclass refid="structtilelink_1_1tl__cfg" prot="public">tilelink::tl_cfg</innerclass>
+    <innerclass refid="structtilelink_1_1ch__a" prot="public">tilelink::ch_a</innerclass>
+    <innerclass refid="structtilelink_1_1ch__b" prot="public">tilelink::ch_b</innerclass>
+    <innerclass refid="structtilelink_1_1ch__c" prot="public">tilelink::ch_c</innerclass>
+    <innerclass refid="structtilelink_1_1ch__d" prot="public">tilelink::ch_d</innerclass>
+    <innerclass refid="structtilelink_1_1ch__e" prot="public">tilelink::ch_e</innerclass>
+    <innerclass refid="structtilelink_1_1tl__ul" prot="public">tilelink::tl_ul</innerclass>
+    <innerclass refid="structtilelink_1_1tl__c" prot="public">tilelink::tl_c</innerclass>
+    <innerclass refid="structtilelink_1_1tlc__ext__record" prot="public">tilelink::tlc_ext_record</innerclass>
+    <innerclass refid="structtilelink_1_1tlc__ext__recording" prot="public">tilelink::tlc_ext_recording</innerclass>
+    <innerclass refid="structtilelink_1_1enable__for__enum" prot="public">tilelink::enable_for_enum</innerclass>
+    <innerclass refid="structtilelink_1_1tilelink__extension" prot="public">tilelink::tilelink_extension</innerclass>
+    <innerclass refid="structtilelink_1_1tl__protocol__types" prot="public">tilelink::tl_protocol_types</innerclass>
+    <innerclass refid="classtilelink_1_1bw__blocking__transport__if" prot="public">tilelink::bw_blocking_transport_if</innerclass>
+    <innerclass refid="classtilelink_1_1tlc__bw__transport__if" prot="public">tilelink::tlc_bw_transport_if</innerclass>
+    <innerclass refid="structtilelink_1_1tlu__initiator__socket" prot="public">tilelink::tlu_initiator_socket</innerclass>
+    <innerclass refid="structtilelink_1_1tlu__target__socket" prot="public">tilelink::tlu_target_socket</innerclass>
+    <innerclass refid="structtilelink_1_1tlc__initiator__socket" prot="public">tilelink::tlc_initiator_socket</innerclass>
+    <innerclass refid="structtilelink_1_1tlc__target__socket" prot="public">tilelink::tlc_target_socket</innerclass>
+    <innerclass refid="structtilelink_1_1enable__for__enum_3_01opcode__e_01_4" prot="public">tilelink::enable_for_enum&lt; opcode_e &gt;</innerclass>
+    <innernamespace refid="namespacetilelink_1_1scv">tilelink::scv</innernamespace>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacetilelink_1ab3a7813671a43163e376568686756a79" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>opcode_e</name>
+        <qualifiedname>tilelink::opcode_e</qualifiedname>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79ac55582518cba2c464f29f5bae1c68def" prot="public">
+          <name>Get</name>
+          <initializer>= 0x184</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79a14dd71a592da2fad33f7d9a7ecccefc4" prot="public">
+          <name>AccessAckData</name>
+          <initializer>= 0x061</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79a215f83bc3f2ab2f80a1573606cdafe93" prot="public">
+          <name>PutFullData</name>
+          <initializer>= 0x180</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79a8dc666621b1fbb9bd1963287601b771f" prot="public">
+          <name>PutPartialData</name>
+          <initializer>= 0x181</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79aa6d193ffad25ed8759d42b2ef0790072" prot="public">
+          <name>AccessAck</name>
+          <initializer>= 0x060</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79aa7cf290354adf50f497f8e5d49f05e6a" prot="public">
+          <name>ArithmeticData</name>
+          <initializer>= 0x182</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79a83f0a365ae48ad93ce449dfad780b5c2" prot="public">
+          <name>LogicalData</name>
+          <initializer>= 0x183</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79a3f76f7dd14d82b10c8eed5fa7f2ba7b3" prot="public">
+          <name>Intent</name>
+          <initializer>= 0x185</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79acfb8af8fc9330dd802f6a5ef88b65d93" prot="public">
+          <name>HintAck</name>
+          <initializer>= 0x062</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79ada696bf35417708c79c3da6d59201637" prot="public">
+          <name>AcquireBlock</name>
+          <initializer>= 0x106</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79a7c073e3bc79801ec3a3b2dac99be3977" prot="public">
+          <name>AcquirePerm</name>
+          <initializer>= 0x107</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79ae6bec5bc048c16f28ba341f878ce654e" prot="public">
+          <name>Grant</name>
+          <initializer>= 0x024</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79ac09ea86aee47f10ae006949e2810061c" prot="public">
+          <name>GrantData</name>
+          <initializer>= 0x025</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79a784ff6252bd49ebf1d86dec273b6b101" prot="public">
+          <name>GrantAck</name>
+          <initializer>= 0x010</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79af11e910081b3b582cbe1ba476ae72094" prot="public">
+          <name>ProbeBlock</name>
+          <initializer>= 0x086</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79a1e0155739b2147795bc09af1e69bdb87" prot="public">
+          <name>ProbePerm</name>
+          <initializer>= 0x087</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79a22aff3bf40cc3b0f9eaa2777a5d4898e" prot="public">
+          <name>ProbeAck</name>
+          <initializer>= 0x044</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79a764ad4748f26a5f36c1c2ce5827d7ea4" prot="public">
+          <name>ProbeAckData</name>
+          <initializer>= 0x045</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79ab8e7b465df7c5979dc731d06e84ce2cf" prot="public">
+          <name>Release</name>
+          <initializer>= 0x046</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79a56b4fb942f267a2d2b9932699733eb1f" prot="public">
+          <name>ReleaseData</name>
+          <initializer>= 0x047</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79a4a107e3387b866ae48a5daa9e7528795" prot="public">
+          <name>ReleaseAck</name>
+          <initializer>= 0x026</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ab3a7813671a43163e376568686756a79a19b6dd9cf8414bce98a4f0b86c3258ec" prot="public">
+          <name>ILLEGAL</name>
+          <initializer>= 0xf</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>opcodes of Tilelink.. The encode the opcode (<ref refid="namespacetilelink_1ab3a7813671a43163e376568686756a79" kindref="member">opcode_e</ref>[2:0]) and the applicable channels (<ref refid="namespacetilelink_1ab3a7813671a43163e376568686756a79" kindref="member">opcode_e</ref>[8] -&gt; A ... <ref refid="namespacetilelink_1ab3a7813671a43163e376568686756a79" kindref="member">opcode_e</ref>[4] -&gt; E) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="67" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="67" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacetilelink_1ae5abbc3330e521cf76d4d8236f32dba9" prot="public" static="no" strong="no">
+        <type></type>
+        <name>param_e</name>
+        <qualifiedname>tilelink::param_e</qualifiedname>
+        <enumvalue id="namespacetilelink_1ae5abbc3330e521cf76d4d8236f32dba9a5175bdd4d115b38d1556a30c19ea370e" prot="public">
+          <name>CAP_2T</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ae5abbc3330e521cf76d4d8236f32dba9acb771beda3a4ffde8fd0fa337265deca" prot="public">
+          <name>CAP_2B</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ae5abbc3330e521cf76d4d8236f32dba9a1e70497a74f0fecfc2d80e278f873db5" prot="public">
+          <name>CAP_2N</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ae5abbc3330e521cf76d4d8236f32dba9a98aae958e7bb0663f7649a100224f2e8" prot="public">
+          <name>GROW_N2B</name>
+          <initializer>= 0x10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ae5abbc3330e521cf76d4d8236f32dba9a0782dac49e2630f85636d9090508a4a3" prot="public">
+          <name>GROW_N2T</name>
+          <initializer>= 0x11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ae5abbc3330e521cf76d4d8236f32dba9a114780569bf5b60ef19f478d6045816c" prot="public">
+          <name>GROW_B2T</name>
+          <initializer>= 0x12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ae5abbc3330e521cf76d4d8236f32dba9acad62ab0610a0e1132c28a6eab90ed6a" prot="public">
+          <name>PRUNE_T2B</name>
+          <initializer>= 0x20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ae5abbc3330e521cf76d4d8236f32dba9a324c7a7b3c46aa6e6851e49937327739" prot="public">
+          <name>PRUNE_T2N</name>
+          <initializer>= 0x21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ae5abbc3330e521cf76d4d8236f32dba9a1d564b2893cde68c53cff29ca4993613" prot="public">
+          <name>PRUNE_B2N</name>
+          <initializer>= 0x22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ae5abbc3330e521cf76d4d8236f32dba9a9636f390004e36fb2941da99ef364c81" prot="public">
+          <name>REP_T2T</name>
+          <initializer>= 0x3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ae5abbc3330e521cf76d4d8236f32dba9a40c0e21308285b16f79757e13eef9b68" prot="public">
+          <name>REP_B2B</name>
+          <initializer>= 0x4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetilelink_1ae5abbc3330e521cf76d4d8236f32dba9a3d0ca91dd1d6d4621d1c687cab98499b" prot="public">
+          <name>REP_N2N</name>
+          <initializer>= 0x5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="92" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="92" bodyend="110"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacetilelink_1a51399e1b1845769c0d8e1d66bafadbba" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename CFG</type>
+          </param>
+          <param>
+            <type>typename TYPES</type>
+            <defval>master_types</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structtilelink_1_1tl__ul" kindref="compound">tl_ul</ref>&lt; CFG, TYPES &gt;</type>
+        <definition>using tilelink::tl_uh =  tl_ul&lt;CFG, TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>tl_uh</name>
+        <qualifiedname>tilelink::tl_uh</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="285" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetilelink_1a39dbcaaca78590b3928a49028674cfb6" prot="public" static="no">
+        <type>tlm::tlm_generic_payload</type>
+        <definition>using tilelink::tl_payload =  tlm::tlm_generic_payload</definition>
+        <argsstring></argsstring>
+        <name>tl_payload</name>
+        <qualifiedname>tilelink::tl_payload</qualifiedname>
+        <briefdescription>
+<para>aliases for payload and phase types </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="158" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetilelink_1a13574563793ac67e798bcdf6e78a117b" prot="public" static="no">
+        <type>tlm::tlm_phase</type>
+        <definition>using tilelink::tl_phase =  tlm::tlm_phase</definition>
+        <argsstring></argsstring>
+        <name>tl_phase</name>
+        <qualifiedname>tilelink::tl_phase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="159" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetilelink_1a50a8a3a33db205e0c120573198b948c6" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename TYPES</type>
+            <defval>tl_protocol_types</defval>
+          </param>
+        </templateparamlist>
+        <type>tlm::tlm_fw_transport_if&lt; TYPES &gt;</type>
+        <definition>using tilelink::tlu_fw_transport_if =  tlm::tlm_fw_transport_if&lt;TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>tlu_fw_transport_if</name>
+        <qualifiedname>tilelink::tlu_fw_transport_if</qualifiedname>
+        <briefdescription>
+<para>alias declaration for the forward interface </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="185" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetilelink_1a07ff0cc6eda449b3173de7dadccaa74c" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename TYPES</type>
+            <defval>tl_protocol_types</defval>
+          </param>
+        </templateparamlist>
+        <type>tlm::tlm_bw_transport_if&lt; TYPES &gt;</type>
+        <definition>using tilelink::tlu_bw_transport_if =  tlm::tlm_bw_transport_if&lt;TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>tlu_bw_transport_if</name>
+        <qualifiedname>tilelink::tlu_bw_transport_if</qualifiedname>
+        <briefdescription>
+<para>alias declaration for the backward interface: </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="187" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetilelink_1aaf46bd56c511ecf98cdc14b9c0629662" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename TYPES</type>
+            <defval>tl_protocol_types</defval>
+          </param>
+        </templateparamlist>
+        <type>tlm::tlm_fw_transport_if&lt; TYPES &gt;</type>
+        <definition>using tilelink::tlc_fw_transport_if =  tlm::tlm_fw_transport_if&lt;TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>tlc_fw_transport_if</name>
+        <qualifiedname>tilelink::tlc_fw_transport_if</qualifiedname>
+        <briefdescription>
+<para>alias declaration for the ACE forward interface </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="189" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacetilelink_1acab6c9d0255b413dc8ff010cd68fba9d" prot="public" static="no" mutable="no">
+        <type>const sc_core::sc_time</type>
+        <definition>const sc_core::sc_time tilelink::CLK_DELAY</definition>
+        <argsstring></argsstring>
+        <name>CLK_DELAY</name>
+        <qualifiedname>tilelink::CLK_DELAY</qualifiedname>
+        <initializer>= 1_ps</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="25" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacetilelink_1a6108ff3c8e7918eae17f95f1b7de47bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string tilelink::concat</definition>
+        <argsstring>(const char *prefix, const char *name)</argsstring>
+        <name>concat</name>
+        <qualifiedname>tilelink::concat</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>prefix</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="94" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="94" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetilelink_1a2747d606783a0b48b7ac28e970bdffa2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * tilelink::to_char&lt; opcode_e &gt;</definition>
+        <argsstring>(opcode_e v)</argsstring>
+        <name>to_char&lt; opcode_e &gt;</name>
+        <qualifiedname>tilelink::to_char&lt; opcode_e &gt;</qualifiedname>
+        <param>
+          <type><ref refid="namespacetilelink_1ab3a7813671a43163e376568686756a79" kindref="member">opcode_e</ref></type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.cpp" line="28" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.cpp" bodystart="28" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetilelink_1af822fc5d2b674ac125e41256f15782e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * tilelink::to_char&lt; param_e &gt;</definition>
+        <argsstring>(param_e v)</argsstring>
+        <name>to_char&lt; param_e &gt;</name>
+        <qualifiedname>tilelink::to_char&lt; param_e &gt;</qualifiedname>
+        <param>
+          <type>param_e</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.cpp" line="77" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.cpp" bodystart="77" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetilelink_1adcdd80043b982b0f9b5228bb47a01f07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; tilelink::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const tlm::tlm_generic_payload &amp;t)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>tilelink::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const tlm::tlm_generic_payload &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.cpp" line="108" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.cpp" bodystart="108" bodyend="117" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" declline="64" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetilelink_1a6851e1c1e0677338253efca553689518" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename E</type>
+          </param>
+        </templateparamlist>
+        <type>E</type>
+        <definition>E tilelink::into</definition>
+        <argsstring>(typename std::underlying_type&lt; E &gt;::type t)</argsstring>
+        <name>into</name>
+        <qualifiedname>tilelink::into</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; E &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>helper function to convert integer into class enums <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="35" column="22" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" declline="35" declcolumn="22"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetilelink_1acad6a9f8d578ec6cee632f5a442dc372" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename E</type>
+          </param>
+          <param>
+            <type>typename ULT</type>
+            <defval>typename std::underlying_type&lt;E&gt;::type</defval>
+          </param>
+          <param>
+            <type>typename X</type>
+            <defval>typename std::enable_if&lt;std::is_enum&lt;E&gt;::value &amp;&amp; !std::is_convertible&lt;E, ULT&gt;::value, bool&gt;::type</defval>
+          </param>
+        </templateparamlist>
+        <type>ULT</type>
+        <definition>ULT tilelink::to_int</definition>
+        <argsstring>(E t)</argsstring>
+        <name>to_int</name>
+        <qualifiedname>tilelink::to_int</qualifiedname>
+        <param>
+          <type>E</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>helper function to convert class enums into integer <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="43" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetilelink_1a1dda74ab3a23e8f7456777887f613bb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename E</type>
+          </param>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * tilelink::to_char</definition>
+        <argsstring>(E t)</argsstring>
+        <name>to_char</name>
+        <qualifiedname>tilelink::to_char</qualifiedname>
+        <param>
+          <type>E</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>helper function to convert class enums into char string <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="51" column="24" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" declline="51" declcolumn="24"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetilelink_1afc7f8e57115813e1afe54efb13ca94e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename E</type>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; enable_for_enum&lt; E &gt;::value, bool &gt;::type</type>
+          </param>
+        </templateparamlist>
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; tilelink::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, E e)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>tilelink::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>E</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>os</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="59" column="8" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="59" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetilelink_1a5328ed561891ef071e6cc4c7ba3589e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tilelink::DECLARE_EXTENDED_PHASE</definition>
+        <argsstring>(ACK)</argsstring>
+        <name>DECLARE_EXTENDED_PHASE</name>
+        <qualifiedname>tilelink::DECLARE_EXTENDED_PHASE</qualifiedname>
+        <param>
+          <type>ACK</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>definition of the additional protocol phases </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="171" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" declline="171" declcolumn="1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>SCV components for AXI/ACE. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>TLM2.0 components modeling APB. </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="34" column="1"/>
+  </compounddef>
+</doxygen>

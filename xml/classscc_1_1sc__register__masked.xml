@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1sc__register__masked" kind="class" language="C++" prot="public">
+    <compoundname>scc::sc_register_masked</compoundname>
+    <basecompoundref refid="classscc_1_1impl_1_1sc__register" prot="public" virt="non-virtual">scc::impl::sc_register&lt; DATATYPE &gt;</basecompoundref>
+    <includes refid="register_8h" local="no">register.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename DATATYPE</type>
+      </param>
+      <param>
+        <type>DATATYPE</type>
+        <declname>WRMASK</declname>
+        <defname>WRMASK</defname>
+        <defval>impl::get_max_uval&lt;DATATYPE&gt;()</defval>
+      </param>
+      <param>
+        <type>DATATYPE</type>
+        <declname>RDMASK</declname>
+        <defname>RDMASK</defname>
+        <defval>impl::get_max_uval&lt;DATATYPE&gt;()</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1sc__register__masked_1af9e64a7838ab901337f37d10db0ffb16" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_register_masked&lt; DATATYPE, WRMASK, RDMASK &gt;::sc_register_masked</definition>
+        <argsstring>(sc_core::sc_module_name nm, DATATYPE &amp;storage, const DATATYPE reset_val, resetable &amp;owner)</argsstring>
+        <name>sc_register_masked</name>
+        <qualifiedname>scc::sc_register_masked::sc_register_masked</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>DATATYPE &amp;</type>
+          <declname>storage</declname>
+        </param>
+        <param>
+          <type>const DATATYPE</type>
+          <declname>reset_val</declname>
+        </param>
+        <param>
+          <type><ref refid="classscc_1_1resetable" kindref="compound">resetable</ref> &amp;</type>
+          <declname>owner</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="488" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="488" bodyend="489"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>alias class to map template argument read an write mask to constructor arguments </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="2">
+        <label>sc_register&lt; DATATYPE &gt;</label>
+        <link refid="classscc_1_1impl_1_1sc__register"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>scc::resource_access_if</label>
+        <link refid="classscc_1_1resource__access__if"/>
+      </node>
+      <node id="1">
+        <label>scc::sc_register_masked&lt; DATATYPE, WRMASK, RDMASK &gt;</label>
+        <link refid="classscc_1_1sc__register__masked"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>scc::traceable</label>
+        <link refid="structscc_1_1traceable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="2">
+        <label>sc_register&lt; DATATYPE &gt;</label>
+        <link refid="classscc_1_1impl_1_1sc__register"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>scc::resource_access_if</label>
+        <link refid="classscc_1_1resource__access__if"/>
+      </node>
+      <node id="1">
+        <label>scc::sc_register_masked&lt; DATATYPE, WRMASK, RDMASK &gt;</label>
+        <link refid="classscc_1_1sc__register__masked"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>scc::traceable</label>
+        <link refid="structscc_1_1traceable"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="486" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="486" bodyend="490"/>
+    <listofallmembers>
+      <member refid="classscc_1_1impl_1_1sc__register_1a0cee1d07b2b352bfc0c65a712879a5d1" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>enable_side_effect</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a8dc04bf5f7dc6928126638384b213230" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>enable_tracing</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1abcecef76ec622d0f5e7e8f99d40bf470" prot="public" virt="virtual"><scope>scc::sc_register_masked</scope><name>full_name</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a2b1a13df7e0f33841fa77eb23c6ff594" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>get</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a66984eca71ad32bd856248091994b57b" prot="public" virt="virtual"><scope>scc::sc_register_masked</scope><name>is_trace_enabled</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a50508164da9c84f83135fb5c11e4675c" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>operator DATATYPE</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a2eabe09729d024155c1d44cc9bc2be51" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>operator&amp;=</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1ad52a521b362636613068bcfc72c1a848" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>operator=</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a39f4b39d0bc029a3067fb8c54fe4f548" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>operator|=</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a2e2828b018fc0e5afcbd5ef07a7ec97e" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>put</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1ac14d6f9ebe5547ac2b31847f19f55afc" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>rdmask</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a2b88d767e6aebb0e484dee4f0262aba5" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>read</name></member>
+      <member refid="classscc_1_1resource__access__if_1aff9a8c6c68d5aa91a6278b8ae3f6c30a" prot="public" virt="pure-virtual" ambiguityscope="scc::resource_access_if::"><scope>scc::sc_register_masked</scope><name>read</name></member>
+      <member refid="classscc_1_1resource__access__if_1afba178290da5121755e18cdb44a06568" prot="public" virt="non-virtual" ambiguityscope="scc::resource_access_if::"><scope>scc::sc_register_masked</scope><name>read</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a247379d6d5f2412c33c7561ec7e04b37" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>read_dbg</name></member>
+      <member refid="classscc_1_1resource__access__if_1a81f86119c44d699f70b8980e12e97717" prot="public" virt="pure-virtual" ambiguityscope="scc::resource_access_if::"><scope>scc::sc_register_masked</scope><name>read_dbg</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1aca9d8f872440560d68d859ba9d184b66" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>res_val</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a04b4f9e28ccfb5f005bcf300df1152cc" prot="public" virt="virtual"><scope>scc::sc_register_masked</scope><name>reset</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a673c37201da32119a56659d1056dec39" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>sc_register</name></member>
+      <member refid="classscc_1_1sc__register__masked_1af9e64a7838ab901337f37d10db0ffb16" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>sc_register_masked</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a1e93444af0116c699242d3d7bc9fbc19" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>set_read_cb</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a65ac98258c52d320c732db9bfd0ce0eb" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>set_read_cb</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a15695500361212b68a67d5a219fc975a" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>set_write_cb</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1aa3f5dd946e4544dfe034a5ada42d5f7a" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>set_write_cb</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1ae4bd59511313c06e5b91ea67ff26774a" prot="public" virt="virtual"><scope>scc::sc_register_masked</scope><name>size</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a63853f951852d386472b1719b96fded3" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>this_type</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a5327b5a419a0355cd1a91badcb184a83" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>trace</name></member>
+      <member refid="structscc_1_1traceable_1afde2a0855aa2875f63b72b9db329551c" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>traceable</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1ae6d2eb877d7005e3f85e47bed2058591" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>write</name></member>
+      <member refid="classscc_1_1resource__access__if_1a422ba53aebac338f82b95969e4115e26" prot="public" virt="pure-virtual" ambiguityscope="scc::resource_access_if::"><scope>scc::sc_register_masked</scope><name>write</name></member>
+      <member refid="classscc_1_1resource__access__if_1a43d5c525222211b9b7a586a352282cdc" prot="public" virt="non-virtual" ambiguityscope="scc::resource_access_if::"><scope>scc::sc_register_masked</scope><name>write</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a50b1330e1db43b3fe1088b47311e0ef4" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>write_dbg</name></member>
+      <member refid="classscc_1_1resource__access__if_1ad9d368dd1a31310e1f147d019daa326c" prot="public" virt="pure-virtual" ambiguityscope="scc::resource_access_if::"><scope>scc::sc_register_masked</scope><name>write_dbg</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1a8fd3ba74745569f65b793b5abe0f335f" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>wrmask</name></member>
+      <member refid="classscc_1_1resource__access__if_1a11e3e1ab0e5f4ccfd156149fa77a7eed" prot="public" virt="virtual"><scope>scc::sc_register_masked</scope><name>~resource_access_if</name></member>
+      <member refid="classscc_1_1impl_1_1sc__register_1ab74f9ddb4519bc2cf98f636a7482c0fa" prot="public" virt="non-virtual"><scope>scc::sc_register_masked</scope><name>~sc_register</name></member>
+      <member refid="structscc_1_1traceable_1a1af8970cc881c520704bfb0440cbdbaf" prot="public" virt="virtual"><scope>scc::sc_register_masked</scope><name>~traceable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

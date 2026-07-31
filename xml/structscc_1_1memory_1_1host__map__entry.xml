@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1memory_1_1host__map__entry" kind="struct" language="C++" prot="protected">
+    <compoundname>scc::memory::host_map_entry</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1memory_1_1host__map__entry_1a8269c9d39fce83c739acf1fa56a06252" prot="public" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t* scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::host_map_entry::ptr</definition>
+        <argsstring></argsstring>
+        <name>ptr</name>
+        <qualifiedname>scc::memory::host_map_entry::ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="159" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1memory_1_1host__map__entry_1a7b7814993046207f2199952a7c27e7f5" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::host_map_entry::base</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <qualifiedname>scc::memory::host_map_entry::base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="160" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1memory_1_1host__map__entry_1a56581ce80c8b004ea9fca16525afa34f" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::host_map_entry::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>scc::memory::host_map_entry::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="161" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1memory_1_1host__map__entry_1a57ac1c28efbbc716e30d43e1ef77b3d6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::host_map_entry::operator==</definition>
+        <argsstring>(host_map_entry const &amp;o)</argsstring>
+        <name>operator==</name>
+        <qualifiedname>scc::memory::host_map_entry::operator==</qualifiedname>
+        <param>
+          <type><ref refid="structscc_1_1memory_1_1host__map__entry" kindref="compound">host_map_entry</ref> const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="162" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="162" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1memory_1_1host__map__entry_1a0efc0e6a7ea55d98084319836b9317b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::host_map_entry::operator!=</definition>
+        <argsstring>(host_map_entry const &amp;o)</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>scc::memory::host_map_entry::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="structscc_1_1memory_1_1host__map__entry" kindref="compound">host_map_entry</ref> const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="163" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="163" bodyend="163"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="158" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="158" bodyend="164"/>
+    <listofallmembers>
+      <member refid="structscc_1_1memory_1_1host__map__entry_1a7b7814993046207f2199952a7c27e7f5" prot="public" virt="non-virtual"><scope>scc::memory::host_map_entry</scope><name>base</name></member>
+      <member refid="structscc_1_1memory_1_1host__map__entry_1a0efc0e6a7ea55d98084319836b9317b0" prot="public" virt="non-virtual"><scope>scc::memory::host_map_entry</scope><name>operator!=</name></member>
+      <member refid="structscc_1_1memory_1_1host__map__entry_1a57ac1c28efbbc716e30d43e1ef77b3d6" prot="public" virt="non-virtual"><scope>scc::memory::host_map_entry</scope><name>operator==</name></member>
+      <member refid="structscc_1_1memory_1_1host__map__entry_1a8269c9d39fce83c739acf1fa56a06252" prot="public" virt="non-virtual"><scope>scc::memory::host_map_entry</scope><name>ptr</name></member>
+      <member refid="structscc_1_1memory_1_1host__map__entry_1a56581ce80c8b004ea9fca16525afa34f" prot="public" virt="non-virtual"><scope>scc::memory::host_map_entry</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

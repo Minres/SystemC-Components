@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceaxi_1_1lwtr" kind="namespace" language="C++">
+    <compoundname>axi::lwtr</compoundname>
+    <innerclass refid="structaxi_1_1lwtr_1_1nb__ace__rec__entry" prot="public">axi::lwtr::nb_ace_rec_entry</innerclass>
+    <innerclass refid="classaxi_1_1lwtr_1_1ace__lwtr" prot="public">axi::lwtr::ace_lwtr</innerclass>
+    <innerclass refid="classaxi_1_1lwtr_1_1ace__lwtr__recorder" prot="public">axi::lwtr::ace_lwtr_recorder</innerclass>
+    <innerclass refid="classaxi_1_1lwtr_1_1tlm__id__ext__recording" prot="public">axi::lwtr::tlm_id_ext_recording</innerclass>
+    <innerclass refid="classaxi_1_1lwtr_1_1axi3__ext__recording" prot="public">axi::lwtr::axi3_ext_recording</innerclass>
+    <innerclass refid="classaxi_1_1lwtr_1_1axi4__ext__recording" prot="public">axi::lwtr::axi4_ext_recording</innerclass>
+    <innerclass refid="classaxi_1_1lwtr_1_1ace__ext__recording" prot="public">axi::lwtr::ace_ext_recording</innerclass>
+    <innerclass refid="classaxi_1_1lwtr_1_1axi__lwtr" prot="public">axi::lwtr::axi_lwtr</innerclass>
+    <innerclass refid="classaxi_1_1lwtr_1_1axi__lwtr__recorder" prot="public">axi::lwtr::axi_lwtr_recorder</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="ace__lwtr_8h_1aba268bae3a8f1585a3e2da4ab92f274c" prot="public" static="no">
+        <type>::lwtr::tx_db</type>
+        <definition>using axi::lwtr::tx_db =  ::lwtr::tx_db</definition>
+        <argsstring></argsstring>
+        <name>tx_db</name>
+        <qualifiedname>axi::lwtr::tx_db</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/ace_lwtr.h" line="39" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/ace_lwtr.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="ace__lwtr_8h_1a1c59ae1dba6dd28f6aa866643de304f3" prot="public" static="no">
+        <type>::lwtr::tx_fiber</type>
+        <definition>using axi::lwtr::tx_fiber =  ::lwtr::tx_fiber</definition>
+        <argsstring></argsstring>
+        <name>tx_fiber</name>
+        <qualifiedname>axi::lwtr::tx_fiber</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/ace_lwtr.h" line="40" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/ace_lwtr.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="ace__lwtr_8h_1a5cb676ec6d6211295a2f4804e732dba1" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename BEGIN</type>
+            <defval>::lwtr::no_data</defval>
+          </param>
+          <param>
+            <type>typename END</type>
+            <defval>::lwtr::no_data</defval>
+          </param>
+        </templateparamlist>
+        <type>::lwtr::tx_generator&lt; BEGIN, END &gt;</type>
+        <definition>using axi::lwtr::tx_generator =  ::lwtr::tx_generator&lt;BEGIN, END&gt;</definition>
+        <argsstring></argsstring>
+        <name>tx_generator</name>
+        <qualifiedname>axi::lwtr::tx_generator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/ace_lwtr.h" line="41" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/ace_lwtr.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="ace__lwtr_8h_1adfa95e7986cf4050801f987297008eca" prot="public" static="no">
+        <type>::lwtr::tx_handle</type>
+        <definition>using axi::lwtr::tx_handle =  ::lwtr::tx_handle</definition>
+        <argsstring></argsstring>
+        <name>tx_handle</name>
+        <qualifiedname>axi::lwtr::tx_handle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/ace_lwtr.h" line="42" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/ace_lwtr.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="ace__lwtr_8h_1a9f61c0b986a0204d1f8c12541b8a61f6" prot="public" static="no">
+        <type><ref refid="structtlm_1_1scc_1_1tlm__mm" kindref="compound">tlm::scc::tlm_mm</ref>&lt;&gt;</type>
+        <definition>using axi::lwtr::mm =  tlm::scc::tlm_mm&lt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>mm</name>
+        <qualifiedname>axi::lwtr::mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/ace_lwtr.h" line="43" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/ace_lwtr.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="ace__lwtr_8h_1a24b018b9da7b3679619eb65bdd586d51" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool axi::lwtr::registered</definition>
+        <argsstring></argsstring>
+        <name>registered</name>
+        <qualifiedname>axi::lwtr::registered</qualifiedname>
+        <initializer>= register_extensions()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_ace_lwtr.cpp" line="168" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_ace_lwtr.cpp" bodystart="168" bodyend="-1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" declline="42" declcolumn="13"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="axi__ace__lwtr_8cpp_1a13744e2cc7bd57cc4c126e685b0d6d4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool axi::lwtr::register_extensions</definition>
+        <argsstring>()</argsstring>
+        <name>register_extensions</name>
+        <qualifiedname>axi::lwtr::register_extensions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_ace_lwtr.cpp" line="153" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_ace_lwtr.cpp" bodystart="153" bodyend="167"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/ace_lwtr.h" line="37" column="1"/>
+  </compounddef>
+</doxygen>

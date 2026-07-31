@@ -1,0 +1,578 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1tlm__generic__payload__base" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::tlm_generic_payload_base</compoundname>
+    <derivedcompoundref refid="structtlm_1_1scc_1_1tlm__signal__gp" prot="public" virt="non-virtual">tlm::scc::tlm_signal_gp&lt; tlm_signal_type &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structtlm_1_1scc_1_1tlm__signal__gp" prot="public" virt="non-virtual">tlm::scc::tlm_signal_gp&lt; SIG &gt;</derivedcompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1af93dfc89aa85c4e93425b6f060ea180d" prot="private" static="no" mutable="no">
+        <type>tlm_array&lt; tlm_extension_base * &gt;</type>
+        <definition>tlm_array&lt;tlm_extension_base*&gt; tlm::scc::tlm_generic_payload_base::m_extensions</definition>
+        <argsstring></argsstring>
+        <name>m_extensions</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::m_extensions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="136" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1aa8190f2161c197fb28181090da5fd6a7" prot="private" static="no" mutable="no">
+        <type><ref refid="classtlm_1_1scc_1_1tlm__base__mm__interface" kindref="compound">tlm_base_mm_interface</ref> *</type>
+        <definition>tlm_base_mm_interface* tlm::scc::tlm_generic_payload_base::m_mm</definition>
+        <argsstring></argsstring>
+        <name>m_mm</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::m_mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="137" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a8778dc637a397a131099f0d262ef0a15" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tlm::scc::tlm_generic_payload_base::m_ref_count</definition>
+        <argsstring></argsstring>
+        <name>m_ref_count</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::m_ref_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="138" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a8c18822ec77105e1f6897b61578f0db5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_generic_payload_base::tlm_generic_payload_base</definition>
+        <argsstring>()</argsstring>
+        <name>tlm_generic_payload_base</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::tlm_generic_payload_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="41" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="41" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a9bb9416a3737043f1431a1e649f68540" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_generic_payload_base::tlm_generic_payload_base</definition>
+        <argsstring>(tlm_base_mm_interface *mm)</argsstring>
+        <name>tlm_generic_payload_base</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::tlm_generic_payload_base</qualifiedname>
+        <param>
+          <type><ref refid="classtlm_1_1scc_1_1tlm__base__mm__interface" kindref="compound">tlm_base_mm_interface</ref> *</type>
+          <declname>mm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="44" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="44" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a22f413a1c46ea8da3a8a03ad11a003a5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual tlm::scc::tlm_generic_payload_base::~tlm_generic_payload_base</definition>
+        <argsstring>()</argsstring>
+        <name>~tlm_generic_payload_base</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::~tlm_generic_payload_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="49" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="49" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1ae60e3b83021143b017fb36bb8befcbd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_generic_payload_base::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="55" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a56e2684d5fc0362be39a6846d9f34e7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_generic_payload_base::acquire</definition>
+        <argsstring>()</argsstring>
+        <name>acquire</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::acquire</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="57" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="57" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1ad28d1c421ae36cda35eaf5b6c735d557" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_generic_payload_base::release</definition>
+        <argsstring>()</argsstring>
+        <name>release</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::release</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="62" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="62" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a7f4412e4ecc55db091eebd90ccf6ecaa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int tlm::scc::tlm_generic_payload_base::get_ref_count</definition>
+        <argsstring>() const</argsstring>
+        <name>get_ref_count</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::get_ref_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="68" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a8a9bfd6d03f032332475e9a5a8b8c448" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_generic_payload_base::set_mm</definition>
+        <argsstring>(tlm_base_mm_interface *mm)</argsstring>
+        <name>set_mm</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::set_mm</qualifiedname>
+        <param>
+          <type><ref refid="classtlm_1_1scc_1_1tlm__base__mm__interface" kindref="compound">tlm_base_mm_interface</ref> *</type>
+          <declname>mm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="70" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a290b5a3774e88b58b44fef659d22e4ac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::scc::tlm_generic_payload_base::has_mm</definition>
+        <argsstring>() const</argsstring>
+        <name>has_mm</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::has_mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="71" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a903c0d98f0f1805a65389bc6473226d5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_generic_payload_base::copy_extensions_from</definition>
+        <argsstring>(const tlm_generic_payload_base &amp;other)</argsstring>
+        <name>copy_extensions_from</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::copy_extensions_from</qualifiedname>
+        <param>
+          <type>const tlm_generic_payload_base &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="73" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="313" bodyend="333"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1ab3aaf3af92c80bdbef4756b1c161f9b5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_generic_payload_base::update_extensions_from</definition>
+        <argsstring>(const tlm_generic_payload_base &amp;other)</argsstring>
+        <name>update_extensions_from</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::update_extensions_from</qualifiedname>
+        <param>
+          <type>const tlm_generic_payload_base &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="75" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="301" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a0713fae8b753b8f0b94251140fa11480" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_generic_payload_base::free_all_extensions</definition>
+        <argsstring>()</argsstring>
+        <name>free_all_extensions</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::free_all_extensions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="78" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="219" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a7ab4276e219b6014a256275d03edc624" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T *</type>
+        <definition>T * tlm::scc::tlm_generic_payload_base::set_extension</definition>
+        <argsstring>(T *ext)</argsstring>
+        <name>set_extension</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::set_extension</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="81" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="81" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a2482c3dfb94bc7c752ff34fbe5299da8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm_extension_base *</type>
+        <definition>tlm_extension_base * tlm::scc::tlm_generic_payload_base::set_extension</definition>
+        <argsstring>(unsigned int index, tlm_extension_base *ext)</argsstring>
+        <name>set_extension</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::set_extension</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>tlm_extension_base *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="84" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="256" bodyend="261"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a3982296341deea1bbe34f514b1036e5d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T *</type>
+        <definition>T * tlm::scc::tlm_generic_payload_base::set_auto_extension</definition>
+        <argsstring>(T *ext)</argsstring>
+        <name>set_auto_extension</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::set_auto_extension</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="88" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1ae2dbaa4929b694b00931fd8eae3fc88a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm_extension_base *</type>
+        <definition>tlm_extension_base * tlm::scc::tlm_generic_payload_base::set_auto_extension</definition>
+        <argsstring>(unsigned int index, tlm_extension_base *ext)</argsstring>
+        <name>set_auto_extension</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::set_auto_extension</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>tlm_extension_base *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="91" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="263" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a7f19e1053dae4dbd51ef2309e06045a4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void tlm::scc::tlm_generic_payload_base::get_extension</definition>
+        <argsstring>(T *&amp;ext) const</argsstring>
+        <name>get_extension</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::get_extension</qualifiedname>
+        <param>
+          <type>T *&amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="94" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="94" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a9d892548128f66df388bd4cfa8486272" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T *</type>
+        <definition>T * tlm::scc::tlm_generic_payload_base::get_extension</definition>
+        <argsstring>() const</argsstring>
+        <name>get_extension</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::get_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="95" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="95" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1ae31c6853ed7c7483c89f9624340bbd80" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm_extension_base *</type>
+        <definition>tlm_extension_base * tlm::scc::tlm_generic_payload_base::get_extension</definition>
+        <argsstring>(unsigned int index) const</argsstring>
+        <name>get_extension</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::get_extension</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="97" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="277" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a8d3c7c0359442ea0bca43a01540f6880" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void tlm::scc::tlm_generic_payload_base::clear_extension</definition>
+        <argsstring>(const T *ext)</argsstring>
+        <name>clear_extension</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::clear_extension</qualifiedname>
+        <param>
+          <type>const T *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="103" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="103" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a1e19d7acd5833f7cfaa4bd283f538d1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void tlm::scc::tlm_generic_payload_base::clear_extension</definition>
+        <argsstring>()</argsstring>
+        <name>clear_extension</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::clear_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="109" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="109" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a52df05e7bb047675fb83af86a902284a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void tlm::scc::tlm_generic_payload_base::release_extension</definition>
+        <argsstring>(T *ext)</argsstring>
+        <name>release_extension</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::release_extension</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="114" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="114" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a6cea6c2a2bad6da043eb188875e95081" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void tlm::scc::tlm_generic_payload_base::release_extension</definition>
+        <argsstring>()</argsstring>
+        <name>release_extension</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::release_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="119" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="119" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1af90818077bd66f6fa00e5832a1aefeae" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_generic_payload_base::resize_extensions</definition>
+        <argsstring>()</argsstring>
+        <name>resize_extensions</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::resize_extensions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="133" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="335" bodyend="335"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a24956c5a2f964c2e582eaf1d86c64fae" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_generic_payload_base::clear_extension</definition>
+        <argsstring>(unsigned int index)</argsstring>
+        <name>clear_extension</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::clear_extension</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="123" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="282" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__generic__payload__base_1a45028a0a416eeaa06060e98cbf5c9545" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_generic_payload_base::release_extension</definition>
+        <argsstring>(unsigned int index)</argsstring>
+        <name>release_extension</name>
+        <qualifiedname>tlm::scc::tlm_generic_payload_base::release_extension</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="125" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="287" bodyend="299"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::scc::tlm_generic_payload_base</label>
+        <link refid="structtlm_1_1scc_1_1tlm__generic__payload__base"/>
+      </node>
+      <node id="3">
+        <label>tlm::scc::tlm_signal_gp&lt; SIG &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__signal__gp"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::tlm_signal_gp&lt; tlm_signal_type &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__signal__gp"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="40" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="40" bodyend="139"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a56e2684d5fc0362be39a6846d9f34e7a" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>acquire</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a8d3c7c0359442ea0bca43a01540f6880" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>clear_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a1e19d7acd5833f7cfaa4bd283f538d1f" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>clear_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a24956c5a2f964c2e582eaf1d86c64fae" prot="private" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>clear_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a903c0d98f0f1805a65389bc6473226d5" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>copy_extensions_from</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a0713fae8b753b8f0b94251140fa11480" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>free_all_extensions</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a7f19e1053dae4dbd51ef2309e06045a4" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>get_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a9d892548128f66df388bd4cfa8486272" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>get_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1ae31c6853ed7c7483c89f9624340bbd80" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>get_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a7f4412e4ecc55db091eebd90ccf6ecaa" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>get_ref_count</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a290b5a3774e88b58b44fef659d22e4ac" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>has_mm</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1af93dfc89aa85c4e93425b6f060ea180d" prot="private" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>m_extensions</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1aa8190f2161c197fb28181090da5fd6a7" prot="private" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>m_mm</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a8778dc637a397a131099f0d262ef0a15" prot="private" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>m_ref_count</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1ad28d1c421ae36cda35eaf5b6c735d557" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>release</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a52df05e7bb047675fb83af86a902284a" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>release_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a6cea6c2a2bad6da043eb188875e95081" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>release_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a45028a0a416eeaa06060e98cbf5c9545" prot="private" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>release_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1ae60e3b83021143b017fb36bb8befcbd8" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>reset</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1af90818077bd66f6fa00e5832a1aefeae" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>resize_extensions</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a3982296341deea1bbe34f514b1036e5d" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>set_auto_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1ae2dbaa4929b694b00931fd8eae3fc88a" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>set_auto_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a7ab4276e219b6014a256275d03edc624" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>set_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a2482c3dfb94bc7c752ff34fbe5299da8" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>set_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a8a9bfd6d03f032332475e9a5a8b8c448" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>set_mm</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a8c18822ec77105e1f6897b61578f0db5" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>tlm_generic_payload_base</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a9bb9416a3737043f1431a1e649f68540" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>tlm_generic_payload_base</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1ab3aaf3af92c80bdbef4756b1c161f9b5" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>update_extensions_from</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a22f413a1c46ea8da3a8a03ad11a003a5" prot="public" virt="virtual"><scope>tlm::scc::tlm_generic_payload_base</scope><name>~tlm_generic_payload_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

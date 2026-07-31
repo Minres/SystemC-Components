@@ -1,0 +1,7 @@
+<map id="axi::scv::axi3_ext_recording" name="axi::scv::axi3_ext_recording">
+<area shape="rect" id="Node000001" title=" " alt="" coords="547,28,673,68"/>
+<area shape="rect" id="Node000002" href="$structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html" title=" " alt="" coords="327,21,497,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="511,45,546,45,546,51,511,51"/>
+<area shape="rect" id="Node000003" href="$classutil_1_1delegate.html" title=" " alt="" coords="5,13,201,83"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="215,45,326,45,326,51,215,51"/>
+</map>

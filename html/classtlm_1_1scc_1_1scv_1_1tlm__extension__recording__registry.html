@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -71,28 +71,49 @@ $(function(){initNavTree('classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__r
 
 <p><code>#include &lt;<a class="el" href="tlm__extension__recording__registry_8h_source.html">tlm_extension_recording_registry.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a8ecf6727eaad37a3a5d6ef807655e554" id="r_a8ecf6727eaad37a3a5d6ef807655e554"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ecf6727eaad37a3a5d6ef807655e554">recording_vector</a> = std::vector&lt;std::unique_ptr&lt;<a class="el" href="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html">tlm_extensions_recording_if</a>&lt;TYPES&gt;&gt;&gt;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a067b2059c9200f9af094c61928a7eb0a" id="r_a067b2059c9200f9af094c61928a7eb0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a067b2059c9200f9af094c61928a7eb0a">register_ext_rec</a> (size_t id, <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html">tlm_extensions_recording_if</a>&lt; TYPES &gt; *ext)</td></tr>
+<tr class="memitem:a235445a22a7c33914a45df72ad2d242f" id="r_a235445a22a7c33914a45df72ad2d242f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a235445a22a7c33914a45df72ad2d242f">register_ext_rec</a> (size_t id, std::unique_ptr&lt; <a class="el" href="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html">tlm_extensions_recording_if</a>&lt; TYPES &gt; &gt; ext)</td></tr>
 <tr class="memitem:a92053fdedc0d7d4b3802b3928b2252db" id="r_a92053fdedc0d7d4b3802b3928b2252db"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92053fdedc0d7d4b3802b3928b2252db">is_ext_registered</a> (size_t id)</td></tr>
-<tr class="memitem:a1b79d2dcfbd7682ad40351f8c5fe36e6" id="r_a1b79d2dcfbd7682ad40351f8c5fe36e6"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html">tlm_extensions_recording_if</a>&lt; TYPES &gt; * &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b79d2dcfbd7682ad40351f8c5fe36e6">get</a> ()</td></tr>
-<tr class="memitem:a194b65482490e2bcfae9a268897cc690" id="r_a194b65482490e2bcfae9a268897cc690"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a194b65482490e2bcfae9a268897cc690">recordBeginTx</a> (size_t id, SCVNS scv_tr_handle &amp;handle, typename TYPES::tlm_payload_type &amp;trans)</td></tr>
-<tr class="memitem:a6065aa38751f3024cc63f7d829af31d8" id="r_a6065aa38751f3024cc63f7d829af31d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6065aa38751f3024cc63f7d829af31d8">recordEndTx</a> (size_t id, SCVNS scv_tr_handle &amp;handle, typename TYPES::tlm_payload_type &amp;trans)</td></tr>
-<tr class="memdesc:a6065aa38751f3024cc63f7d829af31d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">recording attributes in extensions at the end, it is intended to be overload as it does nothing  <br /></td></tr>
+<tr class="memitem:a9c2ca0cf435e8a740dbfd470a87bfda2" id="r_a9c2ca0cf435e8a740dbfd470a87bfda2"><td class="memItemLeft" align="right" valign="top">recording_vector::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c2ca0cf435e8a740dbfd470a87bfda2">begin</a> ()</td></tr>
+<tr class="memitem:a02eb2ab7c8e216a639e217c09b14c171" id="r_a02eb2ab7c8e216a639e217c09b14c171"><td class="memItemLeft" align="right" valign="top">recording_vector::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02eb2ab7c8e216a639e217c09b14c171">end</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a831ccab6ceb78f154c8b98c2593c5b79" id="r_a831ccab6ceb78f154c8b98c2593c5b79"><td class="memItemLeft" align="right" valign="top">static tlm_extension_recording_registry &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a831ccab6ceb78f154c8b98c2593c5b79">inst</a> ()</td></tr>
+<tr class="memitem:a84996b33c78acbaf96b55163d680523e" id="r_a84996b33c78acbaf96b55163d680523e"><td class="memItemLeft" align="right" valign="top">static tlm_extension_recording_registry &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84996b33c78acbaf96b55163d680523e">get</a> ()</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename TYPES = tlm::tlm_base_protocol_types&gt;<br />
 class tlm::scc::scv::tlm_extension_recording_registry&lt; TYPES &gt;</div><p>The TLM transaction extensions recorder registry. </p>
 <p>This registry is used by the TLM transaction recorder. It can be used to register custom recorder functionality to also record the payload extensions </p>
 
-<p class="definition">Definition at line <a class="el" href="tlm__extension__recording__registry_8h_source.html#l00068">68</a> of file <a class="el" href="tlm__extension__recording__registry_8h_source.html">tlm_extension_recording_registry.h</a>.</p>
-</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a1b79d2dcfbd7682ad40351f8c5fe36e6" name="a1b79d2dcfbd7682ad40351f8c5fe36e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b79d2dcfbd7682ad40351f8c5fe36e6">&#9670;&#160;</a></span>get()</h2>
+<p class="definition">Definition at line <a class="el" href="tlm__extension__recording__registry_8h_source.html#l00149">149</a> of file <a class="el" href="tlm__extension__recording__registry_8h_source.html">tlm_extension_recording_registry.h</a>.</p>
+</div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="a8ecf6727eaad37a3a5d6ef807655e554" name="a8ecf6727eaad37a3a5d6ef807655e554"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ecf6727eaad37a3a5d6ef807655e554">&#9670;&#160;</a></span>recording_vector</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TYPES = tlm::tlm_base_protocol_types&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry.html">tlm::scc::scv::tlm_extension_recording_registry</a>&lt; TYPES &gt;::recording_vector = std::vector&lt;std::unique_ptr&lt;<a class="el" href="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html">tlm_extensions_recording_if</a>&lt;TYPES&gt;&gt;&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="tlm__extension__recording__registry_8h_source.html#l00151">151</a> of file <a class="el" href="tlm__extension__recording__registry_8h_source.html">tlm_extension_recording_registry.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a9c2ca0cf435e8a740dbfd470a87bfda2" name="a9c2ca0cf435e8a740dbfd470a87bfda2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c2ca0cf435e8a740dbfd470a87bfda2">&#9670;&#160;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -103,7 +124,7 @@ template&lt;typename TYPES = tlm::tlm_base_protocol_types&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::vector&lt; <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html">tlm_extensions_recording_if</a>&lt; TYPES &gt; * &gt; &amp; <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry.html">tlm::scc::scv::tlm_extension_recording_registry</a>&lt; TYPES &gt;::get </td>
+          <td class="memname">recording_vector::iterator <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry.html">tlm::scc::scv::tlm_extension_recording_registry</a>&lt; TYPES &gt;::begin </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -116,12 +137,12 @@ template&lt;typename TYPES = tlm::tlm_base_protocol_types&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tlm__extension__recording__registry_8h_source.html#l00094">94</a> of file <a class="el" href="tlm__extension__recording__registry_8h_source.html">tlm_extension_recording_registry.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__extension__recording__registry_8h_source.html#l00163">163</a> of file <a class="el" href="tlm__extension__recording__registry_8h_source.html">tlm_extension_recording_registry.h</a>.</p>
 
 </div>
 </div>
-<a id="a831ccab6ceb78f154c8b98c2593c5b79" name="a831ccab6ceb78f154c8b98c2593c5b79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a831ccab6ceb78f154c8b98c2593c5b79">&#9670;&#160;</a></span>inst()</h2>
+<a id="a02eb2ab7c8e216a639e217c09b14c171" name="a02eb2ab7c8e216a639e217c09b14c171"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02eb2ab7c8e216a639e217c09b14c171">&#9670;&#160;</a></span>end()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -132,7 +153,36 @@ template&lt;typename TYPES = tlm::tlm_base_protocol_types&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">tlm_extension_recording_registry &amp; <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry.html">tlm::scc::scv::tlm_extension_recording_registry</a>&lt; TYPES &gt;::inst </td>
+          <td class="memname">recording_vector::iterator <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry.html">tlm::scc::scv::tlm_extension_recording_registry</a>&lt; TYPES &gt;::end </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="tlm__extension__recording__registry_8h_source.html#l00165">165</a> of file <a class="el" href="tlm__extension__recording__registry_8h_source.html">tlm_extension_recording_registry.h</a>.</p>
+
+</div>
+</div>
+<a id="a84996b33c78acbaf96b55163d680523e" name="a84996b33c78acbaf96b55163d680523e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84996b33c78acbaf96b55163d680523e">&#9670;&#160;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TYPES = tlm::tlm_base_protocol_types&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">tlm_extension_recording_registry &amp; <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry.html">tlm::scc::scv::tlm_extension_recording_registry</a>&lt; TYPES &gt;::get </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -145,7 +195,7 @@ template&lt;typename TYPES = tlm::tlm_base_protocol_types&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tlm__extension__recording__registry_8h_source.html#l00070">70</a> of file <a class="el" href="tlm__extension__recording__registry_8h_source.html">tlm_extension_recording_registry.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__extension__recording__registry_8h_source.html#l00152">152</a> of file <a class="el" href="tlm__extension__recording__registry_8h_source.html">tlm_extension_recording_registry.h</a>.</p>
 
 </div>
 </div>
@@ -174,90 +224,12 @@ template&lt;typename TYPES = tlm::tlm_base_protocol_types&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tlm__extension__recording__registry_8h_source.html#l00085">85</a> of file <a class="el" href="tlm__extension__recording__registry_8h_source.html">tlm_extension_recording_registry.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__extension__recording__registry_8h_source.html#l00161">161</a> of file <a class="el" href="tlm__extension__recording__registry_8h_source.html">tlm_extension_recording_registry.h</a>.</p>
 
 </div>
 </div>
-<a id="a194b65482490e2bcfae9a268897cc690" name="a194b65482490e2bcfae9a268897cc690"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a194b65482490e2bcfae9a268897cc690">&#9670;&#160;</a></span>recordBeginTx()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename TYPES = tlm::tlm_base_protocol_types&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry.html">tlm::scc::scv::tlm_extension_recording_registry</a>&lt; TYPES &gt;::recordBeginTx </td>
-          <td>(</td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">SCVNS scv_tr_handle &amp;</td>          <td class="paramname"><span class="paramname"><em>handle</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">typename TYPES::tlm_payload_type &amp;</td>          <td class="paramname"><span class="paramname"><em>trans</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="tlm__extension__recording__registry_8h_source.html#l00096">96</a> of file <a class="el" href="tlm__extension__recording__registry_8h_source.html">tlm_extension_recording_registry.h</a>.</p>
-
-</div>
-</div>
-<a id="a6065aa38751f3024cc63f7d829af31d8" name="a6065aa38751f3024cc63f7d829af31d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6065aa38751f3024cc63f7d829af31d8">&#9670;&#160;</a></span>recordEndTx()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename TYPES = tlm::tlm_base_protocol_types&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry.html">tlm::scc::scv::tlm_extension_recording_registry</a>&lt; TYPES &gt;::recordEndTx </td>
-          <td>(</td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">SCVNS scv_tr_handle &amp;</td>          <td class="paramname"><span class="paramname"><em>handle</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">typename TYPES::tlm_payload_type &amp;</td>          <td class="paramname"><span class="paramname"><em>trans</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>recording attributes in extensions at the end, it is intended to be overload as it does nothing </p>
-
-<p class="definition">Definition at line <a class="el" href="tlm__extension__recording__registry_8h_source.html#l00105">105</a> of file <a class="el" href="tlm__extension__recording__registry_8h_source.html">tlm_extension_recording_registry.h</a>.</p>
-
-</div>
-</div>
-<a id="a067b2059c9200f9af094c61928a7eb0a" name="a067b2059c9200f9af094c61928a7eb0a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a067b2059c9200f9af094c61928a7eb0a">&#9670;&#160;</a></span>register_ext_rec()</h2>
+<a id="a235445a22a7c33914a45df72ad2d242f" name="a235445a22a7c33914a45df72ad2d242f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a235445a22a7c33914a45df72ad2d242f">&#9670;&#160;</a></span>register_ext_rec()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -275,7 +247,7 @@ template&lt;typename TYPES = tlm::tlm_base_protocol_types&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html">tlm_extensions_recording_if</a>&lt; TYPES &gt; *</td>          <td class="paramname"><span class="paramname"><em>ext</em></span>&#160;)</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html">tlm_extensions_recording_if</a>&lt; TYPES &gt; &gt;</td>          <td class="paramname"><span class="paramname"><em>ext</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -285,7 +257,7 @@ template&lt;typename TYPES = tlm::tlm_base_protocol_types&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tlm__extension__recording__registry_8h_source.html#l00075">75</a> of file <a class="el" href="tlm__extension__recording__registry_8h_source.html">tlm_extension_recording_registry.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__extension__recording__registry_8h_source.html#l00156">156</a> of file <a class="el" href="tlm__extension__recording__registry_8h_source.html">tlm_extension_recording_registry.h</a>.</p>
 
 </div>
 </div>

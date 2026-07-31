@@ -1,0 +1,343 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1vcd__pull__trace__file" kind="struct" language="C++" prot="public">
+    <compoundname>scc::vcd_pull_trace_file</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_trace_file</basecompoundref>
+    <innerclass refid="structscc_1_1vcd__pull__trace__file_1_1trace__entry" prot="private">scc::vcd_pull_trace_file::trace_entry</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1vcd__pull__trace__file_1a1273e3d1b446759112db938f03d5f355" prot="private" static="no" mutable="no">
+        <type>std::function&lt; bool()&gt;</type>
+        <definition>std::function&lt;bool()&gt; scc::vcd_pull_trace_file::check_enabled</definition>
+        <argsstring></argsstring>
+        <name>check_enabled</name>
+        <qualifiedname>scc::vcd_pull_trace_file::check_enabled</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="106" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1vcd__pull__trace__file_1abbbfa67e0d0e482787b8d47c76d15284" prot="private" static="no" mutable="no">
+        <type>FILE *</type>
+        <definition>FILE* scc::vcd_pull_trace_file::vcd_out</definition>
+        <argsstring></argsstring>
+        <name>vcd_out</name>
+        <qualifiedname>scc::vcd_pull_trace_file::vcd_out</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="108" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" bodystart="108" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1vcd__pull__trace__file_1ae197b44f31acd9d42f31d32db53427fc" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; trace_entry &gt;</type>
+        <definition>std::vector&lt;trace_entry&gt; scc::vcd_pull_trace_file::all_traces</definition>
+        <argsstring></argsstring>
+        <name>all_traces</name>
+        <qualifiedname>scc::vcd_pull_trace_file::all_traces</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="116" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1vcd__pull__trace__file_1a611acae7a1dbb77a8cc0c182b7a4ba71" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; trace_entry &gt;</type>
+        <definition>std::vector&lt;trace_entry&gt; scc::vcd_pull_trace_file::active_traces</definition>
+        <argsstring></argsstring>
+        <name>active_traces</name>
+        <qualifiedname>scc::vcd_pull_trace_file::active_traces</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="116" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1vcd__pull__trace__file_1a2d2c38116af135a0845c933c95d903a5" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structscc_1_1trace_1_1vcd__trace" kindref="compound">trace::vcd_trace</ref> * &gt;</type>
+        <definition>std::vector&lt;trace::vcd_trace*&gt; scc::vcd_pull_trace_file::changed_traces</definition>
+        <argsstring></argsstring>
+        <name>changed_traces</name>
+        <qualifiedname>scc::vcd_pull_trace_file::changed_traces</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="117" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1vcd__pull__trace__file_1a7d0f478079ffb306f8a7c30422eafc19" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::vcd_pull_trace_file::initialized</definition>
+        <argsstring></argsstring>
+        <name>initialized</name>
+        <qualifiedname>scc::vcd_pull_trace_file::initialized</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="119" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" bodystart="119" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1vcd__pull__trace__file_1ae168adef9ce9e7fe2edc76b3e73ceadb" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned scc::vcd_pull_trace_file::vcd_name_index</definition>
+        <argsstring></argsstring>
+        <name>vcd_name_index</name>
+        <qualifiedname>scc::vcd_pull_trace_file::vcd_name_index</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="120" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" bodystart="120" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1vcd__pull__trace__file_1abc0fd0db5ae07517e6eaa868a9847be6" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string scc::vcd_pull_trace_file::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <qualifiedname>scc::vcd_pull_trace_file::name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="121" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" bodystart="121" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1vcd__pull__trace__file_1adb59c9f01ee3fcf4eddcf7d68f788ce4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::vcd_pull_trace_file::vcd_pull_trace_file</definition>
+        <argsstring>(const char *name, std::function&lt; bool()&gt; &amp;enable)</argsstring>
+        <name>vcd_pull_trace_file</name>
+        <qualifiedname>scc::vcd_pull_trace_file::vcd_pull_trace_file</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::function&lt; bool()&gt; &amp;</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="40" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.cpp" bodystart="47" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1vcd__pull__trace__file_1af572c0bb8eed17bfe6be74850869be20" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>scc::vcd_pull_trace_file::~vcd_pull_trace_file</definition>
+        <argsstring>()</argsstring>
+        <name>~vcd_pull_trace_file</name>
+        <qualifiedname>scc::vcd_pull_trace_file::~vcd_pull_trace_file</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="42" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.cpp" bodystart="64" bodyend="71"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="structscc_1_1vcd__pull__trace__file_1a5c3ecc87255abff884ac309a59393927" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::vcd_pull_trace_file::trace</definition>
+        <argsstring>(const unsigned int &amp;object, const std::string &amp;name, const char **enum_literals) override</argsstring>
+        <name>trace</name>
+        <qualifiedname>scc::vcd_pull_trace_file::trace</qualifiedname>
+        <param>
+          <type>const unsigned int &amp;</type>
+          <declname>object</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const char **</type>
+          <declname>enum_literals</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="87" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.cpp" bodystart="133" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1vcd__pull__trace__file_1a631f01d857add9e296f5d5a8dbe2d663" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::vcd_pull_trace_file::write_comment</definition>
+        <argsstring>(const std::string &amp;comment) override</argsstring>
+        <name>write_comment</name>
+        <qualifiedname>scc::vcd_pull_trace_file::write_comment</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>comment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="90" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.cpp" bodystart="164" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1vcd__pull__trace__file_1a42c10913a04fe3dd5ede22ba93c8d715" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::vcd_pull_trace_file::cycle</definition>
+        <argsstring>(bool delta_cycle) override</argsstring>
+        <name>cycle</name>
+        <qualifiedname>scc::vcd_pull_trace_file::cycle</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>delta_cycle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="93" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.cpp" bodystart="227" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1vcd__pull__trace__file_1ab0ec3f04210b489dbf56a962a1981778" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::vcd_pull_trace_file::set_time_unit</definition>
+        <argsstring>(double v, sc_core::sc_time_unit tu) override</argsstring>
+        <name>set_time_unit</name>
+        <qualifiedname>scc::vcd_pull_trace_file::set_time_unit</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time_unit</type>
+          <declname>tu</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="95" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.cpp" bodystart="255" bodyend="255"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structscc_1_1vcd__pull__trace__file_1ab565c157e03503addd42b61083504121" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::vcd_pull_trace_file::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <qualifiedname>scc::vcd_pull_trace_file::init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="103" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.cpp" bodystart="166" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1vcd__pull__trace__file_1a78929e5135b81b5ef6cd06e4d2f6d5e5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string scc::vcd_pull_trace_file::prune_name</definition>
+        <argsstring>(std::string const &amp;name)</argsstring>
+        <name>prune_name</name>
+        <qualifiedname>scc::vcd_pull_trace_file::prune_name</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="104" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.cpp" bodystart="200" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1vcd__pull__trace__file_1a128c9e6febb7e27a59fa0fe0831b7a21" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string scc::vcd_pull_trace_file::obtain_name</definition>
+        <argsstring>()</argsstring>
+        <name>obtain_name</name>
+        <qualifiedname>scc::vcd_pull_trace_file::obtain_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="105" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.cpp" bodystart="137" bodyend="162"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_trace_file</label>
+      </node>
+      <node id="1">
+        <label>scc::vcd_pull_trace_file</label>
+        <link refid="structscc_1_1vcd__pull__trace__file"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_trace_file</label>
+      </node>
+      <node id="1">
+        <label>scc::vcd_pull_trace_file</label>
+        <link refid="structscc_1_1vcd__pull__trace__file"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" line="38" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_pull_trace.hh" bodystart="38" bodyend="122"/>
+    <listofallmembers>
+      <member refid="structscc_1_1vcd__pull__trace__file_1a611acae7a1dbb77a8cc0c182b7a4ba71" prot="private" virt="non-virtual"><scope>scc::vcd_pull_trace_file</scope><name>active_traces</name></member>
+      <member refid="structscc_1_1vcd__pull__trace__file_1ae197b44f31acd9d42f31d32db53427fc" prot="private" virt="non-virtual"><scope>scc::vcd_pull_trace_file</scope><name>all_traces</name></member>
+      <member refid="structscc_1_1vcd__pull__trace__file_1a2d2c38116af135a0845c933c95d903a5" prot="private" virt="non-virtual"><scope>scc::vcd_pull_trace_file</scope><name>changed_traces</name></member>
+      <member refid="structscc_1_1vcd__pull__trace__file_1a1273e3d1b446759112db938f03d5f355" prot="private" virt="non-virtual"><scope>scc::vcd_pull_trace_file</scope><name>check_enabled</name></member>
+      <member refid="structscc_1_1vcd__pull__trace__file_1a42c10913a04fe3dd5ede22ba93c8d715" prot="protected" virt="non-virtual"><scope>scc::vcd_pull_trace_file</scope><name>cycle</name></member>
+      <member refid="structscc_1_1vcd__pull__trace__file_1ab565c157e03503addd42b61083504121" prot="private" virt="non-virtual"><scope>scc::vcd_pull_trace_file</scope><name>init</name></member>
+      <member refid="structscc_1_1vcd__pull__trace__file_1a7d0f478079ffb306f8a7c30422eafc19" prot="private" virt="non-virtual"><scope>scc::vcd_pull_trace_file</scope><name>initialized</name></member>
+      <member refid="structscc_1_1vcd__pull__trace__file_1abc0fd0db5ae07517e6eaa868a9847be6" prot="private" virt="non-virtual"><scope>scc::vcd_pull_trace_file</scope><name>name</name></member>
+      <member refid="structscc_1_1vcd__pull__trace__file_1a128c9e6febb7e27a59fa0fe0831b7a21" prot="private" virt="non-virtual"><scope>scc::vcd_pull_trace_file</scope><name>obtain_name</name></member>
+      <member refid="structscc_1_1vcd__pull__trace__file_1a78929e5135b81b5ef6cd06e4d2f6d5e5" prot="private" virt="non-virtual"><scope>scc::vcd_pull_trace_file</scope><name>prune_name</name></member>
+      <member refid="structscc_1_1vcd__pull__trace__file_1ab0ec3f04210b489dbf56a962a1981778" prot="protected" virt="non-virtual"><scope>scc::vcd_pull_trace_file</scope><name>set_time_unit</name></member>
+      <member refid="structscc_1_1vcd__pull__trace__file_1a5c3ecc87255abff884ac309a59393927" prot="protected" virt="non-virtual"><scope>scc::vcd_pull_trace_file</scope><name>trace</name></member>
+      <member refid="structscc_1_1vcd__pull__trace__file_1ae168adef9ce9e7fe2edc76b3e73ceadb" prot="private" virt="non-virtual"><scope>scc::vcd_pull_trace_file</scope><name>vcd_name_index</name></member>
+      <member refid="structscc_1_1vcd__pull__trace__file_1abbbfa67e0d0e482787b8d47c76d15284" prot="private" virt="non-virtual"><scope>scc::vcd_pull_trace_file</scope><name>vcd_out</name></member>
+      <member refid="structscc_1_1vcd__pull__trace__file_1adb59c9f01ee3fcf4eddcf7d68f788ce4" prot="public" virt="non-virtual"><scope>scc::vcd_pull_trace_file</scope><name>vcd_pull_trace_file</name></member>
+      <member refid="structscc_1_1vcd__pull__trace__file_1a631f01d857add9e296f5d5a8dbe2d663" prot="protected" virt="non-virtual"><scope>scc::vcd_pull_trace_file</scope><name>write_comment</name></member>
+      <member refid="structscc_1_1vcd__pull__trace__file_1af572c0bb8eed17bfe6be74850869be20" prot="public" virt="virtual"><scope>scc::vcd_pull_trace_file</scope><name>~vcd_pull_trace_file</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

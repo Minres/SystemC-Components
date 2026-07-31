@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structutil_1_1stl__pool__allocator_1_1rebind" kind="struct" language="C++" prot="public">
+    <compoundname>util::stl_pool_allocator::rebind</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename U</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structutil_1_1stl__pool__allocator_1_1rebind_1a3113ca023155dc224cb5d05526103b1b" prot="public" static="no">
+        <type>stl_pool_allocator&lt; U &gt;</type>
+        <definition>typedef stl_pool_allocator&lt;U&gt; util::stl_pool_allocator&lt; T &gt;::rebind&lt; U &gt;::other</definition>
+        <argsstring></argsstring>
+        <name>other</name>
+        <qualifiedname>util::stl_pool_allocator::rebind::other</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="105" column="56" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" line="105" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/pool_allocator.h" bodystart="105" bodyend="105"/>
+    <listofallmembers>
+      <member refid="structutil_1_1stl__pool__allocator_1_1rebind_1a3113ca023155dc224cb5d05526103b1b" prot="public" virt="non-virtual"><scope>util::stl_pool_allocator::rebind</scope><name>other</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

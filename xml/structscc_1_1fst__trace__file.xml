@@ -1,0 +1,332 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1fst__trace__file" kind="struct" language="C++" prot="public">
+    <compoundname>scc::fst_trace_file</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_trace_file</basecompoundref>
+    <basecompoundref refid="structscc_1_1observer" prot="public" virt="non-virtual">scc::observer</basecompoundref>
+    <innerclass refid="structscc_1_1fst__trace__file_1_1trace__entry" prot="private">scc::fst_trace_file::trace_entry</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1fst__trace__file_1a83c73cfed84c278e52eb5a6c054b655b" prot="private" static="no" mutable="no">
+        <type>std::function&lt; bool()&gt;</type>
+        <definition>std::function&lt;bool()&gt; scc::fst_trace_file::check_enabled</definition>
+        <argsstring></argsstring>
+        <name>check_enabled</name>
+        <qualifiedname>scc::fst_trace_file::check_enabled</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" line="145" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1fst__trace__file_1ad5dfc227034e3fe1ff7b06a9fe378df4" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* scc::fst_trace_file::m_fst</definition>
+        <argsstring></argsstring>
+        <name>m_fst</name>
+        <qualifiedname>scc::fst_trace_file::m_fst</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" line="147" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" bodystart="147" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1fst__trace__file_1a22a0b36be362173b436ea30de0f2479a" prot="private" static="no" mutable="no">
+        <type>std::deque&lt; trace_entry &gt;</type>
+        <definition>std::deque&lt;trace_entry&gt; scc::fst_trace_file::all_traces</definition>
+        <argsstring></argsstring>
+        <name>all_traces</name>
+        <qualifiedname>scc::fst_trace_file::all_traces</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" line="159" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1fst__trace__file_1ab1e33393d4379bd7606ab54ef5fbdb1c" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; trace_entry * &gt;</type>
+        <definition>std::vector&lt;trace_entry*&gt; scc::fst_trace_file::pull_traces</definition>
+        <argsstring></argsstring>
+        <name>pull_traces</name>
+        <qualifiedname>scc::fst_trace_file::pull_traces</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" line="160" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1fst__trace__file_1af6187b4e033fa6df0012ea1e66414234" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structscc_1_1trace_1_1fst__trace" kindref="compound">trace::fst_trace</ref> * &gt;</type>
+        <definition>std::vector&lt;trace::fst_trace*&gt; scc::fst_trace_file::changed_traces</definition>
+        <argsstring></argsstring>
+        <name>changed_traces</name>
+        <qualifiedname>scc::fst_trace_file::changed_traces</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" line="161" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1fst__trace__file_1a64dfeb9d765f0a3b4bbe30874a48daf2" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structscc_1_1trace_1_1fst__trace" kindref="compound">trace::fst_trace</ref> * &gt;</type>
+        <definition>std::vector&lt;trace::fst_trace*&gt; scc::fst_trace_file::triggered_traces</definition>
+        <argsstring></argsstring>
+        <name>triggered_traces</name>
+        <qualifiedname>scc::fst_trace_file::triggered_traces</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" line="162" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1fst__trace__file_1afc14ef594d3bccf1f05ea4ab366b2b5b" prot="private" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t scc::fst_trace_file::last_emitted_ts</definition>
+        <argsstring></argsstring>
+        <name>last_emitted_ts</name>
+        <qualifiedname>scc::fst_trace_file::last_emitted_ts</qualifiedname>
+        <initializer>{std::numeric_limits&lt;uint64_t&gt;::max()}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" line="163" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" bodystart="163" bodyend="163"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1fst__trace__file_1aad067c878a9605d540c962e84879d06f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::fst_trace_file::fst_trace_file</definition>
+        <argsstring>(const char *name, std::function&lt; bool()&gt; &amp;enable)</argsstring>
+        <name>fst_trace_file</name>
+        <qualifiedname>scc::fst_trace_file::fst_trace_file</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::function&lt; bool()&gt; &amp;</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" line="48" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" bodystart="215" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1fst__trace__file_1ac0b4f1438ab32e537261efdfe931fd25" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>scc::fst_trace_file::~fst_trace_file</definition>
+        <argsstring>()</argsstring>
+        <name>~fst_trace_file</name>
+        <qualifiedname>scc::fst_trace_file::~fst_trace_file</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" line="50" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" bodystart="250" bodyend="257"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="structscc_1_1fst__trace__file_1a51766f4b45570cf562c4cf5047c6f161" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::fst_trace_file::trace</definition>
+        <argsstring>(const unsigned int &amp;object, const std::string &amp;name, const char **enum_literals) override</argsstring>
+        <name>trace</name>
+        <qualifiedname>scc::fst_trace_file::trace</qualifiedname>
+        <param>
+          <type>const unsigned int &amp;</type>
+          <declname>object</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const char **</type>
+          <declname>enum_literals</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" line="90" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" bodystart="319" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1fst__trace__file_1aa71f43dbd1b426ea79ad4ef738526f2d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::fst_trace_file::write_comment</definition>
+        <argsstring>(const std::string &amp;comment) override</argsstring>
+        <name>write_comment</name>
+        <qualifiedname>scc::fst_trace_file::write_comment</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>comment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" line="129" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" bodystart="382" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1fst__trace__file_1a58fc21880c8ca3e74b42089193113b6e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::fst_trace_file::cycle</definition>
+        <argsstring>(bool delta_cycle) override</argsstring>
+        <name>cycle</name>
+        <qualifiedname>scc::fst_trace_file::cycle</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>delta_cycle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" line="132" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" bodystart="453" bodyend="490"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1fst__trace__file_1ac83ab9165da127db2a4c008faea5b8fd" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::fst_trace_file::set_time_unit</definition>
+        <argsstring>(double v, sc_core::sc_time_unit tu) override</argsstring>
+        <name>set_time_unit</name>
+        <qualifiedname>scc::fst_trace_file::set_time_unit</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time_unit</type>
+          <declname>tu</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" line="134" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" bodystart="492" bodyend="492"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structscc_1_1fst__trace__file_1a549577a9867782e9ee9ffcddddb2d79c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::fst_trace_file::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <qualifiedname>scc::fst_trace_file::init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" line="144" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" bodystart="433" bodyend="447"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_trace_file</label>
+      </node>
+      <node id="1">
+        <label>scc::fst_trace_file</label>
+        <link refid="structscc_1_1fst__trace__file"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scc::observer</label>
+        <link refid="structscc_1_1observer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_trace_file</label>
+      </node>
+      <node id="1">
+        <label>scc::fst_trace_file</label>
+        <link refid="structscc_1_1fst__trace__file"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scc::observer</label>
+        <link refid="structscc_1_1observer"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" line="40" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.hh" bodystart="46" bodyend="164"/>
+    <listofallmembers>
+      <member refid="structscc_1_1fst__trace__file_1a22a0b36be362173b436ea30de0f2479a" prot="private" virt="non-virtual"><scope>scc::fst_trace_file</scope><name>all_traces</name></member>
+      <member refid="structscc_1_1fst__trace__file_1af6187b4e033fa6df0012ea1e66414234" prot="private" virt="non-virtual"><scope>scc::fst_trace_file</scope><name>changed_traces</name></member>
+      <member refid="structscc_1_1fst__trace__file_1a83c73cfed84c278e52eb5a6c054b655b" prot="private" virt="non-virtual"><scope>scc::fst_trace_file</scope><name>check_enabled</name></member>
+      <member refid="structscc_1_1fst__trace__file_1a58fc21880c8ca3e74b42089193113b6e" prot="protected" virt="non-virtual"><scope>scc::fst_trace_file</scope><name>cycle</name></member>
+      <member refid="structscc_1_1fst__trace__file_1aad067c878a9605d540c962e84879d06f" prot="public" virt="non-virtual"><scope>scc::fst_trace_file</scope><name>fst_trace_file</name></member>
+      <member refid="structscc_1_1fst__trace__file_1a549577a9867782e9ee9ffcddddb2d79c" prot="private" virt="non-virtual"><scope>scc::fst_trace_file</scope><name>init</name></member>
+      <member refid="structscc_1_1fst__trace__file_1afc14ef594d3bccf1f05ea4ab366b2b5b" prot="private" virt="non-virtual"><scope>scc::fst_trace_file</scope><name>last_emitted_ts</name></member>
+      <member refid="structscc_1_1fst__trace__file_1ad5dfc227034e3fe1ff7b06a9fe378df4" prot="private" virt="non-virtual"><scope>scc::fst_trace_file</scope><name>m_fst</name></member>
+      <member refid="structscc_1_1observer_1a4e3b58718a1011575924dc4847d0f460" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a7a55760658c1152b6ba0ec68b8554ec8" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1ac177ede67d8c0a5b8aa0c0149be9c8bf" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1af58d64116b2d393a3fe7fd09da81d187" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1ab5b77deceda1aeb8436a68d37df7ba59" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a39648be8b8f3a91cd79dd8f6033bcdcd" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1afcffcec21020af7a4c9e1352bf3e1884" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a6d42f046372fb4d07e5cf24af018aa5d" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a6369314194b6439906fbec77657a4c76" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a6e32b8f1eb9f4b08cae3e4ad8ed9ed04" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1ad31be47ee8901a014b0d7477783f8c2e" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a436d8c425d948cda9c561dccda2def30" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a7ef25e6c38e9f66751772d0960f395cb" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a882e31de60fcbc7f246c4eb99ab2d976" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a95e456e977268b4752e623f99ab4a54c" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a240a9570311d10f32c39c867c407e465" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a63d44ed731f3212f7110da4f81e58883" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a9ab29edda594095442018be912035f56" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1ab82ada754cb9df70194f70ed09b27cda" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a5625f840d1d5b5ba173633e183428f41" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1aadfae817d9bea13e877e1a69fac9f9f8" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1adc3cd05a7abe8882c9e9920698b95e12" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a3c60de11135e2901f82cd336c0f9dbaf" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a8d5e8d9d675133bc9dc37ebb8b36d70d" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a9f2c64542df872188a53bd8a92a1120b" prot="public" virt="pure-virtual"><scope>scc::fst_trace_file</scope><name>observe</name></member>
+      <member refid="structscc_1_1fst__trace__file_1ab1e33393d4379bd7606ab54ef5fbdb1c" prot="private" virt="non-virtual"><scope>scc::fst_trace_file</scope><name>pull_traces</name></member>
+      <member refid="structscc_1_1fst__trace__file_1ac83ab9165da127db2a4c008faea5b8fd" prot="protected" virt="non-virtual"><scope>scc::fst_trace_file</scope><name>set_time_unit</name></member>
+      <member refid="structscc_1_1fst__trace__file_1a51766f4b45570cf562c4cf5047c6f161" prot="protected" virt="non-virtual"><scope>scc::fst_trace_file</scope><name>trace</name></member>
+      <member refid="structscc_1_1fst__trace__file_1a64dfeb9d765f0a3b4bbe30874a48daf2" prot="private" virt="non-virtual"><scope>scc::fst_trace_file</scope><name>triggered_traces</name></member>
+      <member refid="structscc_1_1fst__trace__file_1aa71f43dbd1b426ea79ad4ef738526f2d" prot="protected" virt="non-virtual"><scope>scc::fst_trace_file</scope><name>write_comment</name></member>
+      <member refid="structscc_1_1fst__trace__file_1ac0b4f1438ab32e537261efdfe931fd25" prot="public" virt="virtual"><scope>scc::fst_trace_file</scope><name>~fst_trace_file</name></member>
+      <member refid="structscc_1_1observer_1a4a9cf27bb9978c57464db804f9f91461" prot="public" virt="virtual"><scope>scc::fst_trace_file</scope><name>~observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

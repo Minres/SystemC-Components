@@ -1,0 +1,555 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classsysc_1_1tl__uh__bfm" kind="class" language="C++" prot="public">
+    <compoundname>sysc::tl_uh_bfm</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classsysc_1_1tl__uh__bfm_1aa3217e3f3d7f7279750ed65105b0d957" prot="public" static="no" strong="no">
+        <type></type>
+        <name></name>
+        <qualifiedname>sysc::tl_uh_bfm</qualifiedname>
+        <enumvalue id="classsysc_1_1tl__uh__bfm_1aa3217e3f3d7f7279750ed65105b0d957af3221219ed7bde967f456d2080817b23" prot="public">
+          <name>Get</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classsysc_1_1tl__uh__bfm_1aa3217e3f3d7f7279750ed65105b0d957a8d317f9b70fc25a716004338b999b9c2" prot="public">
+          <name>AccessAckData</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classsysc_1_1tl__uh__bfm_1aa3217e3f3d7f7279750ed65105b0d957a648a67bcafe8539b28fea6ea1186fc4d" prot="public">
+          <name>PutFullData</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classsysc_1_1tl__uh__bfm_1aa3217e3f3d7f7279750ed65105b0d957a4ac9011c1e0d29f44f3801f20c40c4f5" prot="public">
+          <name>PutPartialData</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classsysc_1_1tl__uh__bfm_1aa3217e3f3d7f7279750ed65105b0d957ac8b3c4162462ca8fca2098cc1e30ddde" prot="public">
+          <name>AccessAck</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="46" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1af3092f6bf74431ea49d420e44aecffc3" prot="public" static="no" mutable="no">
+        <type><ref refid="classtlm_1_1scc_1_1target__mixin" kindref="compound">tlm::scc::target_mixin</ref>&lt; <ref refid="classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket" kindref="compound">tlm::scc::scv::tlm_rec_target_socket</ref>&lt; 32 &gt; &gt;</type>
+        <definition>tlm::scc::target_mixin&lt;tlm::scc::scv::tlm_rec_target_socket&lt;32&gt; &gt; sysc::tl_uh_bfm::socket</definition>
+        <argsstring></argsstring>
+        <name>socket</name>
+        <qualifiedname>sysc::tl_uh_bfm::socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="48" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1a19117c654aa24236031ecb343f0f8cc6" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; sysc::tl_uh_bfm::clock</definition>
+        <argsstring></argsstring>
+        <name>clock</name>
+        <qualifiedname>sysc::tl_uh_bfm::clock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="50" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1a946fef5b90816528947d1ef611776197" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; sysc::tl_uh_bfm::reset</definition>
+        <argsstring></argsstring>
+        <name>reset</name>
+        <qualifiedname>sysc::tl_uh_bfm::reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="51" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1a18920079e2ea3c318bbe9b795bfa2e54" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; sysc::tl_uh_bfm::a_ready</definition>
+        <argsstring></argsstring>
+        <name>a_ready</name>
+        <qualifiedname>sysc::tl_uh_bfm::a_ready</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="52" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1a95c70766a5176d39729ce1173313097d" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; bool &gt;</type>
+        <definition>sc_core::sc_out&lt;bool&gt; sysc::tl_uh_bfm::a_valid</definition>
+        <argsstring></argsstring>
+        <name>a_valid</name>
+        <qualifiedname>sysc::tl_uh_bfm::a_valid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="53" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1affa7f300a52e48d03e5b33fd21ee3395" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; sc_dt::sc_uint&lt; 32 &gt; &gt;</type>
+        <definition>sc_core::sc_out&lt;sc_dt::sc_uint&lt;32&gt; &gt; sysc::tl_uh_bfm::a_bits_address</definition>
+        <argsstring></argsstring>
+        <name>a_bits_address</name>
+        <qualifiedname>sysc::tl_uh_bfm::a_bits_address</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="54" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1a6f63f514aa1271ea0491e143467149e8" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; sc_dt::sc_uint&lt; 32 &gt; &gt;</type>
+        <definition>sc_core::sc_out&lt;sc_dt::sc_uint&lt;32&gt; &gt; sysc::tl_uh_bfm::a_bits_data</definition>
+        <argsstring></argsstring>
+        <name>a_bits_data</name>
+        <qualifiedname>sysc::tl_uh_bfm::a_bits_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="55" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1afb609cf453be22d48cf9331c3d8a5b5f" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; sc_dt::sc_uint&lt; 32 &gt; &gt;</type>
+        <definition>sc_core::sc_out&lt;sc_dt::sc_uint&lt;32&gt; &gt; sysc::tl_uh_bfm::a_bits_opcode</definition>
+        <argsstring></argsstring>
+        <name>a_bits_opcode</name>
+        <qualifiedname>sysc::tl_uh_bfm::a_bits_opcode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="56" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1a3ac9ed30e67c6d7961337e52c7486cf4" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; sc_dt::sc_uint&lt; 32 &gt; &gt;</type>
+        <definition>sc_core::sc_out&lt;sc_dt::sc_uint&lt;32&gt; &gt; sysc::tl_uh_bfm::a_bits_param</definition>
+        <argsstring></argsstring>
+        <name>a_bits_param</name>
+        <qualifiedname>sysc::tl_uh_bfm::a_bits_param</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="57" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1a949e011faff85e6b61cd3ded08fccd00" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; sc_dt::sc_uint&lt; 32 &gt; &gt;</type>
+        <definition>sc_core::sc_out&lt;sc_dt::sc_uint&lt;32&gt; &gt; sysc::tl_uh_bfm::a_bits_size</definition>
+        <argsstring></argsstring>
+        <name>a_bits_size</name>
+        <qualifiedname>sysc::tl_uh_bfm::a_bits_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="58" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1aecd5ac696683ba10830dccc74aaf205e" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; sc_dt::sc_uint&lt; 32 &gt; &gt;</type>
+        <definition>sc_core::sc_out&lt;sc_dt::sc_uint&lt;32&gt; &gt; sysc::tl_uh_bfm::a_bits_source</definition>
+        <argsstring></argsstring>
+        <name>a_bits_source</name>
+        <qualifiedname>sysc::tl_uh_bfm::a_bits_source</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="59" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1aff1efbaa3ca1cebb6299ae21c37d970b" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; sc_dt::sc_uint&lt; 32 &gt; &gt;</type>
+        <definition>sc_core::sc_out&lt;sc_dt::sc_uint&lt;32&gt; &gt; sysc::tl_uh_bfm::a_bits_mask</definition>
+        <argsstring></argsstring>
+        <name>a_bits_mask</name>
+        <qualifiedname>sysc::tl_uh_bfm::a_bits_mask</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="60" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1a98a4b2977c4601c41a74860e4936cafe" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; bool &gt;</type>
+        <definition>sc_core::sc_out&lt;bool&gt; sysc::tl_uh_bfm::a_bits_corrupt</definition>
+        <argsstring></argsstring>
+        <name>a_bits_corrupt</name>
+        <qualifiedname>sysc::tl_uh_bfm::a_bits_corrupt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="61" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1aa331d288f50e98600cc730df449056bc" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; sc_dt::sc_uint&lt; 32 &gt; &gt;</type>
+        <definition>sc_core::sc_in&lt;sc_dt::sc_uint&lt;32&gt; &gt; sysc::tl_uh_bfm::d_bits_data</definition>
+        <argsstring></argsstring>
+        <name>d_bits_data</name>
+        <qualifiedname>sysc::tl_uh_bfm::d_bits_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="62" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1ab8848361cabc5ab9a985e7e06478d1fa" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; bool &gt;</type>
+        <definition>sc_core::sc_out&lt;bool&gt; sysc::tl_uh_bfm::d_ready</definition>
+        <argsstring></argsstring>
+        <name>d_ready</name>
+        <qualifiedname>sysc::tl_uh_bfm::d_ready</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="63" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1a98091650398bdb7e25e603dc6bb73cc5" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; sysc::tl_uh_bfm::d_valid</definition>
+        <argsstring></argsstring>
+        <name>d_valid</name>
+        <qualifiedname>sysc::tl_uh_bfm::d_valid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="64" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1ae8f65b889d5dcb18e58e81908334bcb1" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; sc_dt::sc_uint&lt; 32 &gt; &gt;</type>
+        <definition>sc_core::sc_in&lt;sc_dt::sc_uint&lt;32&gt; &gt; sysc::tl_uh_bfm::d_bits_opcode</definition>
+        <argsstring></argsstring>
+        <name>d_bits_opcode</name>
+        <qualifiedname>sysc::tl_uh_bfm::d_bits_opcode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="65" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1ae1cfe155cf1d56c87a1350d60cd5e99a" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; sc_dt::sc_uint&lt; 32 &gt; &gt;</type>
+        <definition>sc_core::sc_in&lt;sc_dt::sc_uint&lt;32&gt; &gt; sysc::tl_uh_bfm::d_bits_size</definition>
+        <argsstring></argsstring>
+        <name>d_bits_size</name>
+        <qualifiedname>sysc::tl_uh_bfm::d_bits_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="66" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1ace2a2a890d69ebdb3ddcfe882fd49388" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; sc_dt::sc_uint&lt; 32 &gt; &gt;</type>
+        <definition>sc_core::sc_in&lt;sc_dt::sc_uint&lt;32&gt; &gt; sysc::tl_uh_bfm::d_bits_source</definition>
+        <argsstring></argsstring>
+        <name>d_bits_source</name>
+        <qualifiedname>sysc::tl_uh_bfm::d_bits_source</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="67" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1a1e8a3974aaee391a96290b949915eb20" prot="private" static="no" mutable="no">
+        <type>const int64_t</type>
+        <definition>const int64_t sysc::tl_uh_bfm::offset</definition>
+        <argsstring></argsstring>
+        <name>offset</name>
+        <qualifiedname>sysc::tl_uh_bfm::offset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="74" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1a8d4c47e18b1e2e3a436c0ad10a1f6190" prot="private" static="no" mutable="no">
+        <type>tlm_utils::peq_with_get&lt; tlm::tlm_generic_payload &gt;</type>
+        <definition>tlm_utils::peq_with_get&lt;tlm::tlm_generic_payload&gt; sysc::tl_uh_bfm::fw_queue</definition>
+        <argsstring></argsstring>
+        <name>fw_queue</name>
+        <qualifiedname>sysc::tl_uh_bfm::fw_queue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="75" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsysc_1_1tl__uh__bfm_1a311a494fb28d524de1ab3dbc3f73c4b2" prot="private" static="no" mutable="no">
+        <type>std::deque&lt; tlm::tlm_generic_payload * &gt;</type>
+        <definition>std::deque&lt;tlm::tlm_generic_payload*&gt; sysc::tl_uh_bfm::tl_in_progress</definition>
+        <argsstring></argsstring>
+        <name>tl_in_progress</name>
+        <qualifiedname>sysc::tl_uh_bfm::tl_in_progress</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="76" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsysc_1_1tl__uh__bfm_1af214805e180479e3e2604f0d046a169d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>sysc::tl_uh_bfm::SC_HAS_PROCESS</definition>
+        <argsstring>(tl_uh_bfm)</argsstring>
+        <name>SC_HAS_PROCESS</name>
+        <qualifiedname>sysc::tl_uh_bfm::SC_HAS_PROCESS</qualifiedname>
+        <param>
+          <type>tl_uh_bfm</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="44" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classsysc_1_1tl__uh__bfm_1a8f0bc7c069138201dc1e5a1036109495" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>sysc::tl_uh_bfm::tl_uh_bfm</definition>
+        <argsstring>(sc_core::sc_module_name nm, int64_t offset=0)</argsstring>
+        <name>tl_uh_bfm</name>
+        <qualifiedname>sysc::tl_uh_bfm::tl_uh_bfm</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>int64_t</type>
+          <declname>offset</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="69" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.cpp" bodystart="40" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classsysc_1_1tl__uh__bfm_1a910a472e01e6b221115bff35d769e271" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>sysc::tl_uh_bfm::~tl_uh_bfm</definition>
+        <argsstring>() override</argsstring>
+        <name>~tl_uh_bfm</name>
+        <qualifiedname>sysc::tl_uh_bfm::~tl_uh_bfm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="71" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classsysc_1_1tl__uh__bfm_1ada69c82519addfbee91e9013e0759239" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sysc::tl_uh_bfm::fw_thread</definition>
+        <argsstring>()</argsstring>
+        <name>fw_thread</name>
+        <qualifiedname>sysc::tl_uh_bfm::fw_thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="77" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.cpp" bodystart="82" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classsysc_1_1tl__uh__bfm_1aa33b709b7891ccc6730adab4688d58ec" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sysc::tl_uh_bfm::tl_response_method</definition>
+        <argsstring>()</argsstring>
+        <name>tl_response_method</name>
+        <qualifiedname>sysc::tl_uh_bfm::tl_response_method</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="78" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.cpp" bodystart="113" bodyend="136"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>sysc::tl_uh_bfm</label>
+        <link refid="classsysc_1_1tl__uh__bfm"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>sysc::tl_uh_bfm</label>
+        <link refid="classsysc_1_1tl__uh__bfm"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>socket</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tlm::scc::scv::tlm_rec_target_socket&lt; 32 &gt;</label>
+        <link refid="classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>recorder</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>tlm::scc::scv::tlm_recorder&lt; tlm::tlm_base_protocol_types &gt;</label>
+        <link refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::scc::target_mixin&lt; tlm::scc::scv::tlm_rec_target_socket&lt; 32 &gt; &gt;</label>
+        <link refid="classtlm_1_1scc_1_1target__mixin"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+      <node id="7">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+      <node id="5">
+        <label>tlm::tlm_target_socket&lt; BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ONE_OR_MORE_BOUND &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" line="42" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/pin/tl_uh_bfm.h" bodystart="42" bodyend="79"/>
+    <listofallmembers>
+      <member refid="classsysc_1_1tl__uh__bfm_1affa7f300a52e48d03e5b33fd21ee3395" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>a_bits_address</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1a98a4b2977c4601c41a74860e4936cafe" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>a_bits_corrupt</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1a6f63f514aa1271ea0491e143467149e8" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>a_bits_data</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1aff1efbaa3ca1cebb6299ae21c37d970b" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>a_bits_mask</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1afb609cf453be22d48cf9331c3d8a5b5f" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>a_bits_opcode</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1a3ac9ed30e67c6d7961337e52c7486cf4" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>a_bits_param</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1a949e011faff85e6b61cd3ded08fccd00" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>a_bits_size</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1aecd5ac696683ba10830dccc74aaf205e" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>a_bits_source</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1a18920079e2ea3c318bbe9b795bfa2e54" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>a_ready</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1a95c70766a5176d39729ce1173313097d" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>a_valid</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1aa3217e3f3d7f7279750ed65105b0d957ac8b3c4162462ca8fca2098cc1e30ddde" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>AccessAck</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1aa3217e3f3d7f7279750ed65105b0d957a8d317f9b70fc25a716004338b999b9c2" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>AccessAckData</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1a19117c654aa24236031ecb343f0f8cc6" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>clock</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1aa331d288f50e98600cc730df449056bc" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>d_bits_data</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1ae8f65b889d5dcb18e58e81908334bcb1" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>d_bits_opcode</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1ae1cfe155cf1d56c87a1350d60cd5e99a" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>d_bits_size</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1ace2a2a890d69ebdb3ddcfe882fd49388" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>d_bits_source</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1ab8848361cabc5ab9a985e7e06478d1fa" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>d_ready</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1a98091650398bdb7e25e603dc6bb73cc5" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>d_valid</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1a8d4c47e18b1e2e3a436c0ad10a1f6190" prot="private" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>fw_queue</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1ada69c82519addfbee91e9013e0759239" prot="private" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>fw_thread</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1aa3217e3f3d7f7279750ed65105b0d957af3221219ed7bde967f456d2080817b23" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>Get</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1a1e8a3974aaee391a96290b949915eb20" prot="private" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>offset</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1aa3217e3f3d7f7279750ed65105b0d957a648a67bcafe8539b28fea6ea1186fc4d" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>PutFullData</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1aa3217e3f3d7f7279750ed65105b0d957a4ac9011c1e0d29f44f3801f20c40c4f5" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>PutPartialData</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1a946fef5b90816528947d1ef611776197" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>reset</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1af214805e180479e3e2604f0d046a169d" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1af3092f6bf74431ea49d420e44aecffc3" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>socket</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1a311a494fb28d524de1ab3dbc3f73c4b2" prot="private" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>tl_in_progress</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1aa33b709b7891ccc6730adab4688d58ec" prot="private" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>tl_response_method</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1a8f0bc7c069138201dc1e5a1036109495" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>tl_uh_bfm</name></member>
+      <member refid="classsysc_1_1tl__uh__bfm_1a910a472e01e6b221115bff35d769e271" prot="public" virt="non-virtual"><scope>sysc::tl_uh_bfm</scope><name>~tl_uh_bfm</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structcxs_1_1cxs__ext__record" kind="struct" language="C++" prot="public">
+    <compoundname>cxs::cxs_ext_record</compoundname>
+    <basecompoundref refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if" prot="public" virt="non-virtual">tlm::scc::scv::tlm_extension_record_if</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structcxs_1_1cxs__ext__record_1a0f33b2f343020e6f51e57b31004aaf1a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>cxs::cxs_ext_record::cxs_ext_record</definition>
+        <argsstring>()</argsstring>
+        <name>cxs_ext_record</name>
+        <qualifiedname>cxs::cxs_ext_record::cxs_ext_record</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" line="28" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" bodystart="28" bodyend="28"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structcxs_1_1cxs__ext__record_1ac54ea712713d8568ec97d056f74adfb9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void cxs::cxs_ext_record::recordBeginTx</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;handle, tlm::tlm_extension_base *e, std::string const &amp;prefix)</argsstring>
+        <name>recordBeginTx</name>
+        <qualifiedname>cxs::cxs_ext_record::recordBeginTx</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_extension_base *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>prefix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" line="30" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" bodystart="30" bodyend="44"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>cxs::cxs_ext_record</label>
+        <link refid="structcxs_1_1cxs__ext__record"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::scv::tlm_extension_record_if</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>cxs::cxs_ext_record</label>
+        <link refid="structcxs_1_1cxs__ext__record"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::scv::tlm_extension_record_if</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>recordBegin</edgelabel>
+          <edgelabel>recordEnd</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>util::delegate&lt; void(SCVNS scv_tr_handle &amp;, tlm::tlm_extension_base *, std::string const &amp;)&gt;</label>
+        <link refid="classutil_1_1delegate"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" line="26" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.cpp" bodystart="26" bodyend="45"/>
+    <listofallmembers>
+      <member refid="structcxs_1_1cxs__ext__record_1a0f33b2f343020e6f51e57b31004aaf1a" prot="public" virt="non-virtual"><scope>cxs::cxs_ext_record</scope><name>cxs_ext_record</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1a137d8b93971625450c01fb82f70ce2c7" prot="public" virt="non-virtual"><scope>cxs::cxs_ext_record</scope><name>recordBegin</name></member>
+      <member refid="structcxs_1_1cxs__ext__record_1ac54ea712713d8568ec97d056f74adfb9" prot="public" virt="non-virtual"><scope>cxs::cxs_ext_record</scope><name>recordBeginTx</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1abf714e72f94ce9f37c10c9ec76065a3e" prot="public" virt="non-virtual"><scope>cxs::cxs_ext_record</scope><name>recordEnd</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1a6887834989a54263dc3ce2f0811fc6a4" prot="public" virt="virtual"><scope>cxs::cxs_ext_record</scope><name>~tlm_extension_record_if</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

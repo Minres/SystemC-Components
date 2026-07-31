@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1fsm_1_1WriteIdle" kind="struct" language="C++" prot="public">
+    <compoundname>axi::fsm::WriteIdle</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">bsc::simple_state&lt; WriteIdle, AxiProtocolFsm &gt;</basecompoundref>
+    <includes refid="protocol__fsm_8h" local="no">protocol_fsm.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structaxi_1_1fsm_1_1WriteIdle_1af1af423eefc472529a613cd60ff20627" prot="public" static="no">
+        <type>mpl::list&lt; bsc::transition&lt; <ref refid="structaxi_1_1fsm_1_1BegPartReq" kindref="compound">BegPartReq</ref>, <ref refid="structaxi_1_1fsm_1_1PartialRequest" kindref="compound">PartialRequest</ref> &gt;, bsc::transition&lt; <ref refid="structaxi_1_1fsm_1_1BegReq" kindref="compound">BegReq</ref>, <ref refid="structaxi_1_1fsm_1_1Request" kindref="compound">Request</ref> &gt; &gt;</type>
+        <definition>typedef mpl::list&lt;bsc::transition&lt;BegPartReq, PartialRequest&gt;, bsc::transition&lt;BegReq, Request&gt; &gt; axi::fsm::WriteIdle::reactions</definition>
+        <argsstring></argsstring>
+        <name>reactions</name>
+        <qualifiedname>axi::fsm::WriteIdle::reactions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="116" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the phase between 2 burst beats, should keep the link locked </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::fsm::WriteIdle</label>
+        <link refid="structaxi_1_1fsm_1_1WriteIdle"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>bsc::simple_state&lt; WriteIdle, AxiProtocolFsm &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::fsm::WriteIdle</label>
+        <link refid="structaxi_1_1fsm_1_1WriteIdle"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>bsc::simple_state&lt; WriteIdle, AxiProtocolFsm &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="115" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="115" bodyend="117"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1fsm_1_1WriteIdle_1af1af423eefc472529a613cd60ff20627" prot="public" virt="non-virtual"><scope>axi::fsm::WriteIdle</scope><name>reactions</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

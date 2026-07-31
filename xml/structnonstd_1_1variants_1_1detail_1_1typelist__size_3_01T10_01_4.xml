@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T10_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::detail::typelist_size&lt; T10 &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T10_01_4_1af23c937a8a7545c7738f8ededa1c3ebd" prot="public" static="no" strong="no">
+        <type></type>
+        <name>V</name>
+        <qualifiedname>nonstd::variants::detail::typelist_size&lt; T10 &gt;::V</qualifiedname>
+        <enumvalue id="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T10_01_4_1af23c937a8a7545c7738f8ededa1c3ebda2879272c21d518252d49ec61aafa4a05" prot="public">
+          <name>value</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="745" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="745" bodyend="745"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="744" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="744" bodyend="746"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T10_01_4_1af23c937a8a7545c7738f8ededa1c3ebd" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::typelist_size&lt; T10 &gt;</scope><name>V</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T10_01_4_1af23c937a8a7545c7738f8ededa1c3ebda2879272c21d518252d49ec61aafa4a05" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::typelist_size&lt; T10 &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

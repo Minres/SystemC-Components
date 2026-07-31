@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1sc__ref__variable" kind="struct" language="C++" prot="public">
+    <compoundname>scc::sc_ref_variable</compoundname>
+    <basecompoundref refid="structscc_1_1sc__variable__b" prot="public" virt="non-virtual">scc::sc_variable_b</basecompoundref>
+    <includes refid="sc__variable_8h" local="no">sc_variable.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1sc__ref__variable_1a2734491c85928d7d861ac3b917537074" prot="public" static="no" mutable="no">
+        <type>const T &amp;</type>
+        <definition>const T&amp; scc::sc_ref_variable&lt; T &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>scc::sc_ref_variable::value</qualifiedname>
+        <briefdescription>
+<para>the wrapped value </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="443" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="443" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1sc__ref__variable_1a996e8170bef5c339d294641266754981" prot="private" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool scc::sc_ref_variable&lt; T &gt;::active_notification</definition>
+        <argsstring></argsstring>
+        <name>active_notification</name>
+        <qualifiedname>scc::sc_ref_variable::active_notification</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="498" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="498" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1sc__ref__variable_1a8410b6151e8f4bcb7568e11344a4f4d4" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">observer::notification_handle</ref> * &gt;</type>
+        <definition>std::vector&lt;observer::notification_handle*&gt; scc::sc_ref_variable&lt; T &gt;::hndl</definition>
+        <argsstring></argsstring>
+        <name>hndl</name>
+        <qualifiedname>scc::sc_ref_variable::hndl</qualifiedname>
+        <briefdescription>
+<para>the observer handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="500" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="500" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable_1afa64ef5c8d241e21596ebd045f5371ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T &amp;</type>
+        <definition>const T &amp; scc::sc_ref_variable&lt; T &gt;::operator*</definition>
+        <argsstring>()</argsstring>
+        <name>operator*</name>
+        <qualifiedname>scc::sc_ref_variable::operator*</qualifiedname>
+        <briefdescription>
+<para>get a reference to the wrapped value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="450" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="450" bodyend="450"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable_1a0460ac4ef928479f3db2175f800f2d7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_ref_variable&lt; T &gt;::sc_ref_variable</definition>
+        <argsstring>(const std::string &amp;name, const T &amp;value, bool active_notification=false)</argsstring>
+        <name>sc_ref_variable</name>
+        <qualifiedname>scc::sc_ref_variable::sc_ref_variable</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>active_notification</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="458" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="458" bodyend="461"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable_1ac6d57ed7d5713ffcaecf08541a5a5943" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual scc::sc_ref_variable&lt; T &gt;::~sc_ref_variable</definition>
+        <argsstring>()=default</argsstring>
+        <name>~sc_ref_variable</name>
+        <qualifiedname>scc::sc_ref_variable::~sc_ref_variable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="463" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable_1a9498e96cfef2cd4a09667d5f93e8bec7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string scc::sc_ref_variable&lt; T &gt;::to_string</definition>
+        <argsstring>() const override</argsstring>
+        <name>to_string</name>
+        <qualifiedname>scc::sc_ref_variable::to_string</qualifiedname>
+        <reimplements refid="structscc_1_1sc__variable__b_1a1ddfaa46a276428cb67e83c6a1f7ed28">to_string</reimplements>
+        <briefdescription>
+<para>create a textual representation of the wrapped value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the string representing the value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="470" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="470" bodyend="474"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable_1a9eeae50987cead23cd2816c296c6ae8a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_ref_variable&lt; T &gt;::trace</definition>
+        <argsstring>(sc_core::sc_trace_file *tf) const override</argsstring>
+        <name>trace</name>
+        <qualifiedname>scc::sc_ref_variable::trace</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <briefdescription>
+<para>register the value with the SystemC trace implementation </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="481" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="481" bodyend="488"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable_1a185790b81a512753a95a527fb33184fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void scc::sc_ref_variable&lt; T &gt;::trace</definition>
+        <argsstring>(observer *obs) const override</argsstring>
+        <name>trace</name>
+        <qualifiedname>scc::sc_ref_variable::trace</qualifiedname>
+        <reimplements refid="structscc_1_1sc__variable__b_1ad33499a234cd42b573a776c54b90c5b5">trace</reimplements>
+        <param>
+          <type><ref refid="structscc_1_1observer" kindref="compound">observer</ref> *</type>
+          <declname>obs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="490" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="490" bodyend="490"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable_1afce4a1898d1bd8088e3faafd6ea1c4c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_ref_variable&lt; T &gt;::notify</definition>
+        <argsstring>() const</argsstring>
+        <name>notify</name>
+        <qualifiedname>scc::sc_ref_variable::notify</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="492" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="492" bodyend="495"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the <ref refid="structscc_1_1sc__ref__variable" kindref="compound">sc_ref_variable</ref> for a particular plain data type. This marks an existing C++ variable as discoverable via the sc_object tree. Whenever possible <ref refid="structscc_1_1sc__variable" kindref="compound">sc_variable</ref> should be used as this does not support value change callback. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the data type of the wrapped value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_ref_variable&lt; T &gt;</label>
+        <link refid="structscc_1_1sc__ref__variable"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>scc::sc_variable_b</label>
+        <link refid="structscc_1_1sc__variable__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_ref_variable&lt; T &gt;</label>
+        <link refid="structscc_1_1sc__ref__variable"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>scc::sc_variable_b</label>
+        <link refid="structscc_1_1sc__variable__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="441" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="441" bodyend="501"/>
+    <listofallmembers>
+      <member refid="structscc_1_1sc__ref__variable_1a996e8170bef5c339d294641266754981" prot="private" virt="non-virtual"><scope>scc::sc_ref_variable</scope><name>active_notification</name></member>
+      <member refid="structscc_1_1sc__ref__variable_1a8410b6151e8f4bcb7568e11344a4f4d4" prot="private" virt="non-virtual"><scope>scc::sc_ref_variable</scope><name>hndl</name></member>
+      <member refid="structscc_1_1sc__variable__b_1a54e81286d38766d3296fbfdd45a93602" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable</scope><name>kind</name></member>
+      <member refid="structscc_1_1sc__ref__variable_1afce4a1898d1bd8088e3faafd6ea1c4c3" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable</scope><name>notify</name></member>
+      <member refid="structscc_1_1sc__ref__variable_1afa64ef5c8d241e21596ebd045f5371ed" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable</scope><name>operator*</name></member>
+      <member refid="structscc_1_1sc__variable__b_1a0a5e1d1793cc0bf09e522b45f0682336" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable</scope><name>operator=</name></member>
+      <member refid="structscc_1_1sc__variable__b_1aabe3a0678ea946b12c19754e66c815d2" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable</scope><name>operator=</name></member>
+      <member refid="structscc_1_1sc__ref__variable_1a0460ac4ef928479f3db2175f800f2d7a" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable</scope><name>sc_ref_variable</name></member>
+      <member refid="structscc_1_1sc__variable__b_1adc9d31cb6aa7ca639164fae59948b2df" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable</scope><name>sc_variable_b</name></member>
+      <member refid="structscc_1_1sc__variable__b_1a297b69eb44023b0a8208ebccaf3be74c" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable</scope><name>sc_variable_b</name></member>
+      <member refid="structscc_1_1sc__variable__b_1ae1a37f199e94caba2b8f02cc6c09332f" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable</scope><name>sc_variable_b</name></member>
+      <member refid="structscc_1_1sc__variable__b_1a64a927337d80d2fb5ee45cccb778a90a" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable</scope><name>sc_variable_b</name></member>
+      <member refid="structscc_1_1sc__ref__variable_1a9498e96cfef2cd4a09667d5f93e8bec7" prot="public" virt="virtual"><scope>scc::sc_ref_variable</scope><name>to_string</name></member>
+      <member refid="structscc_1_1sc__ref__variable_1a9eeae50987cead23cd2816c296c6ae8a" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable</scope><name>trace</name></member>
+      <member refid="structscc_1_1sc__ref__variable_1a185790b81a512753a95a527fb33184fc" prot="public" virt="virtual"><scope>scc::sc_ref_variable</scope><name>trace</name></member>
+      <member refid="structscc_1_1sc__ref__variable_1a2734491c85928d7d861ac3b917537074" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable</scope><name>value</name></member>
+      <member refid="structscc_1_1sc__ref__variable_1ac6d57ed7d5713ffcaecf08541a5a5943" prot="public" virt="virtual"><scope>scc::sc_ref_variable</scope><name>~sc_ref_variable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

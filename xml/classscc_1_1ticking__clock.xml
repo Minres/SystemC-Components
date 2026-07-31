@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1ticking__clock" kind="class" language="C++" prot="public">
+    <compoundname>scc::ticking_clock</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">BASE</basecompoundref>
+    <includes refid="clock__if__mixins_8h" local="no">clock_if_mixins.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename BASE</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classscc_1_1ticking__clock_1a4cb91bd0a564f6ced786b2b75b04aa8f" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; scc::ticking_clock&lt; BASE &gt;::clk_i</definition>
+        <argsstring></argsstring>
+        <name>clk_i</name>
+        <qualifiedname>scc::ticking_clock::clk_i</qualifiedname>
+        <initializer>{&quot;clk_i&quot;}</initializer>
+        <briefdescription>
+<para>An input port for the clock signal. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This input port is used to monitor the clock signal and provide ticking clock functionality. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/clock_if_mixins.h" line="47" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/clock_if_mixins.h" bodystart="47" bodyend="47"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1ticking__clock_1a689dd9093b4fd42c0cf82f400875f0f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::ticking_clock&lt; BASE &gt;::ticking_clock</definition>
+        <argsstring>(sc_core::sc_module_name const &amp;nm)</argsstring>
+        <name>ticking_clock</name>
+        <qualifiedname>scc::ticking_clock::ticking_clock</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+<para>Constructor for the <ref refid="classscc_1_1ticking__clock" kindref="compound">ticking_clock</ref> class. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the <ref refid="classscc_1_1ticking__clock" kindref="compound">ticking_clock</ref> instance. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/clock_if_mixins.h" line="53" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/clock_if_mixins.h" bodystart="53" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1ticking__clock_1acc2e8f2e0272b9f321cdf41b30b9c51d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>scc::ticking_clock&lt; BASE &gt;::ticking_clock</definition>
+        <argsstring>(sc_core::sc_module_name const &amp;nm, Args &amp;&amp;... args)</argsstring>
+        <name>ticking_clock</name>
+        <qualifiedname>scc::ticking_clock::ticking_clock</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Constructor for the <ref refid="classscc_1_1ticking__clock" kindref="compound">ticking_clock</ref> class with variable number of arguments. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the <ref refid="classscc_1_1ticking__clock" kindref="compound">ticking_clock</ref> instance. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Template arguments for the base class constructor. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/clock_if_mixins.h" line="62" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/clock_if_mixins.h" bodystart="62" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1ticking__clock_1ab25c22f38bb278d36d01141f8c94d9cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual scc::ticking_clock&lt; BASE &gt;::~ticking_clock</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ticking_clock</name>
+        <qualifiedname>scc::ticking_clock::~ticking_clock</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor for the <ref refid="classscc_1_1tickless__clock" kindref="compound">tickless_clock</ref> class. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/clock_if_mixins.h" line="67" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classscc_1_1ticking__clock_1a7756f74eef8800739294d27979332100" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::ticking_clock&lt; BASE &gt;::end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_elaboration</name>
+        <qualifiedname>scc::ticking_clock::end_of_elaboration</qualifiedname>
+        <briefdescription>
+<para>Method called at the end of elaboration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method is responsible for setting the clock period based on the input clock signal. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/clock_if_mixins.h" line="75" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/clock_if_mixins.h" bodystart="75" bodyend="88"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The <ref refid="classscc_1_1ticking__clock" kindref="compound">ticking_clock</ref> class is a mixin that provides ticking clock functionality. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classscc_1_1ticking__clock" kindref="compound">ticking_clock</ref> class is a template class that inherits from a base class. It adds ticking clock functionality to the base class by monitoring an input clock signal.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>BASE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base class to which the ticking clock functionality will be added. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BASE</label>
+      </node>
+      <node id="1">
+        <label>scc::ticking_clock&lt; BASE &gt;</label>
+        <link refid="classscc_1_1ticking__clock"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BASE</label>
+      </node>
+      <node id="1">
+        <label>scc::ticking_clock&lt; BASE &gt;</label>
+        <link refid="classscc_1_1ticking__clock"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/clock_if_mixins.h" line="35" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/clock_if_mixins.h" bodystart="40" bodyend="93"/>
+    <listofallmembers>
+      <member refid="classscc_1_1ticking__clock_1a4cb91bd0a564f6ced786b2b75b04aa8f" prot="public" virt="non-virtual"><scope>scc::ticking_clock</scope><name>clk_i</name></member>
+      <member refid="classscc_1_1ticking__clock_1a7756f74eef8800739294d27979332100" prot="protected" virt="non-virtual"><scope>scc::ticking_clock</scope><name>end_of_elaboration</name></member>
+      <member refid="classscc_1_1ticking__clock_1a689dd9093b4fd42c0cf82f400875f0f1" prot="public" virt="non-virtual"><scope>scc::ticking_clock</scope><name>ticking_clock</name></member>
+      <member refid="classscc_1_1ticking__clock_1acc2e8f2e0272b9f321cdf41b30b9c51d" prot="public" virt="non-virtual"><scope>scc::ticking_clock</scope><name>ticking_clock</name></member>
+      <member refid="classscc_1_1ticking__clock_1ab25c22f38bb278d36d01141f8c94d9cf" prot="public" virt="virtual"><scope>scc::ticking_clock</scope><name>~ticking_clock</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

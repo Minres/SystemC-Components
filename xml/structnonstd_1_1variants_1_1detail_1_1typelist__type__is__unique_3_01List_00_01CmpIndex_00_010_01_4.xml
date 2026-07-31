@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1detail_1_1typelist__type__is__unique_3_01List_00_01CmpIndex_00_010_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::detail::typelist_type_is_unique&lt; List, CmpIndex, 0 &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class List</type>
+      </param>
+      <param>
+        <type>std::size_t</type>
+        <declname>CmpIndex</declname>
+        <defname>CmpIndex</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="structnonstd_1_1variants_1_1detail_1_1typelist__type__is__unique_3_01List_00_01CmpIndex_00_010_01_4_1aa58aac5c8bcf972f25c045ef583f44bf" prot="public" static="no" strong="no">
+        <type></type>
+        <name>V</name>
+        <qualifiedname>nonstd::variants::detail::typelist_type_is_unique&lt; List, CmpIndex, 0 &gt;::V</qualifiedname>
+        <enumvalue id="structnonstd_1_1variants_1_1detail_1_1typelist__type__is__unique_3_01List_00_01CmpIndex_00_010_01_4_1aa58aac5c8bcf972f25c045ef583f44bfa7850e2f2f28636aaebb25317370fa651" prot="public">
+          <name>value</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="816" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="816" bodyend="816"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="structnonstd_1_1variants_1_1detail_1_1typelist__type__is__unique_1ac4440646bb0faa6c3fc2284b88ec82fe" prot="private" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1typelist__type__at" kindref="compound">typelist_type_at</ref>&lt; List, CmpIndex &gt;<ref refid="structnonstd_1_1variants_1_1detail_1_1typelist__max" kindref="compound">::type</ref></type>
+        <definition>typedef typelist_type_at&lt;List,CmpIndex&gt;::type nonstd::variants::detail::typelist_type_is_unique&lt; List, CmpIndex, LastChecked &gt;::cmp_type</definition>
+        <argsstring></argsstring>
+        <name>cmp_type</name>
+        <qualifiedname>nonstd::variants::detail::typelist_type_is_unique&lt; List, CmpIndex, 0 &gt;::cmp_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="805" column="46" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="805" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structnonstd_1_1variants_1_1detail_1_1typelist__type__is__unique_1a446c7ac1860a7682487c90fe02fc39d6" prot="private" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1typelist__type__at" kindref="compound">typelist_type_at</ref>&lt; List, LastChecked-1 &gt;<ref refid="structnonstd_1_1variants_1_1detail_1_1typelist__max" kindref="compound">::type</ref></type>
+        <definition>typedef typelist_type_at&lt;List,LastChecked-1&gt;::type nonstd::variants::detail::typelist_type_is_unique&lt; List, CmpIndex, LastChecked &gt;::cur_type</definition>
+        <argsstring></argsstring>
+        <name>cur_type</name>
+        <qualifiedname>nonstd::variants::detail::typelist_type_is_unique&lt; List, CmpIndex, 0 &gt;::cur_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="806" column="46" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="806" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="815" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="815" bodyend="817"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__type__is__unique_1ac4440646bb0faa6c3fc2284b88ec82fe" prot="private" virt="non-virtual"><scope>nonstd::variants::detail::typelist_type_is_unique&lt; List, CmpIndex, 0 &gt;</scope><name>cmp_type</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__type__is__unique_1a446c7ac1860a7682487c90fe02fc39d6" prot="private" virt="non-virtual"><scope>nonstd::variants::detail::typelist_type_is_unique&lt; List, CmpIndex, 0 &gt;</scope><name>cur_type</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__type__is__unique_3_01List_00_01CmpIndex_00_010_01_4_1aa58aac5c8bcf972f25c045ef583f44bf" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::typelist_type_is_unique&lt; List, CmpIndex, 0 &gt;</scope><name>V</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__type__is__unique_3_01List_00_01CmpIndex_00_010_01_4_1aa58aac5c8bcf972f25c045ef583f44bfa7850e2f2f28636aaebb25317370fa651" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::typelist_type_is_unique&lt; List, CmpIndex, 0 &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacescc_1_1trace" kind="namespace" language="C++">
+    <compoundname>scc::trace</compoundname>
+    <innerclass refid="structscc_1_1trace_1_1fst__trace" prot="public">scc::trace::fst_trace</innerclass>
+    <innerclass refid="structscc_1_1trace_1_1fst__trace__enum" prot="public">scc::trace::fst_trace_enum</innerclass>
+    <innerclass refid="structscc_1_1trace_1_1fst__trace__t" prot="public">scc::trace::fst_trace_t</innerclass>
+    <innerclass refid="classscc_1_1trace_1_1gz__writer" prot="public">scc::trace::gz_writer</innerclass>
+    <innerclass refid="structscc_1_1trace_1_1traits" prot="public">scc::trace::traits</innerclass>
+    <innerclass refid="structscc_1_1trace_1_1vcd__scope__stack" prot="public">scc::trace::vcd_scope_stack</innerclass>
+    <innerclass refid="structscc_1_1trace_1_1vcd__trace" prot="public">scc::trace::vcd_trace</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacescc_1_1trace_1a59a3afd899192b0833e533ae6a814976" prot="public" static="no" strong="no">
+        <type></type>
+        <name>trace_type</name>
+        <qualifiedname>scc::trace::trace_type</qualifiedname>
+        <enumvalue id="namespacescc_1_1trace_1a59a3afd899192b0833e533ae6a814976af96801c7373b36e0c98d2f6f43da5bc5" prot="public">
+          <name>WIRE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacescc_1_1trace_1a59a3afd899192b0833e533ae6a814976ae11cc53a3cdb16106b134cc33ecbf7b8" prot="public">
+          <name>REAL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" line="28" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/types.hh" bodystart="28" bodyend="28"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacescc_1_1trace_1a67a169d4d102f03380800a3be1bb3b5e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t scc::trace::get_buffer_size</definition>
+        <argsstring>(int length)</argsstring>
+        <name>get_buffer_size</name>
+        <qualifiedname>scc::trace::get_buffer_size</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" line="34" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" bodystart="34" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1_1trace_1a54d7cf0d66236847af56ee093b5c84b4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned scc::trace::get_bits</definition>
+        <argsstring>(const char **literals)</argsstring>
+        <name>get_bits</name>
+        <qualifiedname>scc::trace::get_bits</qualifiedname>
+        <param>
+          <type>const char **</type>
+          <declname>literals</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" line="39" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" bodystart="39" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1_1trace_1a307e24a2fe3642c20f0f709473482aaa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::trace::vcdEmitValueChange</definition>
+        <argsstring>(FPTR os, std::string const &amp;handle, unsigned bits, const char *val)</argsstring>
+        <name>vcdEmitValueChange</name>
+        <qualifiedname>scc::trace::vcdEmitValueChange</qualifiedname>
+        <param>
+          <type>FPTR</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>bits</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="34" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="34" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1_1trace_1a5fa93cc2fe23d2087c6807eb5c9bd30f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::trace::vcdEmitValueChange32</definition>
+        <argsstring>(FPTR os, std::string const &amp;handle, unsigned bits, uint32_t val)</argsstring>
+        <name>vcdEmitValueChange32</name>
+        <qualifiedname>scc::trace::vcdEmitValueChange32</qualifiedname>
+        <param>
+          <type>FPTR</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>bits</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="39" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="39" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1_1trace_1af2f6c037a1afb8f570eb8d59abcf27d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::trace::vcdEmitValueChange64</definition>
+        <argsstring>(FPTR os, std::string const &amp;handle, unsigned bits, uint64_t val)</argsstring>
+        <name>vcdEmitValueChange64</name>
+        <qualifiedname>scc::trace::vcdEmitValueChange64</qualifiedname>
+        <param>
+          <type>FPTR</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>bits</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="44" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="44" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacescc_1_1trace_1a52be3a3fc4cc8b4417596c472311fc77" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void scc::trace::vcdEmitValueChangeReal</definition>
+        <argsstring>(FPTR os, std::string const &amp;handle, unsigned bits, T val)</argsstring>
+        <name>vcdEmitValueChangeReal</name>
+        <qualifiedname>scc::trace::vcdEmitValueChangeReal</qualifiedname>
+        <param>
+          <type>FPTR</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>bits</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" line="49" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/trace/vcd_trace.hh" bodystart="49" bodyend="52"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>SCC SystemC tracing utilities. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/fst_trace.cpp" line="33" column="1"/>
+  </compounddef>
+</doxygen>

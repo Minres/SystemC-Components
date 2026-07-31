@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1delay__spec__type" kind="struct" language="C++" prot="public">
+    <compoundname>scc::delay_spec_type</compoundname>
+    <templateparamlist>
+      <param>
+        <type>bool</type>
+        <declname>USE_CYCLES</declname>
+        <defname>USE_CYCLES</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="44" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="44" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

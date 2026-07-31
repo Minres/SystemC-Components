@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__class" kind="class" language="C++" prot="private">
+    <compoundname>tlm::scc::target_mixin::fw_process::process_handle_class</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__class_1af85f1d0b6ca0493a841f1981f7412b07" prot="public" static="no" mutable="no">
+        <type>transaction_type *</type>
+        <definition>transaction_type* tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::fw_process::process_handle_class::m_trans</definition>
+        <argsstring></argsstring>
+        <name>m_trans</name>
+        <qualifiedname>tlm::scc::target_mixin::fw_process::process_handle_class::m_trans</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="332" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="332" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__class_1a9aceee867f00ec328b10d5e0bfef55c5" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::fw_process::process_handle_class::m_e</definition>
+        <argsstring></argsstring>
+        <name>m_e</name>
+        <qualifiedname>tlm::scc::target_mixin::fw_process::process_handle_class::m_e</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="333" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="333" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__class_1a3b7285e3d421195abb0198c6629cb706" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::fw_process::process_handle_class::m_suspend</definition>
+        <argsstring></argsstring>
+        <name>m_suspend</name>
+        <qualifiedname>tlm::scc::target_mixin::fw_process::process_handle_class::m_suspend</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="334" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="334" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__class_1a9e9413e81c84ab7542fc6174076669ec" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::fw_process::process_handle_class::process_handle_class</definition>
+        <argsstring>(transaction_type *trans)</argsstring>
+        <name>process_handle_class</name>
+        <qualifiedname>tlm::scc::target_mixin::fw_process::process_handle_class::process_handle_class</qualifiedname>
+        <param>
+          <type>transaction_type *</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="328" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="328" bodyend="330"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="326" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="326" bodyend="335"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__class_1a9aceee867f00ec328b10d5e0bfef55c5" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin::fw_process::process_handle_class</scope><name>m_e</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__class_1a3b7285e3d421195abb0198c6629cb706" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin::fw_process::process_handle_class</scope><name>m_suspend</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__class_1af85f1d0b6ca0493a841f1981f7412b07" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin::fw_process::process_handle_class</scope><name>m_trans</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__class_1a9e9413e81c84ab7542fc6174076669ec" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin::fw_process::process_handle_class</scope><name>process_handle_class</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

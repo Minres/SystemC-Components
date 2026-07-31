@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1perf__estimator_1_1time__stamp" kind="struct" language="C++" prot="private">
+    <compoundname>scc::perf_estimator::time_stamp</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1perf__estimator_1_1time__stamp_1a2b8605821a54646484f0059e04bcd58f" prot="public" static="no" mutable="no">
+        <type>boost::posix_time::ptime</type>
+        <definition>boost::posix_time::ptime scc::perf_estimator::time_stamp::wall_clock_stamp</definition>
+        <argsstring></argsstring>
+        <name>wall_clock_stamp</name>
+        <qualifiedname>scc::perf_estimator::time_stamp::wall_clock_stamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="42" column="34" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1perf__estimator_1_1time__stamp_1acb20e82565ed2a029703a03dce94b5f4" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double scc::perf_estimator::time_stamp::proc_clock_stamp</definition>
+        <argsstring></argsstring>
+        <name>proc_clock_stamp</name>
+        <qualifiedname>scc::perf_estimator::time_stamp::proc_clock_stamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="43" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1perf__estimator_1_1time__stamp_1a1b781534e2e880cd4cff4d70109662b1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::perf_estimator::time_stamp::time_stamp</definition>
+        <argsstring>()</argsstring>
+        <name>time_stamp</name>
+        <qualifiedname>scc::perf_estimator::time_stamp::time_stamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="44" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="44" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1perf__estimator_1_1time__stamp_1ae4047a631f26c702dbd5f5bb1e1f69d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>time_stamp &amp;</type>
+        <definition>time_stamp &amp; scc::perf_estimator::time_stamp::operator=</definition>
+        <argsstring>(const time_stamp &amp;o)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::perf_estimator::time_stamp::operator=</qualifiedname>
+        <param>
+          <type>const time_stamp &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="47" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="47" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1perf__estimator_1_1time__stamp_1a5497a8fcde02c9ffb28d5a151011f512" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::perf_estimator::time_stamp::set</definition>
+        <argsstring>()</argsstring>
+        <name>set</name>
+        <qualifiedname>scc::perf_estimator::time_stamp::set</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="52" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="52" bodyend="55"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="structscc_1_1perf__estimator_1_1time__stamp_1aa318034b6199779bc38d723d829a2f30" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>auto scc::perf_estimator::time_stamp::get_cpu_time</definition>
+        <argsstring>()</argsstring>
+        <name>get_cpu_time</name>
+        <qualifiedname>scc::perf_estimator::time_stamp::get_cpu_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="58" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.cpp" bodystart="95" bodyend="150"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>some internal data structure to record a time stamp </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" line="41" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/perf_estimator.h" bodystart="41" bodyend="59"/>
+    <listofallmembers>
+      <member refid="structscc_1_1perf__estimator_1_1time__stamp_1aa318034b6199779bc38d723d829a2f30" prot="private" virt="non-virtual"><scope>scc::perf_estimator::time_stamp</scope><name>get_cpu_time</name></member>
+      <member refid="structscc_1_1perf__estimator_1_1time__stamp_1ae4047a631f26c702dbd5f5bb1e1f69d4" prot="public" virt="non-virtual"><scope>scc::perf_estimator::time_stamp</scope><name>operator=</name></member>
+      <member refid="structscc_1_1perf__estimator_1_1time__stamp_1acb20e82565ed2a029703a03dce94b5f4" prot="public" virt="non-virtual"><scope>scc::perf_estimator::time_stamp</scope><name>proc_clock_stamp</name></member>
+      <member refid="structscc_1_1perf__estimator_1_1time__stamp_1a5497a8fcde02c9ffb28d5a151011f512" prot="public" virt="non-virtual"><scope>scc::perf_estimator::time_stamp</scope><name>set</name></member>
+      <member refid="structscc_1_1perf__estimator_1_1time__stamp_1a1b781534e2e880cd4cff4d70109662b1" prot="public" virt="non-virtual"><scope>scc::perf_estimator::time_stamp</scope><name>time_stamp</name></member>
+      <member refid="structscc_1_1perf__estimator_1_1time__stamp_1a2b8605821a54646484f0059e04bcd58f" prot="public" virt="non-virtual"><scope>scc::perf_estimator::time_stamp</scope><name>wall_clock_stamp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

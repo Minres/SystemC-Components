@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::scv::tlm_extensions_recording_if</compoundname>
+    <includes refid="tlm__extension__recording__registry_8h" local="no">tlm_extension_recording_registry.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+        <defval>tlm::tlm_base_protocol_types</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a92a87b3b15db1e40349efcfdc5a24a3a" prot="public" static="no">
+        <type><ref refid="classutil_1_1delegate" kindref="compound">util::delegate</ref>&lt; void(SCVNS scv_tr_handle &amp;, typename TYPES::tlm_payload_type &amp;)&gt;</type>
+        <definition>using tlm::scc::scv::tlm_extensions_recording_if&lt; TYPES &gt;::record_tx_fct =  util::delegate&lt;void(SCVNS scv_tr_handle&amp;, typename TYPES::tlm_payload_type&amp;)&gt;</definition>
+        <argsstring></argsstring>
+        <name>record_tx_fct</name>
+        <qualifiedname>tlm::scc::scv::tlm_extensions_recording_if::record_tx_fct</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="120" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a424d7503eb14ef2332c270b323bab885" prot="protected" static="no" mutable="no">
+        <type>record_tx_fct</type>
+        <definition>record_tx_fct tlm::scc::scv::tlm_extensions_recording_if&lt; TYPES &gt;::recordBegin</definition>
+        <argsstring></argsstring>
+        <name>recordBegin</name>
+        <qualifiedname>tlm::scc::scv::tlm_extensions_recording_if::recordBegin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="139" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1afebebeac142f601640e82de835d19631" prot="protected" static="no" mutable="no">
+        <type>record_tx_fct</type>
+        <definition>record_tx_fct tlm::scc::scv::tlm_extensions_recording_if&lt; TYPES &gt;::recordEnd</definition>
+        <argsstring></argsstring>
+        <name>recordEnd</name>
+        <qualifiedname>tlm::scc::scv::tlm_extensions_recording_if::recordEnd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="140" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a07f6b3f1e99994310cf0d289ceccad53" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::scv::tlm_extensions_recording_if&lt; TYPES &gt;::recordBeginTx</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;h, typename TYPES::tlm_payload_type &amp;trans)</argsstring>
+        <name>recordBeginTx</name>
+        <qualifiedname>tlm::scc::scv::tlm_extensions_recording_if::recordBeginTx</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+<para>recording attributes in extensions at the beginning, it is intended to be overload as it does nothing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="125" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="125" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a25e59c20d51c2259723ad993e1da859f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::scv::tlm_extensions_recording_if&lt; TYPES &gt;::recordEndTx</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;h, typename TYPES::tlm_payload_type &amp;trans)</argsstring>
+        <name>recordEndTx</name>
+        <qualifiedname>tlm::scc::scv::tlm_extensions_recording_if::recordEndTx</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+<para>recording attributes in extensions at the end, it is intended to be overload as it does nothing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="133" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="133" bodyend="136"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The TLM transaction extensions recorder interface. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This interface is used by the TLM transaction recorder. It can be used to register custom recorder functionality to also record the payload extensions </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::scc::scv::tlm_extensions_recording_if&lt; TYPES &gt;</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>recordBegin</edgelabel>
+          <edgelabel>recordEnd</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>util::delegate&lt; void(SCVNS scv_tr_handle &amp;, typename tlm::tlm_base_protocol_types::tlm_payload_type &amp;)&gt;</label>
+        <link refid="classutil_1_1delegate"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" line="118" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_extension_recording_registry.h" bodystart="118" bodyend="141"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a92a87b3b15db1e40349efcfdc5a24a3a" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_extensions_recording_if</scope><name>record_tx_fct</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a424d7503eb14ef2332c270b323bab885" prot="protected" virt="non-virtual"><scope>tlm::scc::scv::tlm_extensions_recording_if</scope><name>recordBegin</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a07f6b3f1e99994310cf0d289ceccad53" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_extensions_recording_if</scope><name>recordBeginTx</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1afebebeac142f601640e82de835d19631" prot="protected" virt="non-virtual"><scope>tlm::scc::scv::tlm_extensions_recording_if</scope><name>recordEnd</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a25e59c20d51c2259723ad993e1da859f" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_extensions_recording_if</scope><name>recordEndTx</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

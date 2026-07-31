@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1tlm__target__bfs_1_1socket__accessor" kind="class" language="C++" prot="public">
+    <compoundname>scc::tlm_target_bfs::socket_accessor</compoundname>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classscc_1_1tlm__target__bfs_1_1socket__accessor_1ac7a12e9b1d011a32d05607da1872e3fe" prot="private" static="no" mutable="no">
+        <type><ref refid="classscc_1_1tlm__target" kindref="compound">scc::tlm_target</ref> &amp;</type>
+        <definition>scc::tlm_target&amp; scc::tlm_target_bfs&lt; regs_t, owner_t &gt;::socket_accessor::parent</definition>
+        <argsstring></argsstring>
+        <name>parent</name>
+        <qualifiedname>scc::tlm_target_bfs::socket_accessor::parent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="105" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1tlm__target__bfs_1_1socket__accessor_1a9ee92ab116e00dffc683d9e85e58b0e2" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>scc::tlm_target_bfs&lt; regs_t, owner_t &gt;::socket_accessor::socket_accessor</definition>
+        <argsstring>(scc::tlm_target&lt;&gt; &amp;parent) noexcept</argsstring>
+        <name>socket_accessor</name>
+        <qualifiedname>scc::tlm_target_bfs::socket_accessor::socket_accessor</qualifiedname>
+        <param>
+          <type><ref refid="classscc_1_1tlm__target" kindref="compound">scc::tlm_target</ref>&lt;&gt; &amp;</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="97" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="97" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tlm__target__bfs_1_1socket__accessor_1acf2e537b460855d8d60965590dcd19ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::tlm_target_bfs&lt; regs_t, owner_t &gt;::socket_accessor::socket_accessor</definition>
+        <argsstring>(const socket_accessor &amp;)=delete</argsstring>
+        <name>socket_accessor</name>
+        <qualifiedname>scc::tlm_target_bfs::socket_accessor::socket_accessor</qualifiedname>
+        <param>
+          <type>const socket_accessor &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="99" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tlm__target__bfs_1_1socket__accessor_1aa5cf186f11ce4aa3169b2ee9d2e96075" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>socket_accessor &amp;</type>
+        <definition>socket_accessor &amp; scc::tlm_target_bfs&lt; regs_t, owner_t &gt;::socket_accessor::operator=</definition>
+        <argsstring>(const socket_accessor &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::tlm_target_bfs::socket_accessor::operator=</qualifiedname>
+        <param>
+          <type>const socket_accessor &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="100" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tlm__target__bfs_1_1socket__accessor_1abb5a7049da244b85d2b7e47ff246a5a3" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>tlm::tlm_target_socket&lt; LT &gt; *</type>
+        <definition>tlm::tlm_target_socket&lt; LT &gt; * scc::tlm_target_bfs&lt; regs_t, owner_t &gt;::socket_accessor::get</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>get</name>
+        <qualifiedname>scc::tlm_target_bfs::socket_accessor::get</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="102" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="102" bodyend="102"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="95" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="95" bodyend="106"/>
+    <listofallmembers>
+      <member refid="classscc_1_1tlm__target__bfs_1_1socket__accessor_1abb5a7049da244b85d2b7e47ff246a5a3" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs::socket_accessor</scope><name>get</name></member>
+      <member refid="classscc_1_1tlm__target__bfs_1_1socket__accessor_1aa5cf186f11ce4aa3169b2ee9d2e96075" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs::socket_accessor</scope><name>operator=</name></member>
+      <member refid="classscc_1_1tlm__target__bfs_1_1socket__accessor_1ac7a12e9b1d011a32d05607da1872e3fe" prot="private" virt="non-virtual"><scope>scc::tlm_target_bfs::socket_accessor</scope><name>parent</name></member>
+      <member refid="classscc_1_1tlm__target__bfs_1_1socket__accessor_1a9ee92ab116e00dffc683d9e85e58b0e2" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs::socket_accessor</scope><name>socket_accessor</name></member>
+      <member refid="classscc_1_1tlm__target__bfs_1_1socket__accessor_1acf2e537b460855d8d60965590dcd19ed" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs::socket_accessor</scope><name>socket_accessor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

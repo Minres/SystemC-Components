@@ -1,0 +1,343 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacelwtr" kind="namespace" language="C++">
+    <compoundname>lwtr</compoundname>
+    <innerclass refid="structlwtr_1_1value__converter_3_01tlm_1_1tlm__phase_01_4" prot="public">lwtr::value_converter&lt; tlm::tlm_phase &gt;</innerclass>
+    <innerclass refid="structlwtr_1_1value__converter_3_01tlm_1_1tlm__sync__enum_01_4" prot="public">lwtr::value_converter&lt; tlm::tlm_sync_enum &gt;</innerclass>
+    <innerclass refid="structlwtr_1_1value__converter_3_01tlm_1_1tlm__command_01_4" prot="public">lwtr::value_converter&lt; tlm::tlm_command &gt;</innerclass>
+    <innerclass refid="structlwtr_1_1value__converter_3_01tlm_1_1tlm__response__status_01_4" prot="public">lwtr::value_converter&lt; tlm::tlm_response_status &gt;</innerclass>
+    <innerclass refid="structlwtr_1_1value__converter_3_01tlm_1_1tlm__gp__option_01_4" prot="public">lwtr::value_converter&lt; tlm::tlm_gp_option &gt;</innerclass>
+    <innerclass refid="structlwtr_1_1value__converter_3_01tlm_1_1tlm__dmi_1_1dmi__access__e_01_4" prot="public">lwtr::value_converter&lt; tlm::tlm_dmi::dmi_access_e &gt;</innerclass>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="lwtr4tlm2_8h_1aeb4ac1ae3ef5aaab518ca71b31bb9926" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Archive</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void lwtr::record</definition>
+        <argsstring>(Archive &amp;ar, tlm::tlm_dmi const &amp;u)</argsstring>
+        <name>record</name>
+        <qualifiedname>lwtr::record</qualifiedname>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_dmi const &amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2.h" line="103" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2.h" bodystart="103" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="lwtr4tlm2_8h_1a5987d00ba6f65ef1117aea0e77ae1df0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Archive</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void lwtr::record</definition>
+        <argsstring>(Archive &amp;ar, tlm::tlm_generic_payload const &amp;u)</argsstring>
+        <name>record</name>
+        <qualifiedname>lwtr::record</qualifiedname>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_generic_payload const &amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2.h" line="106" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2.h" bodystart="106" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="tlm2__lwtr_8cpp_1a3a706d071a640e87cce3ab7cc525cdd4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Archive</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void lwtr::record</definition>
+        <argsstring>(Archive &amp;ar, tlm::scc::tlm_id_extension const &amp;e)</argsstring>
+        <name>record</name>
+        <qualifiedname>lwtr::record</qualifiedname>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type><ref refid="structtlm_1_1scc_1_1tlm__id__extension" kindref="compound">tlm::scc::tlm_id_extension</ref> const &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.cpp" line="22" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.cpp" bodystart="22" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="axi__ace__lwtr_8cpp_1ab2f7400c13216001ce0fd61dfb27590c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Archive</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void lwtr::record</definition>
+        <argsstring>(Archive &amp;ar, axi::axi3_extension const &amp;e)</argsstring>
+        <name>record</name>
+        <qualifiedname>lwtr::record</qualifiedname>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type><ref refid="structaxi_1_1axi3__extension" kindref="compound">axi::axi3_extension</ref> const &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_ace_lwtr.cpp" line="24" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_ace_lwtr.cpp" bodystart="24" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="axi__ace__lwtr_8cpp_1a73b6ab5fe6a028508f7fc96ff24ba4a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Archive</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void lwtr::record</definition>
+        <argsstring>(Archive &amp;ar, axi::axi4_extension const &amp;e)</argsstring>
+        <name>record</name>
+        <qualifiedname>lwtr::record</qualifiedname>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type><ref refid="structaxi_1_1axi4__extension" kindref="compound">axi::axi4_extension</ref> const &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_ace_lwtr.cpp" line="43" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_ace_lwtr.cpp" bodystart="43" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="axi__ace__lwtr_8cpp_1a0e41f71561282576e170d26947168777" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Archive</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void lwtr::record</definition>
+        <argsstring>(Archive &amp;ar, axi::ace_extension const &amp;e)</argsstring>
+        <name>record</name>
+        <qualifiedname>lwtr::record</qualifiedname>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type><ref refid="structaxi_1_1ace__extension" kindref="compound">axi::ace_extension</ref> const &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_ace_lwtr.cpp" line="62" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_ace_lwtr.cpp" bodystart="62" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="chi__lwtr_8cpp_1abc9eb00270aa3fe7d5a40fac8e1d0c45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Archive</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void lwtr::record</definition>
+        <argsstring>(Archive &amp;ar, chi::chi_ctrl_extension const &amp;e)</argsstring>
+        <name>record</name>
+        <qualifiedname>lwtr::record</qualifiedname>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type><ref refid="structchi_1_1chi__ctrl__extension" kindref="compound">chi::chi_ctrl_extension</ref> const &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" line="27" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" bodystart="27" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="chi__lwtr_8cpp_1abb8915011638a42a4e7635315a1fd920" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Archive</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void lwtr::record</definition>
+        <argsstring>(Archive &amp;ar, chi::chi_data_extension const &amp;e)</argsstring>
+        <name>record</name>
+        <qualifiedname>lwtr::record</qualifiedname>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type><ref refid="structchi_1_1chi__data__extension" kindref="compound">chi::chi_data_extension</ref> const &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" line="70" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" bodystart="70" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="chi__lwtr_8cpp_1a0105fab37ba5401a20882149bc99ef5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Archive</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void lwtr::record</definition>
+        <argsstring>(Archive &amp;ar, chi::chi_snp_extension const &amp;e)</argsstring>
+        <name>record</name>
+        <qualifiedname>lwtr::record</qualifiedname>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type><ref refid="structchi_1_1chi__snp__extension" kindref="compound">chi::chi_snp_extension</ref> const &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" line="94" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" bodystart="94" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="chi__lwtr_8cpp_1a8de9b01670f87e2d19220fe5e1f0861e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Archive</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void lwtr::record</definition>
+        <argsstring>(Archive &amp;ar, chi::chi_credit_extension&lt; credit_type_e::REQ &gt; const &amp;e)</argsstring>
+        <name>record</name>
+        <qualifiedname>lwtr::record</qualifiedname>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type><ref refid="structchi_1_1chi__credit__extension" kindref="compound">chi::chi_credit_extension</ref>&lt; credit_type_e::REQ &gt; const &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" line="120" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" bodystart="120" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="chi__lwtr_8cpp_1a314526f10f3a629a67990bfa9ccbe171" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Archive</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void lwtr::record</definition>
+        <argsstring>(Archive &amp;ar, chi::chi_credit_extension&lt; credit_type_e::RESP &gt; const &amp;e)</argsstring>
+        <name>record</name>
+        <qualifiedname>lwtr::record</qualifiedname>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type><ref refid="structchi_1_1chi__credit__extension" kindref="compound">chi::chi_credit_extension</ref>&lt; credit_type_e::RESP &gt; const &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" line="125" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" bodystart="125" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="chi__lwtr_8cpp_1ab87f1e7939ec06a3858fc5ce2d174910" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Archive</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void lwtr::record</definition>
+        <argsstring>(Archive &amp;ar, chi::chi_credit_extension&lt; credit_type_e::DATA &gt; const &amp;e)</argsstring>
+        <name>record</name>
+        <qualifiedname>lwtr::record</qualifiedname>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type><ref refid="structchi_1_1chi__credit__extension" kindref="compound">chi::chi_credit_extension</ref>&lt; credit_type_e::DATA &gt; const &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" line="130" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" bodystart="130" bodyend="133"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer.h" line="32" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1detail_1_1alignment__of" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::detail::alignment_of</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="structnonstd_1_1variants_1_1detail_1_1alignment__of_1a4fb04a2d7bb92e661df6404659c930b0" prot="public" static="no" strong="no">
+        <type></type>
+        <name>V</name>
+        <qualifiedname>nonstd::variants::detail::alignment_of::V</qualifiedname>
+        <enumvalue id="structnonstd_1_1variants_1_1detail_1_1alignment__of_1a4fb04a2d7bb92e661df6404659c930b0adeeb08ba9cb5256bef73db9104f02496" prot="public">
+          <name>value</name>
+          <initializer>= alignment_logic&lt;sizeof(alignment_of_hack&lt;T&gt;) - sizeof(T), sizeof(T)&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="898" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="898" bodyend="898"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="897" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="897" bodyend="899"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1alignment__of_1a4fb04a2d7bb92e661df6404659c930b0" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::alignment_of</scope><name>V</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1alignment__of_1a4fb04a2d7bb92e661df6404659c930b0adeeb08ba9cb5256bef73db9104f02496" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::alignment_of</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

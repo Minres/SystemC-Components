@@ -1,0 +1,288 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="tlm2__pv__av_8h" kind="file" language="C++">
+    <compoundname>tlm2_pv_av.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">tlm</includes>
+    <includes refid="ities_8h" local="no">util/ities.h</includes>
+    <includedby refid="scc__sysc_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc_sysc.h</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>util/ities.h</label>
+        <link refid="ities_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h</label>
+        <link refid="tlm2__pv__av_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>algorithm</label>
+      </node>
+      <node id="6">
+        <label>array</label>
+      </node>
+      <node id="7">
+        <label>assert.h</label>
+      </node>
+      <node id="8">
+        <label>bitset</label>
+      </node>
+      <node id="9">
+        <label>cctype</label>
+      </node>
+      <node id="10">
+        <label>climits</label>
+      </node>
+      <node id="11">
+        <label>fstream</label>
+      </node>
+      <node id="12">
+        <label>iterator</label>
+      </node>
+      <node id="13">
+        <label>limits</label>
+      </node>
+      <node id="2">
+        <label>memory</label>
+      </node>
+      <node id="14">
+        <label>sstream</label>
+      </node>
+      <node id="15">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="3">
+        <label>tlm</label>
+      </node>
+      <node id="16">
+        <label>type_traits</label>
+      </node>
+      <node id="17">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/scc.h</label>
+        <link refid="scc_8h_source"/>
+      </node>
+      <node id="2">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc_sysc.h</label>
+        <link refid="scc__sysc_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h</label>
+        <link refid="tlm2__pv__av_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter" prot="public">tlm::scc::tlm2_pv_av_target_adapter</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter" prot="public">tlm::scc::tlm2_pv_av_initiator_adapter</innerclass>
+    <innernamespace refid="namespacetlm">tlm</innernamespace>
+    <innernamespace refid="namespacetlm_1_1scc">tlm::scc</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2020<sp/>MINRES<sp/>Technologies<sp/>GmbH</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_TLM_TLM2_PV_AV_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_TLM_TLM2_PV_AV_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;util/ities.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm" kindref="compound">tlm</ref><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm_1_1scc" kindref="compound">scc</ref><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>BUSWIDTH<sp/>=<sp/>32,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES<sp/>=<sp/>tlm_base_protocol_types,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sc_core::sc_port_policy<sp/>POL<sp/>=<sp/>sc_core::SC_ONE_OR_MORE_BOUND,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TSOCKET_TYPE<sp/>=<sp/>tlm::tlm_target_socket&lt;BUSWIDTH,<sp/>TYPES,<sp/>N,<sp/>POL&gt;,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ISOCKET_TYPE<sp/>=<sp/>tlm::tlm_initiator_socket&lt;BUSWIDTH,<sp/>TYPES,<sp/>N,<sp/>POL&gt;&gt;</highlight></codeline>
+<codeline lineno="40" refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a2de4251788f55d651091390a2ae9ac5c" kindref="member">tlm2_pv_av_target_adapter</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>sc_core::sc_module,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>tlm::tlm_fw_transport_if&lt;TYPES&gt;,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>tlm::tlm_bw_transport_if&lt;TYPES&gt;<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">tlm_payload_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES::tlm_payload_type;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">tlm_phase_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES::tlm_phase_type;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">target_socket_type<sp/>=<sp/>TSOCKET_TYPE;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">initiator_socket_type<sp/>=<sp/>ISOCKET_TYPE;</highlight></codeline>
+<codeline lineno="51" refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1af322fd335a0129794fcddc5f7decabc5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>target_socket_type<sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1af322fd335a0129794fcddc5f7decabc5" kindref="member">tsck</ref>{</highlight><highlight class="stringliteral">&quot;tsck&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="56" refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a2de4251788f55d651091390a2ae9ac5c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a2de4251788f55d651091390a2ae9ac5c" kindref="member">tlm2_pv_av_target_adapter</ref>()</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a2de4251788f55d651091390a2ae9ac5c" kindref="member">tlm2_pv_av_target_adapter</ref>(sc_core::sc_gen_unique_name(</highlight><highlight class="stringliteral">&quot;tlm_pv_av_split&quot;</highlight><highlight class="normal">))<sp/>{}</highlight></codeline>
+<codeline lineno="63" refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a0fa55aec1284b4e6bfc2f2866c14a8ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a0fa55aec1284b4e6bfc2f2866c14a8ea" kindref="member">tlm2_pv_av_target_adapter</ref>(sc_core::sc_module_name<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>nm)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>sc_core::sc_module(nm)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1af322fd335a0129794fcddc5f7decabc5" kindref="member">tsck</ref>.bind(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71" refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a5df6bf6b05dc4da5f7ac0a059bc5331a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a5df6bf6b05dc4da5f7ac0a059bc5331a" kindref="member">bind_pv</ref>(target_socket_type&amp;<sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1af322fd335a0129794fcddc5f7decabc5" kindref="member">tsck</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pv_isck<sp/>=<sp/>util::make_unique&lt;initiator_socket_type&gt;(sc_core::sc_gen_unique_name(</highlight><highlight class="stringliteral">&quot;pv_isck&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pv_isck-&gt;bind(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pv_isck-&gt;bind(<ref refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1af322fd335a0129794fcddc5f7decabc5" kindref="member">tsck</ref>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80" refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1ad0f9b7bae9b7749247e8d28441edfeea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1ad0f9b7bae9b7749247e8d28441edfeea" kindref="member">bind_av</ref>(TSOCKET_TYPE&amp;<sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1af322fd335a0129794fcddc5f7decabc5" kindref="member">tsck</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>av_isck<sp/>=<sp/>util::make_unique&lt;initiator_socket_type&gt;(sc_core::sc_gen_unique_name(</highlight><highlight class="stringliteral">&quot;av_isck&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>av_isck-&gt;bind(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>av_isck-&gt;bind(<ref refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1af322fd335a0129794fcddc5f7decabc5" kindref="member">tsck</ref>);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88" refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a34decc7dfd65b50fe19785ac4912b01f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1a34decc7dfd65b50fe19785ac4912b01f" kindref="member">~tlm2_pv_av_target_adapter</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm::tlm_sync_enum<sp/>nb_transport_fw(tlm_payload_type&amp;<sp/>trans,<sp/>tlm_phase_type&amp;<sp/>phase,<sp/>sc_core::sc_time&amp;<sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(av_isck)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*av_isck)-&gt;nb_transport_fw(trans,<sp/>phase,<sp/>t);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tlm::TLM_COMPLETED;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>b_transport(tlm_payload_type&amp;<sp/>trans,<sp/>sc_core::sc_time&amp;<sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(pv_isck)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*pv_isck)-&gt;b_transport(trans,<sp/>t);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>get_direct_mem_ptr(tlm_payload_type&amp;<sp/>trans,<sp/>tlm_dmi&amp;<sp/>dmi_data)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(pv_isck)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*pv_isck)-&gt;get_direct_mem_ptr(trans,<sp/>dmi_data);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trans.set_dmi_allowed(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>transport_dbg(tlm_payload_type&amp;<sp/>trans)<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(pv_isck)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*pv_isck)-&gt;transport_dbg(trans);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm::tlm_sync_enum<sp/>nb_transport_bw(tlm_payload_type&amp;<sp/>trans,<sp/>tlm_phase_type&amp;<sp/>phase,<sp/>sc_core::sc_time&amp;<sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1af322fd335a0129794fcddc5f7decabc5" kindref="member">tsck</ref>-&gt;nb_transport_bw(trans,<sp/>phase,<sp/>t);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>invalidate_direct_mem_ptr(sc_dt::uint64<sp/>start_range,<sp/>sc_dt::uint64<sp/>end_range)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter_1af322fd335a0129794fcddc5f7decabc5" kindref="member">tsck</ref>-&gt;invalidate_direct_mem_ptr(start_range,<sp/>end_range);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;initiator_socket_type&gt;<sp/>pv_isck;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;initiator_socket_type&gt;<sp/>av_isck;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>BUSWIDTH<sp/>=<sp/>32,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES<sp/>=<sp/>tlm_base_protocol_types,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sc_core::sc_port_policy<sp/>POL<sp/>=<sp/>sc_core::SC_ONE_OR_MORE_BOUND,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TSOCKET_TYPE<sp/>=<sp/>tlm::tlm_target_socket&lt;BUSWIDTH,<sp/>TYPES,<sp/>N,<sp/>POL&gt;,</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ISOCKET_TYPE<sp/>=<sp/>tlm::tlm_initiator_socket&lt;BUSWIDTH,<sp/>TYPES,<sp/>N,<sp/>POL&gt;&gt;</highlight></codeline>
+<codeline lineno="144" refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1aaaed94754e05658d67e554d7f94ef7b3" kindref="member">tlm2_pv_av_initiator_adapter</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>sc_core::sc_module,</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>tlm::tlm_fw_transport_if&lt;TYPES&gt;,</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>tlm::tlm_bw_transport_if&lt;TYPES&gt;<sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">tlm_payload_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES::tlm_payload_type;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">tlm_phase_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TYPES::tlm_phase_type;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">target_socket_type<sp/>=<sp/>TSOCKET_TYPE;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">initiator_socket_type<sp/>=<sp/>ISOCKET_TYPE;</highlight></codeline>
+<codeline lineno="155" refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1aeaff77b9b08ab25bc5624509d387164d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>initiator_socket_type<sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1aeaff77b9b08ab25bc5624509d387164d" kindref="member">isck</ref>{</highlight><highlight class="stringliteral">&quot;isck&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="160" refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1aaaed94754e05658d67e554d7f94ef7b3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1aaaed94754e05658d67e554d7f94ef7b3" kindref="member">tlm2_pv_av_initiator_adapter</ref>()</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1aaaed94754e05658d67e554d7f94ef7b3" kindref="member">tlm2_pv_av_initiator_adapter</ref>(sc_core::sc_gen_unique_name(</highlight><highlight class="stringliteral">&quot;tlm_pv_av_split&quot;</highlight><highlight class="normal">))<sp/>{}</highlight></codeline>
+<codeline lineno="167" refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1af4a30c8e392c2e4d08cedab23a22f27f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1af4a30c8e392c2e4d08cedab23a22f27f" kindref="member">tlm2_pv_av_initiator_adapter</ref>(sc_core::sc_module_name<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>nm)</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>sc_core::sc_module(nm)<sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1aeaff77b9b08ab25bc5624509d387164d" kindref="member">isck</ref>.bind(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="175" refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1a062a509cdc6352233f428d7452f4bbdc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1a062a509cdc6352233f428d7452f4bbdc" kindref="member">bind_pv</ref>(initiator_socket_type&amp;<sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1aeaff77b9b08ab25bc5624509d387164d" kindref="member">isck</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pv_tsck<sp/>=<sp/>util::make_unique&lt;target_socket_type&gt;(sc_core::sc_gen_unique_name(</highlight><highlight class="stringliteral">&quot;pv_tsck&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pv_tsck-&gt;bind(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1aeaff77b9b08ab25bc5624509d387164d" kindref="member">isck</ref>(*pv_tsck);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="184" refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1af58a027f47b9b683003695cf418bae3c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1af58a027f47b9b683003695cf418bae3c" kindref="member">bind_av</ref>(initiator_socket_type&amp;<sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1aeaff77b9b08ab25bc5624509d387164d" kindref="member">isck</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>av_tsck<sp/>=<sp/>util::make_unique&lt;target_socket_type&gt;(sc_core::sc_gen_unique_name(</highlight><highlight class="stringliteral">&quot;av_tsck&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>av_tsck-&gt;bind(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1aeaff77b9b08ab25bc5624509d387164d" kindref="member">isck</ref>(*av_tsck);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="192" refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1ac105106494df26072bbbb44c0563fa9b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1ac105106494df26072bbbb44c0563fa9b" kindref="member">~tlm2_pv_av_initiator_adapter</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm::tlm_sync_enum<sp/>nb_transport_fw(tlm_payload_type&amp;<sp/>trans,<sp/>tlm_phase_type&amp;<sp/>phase,<sp/>sc_core::sc_time&amp;<sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1aeaff77b9b08ab25bc5624509d387164d" kindref="member">isck</ref>-&gt;nb_transport_fw(trans,<sp/>phase,<sp/>t);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>b_transport(tlm_payload_type&amp;<sp/>trans,<sp/>sc_core::sc_time&amp;<sp/>t)<sp/>{<sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1aeaff77b9b08ab25bc5624509d387164d" kindref="member">isck</ref>-&gt;b_transport(trans,<sp/>t);<sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>get_direct_mem_ptr(tlm_payload_type&amp;<sp/>trans,<sp/>tlm_dmi&amp;<sp/>dmi_data)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1aeaff77b9b08ab25bc5624509d387164d" kindref="member">isck</ref>-&gt;get_direct_mem_ptr(trans,<sp/>dmi_data);<sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>transport_dbg(tlm_payload_type&amp;<sp/>trans)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter_1aeaff77b9b08ab25bc5624509d387164d" kindref="member">isck</ref>-&gt;transport_dbg(trans);<sp/>}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm::tlm_sync_enum<sp/>nb_transport_bw(tlm_payload_type&amp;<sp/>trans,<sp/>tlm_phase_type&amp;<sp/>phase,<sp/>sc_core::sc_time&amp;<sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(av_tsck)</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*av_tsck)-&gt;nb_transport_bw(trans,<sp/>phase,<sp/>t);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tlm::TLM_COMPLETED;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>invalidate_direct_mem_ptr(sc_dt::uint64<sp/>start_range,<sp/>sc_dt::uint64<sp/>end_range)<sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(pv_tsck)</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*pv_tsck)-&gt;invalidate_direct_mem_ptr(start_range,<sp/>end_range);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;target_socket_type&gt;<sp/>pv_tsck{};</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;target_socket_type&gt;<sp/>av_tsck{};</highlight></codeline>
+<codeline lineno="219"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>tlm<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>OSCI_LIB_SCC_INCL_TLM_TLM2_PV_AV_TARGET_ADAPTER_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm2_pv_av.h"/>
+  </compounddef>
+</doxygen>

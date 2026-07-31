@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1async__event" kind="struct" language="C++" prot="public">
+    <compoundname>scc::async_event</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_prim_channel</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1async__event_1a326ed9fbb3e627298c74ad66263d40e3" prot="private" static="no" mutable="no">
+        <type>const std::thread::id</type>
+        <definition>const std::thread::id scc::async_event::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <qualifiedname>scc::async_event::id</qualifiedname>
+        <initializer>{std::this_thread::get_id()}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" line="34" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1async__event_1a1f684a2318c2247a9073a97323916d20" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event scc::async_event::ev_</definition>
+        <argsstring></argsstring>
+        <name>ev_</name>
+        <qualifiedname>scc::async_event::ev_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" line="35" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1async__event_1a6f90cff53e90451a4c21018820bfbd56" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; scc::async_event::pending_update</definition>
+        <argsstring></argsstring>
+        <name>pending_update</name>
+        <qualifiedname>scc::async_event::pending_update</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" line="36" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" bodystart="36" bodyend="36"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1async__event_1a97ecf5d1280ed0bd7f2e3ceff1e5d383" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::async_event::async_event</definition>
+        <argsstring>()=default</argsstring>
+        <name>async_event</name>
+        <qualifiedname>scc::async_event::async_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" line="11" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1async__event_1aa55347a10be094f7ecbae414b631cb63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::async_event::async_event</definition>
+        <argsstring>(char const *nm)</argsstring>
+        <name>async_event</name>
+        <qualifiedname>scc::async_event::async_event</qualifiedname>
+        <param>
+          <type>char const *</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" line="13" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" bodystart="13" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1async__event_1a2ad4791607077bbb6d56500655e367e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::async_event::notify</definition>
+        <argsstring>()</argsstring>
+        <name>notify</name>
+        <qualifiedname>scc::async_event::notify</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" line="16" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" bodystart="16" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1async__event_1a8fc7975732b0bdf0c0255d68e8e7b363" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::async_event::update</definition>
+        <argsstring>() override</argsstring>
+        <name>update</name>
+        <qualifiedname>scc::async_event::update</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" line="25" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" bodystart="25" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1async__event_1a4063b982e27c8b6a3aa257e500be9ed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const sc_core::sc_event &amp;</type>
+        <definition>const sc_core::sc_event &amp; scc::async_event::operator()</definition>
+        <argsstring>() const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>scc::async_event::operator()</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" line="30" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" bodystart="30" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1async__event_1a4d3f58fc80f213abfe86540747d840ee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const sc_core::sc_event &amp;</type>
+        <definition>const sc_core::sc_event &amp; scc::async_event::event</definition>
+        <argsstring>() const</argsstring>
+        <name>event</name>
+        <qualifiedname>scc::async_event::event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" line="31" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" bodystart="31" bodyend="31"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_prim_channel</label>
+      </node>
+      <node id="1">
+        <label>scc::async_event</label>
+        <link refid="structscc_1_1async__event"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_prim_channel</label>
+      </node>
+      <node id="1">
+        <label>scc::async_event</label>
+        <link refid="structscc_1_1async__event"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" line="9" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_event.h" bodystart="9" bodyend="37"/>
+    <listofallmembers>
+      <member refid="structscc_1_1async__event_1a97ecf5d1280ed0bd7f2e3ceff1e5d383" prot="public" virt="non-virtual"><scope>scc::async_event</scope><name>async_event</name></member>
+      <member refid="structscc_1_1async__event_1aa55347a10be094f7ecbae414b631cb63" prot="public" virt="non-virtual"><scope>scc::async_event</scope><name>async_event</name></member>
+      <member refid="structscc_1_1async__event_1a1f684a2318c2247a9073a97323916d20" prot="private" virt="non-virtual"><scope>scc::async_event</scope><name>ev_</name></member>
+      <member refid="structscc_1_1async__event_1a4d3f58fc80f213abfe86540747d840ee" prot="public" virt="non-virtual"><scope>scc::async_event</scope><name>event</name></member>
+      <member refid="structscc_1_1async__event_1a326ed9fbb3e627298c74ad66263d40e3" prot="private" virt="non-virtual"><scope>scc::async_event</scope><name>id</name></member>
+      <member refid="structscc_1_1async__event_1a2ad4791607077bbb6d56500655e367e7" prot="public" virt="non-virtual"><scope>scc::async_event</scope><name>notify</name></member>
+      <member refid="structscc_1_1async__event_1a4063b982e27c8b6a3aa257e500be9ed0" prot="public" virt="non-virtual"><scope>scc::async_event</scope><name>operator()</name></member>
+      <member refid="structscc_1_1async__event_1a6f90cff53e90451a4c21018820bfbd56" prot="private" virt="non-virtual"><scope>scc::async_event</scope><name>pending_update</name></member>
+      <member refid="structscc_1_1async__event_1a8fc7975732b0bdf0c0255d68e8e7b363" prot="public" virt="non-virtual"><scope>scc::async_event</scope><name>update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

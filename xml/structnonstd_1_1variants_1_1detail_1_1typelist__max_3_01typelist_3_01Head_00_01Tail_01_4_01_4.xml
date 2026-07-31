@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01typelist_3_01Head_00_01Tail_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::detail::typelist_max&lt; typelist&lt; Head, Tail &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Head</type>
+      </param>
+      <param>
+        <type>class Tail</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-type">
+      <memberdef kind="enum" id="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01typelist_3_01Head_00_01Tail_01_4_01_4_1adbca47acf3608d545a1bd576f760476f" prot="private" static="no" strong="no">
+        <type></type>
+        <name>TV</name>
+        <qualifiedname>nonstd::variants::detail::typelist_max&lt; typelist&lt; Head, Tail &gt; &gt;::TV</qualifiedname>
+        <enumvalue id="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01typelist_3_01Head_00_01Tail_01_4_01_4_1adbca47acf3608d545a1bd576f760476faf57e0784c8c6dc714a18cea4fe0ff051" prot="private">
+          <name>tail_value</name>
+          <initializer>= size_t(typelist_max&lt;Tail&gt;::value)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="678" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="678" bodyend="678"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01typelist_3_01Head_00_01Tail_01_4_01_4_1ae4f74c2be1787c6a80f2bc72131aecf8" prot="private" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1typelist__max" kindref="compound">typelist_max</ref>&lt; Tail &gt;::type</type>
+        <definition>typedef typelist_max&lt;Tail&gt;::type nonstd::variants::detail::typelist_max&lt; typelist&lt; Head, Tail &gt; &gt;::tail_type</definition>
+        <argsstring></argsstring>
+        <name>tail_type</name>
+        <qualifiedname>nonstd::variants::detail::typelist_max&lt; typelist&lt; Head, Tail &gt; &gt;::tail_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="680" column="42" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="680" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01typelist_3_01Head_00_01Tail_01_4_01_4_1a388e38e1f1aaba7d162c2b5f2a6c1aa7" prot="public" static="no" strong="no">
+        <type></type>
+        <name>V</name>
+        <qualifiedname>nonstd::variants::detail::typelist_max&lt; typelist&lt; Head, Tail &gt; &gt;::V</qualifiedname>
+        <enumvalue id="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01typelist_3_01Head_00_01Tail_01_4_01_4_1a388e38e1f1aaba7d162c2b5f2a6c1aa7ad1e77fcb90c293aa55af224017139818" prot="public">
+          <name>value</name>
+          <initializer>= (sizeof(Head) &gt; tail_value) ? sizeof(Head) : std::size_t(tail_value)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="683" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="683" bodyend="683"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01typelist_3_01Head_00_01Tail_01_4_01_4_1aee7f578072144ced28160cd93f0c4401" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1std11_1_1conditional" kindref="compound">std11::conditional</ref>&lt;(sizeof(Head)&gt;tail_value), Head, tail_type &gt;::type</type>
+        <definition>typedef std11::conditional&lt;(sizeof(Head)&gt;tail_value),Head,tail_type&gt;::type nonstd::variants::detail::typelist_max&lt; typelist&lt; Head, Tail &gt; &gt;::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>nonstd::variants::detail::typelist_max&lt; typelist&lt; Head, Tail &gt; &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="685" column="48" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="685" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="676" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="676" bodyend="686"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01typelist_3_01Head_00_01Tail_01_4_01_4_1ae4f74c2be1787c6a80f2bc72131aecf8" prot="private" virt="non-virtual"><scope>nonstd::variants::detail::typelist_max&lt; typelist&lt; Head, Tail &gt; &gt;</scope><name>tail_type</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01typelist_3_01Head_00_01Tail_01_4_01_4_1adbca47acf3608d545a1bd576f760476faf57e0784c8c6dc714a18cea4fe0ff051" prot="private" virt="non-virtual"><scope>nonstd::variants::detail::typelist_max&lt; typelist&lt; Head, Tail &gt; &gt;</scope><name>tail_value</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01typelist_3_01Head_00_01Tail_01_4_01_4_1adbca47acf3608d545a1bd576f760476f" prot="private" virt="non-virtual"><scope>nonstd::variants::detail::typelist_max&lt; typelist&lt; Head, Tail &gt; &gt;</scope><name>TV</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01typelist_3_01Head_00_01Tail_01_4_01_4_1aee7f578072144ced28160cd93f0c4401" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::typelist_max&lt; typelist&lt; Head, Tail &gt; &gt;</scope><name>type</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01typelist_3_01Head_00_01Tail_01_4_01_4_1a388e38e1f1aaba7d162c2b5f2a6c1aa7" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::typelist_max&lt; typelist&lt; Head, Tail &gt; &gt;</scope><name>V</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01typelist_3_01Head_00_01Tail_01_4_01_4_1a388e38e1f1aaba7d162c2b5f2a6c1aa7ad1e77fcb90c293aa55af224017139818" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::typelist_max&lt; typelist&lt; Head, Tail &gt; &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

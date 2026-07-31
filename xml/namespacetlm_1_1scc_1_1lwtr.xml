@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacetlm_1_1scc_1_1lwtr" kind="namespace" language="C++">
+    <compoundname>tlm::scc::lwtr</compoundname>
+    <innerclass refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if" prot="public">tlm::scc::lwtr::lwtr4tlm2_extension_registry_if</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry" prot="public">tlm::scc::lwtr::lwtr4tlm2_extension_registry</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1lwtr_1_1tlm__id__ext__recording" prot="public">tlm::scc::lwtr::tlm_id_ext_recording</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1lwtr_1_1link__pred__ext" prot="public">tlm::scc::lwtr::link_pred_ext</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1lwtr_1_1nb__rec__entry" prot="public">tlm::scc::lwtr::nb_rec_entry</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr" prot="public">tlm::scc::lwtr::tlm2_lwtr</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr__recorder" prot="public">tlm::scc::lwtr::tlm2_lwtr_recorder</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacetlm_1_1scc_1_1lwtr_1ae7e45c4d6dde398925ab14e9f22b6dfc" prot="public" static="no" strong="no">
+        <type></type>
+        <name>tx_rel</name>
+        <qualifiedname>tlm::scc::lwtr::tx_rel</qualifiedname>
+        <enumvalue id="namespacetlm_1_1scc_1_1lwtr_1ae7e45c4d6dde398925ab14e9f22b6dfca2a5460f7637454ff65464a65b35ff81b" prot="public">
+          <name>PARENT_CHILD</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>indicates parent child relationship </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetlm_1_1scc_1_1lwtr_1ae7e45c4d6dde398925ab14e9f22b6dfca9668e46f493937be437a088c2de046d6" prot="public">
+          <name>PREDECESSOR_SUCCESSOR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>indicates predecessor successor relationship </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The relationship between transactions</para>
+<para>This enum represents the relationship between transactions in the LWTR transaction stream.</para>
+<para><itemizedlist>
+<listitem><para>PARENT_CHILD: indicates parent-child relationship.</para>
+</listitem><listitem><para>PREDECESSOR_SUCCESSOR: indicates predecessor successor relationship. </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="57" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="57" bodyend="60"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1_1lwtr_1acc87ac79d3caf09fc1548e3a8584ba49" prot="public" static="no">
+        <type>::lwtr::tx_db</type>
+        <definition>using tlm::scc::lwtr::tx_db =  ::lwtr::tx_db</definition>
+        <argsstring></argsstring>
+        <name>tx_db</name>
+        <qualifiedname>tlm::scc::lwtr::tx_db</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="41" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1_1lwtr_1adcc1536edd75b2f5d47e3c7c2b569029" prot="public" static="no">
+        <type>::lwtr::tx_fiber</type>
+        <definition>using tlm::scc::lwtr::tx_fiber =  ::lwtr::tx_fiber</definition>
+        <argsstring></argsstring>
+        <name>tx_fiber</name>
+        <qualifiedname>tlm::scc::lwtr::tx_fiber</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="42" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1_1lwtr_1a2b3a9bfbd48c56dcd1da231aba68ecda" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename BEGIN</type>
+            <defval>::lwtr::no_data</defval>
+          </param>
+          <param>
+            <type>typename END</type>
+            <defval>::lwtr::no_data</defval>
+          </param>
+        </templateparamlist>
+        <type>::lwtr::tx_generator&lt; BEGIN, END &gt;</type>
+        <definition>using tlm::scc::lwtr::tx_generator =  ::lwtr::tx_generator&lt;BEGIN, END&gt;</definition>
+        <argsstring></argsstring>
+        <name>tx_generator</name>
+        <qualifiedname>tlm::scc::lwtr::tx_generator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="43" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1_1lwtr_1ae74b6e900d21dd87206a1ec6d799eab8" prot="public" static="no">
+        <type>::lwtr::tx_handle</type>
+        <definition>using tlm::scc::lwtr::tx_handle =  ::lwtr::tx_handle</definition>
+        <argsstring></argsstring>
+        <name>tx_handle</name>
+        <qualifiedname>tlm::scc::lwtr::tx_handle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="44" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1_1lwtr_1a170c13b9edf74a8c2ab6fffa3ad561d2" prot="public" static="no">
+        <type><ref refid="structtlm_1_1scc_1_1tlm__mm" kindref="compound">tlm::scc::tlm_mm</ref>&lt;&gt;</type>
+        <definition>using tlm::scc::lwtr::mm =  tlm::scc::tlm_mm&lt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>mm</name>
+        <qualifiedname>tlm::scc::lwtr::mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="45" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacetlm_1_1scc_1_1lwtr_1a7595c73cbb3e070115363eee2c706622" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tlm::scc::lwtr::registered</definition>
+        <argsstring></argsstring>
+        <name>registered</name>
+        <qualifiedname>tlm::scc::lwtr::registered</qualifiedname>
+        <initializer>= register_extensions()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.cpp" line="56" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.cpp" bodystart="56" bodyend="-1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" declline="47" declcolumn="13"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacetlm_1_1scc_1_1lwtr_1a4c42b670f6960ff655821b7fce5a9fa1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::scc::lwtr::register_extensions</definition>
+        <argsstring>()</argsstring>
+        <name>register_extensions</name>
+        <qualifiedname>tlm::scc::lwtr::register_extensions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.cpp" line="51" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.cpp" bodystart="51" bodyend="55"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>SCC SCV4TLM classes and functions. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/lwtr4tlm2_extension_registry.h" line="27" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,306 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1sc__register__mem_1_1mem__wrapper" kind="struct" language="C++" prot="private">
+    <compoundname>scc::sc_register_mem::mem_wrapper</compoundname>
+    <basecompoundref refid="classscc_1_1resource__access__if" prot="public" virt="non-virtual">scc::resource_access_if</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1sc__register__mem_1_1mem__wrapper_1a032401f2f65fb1e935065b3b57cb197c" prot="public" static="no" mutable="no">
+        <type><ref refid="structscc_1_1sc__register__mem_1a389fe2e4cb21a538b537f4814eaeb702" kindref="member">sc_register_mem</ref> &amp;</type>
+        <definition>sc_register_mem&amp; scc::sc_register_mem&lt; DATATYPE, SIZE &gt;::mem_wrapper::owner</definition>
+        <argsstring></argsstring>
+        <name>owner</name>
+        <qualifiedname>scc::sc_register_mem::mem_wrapper::owner</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="546" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="546" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1sc__register__mem_1_1mem__wrapper_1a816319ee9619019a029bb7a5b94eab38" prot="public" static="no" mutable="no">
+        <type>DATATYPE &amp;</type>
+        <definition>DATATYPE&amp; scc::sc_register_mem&lt; DATATYPE, SIZE &gt;::mem_wrapper::elem</definition>
+        <argsstring></argsstring>
+        <name>elem</name>
+        <qualifiedname>scc::sc_register_mem::mem_wrapper::elem</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="547" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="547" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1sc__register__mem_1_1mem__wrapper_1a88a251eeb6e0a1f480e30b860fba1d04" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t scc::sc_register_mem&lt; DATATYPE, SIZE &gt;::mem_wrapper::offset</definition>
+        <argsstring></argsstring>
+        <name>offset</name>
+        <qualifiedname>scc::sc_register_mem::mem_wrapper::offset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="548" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="548" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1sc__register__mem_1_1mem__wrapper_1a52c75f02af171a5a55249c5ce39247a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_register_mem&lt; DATATYPE, SIZE &gt;::mem_wrapper::~mem_wrapper</definition>
+        <argsstring>()=default</argsstring>
+        <name>~mem_wrapper</name>
+        <qualifiedname>scc::sc_register_mem::mem_wrapper::~mem_wrapper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="501" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__register__mem_1_1mem__wrapper_1ad9a811ffe3c250015d7134bf9f75129b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>char const *</type>
+        <definition>char const  * scc::sc_register_mem&lt; DATATYPE, SIZE &gt;::mem_wrapper::full_name</definition>
+        <argsstring>() const override</argsstring>
+        <name>full_name</name>
+        <qualifiedname>scc::sc_register_mem::mem_wrapper::full_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="502" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="502" bodyend="502"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__register__mem_1_1mem__wrapper_1a3fa1451debcf5406b32764a8c8bcc02e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>std::size_t scc::sc_register_mem&lt; DATATYPE, SIZE &gt;::mem_wrapper::size</definition>
+        <argsstring>() const override</argsstring>
+        <name>size</name>
+        <qualifiedname>scc::sc_register_mem::mem_wrapper::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="503" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="503" bodyend="503"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__register__mem_1_1mem__wrapper_1a65f6542d14aa66e3553cf62b0dc12b66" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_register_mem&lt; DATATYPE, SIZE &gt;::mem_wrapper::reset</definition>
+        <argsstring>() override</argsstring>
+        <name>reset</name>
+        <qualifiedname>scc::sc_register_mem::mem_wrapper::reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="504" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="504" bodyend="504"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__register__mem_1_1mem__wrapper_1a121140623d0a0e473e086c61d9a381df" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_register_mem&lt; DATATYPE, SIZE &gt;::mem_wrapper::write</definition>
+        <argsstring>(const uint8_t *data, std::size_t length, uint64_t offset, sc_core::sc_time &amp;d) override</argsstring>
+        <name>write</name>
+        <qualifiedname>scc::sc_register_mem::mem_wrapper::write</qualifiedname>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="505" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="505" bodyend="514"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__register__mem_1_1mem__wrapper_1a71a7fa0c49682e194a9674cb4dfb0427" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_register_mem&lt; DATATYPE, SIZE &gt;::mem_wrapper::read</definition>
+        <argsstring>(uint8_t *data, std::size_t length, uint64_t offset, sc_core::sc_time &amp;d) const override</argsstring>
+        <name>read</name>
+        <qualifiedname>scc::sc_register_mem::mem_wrapper::read</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="515" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="515" bodyend="525"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__register__mem_1_1mem__wrapper_1a8704dffdf60e943682c322a72849cd4d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_register_mem&lt; DATATYPE, SIZE &gt;::mem_wrapper::write_dbg</definition>
+        <argsstring>(const uint8_t *data, std::size_t length, uint64_t offset=0) override</argsstring>
+        <name>write_dbg</name>
+        <qualifiedname>scc::sc_register_mem::mem_wrapper::write_dbg</qualifiedname>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="526" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="526" bodyend="532"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__register__mem_1_1mem__wrapper_1a96fb1b926c18d12541e57b78130eabf7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_register_mem&lt; DATATYPE, SIZE &gt;::mem_wrapper::read_dbg</definition>
+        <argsstring>(uint8_t *data, std::size_t length, uint64_t offset=0) const override</argsstring>
+        <name>read_dbg</name>
+        <qualifiedname>scc::sc_register_mem::mem_wrapper::read_dbg</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="533" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="533" bodyend="539"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__register__mem_1_1mem__wrapper_1a092eeadda37c85d1d0249a9c5af0b1d5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_register_mem&lt; DATATYPE, SIZE &gt;::mem_wrapper::mem_wrapper</definition>
+        <argsstring>(sc_register_mem &amp;owner, DATATYPE &amp;e, size_t of)</argsstring>
+        <name>mem_wrapper</name>
+        <qualifiedname>scc::sc_register_mem::mem_wrapper::mem_wrapper</qualifiedname>
+        <param>
+          <type><ref refid="structscc_1_1sc__register__mem_1a389fe2e4cb21a538b537f4814eaeb702" kindref="member">sc_register_mem</ref> &amp;</type>
+          <declname>owner</declname>
+        </param>
+        <param>
+          <type>DATATYPE &amp;</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>of</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="541" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="541" bodyend="544"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>scc::resource_access_if</label>
+        <link refid="classscc_1_1resource__access__if"/>
+      </node>
+      <node id="1">
+        <label>scc::sc_register_mem&lt; DATATYPE, SIZE &gt;::mem_wrapper</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>scc::indexed_resource_access_if</label>
+        <link refid="classscc_1_1indexed__resource__access__if"/>
+      </node>
+      <node id="2">
+        <label>scc::resource_access_if</label>
+        <link refid="classscc_1_1resource__access__if"/>
+      </node>
+      <node id="3">
+        <label>scc::sc_register_mem&lt; DATATYPE, SIZE &gt;</label>
+        <link refid="structscc_1_1sc__register__mem"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>scc::sc_register_mem&lt; DATATYPE, SIZE &gt;::mem_wrapper</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>owner</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="500" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="500" bodyend="549"/>
+    <listofallmembers>
+      <member refid="structscc_1_1sc__register__mem_1_1mem__wrapper_1a816319ee9619019a029bb7a5b94eab38" prot="public" virt="non-virtual"><scope>scc::sc_register_mem::mem_wrapper</scope><name>elem</name></member>
+      <member refid="structscc_1_1sc__register__mem_1_1mem__wrapper_1ad9a811ffe3c250015d7134bf9f75129b" prot="public" virt="non-virtual"><scope>scc::sc_register_mem::mem_wrapper</scope><name>full_name</name></member>
+      <member refid="structscc_1_1sc__register__mem_1_1mem__wrapper_1a092eeadda37c85d1d0249a9c5af0b1d5" prot="public" virt="non-virtual"><scope>scc::sc_register_mem::mem_wrapper</scope><name>mem_wrapper</name></member>
+      <member refid="structscc_1_1sc__register__mem_1_1mem__wrapper_1a88a251eeb6e0a1f480e30b860fba1d04" prot="public" virt="non-virtual"><scope>scc::sc_register_mem::mem_wrapper</scope><name>offset</name></member>
+      <member refid="structscc_1_1sc__register__mem_1_1mem__wrapper_1a032401f2f65fb1e935065b3b57cb197c" prot="public" virt="non-virtual"><scope>scc::sc_register_mem::mem_wrapper</scope><name>owner</name></member>
+      <member refid="structscc_1_1sc__register__mem_1_1mem__wrapper_1a71a7fa0c49682e194a9674cb4dfb0427" prot="public" virt="non-virtual"><scope>scc::sc_register_mem::mem_wrapper</scope><name>read</name></member>
+      <member refid="classscc_1_1resource__access__if_1afba178290da5121755e18cdb44a06568" prot="public" virt="non-virtual" ambiguityscope="scc::resource_access_if::"><scope>scc::sc_register_mem::mem_wrapper</scope><name>read</name></member>
+      <member refid="structscc_1_1sc__register__mem_1_1mem__wrapper_1a96fb1b926c18d12541e57b78130eabf7" prot="public" virt="non-virtual"><scope>scc::sc_register_mem::mem_wrapper</scope><name>read_dbg</name></member>
+      <member refid="structscc_1_1sc__register__mem_1_1mem__wrapper_1a65f6542d14aa66e3553cf62b0dc12b66" prot="public" virt="non-virtual"><scope>scc::sc_register_mem::mem_wrapper</scope><name>reset</name></member>
+      <member refid="structscc_1_1sc__register__mem_1_1mem__wrapper_1a3fa1451debcf5406b32764a8c8bcc02e" prot="public" virt="non-virtual"><scope>scc::sc_register_mem::mem_wrapper</scope><name>size</name></member>
+      <member refid="structscc_1_1sc__register__mem_1_1mem__wrapper_1a121140623d0a0e473e086c61d9a381df" prot="public" virt="non-virtual"><scope>scc::sc_register_mem::mem_wrapper</scope><name>write</name></member>
+      <member refid="classscc_1_1resource__access__if_1a43d5c525222211b9b7a586a352282cdc" prot="public" virt="non-virtual" ambiguityscope="scc::resource_access_if::"><scope>scc::sc_register_mem::mem_wrapper</scope><name>write</name></member>
+      <member refid="structscc_1_1sc__register__mem_1_1mem__wrapper_1a8704dffdf60e943682c322a72849cd4d" prot="public" virt="non-virtual"><scope>scc::sc_register_mem::mem_wrapper</scope><name>write_dbg</name></member>
+      <member refid="structscc_1_1sc__register__mem_1_1mem__wrapper_1a52c75f02af171a5a55249c5ce39247a8" prot="public" virt="non-virtual"><scope>scc::sc_register_mem::mem_wrapper</scope><name>~mem_wrapper</name></member>
+      <member refid="classscc_1_1resource__access__if_1a11e3e1ab0e5f4ccfd156149fa77a7eed" prot="public" virt="virtual"><scope>scc::sc_register_mem::mem_wrapper</scope><name>~resource_access_if</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

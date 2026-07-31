@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1pe_1_1intor__fw__b" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::pe::intor_fw_b</compoundname>
+    <basecompoundref refid="structtlm_1_1scc_1_1pe_1_1intor__fw" prot="public" virt="non-virtual">tlm::scc::pe::intor_fw&lt; type::BL &gt;</basecompoundref>
+    <derivedcompoundref refid="classaxi_1_1pe_1_1axi__initiator__b" prot="public" virt="non-virtual">axi::pe::axi_initiator_b</derivedcompoundref>
+    <derivedcompoundref refid="classaxi_1_1pe_1_1simple__initiator__b" prot="public" virt="non-virtual">axi::pe::simple_initiator_b</derivedcompoundref>
+    <derivedcompoundref refid="classchi_1_1pe_1_1chi__rn__initiator__b" prot="public" virt="non-virtual">chi::pe::chi_rn_initiator_b</derivedcompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5">
+        <label>axi::pe::ace_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classaxi_1_1pe_1_1ace__initiator"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>axi::pe::ace_lite_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classaxi_1_1pe_1_1ace__lite__initiator"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>axi::pe::axi_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classaxi_1_1pe_1_1axi__initiator"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>axi::pe::axi_initiator_b</label>
+        <link refid="classaxi_1_1pe_1_1axi__initiator__b"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>axi::pe::simple_ace_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classaxi_1_1pe_1_1simple__ace__initiator"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>axi::pe::simple_axi_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classaxi_1_1pe_1_1simple__axi__initiator"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>axi::pe::simple_axi_initiator&lt; 32 &gt;</label>
+        <link refid="classaxi_1_1pe_1_1simple__axi__initiator"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>axi::pe::simple_initiator_b</label>
+        <link refid="classaxi_1_1pe_1_1simple__initiator__b"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>chi::pe::chi_rn_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classchi_1_1pe_1_1chi__rn__initiator"/>
+        <childnode refid="12" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>chi::pe::chi_rn_initiator_b</label>
+        <link refid="classchi_1_1pe_1_1chi__rn__initiator__b"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>tlm::scc::pe::intor_fw&lt; type::BL &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::pe::intor_fw_b</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw__b"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>tlm::scc::pe::intor_fw&lt; type::BL &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::pe::intor_fw_b</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw__b"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/intor_if.h" line="61" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/intor_if.h" bodystart="61" bodyend="61"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1pe_1_1intor__fw_1a1e85d9861b52f3ec31c17e107ccd852b" prot="public" virt="pure-virtual"><scope>tlm::scc::pe::intor_fw_b</scope><name>snoop_resp</name></member>
+      <member refid="structtlm_1_1scc_1_1pe_1_1intor__fw_1a69f17795eabb5192d5388dd6b67e4109" prot="public" virt="pure-virtual"><scope>tlm::scc::pe::intor_fw_b</scope><name>transport</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,9 +1,25 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,99,180,124"/>
-<area shape="rect" id="Node000001" href="$classtilelink_1_1scv_1_1impl_1_1tlc__recording__payload.html" title=" " alt="" coords="230,5,386,60"/>
-<area shape="poly" id="edge688_Node000000_Node000001" title=" " alt="" coords="140,91,231,58,233,63,142,96"/>
-<area shape="rect" id="Node000002" href="$classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload.html" title=" " alt="" coords="228,84,388,139"/>
-<area shape="poly" id="edge689_Node000000_Node000002" title=" " alt="" coords="194,109,228,109,228,114,194,114"/>
-<area shape="rect" id="Node000003" href="$classtlm_1_1nw_1_1scv_1_1impl_1_1tlm__recording__payload.html" title=" " alt="" coords="228,163,388,217"/>
-<area shape="poly" id="edge690_Node000000_Node000003" title=" " alt="" coords="142,126,233,160,231,165,140,131"/>
+<area shape="rect" id="Node000000" href="$structtlm_1_1nw_1_1tlm__network__payload__base.html" title="A base class for TLM network payloads." alt="" coords="5,165,148,205"/>
+<area shape="rect" id="Node000001" href="$structtlm_1_1nw_1_1tlm__network__payload.html" title=" " alt="" coords="199,5,361,45"/>
+<area shape="poly" id="edge621_Node000000_Node000001" title=" " alt="" coords="98,152,140,103,166,78,195,55,216,43,218,48,197,60,169,82,144,107,102,156"/>
+<area shape="rect" id="Node000003" href="$structtlm_1_1nw_1_1tlm__network__payload.html" title=" " alt="" coords="198,69,362,109"/>
+<area shape="poly" id="edge623_Node000000_Node000003" title=" " alt="" coords="123,156,195,119,223,107,225,112,197,124,126,161"/>
+<area shape="rect" id="Node000005" href="$structtlm_1_1nw_1_1tlm__network__payload.html" title=" " alt="" coords="201,133,359,173"/>
+<area shape="poly" id="edge625_Node000000_Node000005" title=" " alt="" coords="161,169,200,163,201,168,162,175"/>
+<area shape="rect" id="Node000007" href="$structtlm_1_1nw_1_1tlm__network__payload.html" title=" " alt="" coords="209,197,351,237"/>
+<area shape="poly" id="edge627_Node000000_Node000007" title=" " alt="" coords="162,196,209,204,208,209,161,201"/>
+<area shape="rect" id="Node000009" href="$structtlm_1_1nw_1_1tlm__network__payload.html" title=" " alt="" coords="204,261,356,301"/>
+<area shape="poly" id="edge629_Node000000_Node000009" title=" " alt="" coords="126,210,197,247,225,259,223,264,195,252,123,215"/>
+<area shape="rect" id="Node000011" href="$structtlm_1_1nw_1_1tlm__network__payload.html" title="A class for TLM network payloads with support for extensions and memory management." alt="" coords="196,325,364,365"/>
+<area shape="poly" id="edge631_Node000000_Node000011" title=" " alt="" coords="102,215,144,264,169,289,197,311,218,323,216,327,195,316,166,293,140,268,98,218"/>
+<area shape="rect" id="Node000002" href="$structaxis_1_1axis__packet__payload.html" title=" " alt="" coords="412,13,589,38"/>
+<area shape="poly" id="edge622_Node000001_Node000002" title=" " alt="" coords="375,23,412,23,412,28,375,28"/>
+<area shape="rect" id="Node000004" href="$structcxs_1_1cxs__flit__payload.html" title=" " alt="" coords="428,77,573,102"/>
+<area shape="poly" id="edge624_Node000003_Node000004" title=" " alt="" coords="376,87,428,87,428,92,376,92"/>
+<area shape="rect" id="Node000006" href="$structcxs_1_1cxs__packet__payload.html" title=" " alt="" coords="416,141,585,166"/>
+<area shape="poly" id="edge626_Node000005_Node000006" title=" " alt="" coords="373,151,416,151,416,156,373,156"/>
+<area shape="rect" id="Node000008" href="$structeth_1_1eth__packet__payload.html" title=" " alt="" coords="419,205,582,230"/>
+<area shape="poly" id="edge628_Node000007_Node000008" title=" " alt="" coords="365,215,419,215,419,220,365,220"/>
+<area shape="rect" id="Node000010" href="$structspi_1_1spi__packet__payload.html" title=" " alt="" coords="420,269,581,294"/>
+<area shape="poly" id="edge630_Node000009_Node000010" title=" " alt="" coords="370,279,420,279,420,284,370,284"/>
 </map>

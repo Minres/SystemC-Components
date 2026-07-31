@@ -1,5 +1,6 @@
 var classscc_1_1resource__access__if =
 [
+    [ "full_name", "classscc_1_1resource__access__if.html#ab84e9879450aa4146de9983d2245ddce", null ],
     [ "read_dbg", "classscc_1_1resource__access__if.html#a81f86119c44d699f70b8980e12e97717", null ],
     [ "reset", "classscc_1_1resource__access__if.html#a94f5dba6b42b12379254975b72a475d6", null ],
     [ "size", "classscc_1_1resource__access__if.html#a4b1353d979e7ce465dba34f05e10710e", null ],

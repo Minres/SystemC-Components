@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structeth_1_1vlan__tag__8021Q" kind="struct" language="C++" prot="public">
+    <compoundname>eth::vlan_tag_8021Q</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structeth_1_1vlan__tag__8021Q_1abadcea12a9e61f79ebf10b1add05a59d" prot="public" static="no" mutable="no">
+        <type>std::uint16_t</type>
+        <definition>std::uint16_t eth::vlan_tag_8021Q::tpid</definition>
+        <argsstring></argsstring>
+        <name>tpid</name>
+        <qualifiedname>eth::vlan_tag_8021Q::tpid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="47" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structeth_1_1vlan__tag__8021Q_1ae1ac0321d365aa84a2aec977b73782ea" prot="public" static="no" mutable="no">
+        <type>std::uint16_t</type>
+        <definition>std::uint16_t eth::vlan_tag_8021Q::tci</definition>
+        <argsstring></argsstring>
+        <name>tci</name>
+        <qualifiedname>eth::vlan_tag_8021Q::tci</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="48" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="46" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="46" bodyend="49"/>
+    <listofallmembers>
+      <member refid="structeth_1_1vlan__tag__8021Q_1ae1ac0321d365aa84a2aec977b73782ea" prot="public" virt="non-virtual"><scope>eth::vlan_tag_8021Q</scope><name>tci</name></member>
+      <member refid="structeth_1_1vlan__tag__8021Q_1abadcea12a9e61f79ebf10b1add05a59d" prot="public" virt="non-virtual"><scope>eth::vlan_tag_8021Q</scope><name>tpid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

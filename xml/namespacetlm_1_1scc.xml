@@ -1,0 +1,482 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacetlm_1_1scc" kind="namespace" language="C++">
+    <compoundname>tlm::scc</compoundname>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__mm__traits_3_01axis_1_1axis__packet__types_01_4" prot="public">tlm::scc::tlm_mm_traits&lt; axis::axis_packet_types &gt;</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__mm__traits_3_01cxs_1_1cxs__flit__types_01_4" prot="public">tlm::scc::tlm_mm_traits&lt; cxs::cxs_flit_types &gt;</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__mm__traits_3_01cxs_1_1cxs__packet__types_01_4" prot="public">tlm::scc::tlm_mm_traits&lt; cxs::cxs_packet_types &gt;</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__mm__traits_3_01eth_1_1eth__packet__types_01_4" prot="public">tlm::scc::tlm_mm_traits&lt; eth::eth_packet_types &gt;</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__mm__traits_3_01spi_1_1spi__packet__types_01_4" prot="public">tlm::scc::tlm_mm_traits&lt; spi::spi_packet_types &gt;</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__mm__traits_3_01tlm_1_1nw_1_1scv_1_1impl_1_1tlm__recording__types_3_01TYPES_01_4_01_4" prot="public">tlm::scc::tlm_mm_traits&lt; tlm::nw::scv::impl::tlm_recording_types&lt; TYPES &gt; &gt;</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__mm__traits_3_01tlm_1_1nw_1_1tlm__network__baseprotocol__types_01_4" prot="public">tlm::scc::tlm_mm_traits&lt; tlm::nw::tlm_network_baseprotocol_types &gt;</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1initiator__mixin" prot="public">tlm::scc::initiator_mixin</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1memory__node" prot="public">tlm::scc::memory_node</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1memory__map__extension" prot="public">tlm::scc::memory_map_extension</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1quantumkeeper__st" prot="public">tlm::scc::quantumkeeper_st</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1signal__initiator__mixin" prot="public">tlm::scc::signal_initiator_mixin</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1signal__target__mixin" prot="public">tlm::scc::signal_target_mixin</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1tagged__initiator__mixin" prot="public">tlm::scc::tagged_initiator_mixin</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1tagged__target__mixin" prot="public">tlm::scc::tagged_target_mixin</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1target__mixin" prot="public">tlm::scc::target_mixin</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1tlm2__pv__av__target__adapter" prot="public">tlm::scc::tlm2_pv_av_target_adapter</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter" prot="public">tlm::scc::tlm2_pv_av_initiator_adapter</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__unmanaged__extension" prot="public">tlm::scc::tlm_unmanaged_extension</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__managed__extension" prot="public">tlm::scc::tlm_managed_extension</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1data__buffer" prot="public">tlm::scc::data_buffer</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__payload__extension" prot="public">tlm::scc::tlm_payload_extension</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr" prot="public">tlm::scc::tlm_payload_shared_ptr</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__id__extension" prot="public">tlm::scc::tlm_id_extension</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1initiator__id__extension" prot="public">tlm::scc::initiator_id_extension</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__gp__mm" prot="public">tlm::scc::tlm_gp_mm</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__gp__mm__t" prot="public">tlm::scc::tlm_gp_mm_t</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__gp__mm__v" prot="public">tlm::scc::tlm_gp_mm_v</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__ext__mm" prot="public">tlm::scc::tlm_ext_mm</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__mm__traits" prot="public">tlm::scc::tlm_mm_traits</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1tlm__mm__t" prot="public">tlm::scc::tlm_mm_t</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1tlm__mm__t_3_01TYPES_00_01CLEANUP__DATA_00_01tlm_1_1tlm__mm__interface_01_4" prot="public">tlm::scc::tlm_mm_t&lt; TYPES, CLEANUP_DATA, tlm::tlm_mm_interface &gt;</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__mm" prot="public">tlm::scc::tlm_mm</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__signal" prot="public">tlm::scc::tlm_signal</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__signal2sc__signal" prot="public">tlm::scc::tlm_signal2sc_signal</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1sc__signal2tlm__signal" prot="public">tlm::scc::sc_signal2tlm_signal</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1tlm__base__mm__interface" prot="public">tlm::scc::tlm_base_mm_interface</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__generic__payload__base" prot="public">tlm::scc::tlm_generic_payload_base</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__signal__gp" prot="public">tlm::scc::tlm_signal_gp</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__signal__baseprotocol__types" prot="public">tlm::scc::tlm_signal_baseprotocol_types</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__signal__fw__transport__if" prot="public">tlm::scc::tlm_signal_fw_transport_if</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__signal__bw__transport__if" prot="public">tlm::scc::tlm_signal_bw_transport_if</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__signal__initiator__socket" prot="public">tlm::scc::tlm_signal_initiator_socket</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__signal__target__socket" prot="public">tlm::scc::tlm_signal_target_socket</innerclass>
+    <innernamespace refid="namespacetlm_1_1scc_1_1lwtr">tlm::scc::lwtr</innernamespace>
+    <innernamespace refid="namespacetlm_1_1scc_1_1pe">tlm::scc::pe</innernamespace>
+    <innernamespace refid="namespacetlm_1_1scc_1_1qk">tlm::scc::qk</innernamespace>
+    <innernamespace refid="namespacetlm_1_1scc_1_1scv">tlm::scc::scv</innernamespace>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1a5f3fdc399dc34ea504f79d01e7178407" prot="public" static="no">
+        <type><ref refid="structtlm_1_1scc_1_1quantumkeeper__st" kindref="compound">quantumkeeper_st</ref></type>
+        <definition>using tlm::scc::quantumkeeper_mt =  quantumkeeper_st</definition>
+        <argsstring></argsstring>
+        <name>quantumkeeper_mt</name>
+        <qualifiedname>tlm::scc::quantumkeeper_mt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper.h" line="11" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1a107f38825c2a8607f1093af66a2c5092" prot="public" static="no">
+        <type><ref refid="structtlm_1_1scc_1_1quantumkeeper__st" kindref="compound">quantumkeeper_st</ref></type>
+        <definition>using tlm::scc::quantumkeeper =  quantumkeeper_st</definition>
+        <argsstring></argsstring>
+        <name>quantumkeeper</name>
+        <qualifiedname>tlm::scc::quantumkeeper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper.h" line="19" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1a8c11d47881e5a284a3db123df0055125" prot="public" static="no">
+        <type><ref refid="classtlm_1_1scc_1_1signal__initiator__mixin" kindref="compound">signal_initiator_mixin</ref>&lt; <ref refid="structtlm_1_1scc_1_1tlm__signal__initiator__socket" kindref="compound">tlm_signal_initiator_socket</ref>&lt; bool &gt; &gt;</type>
+        <definition>using tlm::scc::tlm_signal_bool_out =  signal_initiator_mixin&lt;tlm_signal_initiator_socket&lt;bool&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>tlm_signal_bool_out</name>
+        <qualifiedname>tlm::scc::tlm_signal_bool_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_initiator_mixin.h" line="157" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_initiator_mixin.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1a7fbf477bc00499a05ae540968d58f3c8" prot="public" static="no">
+        <type><ref refid="classtlm_1_1scc_1_1signal__initiator__mixin" kindref="compound">signal_initiator_mixin</ref>&lt; <ref refid="structtlm_1_1scc_1_1tlm__signal__initiator__socket" kindref="compound">tlm_signal_initiator_socket</ref>&lt; sc_dt::sc_logic &gt; &gt;</type>
+        <definition>using tlm::scc::tlm_signal_logic_out =  signal_initiator_mixin&lt;tlm_signal_initiator_socket&lt;sc_dt::sc_logic&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>tlm_signal_logic_out</name>
+        <qualifiedname>tlm::scc::tlm_signal_logic_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_initiator_mixin.h" line="158" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_initiator_mixin.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1a026c19693f48db83fc96e4bad56af36d" prot="public" static="no">
+        <type><ref refid="classtlm_1_1scc_1_1signal__initiator__mixin" kindref="compound">signal_initiator_mixin</ref>&lt; tlm_signal_opt_initiator_socket&lt; bool &gt; &gt;</type>
+        <definition>using tlm::scc::tlm_signal_bool_opt_out =  signal_initiator_mixin&lt;tlm_signal_opt_initiator_socket&lt;bool&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>tlm_signal_bool_opt_out</name>
+        <qualifiedname>tlm::scc::tlm_signal_bool_opt_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_initiator_mixin.h" line="159" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_initiator_mixin.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1ac343a5468fdce689ef8f39bce79848e4" prot="public" static="no">
+        <type><ref refid="classtlm_1_1scc_1_1signal__initiator__mixin" kindref="compound">signal_initiator_mixin</ref>&lt; tlm_signal_opt_initiator_socket&lt; sc_dt::sc_logic &gt; &gt;</type>
+        <definition>using tlm::scc::tlm_signal_logic_opt_out =  signal_initiator_mixin&lt;tlm_signal_opt_initiator_socket&lt;sc_dt::sc_logic&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>tlm_signal_logic_opt_out</name>
+        <qualifiedname>tlm::scc::tlm_signal_logic_opt_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_initiator_mixin.h" line="160" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_initiator_mixin.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1ac39e7496174700c54de0e8f83861041f" prot="public" static="no">
+        <type><ref refid="classtlm_1_1scc_1_1signal__target__mixin" kindref="compound">signal_target_mixin</ref>&lt; <ref refid="structtlm_1_1scc_1_1tlm__signal__target__socket" kindref="compound">tlm_signal_target_socket</ref>&lt; bool &gt; &gt;</type>
+        <definition>using tlm::scc::tlm_signal_bool_in =  signal_target_mixin&lt;tlm_signal_target_socket&lt;bool&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>tlm_signal_bool_in</name>
+        <qualifiedname>tlm::scc::tlm_signal_bool_in</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="146" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1a09e9f1c56e1b2811bfe0e04728f8fc3a" prot="public" static="no">
+        <type><ref refid="classtlm_1_1scc_1_1signal__target__mixin" kindref="compound">signal_target_mixin</ref>&lt; <ref refid="structtlm_1_1scc_1_1tlm__signal__target__socket" kindref="compound">tlm_signal_target_socket</ref>&lt; sc_dt::sc_logic &gt; &gt;</type>
+        <definition>using tlm::scc::tlm_signal_logic_in =  signal_target_mixin&lt;tlm_signal_target_socket&lt;sc_dt::sc_logic&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>tlm_signal_logic_in</name>
+        <qualifiedname>tlm::scc::tlm_signal_logic_in</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="147" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1a2d298dd522eda65441de45bc806f3f12" prot="public" static="no">
+        <type><ref refid="classtlm_1_1scc_1_1signal__target__mixin" kindref="compound">signal_target_mixin</ref>&lt; tlm_signal_opt_target_socket&lt; bool &gt; &gt;</type>
+        <definition>using tlm::scc::tlm_signal_bool_opt_in =  signal_target_mixin&lt;tlm_signal_opt_target_socket&lt;bool&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>tlm_signal_bool_opt_in</name>
+        <qualifiedname>tlm::scc::tlm_signal_bool_opt_in</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="148" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1a82256da31180cdce4dbe92e3a1585315" prot="public" static="no">
+        <type><ref refid="classtlm_1_1scc_1_1signal__target__mixin" kindref="compound">signal_target_mixin</ref>&lt; tlm_signal_opt_target_socket&lt; sc_dt::sc_logic &gt; &gt;</type>
+        <definition>using tlm::scc::tlm_signal_logic_opt_in =  signal_target_mixin&lt;tlm_signal_opt_target_socket&lt;sc_dt::sc_logic&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>tlm_signal_logic_opt_in</name>
+        <qualifiedname>tlm::scc::tlm_signal_logic_opt_in</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" line="149" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1aaf56a4c3cd9ae82ea08485cff35f1477" prot="public" static="no">
+        <type><ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr" kindref="compound">tlm_payload_shared_ptr</ref>&lt; tlm::tlm_generic_payload &gt;</type>
+        <definition>using tlm::scc::tlm_gp_shared_ptr =  tlm_payload_shared_ptr&lt;tlm::tlm_generic_payload&gt;</definition>
+        <argsstring></argsstring>
+        <name>tlm_gp_shared_ptr</name>
+        <qualifiedname>tlm::scc::tlm_gp_shared_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="111" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1aeb1171ed2de2aec96595ee373a63d244" prot="public" static="no">
+        <type>sc_core::sc_type_index</type>
+        <definition>using tlm::scc::type_index =  sc_core::sc_type_index</definition>
+        <argsstring></argsstring>
+        <name>type_index</name>
+        <qualifiedname>tlm::scc::type_index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" line="58" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1a127bda041f365eed72596d37cfe0140b" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename SIG</type>
+            <defval>bool</defval>
+          </param>
+          <param>
+            <type>typename TYPES</type>
+            <defval>tlm_signal_baseprotocol_types&lt;SIG&gt;</defval>
+          </param>
+          <param>
+            <type>int</type>
+            <declname>N</declname>
+            <defname>N</defname>
+            <defval>1</defval>
+          </param>
+        </templateparamlist>
+        <type>struct <ref refid="structtlm_1_1scc_1_1tlm__signal__initiator__socket" kindref="compound">tlm_signal_initiator_socket</ref>&lt; SIG, TYPES, N, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</type>
+        <definition>using tlm::scc::tlm_signal_opt_initiator_socket =  struct tlm_signal_initiator_socket&lt;SIG, TYPES, N, sc_core::SC_ZERO_OR_MORE_BOUND&gt;</definition>
+        <argsstring></argsstring>
+        <name>tlm_signal_opt_initiator_socket</name>
+        <qualifiedname>tlm::scc::tlm_signal_opt_initiator_socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" line="84" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacetlm_1_1scc_1a6271e57e9163f540f9190a05f3dbceb7" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename SIG</type>
+            <defval>bool</defval>
+          </param>
+          <param>
+            <type>typename TYPES</type>
+            <defval>tlm_signal_baseprotocol_types&lt;SIG&gt;</defval>
+          </param>
+          <param>
+            <type>int</type>
+            <declname>N</declname>
+            <defname>N</defname>
+            <defval>1</defval>
+          </param>
+        </templateparamlist>
+        <type>struct <ref refid="structtlm_1_1scc_1_1tlm__signal__target__socket" kindref="compound">tlm_signal_target_socket</ref>&lt; SIG, TYPES, N, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</type>
+        <definition>using tlm::scc::tlm_signal_opt_target_socket =  struct tlm_signal_target_socket&lt;SIG, TYPES, N, sc_core::SC_ZERO_OR_MORE_BOUND&gt;</definition>
+        <argsstring></argsstring>
+        <name>tlm_signal_opt_target_socket</name>
+        <qualifiedname>tlm::scc::tlm_signal_opt_target_socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" line="107" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacetlm_1_1scc_1aa8e715455875d1ccfb39187a5bee3781" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename TYPES</type>
+            <defval>tlm::tlm_base_protocol_types</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structtlm_1_1scc_1_1memory__node" kindref="compound">memory_node</ref></type>
+        <definition>memory_node tlm::scc::gather_memory</definition>
+        <argsstring>(sc_core::sc_port_b&lt; tlm::tlm_fw_transport_if&lt; TYPES &gt; &gt; &amp;port)</argsstring>
+        <name>gather_memory</name>
+        <qualifiedname>tlm::scc::gather_memory</qualifiedname>
+        <param>
+          <type>sc_core::sc_port_b&lt; tlm::tlm_fw_transport_if&lt; TYPES &gt; &gt; &amp;</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" line="55" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" bodystart="55" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1scc_1a47b342dbbf17e270f3fc7b65c23cb682" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; tlm::scc::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, tlm_payload_shared_ptr&lt; T &gt; const &amp;p)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>tlm::scc::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type><ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr" kindref="compound">tlm_payload_shared_ptr</ref>&lt; T &gt; const &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="96" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="96" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1scc_1aeecffadc9f4f64988624538d3be9fe33" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool tlm::scc::operator==</definition>
+        <argsstring>(tlm_payload_shared_ptr&lt; T &gt; const &amp;x, tlm_payload_shared_ptr&lt; T &gt; const &amp;y) noexcept</argsstring>
+        <name>operator==</name>
+        <qualifiedname>tlm::scc::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr" kindref="compound">tlm_payload_shared_ptr</ref>&lt; T &gt; const &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr" kindref="compound">tlm_payload_shared_ptr</ref>&lt; T &gt; const &amp;</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="101" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="101" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1scc_1a06f8fe660e2c5915015ad9223446807f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool tlm::scc::operator==</definition>
+        <argsstring>(tlm_payload_shared_ptr&lt; T &gt; const &amp;x, T *y) noexcept</argsstring>
+        <name>operator==</name>
+        <qualifiedname>tlm::scc::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr" kindref="compound">tlm_payload_shared_ptr</ref>&lt; T &gt; const &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>T *</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="105" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="105" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1scc_1afd953a45c100ce3392ead3e33c03d55a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool tlm::scc::operator!=</definition>
+        <argsstring>(tlm_payload_shared_ptr&lt; T &gt; const &amp;x, tlm_payload_shared_ptr&lt; T &gt; const &amp;y) noexcept</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>tlm::scc::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr" kindref="compound">tlm_payload_shared_ptr</ref>&lt; T &gt; const &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr" kindref="compound">tlm_payload_shared_ptr</ref>&lt; T &gt; const &amp;</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="107" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="107" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1scc_1a5e198cfd617f5e71d31080c318fa3169" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uintptr_t</type>
+        <definition>uintptr_t tlm::scc::getId</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;gp)</argsstring>
+        <name>getId</name>
+        <qualifiedname>tlm::scc::getId</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>gp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" line="39" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" bodystart="39" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1scc_1a29fe805079e222d55b66ae28d9631835" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uintptr_t</type>
+        <definition>uintptr_t tlm::scc::getId</definition>
+        <argsstring>(tlm::tlm_generic_payload *gp)</argsstring>
+        <name>getId</name>
+        <qualifiedname>tlm::scc::getId</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload *</type>
+          <declname>gp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" line="46" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" bodystart="46" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacetlm_1_1scc_1abe20de0d64966f14ff0171d6e13cb4b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::setId</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;gp, uintptr_t id)</argsstring>
+        <name>setId</name>
+        <qualifiedname>tlm::scc::setId</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>gp</declname>
+        </param>
+        <param>
+          <type>uintptr_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" line="55" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_id.h" bodystart="55" bodyend="62"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>SCC TLM utilities. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axis/axis_tlm.h" line="56" column="1"/>
+  </compounddef>
+</doxygen>

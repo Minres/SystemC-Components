@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1qk_1_1comms__entry" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::qk::comms_entry</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1comms__entry_1af4ad1445a3814452a293eb0759e30125" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t tlm::scc::qk::comms_entry::time_tick</definition>
+        <argsstring></argsstring>
+        <name>time_tick</name>
+        <qualifiedname>tlm::scc::qk::comms_entry::time_tick</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" line="25" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1comms__entry_1a6bbd754407cbcd97b6f8bdbe71467fdc" prot="public" static="no" mutable="no">
+        <type>callback_task</type>
+        <definition>callback_task tlm::scc::qk::comms_entry::task</definition>
+        <argsstring></argsstring>
+        <name>task</name>
+        <qualifiedname>tlm::scc::qk::comms_entry::task</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" line="26" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" line="24" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" bodystart="24" bodyend="27"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1qk_1_1comms__entry_1a6bbd754407cbcd97b6f8bdbe71467fdc" prot="public" virt="non-virtual"><scope>tlm::scc::qk::comms_entry</scope><name>task</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1comms__entry_1af4ad1445a3814452a293eb0759e30125" prot="public" virt="non-virtual"><scope>tlm::scc::qk::comms_entry</scope><name>time_tick</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

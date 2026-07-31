@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classaxi_1_1pe_1_1target__info__if" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>axi::pe::target_info_if</compoundname>
+    <derivedcompoundref refid="classaxi_1_1pe_1_1simple__target" prot="public" virt="non-virtual">axi::pe::simple_target&lt; 32 &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classaxi_1_1pe_1_1ordered__target" prot="public" virt="non-virtual">axi::pe::ordered_target&lt; BUSWIDTH, TYPES, N, POL &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classaxi_1_1pe_1_1reordering__target" prot="public" virt="non-virtual">axi::pe::reordering_target&lt; BUSWIDTH, TYPES, N, POL &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classaxi_1_1pe_1_1replay__target" prot="public" virt="non-virtual">axi::pe::replay_target&lt; BUSWIDTH, TYPES, N, POL &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classaxi_1_1pe_1_1simple__target" prot="public" virt="non-virtual">axi::pe::simple_target&lt; BUSWIDTH, TYPES, N, POL &gt;</derivedcompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classaxi_1_1pe_1_1target__info__if_1aaaf50a3ff1ded66912de03102a103d85" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual axi::pe::target_info_if::~target_info_if</definition>
+        <argsstring>()=default</argsstring>
+        <name>~target_info_if</name>
+        <qualifiedname>axi::pe::target_info_if::~target_info_if</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/target_info_if.h" line="18" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1target__info__if_1a1ccb7acff97230b07b1e9efca056176a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>size_t</type>
+        <definition>virtual size_t axi::pe::target_info_if::get_outstanding_tx_count</definition>
+        <argsstring>()=0</argsstring>
+        <name>get_outstanding_tx_count</name>
+        <qualifiedname>axi::pe::target_info_if::get_outstanding_tx_count</qualifiedname>
+        <reimplementedby refid="classaxi_1_1pe_1_1ordered__target_1ad71c15a4e2eee8c0d55d947d0912cceb">get_outstanding_tx_count</reimplementedby>
+        <reimplementedby refid="classaxi_1_1pe_1_1reordering__target_1ad0fc4589cd63b309f7d4c912796fdcbd">get_outstanding_tx_count</reimplementedby>
+        <reimplementedby refid="classaxi_1_1pe_1_1replay__target_1a7fbb68259b7a4c352772d0c13d9370ac">get_outstanding_tx_count</reimplementedby>
+        <reimplementedby refid="classaxi_1_1pe_1_1simple__target_1a19f7d02376163d5b0bdfa0fd316edec6">get_outstanding_tx_count</reimplementedby>
+        <reimplementedby refid="classaxi_1_1pe_1_1simple__target_1a19f7d02376163d5b0bdfa0fd316edec6">get_outstanding_tx_count</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/target_info_if.h" line="20" column="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>axi::pe::ordered_target&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classaxi_1_1pe_1_1ordered__target"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>axi::pe::reordering_target&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classaxi_1_1pe_1_1reordering__target"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>axi::pe::replay_target&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classaxi_1_1pe_1_1replay__target"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>axi::pe::simple_target&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classaxi_1_1pe_1_1simple__target"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>axi::pe::simple_target&lt; 32 &gt;</label>
+        <link refid="classaxi_1_1pe_1_1simple__target"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>axi::pe::target_info_if</label>
+        <link refid="classaxi_1_1pe_1_1target__info__if"/>
+      </node>
+    </inheritancegraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/target_info_if.h" line="16" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/target_info_if.h" bodystart="16" bodyend="21"/>
+    <listofallmembers>
+      <member refid="classaxi_1_1pe_1_1target__info__if_1a1ccb7acff97230b07b1e9efca056176a" prot="public" virt="pure-virtual"><scope>axi::pe::target_info_if</scope><name>get_outstanding_tx_count</name></member>
+      <member refid="classaxi_1_1pe_1_1target__info__if_1aaaf50a3ff1ded66912de03102a103d85" prot="public" virt="virtual"><scope>axi::pe::target_info_if</scope><name>~target_info_if</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

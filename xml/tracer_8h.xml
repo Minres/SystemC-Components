@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="tracer_8h" kind="file" language="C++">
+    <compoundname>tracer.h</compoundname>
+    <includes refid="tracer__base_8h" local="yes">tracer_base.h</includes>
+    <includes local="no">cci_configuration</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">string</includes>
+    <includedby refid="configurable__tracer_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h</includedby>
+    <includedby refid="hierarchy__dumper_8cpp" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.cpp</includedby>
+    <includedby refid="tracer_8cpp" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer.cpp</includedby>
+    <includedby refid="scc__sysc_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc_sysc.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer.h</label>
+        <link refid="tracer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tracer_base.h</label>
+        <link refid="tracer__base_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>utilities.h</label>
+        <link refid="utilities_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>array</label>
+      </node>
+      <node id="9">
+        <label>cci_configuration</label>
+      </node>
+      <node id="5">
+        <label>cctype</label>
+      </node>
+      <node id="6">
+        <label>limits</label>
+      </node>
+      <node id="10">
+        <label>locale</label>
+      </node>
+      <node id="7">
+        <label>memory</label>
+      </node>
+      <node id="13">
+        <label>string</label>
+      </node>
+      <node id="11">
+        <label>sysc/tracing/sc_trace.h</label>
+      </node>
+      <node id="8">
+        <label>systemc</label>
+      </node>
+      <node id="12">
+        <label>type_traits</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/scc.h</label>
+        <link refid="scc_8h_source"/>
+      </node>
+      <node id="3">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp</label>
+        <link refid="configurable__tracer_8cpp_source"/>
+      </node>
+      <node id="2">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h</label>
+        <link refid="configurable__tracer_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/hierarchy_dumper.cpp</label>
+        <link refid="hierarchy__dumper_8cpp_source"/>
+      </node>
+      <node id="7">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer.cpp</label>
+        <link refid="tracer_8cpp_source"/>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer.h</label>
+        <link refid="tracer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc_sysc.h</label>
+        <link refid="scc__sysc_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classscc_1_1tracer" prot="public">scc::tracer</innerclass>
+    <innernamespace refid="namespacescv__tr">scv_tr</innernamespace>
+    <innernamespace refid="namespacelwtr">lwtr</innernamespace>
+    <innernamespace refid="namespacesc__core">sc_core</innernamespace>
+    <innernamespace refid="namespacescc">scc</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2016,<sp/>2018<sp/>MINRES<sp/>Technologies<sp/>GmbH</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SCC_TRACER_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SCC_TRACER_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;tracer_base.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cci_configuration&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAS_SCV</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">scv_tr_db;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacescv__tr" kindref="compound">scv_tr</ref><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">scv_tr_db;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">lwtr<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">tx_db;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">sc_core<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">sc_object;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">sc_trace_file;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>sc_core</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacescc" kindref="compound">scc</ref><sp/>{</highlight></codeline>
+<codeline lineno="51" refid="classscc_1_1tracer" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">tracer<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structscc_1_1tracer__base_1aa001f2732378922fbc4414fa8ae4bfa5" kindref="member">tracer_base</ref><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="59" refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NONE,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ENABLE,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TEXT,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>COMPRESSED,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SQLITE,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FTR,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CFTR,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LWFTR,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LWCFTR,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CUSTOM,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SC_VCD<sp/>=<sp/>TEXT,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PULL_VCD<sp/>=<sp/>COMPRESSED,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSH_VCD<sp/>=<sp/>SQLITE,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FST</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="classscc_1_1tracer_1a1a5e513e41ff3a869d70411e1c9695ca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param_handle<sp/><ref refid="classscc_1_1tracer_1a1a5e513e41ff3a869d70411e1c9695ca" kindref="member">tx_trace_type_handle</ref>;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classscc_1_1tracer_1af7b87aee0ff20b10d0016282c77a9bb1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param_handle<sp/><ref refid="classscc_1_1tracer_1af7b87aee0ff20b10d0016282c77a9bb1" kindref="member">sig_trace_type_handle</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classscc_1_1tracer_1ae56b0396e64124ed07fb619f9b84f875" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>cci::cci_param_handle<sp/><ref refid="classscc_1_1tracer_1ae56b0396e64124ed07fb619f9b84f875" kindref="member">close_db_in_eos_handle</ref>;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>tracer(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;&amp;<sp/>name,<sp/><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>tx_type,<sp/><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>sig_type,<sp/>sc_core::sc_object*<sp/>top<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>tracer(std::move(name),<sp/>tx_type,<sp/>sig_type,<sp/>top,<sp/><ref refid="structscc_1_1tracer__base_1aa001f2732378922fbc4414fa8ae4bfa5" kindref="member">tracer_base</ref>::get_name().c_str())<sp/>{}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1tracer" kindref="compound">tracer</ref>(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>name,<sp/><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>tx_type<sp/>=<sp/>ENABLE,<sp/><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>sig_type<sp/>=<sp/>ENABLE,<sp/>sc_core::sc_object*<sp/>top<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classscc_1_1tracer" kindref="compound">tracer</ref>(std::string(name),<sp/>tx_type,<sp/>sig_type,<sp/>top)<sp/>{}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>tracer(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;&amp;<sp/>name,<sp/><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>type,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>sc_core::sc_object*<sp/>top<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>tracer(name,<sp/>type,<sp/>enable<sp/>?<sp/>ENABLE<sp/>:<sp/>NONE,<sp/>top)<sp/>{}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>tracer(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>name,<sp/><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>type,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>sc_core::sc_object*<sp/>top<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>tracer(name,<sp/><ref refid="namespacetlm_1_1scc_1_1pe_1a6a6eec1885e2ecc7d636ae07c13d7287" kindref="member">type</ref>,<sp/>enable<sp/>?<sp/>ENABLE<sp/>:<sp/>NONE,<sp/>top)<sp/>{}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>tracer(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;&amp;<sp/>name,<sp/><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>type,<sp/>sc_core::sc_trace_file*<sp/>tf,<sp/>sc_core::sc_object*<sp/>top<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>tracer(std::move(name),<sp/><ref refid="namespacetlm_1_1scc_1_1pe_1a6a6eec1885e2ecc7d636ae07c13d7287" kindref="member">type</ref>,<sp/>tf,<sp/>top,<sp/><ref refid="structscc_1_1tracer__base_1aa001f2732378922fbc4414fa8ae4bfa5" kindref="member">tracer_base</ref>::get_name().c_str())<sp/>{}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>tracer(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>name,<sp/><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>type,<sp/>sc_core::sc_trace_file*<sp/>tf,<sp/>sc_core::sc_object*<sp/>top<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>tracer(std::string(name),<sp/><ref refid="namespacetlm_1_1scc_1_1pe_1a6a6eec1885e2ecc7d636ae07c13d7287" kindref="member">type</ref>,<sp/>tf,<sp/>top)<sp/>{}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1tracer_1ac9c6bc0cb7994fe4e8f3fb9c715e2364" kindref="member">~tracer</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>tracer(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;&amp;<sp/>name,<sp/><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>tx_type,<sp/><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>sig_type,<sp/>sc_core::sc_object*<sp/>top,<sp/>sc_core::sc_module_name<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>nm);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>tracer(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;&amp;<sp/>name,<sp/><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>type,<sp/>sc_core::sc_trace_file*<sp/>tf,<sp/>sc_core::sc_object*<sp/>top,</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sc_core::sc_module_name<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>nm);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>end_of_elaboration()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>end_of_simulation()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAS_SCV</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>scv_tr_db*<sp/>txdb;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>scv_tr::scv_tr_db*<sp/>txdb{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>lwtr::tx_db*<sp/>lwtr_db{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;cci::cci_param&lt;unsigned&gt;&gt;<sp/>tx_trace_type;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;cci::cci_param&lt;unsigned&gt;&gt;<sp/>sig_trace_type;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;cci::cci_param&lt;bool&gt;&gt;<sp/>close_db_in_eos;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>init_tx_db(<ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>type,<sp/>std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;&amp;<sp/>name);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>init_cci_handles();</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>owned{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>scc<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>of<sp/>scc-sysc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>_SCC_TRACER_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer.h"/>
+  </compounddef>
+</doxygen>

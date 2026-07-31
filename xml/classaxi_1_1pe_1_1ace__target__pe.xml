@@ -1,0 +1,1088 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classaxi_1_1pe_1_1ace__target__pe" kind="class" language="C++" prot="public">
+    <compoundname>axi::pe::ace_target_pe</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref refid="structaxi_1_1fsm_1_1base" prot="protected" virt="non-virtual">axi::fsm::base</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">axi::axi_bw_transport_if&lt; axi::axi_protocol_types &gt;</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">axi::ace_fw_transport_if&lt; axi::axi_protocol_types &gt;</basecompoundref>
+    <derivedcompoundref refid="classaxi_1_1pe_1_1simple__ace__target" prot="public" virt="non-virtual">axi::pe::simple_ace_target&lt; BUSWIDTH, TYPES, N, POL &gt;</derivedcompoundref>
+    <includes refid="ace__target__pe_8h" local="no">ace_target_pe.h</includes>
+    <innerclass refid="structace__target__pe_1_1bw__intor__impl" prot="public">ace_target_pe::bw_intor_impl</innerclass>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classaxi_1_1pe_1_1ace__target__pe_1ae889973eb131a8543f875092f70598cb" prot="public" static="no">
+        <type>axi::axi_protocol_types::tlm_payload_type</type>
+        <definition>using axi::pe::ace_target_pe::payload_type =  axi::axi_protocol_types::tlm_payload_type</definition>
+        <argsstring></argsstring>
+        <name>payload_type</name>
+        <qualifiedname>axi::pe::ace_target_pe::payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="48" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classaxi_1_1pe_1_1ace__target__pe_1a9d0786e799837fae2fe45b2cef0df1d9" prot="public" static="no">
+        <type>axi::axi_protocol_types::tlm_phase_type</type>
+        <definition>using axi::pe::ace_target_pe::phase_type =  axi::axi_protocol_types::tlm_phase_type</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>axi::pe::ace_target_pe::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="49" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1a95702d1dda372046e4bdce40ed454c22" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; axi::pe::ace_target_pe::clk_i</definition>
+        <argsstring></argsstring>
+        <name>clk_i</name>
+        <qualifiedname>axi::pe::ace_target_pe::clk_i</qualifiedname>
+        <initializer>{&quot;clk_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="51" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1a96a9bc5ec265fd216ef062dcd38cf407" prot="public" static="no" mutable="no">
+        <type><ref refid="structaxi_1_1axi__initiator__socket" kindref="compound">axi::axi_initiator_socket</ref>&lt; 64 &gt;</type>
+        <definition>axi::axi_initiator_socket&lt;64&gt; axi::pe::ace_target_pe::isckt_axi</definition>
+        <argsstring></argsstring>
+        <name>isckt_axi</name>
+        <qualifiedname>axi::pe::ace_target_pe::isckt_axi</qualifiedname>
+        <initializer>{&quot;isckt_axi&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="54" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="54" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1a3932c32d235f73c1d217c64cb18bc461" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_port&lt; <ref refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb" kindref="compound">tlm::scc::pe::intor_fw_nb</ref>, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</type>
+        <definition>sc_core::sc_port&lt;tlm::scc::pe::intor_fw_nb, 1, sc_core::SC_ZERO_OR_MORE_BOUND&gt; axi::pe::ace_target_pe::fw_o</definition>
+        <argsstring></argsstring>
+        <name>fw_o</name>
+        <qualifiedname>axi::pe::ace_target_pe::fw_o</qualifiedname>
+        <initializer>{&quot;fw_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="56" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1a0eb2b1131d8e8a9cebf04c5f1742ceb5" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_export&lt; <ref refid="structtlm_1_1scc_1_1pe_1_1intor__bw__nb" kindref="compound">tlm::scc::pe::intor_bw_nb</ref> &gt;</type>
+        <definition>sc_core::sc_export&lt;tlm::scc::pe::intor_bw_nb&gt; axi::pe::ace_target_pe::bw_i</definition>
+        <argsstring></argsstring>
+        <name>bw_i</name>
+        <qualifiedname>axi::pe::ace_target_pe::bw_i</qualifiedname>
+        <initializer>{&quot;bw_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="58" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1a4708de7277fd53314109b2caad1f76d0" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; int &gt;</type>
+        <definition>cci::cci_param&lt;int&gt; axi::pe::ace_target_pe::rd_resp_delay</definition>
+        <argsstring></argsstring>
+        <name>rd_resp_delay</name>
+        <qualifiedname>axi::pe::ace_target_pe::rd_resp_delay</qualifiedname>
+        <initializer>{&quot;rd_resp_delay&quot;, 0}</initializer>
+        <briefdescription>
+<para>the latency between read request and response phase. Will be overwritten by the return of the callback function (if registered) -&gt; RIV </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="63" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1a40e6a6775e6bb83df83e7df6b26988ea" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; int &gt;</type>
+        <definition>cci::cci_param&lt;int&gt; axi::pe::ace_target_pe::wr_resp_delay</definition>
+        <argsstring></argsstring>
+        <name>wr_resp_delay</name>
+        <qualifiedname>axi::pe::ace_target_pe::wr_resp_delay</qualifiedname>
+        <initializer>{&quot;wr_resp_delay&quot;, 0}</initializer>
+        <briefdescription>
+<para>the latency between write request and response phase. Will be overwritten by the return of the callback function (if registered) -&gt; BV </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="68" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1ae1aa1a2572879e34c39ad117748c02df" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespaceaxi_1a805751c34d41d1e062fb5d9cae799971" kindref="member">axi::axi_bw_transport_if</ref>&lt; <ref refid="structaxi_1_1axi__protocol__types" kindref="compound">axi_protocol_types</ref> &gt; *</type>
+        <definition>axi::axi_bw_transport_if&lt;axi_protocol_types&gt;* axi::pe::ace_target_pe::socket_bw</definition>
+        <argsstring></argsstring>
+        <name>socket_bw</name>
+        <qualifiedname>axi::pe::ace_target_pe::socket_bw</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="156" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="156" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1af850e72a0efcc32d093118cdc45e202b" prot="protected" static="no" mutable="no">
+        <type>std::function&lt; unsigned(payload_type &amp;trans)&gt;</type>
+        <definition>std::function&lt;unsigned(payload_type&amp; trans)&gt; axi::pe::ace_target_pe::operation_cb</definition>
+        <argsstring></argsstring>
+        <name>operation_cb</name>
+        <qualifiedname>axi::pe::ace_target_pe::operation_cb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="157" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1a01d192ce71edc5905d42068ad68d4917" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_fifo&lt; payload_type * &gt;</type>
+        <definition>sc_core::sc_fifo&lt;payload_type*&gt; axi::pe::ace_target_pe::rd_resp_fifo</definition>
+        <argsstring></argsstring>
+        <name>rd_resp_fifo</name>
+        <qualifiedname>axi::pe::ace_target_pe::rd_resp_fifo</qualifiedname>
+        <initializer>{1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="158" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="158" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1a10487cd5bdcccf04ad894054afc1b3c6" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_fifo&lt; payload_type * &gt;</type>
+        <definition>sc_core::sc_fifo&lt;payload_type*&gt; axi::pe::ace_target_pe::wr_resp_fifo</definition>
+        <argsstring></argsstring>
+        <name>wr_resp_fifo</name>
+        <qualifiedname>axi::pe::ace_target_pe::wr_resp_fifo</qualifiedname>
+        <initializer>{1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="158" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="158" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1a781fccbb14dae512357f738b8e500e23" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_fifo&lt; std::tuple&lt; <ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">fsm::fsm_handle</ref> *, axi::fsm::protocol_time_point_e &gt; &gt;</type>
+        <definition>sc_core::sc_fifo&lt;std::tuple&lt;fsm::fsm_handle*, axi::fsm::protocol_time_point_e&gt; &gt; axi::pe::ace_target_pe::wr_resp_beat_fifo</definition>
+        <argsstring></argsstring>
+        <name>wr_resp_beat_fifo</name>
+        <qualifiedname>axi::pe::ace_target_pe::wr_resp_beat_fifo</qualifiedname>
+        <initializer>{128}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="160" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="160" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1a8aa438af42b68e281b66e95d7296682d" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_fifo&lt; std::tuple&lt; <ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">fsm::fsm_handle</ref> *, axi::fsm::protocol_time_point_e &gt; &gt;</type>
+        <definition>sc_core::sc_fifo&lt;std::tuple&lt;fsm::fsm_handle*, axi::fsm::protocol_time_point_e&gt; &gt; axi::pe::ace_target_pe::rd_resp_beat_fifo</definition>
+        <argsstring></argsstring>
+        <name>rd_resp_beat_fifo</name>
+        <qualifiedname>axi::pe::ace_target_pe::rd_resp_beat_fifo</qualifiedname>
+        <initializer>{128}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="160" column="40" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="160" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1aadeeb194d50faffb5f161db699fa7f33" prot="protected" static="no" mutable="no">
+        <type><ref refid="classscc_1_1ordered__semaphore" kindref="compound">scc::ordered_semaphore</ref></type>
+        <definition>scc::ordered_semaphore axi::pe::ace_target_pe::rd_resp</definition>
+        <argsstring></argsstring>
+        <name>rd_resp</name>
+        <qualifiedname>axi::pe::ace_target_pe::rd_resp</qualifiedname>
+        <initializer>{1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="161" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="161" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1ae848e25814c8e76dfdfbd26c4c25e107" prot="protected" static="no" mutable="no">
+        <type><ref refid="classscc_1_1ordered__semaphore" kindref="compound">scc::ordered_semaphore</ref></type>
+        <definition>scc::ordered_semaphore axi::pe::ace_target_pe::wr_resp_ch</definition>
+        <argsstring></argsstring>
+        <name>wr_resp_ch</name>
+        <qualifiedname>axi::pe::ace_target_pe::wr_resp_ch</qualifiedname>
+        <initializer>{1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="161" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="161" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1aaa64185f258601c9a55c2abd2990c22e" prot="protected" static="no" mutable="no">
+        <type><ref refid="classscc_1_1ordered__semaphore" kindref="compound">scc::ordered_semaphore</ref></type>
+        <definition>scc::ordered_semaphore axi::pe::ace_target_pe::rd_resp_ch</definition>
+        <argsstring></argsstring>
+        <name>rd_resp_ch</name>
+        <qualifiedname>axi::pe::ace_target_pe::rd_resp_ch</qualifiedname>
+        <initializer>{1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="161" column="47" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="161" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1af015c960ce171c77ff0fe3e86cdd5b3c" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_clock *</type>
+        <definition>sc_core::sc_clock* axi::pe::ace_target_pe::clk_if</definition>
+        <argsstring></argsstring>
+        <name>clk_if</name>
+        <qualifiedname>axi::pe::ace_target_pe::clk_if</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="163" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="163" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1ae3e5eb3aa28494cbf754f68c8142a9c5" prot="protected" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="structace__target__pe_1_1bw__intor__impl" kindref="compound">bw_intor_impl</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;bw_intor_impl&gt; axi::pe::ace_target_pe::bw_intor</definition>
+        <argsstring></argsstring>
+        <name>bw_intor</name>
+        <qualifiedname>axi::pe::ace_target_pe::bw_intor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="164" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1a1e47c69e698861109b84e3fc3a307d38" prot="protected" static="no" mutable="no">
+        <type>std::array&lt; unsigned, 3 &gt;</type>
+        <definition>std::array&lt;unsigned, 3&gt; axi::pe::ace_target_pe::outstanding_cnt</definition>
+        <argsstring></argsstring>
+        <name>outstanding_cnt</name>
+        <qualifiedname>axi::pe::ace_target_pe::outstanding_cnt</qualifiedname>
+        <initializer>{{0, 0, 0}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="165" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="165" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1a8d1c786c0ba1685edf88e759ace0d9f3" prot="protected" static="no" mutable="no">
+        <type>tlm_utils::peq_with_cb_and_phase&lt; <ref refid="classaxi_1_1pe_1_1ace__target__pe_1a82790b1a10222ec1ba65ba11d4d176ee" kindref="member">ace_target_pe</ref> &gt;</type>
+        <definition>tlm_utils::peq_with_cb_and_phase&lt;ace_target_pe&gt; axi::pe::ace_target_pe::fw_peq</definition>
+        <argsstring></argsstring>
+        <name>fw_peq</name>
+        <qualifiedname>axi::pe::ace_target_pe::fw_peq</qualifiedname>
+        <initializer>{this, &amp;ace_target_pe::nb_fw}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="171" column="38" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="171" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1ace__target__pe_1a952ad95350e7a5f6a690610ff04cdb0f" prot="protected" static="no" mutable="no">
+        <type>std::unordered_set&lt; unsigned &gt;</type>
+        <definition>std::unordered_set&lt;unsigned&gt; axi::pe::ace_target_pe::active_rdresp_id</definition>
+        <argsstring></argsstring>
+        <name>active_rdresp_id</name>
+        <qualifiedname>axi::pe::ace_target_pe::active_rdresp_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="172" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="172" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1aee6de2689874daf44969119e7fe666a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ace_target_pe::b_transport</definition>
+        <argsstring>(payload_type &amp;trans, sc_core::sc_time &amp;t) override</argsstring>
+        <name>b_transport</name>
+        <qualifiedname>axi::pe::ace_target_pe::b_transport</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="70" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" bodystart="88" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a5c12487466121a9165dc1f21c1f3a1e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm_sync_enum ace_target_pe::nb_transport_fw</definition>
+        <argsstring>(payload_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t) override</argsstring>
+        <name>nb_transport_fw</name>
+        <qualifiedname>axi::pe::ace_target_pe::nb_transport_fw</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="72" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" bodystart="98" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1ab04d4d967c53804ae54bdae8f715e4d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ace_target_pe::get_direct_mem_ptr</definition>
+        <argsstring>(payload_type &amp;trans, tlm::tlm_dmi &amp;dmi_data) override</argsstring>
+        <name>get_direct_mem_ptr</name>
+        <qualifiedname>axi::pe::ace_target_pe::get_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_dmi &amp;</type>
+          <declname>dmi_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="74" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" bodystart="114" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a3f4ae6b7e6849231b6dc0046e76b6f2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int ace_target_pe::transport_dbg</definition>
+        <argsstring>(payload_type &amp;trans) override</argsstring>
+        <name>transport_dbg</name>
+        <qualifiedname>axi::pe::ace_target_pe::transport_dbg</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="76" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" bodystart="119" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a5efdb0544aea6dc9e2dd105b86480e54" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::ace_target_pe::set_operation_cb</definition>
+        <argsstring>(std::function&lt; unsigned(payload_type &amp;trans)&gt; cb)</argsstring>
+        <name>set_operation_cb</name>
+        <qualifiedname>axi::pe::ace_target_pe::set_operation_cb</qualifiedname>
+        <param>
+          <type>std::function&lt; unsigned(payload_type &amp;trans)&gt;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Set the operation callback function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This callback is invoked once a transaction arrives. This function is not allowed to block and returns the latency of the operation i.e. the duration until the reponse phase starts <xrefsect id="todo_1_todo000006"><xreftitle>Todo</xreftitle><xrefdescription><para>refine API</para>
+</xrefdescription></xrefsect></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the callback function </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="87" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="87" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a008c71cd290c6e88971ba71b0a36835b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::ace_target_pe::operation_resp</definition>
+        <argsstring>(payload_type &amp;trans, unsigned clk_delay=0)</argsstring>
+        <name>operation_resp</name>
+        <qualifiedname>axi::pe::ace_target_pe::operation_resp</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>clk_delay</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>start the response from an operation callback if latency is not set by the callback</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sync</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="94" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1aff66caa477d0b90a7bd4eb32d928616c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool axi::pe::ace_target_pe::is_active</definition>
+        <argsstring>()</argsstring>
+        <name>is_active</name>
+        <qualifiedname>axi::pe::ace_target_pe::is_active</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns true if any transaction is still in flight</para>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="100" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="100" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a83fda3b5169048d2824d30c1e4bce38a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const sc_core::sc_event &amp;</type>
+        <definition>const sc_core::sc_event &amp; axi::pe::ace_target_pe::tx_finish_event</definition>
+        <argsstring>()</argsstring>
+        <name>tx_finish_event</name>
+        <qualifiedname>axi::pe::ace_target_pe::tx_finish_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the event being notfied upon the finishing of a transaction</para>
+<para><simplesect kind="return"><para>reference to sc_event </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="106" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="106" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a7b44dab1263ee848a00578ca38ec8c67" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum axi::pe::ace_target_pe::nb_transport_bw</definition>
+        <argsstring>(payload_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t) override</argsstring>
+        <name>nb_transport_bw</name>
+        <qualifiedname>axi::pe::ace_target_pe::nb_transport_bw</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="109" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="109" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a9d15f27415ffccf2f95cd45329793d1b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::ace_target_pe::invalidate_direct_mem_ptr</definition>
+        <argsstring>(sc_dt::uint64 start_range, sc_dt::uint64 end_range) override</argsstring>
+        <name>invalidate_direct_mem_ptr</name>
+        <qualifiedname>axi::pe::ace_target_pe::invalidate_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>start_range</declname>
+        </param>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>end_range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="114" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="114" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a2656ccc3d9d7bb084f00d0f7b4c730d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>ace_target_pe::~ace_target_pe</definition>
+        <argsstring>()</argsstring>
+        <name>~ace_target_pe</name>
+        <qualifiedname>axi::pe::ace_target_pe::~ace_target_pe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="116" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a82790b1a10222ec1ba65ba11d4d176ee" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ace_target_pe::ace_target_pe</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm, size_t transfer_width)</argsstring>
+        <name>ace_target_pe</name>
+        <qualifiedname>axi::pe::ace_target_pe::ace_target_pe</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>transfer_width</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the constructor. Protected as it should only be called by derived classes <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>transfer_width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="123" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" bodystart="59" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a6c7abb59dea0220e00a8171cc0b284ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::ace_target_pe::set_bw_interface</definition>
+        <argsstring>(axi::axi_bw_transport_if&lt; axi_protocol_types &gt; *ifs)</argsstring>
+        <name>set_bw_interface</name>
+        <qualifiedname>axi::pe::ace_target_pe::set_bw_interface</qualifiedname>
+        <param>
+          <type><ref refid="namespaceaxi_1a805751c34d41d1e062fb5d9cae799971" kindref="member">axi::axi_bw_transport_if</ref>&lt; <ref refid="structaxi_1_1axi__protocol__types" kindref="compound">axi_protocol_types</ref> &gt; *</type>
+          <declname>ifs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="125" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="125" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a3b3f4cc2234dcaadf4f92bcad2ea1a62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ace_target_pe::snoop</definition>
+        <argsstring>(payload_type &amp;trans)</argsstring>
+        <name>snoop</name>
+        <qualifiedname>axi::pe::ace_target_pe::snoop</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="127" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" bodystart="180" bodyend="189"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1aecde5dc99c5532dd8b686129cbee2bb7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::pe::ace_target_pe::ace_target_pe</definition>
+        <argsstring>()=delete</argsstring>
+        <name>ace_target_pe</name>
+        <qualifiedname>axi::pe::ace_target_pe::ace_target_pe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="130" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1ad3c15b4d3f2a7b5aa936af058e927200" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::pe::ace_target_pe::ace_target_pe</definition>
+        <argsstring>(ace_target_pe const &amp;)=delete</argsstring>
+        <name>ace_target_pe</name>
+        <qualifiedname>axi::pe::ace_target_pe::ace_target_pe</qualifiedname>
+        <param>
+          <type>ace_target_pe const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="132" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1ab69463b27a55bc1e38eebe542182184e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::pe::ace_target_pe::ace_target_pe</definition>
+        <argsstring>(ace_target_pe &amp;&amp;)=delete</argsstring>
+        <name>ace_target_pe</name>
+        <qualifiedname>axi::pe::ace_target_pe::ace_target_pe</qualifiedname>
+        <param>
+          <type>ace_target_pe &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="134" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1aa5913f9165c0ce047104207869d5815b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classaxi_1_1pe_1_1ace__target__pe_1a82790b1a10222ec1ba65ba11d4d176ee" kindref="member">ace_target_pe</ref> &amp;</type>
+        <definition>ace_target_pe &amp; axi::pe::ace_target_pe::operator=</definition>
+        <argsstring>(ace_target_pe const &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>axi::pe::ace_target_pe::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classaxi_1_1pe_1_1ace__target__pe_1a82790b1a10222ec1ba65ba11d4d176ee" kindref="member">ace_target_pe</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="136" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a41b98199726a1fdf51d0cccc5ac7214c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classaxi_1_1pe_1_1ace__target__pe_1a82790b1a10222ec1ba65ba11d4d176ee" kindref="member">ace_target_pe</ref> &amp;</type>
+        <definition>ace_target_pe &amp; axi::pe::ace_target_pe::operator=</definition>
+        <argsstring>(ace_target_pe &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>axi::pe::ace_target_pe::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classaxi_1_1pe_1_1ace__target__pe_1a82790b1a10222ec1ba65ba11d4d176ee" kindref="member">ace_target_pe</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="138" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a56e215e2f32c1b25b0ec3ce060b59a1d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ace_target_pe::end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_elaboration</name>
+        <qualifiedname>axi::pe::ace_target_pe::end_of_elaboration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="140" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a3bf98a53f3d0c073ca3322ddd9a40b58" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ace_target_pe::start_of_simulation</definition>
+        <argsstring>() override</argsstring>
+        <name>start_of_simulation</name>
+        <qualifiedname>axi::pe::ace_target_pe::start_of_simulation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="142" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" bodystart="77" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a3e54ff4ab8f6e7265efe51939e8ef7df" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::ace_target_pe::fsm_clk_method</definition>
+        <argsstring>()</argsstring>
+        <name>fsm_clk_method</name>
+        <qualifiedname>axi::pe::ace_target_pe::fsm_clk_method</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="144" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="144" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a3ea7193538db51859e6389130e185686" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">fsm::fsm_handle</ref> *</type>
+        <definition>fsm_handle * ace_target_pe::create_fsm_handle</definition>
+        <argsstring>() override</argsstring>
+        <name>create_fsm_handle</name>
+        <qualifiedname>axi::pe::ace_target_pe::create_fsm_handle</qualifiedname>
+        <reimplements refid="structaxi_1_1fsm_1_1base_1a36fd237711e396d96e8d146bf11d13eb">create_fsm_handle</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para>base::create_fsm_handle() </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="148" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" bodystart="121" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1ac9b5d454f505690180c63254a5bb96f7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ace_target_pe::setup_callbacks</definition>
+        <argsstring>(fsm::fsm_handle *) override</argsstring>
+        <name>setup_callbacks</name>
+        <qualifiedname>axi::pe::ace_target_pe::setup_callbacks</qualifiedname>
+        <reimplements refid="structaxi_1_1fsm_1_1base_1a531305a4a623f70f41f2249028dbedde">setup_callbacks</reimplements>
+        <param>
+          <type><ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">fsm::fsm_handle</ref> *</type>
+          <defname>fsm_hndl</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para>base::setup_callbacks(fsm::fsm_handle*) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="152" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp" bodystart="123" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a891e960ad36c3430146d53af89fb8380" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi::pe::ace_target_pe::operations_callback</definition>
+        <argsstring>(payload_type &amp;trans)</argsstring>
+        <name>operations_callback</name>
+        <qualifiedname>axi::pe::ace_target_pe::operations_callback</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="154" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1ace__target__pe_1a770f06a11beac1d1742b2b1b22dacd5a" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::ace_target_pe::nb_fw</definition>
+        <argsstring>(payload_type &amp;trans, const phase_type &amp;phase)</argsstring>
+        <name>nb_fw</name>
+        <qualifiedname>axi::pe::ace_target_pe::nb_fw</qualifiedname>
+        <param>
+          <type>payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>const phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="167" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="167" bodyend="170"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>the target protocol engine base class </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5">
+        <label>axi::ace_fw_transport_if&lt; axi::axi_protocol_types &gt;</label>
+      </node>
+      <node id="4">
+        <label>axi::axi_bw_transport_if&lt; axi::axi_protocol_types &gt;</label>
+      </node>
+      <node id="3">
+        <label>axi::fsm::base</label>
+        <link refid="structaxi_1_1fsm_1_1base"/>
+      </node>
+      <node id="1">
+        <label>axi::pe::ace_target_pe</label>
+        <link refid="classaxi_1_1pe_1_1ace__target__pe"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="protected-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>axi::pe::simple_ace_target&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classaxi_1_1pe_1_1simple__ace__target"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9">
+        <label>axi::ace_fw_transport_if&lt; axi::axi_protocol_types &gt;</label>
+      </node>
+      <node id="8">
+        <label>axi::axi_bw_transport_if&lt; axi::axi_protocol_types &gt;</label>
+      </node>
+      <node id="10">
+        <label>axi::axi_initiator_socket&lt; 64 &gt;</label>
+        <link refid="structaxi_1_1axi__initiator__socket"/>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>axi::fsm::base</label>
+        <link refid="structaxi_1_1fsm_1_1base"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>fsm_event_queue</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>fsm_clk_queue</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>axi::pe::ace_target_pe</label>
+        <link refid="classaxi_1_1pe_1_1ace__target__pe"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="protected-inheritance">
+        </childnode>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>isckt_axi</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>rd_resp</edgelabel>
+          <edgelabel>rd_resp_ch</edgelabel>
+          <edgelabel>wr_resp_ch</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="5">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="7">
+        <label>sc_core::sc_prim_channel</label>
+      </node>
+      <node id="13">
+        <label>sc_core::sc_semaphore_if</label>
+      </node>
+      <node id="6">
+        <label>scc::fifo_w_cb&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, payload_type *, unsigned &gt; &gt;</label>
+        <link refid="classscc_1_1fifo__w__cb"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>scc::ordered_semaphore</label>
+        <link refid="classscc_1_1ordered__semaphore"/>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>scc::peq&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, payload_type *, bool &gt; &gt;</label>
+        <link refid="structscc_1_1peq"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>scc::traceable</label>
+        <link refid="structscc_1_1traceable"/>
+      </node>
+      <node id="11">
+        <label>tlm::tlm_base_initiator_socket&lt; BUSWIDTH, axi_fw_transport_if&lt; axi_protocol_types &gt;, axi_bw_transport_if&lt; axi_protocol_types &gt;, 1, sc_core::SC_ONE_OR_MORE_BOUND &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="41" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" bodystart="44" bodyend="173"/>
+    <listofallmembers>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a82790b1a10222ec1ba65ba11d4d176ee" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>ace_target_pe</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1aecde5dc99c5532dd8b686129cbee2bb7" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>ace_target_pe</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1ad3c15b4d3f2a7b5aa936af058e927200" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>ace_target_pe</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1ab69463b27a55bc1e38eebe542182184e" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>ace_target_pe</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a9f8a0baea1c0902aaf912878a3b4c54d" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>active_fsm</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a952ad95350e7a5f6a690610ff04cdb0f" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>active_rdresp_id</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1ae2bf3d861dde32b4ec50571afac4ba26" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>allocated_fsm</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1aee6de2689874daf44969119e7fe666a0" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>b_transport</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a59d8b6978f975d7e748555c5e6699962" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>base</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a0eb2b1131d8e8a9cebf04c5f1742ceb5" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>bw_i</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1ae3e5eb3aa28494cbf754f68c8142a9c5" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>bw_intor</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a95702d1dda372046e4bdce40ed454c22" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>clk_i</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1af015c960ce171c77ff0fe3e86cdd5b3c" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>clk_if</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a8d399a441a1ae9cc6c732996fd1fa830" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>coherent</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a3ea7193538db51859e6389130e185686" prot="protected" virt="virtual"><scope>axi::pe::ace_target_pe</scope><name>create_fsm_handle</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a56e215e2f32c1b25b0ec3ce060b59a1d" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>end_of_elaboration</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1aa22ba0281d929364938d62b0d3930b7b" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>find_or_create</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a5efb7aee4d1a624d320f61b83b663604" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>finish_evt</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a3e54ff4ab8f6e7265efe51939e8ef7df" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>fsm_clk_method</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a662f1439252c193f513e614831da6f3b" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>fsm_clk_queue</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1ae5fa6d0bd2bd2c4dbec5e2dba6f34a6a" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>fsm_clk_queue_hndl</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1ab862ab3c3a27111c3306d55dc25bda1c" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>fsm_event_queue</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a3932c32d235f73c1d217c64cb18bc461" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>fw_o</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a8d1c786c0ba1685edf88e759ace0d9f3" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>fw_peq</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1ab04d4d967c53804ae54bdae8f715e4d8" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>get_direct_mem_ptr</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1aaee9a51eb0bc73681d2236596280a1b0" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>idle_fsm</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a8fcaaeaf43ee5cc5f57fba0924786705" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>instance_name</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a9d15f27415ffccf2f95cd45329793d1b" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>invalidate_direct_mem_ptr</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1aff66caa477d0b90a7bd4eb32d928616c" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>is_active</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a96a9bc5ec265fd216ef062dcd38cf407" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>isckt_axi</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a87dbb07802109ff958c86cd08f8aaaaf" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>nb_bw</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a770f06a11beac1d1742b2b1b22dacd5a" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>nb_fw</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a2f69b9b543de0409a982e194e7ee84d1" prot="protected" virt="non-virtual" ambiguityscope="axi::fsm::base::"><scope>axi::pe::ace_target_pe</scope><name>nb_fw</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a7b44dab1263ee848a00578ca38ec8c67" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>nb_transport_bw</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a5c12487466121a9165dc1f21c1f3a1e2" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>nb_transport_fw</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1af850e72a0efcc32d093118cdc45e202b" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>operation_cb</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a008c71cd290c6e88971ba71b0a36835b" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>operation_resp</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a891e960ad36c3430146d53af89fb8380" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>operations_callback</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1aa5913f9165c0ce047104207869d5815b" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>operator=</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a41b98199726a1fdf51d0cccc5ac7214c" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>operator=</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a1e47c69e698861109b84e3fc3a307d38" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>outstanding_cnt</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1ae889973eb131a8543f875092f70598cb" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>payload_type</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a9d0786e799837fae2fe45b2cef0df1d9" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>phase_type</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a61c01b63aa94fc6e2a5ec6ee6f4e06c4" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>process_fsm_clk_queue</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1ab0c33b46e6d313a33ce1a356ccc596af" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>process_fsm_event</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1aadeeb194d50faffb5f161db699fa7f33" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>rd_resp</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a8aa438af42b68e281b66e95d7296682d" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>rd_resp_beat_fifo</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1aaa64185f258601c9a55c2abd2990c22e" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>rd_resp_ch</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a4708de7277fd53314109b2caad1f76d0" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>rd_resp_delay</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a01d192ce71edc5905d42068ad68d4917" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>rd_resp_fifo</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>react</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1ac067ba8265ddbc5ab2b3119fdd1d0948" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>react</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a21970b4e0aa35d499495d71efd3dd6f9" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>react</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>schedule</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a21466537400fe3927c25a4be159cfbf5" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>schedule</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a31caedc7c2d747f44ae4a358d7af9e50" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>schedule</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1aa1f39886572097dfe418cdc9d27d06a6" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>schedule</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a6c7abb59dea0220e00a8171cc0b284ad" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>set_bw_interface</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a5efdb0544aea6dc9e2dd105b86480e54" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>set_operation_cb</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1ac9b5d454f505690180c63254a5bb96f7" prot="protected" virt="virtual"><scope>axi::pe::ace_target_pe</scope><name>setup_callbacks</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a3b3f4cc2234dcaadf4f92bcad2ea1a62" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>snoop</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1ae1aa1a2572879e34c39ad117748c02df" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>socket_bw</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a3bf98a53f3d0c073ca3322ddd9a40b58" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>start_of_simulation</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a28172804f41063e840fccf773226b3b9" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>transfer_width_in_bytes</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a3f4ae6b7e6849231b6dc0046e76b6f2f" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>transport_dbg</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a83fda3b5169048d2824d30c1e4bce38a" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>tx_finish_event</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a781fccbb14dae512357f738b8e500e23" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>wr_resp_beat_fifo</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1ae848e25814c8e76dfdfbd26c4c25e107" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>wr_resp_ch</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a40e6a6775e6bb83df83e7df6b26988ea" prot="public" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>wr_resp_delay</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a10487cd5bdcccf04ad894054afc1b3c6" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>wr_resp_fifo</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1ac12cd09ae23b2e56cdc02d5082cd4749" prot="protected" virt="non-virtual"><scope>axi::pe::ace_target_pe</scope><name>wr_start</name></member>
+      <member refid="classaxi_1_1pe_1_1ace__target__pe_1a2656ccc3d9d7bb084f00d0f7b4c730d7" prot="public" virt="virtual"><scope>axi::pe::ace_target_pe</scope><name>~ace_target_pe</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1aa412c197ef069b63df64cc5eef07d6e8" prot="protected" virt="virtual"><scope>axi::pe::ace_target_pe</scope><name>~base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

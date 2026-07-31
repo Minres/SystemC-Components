@@ -1,0 +1,388 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1tlm__signal__gp" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::tlm_signal_gp</compoundname>
+    <basecompoundref refid="structtlm_1_1scc_1_1tlm__generic__payload__base" prot="public" virt="non-virtual">tlm::scc::tlm_generic_payload_base</basecompoundref>
+    <innerclass refid="structtlm_1_1scc_1_1tlm__signal__gp_1_1gp__mm" prot="public">tlm::scc::tlm_signal_gp::gp_mm</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename SIG</type>
+        <defval>bool</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1tlm__signal__gp_1ad8785940242bf01094a2880cf969f8d9" prot="protected" static="no" mutable="no">
+        <type>tlm_command</type>
+        <definition>tlm_command tlm::scc::tlm_signal_gp&lt; SIG &gt;::m_command</definition>
+        <argsstring></argsstring>
+        <name>m_command</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::m_command</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="200" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1tlm__signal__gp_1ab09ce93ccd1748351460ff25a9320ef1" prot="protected" static="no" mutable="no">
+        <type>SIG</type>
+        <definition>SIG tlm::scc::tlm_signal_gp&lt; SIG &gt;::m_value</definition>
+        <argsstring></argsstring>
+        <name>m_value</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::m_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="201" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1tlm__signal__gp_1ab9f13095a738cccafea31e8c90690b8c" prot="protected" static="no" mutable="no">
+        <type>tlm_response_status</type>
+        <definition>tlm_response_status tlm::scc::tlm_signal_gp&lt; SIG &gt;::m_response_status</definition>
+        <argsstring></argsstring>
+        <name>m_response_status</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::m_response_status</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="202" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="202" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__gp_1a7d8cf975838b85c8e0cd3e8fbd523fbc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_signal_gp&lt; SIG &gt;::tlm_signal_gp</definition>
+        <argsstring>()</argsstring>
+        <name>tlm_signal_gp</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::tlm_signal_gp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="143" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="208" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__gp_1ae607313ae1535f6ab2dbe41567334987" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_signal_gp&lt; SIG &gt;::tlm_signal_gp</definition>
+        <argsstring>(tlm_base_mm_interface *mm)</argsstring>
+        <name>tlm_signal_gp</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::tlm_signal_gp</qualifiedname>
+        <param>
+          <type><ref refid="classtlm_1_1scc_1_1tlm__base__mm__interface" kindref="compound">tlm_base_mm_interface</ref> *</type>
+          <declname>mm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="145" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="214" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__gp_1aa9dfbe1aa472ede7f09f5382b6370b04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_signal_gp&lt; SIG &gt;::tlm_signal_gp</definition>
+        <argsstring>(const tlm_signal_gp&lt; SIG &gt; &amp;x)=delete</argsstring>
+        <name>tlm_signal_gp</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::tlm_signal_gp</qualifiedname>
+        <param>
+          <type>const tlm_signal_gp&lt; SIG &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="147" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__gp_1a432547b36118252ae5c1560a5bcaf30d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm_signal_gp&lt; SIG &gt; &amp;</type>
+        <definition>tlm_signal_gp&lt; SIG &gt; &amp; tlm::scc::tlm_signal_gp&lt; SIG &gt;::operator=</definition>
+        <argsstring>(const tlm_signal_gp&lt; SIG &gt; &amp;x)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::operator=</qualifiedname>
+        <param>
+          <type>const tlm_signal_gp&lt; SIG &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="148" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__gp_1af516dc35dc20dc63a6b287572f761537" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual tlm::scc::tlm_signal_gp&lt; SIG &gt;::~tlm_signal_gp</definition>
+        <argsstring>()</argsstring>
+        <name>~tlm_signal_gp</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::~tlm_signal_gp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="153" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="153" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__gp_1afed71a213b8c5741e3d54fc3b6cb72bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_signal_gp&lt; SIG &gt;::deep_copy_from</definition>
+        <argsstring>(const tlm_signal_gp &amp;other)</argsstring>
+        <name>deep_copy_from</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::deep_copy_from</qualifiedname>
+        <param>
+          <type>const tlm_signal_gp &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="156" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="229" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__gp_1a60ef2af552ecb20c891ddfd86776c0cf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm_command</type>
+        <definition>tlm_command tlm::scc::tlm_signal_gp&lt; SIG &gt;::get_command</definition>
+        <argsstring>() const</argsstring>
+        <name>get_command</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::get_command</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="158" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="158" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__gp_1a667b466e781d3a1d149ad12f6d422a8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_signal_gp&lt; SIG &gt;::set_command</definition>
+        <argsstring>(const tlm_command command)</argsstring>
+        <name>set_command</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::set_command</qualifiedname>
+        <param>
+          <type>const tlm_command</type>
+          <declname>command</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="159" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="159" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__gp_1a504989da5c3e9b3d0ec0e4414e1b1288" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>SIG</type>
+        <definition>SIG tlm::scc::tlm_signal_gp&lt; SIG &gt;::get_value</definition>
+        <argsstring>() const</argsstring>
+        <name>get_value</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::get_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="161" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="161" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__gp_1a44887392d48951bdef0bade57e8df217" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_signal_gp&lt; SIG &gt;::set_value</definition>
+        <argsstring>(const SIG value)</argsstring>
+        <name>set_value</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::set_value</qualifiedname>
+        <param>
+          <type>const SIG</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="162" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="162" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__gp_1a2ec81daa11b6dd548a5dc4dee2d6e2ba" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::scc::tlm_signal_gp&lt; SIG &gt;::is_response_ok</definition>
+        <argsstring>() const</argsstring>
+        <name>is_response_ok</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::is_response_ok</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="165" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="165" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__gp_1ae83e6c5344502956c446866798a96410" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::scc::tlm_signal_gp&lt; SIG &gt;::is_response_error</definition>
+        <argsstring>() const</argsstring>
+        <name>is_response_error</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::is_response_error</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="166" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="166" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__gp_1aed94f912bd54ec05558131e48ee689f3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm_response_status</type>
+        <definition>tlm_response_status tlm::scc::tlm_signal_gp&lt; SIG &gt;::get_response_status</definition>
+        <argsstring>() const</argsstring>
+        <name>get_response_status</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::get_response_status</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="167" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="167" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__gp_1aaff84bd54cd917607744db66ecb62fdb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_signal_gp&lt; SIG &gt;::set_response_status</definition>
+        <argsstring>(const tlm_response_status response_status)</argsstring>
+        <name>set_response_status</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::set_response_status</qualifiedname>
+        <param>
+          <type>const tlm_response_status</type>
+          <declname>response_status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="168" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="168" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__gp_1a90a78c941fd344781709eb5f978b3526" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string tlm::scc::tlm_signal_gp&lt; SIG &gt;::get_response_string</definition>
+        <argsstring>() const</argsstring>
+        <name>get_response_string</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::get_response_string</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="169" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="236" bodyend="254"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__gp_1a45fc458963f692891a27feba59cb5b77" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm_signal_gp&lt; SIG &gt; *</type>
+        <definition>static tlm_signal_gp&lt; SIG &gt; * tlm::scc::tlm_signal_gp&lt; SIG &gt;::create</definition>
+        <argsstring>()</argsstring>
+        <name>create</name>
+        <qualifiedname>tlm::scc::tlm_signal_gp::create</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="194" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="194" bodyend="197"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>tlm::scc::tlm_generic_payload_base</label>
+        <link refid="structtlm_1_1scc_1_1tlm__generic__payload__base"/>
+      </node>
+      <node id="1">
+        <label>tlm::scc::tlm_signal_gp&lt; SIG &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__signal__gp"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>tlm::scc::tlm_generic_payload_base</label>
+        <link refid="structtlm_1_1scc_1_1tlm__generic__payload__base"/>
+      </node>
+      <node id="1">
+        <label>tlm::scc::tlm_signal_gp&lt; SIG &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__signal__gp"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" line="141" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_gp.h" bodystart="141" bodyend="205"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a56e2684d5fc0362be39a6846d9f34e7a" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>acquire</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a8d3c7c0359442ea0bca43a01540f6880" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>clear_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a1e19d7acd5833f7cfaa4bd283f538d1f" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>clear_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a903c0d98f0f1805a65389bc6473226d5" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>copy_extensions_from</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1a45fc458963f692891a27feba59cb5b77" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>create</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1afed71a213b8c5741e3d54fc3b6cb72bf" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>deep_copy_from</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a0713fae8b753b8f0b94251140fa11480" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>free_all_extensions</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1a60ef2af552ecb20c891ddfd86776c0cf" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>get_command</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a7f19e1053dae4dbd51ef2309e06045a4" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>get_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a9d892548128f66df388bd4cfa8486272" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>get_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1ae31c6853ed7c7483c89f9624340bbd80" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>get_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a7f4412e4ecc55db091eebd90ccf6ecaa" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>get_ref_count</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1aed94f912bd54ec05558131e48ee689f3" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>get_response_status</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1a90a78c941fd344781709eb5f978b3526" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>get_response_string</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1a504989da5c3e9b3d0ec0e4414e1b1288" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>get_value</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a290b5a3774e88b58b44fef659d22e4ac" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>has_mm</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1ae83e6c5344502956c446866798a96410" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>is_response_error</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1a2ec81daa11b6dd548a5dc4dee2d6e2ba" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>is_response_ok</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1ad8785940242bf01094a2880cf969f8d9" prot="protected" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>m_command</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1ab9f13095a738cccafea31e8c90690b8c" prot="protected" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>m_response_status</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1ab09ce93ccd1748351460ff25a9320ef1" prot="protected" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>m_value</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1a432547b36118252ae5c1560a5bcaf30d" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>operator=</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1ad28d1c421ae36cda35eaf5b6c735d557" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>release</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a52df05e7bb047675fb83af86a902284a" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>release_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a6cea6c2a2bad6da043eb188875e95081" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>release_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1ae60e3b83021143b017fb36bb8befcbd8" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>reset</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1af90818077bd66f6fa00e5832a1aefeae" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>resize_extensions</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a3982296341deea1bbe34f514b1036e5d" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>set_auto_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1ae2dbaa4929b694b00931fd8eae3fc88a" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>set_auto_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1a667b466e781d3a1d149ad12f6d422a8b" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>set_command</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a7ab4276e219b6014a256275d03edc624" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>set_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a2482c3dfb94bc7c752ff34fbe5299da8" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>set_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a8a9bfd6d03f032332475e9a5a8b8c448" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>set_mm</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1aaff84bd54cd917607744db66ecb62fdb" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>set_response_status</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1a44887392d48951bdef0bade57e8df217" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>set_value</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a8c18822ec77105e1f6897b61578f0db5" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>tlm_generic_payload_base</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a9bb9416a3737043f1431a1e649f68540" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>tlm_generic_payload_base</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1a7d8cf975838b85c8e0cd3e8fbd523fbc" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>tlm_signal_gp</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1ae607313ae1535f6ab2dbe41567334987" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>tlm_signal_gp</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1aa9dfbe1aa472ede7f09f5382b6370b04" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>tlm_signal_gp</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1ab3aaf3af92c80bdbef4756b1c161f9b5" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>update_extensions_from</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__generic__payload__base_1a22f413a1c46ea8da3a8a03ad11a003a5" prot="public" virt="virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>~tlm_generic_payload_base</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__gp_1af516dc35dc20dc63a6b287572f761537" prot="public" virt="virtual"><scope>tlm::scc::tlm_signal_gp</scope><name>~tlm_signal_gp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

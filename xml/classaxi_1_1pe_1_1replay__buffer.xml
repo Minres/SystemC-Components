@@ -1,0 +1,608 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classaxi_1_1pe_1_1replay__buffer" kind="class" language="C++" prot="public">
+    <compoundname>axi::pe::replay_buffer</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb" prot="private" virt="non-virtual">tlm::scc::pe::intor_fw_nb</basecompoundref>
+    <sectiondef kind="protected-type">
+      <memberdef kind="typedef" id="classaxi_1_1pe_1_1replay__buffer_1a579bdc696a6e8f7979de072053202e12" prot="protected" static="no">
+        <type>std::tuple&lt; uint64_t, unsigned &gt;</type>
+        <definition>using axi::pe::replay_buffer::entry_t =  std::tuple&lt;uint64_t, unsigned&gt;</definition>
+        <argsstring></argsstring>
+        <name>entry_t</name>
+        <qualifiedname>axi::pe::replay_buffer::entry_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="58" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1a67b4add02a0d65b86a27f36a46f7d86c" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; axi::pe::replay_buffer::clk_i</definition>
+        <argsstring></argsstring>
+        <name>clk_i</name>
+        <qualifiedname>axi::pe::replay_buffer::clk_i</qualifiedname>
+        <initializer>{&quot;clk_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="29" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="29" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1ae57aaf465ebe1715b0ed376fea801f5e" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_export&lt; <ref refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb" kindref="compound">tlm::scc::pe::intor_fw_nb</ref> &gt;</type>
+        <definition>sc_core::sc_export&lt;tlm::scc::pe::intor_fw_nb&gt; axi::pe::replay_buffer::fw_i</definition>
+        <argsstring></argsstring>
+        <name>fw_i</name>
+        <qualifiedname>axi::pe::replay_buffer::fw_i</qualifiedname>
+        <initializer>{&quot;fw_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="31" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="31" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1a2eb69e15fdcdefdd7cb5a1397fd54847" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_port&lt; <ref refid="structtlm_1_1scc_1_1pe_1_1intor__bw__nb" kindref="compound">tlm::scc::pe::intor_bw_nb</ref>, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</type>
+        <definition>sc_core::sc_port&lt;tlm::scc::pe::intor_bw_nb, 1, sc_core::SC_ZERO_OR_MORE_BOUND&gt; axi::pe::replay_buffer::bw_o</definition>
+        <argsstring></argsstring>
+        <name>bw_o</name>
+        <qualifiedname>axi::pe::replay_buffer::bw_o</qualifiedname>
+        <initializer>{&quot;bw_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="33" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1aa275ea78e7b65bea5cb5e8050c62a323" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; std::string &gt;</type>
+        <definition>cci::cci_param&lt;std::string&gt; axi::pe::replay_buffer::replay_file_name</definition>
+        <argsstring></argsstring>
+        <name>replay_file_name</name>
+        <qualifiedname>axi::pe::replay_buffer::replay_file_name</qualifiedname>
+        <initializer>{&quot;replay_file_name&quot;, &quot;&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="35" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1aedbdcb19238586f276b677fcecda4d1a" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_clock *</type>
+        <definition>sc_core::sc_clock* axi::pe::replay_buffer::clk_if</definition>
+        <argsstring></argsstring>
+        <name>clk_if</name>
+        <qualifiedname>axi::pe::replay_buffer::clk_if</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="56" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1acb37eea1aa111bb94ad7165e74850dfe" prot="protected" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t axi::pe::replay_buffer::reset_end_cycle</definition>
+        <argsstring></argsstring>
+        <name>reset_end_cycle</name>
+        <qualifiedname>axi::pe::replay_buffer::reset_end_cycle</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="57" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1a672065f008f08204c9eb9994be218230" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; entry_t &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;entry_t&gt; &gt; axi::pe::replay_buffer::rd_sequence</definition>
+        <argsstring></argsstring>
+        <name>rd_sequence</name>
+        <qualifiedname>axi::pe::replay_buffer::rd_sequence</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="59" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1a0251bfe4d3752370b5933fa797752734" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; entry_t &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;entry_t&gt; &gt; axi::pe::replay_buffer::wr_sequence</definition>
+        <argsstring></argsstring>
+        <name>wr_sequence</name>
+        <qualifiedname>axi::pe::replay_buffer::wr_sequence</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="59" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1a278522d1f9290d5e73d060051b84a9b4" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time axi::pe::replay_buffer::time_per_byte_rd</definition>
+        <argsstring></argsstring>
+        <name>time_per_byte_rd</name>
+        <qualifiedname>axi::pe::replay_buffer::time_per_byte_rd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="60" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1a143008d4180a97284fa0f27cefa7e00c" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time axi::pe::replay_buffer::time_per_byte_wr</definition>
+        <argsstring></argsstring>
+        <name>time_per_byte_wr</name>
+        <qualifiedname>axi::pe::replay_buffer::time_per_byte_wr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="60" column="39" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1a2f2052c8ede919c13391314e85b7ced4" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time axi::pe::replay_buffer::time_per_byte_total</definition>
+        <argsstring></argsstring>
+        <name>time_per_byte_total</name>
+        <qualifiedname>axi::pe::replay_buffer::time_per_byte_total</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="60" column="56" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1ade2db349d671f76df001ac6c911f0935" prot="protected" static="no" mutable="no">
+        <type><ref refid="classscc_1_1fifo__w__cb" kindref="compound">scc::fifo_w_cb</ref>&lt; std::tuple&lt; tlm::tlm_generic_payload *, unsigned &gt; &gt;</type>
+        <definition>scc::fifo_w_cb&lt;std::tuple&lt;tlm::tlm_generic_payload*, unsigned&gt; &gt; axi::pe::replay_buffer::rd_req2resp_fifo</definition>
+        <argsstring></argsstring>
+        <name>rd_req2resp_fifo</name>
+        <qualifiedname>axi::pe::replay_buffer::rd_req2resp_fifo</qualifiedname>
+        <initializer>{&quot;rd_req2resp_fifo&quot;}</initializer>
+        <briefdescription>
+<para>queues realizing the latencies </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="62" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1a858e16ae0e38c3ad1adfb2ccb10cc519" prot="protected" static="no" mutable="no">
+        <type><ref refid="classscc_1_1fifo__w__cb" kindref="compound">scc::fifo_w_cb</ref>&lt; std::tuple&lt; tlm::tlm_generic_payload *, unsigned &gt; &gt;</type>
+        <definition>scc::fifo_w_cb&lt;std::tuple&lt;tlm::tlm_generic_payload*, unsigned&gt; &gt; axi::pe::replay_buffer::wr_req2resp_fifo</definition>
+        <argsstring></argsstring>
+        <name>wr_req2resp_fifo</name>
+        <qualifiedname>axi::pe::replay_buffer::wr_req2resp_fifo</qualifiedname>
+        <initializer>{&quot;wr_req2resp_fifo&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="63" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1a1bf7800872b58337e7c420c19f13df90" prot="protected" static="no" mutable="no">
+        <type><ref refid="classscc_1_1fifo__w__cb" kindref="compound">scc::fifo_w_cb</ref>&lt; tlm::tlm_generic_payload * &gt;</type>
+        <definition>scc::fifo_w_cb&lt;tlm::tlm_generic_payload*&gt; axi::pe::replay_buffer::rd_resp_fifo</definition>
+        <argsstring></argsstring>
+        <name>rd_resp_fifo</name>
+        <qualifiedname>axi::pe::replay_buffer::rd_resp_fifo</qualifiedname>
+        <initializer>{&quot;rd_resp_fifo&quot;}</initializer>
+        <briefdescription>
+<para>queues to handle bandwidth limit </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="65" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1a145957e15445607caee6a17f0e58d694" prot="protected" static="no" mutable="no">
+        <type><ref refid="classscc_1_1fifo__w__cb" kindref="compound">scc::fifo_w_cb</ref>&lt; tlm::tlm_generic_payload * &gt;</type>
+        <definition>scc::fifo_w_cb&lt;tlm::tlm_generic_payload*&gt; axi::pe::replay_buffer::wr_resp_fifo</definition>
+        <argsstring></argsstring>
+        <name>wr_resp_fifo</name>
+        <qualifiedname>axi::pe::replay_buffer::wr_resp_fifo</qualifiedname>
+        <initializer>{&quot;wr_resp_fifo&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="66" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="66" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1ac878f472ed99b56fcc864e4391031a02" prot="protected" static="no" mutable="no">
+        <type><ref refid="classscc_1_1ordered__semaphore" kindref="compound">scc::ordered_semaphore</ref></type>
+        <definition>scc::ordered_semaphore axi::pe::replay_buffer::total_arb</definition>
+        <argsstring></argsstring>
+        <name>total_arb</name>
+        <qualifiedname>axi::pe::replay_buffer::total_arb</qualifiedname>
+        <initializer>{1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="67" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="67" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1pe_1_1replay__buffer_1afb7359da58fbb1ba59d0d021681e3052" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double axi::pe::replay_buffer::total_residual_clocks</definition>
+        <argsstring></argsstring>
+        <name>total_residual_clocks</name>
+        <qualifiedname>axi::pe::replay_buffer::total_residual_clocks</qualifiedname>
+        <initializer>{0.0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="68" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classaxi_1_1pe_1_1replay__buffer_1a7e34d61515ff3dc375b024c2693d8314" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::pe::replay_buffer::replay_buffer</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm)</argsstring>
+        <name>replay_buffer</name>
+        <qualifiedname>axi::pe::replay_buffer::replay_buffer</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="37" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.cpp" bodystart="8" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1replay__buffer_1a18cb3205f58746cf99c386d02c2bc30a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void axi::pe::replay_buffer::transport</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;payload, bool lt_transport=false) override</argsstring>
+        <name>transport</name>
+        <qualifiedname>axi::pe::replay_buffer::transport</qualifiedname>
+        <reimplements refid="structtlm_1_1scc_1_1pe_1_1intor__fw_1a69f17795eabb5192d5388dd6b67e4109">transport</reimplements>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>payload</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>lt_transport</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the transport of the payload. Independent of the underlying layer this function is blocking</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>payload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>object with (optional) extensions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lt_transport</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>use b_transport instead of nb_transport* </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="44" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.cpp" bodystart="55" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1replay__buffer_1a37048aca03772e20c4816cd514d16a70" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void axi::pe::replay_buffer::snoop_resp</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;payload, bool sync=false) override</argsstring>
+        <name>snoop_resp</name>
+        <qualifiedname>axi::pe::replay_buffer::snoop_resp</qualifiedname>
+        <reimplements refid="structtlm_1_1scc_1_1pe_1_1intor__fw_1a1e85d9861b52f3ec31c17e107ccd852b">snoop_resp</reimplements>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>payload</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>sync</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>send a response to a backward transaction if not immediately answered</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>payload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>object with (optional) extensions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sync</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true send with next rising clock edge of the pe otherwise send it immediately </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="51" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1replay__buffer_1af6d2ef683560c760168f306d1e6a8980" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::replay_buffer::end_of_reset</definition>
+        <argsstring>()</argsstring>
+        <name>end_of_reset</name>
+        <qualifiedname>axi::pe::replay_buffer::end_of_reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="53" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="53" bodyend="53"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classaxi_1_1pe_1_1replay__buffer_1a8e05975b527b68b42f077c2ee234b96a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::replay_buffer::end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_elaboration</name>
+        <qualifiedname>axi::pe::replay_buffer::end_of_elaboration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="69" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.cpp" bodystart="21" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1replay__buffer_1a4e0547e80f298d05599edfb98b0b4ae0" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::replay_buffer::start_of_simulation</definition>
+        <argsstring>() override</argsstring>
+        <name>start_of_simulation</name>
+        <qualifiedname>axi::pe::replay_buffer::start_of_simulation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="70" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.cpp" bodystart="23" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1replay__buffer_1a93354db7cb5ddf6f93875ecfe567961b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::replay_buffer::process_req2resp_fifos</definition>
+        <argsstring>()</argsstring>
+        <name>process_req2resp_fifos</name>
+        <qualifiedname>axi::pe::replay_buffer::process_req2resp_fifos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="71" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.cpp" bodystart="99" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1replay__buffer_1a2f4171de212d758766c71f87d99461b9" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::replay_buffer::start_rd_resp_thread</definition>
+        <argsstring>()</argsstring>
+        <name>start_rd_resp_thread</name>
+        <qualifiedname>axi::pe::replay_buffer::start_rd_resp_thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="72" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.cpp" bodystart="122" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1pe_1_1replay__buffer_1a832431b2a1fba2b794b39ff630668f00" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::pe::replay_buffer::start_wr_resp_thread</definition>
+        <argsstring>()</argsstring>
+        <name>start_wr_resp_thread</name>
+        <qualifiedname>axi::pe::replay_buffer::start_wr_resp_thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="73" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.cpp" bodystart="151" bodyend="178"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::pe::replay_buffer</label>
+        <link refid="classaxi_1_1pe_1_1replay__buffer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="4">
+        <label>tlm::scc::pe::intor_fw&lt; type::NB &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::scc::pe::intor_fw_nb</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::pe::replay_buffer</label>
+        <link refid="classaxi_1_1pe_1_1replay__buffer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="private-inheritance">
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>rd_req2resp_fifo</edgelabel>
+          <edgelabel>wr_req2resp_fifo</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>rd_resp_fifo</edgelabel>
+          <edgelabel>wr_resp_fifo</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>total_arb</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="11">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="7">
+        <label>sc_core::sc_prim_channel</label>
+      </node>
+      <node id="10">
+        <label>sc_core::sc_semaphore_if</label>
+      </node>
+      <node id="6">
+        <label>scc::fifo_w_cb&lt; std::tuple&lt; tlm::tlm_generic_payload *, unsigned &gt; &gt;</label>
+        <link refid="classscc_1_1fifo__w__cb"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>scc::fifo_w_cb&lt; tlm::tlm_generic_payload * &gt;</label>
+        <link refid="classscc_1_1fifo__w__cb"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>scc::ordered_semaphore</label>
+        <link refid="classscc_1_1ordered__semaphore"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>scc::traceable</label>
+        <link refid="structscc_1_1traceable"/>
+      </node>
+      <node id="4">
+        <label>tlm::scc::pe::intor_fw&lt; type::NB &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::scc::pe::intor_fw_nb</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" line="27" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h" bodystart="27" bodyend="74"/>
+    <listofallmembers>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a2eb69e15fdcdefdd7cb5a1397fd54847" prot="public" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>bw_o</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a67b4add02a0d65b86a27f36a46f7d86c" prot="public" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>clk_i</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1aedbdcb19238586f276b677fcecda4d1a" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>clk_if</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a8e05975b527b68b42f077c2ee234b96a" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>end_of_elaboration</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1af6d2ef683560c760168f306d1e6a8980" prot="public" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>end_of_reset</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a579bdc696a6e8f7979de072053202e12" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>entry_t</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1ae57aaf465ebe1715b0ed376fea801f5e" prot="public" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>fw_i</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a93354db7cb5ddf6f93875ecfe567961b" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>process_req2resp_fifos</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1ade2db349d671f76df001ac6c911f0935" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>rd_req2resp_fifo</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a1bf7800872b58337e7c420c19f13df90" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>rd_resp_fifo</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a672065f008f08204c9eb9994be218230" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>rd_sequence</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a7e34d61515ff3dc375b024c2693d8314" prot="public" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>replay_buffer</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1aa275ea78e7b65bea5cb5e8050c62a323" prot="public" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>replay_file_name</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1acb37eea1aa111bb94ad7165e74850dfe" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>reset_end_cycle</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a37048aca03772e20c4816cd514d16a70" prot="public" virt="virtual"><scope>axi::pe::replay_buffer</scope><name>snoop_resp</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a4e0547e80f298d05599edfb98b0b4ae0" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>start_of_simulation</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a2f4171de212d758766c71f87d99461b9" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>start_rd_resp_thread</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a832431b2a1fba2b794b39ff630668f00" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>start_wr_resp_thread</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a278522d1f9290d5e73d060051b84a9b4" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>time_per_byte_rd</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a2f2052c8ede919c13391314e85b7ced4" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>time_per_byte_total</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a143008d4180a97284fa0f27cefa7e00c" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>time_per_byte_wr</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1ac878f472ed99b56fcc864e4391031a02" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>total_arb</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1afb7359da58fbb1ba59d0d021681e3052" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>total_residual_clocks</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a18cb3205f58746cf99c386d02c2bc30a" prot="public" virt="virtual"><scope>axi::pe::replay_buffer</scope><name>transport</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a858e16ae0e38c3ad1adfb2ccb10cc519" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>wr_req2resp_fifo</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a145957e15445607caee6a17f0e58d694" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>wr_resp_fifo</name></member>
+      <member refid="classaxi_1_1pe_1_1replay__buffer_1a0251bfe4d3752370b5933fa797752734" prot="protected" virt="non-virtual"><scope>axi::pe::replay_buffer</scope><name>wr_sequence</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

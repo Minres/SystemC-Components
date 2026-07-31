@@ -1,0 +1,720 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1ring__buffer" kind="class" language="C++" prot="public">
+    <compoundname>util::ring_buffer</compoundname>
+    <includes refid="ring__buffer_8h" local="no">ring_buffer.h</includes>
+    <innerclass refid="classutil_1_1ring__buffer_1_1iterator__type" prot="public">util::ring_buffer::iterator_type</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classutil_1_1ring__buffer_1a33845bbc1964ce692e17afcba14c0424" prot="public" static="no">
+        <type><ref refid="classutil_1_1ring__buffer_1_1iterator__type" kindref="compound">iterator_type</ref>&lt; false &gt;</type>
+        <definition>typedef iterator_type&lt;false&gt; util::ring_buffer&lt; T &gt;::iterator</definition>
+        <argsstring></argsstring>
+        <name>iterator</name>
+        <qualifiedname>util::ring_buffer::iterator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="174" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classutil_1_1ring__buffer_1a80a659c712d5c2ef6db654e7f53a05b5" prot="public" static="no">
+        <type><ref refid="classutil_1_1ring__buffer_1_1iterator__type" kindref="compound">iterator_type</ref>&lt; true &gt;</type>
+        <definition>typedef iterator_type&lt;true&gt; util::ring_buffer&lt; T &gt;::const_iterator</definition>
+        <argsstring></argsstring>
+        <name>const_iterator</name>
+        <qualifiedname>util::ring_buffer::const_iterator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="175" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classutil_1_1ring__buffer_1a342590efb04a6d727dc0239bad98df73" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; T[]&gt;</type>
+        <definition>std::unique_ptr&lt;T[]&gt; util::ring_buffer&lt; T &gt;::buf</definition>
+        <argsstring></argsstring>
+        <name>buf</name>
+        <qualifiedname>util::ring_buffer::buf</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="389" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="389" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1ring__buffer_1a5c5063eb5dd00167e8e58ccbe374b464" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t util::ring_buffer&lt; T &gt;::front_idx</definition>
+        <argsstring></argsstring>
+        <name>front_idx</name>
+        <qualifiedname>util::ring_buffer::front_idx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="390" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="390" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1ring__buffer_1a6cf1b80db5b3bc36edb9985304f8046b" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t util::ring_buffer&lt; T &gt;::back_idx</definition>
+        <argsstring></argsstring>
+        <name>back_idx</name>
+        <qualifiedname>util::ring_buffer::back_idx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="390" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="390" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1ring__buffer_1a39a3000085544f9e1b8e81cc1ed9cc22" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t util::ring_buffer&lt; T &gt;::cap</definition>
+        <argsstring></argsstring>
+        <name>cap</name>
+        <qualifiedname>util::ring_buffer::cap</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="390" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="390" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1ring__buffer_1accac455f4f26678ead6dd46f11768f0c" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t util::ring_buffer&lt; T &gt;::sz</definition>
+        <argsstring></argsstring>
+        <name>sz</name>
+        <qualifiedname>util::ring_buffer::sz</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="390" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="390" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a1b2eb75a2668ac1d7e5cb43e57d08708" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>util::ring_buffer&lt; T &gt;::ring_buffer</definition>
+        <argsstring>(size_t size)</argsstring>
+        <name>ring_buffer</name>
+        <qualifiedname>util::ring_buffer::ring_buffer</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="178" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="178" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a99626adbbc6531b561bd2df154699468" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>util::ring_buffer&lt; T &gt;::ring_buffer</definition>
+        <argsstring>()</argsstring>
+        <name>ring_buffer</name>
+        <qualifiedname>util::ring_buffer::ring_buffer</qualifiedname>
+        <briefdescription>
+<para>Default constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="186" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="186" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1ab0420726450bbf4ca236f17e6f91ac74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::ring_buffer&lt; T &gt;::ring_buffer</definition>
+        <argsstring>(ring_buffer const &amp;other)=delete</argsstring>
+        <name>ring_buffer</name>
+        <qualifiedname>util::ring_buffer::ring_buffer</qualifiedname>
+        <param>
+          <type>ring_buffer const &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="193" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a6cea186e2be1e7f8af6eb067bc38cb85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::ring_buffer&lt; T &gt;::ring_buffer</definition>
+        <argsstring>(ring_buffer &amp;&amp;other)=delete</argsstring>
+        <name>ring_buffer</name>
+        <qualifiedname>util::ring_buffer::ring_buffer</qualifiedname>
+        <param>
+          <type>ring_buffer &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="196" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1ac6f1a89c766ac3a2a3b8574ade663a9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classutil_1_1ring__buffer_1a1b2eb75a2668ac1d7e5cb43e57d08708" kindref="member">ring_buffer</ref> &amp;</type>
+        <definition>ring_buffer &amp; util::ring_buffer&lt; T &gt;::operator=</definition>
+        <argsstring>(ring_buffer const &amp;rhs)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>util::ring_buffer::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classutil_1_1ring__buffer_1a1b2eb75a2668ac1d7e5cb43e57d08708" kindref="member">ring_buffer</ref> const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Assignment operator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="199" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a5347a0a690c07b5973dd8ffe133bec44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classutil_1_1ring__buffer_1a1b2eb75a2668ac1d7e5cb43e57d08708" kindref="member">ring_buffer</ref> &amp;</type>
+        <definition>ring_buffer &amp; util::ring_buffer&lt; T &gt;::operator=</definition>
+        <argsstring>(ring_buffer &amp;&amp;rhs)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>util::ring_buffer::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classutil_1_1ring__buffer_1a1b2eb75a2668ac1d7e5cb43e57d08708" kindref="member">ring_buffer</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="201" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1aac40a4193266a276bc62e475b0edeea3" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool util::ring_buffer&lt; T &gt;::operator==</definition>
+        <argsstring>(ring_buffer&lt; T &gt; const &amp;other) const noexcept</argsstring>
+        <name>operator==</name>
+        <qualifiedname>util::ring_buffer::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classutil_1_1ring__buffer_1a1b2eb75a2668ac1d7e5cb43e57d08708" kindref="member">ring_buffer</ref>&lt; T &gt; const &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Equality operator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="204" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="204" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a034ba5df2dc1ab7e9920972ba9588ba6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool util::ring_buffer&lt; T &gt;::operator!=</definition>
+        <argsstring>(ring_buffer&lt; T &gt; const &amp;other) const noexcept</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>util::ring_buffer::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="classutil_1_1ring__buffer_1a1b2eb75a2668ac1d7e5cb43e57d08708" kindref="member">ring_buffer</ref>&lt; T &gt; const &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Inequality operator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="218" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="218" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a49deb06dbca8dbfdc0c397b52f356c49" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>util::ring_buffer&lt; T &gt;::operator std::vector&lt; T &gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>operator std::vector&lt; T &gt;</name>
+        <qualifiedname>util::ring_buffer::vector&lt; T &gt;</qualifiedname>
+        <briefdescription>
+<para>Vector conversion operator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="221" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="221" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1ada502177a8cef850c4e0acfcb7292f27" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::ring_buffer&lt; T &gt;::push_back</definition>
+        <argsstring>(T const &amp;item)</argsstring>
+        <name>push_back</name>
+        <qualifiedname>util::ring_buffer::push_back</qualifiedname>
+        <param>
+          <type>T const &amp;</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Inserts new element in buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="229" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="229" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1adcc8d748e83067138afec56a603f1c97" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::ring_buffer&lt; T &gt;::push_back</definition>
+        <argsstring>(T &amp;&amp;item)</argsstring>
+        <name>push_back</name>
+        <qualifiedname>util::ring_buffer::push_back</qualifiedname>
+        <param>
+          <type>T &amp;&amp;</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="239" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="239" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1aa1f15b4f7e57dfe7b7551e128964d298" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>iterator</type>
+        <definition>iterator util::ring_buffer&lt; T &gt;::begin</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>begin</name>
+        <qualifiedname>util::ring_buffer::begin</qualifiedname>
+        <briefdescription>
+<para>Return an iterator pointing to first (oldest) element in buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="250" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="250" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1aafc35b1d9ff8ad8a659e3f3f0f9ef77a" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const_iterator</type>
+        <definition>const_iterator util::ring_buffer&lt; T &gt;::begin</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>begin</name>
+        <qualifiedname>util::ring_buffer::begin</qualifiedname>
+        <briefdescription>
+<para>Return a const iterator pointing to first (oldest) element in buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="253" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="253" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a38fef7fb093ee836dfa6067a18beaa6b" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const_iterator</type>
+        <definition>const_iterator util::ring_buffer&lt; T &gt;::cbegin</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>cbegin</name>
+        <qualifiedname>util::ring_buffer::cbegin</qualifiedname>
+        <briefdescription>
+<para>Return a const iterator pointing to first (oldest) element in buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="256" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="256" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a6177f26b4ebb369ccb2809d53efd1aac" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>iterator</type>
+        <definition>iterator util::ring_buffer&lt; T &gt;::end</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>end</name>
+        <qualifiedname>util::ring_buffer::end</qualifiedname>
+        <briefdescription>
+<para>Return an iterator pointing past the last (newest) element in buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="259" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="259" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a67ca8edbc25df84d03b76c79c98be735" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const_iterator</type>
+        <definition>const_iterator util::ring_buffer&lt; T &gt;::end</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>end</name>
+        <qualifiedname>util::ring_buffer::end</qualifiedname>
+        <briefdescription>
+<para>Return a const iterator pointing past the last (newest) element in buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="262" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="262" bodyend="262"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a1a11909746ef4fefe05ce5ffd3d46706" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const_iterator</type>
+        <definition>const_iterator util::ring_buffer&lt; T &gt;::cend</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>cend</name>
+        <qualifiedname>util::ring_buffer::cend</qualifiedname>
+        <briefdescription>
+<para>Return an iterator pointing past the last (newest) element in buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="265" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="265" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a8e20e2accd921ebb9eacadec852df626" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::ring_buffer&lt; T &gt;::pop_front</definition>
+        <argsstring>()</argsstring>
+        <name>pop_front</name>
+        <qualifiedname>util::ring_buffer::pop_front</qualifiedname>
+        <briefdescription>
+<para>Remove oldest element from buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="268" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="268" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a037e640c0b254cc99aa4361fdd7759c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; util::ring_buffer&lt; T &gt;::front</definition>
+        <argsstring>()</argsstring>
+        <name>front</name>
+        <qualifiedname>util::ring_buffer::front</qualifiedname>
+        <briefdescription>
+<para>Return a reference to first (oldest) element in buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="276" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="276" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1ab4f0004e268fbe00acc7bf422db86333" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T const &amp;</type>
+        <definition>T const  &amp; util::ring_buffer&lt; T &gt;::front</definition>
+        <argsstring>() const</argsstring>
+        <name>front</name>
+        <qualifiedname>util::ring_buffer::front</qualifiedname>
+        <briefdescription>
+<para>Return a reference to first (oldest) element in buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="283" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="283" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a59e8741eb81d021ea9356bbac9374bff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; util::ring_buffer&lt; T &gt;::back</definition>
+        <argsstring>()</argsstring>
+        <name>back</name>
+        <qualifiedname>util::ring_buffer::back</qualifiedname>
+        <briefdescription>
+<para>Return reference to last (newest) element in buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="290" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="290" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a2c52ada21d4801d9fa249272b1a22e41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T const &amp;</type>
+        <definition>T const  &amp; util::ring_buffer&lt; T &gt;::back</definition>
+        <argsstring>() const</argsstring>
+        <name>back</name>
+        <qualifiedname>util::ring_buffer::back</qualifiedname>
+        <briefdescription>
+<para>Return reference to last (newest) element in buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="297" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="297" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a21e59a0178c221e56108e324e9111017" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::ring_buffer&lt; T &gt;::clear</definition>
+        <argsstring>(void)</argsstring>
+        <name>clear</name>
+        <qualifiedname>util::ring_buffer::clear</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Remove all elements from buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="304" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="304" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1afb90a804a281574929ab62114a479320" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool util::ring_buffer&lt; T &gt;::empty</definition>
+        <argsstring>(void) const noexcept</argsstring>
+        <name>empty</name>
+        <qualifiedname>util::ring_buffer::empty</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Return true if buffer is empty. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="314" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="314" bodyend="314"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a0ff427de9e4dba0f494a5b88b3f9535f" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool util::ring_buffer&lt; T &gt;::full</definition>
+        <argsstring>(void) const noexcept</argsstring>
+        <name>full</name>
+        <qualifiedname>util::ring_buffer::full</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Return true if buffer is full. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="317" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="317" bodyend="317"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1aea593638d9ca4f15334fc7a672610ce1" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t util::ring_buffer&lt; T &gt;::capacity</definition>
+        <argsstring>(void) const noexcept</argsstring>
+        <name>capacity</name>
+        <qualifiedname>util::ring_buffer::capacity</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Return maximum buffer size. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="320" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="320" bodyend="320"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a33fe1249d7d7e7abfa50f2cfe6575b61" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::ring_buffer&lt; T &gt;::resize</definition>
+        <argsstring>(size_t new_cap)</argsstring>
+        <name>resize</name>
+        <qualifiedname>util::ring_buffer::resize</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>new_cap</declname>
+        </param>
+        <briefdescription>
+<para>(Re)allocate buffer with a different capacity </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="323" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="323" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a4c62989a903135adb8f2bc7922950857" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t util::ring_buffer&lt; T &gt;::size</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>size</name>
+        <qualifiedname>util::ring_buffer::size</qualifiedname>
+        <briefdescription>
+<para>Return number of elements in buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="340" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="340" bodyend="340"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a4c9a0488a4b74e40a6749d7006aa83ee" prot="private" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t util::ring_buffer&lt; T &gt;::increment</definition>
+        <argsstring>(size_t pos) const noexcept</argsstring>
+        <name>increment</name>
+        <qualifiedname>util::ring_buffer::increment</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+<para>increment an iterator index </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="344" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="344" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1a625b1ea95dca5ae5f0c6d663eb3260c7" prot="private" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t util::ring_buffer&lt; T &gt;::decrement</definition>
+        <argsstring>(size_t pos) const noexcept</argsstring>
+        <name>decrement</name>
+        <qualifiedname>util::ring_buffer::decrement</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+<para>decrement an iterator index </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="353" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="353" bodyend="361"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1af50e2d3cdf4829fa6d715e6c0a1b450d" prot="private" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t util::ring_buffer&lt; T &gt;::add</definition>
+        <argsstring>(size_t oldpos, size_t delta) const noexcept</argsstring>
+        <name>add</name>
+        <qualifiedname>util::ring_buffer::add</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>oldpos</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>delta</declname>
+        </param>
+        <briefdescription>
+<para>add a value an iterator index </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="364" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="364" bodyend="374"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1ring__buffer_1ad3dddab466ee4116ef3f421e07405b40" prot="private" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t util::ring_buffer&lt; T &gt;::subtract</definition>
+        <argsstring>(size_t oldpos, size_t delta) const noexcept</argsstring>
+        <name>subtract</name>
+        <qualifiedname>util::ring_buffer::subtract</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>oldpos</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>delta</declname>
+        </param>
+        <briefdescription>
+<para>subtract a value from an iterator index </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="377" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="377" bodyend="387"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Circular buffer. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" line="41" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ring_buffer.h" bodystart="41" bodyend="391"/>
+    <listofallmembers>
+      <member refid="classutil_1_1ring__buffer_1af50e2d3cdf4829fa6d715e6c0a1b450d" prot="private" virt="non-virtual"><scope>util::ring_buffer</scope><name>add</name></member>
+      <member refid="classutil_1_1ring__buffer_1a59e8741eb81d021ea9356bbac9374bff" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>back</name></member>
+      <member refid="classutil_1_1ring__buffer_1a2c52ada21d4801d9fa249272b1a22e41" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>back</name></member>
+      <member refid="classutil_1_1ring__buffer_1a6cf1b80db5b3bc36edb9985304f8046b" prot="private" virt="non-virtual"><scope>util::ring_buffer</scope><name>back_idx</name></member>
+      <member refid="classutil_1_1ring__buffer_1aa1f15b4f7e57dfe7b7551e128964d298" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>begin</name></member>
+      <member refid="classutil_1_1ring__buffer_1aafc35b1d9ff8ad8a659e3f3f0f9ef77a" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>begin</name></member>
+      <member refid="classutil_1_1ring__buffer_1a342590efb04a6d727dc0239bad98df73" prot="private" virt="non-virtual"><scope>util::ring_buffer</scope><name>buf</name></member>
+      <member refid="classutil_1_1ring__buffer_1a39a3000085544f9e1b8e81cc1ed9cc22" prot="private" virt="non-virtual"><scope>util::ring_buffer</scope><name>cap</name></member>
+      <member refid="classutil_1_1ring__buffer_1aea593638d9ca4f15334fc7a672610ce1" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>capacity</name></member>
+      <member refid="classutil_1_1ring__buffer_1a38fef7fb093ee836dfa6067a18beaa6b" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>cbegin</name></member>
+      <member refid="classutil_1_1ring__buffer_1a1a11909746ef4fefe05ce5ffd3d46706" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>cend</name></member>
+      <member refid="classutil_1_1ring__buffer_1a21e59a0178c221e56108e324e9111017" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>clear</name></member>
+      <member refid="classutil_1_1ring__buffer_1a80a659c712d5c2ef6db654e7f53a05b5" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>const_iterator</name></member>
+      <member refid="classutil_1_1ring__buffer_1a625b1ea95dca5ae5f0c6d663eb3260c7" prot="private" virt="non-virtual"><scope>util::ring_buffer</scope><name>decrement</name></member>
+      <member refid="classutil_1_1ring__buffer_1afb90a804a281574929ab62114a479320" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>empty</name></member>
+      <member refid="classutil_1_1ring__buffer_1a6177f26b4ebb369ccb2809d53efd1aac" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>end</name></member>
+      <member refid="classutil_1_1ring__buffer_1a67ca8edbc25df84d03b76c79c98be735" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>end</name></member>
+      <member refid="classutil_1_1ring__buffer_1a037e640c0b254cc99aa4361fdd7759c3" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>front</name></member>
+      <member refid="classutil_1_1ring__buffer_1ab4f0004e268fbe00acc7bf422db86333" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>front</name></member>
+      <member refid="classutil_1_1ring__buffer_1a5c5063eb5dd00167e8e58ccbe374b464" prot="private" virt="non-virtual"><scope>util::ring_buffer</scope><name>front_idx</name></member>
+      <member refid="classutil_1_1ring__buffer_1a0ff427de9e4dba0f494a5b88b3f9535f" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>full</name></member>
+      <member refid="classutil_1_1ring__buffer_1a4c9a0488a4b74e40a6749d7006aa83ee" prot="private" virt="non-virtual"><scope>util::ring_buffer</scope><name>increment</name></member>
+      <member refid="classutil_1_1ring__buffer_1a33845bbc1964ce692e17afcba14c0424" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>iterator</name></member>
+      <member refid="classutil_1_1ring__buffer_1a49deb06dbca8dbfdc0c397b52f356c49" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>operator std::vector&lt; T &gt;</name></member>
+      <member refid="classutil_1_1ring__buffer_1a034ba5df2dc1ab7e9920972ba9588ba6" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>operator!=</name></member>
+      <member refid="classutil_1_1ring__buffer_1ac6f1a89c766ac3a2a3b8574ade663a9a" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>operator=</name></member>
+      <member refid="classutil_1_1ring__buffer_1a5347a0a690c07b5973dd8ffe133bec44" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>operator=</name></member>
+      <member refid="classutil_1_1ring__buffer_1aac40a4193266a276bc62e475b0edeea3" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>operator==</name></member>
+      <member refid="classutil_1_1ring__buffer_1a8e20e2accd921ebb9eacadec852df626" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>pop_front</name></member>
+      <member refid="classutil_1_1ring__buffer_1ada502177a8cef850c4e0acfcb7292f27" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>push_back</name></member>
+      <member refid="classutil_1_1ring__buffer_1adcc8d748e83067138afec56a603f1c97" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>push_back</name></member>
+      <member refid="classutil_1_1ring__buffer_1a33fe1249d7d7e7abfa50f2cfe6575b61" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>resize</name></member>
+      <member refid="classutil_1_1ring__buffer_1a1b2eb75a2668ac1d7e5cb43e57d08708" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>ring_buffer</name></member>
+      <member refid="classutil_1_1ring__buffer_1a99626adbbc6531b561bd2df154699468" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>ring_buffer</name></member>
+      <member refid="classutil_1_1ring__buffer_1ab0420726450bbf4ca236f17e6f91ac74" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>ring_buffer</name></member>
+      <member refid="classutil_1_1ring__buffer_1a6cea186e2be1e7f8af6eb067bc38cb85" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>ring_buffer</name></member>
+      <member refid="classutil_1_1ring__buffer_1a4c62989a903135adb8f2bc7922950857" prot="public" virt="non-virtual"><scope>util::ring_buffer</scope><name>size</name></member>
+      <member refid="classutil_1_1ring__buffer_1ad3dddab466ee4116ef3f421e07405b40" prot="private" virt="non-virtual"><scope>util::ring_buffer</scope><name>subtract</name></member>
+      <member refid="classutil_1_1ring__buffer_1accac455f4f26678ead6dd46f11768f0c" prot="private" virt="non-virtual"><scope>util::ring_buffer</scope><name>sz</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

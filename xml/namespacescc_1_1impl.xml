@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacescc_1_1impl" kind="namespace" language="C++">
+    <compoundname>scc::impl</compoundname>
+    <innerclass refid="classscc_1_1impl_1_1helper" prot="public">scc::impl::helper</innerclass>
+    <innerclass refid="classscc_1_1impl_1_1helper_3_01T_00_01true_01_4" prot="public">scc::impl::helper&lt; T, true &gt;</innerclass>
+    <innerclass refid="classscc_1_1impl_1_1helper_3_01T_00_01false_01_4" prot="public">scc::impl::helper&lt; T, false &gt;</innerclass>
+    <innerclass refid="classscc_1_1impl_1_1sc__register" prot="public">scc::impl::sc_register</innerclass>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="register_8h_1a3433a0d60bd4c4c46a1fda970a3574f5" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Type</type>
+          </param>
+        </templateparamlist>
+        <type>Type</type>
+        <definition>Type scc::impl::get_max_uval</definition>
+        <argsstring>()</argsstring>
+        <name>get_max_uval</name>
+        <qualifiedname>scc::impl::get_max_uval</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="64" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" bodystart="64" bodyend="66"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/register.h" line="42" column="1"/>
+  </compounddef>
+</doxygen>

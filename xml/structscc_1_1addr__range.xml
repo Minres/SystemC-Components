@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1addr__range" kind="struct" language="C++" prot="public">
+    <compoundname>scc::addr_range</compoundname>
+    <includes refid="tlm__target_8h" local="no">tlm_target.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1addr__range_1a50c9b2e11aead3cf12d42bb1ecb1147a" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t scc::addr_range::base</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <qualifiedname>scc::addr_range::base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target.h" line="35" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1addr__range_1a248594081248ef6152c5e78dbb1c902d" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t scc::addr_range::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>scc::addr_range::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target.h" line="35" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>struct representing address range </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target.h" line="34" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target.h" bodystart="34" bodyend="36"/>
+    <listofallmembers>
+      <member refid="structscc_1_1addr__range_1a50c9b2e11aead3cf12d42bb1ecb1147a" prot="public" virt="non-virtual"><scope>scc::addr_range</scope><name>base</name></member>
+      <member refid="structscc_1_1addr__range_1a248594081248ef6152c5e78dbb1c902d" prot="public" virt="non-virtual"><scope>scc::addr_range</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

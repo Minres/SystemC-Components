@@ -5,7 +5,6 @@ var classutil_1_1ring__buffer =
     [ "ring_buffer", "classutil_1_1ring__buffer.html#a99626adbbc6531b561bd2df154699468", null ],
     [ "ring_buffer", "classutil_1_1ring__buffer.html#ab0420726450bbf4ca236f17e6f91ac74", null ],
     [ "ring_buffer", "classutil_1_1ring__buffer.html#a6cea186e2be1e7f8af6eb067bc38cb85", null ],
-    [ "ring_buffer", "classutil_1_1ring__buffer.html#a11d663b368ad724f26dd1107ccbd2b18", null ],
     [ "back", "classutil_1_1ring__buffer.html#a59e8741eb81d021ea9356bbac9374bff", null ],
     [ "back", "classutil_1_1ring__buffer.html#a2c52ada21d4801d9fa249272b1a22e41", null ],
     [ "begin", "classutil_1_1ring__buffer.html#aafc35b1d9ff8ad8a659e3f3f0f9ef77a", null ],

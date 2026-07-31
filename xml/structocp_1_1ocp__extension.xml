@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structocp_1_1ocp__extension" kind="struct" language="C++" prot="public">
+    <compoundname>ocp::ocp_extension</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_extension&lt; ocp_extension &gt;</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structocp_1_1ocp__extension_1a0d24e4ac8fb6a3a6e34877a713479ba5" prot="private" static="no" mutable="no">
+        <type>cmd_e</type>
+        <definition>cmd_e ocp::ocp_extension::mcmd</definition>
+        <argsstring></argsstring>
+        <name>mcmd</name>
+        <qualifiedname>ocp::ocp_extension::mcmd</qualifiedname>
+        <initializer>{cmd_e::IDLE}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" line="58" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="variable" id="structocp_1_1ocp__extension_1a7b2fc6885c928472d8429e39d887b009" prot="private" static="no" mutable="no">
+        <type>resp_e</type>
+        <definition>resp_e ocp::ocp_extension::sresp</definition>
+        <argsstring></argsstring>
+        <name>sresp</name>
+        <qualifiedname>ocp::ocp_extension::sresp</qualifiedname>
+        <initializer>{resp_e::NULL_}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" line="59" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" bodystart="59" bodyend="59"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structocp_1_1ocp__extension_1a11b66511fa0f83bffbff0218ec1e1fbf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ocp::ocp_extension::ocp_extension</definition>
+        <argsstring>()=default</argsstring>
+        <name>ocp_extension</name>
+        <qualifiedname>ocp::ocp_extension::ocp_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" line="35" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structocp_1_1ocp__extension_1a885b830fa4a58ef97c5bef318c60f730" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ocp::ocp_extension::ocp_extension</definition>
+        <argsstring>(const ocp_extension &amp;o)=default</argsstring>
+        <name>ocp_extension</name>
+        <qualifiedname>ocp::ocp_extension::ocp_extension</qualifiedname>
+        <param>
+          <type>const ocp_extension &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" line="37" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structocp_1_1ocp__extension_1a65cbf1a840ce1f1d8a802d6176e66039" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_extension_base *</type>
+        <definition>tlm::tlm_extension_base * ocp::ocp_extension::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <qualifiedname>ocp::ocp_extension::clone</qualifiedname>
+        <briefdescription>
+<para>the clone function to create deep copies of </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>pointer to heap-allocated extension </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" line="42" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="structocp_1_1ocp__extension_1a50ebbe4be0c707bcd47afefca3daa8de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ocp::ocp_extension::copy_from</definition>
+        <argsstring>(tlm::tlm_extension_base const &amp;ext) override</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>ocp::ocp_extension::copy_from</qualifiedname>
+        <param>
+          <type>tlm::tlm_extension_base const &amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+<para>deep copy all values from ext </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ext</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" line="47" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" bodystart="64" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="structocp_1_1ocp__extension_1afbfb9d2108207b94dbf59f92bbf76aef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>cmd_e</type>
+        <definition>cmd_e ocp::ocp_extension::get_mcmd</definition>
+        <argsstring>() const</argsstring>
+        <name>get_mcmd</name>
+        <qualifiedname>ocp::ocp_extension::get_mcmd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" line="49" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="structocp_1_1ocp__extension_1afae6b16c4f841926e6e3fda7e07463b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ocp::ocp_extension::set_mcmd</definition>
+        <argsstring>(cmd_e mCmd)</argsstring>
+        <name>set_mcmd</name>
+        <qualifiedname>ocp::ocp_extension::set_mcmd</qualifiedname>
+        <param>
+          <type>cmd_e</type>
+          <declname>mCmd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" line="51" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="structocp_1_1ocp__extension_1aeeec31b4236fab6b73b0e820322cdeac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>resp_e</type>
+        <definition>resp_e ocp::ocp_extension::get_sresp</definition>
+        <argsstring>() const</argsstring>
+        <name>get_sresp</name>
+        <qualifiedname>ocp::ocp_extension::get_sresp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" line="53" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="structocp_1_1ocp__extension_1a8f339bf8af9d351aefb33fc4b54275ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ocp::ocp_extension::set_sresp</definition>
+        <argsstring>(resp_e sres)</argsstring>
+        <name>set_sresp</name>
+        <qualifiedname>ocp::ocp_extension::set_sresp</qualifiedname>
+        <param>
+          <type>resp_e</type>
+          <declname>sres</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" line="55" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" bodystart="55" bodyend="55"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ocp::ocp_extension</label>
+        <link refid="structocp_1_1ocp__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; ocp_extension &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ocp::ocp_extension</label>
+        <link refid="structocp_1_1ocp__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; ocp_extension &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" line="33" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ocp/ocp_tlm.h" bodystart="33" bodyend="60"/>
+    <listofallmembers>
+      <member refid="structocp_1_1ocp__extension_1a65cbf1a840ce1f1d8a802d6176e66039" prot="public" virt="non-virtual"><scope>ocp::ocp_extension</scope><name>clone</name></member>
+      <member refid="structocp_1_1ocp__extension_1a50ebbe4be0c707bcd47afefca3daa8de" prot="public" virt="non-virtual"><scope>ocp::ocp_extension</scope><name>copy_from</name></member>
+      <member refid="structocp_1_1ocp__extension_1afbfb9d2108207b94dbf59f92bbf76aef" prot="public" virt="non-virtual"><scope>ocp::ocp_extension</scope><name>get_mcmd</name></member>
+      <member refid="structocp_1_1ocp__extension_1aeeec31b4236fab6b73b0e820322cdeac" prot="public" virt="non-virtual"><scope>ocp::ocp_extension</scope><name>get_sresp</name></member>
+      <member refid="structocp_1_1ocp__extension_1a0d24e4ac8fb6a3a6e34877a713479ba5" prot="private" virt="non-virtual"><scope>ocp::ocp_extension</scope><name>mcmd</name></member>
+      <member refid="structocp_1_1ocp__extension_1a11b66511fa0f83bffbff0218ec1e1fbf" prot="public" virt="non-virtual"><scope>ocp::ocp_extension</scope><name>ocp_extension</name></member>
+      <member refid="structocp_1_1ocp__extension_1a885b830fa4a58ef97c5bef318c60f730" prot="public" virt="non-virtual"><scope>ocp::ocp_extension</scope><name>ocp_extension</name></member>
+      <member refid="structocp_1_1ocp__extension_1afae6b16c4f841926e6e3fda7e07463b7" prot="public" virt="non-virtual"><scope>ocp::ocp_extension</scope><name>set_mcmd</name></member>
+      <member refid="structocp_1_1ocp__extension_1a8f339bf8af9d351aefb33fc4b54275ee" prot="public" virt="non-virtual"><scope>ocp::ocp_extension</scope><name>set_sresp</name></member>
+      <member refid="structocp_1_1ocp__extension_1a7b2fc6885c928472d8429e39d887b009" prot="private" virt="non-virtual"><scope>ocp::ocp_extension</scope><name>sresp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

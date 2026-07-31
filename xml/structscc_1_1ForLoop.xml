@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1ForLoop" kind="struct" language="C++" prot="public">
+    <compoundname>scc::ForLoop</compoundname>
+    <templateparamlist>
+      <param>
+        <type>size_t</type>
+        <declname>SIZE</declname>
+        <defname>SIZE</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structscc_1_1ForLoop_1aae318aed284050aa55321d0d30477747" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>template&lt; size_t &gt; class</type>
+            <declname>Func</declname>
+            <defname>Func</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>static bool scc::ForLoop&lt; SIZE &gt;::iterate</definition>
+        <argsstring>(sc_trace_file *trace_file, const sc_object *object, trace_types types_to_trace)</argsstring>
+        <name>iterate</name>
+        <qualifiedname>scc::ForLoop::iterate</qualifiedname>
+        <param>
+          <type>sc_trace_file *</type>
+          <declname>trace_file</declname>
+        </param>
+        <param>
+          <type>const sc_object *</type>
+          <declname>object</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191" kindref="member">trace_types</ref></type>
+          <declname>types_to_trace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" line="59" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" bodystart="59" bodyend="64"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" line="57" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" bodystart="57" bodyend="65"/>
+    <listofallmembers>
+      <member refid="structscc_1_1ForLoop_1aae318aed284050aa55321d0d30477747" prot="public" virt="non-virtual"><scope>scc::ForLoop</scope><name>iterate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

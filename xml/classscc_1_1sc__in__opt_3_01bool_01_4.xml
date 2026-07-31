@@ -1,0 +1,718 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1sc__in__opt_3_01bool_01_4" kind="class" language="C++" prot="public">
+    <compoundname>scc::sc_in_opt&lt; bool &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_port&lt; sc_core::sc_signal_in_if&lt; bool &gt;, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_port&lt; sc_core::sc_signal_in_if&lt; bool &gt;, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</basecompoundref>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classscc_1_1sc__in__opt_3_01bool_01_4_1aaea19fdc3a66fd8758fb8a7702a59a15" prot="public" static="no">
+        <type>bool</type>
+        <definition>typedef bool scc::sc_in_opt&lt; bool &gt;::data_type</definition>
+        <argsstring></argsstring>
+        <name>data_type</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::data_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="143" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a1091f706cf5b1d9163c025a7173789b0" prot="public" static="no">
+        <type>sc_core::sc_signal_in_if&lt; data_type &gt;</type>
+        <definition>typedef sc_core::sc_signal_in_if&lt;data_type&gt; scc::sc_in_opt&lt; bool &gt;::if_type</definition>
+        <argsstring></argsstring>
+        <name>if_type</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::if_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="145" column="38" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__in__opt_3_01bool_01_4_1af9c315123f7f84f8e125cdef76b0ef63" prot="public" static="no">
+        <type>sc_core::sc_port&lt; if_type, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</type>
+        <definition>typedef sc_core::sc_port&lt;if_type, 1, sc_core::SC_ZERO_OR_MORE_BOUND&gt; scc::sc_in_opt&lt; bool &gt;::base_type</definition>
+        <argsstring></argsstring>
+        <name>base_type</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::base_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="146" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a8696d9c4c7e6586f649748ea4b7f3291" prot="public" static="no">
+        <type>sc_in_opt&lt; data_type &gt;</type>
+        <definition>typedef sc_in_opt&lt;data_type&gt; scc::sc_in_opt&lt; bool &gt;::this_type</definition>
+        <argsstring></argsstring>
+        <name>this_type</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::this_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="147" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a56745c49991c34fd2f49f29d05683dbf" prot="public" static="no">
+        <type>base_type::port_type</type>
+        <definition>typedef base_type::port_type scc::sc_in_opt&lt; bool &gt;::base_port_type</definition>
+        <argsstring></argsstring>
+        <name>base_port_type</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::base_port_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="148" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__in__opt_3_01bool_01_4_1af21b2f97c8c486ff7d87d5541fdd0c50" prot="public" static="no">
+        <type>if_type</type>
+        <definition>typedef if_type scc::sc_in_opt&lt; bool &gt;::in_if_type</definition>
+        <argsstring></argsstring>
+        <name>in_if_type</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::in_if_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="150" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a3ee5ac9543ebee2c8968ac7cedbaf0a3" prot="public" static="no">
+        <type>base_type</type>
+        <definition>typedef base_type scc::sc_in_opt&lt; bool &gt;::in_port_type</definition>
+        <argsstring></argsstring>
+        <name>in_port_type</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::in_port_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="151" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__in__opt_3_01bool_01_4_1ad6837ba41d15342486e8cbb69fc2ca75" prot="public" static="no">
+        <type>sc_core::sc_signal_inout_if&lt; data_type &gt;</type>
+        <definition>typedef sc_core::sc_signal_inout_if&lt;data_type&gt; scc::sc_in_opt&lt; bool &gt;::inout_if_type</definition>
+        <argsstring></argsstring>
+        <name>inout_if_type</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::inout_if_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="152" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__in__opt_3_01bool_01_4_1ab8a71fecaaa3b607c1aa5689146ed14a" prot="public" static="no">
+        <type>sc_core::sc_port&lt; inout_if_type, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</type>
+        <definition>typedef sc_core::sc_port&lt;inout_if_type, 1, sc_core::SC_ZERO_OR_MORE_BOUND&gt; scc::sc_in_opt&lt; bool &gt;::inout_port_type</definition>
+        <argsstring></argsstring>
+        <name>inout_port_type</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::inout_port_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="153" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="153" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1aed0d010e7cc571d06337d903b29c2372" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</definition>
+        <argsstring>()</argsstring>
+        <name>sc_in_opt</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="156" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="156" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1ab1cbdb8d1db15cb0b6d636dcf5d347f1" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</definition>
+        <argsstring>(const char *name_)</argsstring>
+        <name>sc_in_opt</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="159" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="159" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a36d87c0655ca88706fc2002dd59f90c2" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</definition>
+        <argsstring>(const in_if_type &amp;interface_)</argsstring>
+        <name>sc_in_opt</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</qualifiedname>
+        <param>
+          <type>const in_if_type &amp;</type>
+          <declname>interface_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="162" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="162" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1aa45a419f804da5dc9f30542939b943dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</definition>
+        <argsstring>(const char *name_, const in_if_type &amp;interface_)</argsstring>
+        <name>sc_in_opt</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name_</declname>
+        </param>
+        <param>
+          <type>const in_if_type &amp;</type>
+          <declname>interface_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="165" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="165" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1abe192d0fc1170cd2fd20bf9a80ba8228" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</definition>
+        <argsstring>(in_port_type &amp;parent_)</argsstring>
+        <name>sc_in_opt</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</qualifiedname>
+        <param>
+          <type>in_port_type &amp;</type>
+          <declname>parent_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="168" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="168" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a248c8585852372987673aa3091f1bcd7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</definition>
+        <argsstring>(const char *name_, in_port_type &amp;parent_)</argsstring>
+        <name>sc_in_opt</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name_</declname>
+        </param>
+        <param>
+          <type>in_port_type &amp;</type>
+          <declname>parent_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="171" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="171" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a1ce6f1376c868e7b6c44dd7e54e12b90" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</definition>
+        <argsstring>(inout_port_type &amp;parent_)</argsstring>
+        <name>sc_in_opt</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</qualifiedname>
+        <param>
+          <type>inout_port_type &amp;</type>
+          <declname>parent_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="174" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="174" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1aa8f014172c70653d04f34ede343eb5bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</definition>
+        <argsstring>(const char *name_, inout_port_type &amp;parent_)</argsstring>
+        <name>sc_in_opt</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name_</declname>
+        </param>
+        <param>
+          <type>inout_port_type &amp;</type>
+          <declname>parent_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="179" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="179" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1ae4e44b5f5dcb17b5e09779bb2e05a157" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</definition>
+        <argsstring>(this_type &amp;parent_)</argsstring>
+        <name>sc_in_opt</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</qualifiedname>
+        <param>
+          <type>this_type &amp;</type>
+          <declname>parent_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="184" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="184" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1ad4ce350770155c9ba364f767960c9466" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</definition>
+        <argsstring>(const char *name_, this_type &amp;parent_)</argsstring>
+        <name>sc_in_opt</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name_</declname>
+        </param>
+        <param>
+          <type>this_type &amp;</type>
+          <declname>parent_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="187" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="187" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a0dc23df0bc6b68d884a6d9c05e150346" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</definition>
+        <argsstring>(const this_type &amp;)=delete</argsstring>
+        <name>sc_in_opt</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::sc_in_opt</qualifiedname>
+        <param>
+          <type>const this_type &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="190" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1ae51f6057db2cae6bade028c9b624ca06" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual scc::sc_in_opt&lt; bool &gt;::~sc_in_opt</definition>
+        <argsstring>()=default</argsstring>
+        <name>~sc_in_opt</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::~sc_in_opt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="192" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a7a38722ba354d2ab60388c1b10302827" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>this_type &amp;</type>
+        <definition>this_type &amp; scc::sc_in_opt&lt; bool &gt;::operator=</definition>
+        <argsstring>(const this_type &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::operator=</qualifiedname>
+        <param>
+          <type>const this_type &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="194" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a8b7f6b48de0bccd9630033f29f4675d6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>SCC_VIRT void</type>
+        <definition>SCC_VIRT void scc::sc_in_opt&lt; bool &gt;::bind</definition>
+        <argsstring>(const in_if_type &amp;interface_)</argsstring>
+        <name>bind</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::bind</qualifiedname>
+        <param>
+          <type>const in_if_type &amp;</type>
+          <declname>interface_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="196" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="196" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1aefee1d9e282cc6f01913b2663cc0bd5e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>SCC_VIRT void</type>
+        <definition>SCC_VIRT void scc::sc_in_opt&lt; bool &gt;::bind</definition>
+        <argsstring>(in_if_type &amp;interface_) override</argsstring>
+        <name>bind</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::bind</qualifiedname>
+        <param>
+          <type>in_if_type &amp;</type>
+          <declname>interface_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="198" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="198" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a59e2dceb06486a1173ff9af0ecaf5109" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_in_opt&lt; bool &gt;::operator()</definition>
+        <argsstring>(const in_if_type &amp;interface_)</argsstring>
+        <name>operator()</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::operator()</qualifiedname>
+        <param>
+          <type>const in_if_type &amp;</type>
+          <declname>interface_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="200" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="200" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a2065d43e6c8c61a7c2575ebe9381f7c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>SCC_VIRT void</type>
+        <definition>SCC_VIRT void scc::sc_in_opt&lt; bool &gt;::bind</definition>
+        <argsstring>(in_port_type &amp;parent_)</argsstring>
+        <name>bind</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::bind</qualifiedname>
+        <param>
+          <type>in_port_type &amp;</type>
+          <declname>parent_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="202" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="202" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a61249c3c155be89cdbf683c643a1ef6a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_in_opt&lt; bool &gt;::operator()</definition>
+        <argsstring>(in_port_type &amp;parent_)</argsstring>
+        <name>operator()</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::operator()</qualifiedname>
+        <param>
+          <type>in_port_type &amp;</type>
+          <declname>parent_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="204" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="204" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a888ae8b3fbd0d661fd7dc2c431c0c039" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>SCC_VIRT void</type>
+        <definition>SCC_VIRT void scc::sc_in_opt&lt; bool &gt;::bind</definition>
+        <argsstring>(inout_port_type &amp;parent_)</argsstring>
+        <name>bind</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::bind</qualifiedname>
+        <param>
+          <type>inout_port_type &amp;</type>
+          <declname>parent_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="206" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="206" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1ac30742b34ad035eecba8130fd5028ea5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_in_opt&lt; bool &gt;::operator()</definition>
+        <argsstring>(inout_port_type &amp;parent_)</argsstring>
+        <name>operator()</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::operator()</qualifiedname>
+        <param>
+          <type>inout_port_type &amp;</type>
+          <declname>parent_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="208" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="208" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1af87597ed2fdf0abb275a3c587ada2636" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const sc_core::sc_event &amp;</type>
+        <definition>const sc_core::sc_event &amp; scc::sc_in_opt&lt; bool &gt;::default_event</definition>
+        <argsstring>() const</argsstring>
+        <name>default_event</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::default_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="210" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="210" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a8a223e9613289164fb1bf6fb4abd0b56" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const sc_core::sc_event &amp;</type>
+        <definition>const sc_core::sc_event &amp; scc::sc_in_opt&lt; bool &gt;::value_changed_event</definition>
+        <argsstring>() const</argsstring>
+        <name>value_changed_event</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::value_changed_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="212" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="212" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1abe543399245794758a64b3d30c74dc88" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const sc_core::sc_event &amp;</type>
+        <definition>const sc_core::sc_event &amp; scc::sc_in_opt&lt; bool &gt;::posedge_event</definition>
+        <argsstring>() const</argsstring>
+        <name>posedge_event</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::posedge_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="214" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="214" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a62a87dfaffaa14648eeaf6ff254776a6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const sc_core::sc_event &amp;</type>
+        <definition>const sc_core::sc_event &amp; scc::sc_in_opt&lt; bool &gt;::negedge_event</definition>
+        <argsstring>() const</argsstring>
+        <name>negedge_event</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::negedge_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="216" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="216" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a9a16f300ef4d58c5ee6cca0077313172" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const data_type &amp;</type>
+        <definition>const data_type &amp; scc::sc_in_opt&lt; bool &gt;::read</definition>
+        <argsstring>() const</argsstring>
+        <name>read</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::read</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="218" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="218" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a19d36daeafa1a67a2fec097500c09a35" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_in_opt&lt; bool &gt;::operator const data_type &amp;</definition>
+        <argsstring>() const</argsstring>
+        <name>operator const data_type &amp;</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::operator const data_type &amp;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="220" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="220" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a3284dc277e10907814ecee3cd749e5ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_in_opt&lt; bool &gt;::event</definition>
+        <argsstring>() const</argsstring>
+        <name>event</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="222" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="222" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1ad24d71f08d0ed12b70b4dc6dbfb7d47a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_in_opt&lt; bool &gt;::posedge</definition>
+        <argsstring>() const</argsstring>
+        <name>posedge</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::posedge</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="224" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="224" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1ab080709e85a15533eaadbf87673c472a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_in_opt&lt; bool &gt;::negedge</definition>
+        <argsstring>() const</argsstring>
+        <name>negedge</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::negedge</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="226" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="226" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__in__opt_3_01bool_01_4_1a340a743a72801f487de41e983220ad42" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>virtual const char * scc::sc_in_opt&lt; bool &gt;::kind</definition>
+        <argsstring>() const override</argsstring>
+        <name>kind</name>
+        <qualifiedname>scc::sc_in_opt&lt; bool &gt;::kind</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="228" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="228" bodyend="228"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_port&lt; sc_core::sc_signal_in_if&lt; bool &gt;, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_in_opt&lt; bool &gt;</label>
+        <link refid="classscc_1_1sc__in__opt_3_01bool_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_port&lt; sc_core::sc_signal_in_if&lt; bool &gt;, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_in_opt&lt; bool &gt;</label>
+        <link refid="classscc_1_1sc__in__opt_3_01bool_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="141" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="141" bodyend="229"/>
+    <listofallmembers>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a56745c49991c34fd2f49f29d05683dbf" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>base_port_type</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1af9c315123f7f84f8e125cdef76b0ef63" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>base_type</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a8b7f6b48de0bccd9630033f29f4675d6" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>bind</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1aefee1d9e282cc6f01913b2663cc0bd5e" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>bind</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a2065d43e6c8c61a7c2575ebe9381f7c3" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>bind</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a888ae8b3fbd0d661fd7dc2c431c0c039" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>bind</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1aaea19fdc3a66fd8758fb8a7702a59a15" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>data_type</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1af87597ed2fdf0abb275a3c587ada2636" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>default_event</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a3284dc277e10907814ecee3cd749e5ec" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>event</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a1091f706cf5b1d9163c025a7173789b0" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>if_type</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1af21b2f97c8c486ff7d87d5541fdd0c50" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>in_if_type</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a3ee5ac9543ebee2c8968ac7cedbaf0a3" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>in_port_type</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1ad6837ba41d15342486e8cbb69fc2ca75" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>inout_if_type</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1ab8a71fecaaa3b607c1aa5689146ed14a" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>inout_port_type</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a340a743a72801f487de41e983220ad42" prot="public" virt="virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>kind</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1ab080709e85a15533eaadbf87673c472a" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>negedge</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a62a87dfaffaa14648eeaf6ff254776a6" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>negedge_event</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a19d36daeafa1a67a2fec097500c09a35" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>operator const data_type &amp;</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a59e2dceb06486a1173ff9af0ecaf5109" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>operator()</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a61249c3c155be89cdbf683c643a1ef6a" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>operator()</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1ac30742b34ad035eecba8130fd5028ea5" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>operator()</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a7a38722ba354d2ab60388c1b10302827" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>operator=</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1ad24d71f08d0ed12b70b4dc6dbfb7d47a" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>posedge</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1abe543399245794758a64b3d30c74dc88" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>posedge_event</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a9a16f300ef4d58c5ee6cca0077313172" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>read</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1aed0d010e7cc571d06337d903b29c2372" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>sc_in_opt</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1ab1cbdb8d1db15cb0b6d636dcf5d347f1" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>sc_in_opt</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a36d87c0655ca88706fc2002dd59f90c2" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>sc_in_opt</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1aa45a419f804da5dc9f30542939b943dc" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>sc_in_opt</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1abe192d0fc1170cd2fd20bf9a80ba8228" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>sc_in_opt</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a248c8585852372987673aa3091f1bcd7" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>sc_in_opt</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a1ce6f1376c868e7b6c44dd7e54e12b90" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>sc_in_opt</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1aa8f014172c70653d04f34ede343eb5bd" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>sc_in_opt</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1ae4e44b5f5dcb17b5e09779bb2e05a157" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>sc_in_opt</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1ad4ce350770155c9ba364f767960c9466" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>sc_in_opt</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a0dc23df0bc6b68d884a6d9c05e150346" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>sc_in_opt</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a8696d9c4c7e6586f649748ea4b7f3291" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>this_type</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1a8a223e9613289164fb1bf6fb4abd0b56" prot="public" virt="non-virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>value_changed_event</name></member>
+      <member refid="classscc_1_1sc__in__opt_3_01bool_01_4_1ae51f6057db2cae6bade028c9b624ca06" prot="public" virt="virtual"><scope>scc::sc_in_opt&lt; bool &gt;</scope><name>~sc_in_opt</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

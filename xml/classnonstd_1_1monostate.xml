@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classnonstd_1_1monostate" kind="class" language="C++" prot="public">
+    <compoundname>nonstd::monostate</compoundname>
+    <includes refid="optional_8hpp" local="no">optional.hpp</includes>
+    <briefdescription>
+<para>Used to represent an optional with no data; essentially a bool. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="103" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="103" bodyend="103"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

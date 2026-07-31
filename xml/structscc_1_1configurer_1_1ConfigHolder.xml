@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1configurer_1_1ConfigHolder" kind="struct" language="C++" prot="public">
+    <compoundname>scc::configurer::ConfigHolder</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">scc::json_config_reader</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1configurer_1_1ConfigHolder_1a8274eeff74662d455fc431aec8c0edaa" prot="public" static="no" mutable="no">
+        <type>Document</type>
+        <definition>Document scc::configurer::ConfigHolder::document</definition>
+        <argsstring></argsstring>
+        <name>document</name>
+        <qualifiedname>scc::configurer::ConfigHolder::document</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer_nocci.cpp" line="201" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer_nocci.cpp" bodystart="201" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1configurer_1_1ConfigHolder_1a5746ff226c7eafaf0503bde45bef0c86" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::configurer::ConfigHolder::ConfigHolder</definition>
+        <argsstring>(configurer::broker_t &amp;broker)</argsstring>
+        <name>ConfigHolder</name>
+        <qualifiedname>scc::configurer::ConfigHolder::ConfigHolder</qualifiedname>
+        <param>
+          <type>configurer::broker_t &amp;</type>
+          <declname>broker</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" line="667" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" bodystart="667" bodyend="668"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>anonymous:</label>
+      </node>
+      <node id="1">
+        <label>scc::configurer::ConfigHolder</label>
+        <link refid="structscc_1_1configurer_1_1ConfigHolder"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>anonymous:</label>
+      </node>
+      <node id="1">
+        <label>scc::configurer::ConfigHolder</label>
+        <link refid="structscc_1_1configurer_1_1ConfigHolder"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" line="666" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" bodystart="666" bodyend="669"/>
+    <listofallmembers>
+      <member refid="structscc_1_1_0d153136225123267142035123140207174046223010357301_1_1json__config__reader_1a12611a7687a3d337157a36fa0f919662" prot="public" virt="non-virtual"><scope>scc::configurer::ConfigHolder</scope><name>broker</name></member>
+      <member refid="structscc_1_1configurer_1_1ConfigHolder_1a5746ff226c7eafaf0503bde45bef0c86" prot="public" virt="non-virtual"><scope>scc::configurer::ConfigHolder</scope><name>ConfigHolder</name></member>
+      <member refid="structscc_1_1configurer_1_1ConfigHolder_1a8274eeff74662d455fc431aec8c0edaa" prot="public" virt="non-virtual"><scope>scc::configurer::ConfigHolder</scope><name>document</name></member>
+      <member refid="structscc_1_1_0d153136225123267142035123140207174046223010357301_1_1json__config__reader_1a254c30c041bf2431da4e754baadf2ee5" prot="public" virt="non-virtual"><scope>scc::configurer::ConfigHolder</scope><name>empty</name></member>
+      <member refid="structscc_1_1_0d153136225123267142035123140207174046223010357301_1_1json__config__reader_1a370ff33bc4a8d03ed2747c9c098d4a6f" prot="public" virt="non-virtual"><scope>scc::configurer::ConfigHolder</scope><name>valid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

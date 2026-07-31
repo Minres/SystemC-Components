@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -114,6 +114,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab74f9ddb4519bc2cf98f636a7482c0fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">desctructor <br /></td></tr>
 <tr class="memitem:a66984eca71ad32bd856248091994b57b" id="r_a66984eca71ad32bd856248091994b57b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66984eca71ad32bd856248091994b57b">is_trace_enabled</a> () const override</td></tr>
 <tr class="memdesc:a66984eca71ad32bd856248091994b57b"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns of this component shall be traced  <br /></td></tr>
+<tr class="memitem:abcecef76ec622d0f5e7e8f99d40bf470" id="r_abcecef76ec622d0f5e7e8f99d40bf470"><td class="memItemLeft" align="right" valign="top">char const *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcecef76ec622d0f5e7e8f99d40bf470">full_name</a> () const override</td></tr>
+<tr class="memdesc:abcecef76ec622d0f5e7e8f99d40bf470"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the name of the resource  <br /></td></tr>
 <tr class="memitem:ae4bd59511313c06e5b91ea67ff26774a" id="r_ae4bd59511313c06e5b91ea67ff26774a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4bd59511313c06e5b91ea67ff26774a">size</a> () const override</td></tr>
 <tr class="memdesc:ae4bd59511313c06e5b91ea67ff26774a"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the size of this register in bytes  <br /></td></tr>
 <tr class="memitem:a04b4f9e28ccfb5f005bcf300df1152cc" id="r_a04b4f9e28ccfb5f005bcf300df1152cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04b4f9e28ccfb5f005bcf300df1152cc">reset</a> () override</td></tr>
@@ -163,6 +165,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> (uin
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a8dc04bf5f7dc6928126638384b213230" id="r_a8dc04bf5f7dc6928126638384b213230"><td class="memItemLeft" align="right" valign="top">cci::cci_param&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8dc04bf5f7dc6928126638384b213230">enable_tracing</a></td></tr>
+<tr class="memitem:a0cee1d07b2b352bfc0c65a712879a5d1" id="r_a0cee1d07b2b352bfc0c65a712879a5d1"><td class="memItemLeft" align="right" valign="top">cci::cci_param&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0cee1d07b2b352bfc0c65a712879a5d1">enable_side_effect</a></td></tr>
 <tr class="memitem:aca9d8f872440560d68d859ba9d184b66" id="r_aca9d8f872440560d68d859ba9d184b66"><td class="memItemLeft" align="right" valign="top">const DATATYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca9d8f872440560d68d859ba9d184b66">res_val</a></td></tr>
 <tr class="memdesc:aca9d8f872440560d68d859ba9d184b66"><td class="mdescLeft">&#160;</td><td class="mdescRight">the reset value  <br /></td></tr>
 <tr class="memitem:ac14d6f9ebe5547ac2b31847f19f55afc" id="r_ac14d6f9ebe5547ac2b31847f19f55afc"><td class="memItemLeft" align="right" valign="top">const DATATYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac14d6f9ebe5547ac2b31847f19f55afc">rdmask</a></td></tr>
@@ -181,7 +184,7 @@ class scc::impl::sc_register&lt; DATATYPE &gt;</div><p>a simple register impleme
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00077">77</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00078">78</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
 <a id="a63853f951852d386472b1719b96fded3" name="a63853f951852d386472b1719b96fded3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a63853f951852d386472b1719b96fded3">&#9670;&#160;</a></span>this_type</h2>
@@ -197,7 +200,7 @@ template&lt;typename DATATYPE&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00079">79</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00080">80</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -264,11 +267,45 @@ template&lt;typename DATATYPE&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00094">94</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00096">96</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="abcecef76ec622d0f5e7e8f99d40bf470" name="abcecef76ec622d0f5e7e8f99d40bf470"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcecef76ec622d0f5e7e8f99d40bf470">&#9670;&#160;</a></span>full_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DATATYPE&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char const  * <a class="el" href="classscc_1_1impl_1_1sc__register.html">scc::impl::sc_register</a>&lt; DATATYPE &gt;::full_name </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>return the name of the resource </p>
+<dl class="section return"><dt>Returns</dt><dd>the name </dd></dl>
+
+<p>Implements <a class="el" href="classscc_1_1resource__access__if.html#ab84e9879450aa4146de9983d2245ddce">scc::resource_access_if</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00127">127</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+
+</div>
+</div>
 <a id="a2b1a13df7e0f33841fa77eb23c6ff594" name="a2b1a13df7e0f33841fa77eb23c6ff594"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2b1a13df7e0f33841fa77eb23c6ff594">&#9670;&#160;</a></span>get()</h2>
 
@@ -297,7 +334,7 @@ template&lt;typename DATATYPE&gt; </div>
 <p>get the underlying storage </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00230">230</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00246">246</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -331,7 +368,7 @@ template&lt;typename DATATYPE&gt; </div>
 
 <p>Reimplemented from <a class="el" href="structscc_1_1traceable.html#a88d6b5b574c0a0714c954888836ea750">scc::traceable</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00117">117</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00121">121</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -362,7 +399,7 @@ template&lt;typename DATATYPE&gt; </div>
 
 <p>cast operator to get underlying storage </p>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00223">223</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00239">239</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -400,7 +437,7 @@ template&lt;typename DATATYPE&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>reference to this </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00265">265</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00281">281</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -438,7 +475,7 @@ template&lt;typename DATATYPE&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>reference to this </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00245">245</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00261">261</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -476,7 +513,7 @@ template&lt;typename DATATYPE&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>reference to this </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00255">255</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00271">271</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -513,7 +550,7 @@ template&lt;typename DATATYPE&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00237">237</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00253">253</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -568,7 +605,7 @@ template&lt;typename DATATYPE&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if access is successful </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00170">170</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00180">180</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -607,7 +644,6 @@ template&lt;typename DATATYPE&gt; </div>
 </div><div class="memdoc">
 
 <p>debug read function from <a class="el" href="classscc_1_1resource__access__if.html" title="interface defining access to a resource e.g. a register">resource_access_if</a> </p>
-<p>This access should not cause any side effect!</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>to be read </td></tr>
@@ -618,7 +654,7 @@ template&lt;typename DATATYPE&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if access is successful </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00211">211</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00222">222</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -651,7 +687,7 @@ template&lt;typename DATATYPE&gt; </div>
 
 <p>Implements <a class="el" href="classscc_1_1resource__access__if.html#a94f5dba6b42b12379254975b72a475d6">scc::resource_access_if</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00130">130</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00140">140</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -689,7 +725,7 @@ template&lt;typename DATATYPE&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00277">277</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00293">293</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -727,7 +763,7 @@ template&lt;typename DATATYPE&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00287">287</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00303">303</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -765,7 +801,7 @@ template&lt;typename DATATYPE&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00296">296</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00312">312</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -803,7 +839,7 @@ template&lt;typename DATATYPE&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00306">306</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00322">322</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -837,7 +873,7 @@ template&lt;typename DATATYPE&gt; </div>
 
 <p>Implements <a class="el" href="classscc_1_1resource__access__if.html#a4b1353d979e7ce465dba34f05e10710e">scc::resource_access_if</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00124">124</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00134">134</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -874,7 +910,7 @@ template&lt;typename DATATYPE&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00313">313</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00329">329</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -929,7 +965,7 @@ template&lt;typename DATATYPE&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if access is successful </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00149">149</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00159">159</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -968,7 +1004,6 @@ template&lt;typename DATATYPE&gt; </div>
 </div><div class="memdoc">
 
 <p>debug write function from <a class="el" href="classscc_1_1resource__access__if.html" title="interface defining access to a resource e.g. a register">resource_access_if</a> </p>
-<p>This access should not cause any side effect!</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>to be written </td></tr>
@@ -979,11 +1014,29 @@ template&lt;typename DATATYPE&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if access is successful </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00193">193</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00201">201</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a id="a0cee1d07b2b352bfc0c65a712879a5d1" name="a0cee1d07b2b352bfc0c65a712879a5d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cee1d07b2b352bfc0c65a712879a5d1">&#9670;&#160;</a></span>enable_side_effect</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DATATYPE&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">cci::cci_param&lt;bool&gt; <a class="el" href="classscc_1_1impl_1_1sc__register.html">scc::impl::sc_register</a>&lt; DATATYPE &gt;::enable_side_effect</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00083">83</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+
+</div>
+</div>
 <a id="a8dc04bf5f7dc6928126638384b213230" name="a8dc04bf5f7dc6928126638384b213230"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8dc04bf5f7dc6928126638384b213230">&#9670;&#160;</a></span>enable_tracing</h2>
 
@@ -998,7 +1051,7 @@ template&lt;typename DATATYPE&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00081">81</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00082">82</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -1018,7 +1071,7 @@ template&lt;typename DATATYPE&gt; </div>
 
 <p>the SW read mask </p>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00317">317</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00333">333</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -1038,7 +1091,7 @@ template&lt;typename DATATYPE&gt; </div>
 
 <p>the reset value </p>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00315">315</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00331">331</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>
@@ -1058,7 +1111,7 @@ template&lt;typename DATATYPE&gt; </div>
 
 <p>the SW write mask </p>
 
-<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00319">319</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="register_8h_source.html#l00335">335</a> of file <a class="el" href="register_8h_source.html">register.h</a>.</p>
 
 </div>
 </div>

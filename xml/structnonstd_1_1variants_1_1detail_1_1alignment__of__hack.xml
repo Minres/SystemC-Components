@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1detail_1_1alignment__of__hack" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::detail::alignment_of_hack</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnonstd_1_1variants_1_1detail_1_1alignment__of__hack_1af51bc0a8fbb337fefa875ab4ea020766" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char nonstd::variants::detail::alignment_of_hack&lt; T &gt;::c</definition>
+        <argsstring></argsstring>
+        <name>c</name>
+        <qualifiedname>nonstd::variants::detail::alignment_of_hack::c</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="888" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="888" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnonstd_1_1variants_1_1detail_1_1alignment__of__hack_1ab8c97b0b949e5f6766dd63aa32f55275" prot="public" static="no" mutable="no">
+        <type>T</type>
+        <definition>T nonstd::variants::detail::alignment_of_hack&lt; T &gt;::t</definition>
+        <argsstring></argsstring>
+        <name>t</name>
+        <qualifiedname>nonstd::variants::detail::alignment_of_hack::t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="889" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="889" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1alignment__of__hack_1abaa0914707776d06f03b7ac33bf84b2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>nonstd::variants::detail::alignment_of_hack&lt; T &gt;::alignment_of_hack</definition>
+        <argsstring>()</argsstring>
+        <name>alignment_of_hack</name>
+        <qualifiedname>nonstd::variants::detail::alignment_of_hack::alignment_of_hack</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="890" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="887" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="887" bodyend="891"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1alignment__of__hack_1abaa0914707776d06f03b7ac33bf84b2d" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::alignment_of_hack</scope><name>alignment_of_hack</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1alignment__of__hack_1af51bc0a8fbb337fefa875ab4ea020766" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::alignment_of_hack</scope><name>c</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1alignment__of__hack_1ab8c97b0b949e5f6766dd63aa32f55275" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::alignment_of_hack</scope><name>t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

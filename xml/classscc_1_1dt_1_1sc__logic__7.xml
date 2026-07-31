@@ -1,0 +1,924 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1dt_1_1sc__logic__7" kind="class" language="C++" prot="public">
+    <compoundname>scc::dt::sc_logic_7</compoundname>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classscc_1_1dt_1_1sc__logic__7_1adfe2e99f05ed2e803bf4363e6ca51542" prot="public" static="yes" mutable="no">
+        <type>std::array&lt; const sc_logic_7_value_t, 128 &gt;</type>
+        <definition>std::array&lt; const sc_logic_7_value_t, 128 &gt; scc::dt::sc_logic_7::char_to_logic</definition>
+        <argsstring></argsstring>
+        <name>char_to_logic</name>
+        <qualifiedname>scc::dt::sc_logic_7::char_to_logic</qualifiedname>
+        <initializer>= {
+    {Log_0, Log_1, Log_L, Log_H, Log_Z, Log_X, Log_U, Log_X,                                                         
+     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, 
+     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, 
+     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_0, Log_1, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, 
+     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, 
+     Log_H, Log_X, Log_X, Log_X, Log_L, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_U, Log_X, Log_X, 
+     Log_X, Log_X, Log_Z, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, 
+     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, 
+     Log_X, Log_X, Log_Z, Log_X, Log_X, Log_X, Log_X, Log_X}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="95" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1dt_1_1sc__logic__7_1a22e62dcd23f8699d400373c498425e73" prot="public" static="yes" mutable="no">
+        <type>std::array&lt; const char, 7 &gt;</type>
+        <definition>std::array&lt; const char, 7 &gt; scc::dt::sc_logic_7::logic_to_char</definition>
+        <argsstring></argsstring>
+        <name>logic_to_char</name>
+        <qualifiedname>scc::dt::sc_logic_7::logic_to_char</qualifiedname>
+        <initializer>= {{&apos;0&apos;, &apos;1&apos;, &apos;L&apos;, &apos;H&apos;, &apos;Z&apos;, &apos;X&apos;, &apos;U&apos;}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="96" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1dt_1_1sc__logic__7_1a38114b420beae60fbd39fcb8cddfa25a" prot="public" static="yes" mutable="no">
+        <type>std::array&lt; std::array&lt; const sc_logic_7_value_t, 7 &gt;, 7 &gt;</type>
+        <definition>std::array&lt; std::array&lt; const sc_logic_7_value_t, 7 &gt;, 7 &gt; scc::dt::sc_logic_7::and_table</definition>
+        <argsstring></argsstring>
+        <name>and_table</name>
+        <qualifiedname>scc::dt::sc_logic_7::and_table</qualifiedname>
+        <initializer>= {{
+                                                                                  {Log_0, Log_0, Log_0, Log_0, Log_0, Log_0, Log_0},
+                                                                                  {Log_0, Log_1, Log_L, Log_1, Log_X, Log_X, Log_X},
+                                                                                  {Log_0, Log_L, Log_L, Log_L, Log_L, Log_L, Log_L},
+                                                                                  {Log_0, Log_1, Log_L, Log_H, Log_X, Log_X, Log_X},
+                                                                                  {Log_0, Log_X, Log_L, Log_X, Log_X, Log_X, Log_X},
+                                                                                  {Log_0, Log_X, Log_L, Log_X, Log_X, Log_X, Log_X},
+                                                                                  {Log_0, Log_X, Log_L, Log_X, Log_X, Log_X, Log_X}}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="97" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1dt_1_1sc__logic__7_1a6016c8452a3e6b8f6af3dc98d5ee7cb3" prot="public" static="yes" mutable="no">
+        <type>std::array&lt; std::array&lt; const sc_logic_7_value_t, 7 &gt;, 7 &gt;</type>
+        <definition>std::array&lt; std::array&lt; const sc_logic_7_value_t, 7 &gt;, 7 &gt; scc::dt::sc_logic_7::or_table</definition>
+        <argsstring></argsstring>
+        <name>or_table</name>
+        <qualifiedname>scc::dt::sc_logic_7::or_table</qualifiedname>
+        <initializer>= {{
+                                                                                 {Log_0, Log_1, Log_L, Log_H, Log_Z, Log_X, Log_U},
+                                                                                 {Log_1, Log_1, Log_1, Log_1, Log_1, Log_1, Log_1},
+                                                                                 {Log_L, Log_1, Log_L, Log_H, Log_Z, Log_X, Log_U},
+                                                                                 {Log_H, Log_1, Log_H, Log_H, Log_H, Log_H, Log_H},
+                                                                                 {Log_Z, Log_1, Log_Z, Log_H, Log_X, Log_X, Log_X},
+                                                                                 {Log_X, Log_1, Log_X, Log_H, Log_X, Log_X, Log_X},
+                                                                                 {Log_U, Log_1, Log_U, Log_H, Log_X, Log_X, Log_X}}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="98" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1dt_1_1sc__logic__7_1a33f275060e1249679e0059145f6ae7e8" prot="public" static="yes" mutable="no">
+        <type>std::array&lt; std::array&lt; const sc_logic_7_value_t, 7 &gt;, 7 &gt;</type>
+        <definition>std::array&lt; std::array&lt; const sc_logic_7_value_t, 7 &gt;, 7 &gt; scc::dt::sc_logic_7::xor_table</definition>
+        <argsstring></argsstring>
+        <name>xor_table</name>
+        <qualifiedname>scc::dt::sc_logic_7::xor_table</qualifiedname>
+        <initializer>= {{
+                                                                                  {Log_0, Log_1, Log_0, Log_1, Log_X, Log_X, Log_X},
+                                                                                  {Log_1, Log_0, Log_1, Log_0, Log_X, Log_X, Log_X},
+                                                                                  {Log_0, Log_1, Log_H, Log_L, Log_X, Log_X, Log_X},
+                                                                                  {Log_1, Log_0, Log_L, Log_H, Log_X, Log_X, Log_X},
+                                                                                  {Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X},
+                                                                                  {Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X},
+                                                                                  {Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X}}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="99" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1dt_1_1sc__logic__7_1a31c1b2bc95c41b4658583b36f74ceac7" prot="public" static="yes" mutable="no">
+        <type>std::array&lt; const sc_logic_7_value_t, 7 &gt;</type>
+        <definition>std::array&lt; const sc_logic_7_value_t, 7 &gt; scc::dt::sc_logic_7::not_table</definition>
+        <argsstring></argsstring>
+        <name>not_table</name>
+        <qualifiedname>scc::dt::sc_logic_7::not_table</qualifiedname>
+        <initializer>= {{Log_1, Log_0, Log_H, Log_L, Log_X, Log_X, Log_X}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="100" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classscc_1_1dt_1_1sc__logic__7_1a89826787c6cf4f56ba1244956dd0c3e4" prot="private" static="no" mutable="no">
+        <type>sc_logic_7_value_t</type>
+        <definition>sc_logic_7_value_t scc::dt::sc_logic_7::m_val</definition>
+        <argsstring></argsstring>
+        <name>m_val</name>
+        <qualifiedname>scc::dt::sc_logic_7::m_val</qualifiedname>
+        <initializer>= Log_U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="224" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="224" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a7cd2d3fbe62212514700e4491a4a34f4" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::dt::sc_logic_7::invalid_value</definition>
+        <argsstring>(sc_logic_7_value_t)</argsstring>
+        <name>invalid_value</name>
+        <qualifiedname>scc::dt::sc_logic_7::invalid_value</qualifiedname>
+        <param>
+          <type>sc_logic_7_value_t</type>
+          <defname>v</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="55" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.cpp" bodystart="24" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1abb8c76084528c2bd28a937b31b331dfc" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::dt::sc_logic_7::invalid_value</definition>
+        <argsstring>(char)</argsstring>
+        <name>invalid_value</name>
+        <qualifiedname>scc::dt::sc_logic_7::invalid_value</qualifiedname>
+        <param>
+          <type>char</type>
+          <defname>c</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="56" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.cpp" bodystart="30" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a2db6bea0d2f0932044316ffffc91ec07" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::dt::sc_logic_7::invalid_value</definition>
+        <argsstring>(int)</argsstring>
+        <name>invalid_value</name>
+        <qualifiedname>scc::dt::sc_logic_7::invalid_value</qualifiedname>
+        <param>
+          <type>int</type>
+          <defname>i</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="57" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.cpp" bodystart="36" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1aefbd7395f25cbf31678767fe497616e7" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_logic_7_value_t</type>
+        <definition>static sc_logic_7_value_t scc::dt::sc_logic_7::to_value</definition>
+        <argsstring>(sc_logic_7_value_t v)</argsstring>
+        <name>to_value</name>
+        <qualifiedname>scc::dt::sc_logic_7::to_value</qualifiedname>
+        <param>
+          <type>sc_logic_7_value_t</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="59" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="59" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1aff8de2f09e3cd16b5c6f74004d31e574" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_logic_7_value_t</type>
+        <definition>static sc_logic_7_value_t scc::dt::sc_logic_7::to_value</definition>
+        <argsstring>(bool b)</argsstring>
+        <name>to_value</name>
+        <qualifiedname>scc::dt::sc_logic_7::to_value</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="66" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="66" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a1f158d67dc74e06695714dab79382fac" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_logic_7_value_t</type>
+        <definition>static sc_logic_7_value_t scc::dt::sc_logic_7::to_value</definition>
+        <argsstring>(char c)</argsstring>
+        <name>to_value</name>
+        <qualifiedname>scc::dt::sc_logic_7::to_value</qualifiedname>
+        <param>
+          <type>char</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="68" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="68" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1aed1cf2419d949b500e9aa929148a8996" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_logic_7_value_t</type>
+        <definition>static sc_logic_7_value_t scc::dt::sc_logic_7::to_value</definition>
+        <argsstring>(int i)</argsstring>
+        <name>to_value</name>
+        <qualifiedname>scc::dt::sc_logic_7::to_value</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="83" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="83" bodyend="88"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1aca865a1eb3f29d01f97a3cbd51591041" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::dt::sc_logic_7::invalid_01</definition>
+        <argsstring>() const</argsstring>
+        <name>invalid_01</name>
+        <qualifiedname>scc::dt::sc_logic_7::invalid_01</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="90" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.cpp" bodystart="42" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a533e41e718fc2b43492db76f283a4db5" prot="private" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::dt::sc_logic_7::sc_logic_7</definition>
+        <argsstring>(const char *)</argsstring>
+        <name>sc_logic_7</name>
+        <qualifiedname>scc::dt::sc_logic_7::sc_logic_7</qualifiedname>
+        <param>
+          <type>const char *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="228" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a15fea4d576c411439203a7f5a765a4be" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sc_logic_7 &amp;</type>
+        <definition>sc_logic_7 &amp; scc::dt::sc_logic_7::operator=</definition>
+        <argsstring>(const char *)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::dt::sc_logic_7::operator=</qualifiedname>
+        <param>
+          <type>const char *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="229" column="16"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a0ee1353a16102dc1d86a5bba1099c9b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::dt::sc_logic_7::sc_logic_7</definition>
+        <argsstring>()=default</argsstring>
+        <name>sc_logic_7</name>
+        <qualifiedname>scc::dt::sc_logic_7::sc_logic_7</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="104" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a58961a7405597a973a45255903f7510c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::dt::sc_logic_7::sc_logic_7</definition>
+        <argsstring>(const sc_logic_7 &amp;a)=default</argsstring>
+        <name>sc_logic_7</name>
+        <qualifiedname>scc::dt::sc_logic_7::sc_logic_7</qualifiedname>
+        <param>
+          <type>const sc_logic_7 &amp;</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="106" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1ab9b5b39c40c5b1f04afb999b01c46270" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::dt::sc_logic_7::sc_logic_7</definition>
+        <argsstring>(sc_logic_7_value_t v)</argsstring>
+        <name>sc_logic_7</name>
+        <qualifiedname>scc::dt::sc_logic_7::sc_logic_7</qualifiedname>
+        <param>
+          <type>sc_logic_7_value_t</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="108" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="108" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1af60c60b5af6687452caaa0831d3191c8" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::dt::sc_logic_7::sc_logic_7</definition>
+        <argsstring>(bool a)</argsstring>
+        <name>sc_logic_7</name>
+        <qualifiedname>scc::dt::sc_logic_7::sc_logic_7</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="111" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="111" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a44ca13208f9b43665852983917304126" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::dt::sc_logic_7::sc_logic_7</definition>
+        <argsstring>(char a)</argsstring>
+        <name>sc_logic_7</name>
+        <qualifiedname>scc::dt::sc_logic_7::sc_logic_7</qualifiedname>
+        <param>
+          <type>char</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="114" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="114" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1aef949f5bbafe078debf9803b916c3208" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::dt::sc_logic_7::sc_logic_7</definition>
+        <argsstring>(int a)</argsstring>
+        <name>sc_logic_7</name>
+        <qualifiedname>scc::dt::sc_logic_7::sc_logic_7</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="117" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="117" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a58425e1fd8a5f239af6e4bc2ec166a43" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::dt::sc_logic_7::sc_logic_7</definition>
+        <argsstring>(const ::sc_dt::sc_bit &amp;a)</argsstring>
+        <name>sc_logic_7</name>
+        <qualifiedname>scc::dt::sc_logic_7::sc_logic_7</qualifiedname>
+        <param>
+          <type>const ::sc_dt::sc_bit &amp;</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="120" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="120" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a5c4b1bb735d36a82dcec92700aa60ddc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::dt::sc_logic_7::~sc_logic_7</definition>
+        <argsstring>()=default</argsstring>
+        <name>~sc_logic_7</name>
+        <qualifiedname>scc::dt::sc_logic_7::~sc_logic_7</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="125" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a959a85a28e862d2be6aec88e735cd030" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sc_logic_7 &amp;</type>
+        <definition>sc_logic_7 &amp; scc::dt::sc_logic_7::operator=</definition>
+        <argsstring>(const sc_logic_7 &amp;a)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::dt::sc_logic_7::operator=</qualifiedname>
+        <param>
+          <type>const sc_logic_7 &amp;</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="142" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1ae0d6f536927015eb68943138aac2da2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_logic_7 &amp;</type>
+        <definition>sc_logic_7 &amp; scc::dt::sc_logic_7::operator&amp;=</definition>
+        <argsstring>(const sc_logic_7 &amp;b)</argsstring>
+        <name>operator&amp;=</name>
+        <qualifiedname>scc::dt::sc_logic_7::operator&amp;=</qualifiedname>
+        <param>
+          <type>const sc_logic_7 &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="144" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="144" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1ae1d12362d19514dc4ac2f935626f5687" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_logic_7 &amp;</type>
+        <definition>sc_logic_7 &amp; scc::dt::sc_logic_7::operator|=</definition>
+        <argsstring>(const sc_logic_7 &amp;b)</argsstring>
+        <name>operator|=</name>
+        <qualifiedname>scc::dt::sc_logic_7::operator|=</qualifiedname>
+        <param>
+          <type>const sc_logic_7 &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="149" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="149" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a426be83cf3f0bdec13e1fac749f35e4e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_logic_7 &amp;</type>
+        <definition>sc_logic_7 &amp; scc::dt::sc_logic_7::operator^=</definition>
+        <argsstring>(const sc_logic_7 &amp;b)</argsstring>
+        <name>operator^=</name>
+        <qualifiedname>scc::dt::sc_logic_7::operator^=</qualifiedname>
+        <param>
+          <type>const sc_logic_7 &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="154" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="154" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a504e1e43ccf2cf410b0979088bce97ea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const sc_logic_7</type>
+        <definition>const sc_logic_7 scc::dt::sc_logic_7::operator~</definition>
+        <argsstring>() const</argsstring>
+        <name>operator~</name>
+        <qualifiedname>scc::dt::sc_logic_7::operator~</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="180" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="180" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a8cf7ab617e141b82c73bf5cf93c208a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_logic_7 &amp;</type>
+        <definition>sc_logic_7 &amp; scc::dt::sc_logic_7::b_not</definition>
+        <argsstring>()</argsstring>
+        <name>b_not</name>
+        <qualifiedname>scc::dt::sc_logic_7::b_not</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="182" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="182" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a344a981169d9331f69f8d74e55e768b6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_logic_7_value_t</type>
+        <definition>sc_logic_7_value_t scc::dt::sc_logic_7::value</definition>
+        <argsstring>() const</argsstring>
+        <name>value</name>
+        <qualifiedname>scc::dt::sc_logic_7::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="189" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="189" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a3b82f8c44435028f91aa3199c9ebc5d0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::dt::sc_logic_7::is_01</definition>
+        <argsstring>() const</argsstring>
+        <name>is_01</name>
+        <qualifiedname>scc::dt::sc_logic_7::is_01</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="191" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="191" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a561269866c136bfa1b4fc074adb7d5f7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::dt::sc_logic_7::to_bool</definition>
+        <argsstring>() const</argsstring>
+        <name>to_bool</name>
+        <qualifiedname>scc::dt::sc_logic_7::to_bool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="193" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="193" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a185ead46980c9763e88d9ab71bdcef41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>char</type>
+        <definition>char scc::dt::sc_logic_7::to_char</definition>
+        <argsstring>() const</argsstring>
+        <name>to_char</name>
+        <qualifiedname>scc::dt::sc_logic_7::to_char</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="200" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="200" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1aefbaa3f8342266ceb19584b271fdf099" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::dt::sc_logic_7::print</definition>
+        <argsstring>(::std::ostream &amp;os=::std::cout) const</argsstring>
+        <name>print</name>
+        <qualifiedname>scc::dt::sc_logic_7::print</qualifiedname>
+        <param>
+          <type>::std::ostream &amp;</type>
+          <declname>os</declname>
+          <defval>::std::cout</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="204" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="204" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1afb3bb38febd43baf3d17f18eeb6b3e97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::dt::sc_logic_7::scan</definition>
+        <argsstring>(::std::istream &amp;is=::std::cin)</argsstring>
+        <name>scan</name>
+        <qualifiedname>scc::dt::sc_logic_7::scan</qualifiedname>
+        <param>
+          <type>::std::istream &amp;</type>
+          <declname>is</declname>
+          <defval>::std::cin</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="206" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.cpp" bodystart="96" bodyend="100"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="classscc_1_1dt_1_1sc__logic__7_1a106b3221422244998ddcf53066c6468e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const sc_logic_7</type>
+        <definition>const sc_logic_7 operator&amp;</definition>
+        <argsstring>(const sc_logic_7 &amp;a, const sc_logic_7 &amp;b)</argsstring>
+        <name>operator&amp;</name>
+        <qualifiedname>scc::dt::sc_logic_7::operator&amp;</qualifiedname>
+        <param>
+          <type>const sc_logic_7 &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const sc_logic_7 &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="169" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="236" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="friend" id="classscc_1_1dt_1_1sc__logic__7_1ae3d260108571df9af26a1d3162137b18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const sc_logic_7</type>
+        <definition>const sc_logic_7 operator|</definition>
+        <argsstring>(const sc_logic_7 &amp;a, const sc_logic_7 &amp;b)</argsstring>
+        <name>operator|</name>
+        <qualifiedname>scc::dt::sc_logic_7::operator|</qualifiedname>
+        <param>
+          <type>const sc_logic_7 &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const sc_logic_7 &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="170" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="238" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="friend" id="classscc_1_1dt_1_1sc__logic__7_1a92d41bea8f856f15761e764a3f2d122d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const sc_logic_7</type>
+        <definition>const sc_logic_7 operator^</definition>
+        <argsstring>(const sc_logic_7 &amp;a, const sc_logic_7 &amp;b)</argsstring>
+        <name>operator^</name>
+        <qualifiedname>scc::dt::sc_logic_7::operator^</qualifiedname>
+        <param>
+          <type>const sc_logic_7 &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const sc_logic_7 &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="171" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="240" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="friend" id="classscc_1_1dt_1_1sc__logic__7_1a1bb834c9134e6a9ad7b0c19c448ee109" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator==</definition>
+        <argsstring>(const sc_logic_7 &amp;a, const sc_logic_7 &amp;b)</argsstring>
+        <name>operator==</name>
+        <qualifiedname>scc::dt::sc_logic_7::operator==</qualifiedname>
+        <param>
+          <type>const sc_logic_7 &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const sc_logic_7 &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="175" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="258" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="friend" id="classscc_1_1dt_1_1sc__logic__7_1a520b4dc6bb767ddd221a766be06803ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator!=</definition>
+        <argsstring>(const sc_logic_7 &amp;a, const sc_logic_7 &amp;b)</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>scc::dt::sc_logic_7::operator!=</qualifiedname>
+        <param>
+          <type>const sc_logic_7 &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const sc_logic_7 &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="176" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="260" bodyend="260"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1af62954376287f8fcf01f7e47e8d8b6c2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void *</type>
+        <definition>static void * scc::dt::sc_logic_7::operator new</definition>
+        <argsstring>(std::size_t, void *p)</argsstring>
+        <name>operator new</name>
+        <qualifiedname>scc::dt::sc_logic_7::operator new</qualifiedname>
+        <param>
+          <type>std::size_t</type>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="210" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="210" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1affe7c96d5a2b74e0c7cca0e526c3b000" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void *</type>
+        <definition>static void * scc::dt::sc_logic_7::operator new</definition>
+        <argsstring>(std::size_t sz)</argsstring>
+        <name>operator new</name>
+        <qualifiedname>scc::dt::sc_logic_7::operator new</qualifiedname>
+        <param>
+          <type>std::size_t</type>
+          <declname>sz</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="215" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="215" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1ad4c01e4632185508ef85bd5cc9b5ec22" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void scc::dt::sc_logic_7::operator delete</definition>
+        <argsstring>(void *p, std::size_t sz)</argsstring>
+        <name>operator delete</name>
+        <qualifiedname>scc::dt::sc_logic_7::operator delete</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>sz</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="217" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="217" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1ac47ea532e83bab6806021f4844a7e4bb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void *</type>
+        <definition>static void * scc::dt::sc_logic_7::operator new[]</definition>
+        <argsstring>(std::size_t sz)</argsstring>
+        <name>operator new[]</name>
+        <qualifiedname>scc::dt::sc_logic_7::operator new[]</qualifiedname>
+        <param>
+          <type>std::size_t</type>
+          <declname>sz</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="219" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="219" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1dt_1_1sc__logic__7_1a41c15a20cf96dd1cd7e124808f5f6962" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void scc::dt::sc_logic_7::operator delete[]</definition>
+        <argsstring>(void *p, std::size_t sz)</argsstring>
+        <name>operator delete[]</name>
+        <qualifiedname>scc::dt::sc_logic_7::operator delete[]</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>sz</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="221" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="221" bodyend="221"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" line="51" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_logic_7.h" bodystart="51" bodyend="230"/>
+    <listofallmembers>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a38114b420beae60fbd39fcb8cddfa25a" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>and_table</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a8cf7ab617e141b82c73bf5cf93c208a0" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>b_not</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1adfe2e99f05ed2e803bf4363e6ca51542" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>char_to_logic</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1aca865a1eb3f29d01f97a3cbd51591041" prot="private" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>invalid_01</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a7cd2d3fbe62212514700e4491a4a34f4" prot="private" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>invalid_value</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1abb8c76084528c2bd28a937b31b331dfc" prot="private" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>invalid_value</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a2db6bea0d2f0932044316ffffc91ec07" prot="private" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>invalid_value</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a3b82f8c44435028f91aa3199c9ebc5d0" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>is_01</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a22e62dcd23f8699d400373c498425e73" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>logic_to_char</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a89826787c6cf4f56ba1244956dd0c3e4" prot="private" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>m_val</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a31c1b2bc95c41b4658583b36f74ceac7" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>not_table</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1ad4c01e4632185508ef85bd5cc9b5ec22" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>operator delete</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a41c15a20cf96dd1cd7e124808f5f6962" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>operator delete[]</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1af62954376287f8fcf01f7e47e8d8b6c2" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>operator new</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1affe7c96d5a2b74e0c7cca0e526c3b000" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>operator new</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1ac47ea532e83bab6806021f4844a7e4bb" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>operator new[]</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a520b4dc6bb767ddd221a766be06803ed" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>operator!=</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a106b3221422244998ddcf53066c6468e" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>operator&amp;</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1ae0d6f536927015eb68943138aac2da2b" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>operator&amp;=</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a959a85a28e862d2be6aec88e735cd030" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>operator=</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a15fea4d576c411439203a7f5a765a4be" prot="private" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>operator=</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a1bb834c9134e6a9ad7b0c19c448ee109" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>operator==</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a92d41bea8f856f15761e764a3f2d122d" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>operator^</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a426be83cf3f0bdec13e1fac749f35e4e" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>operator^=</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1ae3d260108571df9af26a1d3162137b18" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>operator|</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1ae1d12362d19514dc4ac2f935626f5687" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>operator|=</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a504e1e43ccf2cf410b0979088bce97ea" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>operator~</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a6016c8452a3e6b8f6af3dc98d5ee7cb3" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>or_table</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1aefbaa3f8342266ceb19584b271fdf099" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>print</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a0ee1353a16102dc1d86a5bba1099c9b1" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>sc_logic_7</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a58961a7405597a973a45255903f7510c" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>sc_logic_7</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1ab9b5b39c40c5b1f04afb999b01c46270" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>sc_logic_7</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1af60c60b5af6687452caaa0831d3191c8" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>sc_logic_7</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a44ca13208f9b43665852983917304126" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>sc_logic_7</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1aef949f5bbafe078debf9803b916c3208" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>sc_logic_7</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a58425e1fd8a5f239af6e4bc2ec166a43" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>sc_logic_7</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a533e41e718fc2b43492db76f283a4db5" prot="private" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>sc_logic_7</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1afb3bb38febd43baf3d17f18eeb6b3e97" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>scan</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a561269866c136bfa1b4fc074adb7d5f7" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>to_bool</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a185ead46980c9763e88d9ab71bdcef41" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>to_char</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1aefbd7395f25cbf31678767fe497616e7" prot="private" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>to_value</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1aff8de2f09e3cd16b5c6f74004d31e574" prot="private" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>to_value</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a1f158d67dc74e06695714dab79382fac" prot="private" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>to_value</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1aed1cf2419d949b500e9aa929148a8996" prot="private" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>to_value</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a344a981169d9331f69f8d74e55e768b6" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>value</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a33f275060e1249679e0059145f6ae7e8" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>xor_table</name></member>
+      <member refid="classscc_1_1dt_1_1sc__logic__7_1a5c4b1bb735d36a82dcec92700aa60ddc" prot="public" virt="non-virtual"><scope>scc::dt::sc_logic_7</scope><name>~sc_logic_7</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

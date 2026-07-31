@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -71,53 +71,55 @@ $(function(){initNavTree('async__thread_8h_source.html','',''); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;future&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;scc/report.h&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;sysc/communication/sc_prim_channel.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;sysc/kernel/sc_simcontext.h&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;systemc&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacescc.html">scc</a> {</div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structscc_1_1async__thread.html">   12</a></span><span class="keyword">struct </span>async_thread : sc_core::sc_prim_channel {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    async_thread() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">explicit</span> async_thread(<span class="keyword">const</span> <span class="keywordtype">char</span>* nm)</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    : sc_core::sc_prim_channel{nm} {}</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    ~async_thread() {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordflow">if</span>(active)</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            t1.detach();</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    }</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">void</span> start(std::function&lt;sc_core::sc_time()&gt; <span class="keyword">const</span>&amp; f) {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;Starting new thread&quot;</span>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        t1 = std::move(std::thread([<span class="keyword">this</span>, f]() {</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                finish_time.store(f().value());</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                async_request_update();</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            } <span class="keywordflow">catch</span>(std::future_error&amp; e) {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            }</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        }));</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        active = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">const</span> sc_core::sc_event&amp; thread_finish_event()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> finish_event; }</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;sysc/kernel/sc_object.h&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;sysc/kernel/sc_simcontext.h&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;systemc&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacescc.html">scc</a> {</div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structscc_1_1async__thread.html">   13</a></span><span class="keyword">struct </span>async_thread : sc_core::sc_prim_channel {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    async_thread()</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    : sc_core::sc_prim_channel{sc_core::sc_gen_unique_name(<span class="stringliteral">&quot;async_thread&quot;</span>)} {}</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">explicit</span> async_thread(<span class="keyword">const</span> <span class="keywordtype">char</span>* nm)</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    : sc_core::sc_prim_channel{nm} {}</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    ~async_thread() {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keywordflow">if</span>(active)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            t1.detach();</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    }</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">void</span> start(std::function&lt;sc_core::sc_time()&gt; <span class="keyword">const</span>&amp; f) {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        SCCTRACE(SCOBJ) &lt;&lt; <span class="stringliteral">&quot;Starting new thread&quot;</span>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        t1 = std::move(std::thread([<span class="keyword">this</span>, f]() {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                finish_time.store(f().value());</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>                async_request_update();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            } <span class="keywordflow">catch</span>(std::future_error&amp; e) {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        }));</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        active = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    }</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> update()<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        t1.join();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">auto</span> end_time = sc_core::sc_time::from_value(finish_time.load());</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        finish_event.notify(end_time &gt; sc_core::sc_time_stamp() ? end_time - sc_core::sc_time_stamp() : sc_core::SC_ZERO_TIME);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        active = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        SCCTRACEALL(SCOBJ) &lt;&lt; <span class="stringliteral">&quot;Finished execution of thread&quot;</span>;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    std::thread t1;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    sc_core::sc_event finish_event;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    std::atomic&lt;uint64_t&gt; finish_time;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">bool</span> active{<span class="keyword">false</span>};</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>};</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">const</span> sc_core::sc_event&amp; thread_finish_event()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> finish_event; }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> update()<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        t1.join();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">auto</span> end_time = sc_core::sc_time::from_value(finish_time.load());</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        finish_event.notify(end_time &gt; sc_core::sc_time_stamp() ? end_time - sc_core::sc_time_stamp() : sc_core::SC_ZERO_TIME);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        active = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        SCCTRACE(SCOBJ) &lt;&lt; <span class="stringliteral">&quot;Finished execution of thread&quot;</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    }</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    std::thread t1;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    sc_core::sc_event finish_event;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    std::atomic&lt;uint64_t&gt; finish_time;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">bool</span> active{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>};</div>
 </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>} <span class="comment">// namespace scc</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>} <span class="comment">// namespace scc</span></div>
 <div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC TLM utilities.</div><div class="ttdef"><b>Definition</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

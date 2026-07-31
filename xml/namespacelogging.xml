@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacelogging" kind="namespace" language="C++">
+    <compoundname>logging</compoundname>
+    <innerclass refid="structlogging_1_1LoggerCallbacks" prot="public">logging::LoggerCallbacks</innerclass>
+    <innerclass refid="classlogging_1_1Log" prot="public">logging::Log</innerclass>
+    <innerclass refid="classlogging_1_1Output2FILE" prot="public">logging::Output2FILE</innerclass>
+    <innerclass refid="structlogging_1_1DEFAULT" prot="public">logging::DEFAULT</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacelogging_1acdebf4f4cd477e9f9c1159bfcd08249a" prot="public" static="no" strong="no">
+        <type></type>
+        <name>log_level</name>
+        <qualifiedname>logging::log_level</qualifiedname>
+        <enumvalue id="namespacelogging_1acdebf4f4cd477e9f9c1159bfcd08249aaaa1948817e4908776dbc8a001f3675f3" prot="public">
+          <name>LEVELS</name>
+          <initializer>=(DO_ENUM) DBGTRACE = TRACEALL</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>enum defining the log levels </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="53" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="53" bodyend="53"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacelogging_1a38801d8bd7e31fee6d9074f13e22d7fe" prot="public" static="yes" mutable="no">
+        <type>const std::array&lt; const char *const, 8 &gt;</type>
+        <definition>const std::array&lt;const char* const, 8&gt; logging::buffer</definition>
+        <argsstring></argsstring>
+        <name>buffer</name>
+        <qualifiedname>logging::buffer</qualifiedname>
+        <initializer>= {{LEVELS(DO_DESCRIPTION)}}</initializer>
+        <briefdescription>
+<para>array holding string representations of log levels </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="51" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="51" bodyend="51"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacelogging_1a5af15dc3db4902fcb51dae41fedb326a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacelogging_1acdebf4f4cd477e9f9c1159bfcd08249a" kindref="member">log_level</ref></type>
+        <definition>log_level logging::as_log_level</definition>
+        <argsstring>(int logLevel)</argsstring>
+        <name>as_log_level</name>
+        <qualifiedname>logging::as_log_level</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>logLevel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>safely convert an integer into a log level <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>logLevel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the integer </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the log level </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="59" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="59" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacelogging_1a99b83ff604a8f1d5fc25a7e7476bf18b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::istream &amp;</type>
+        <definition>std::istream &amp; logging::operator&gt;&gt;</definition>
+        <argsstring>(std::istream &amp;is, log_level &amp;val)</argsstring>
+        <name>operator&gt;&gt;</name>
+        <qualifiedname>logging::operator&gt;&gt;</qualifiedname>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>is</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacelogging_1acdebf4f4cd477e9f9c1159bfcd08249a" kindref="member">log_level</ref> &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>read a log level from input stream e.g. used by boost::lexical_cast <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>is</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>input stream holding the string representation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value holding the resulting value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the input stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="70" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="70" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacelogging_1aeeb2a7d34cb1d868d54af370424ccc1c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string logging::now_time</definition>
+        <argsstring>()</argsstring>
+        <name>now_time</name>
+        <qualifiedname>logging::now_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the current host time as string <simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="328" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="328" bodyend="342" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" declline="85" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacelogging_1a3311bb330760c3d3128989d7ab25caf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; logging::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;stream, const std::vector&lt; T &gt; &amp;vector)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>logging::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; T &gt; &amp;</type>
+          <declname>vector</declname>
+        </param>
+        <briefdescription>
+<para>a print function for a vector </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="345" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" bodystart="345" bodyend="348"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>SCC C++ logging. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/logging.h" line="49" column="1"/>
+  </compounddef>
+</doxygen>

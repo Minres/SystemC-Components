@@ -1,0 +1,363 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1axi__extension" kind="struct" language="C++" prot="public">
+    <compoundname>axi::axi_extension</compoundname>
+    <basecompoundref refid="structaxi_1_1common" prot="public" virt="non-virtual">axi::common</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">REQ</basecompoundref>
+    <basecompoundref refid="structaxi_1_1response" prot="public" virt="non-virtual">axi::response</basecompoundref>
+    <includes refid="axi__tlm_8h" local="no">axi_tlm.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename REQ</type>
+      </param>
+      <param>
+        <type>typename RESP</type>
+        <defval>response</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structaxi_1_1axi__extension_1a6951f886be3fab1a537bfca3059aabe4" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; response &gt;</type>
+        <definition>std::vector&lt;response&gt; axi::axi_extension&lt; REQ, RESP &gt;::response_arr</definition>
+        <argsstring></argsstring>
+        <name>response_arr</name>
+        <qualifiedname>axi::axi_extension::response_arr</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="834" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="834" bodyend="834"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1axi__extension_1a747f4b7c93f2647a6c218af011c8621c" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool axi::axi_extension&lt; REQ, RESP &gt;::response_array_complete</definition>
+        <argsstring></argsstring>
+        <name>response_array_complete</name>
+        <qualifiedname>axi::axi_extension::response_array_complete</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="835" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="835" bodyend="835"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1axi__extension_1a2fe6e8e07eb3959237125f7f46179310" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::axi_extension&lt; REQ, RESP &gt;::axi_extension</definition>
+        <argsstring>()=default</argsstring>
+        <name>axi_extension</name>
+        <qualifiedname>axi::axi_extension::axi_extension</qualifiedname>
+        <briefdescription>
+<para>the default constructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="788" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1axi__extension_1a1eadba13a925dd0d6ce857a1199be5fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::axi_extension&lt; REQ, RESP &gt;::axi_extension</definition>
+        <argsstring>(const axi_extension&lt; REQ, RESP &gt; *)</argsstring>
+        <name>axi_extension</name>
+        <qualifiedname>axi::axi_extension::axi_extension</qualifiedname>
+        <param>
+          <type>const axi_extension&lt; REQ, RESP &gt; *</type>
+          <defname>ext</defname>
+        </param>
+        <briefdescription>
+<para>the copy constructor </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>extension to copy from </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="793" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1638" bodyend="1642"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1axi__extension_1ae1832adbe8b635f0e2006cd2fb527146" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual axi::axi_extension&lt; REQ, RESP &gt;::~axi_extension</definition>
+        <argsstring>()</argsstring>
+        <name>~axi_extension</name>
+        <qualifiedname>axi::axi_extension::~axi_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the virtual destructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="797" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="797" bodyend="797"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1axi__extension_1ade5a2257c5dc9885b0573e8df6fd7926" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::axi_extension&lt; REQ, RESP &gt;::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <qualifiedname>axi::axi_extension::reset</qualifiedname>
+        <briefdescription>
+<para>reset all data member to their default </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="801" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1644" bodyend="1648"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1axi__extension_1aa129e587f4ba9e21f790cb52c0f000af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::axi_extension&lt; REQ, RESP &gt;::reset</definition>
+        <argsstring>(const REQ *)</argsstring>
+        <name>reset</name>
+        <qualifiedname>axi::axi_extension::reset</qualifiedname>
+        <param>
+          <type>const REQ *</type>
+          <defname>control</defname>
+        </param>
+        <briefdescription>
+<para>reset the common and response part, reset response using the given reset value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>response reset value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="806" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1650" bodyend="1654"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1axi__extension_1acff6ac89b1c2023be1ac6a7c6ed894b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::axi_extension&lt; REQ, RESP &gt;::add_to_response_array</definition>
+        <argsstring>(response &amp;)</argsstring>
+        <name>add_to_response_array</name>
+        <qualifiedname>axi::axi_extension::add_to_response_array</qualifiedname>
+        <param>
+          <type>response &amp;</type>
+          <defname>arr</defname>
+        </param>
+        <briefdescription>
+<para>add a read response to the response array </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>response </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="811" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1656" bodyend="1658"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1axi__extension_1a31b56a82baa42eb2b549f6a43c483f7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; response &gt; &amp;</type>
+        <definition>const std::vector&lt; response &gt; &amp; axi::axi_extension&lt; REQ, RESP &gt;::get_response_array</definition>
+        <argsstring>() const</argsstring>
+        <name>get_response_array</name>
+        <qualifiedname>axi::axi_extension::get_response_array</qualifiedname>
+        <briefdescription>
+<para>return the read response array for constant instances </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the const-qualified response array </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="816" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1660" bodyend="1662"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1axi__extension_1a42f7fc126fe54c81c7ac4e33c2f7e496" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; response &gt; &amp;</type>
+        <definition>std::vector&lt; response &gt; &amp; axi::axi_extension&lt; REQ, RESP &gt;::get_response_array</definition>
+        <argsstring>()</argsstring>
+        <name>get_response_array</name>
+        <qualifiedname>axi::axi_extension::get_response_array</qualifiedname>
+        <briefdescription>
+<para>return the read response array </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the response array </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="821" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1664" bodyend="1664"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1axi__extension_1acd61ef409067c0d97526ca22b71b9eab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::axi_extension&lt; REQ, RESP &gt;::set_response_array_complete</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_response_array_complete</name>
+        <qualifiedname>axi::axi_extension::set_response_array_complete</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>complete</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>set the flag indicating the all read responses are collected </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>flag value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="826" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1666" bodyend="1668"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1axi__extension_1a1d2737d7b2cec1dd47df62878bff44a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool axi::axi_extension&lt; REQ, RESP &gt;::is_response_array_complete</definition>
+        <argsstring>()</argsstring>
+        <name>is_response_array_complete</name>
+        <qualifiedname>axi::axi_extension::is_response_array_complete</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the flag indicating the all read responses are collected <simplesect kind="return"><para>the flag value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="831" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="1670" bodyend="1672"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>the template class forming an AXI extension as a combination of common, a request class and a response class </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>REQ</label>
+      </node>
+      <node id="1">
+        <label>axi::axi_extension&lt; REQ, RESP &gt;</label>
+        <link refid="structaxi_1_1axi__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>axi::common</label>
+        <link refid="structaxi_1_1common"/>
+      </node>
+      <node id="4">
+        <label>axi::response</label>
+        <link refid="structaxi_1_1response"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>REQ</label>
+      </node>
+      <node id="1">
+        <label>axi::axi_extension&lt; REQ, RESP &gt;</label>
+        <link refid="structaxi_1_1axi__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>axi::common</label>
+        <link refid="structaxi_1_1common"/>
+      </node>
+      <node id="4">
+        <label>axi::response</label>
+        <link refid="structaxi_1_1response"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="781" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="784" bodyend="836"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1axi__extension_1acff6ac89b1c2023be1ac6a7c6ed894b7" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>add_to_response_array</name></member>
+      <member refid="structaxi_1_1axi__extension_1a2fe6e8e07eb3959237125f7f46179310" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>axi_extension</name></member>
+      <member refid="structaxi_1_1axi__extension_1a1eadba13a925dd0d6ce857a1199be5fa" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>axi_extension</name></member>
+      <member refid="structaxi_1_1common_1ac0eb6b0bad2f12d122b1167a0e66dc95" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>common</name></member>
+      <member refid="structaxi_1_1response_1a0f9d11098e0908dbf6bf5de831097328a20ada391819c7f869d4a831622b5506a" prot="protected" virt="non-virtual"><scope>axi::axi_extension</scope><name>DATATRANSFER</name></member>
+      <member refid="structaxi_1_1response_1af21a746430dd01c946808a041cdd6038" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>from_tlm_response_status</name></member>
+      <member refid="structaxi_1_1common_1ac4850f96ffed36eaceefd02d9d76f8b3" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>get_id</name></member>
+      <member refid="structaxi_1_1response_1a1207d76357069d1d1c36c62a590a4e77" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>get_resp</name></member>
+      <member refid="structaxi_1_1axi__extension_1a31b56a82baa42eb2b549f6a43c483f7c" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>get_response_array</name></member>
+      <member refid="structaxi_1_1axi__extension_1a42f7fc126fe54c81c7ac4e33c2f7e496" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>get_response_array</name></member>
+      <member refid="structaxi_1_1common_1a4b0bc3b0ec1f1ead59c78cac493679da" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>get_user</name></member>
+      <member refid="structaxi_1_1common_1a9a427c494fbaacb30d309020e0d651ea" prot="protected" virt="non-virtual"><scope>axi::axi_extension</scope><name>id</name></member>
+      <member refid="structaxi_1_1common_1a92f5960863736516ee1059dd94eb396a" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>id_type</name></member>
+      <member refid="structaxi_1_1response_1a734b454b26a4c823fe10142071aefe60" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>is_decerr</name></member>
+      <member refid="structaxi_1_1response_1aa6ffb88bb2df7ba2c7ef589e062e3a84" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>is_exokay</name></member>
+      <member refid="structaxi_1_1response_1abd50ab7ebb8402d2829d015e58bb2a8a" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>is_okay</name></member>
+      <member refid="structaxi_1_1axi__extension_1a1d2737d7b2cec1dd47df62878bff44a0" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>is_response_array_complete</name></member>
+      <member refid="structaxi_1_1response_1aa99068e2f9de2875fce6541f60e18564" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>is_slverr</name></member>
+      <member refid="structaxi_1_1response_1a0f9d11098e0908dbf6bf5de831097328a77698e343faa4dc0e19373b2c506cf5a" prot="protected" virt="non-virtual"><scope>axi::axi_extension</scope><name>ISSHARED</name></member>
+      <member refid="structaxi_1_1common_1a512b936fc1a7ae445153c47ecf52bdfe" prot="public" virt="non-virtual" ambiguityscope="axi::"><scope>axi::axi_extension</scope><name>operator=</name></member>
+      <member refid="structaxi_1_1response_1a41cd5a6787a8c17144dfcbc37d05074e" prot="public" virt="non-virtual" ambiguityscope="axi::response::"><scope>axi::axi_extension</scope><name>operator=</name></member>
+      <member refid="structaxi_1_1response_1a0f9d11098e0908dbf6bf5de831097328ae593411a8d54bab999e427d3d5663d17" prot="protected" virt="non-virtual"><scope>axi::axi_extension</scope><name>PASSDIRTY</name></member>
+      <member refid="structaxi_1_1axi__extension_1ade5a2257c5dc9885b0573e8df6fd7926" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>reset</name></member>
+      <member refid="structaxi_1_1axi__extension_1aa129e587f4ba9e21f790cb52c0f000af" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>reset</name></member>
+      <member refid="structaxi_1_1response_1a11781b88242b09ea3b5c11b16233efb5" prot="protected" virt="non-virtual"><scope>axi::axi_extension</scope><name>resp</name></member>
+      <member refid="structaxi_1_1response_1abc641034d5c7f0b00472381d323d4912" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>response</name></member>
+      <member refid="structaxi_1_1axi__extension_1a6951f886be3fab1a537bfca3059aabe4" prot="private" virt="non-virtual"><scope>axi::axi_extension</scope><name>response_arr</name></member>
+      <member refid="structaxi_1_1axi__extension_1a747f4b7c93f2647a6c218af011c8621c" prot="private" virt="non-virtual"><scope>axi::axi_extension</scope><name>response_array_complete</name></member>
+      <member refid="structaxi_1_1response_1a58bb3a2c2cad60ccb52b83f56b6a6005" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>set_decerr</name></member>
+      <member refid="structaxi_1_1response_1ad5f07d05631cd7d87dc19d3fbbd294a8" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>set_exokay</name></member>
+      <member refid="structaxi_1_1common_1a45322e6c2566050f736d20880615ab96" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>set_id</name></member>
+      <member refid="structaxi_1_1response_1a28d372134d4f5a57dd5b660a0860626a" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>set_okay</name></member>
+      <member refid="structaxi_1_1response_1a768e83540bf933debc3a2521d0df6bb4" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>set_resp</name></member>
+      <member refid="structaxi_1_1axi__extension_1acd61ef409067c0d97526ca22b71b9eab" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>set_response_array_complete</name></member>
+      <member refid="structaxi_1_1response_1ab72396787b4b9f0a7652966aad772bed" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>set_slverr</name></member>
+      <member refid="structaxi_1_1common_1a4c6295bdd23e17f2d83a3ddddce77eb8" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>set_user</name></member>
+      <member refid="structaxi_1_1response_1a0f9d11098e0908dbf6bf5de831097328af804012f785dc2c168c31b93c17ba22c" prot="protected" virt="non-virtual"><scope>axi::axi_extension</scope><name>SNOOPEERROR</name></member>
+      <member refid="structaxi_1_1response_1ad5620f9b73724f258e10a11501022848" prot="public" virt="non-virtual"><scope>axi::axi_extension</scope><name>to_tlm_response_status</name></member>
+      <member refid="structaxi_1_1common_1a2eadec66346fe202076a8aa519fcaaf1" prot="protected" virt="non-virtual"><scope>axi::axi_extension</scope><name>user</name></member>
+      <member refid="structaxi_1_1response_1a0f9d11098e0908dbf6bf5de831097328af07296b8679f26456d1b11de6d05b32b" prot="protected" virt="non-virtual"><scope>axi::axi_extension</scope><name>WASUNIQUE</name></member>
+      <member refid="structaxi_1_1axi__extension_1ae1832adbe8b635f0e2006cd2fb527146" prot="public" virt="virtual"><scope>axi::axi_extension</scope><name>~axi_extension</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

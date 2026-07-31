@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1pe_1_1parallel__pe_1_1thread__unit" kind="struct" language="C++" prot="private">
+    <compoundname>tlm::scc::pe::parallel_pe::thread_unit</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1pe_1_1parallel__pe_1_1thread__unit_1a58a1c7beeadbc7298e45af9b6da2ed94" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event tlm::scc::pe::parallel_pe::thread_unit::evt</definition>
+        <argsstring></argsstring>
+        <name>evt</name>
+        <qualifiedname>tlm::scc::pe::parallel_pe::thread_unit::evt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="41" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1pe_1_1parallel__pe_1_1thread__unit_1a634b27fa757dd580dccda804b6a6c157" prot="public" static="no" mutable="no">
+        <type>tlm::tlm_generic_payload *</type>
+        <definition>tlm::tlm_generic_payload* tlm::scc::pe::parallel_pe::thread_unit::gp</definition>
+        <argsstring></argsstring>
+        <name>gp</name>
+        <qualifiedname>tlm::scc::pe::parallel_pe::thread_unit::gp</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="42" column="34" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1pe_1_1parallel__pe_1_1thread__unit_1a19515b099470bedb5bad81c1664bdc69" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tlm::scc::pe::parallel_pe::thread_unit::lt_transport</definition>
+        <argsstring></argsstring>
+        <name>lt_transport</name>
+        <qualifiedname>tlm::scc::pe::parallel_pe::thread_unit::lt_transport</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="43" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1pe_1_1parallel__pe_1_1thread__unit_1a332587a06f459afdb3e6dbd280d3c610" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_process_handle</type>
+        <definition>sc_core::sc_process_handle tlm::scc::pe::parallel_pe::thread_unit::hndl</definition>
+        <argsstring></argsstring>
+        <name>hndl</name>
+        <qualifiedname>tlm::scc::pe::parallel_pe::thread_unit::hndl</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="44" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1pe_1_1parallel__pe_1_1thread__unit_1a757d712f0e00f75498a33992e52c54c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::pe::parallel_pe::thread_unit::thread_unit</definition>
+        <argsstring>(const thread_unit &amp;o)</argsstring>
+        <name>thread_unit</name>
+        <qualifiedname>tlm::scc::pe::parallel_pe::thread_unit::thread_unit</qualifiedname>
+        <param>
+          <type>const thread_unit &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="45" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1pe_1_1parallel__pe_1_1thread__unit_1a20f965c2f8350c0be72b597154355820" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::pe::parallel_pe::thread_unit::thread_unit</definition>
+        <argsstring>()=default</argsstring>
+        <name>thread_unit</name>
+        <qualifiedname>tlm::scc::pe::parallel_pe::thread_unit::thread_unit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="49" column="9"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" line="40" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.h" bodystart="40" bodyend="50"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1pe_1_1parallel__pe_1_1thread__unit_1a58a1c7beeadbc7298e45af9b6da2ed94" prot="public" virt="non-virtual"><scope>tlm::scc::pe::parallel_pe::thread_unit</scope><name>evt</name></member>
+      <member refid="structtlm_1_1scc_1_1pe_1_1parallel__pe_1_1thread__unit_1a634b27fa757dd580dccda804b6a6c157" prot="public" virt="non-virtual"><scope>tlm::scc::pe::parallel_pe::thread_unit</scope><name>gp</name></member>
+      <member refid="structtlm_1_1scc_1_1pe_1_1parallel__pe_1_1thread__unit_1a332587a06f459afdb3e6dbd280d3c610" prot="public" virt="non-virtual"><scope>tlm::scc::pe::parallel_pe::thread_unit</scope><name>hndl</name></member>
+      <member refid="structtlm_1_1scc_1_1pe_1_1parallel__pe_1_1thread__unit_1a19515b099470bedb5bad81c1664bdc69" prot="public" virt="non-virtual"><scope>tlm::scc::pe::parallel_pe::thread_unit</scope><name>lt_transport</name></member>
+      <member refid="structtlm_1_1scc_1_1pe_1_1parallel__pe_1_1thread__unit_1a757d712f0e00f75498a33992e52c54c9" prot="public" virt="non-virtual"><scope>tlm::scc::pe::parallel_pe::thread_unit</scope><name>thread_unit</name></member>
+      <member refid="structtlm_1_1scc_1_1pe_1_1parallel__pe_1_1thread__unit_1a20f965c2f8350c0be72b597154355820" prot="public" virt="non-virtual"><scope>tlm::scc::pe::parallel_pe::thread_unit</scope><name>thread_unit</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

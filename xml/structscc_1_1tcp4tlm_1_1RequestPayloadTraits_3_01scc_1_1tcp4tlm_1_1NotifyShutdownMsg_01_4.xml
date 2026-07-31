@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tcp4tlm_1_1RequestPayloadTraits_3_01scc_1_1tcp4tlm_1_1NotifyShutdownMsg_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>scc::tcp4tlm::RequestPayloadTraits&lt; scc::tcp4tlm::NotifyShutdownMsg &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1RequestPayloadTraits_3_01scc_1_1tcp4tlm_1_1NotifyShutdownMsg_01_4_1adc7a8b5335e9d5d3f676fa553546f173" prot="public" static="yes" mutable="no">
+        <type>const RequestPayload</type>
+        <definition>const RequestPayload scc::tcp4tlm::RequestPayloadTraits&lt; scc::tcp4tlm::NotifyShutdownMsg &gt;::enum_value</definition>
+        <argsstring></argsstring>
+        <name>enum_value</name>
+        <qualifiedname>scc::tcp4tlm::RequestPayloadTraits&lt; scc::tcp4tlm::NotifyShutdownMsg &gt;::enum_value</qualifiedname>
+        <initializer>= RequestPayload_NotifyShutdownMsg</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="137" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="136" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="136" bodyend="138"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tcp4tlm_1_1RequestPayloadTraits_3_01scc_1_1tcp4tlm_1_1NotifyShutdownMsg_01_4_1adc7a8b5335e9d5d3f676fa553546f173" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::RequestPayloadTraits&lt; scc::tcp4tlm::NotifyShutdownMsg &gt;</scope><name>enum_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

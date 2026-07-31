@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1gzip__stream" kind="class" language="C++" prot="public">
+    <compoundname>util::gzip_stream</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::istream</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classutil_1_1gzip__stream_1a091306c164eb6876f0458bed81ea40ae" prot="private" static="no" mutable="no">
+        <type><ref refid="classutil_1_1gzip__streambuf" kindref="compound">gzip_streambuf</ref></type>
+        <definition>gzip_streambuf util::gzip_stream::buf_</definition>
+        <argsstring></argsstring>
+        <name>buf_</name>
+        <qualifiedname>util::gzip_stream::buf_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.h" line="59" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classutil_1_1gzip__stream_1aa4ccc1b3ca12cb63af75d845392dc0d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::gzip_stream::gzip_stream</definition>
+        <argsstring>()=delete</argsstring>
+        <name>gzip_stream</name>
+        <qualifiedname>util::gzip_stream::gzip_stream</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.h" line="51" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1gzip__stream_1ac1cdf5956d10d1f56280becd571f0398" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>util::gzip_stream::gzip_stream</definition>
+        <argsstring>(const std::string &amp;path)</argsstring>
+        <name>gzip_stream</name>
+        <qualifiedname>util::gzip_stream::gzip_stream</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.h" line="52" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.h" bodystart="52" bodyend="56"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>std::istream</label>
+      </node>
+      <node id="1">
+        <label>util::gzip_stream</label>
+        <link refid="classutil_1_1gzip__stream"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>std::istream</label>
+      </node>
+      <node id="1">
+        <label>util::gzip_stream</label>
+        <link refid="classutil_1_1gzip__stream"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.h" line="49" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.h" bodystart="49" bodyend="60"/>
+    <listofallmembers>
+      <member refid="classutil_1_1gzip__stream_1a091306c164eb6876f0458bed81ea40ae" prot="private" virt="non-virtual"><scope>util::gzip_stream</scope><name>buf_</name></member>
+      <member refid="classutil_1_1gzip__stream_1aa4ccc1b3ca12cb63af75d845392dc0d9" prot="public" virt="non-virtual"><scope>util::gzip_stream</scope><name>gzip_stream</name></member>
+      <member refid="classutil_1_1gzip__stream_1ac1cdf5956d10d1f56280becd571f0398" prot="public" virt="non-virtual"><scope>util::gzip_stream</scope><name>gzip_stream</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

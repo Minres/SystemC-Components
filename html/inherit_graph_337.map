@@ -1,3 +1,11 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$structutil_1_1stl__pool__allocator_1_1rebind.html" title=" " alt="" coords="5,5,153,45"/>
+<area shape="rect" id="Node000000" href="$structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html" title=" " alt="" coords="5,58,157,127"/>
+<area shape="rect" id="Node000001" href="$structchi_1_1chi__ctrl__ext__recording.html" title=" " alt="" coords="209,5,383,31"/>
+<area shape="poly" id="edge660_Node000000_Node000001" title=" " alt="" coords="169,52,204,39,242,28,244,33,206,45,171,57"/>
+<area shape="rect" id="Node000002" href="$structchi_1_1chi__data__ext__recording.html" title=" " alt="" coords="205,55,387,80"/>
+<area shape="poly" id="edge661_Node000000_Node000002" title=" " alt="" coords="171,79,205,75,205,81,171,85"/>
+<area shape="rect" id="Node000003" href="$structchi_1_1chi__snp__ext__recording.html" title=" " alt="" coords="207,104,385,129"/>
+<area shape="poly" id="edge662_Node000000_Node000003" title=" " alt="" coords="171,100,207,104,207,109,171,105"/>
+<area shape="rect" id="Node000004" href="$structchi_1_1tlm__id__ext__recording.html" title=" " alt="" coords="213,153,379,179"/>
+<area shape="poly" id="edge663_Node000000_Node000004" title=" " alt="" coords="171,126,206,138,247,151,246,156,204,143,169,131"/>
 </map>

@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1scv_1_1axi3__ext__record" kind="struct" language="C++" prot="public">
+    <compoundname>axi::scv::axi3_ext_record</compoundname>
+    <basecompoundref refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if" prot="public" virt="non-virtual">tlm::scc::scv::tlm_extension_record_if</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1scv_1_1axi3__ext__record_1a262b5936717c3911826eee4b8b318302" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::scv::axi3_ext_record::axi3_ext_record</definition>
+        <argsstring>()</argsstring>
+        <name>axi3_ext_record</name>
+        <qualifiedname>axi::scv::axi3_ext_record::axi3_ext_record</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" line="40" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" bodystart="40" bodyend="43"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structaxi_1_1scv_1_1axi3__ext__record_1a5f1a5990741eee8a454639bcb9ac0188" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void axi::scv::axi3_ext_record::recordBeginTx</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;handle, tlm::tlm_extension_base *e, std::string const &amp;prefix)</argsstring>
+        <name>recordBeginTx</name>
+        <qualifiedname>axi::scv::axi3_ext_record::recordBeginTx</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_extension_base *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>prefix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" line="45" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" bodystart="45" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1scv_1_1axi3__ext__record_1ac4f5def0b1e8848bb1c04e44d916ff2b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void axi::scv::axi3_ext_record::recordEndTx</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;handle, tlm::tlm_extension_base *e, std::string const &amp;prefix)</argsstring>
+        <name>recordEndTx</name>
+        <qualifiedname>axi::scv::axi3_ext_record::recordEndTx</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_extension_base *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>prefix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" line="65" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" bodystart="65" bodyend="69"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::scv::axi3_ext_record</label>
+        <link refid="structaxi_1_1scv_1_1axi3__ext__record"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::scv::tlm_extension_record_if</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::scv::axi3_ext_record</label>
+        <link refid="structaxi_1_1scv_1_1axi3__ext__record"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::scv::tlm_extension_record_if</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>recordBegin</edgelabel>
+          <edgelabel>recordEnd</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>util::delegate&lt; void(SCVNS scv_tr_handle &amp;, tlm::tlm_extension_base *, std::string const &amp;)&gt;</label>
+        <link refid="classutil_1_1delegate"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" line="38" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv/axi_ace_scv.cpp" bodystart="38" bodyend="70"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1scv_1_1axi3__ext__record_1a262b5936717c3911826eee4b8b318302" prot="public" virt="non-virtual"><scope>axi::scv::axi3_ext_record</scope><name>axi3_ext_record</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1a137d8b93971625450c01fb82f70ce2c7" prot="public" virt="non-virtual"><scope>axi::scv::axi3_ext_record</scope><name>recordBegin</name></member>
+      <member refid="structaxi_1_1scv_1_1axi3__ext__record_1a5f1a5990741eee8a454639bcb9ac0188" prot="public" virt="non-virtual"><scope>axi::scv::axi3_ext_record</scope><name>recordBeginTx</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1abf714e72f94ce9f37c10c9ec76065a3e" prot="public" virt="non-virtual"><scope>axi::scv::axi3_ext_record</scope><name>recordEnd</name></member>
+      <member refid="structaxi_1_1scv_1_1axi3__ext__record_1ac4f5def0b1e8848bb1c04e44d916ff2b" prot="public" virt="non-virtual"><scope>axi::scv::axi3_ext_record</scope><name>recordEndTx</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1a6887834989a54263dc3ce2f0811fc6a4" prot="public" virt="virtual"><scope>axi::scv::axi3_ext_record</scope><name>~tlm_extension_record_if</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1detail_1_1is__nothrow__swappable" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::detail::is_nothrow_swappable</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::integral_constant&lt; bool, is_swappable&lt; T, T &gt;::value &amp;&amp;((decltype(detail::swap_adl_tests::uses_std&lt; T, T &gt;(0))::value &amp;&amp;detail::swap_adl_tests::is_std_swap_noexcept&lt; T &gt;::value)||(!decltype(detail::swap_adl_tests::uses_std&lt; T, T &gt;(0))::value &amp;&amp;detail::swap_adl_tests::is_adl_swap_noexcept&lt; T, T &gt;::value))&gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>class U</type>
+        <defval>T</defval>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>nonstd::detail::is_nothrow_swappable&lt; T, U &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1is__nothrow__swappable"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::integral_constant&lt; bool, is_swappable&lt; T, T &gt;::value &amp;&amp;((decltype(detail::swap_adl_tests::uses_std&lt; T, T &gt;(0))::value &amp;&amp;detail::swap_adl_tests::is_std_swap_noexcept&lt; T &gt;::value)||(!decltype(detail::swap_adl_tests::uses_std&lt; T, T &gt;(0))::value &amp;&amp;detail::swap_adl_tests::is_adl_swap_noexcept&lt; T, T &gt;::value))&gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>nonstd::detail::is_nothrow_swappable&lt; T, U &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1is__nothrow__swappable"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::integral_constant&lt; bool, is_swappable&lt; T, T &gt;::value &amp;&amp;((decltype(detail::swap_adl_tests::uses_std&lt; T, T &gt;(0))::value &amp;&amp;detail::swap_adl_tests::is_std_swap_noexcept&lt; T &gt;::value)||(!decltype(detail::swap_adl_tests::uses_std&lt; T, T &gt;(0))::value &amp;&amp;detail::swap_adl_tests::is_adl_swap_noexcept&lt; T, T &gt;::value))&gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="225" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="229" bodyend="229"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

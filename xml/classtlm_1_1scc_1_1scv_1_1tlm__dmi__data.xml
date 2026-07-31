@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::scv::tlm_dmi_data</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1a42ec3c41522740b2df9e4a4b6a3252ef" prot="public" static="no" mutable="no">
+        <type>unsigned char *</type>
+        <definition>unsigned char* tlm::scc::scv::tlm_dmi_data::dmi_ptr</definition>
+        <argsstring></argsstring>
+        <name>dmi_ptr</name>
+        <qualifiedname>tlm::scc::scv::tlm_dmi_data::dmi_ptr</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="148" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="148" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1adc86904866b9b46384626a10bd7456df" prot="public" static="no" mutable="no">
+        <type>sc_dt::uint64</type>
+        <definition>sc_dt::uint64 tlm::scc::scv::tlm_dmi_data::dmi_start_address</definition>
+        <argsstring></argsstring>
+        <name>dmi_start_address</name>
+        <qualifiedname>tlm::scc::scv::tlm_dmi_data::dmi_start_address</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="149" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="149" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1aeca43557fefb557a34d765711e43329a" prot="public" static="no" mutable="no">
+        <type>sc_dt::uint64</type>
+        <definition>sc_dt::uint64 tlm::scc::scv::tlm_dmi_data::dmi_end_address</definition>
+        <argsstring></argsstring>
+        <name>dmi_end_address</name>
+        <qualifiedname>tlm::scc::scv::tlm_dmi_data::dmi_end_address</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="150" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="150" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1acf4a0e85f7d479ca1bab22e05ff9b3f6" prot="public" static="no" mutable="no">
+        <type>tlm::tlm_dmi::dmi_access_e</type>
+        <definition>tlm::tlm_dmi::dmi_access_e tlm::scc::scv::tlm_dmi_data::dmi_access</definition>
+        <argsstring></argsstring>
+        <name>dmi_access</name>
+        <qualifiedname>tlm::scc::scv::tlm_dmi_data::dmi_access</qualifiedname>
+        <initializer>{tlm::tlm_dmi::DMI_ACCESS_NONE}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="151" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="151" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1a53a5601901b5bab29ba2e64f58397839" prot="public" static="no" mutable="no">
+        <type>sc_dt::uint64</type>
+        <definition>sc_dt::uint64 tlm::scc::scv::tlm_dmi_data::dmi_read_latency</definition>
+        <argsstring></argsstring>
+        <name>dmi_read_latency</name>
+        <qualifiedname>tlm::scc::scv::tlm_dmi_data::dmi_read_latency</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="152" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="152" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1a743c71aefeb29b9db41989358ee8384a" prot="public" static="no" mutable="no">
+        <type>sc_dt::uint64</type>
+        <definition>sc_dt::uint64 tlm::scc::scv::tlm_dmi_data::dmi_write_latency</definition>
+        <argsstring></argsstring>
+        <name>dmi_write_latency</name>
+        <qualifiedname>tlm::scc::scv::tlm_dmi_data::dmi_write_latency</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="153" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="153" bodyend="153"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1ae8b3f6912c25284ad549b15ba93ef384" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::scv::tlm_dmi_data::tlm_dmi_data</definition>
+        <argsstring>()=default</argsstring>
+        <name>tlm_dmi_data</name>
+        <qualifiedname>tlm::scc::scv::tlm_dmi_data::tlm_dmi_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="134" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1aac362d21b5621267503cdb836a3c0dc9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::scv::tlm_dmi_data::tlm_dmi_data</definition>
+        <argsstring>(tlm::tlm_dmi &amp;dmi_data)</argsstring>
+        <name>tlm_dmi_data</name>
+        <qualifiedname>tlm::scc::scv::tlm_dmi_data::tlm_dmi_data</qualifiedname>
+        <param>
+          <type>tlm::tlm_dmi &amp;</type>
+          <declname>dmi_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="136" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="136" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1a77c45e96f1bd5abdf780474362a7de24" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual tlm::scc::scv::tlm_dmi_data::~tlm_dmi_data</definition>
+        <argsstring>()</argsstring>
+        <name>~tlm_dmi_data</name>
+        <qualifiedname>tlm::scc::scv::tlm_dmi_data::~tlm_dmi_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="146" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="146" bodyend="146"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="132" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="132" bodyend="154"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1acf4a0e85f7d479ca1bab22e05ff9b3f6" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_dmi_data</scope><name>dmi_access</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1aeca43557fefb557a34d765711e43329a" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_dmi_data</scope><name>dmi_end_address</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1a42ec3c41522740b2df9e4a4b6a3252ef" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_dmi_data</scope><name>dmi_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1a53a5601901b5bab29ba2e64f58397839" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_dmi_data</scope><name>dmi_read_latency</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1adc86904866b9b46384626a10bd7456df" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_dmi_data</scope><name>dmi_start_address</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1a743c71aefeb29b9db41989358ee8384a" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_dmi_data</scope><name>dmi_write_latency</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1ae8b3f6912c25284ad549b15ba93ef384" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_dmi_data</scope><name>tlm_dmi_data</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1aac362d21b5621267503cdb836a3c0dc9" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_dmi_data</scope><name>tlm_dmi_data</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data_1a77c45e96f1bd5abdf780474362a7de24" prot="public" virt="virtual"><scope>tlm::scc::scv::tlm_dmi_data</scope><name>~tlm_dmi_data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

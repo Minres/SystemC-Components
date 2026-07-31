@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1tcp4tlm_1_1message__buffer" kind="class" language="C++" prot="public">
+    <compoundname>scc::tcp4tlm::message_buffer</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename Root</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classscc_1_1tcp4tlm_1_1message__buffer_1a924a2515dd788937dddb3a743cddadb3" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; uint8_t &gt;</type>
+        <definition>std::vector&lt;uint8_t&gt; scc::tcp4tlm::message_buffer&lt; Root &gt;::storage_</definition>
+        <argsstring></argsstring>
+        <name>storage_</name>
+        <qualifiedname>scc::tcp4tlm::message_buffer::storage_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="58" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1tcp4tlm_1_1message__buffer_1ab407abeb2a203e10a2065ac0631482be" prot="private" static="no" mutable="no">
+        <type>const Root *</type>
+        <definition>const Root* scc::tcp4tlm::message_buffer&lt; Root &gt;::root_</definition>
+        <argsstring></argsstring>
+        <name>root_</name>
+        <qualifiedname>scc::tcp4tlm::message_buffer::root_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="59" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1message__buffer_1aeed6774a4ee757553e2d9c3a028792da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::tcp4tlm::message_buffer&lt; Root &gt;::message_buffer</definition>
+        <argsstring>()=default</argsstring>
+        <name>message_buffer</name>
+        <qualifiedname>scc::tcp4tlm::message_buffer::message_buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="32" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1message__buffer_1a809c3677dde6095d80f33fa9063a53a2" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tcp4tlm::message_buffer&lt; Root &gt;::message_buffer</definition>
+        <argsstring>(std::vector&lt; uint8_t &gt; storage)</argsstring>
+        <name>message_buffer</name>
+        <qualifiedname>scc::tcp4tlm::message_buffer::message_buffer</qualifiedname>
+        <param>
+          <type>std::vector&lt; uint8_t &gt;</type>
+          <declname>storage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="34" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="34" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1message__buffer_1a3ac778a44946524c615636c3d7cf74e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const Root *</type>
+        <definition>const Root * scc::tcp4tlm::message_buffer&lt; Root &gt;::root</definition>
+        <argsstring>() const</argsstring>
+        <name>root</name>
+        <qualifiedname>scc::tcp4tlm::message_buffer::root</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="40" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1message__buffer_1a50fc83b6cd7c69367a84698fea17a749" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const Root *</type>
+        <definition>const Root * scc::tcp4tlm::message_buffer&lt; Root &gt;::operator-&gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>operator-&gt;</name>
+        <qualifiedname>scc::tcp4tlm::message_buffer::operator-&gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="41" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1message__buffer_1ace172e1d1e649f2f91665d68cfc6d74a" prot="public" static="no" const="yes" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tcp4tlm::message_buffer&lt; Root &gt;::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>scc::tcp4tlm::message_buffer::operator bool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="42" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1message__buffer_1a0dc1b9529eb20ab93bd86ac6a7957bde" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const uint8_t *</type>
+        <definition>const uint8_t * scc::tcp4tlm::message_buffer&lt; Root &gt;::data</definition>
+        <argsstring>() const</argsstring>
+        <name>data</name>
+        <qualifiedname>scc::tcp4tlm::message_buffer::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="44" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1message__buffer_1a1a7b5219e72612870398b86fce7ef367" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>std::size_t scc::tcp4tlm::message_buffer&lt; Root &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>scc::tcp4tlm::message_buffer::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="45" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1message__buffer_1a003cb8e54bce6b45f1e697e54e66f170" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool scc::tcp4tlm::message_buffer&lt; Root &gt;::verify</definition>
+        <argsstring>(const uint8_t *data, std::size_t size)</argsstring>
+        <name>verify</name>
+        <qualifiedname>scc::tcp4tlm::message_buffer::verify</qualifiedname>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="47" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="47" bodyend="53"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1message__buffer_1ac2b511d5949f75c17099cf4b6740326b" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::message_buffer&lt; Root &gt;::refresh_root</definition>
+        <argsstring>()</argsstring>
+        <name>refresh_root</name>
+        <qualifiedname>scc::tcp4tlm::message_buffer::refresh_root</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="56" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" line="30" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages.h" bodystart="30" bodyend="60"/>
+    <listofallmembers>
+      <member refid="classscc_1_1tcp4tlm_1_1message__buffer_1a0dc1b9529eb20ab93bd86ac6a7957bde" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::message_buffer</scope><name>data</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1message__buffer_1aeed6774a4ee757553e2d9c3a028792da" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::message_buffer</scope><name>message_buffer</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1message__buffer_1a809c3677dde6095d80f33fa9063a53a2" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::message_buffer</scope><name>message_buffer</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1message__buffer_1ace172e1d1e649f2f91665d68cfc6d74a" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::message_buffer</scope><name>operator bool</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1message__buffer_1a50fc83b6cd7c69367a84698fea17a749" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::message_buffer</scope><name>operator-&gt;</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1message__buffer_1ac2b511d5949f75c17099cf4b6740326b" prot="private" virt="non-virtual"><scope>scc::tcp4tlm::message_buffer</scope><name>refresh_root</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1message__buffer_1a3ac778a44946524c615636c3d7cf74e7" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::message_buffer</scope><name>root</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1message__buffer_1ab407abeb2a203e10a2065ac0631482be" prot="private" virt="non-virtual"><scope>scc::tcp4tlm::message_buffer</scope><name>root_</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1message__buffer_1a1a7b5219e72612870398b86fce7ef367" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::message_buffer</scope><name>size</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1message__buffer_1a924a2515dd788937dddb3a743cddadb3" prot="private" virt="non-virtual"><scope>scc::tcp4tlm::message_buffer</scope><name>storage_</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1message__buffer_1a003cb8e54bce6b45f1e697e54e66f170" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::message_buffer</scope><name>verify</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

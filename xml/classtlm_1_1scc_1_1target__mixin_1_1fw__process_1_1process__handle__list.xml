@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__list" kind="class" language="C++" prot="private">
+    <compoundname>tlm::scc::target_mixin::fw_process::process_handle_list</compoundname>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__list_1a036893ea2a8adaec75f2bae7dcfb764e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; process_handle_class * &gt;</type>
+        <definition>std::vector&lt;process_handle_class*&gt; tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::fw_process::process_handle_list::v</definition>
+        <argsstring></argsstring>
+        <name>v</name>
+        <qualifiedname>tlm::scc::target_mixin::fw_process::process_handle_list::v</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="362" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="362" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__list_1a240433d8f78ee702cd853490bcfc5b6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::fw_process::process_handle_list::process_handle_list</definition>
+        <argsstring>()=default</argsstring>
+        <name>process_handle_list</name>
+        <qualifiedname>tlm::scc::target_mixin::fw_process::process_handle_list::process_handle_list</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="339" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__list_1a5337b279b58cfc55bdf3bac724eea9f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::fw_process::process_handle_list::~process_handle_list</definition>
+        <argsstring>()</argsstring>
+        <name>~process_handle_list</name>
+        <qualifiedname>tlm::scc::target_mixin::fw_process::process_handle_list::~process_handle_list</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="341" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="341" bodyend="344"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__list_1a2273618ff7cd11f8f6cc1e141551d668" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>process_handle_class *</type>
+        <definition>process_handle_class * tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::fw_process::process_handle_list::get_handle</definition>
+        <argsstring>(transaction_type *trans)</argsstring>
+        <name>get_handle</name>
+        <qualifiedname>tlm::scc::target_mixin::fw_process::process_handle_list::get_handle</qualifiedname>
+        <param>
+          <type>transaction_type *</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="346" column="34" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="346" bodyend="357"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__list_1a2444c9519069388c3605f8a940088df9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::fw_process::process_handle_list::put_handle</definition>
+        <argsstring>(process_handle_class *ph)</argsstring>
+        <name>put_handle</name>
+        <qualifiedname>tlm::scc::target_mixin::fw_process::process_handle_list::put_handle</qualifiedname>
+        <param>
+          <type>process_handle_class *</type>
+          <declname>ph</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="359" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="359" bodyend="359"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="337" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="337" bodyend="363"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__list_1a2273618ff7cd11f8f6cc1e141551d668" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin::fw_process::process_handle_list</scope><name>get_handle</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__list_1a240433d8f78ee702cd853490bcfc5b6e" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin::fw_process::process_handle_list</scope><name>process_handle_list</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__list_1a2444c9519069388c3605f8a940088df9" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin::fw_process::process_handle_list</scope><name>put_handle</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__list_1a036893ea2a8adaec75f2bae7dcfb764e" prot="private" virt="non-virtual"><scope>tlm::scc::target_mixin::fw_process::process_handle_list</scope><name>v</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1_1fw__process_1_1process__handle__list_1a5337b279b58cfc55bdf3bac724eea9f7" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin::fw_process::process_handle_list</scope><name>~process_handle_list</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

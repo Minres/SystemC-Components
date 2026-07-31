@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1gzip__streambuf" kind="class" language="C++" prot="public">
+    <compoundname>util::gzip_streambuf</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::streambuf</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classutil_1_1gzip__streambuf_1a03115567e7c17f254810e3953c31338b" prot="private" static="no" mutable="no">
+        <type>gzFile</type>
+        <definition>gzFile util::gzip_streambuf::gz_</definition>
+        <argsstring></argsstring>
+        <name>gz_</name>
+        <qualifiedname>util::gzip_streambuf::gz_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.h" line="45" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1gzip__streambuf_1a04318990ad7a4e20d25c613221a6308d" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; char &gt;</type>
+        <definition>std::vector&lt;char&gt; util::gzip_streambuf::buffer_</definition>
+        <argsstring></argsstring>
+        <name>buffer_</name>
+        <qualifiedname>util::gzip_streambuf::buffer_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.h" line="46" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classutil_1_1gzip__streambuf_1a7f58bc0dd9f4a8051d37c0151b98a383" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::gzip_streambuf::gzip_streambuf</definition>
+        <argsstring>(const std::string &amp;path)</argsstring>
+        <name>gzip_streambuf</name>
+        <qualifiedname>util::gzip_streambuf::gzip_streambuf</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.h" line="37" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.cpp" bodystart="19" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1gzip__streambuf_1ad925176528088f68d4e4420727255730" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::gzip_streambuf::~gzip_streambuf</definition>
+        <argsstring>() override</argsstring>
+        <name>~gzip_streambuf</name>
+        <qualifiedname>util::gzip_streambuf::~gzip_streambuf</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.h" line="39" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.cpp" bodystart="28" bodyend="31"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classutil_1_1gzip__streambuf_1a7bf973eb1097273aa37295d3f5b5a11d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int_type</type>
+        <definition>auto util::gzip_streambuf::underflow</definition>
+        <argsstring>() override</argsstring>
+        <name>underflow</name>
+        <qualifiedname>util::gzip_streambuf::underflow</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.h" line="42" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.cpp" bodystart="33" bodyend="40"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>std::streambuf</label>
+      </node>
+      <node id="1">
+        <label>util::gzip_streambuf</label>
+        <link refid="classutil_1_1gzip__streambuf"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>std::streambuf</label>
+      </node>
+      <node id="1">
+        <label>util::gzip_streambuf</label>
+        <link refid="classutil_1_1gzip__streambuf"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.h" line="35" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/gzip_streambuf.h" bodystart="35" bodyend="47"/>
+    <listofallmembers>
+      <member refid="classutil_1_1gzip__streambuf_1a04318990ad7a4e20d25c613221a6308d" prot="private" virt="non-virtual"><scope>util::gzip_streambuf</scope><name>buffer_</name></member>
+      <member refid="classutil_1_1gzip__streambuf_1a03115567e7c17f254810e3953c31338b" prot="private" virt="non-virtual"><scope>util::gzip_streambuf</scope><name>gz_</name></member>
+      <member refid="classutil_1_1gzip__streambuf_1a7f58bc0dd9f4a8051d37c0151b98a383" prot="public" virt="non-virtual"><scope>util::gzip_streambuf</scope><name>gzip_streambuf</name></member>
+      <member refid="classutil_1_1gzip__streambuf_1a7bf973eb1097273aa37295d3f5b5a11d" prot="protected" virt="non-virtual"><scope>util::gzip_streambuf</scope><name>underflow</name></member>
+      <member refid="classutil_1_1gzip__streambuf_1ad925176528088f68d4e4420727255730" prot="public" virt="non-virtual"><scope>util::gzip_streambuf</scope><name>~gzip_streambuf</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

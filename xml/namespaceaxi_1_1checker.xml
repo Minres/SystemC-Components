@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceaxi_1_1checker" kind="namespace" language="C++">
+    <compoundname>axi::checker</compoundname>
+    <innerclass refid="classaxi_1_1checker_1_1ace__protocol" prot="public">axi::checker::ace_protocol</innerclass>
+    <innerclass refid="classaxi_1_1checker_1_1axi__protocol" prot="public">axi::checker::axi_protocol</innerclass>
+    <innerclass refid="structaxi_1_1checker_1_1checker__if" prot="public">axi::checker::checker_if</innerclass>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="ace__protocol_8cpp_1adf8b36a1b9ea6ddf506c254b778559c4" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi::checker::comb</definition>
+        <argsstring>(axi::bar_e bar, axi::domain_e domain, axi::snoop_e snoop)</argsstring>
+        <name>comb</name>
+        <qualifiedname>axi::checker::comb</qualifiedname>
+        <param>
+          <type><ref refid="namespaceaxi_1a6318752e2d4bb1398307086ebc1421f7" kindref="member">axi::bar_e</ref></type>
+          <declname>bar</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceaxi_1a2c24f5d71a27284a4de95bb3ddf6748d" kindref="member">axi::domain_e</ref></type>
+          <declname>domain</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceaxi_1ab5bdfd0288701d22295633cd80fee212" kindref="member">axi::snoop_e</ref></type>
+          <declname>snoop</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.cpp" line="229" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.cpp" bodystart="229" bodyend="231"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker/ace_protocol.cpp" line="20" column="1"/>
+  </compounddef>
+</doxygen>

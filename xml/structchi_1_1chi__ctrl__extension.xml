@@ -1,0 +1,303 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structchi_1_1chi__ctrl__extension" kind="struct" language="C++" prot="public">
+    <compoundname>chi::chi_ctrl_extension</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_extension&lt; chi_ctrl_extension &gt;</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structchi_1_1chi__ctrl__extension_1aec637cbc2729e3e258810f1e36c73013" prot="public" static="no" mutable="no">
+        <type><ref refid="structchi_1_1common" kindref="compound">common</ref></type>
+        <definition>common chi::chi_ctrl_extension::cmn</definition>
+        <argsstring></argsstring>
+        <name>cmn</name>
+        <qualifiedname>chi::chi_ctrl_extension::cmn</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="768" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="768" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1chi__ctrl__extension_1abd5284aec160e34222a5a452862bd27d" prot="public" static="no" mutable="no">
+        <type><ref refid="structchi_1_1request" kindref="compound">request</ref></type>
+        <definition>request chi::chi_ctrl_extension::req</definition>
+        <argsstring></argsstring>
+        <name>req</name>
+        <qualifiedname>chi::chi_ctrl_extension::req</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="769" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="769" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1chi__ctrl__extension_1afa7bad129b4d2d1e0c6c40d055612f0b" prot="public" static="no" mutable="no">
+        <type><ref refid="structchi_1_1response" kindref="compound">response</ref></type>
+        <definition>response chi::chi_ctrl_extension::resp</definition>
+        <argsstring></argsstring>
+        <name>resp</name>
+        <qualifiedname>chi::chi_ctrl_extension::resp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="770" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="770" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structchi_1_1chi__ctrl__extension_1a08aafdd2c1a2c151614c93bb8332eba3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>chi::chi_ctrl_extension::chi_ctrl_extension</definition>
+        <argsstring>()=default</argsstring>
+        <name>chi_ctrl_extension</name>
+        <qualifiedname>chi::chi_ctrl_extension::chi_ctrl_extension</qualifiedname>
+        <briefdescription>
+<para>the default constructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="739" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__ctrl__extension_1a215f8af7bd9de61dcc68f6db4517b91f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>chi::chi_ctrl_extension::chi_ctrl_extension</definition>
+        <argsstring>(const chi_ctrl_extension &amp;o)=default</argsstring>
+        <name>chi_ctrl_extension</name>
+        <qualifiedname>chi::chi_ctrl_extension::chi_ctrl_extension</qualifiedname>
+        <param>
+          <type>const chi_ctrl_extension &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+<para>the copy constructor </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>extension to copy from </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="744" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__ctrl__extension_1a7dd883427d6699bd9c10dd53f5789675" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_extension_base *</type>
+        <definition>tlm::tlm_extension_base * chi::chi_ctrl_extension::clone</definition>
+        <argsstring>() const</argsstring>
+        <name>clone</name>
+        <qualifiedname>chi::chi_ctrl_extension::clone</qualifiedname>
+        <briefdescription>
+<para>the clone function to create deep copies of </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>pointer to heap-allocated extension </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="749" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="749" bodyend="749"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__ctrl__extension_1a660120e6261399f4519e52dedd1892eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::chi_ctrl_extension::copy_from</definition>
+        <argsstring>(tlm::tlm_extension_base const &amp;ext)</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>chi::chi_ctrl_extension::copy_from</qualifiedname>
+        <param>
+          <type>tlm::tlm_extension_base const &amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+<para>deep copy all values from ext </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ext</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="754" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="754" bodyend="754"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__ctrl__extension_1add201549fc38250bd842bb195491430a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::chi_ctrl_extension::set_txn_id</definition>
+        <argsstring>(unsigned int id)</argsstring>
+        <name>set_txn_id</name>
+        <qualifiedname>chi::chi_ctrl_extension::set_txn_id</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="756" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="756" bodyend="756"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__ctrl__extension_1a6053ce7332a4f0f38083b90ea22b0507" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int chi::chi_ctrl_extension::get_txn_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_txn_id</name>
+        <qualifiedname>chi::chi_ctrl_extension::get_txn_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="758" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="758" bodyend="758"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__ctrl__extension_1a72e8077083b7cd5197ee79569695d7c4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::chi_ctrl_extension::set_src_id</definition>
+        <argsstring>(unsigned int id)</argsstring>
+        <name>set_src_id</name>
+        <qualifiedname>chi::chi_ctrl_extension::set_src_id</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="760" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="760" bodyend="760"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__ctrl__extension_1acfbb30556420d932f1f1e01cf002d2b3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int chi::chi_ctrl_extension::get_src_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_src_id</name>
+        <qualifiedname>chi::chi_ctrl_extension::get_src_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="762" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="762" bodyend="762"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__ctrl__extension_1a834f8ae43c5e443e2bd512cd1a7b6ae9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::chi_ctrl_extension::set_qos</definition>
+        <argsstring>(uint8_t qos)</argsstring>
+        <name>set_qos</name>
+        <qualifiedname>chi::chi_ctrl_extension::set_qos</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>qos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="764" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="764" bodyend="764"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__ctrl__extension_1acddb6eb9d4e84f29c51688cea0e4f38e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int chi::chi_ctrl_extension::get_qos</definition>
+        <argsstring>() const</argsstring>
+        <name>get_qos</name>
+        <qualifiedname>chi::chi_ctrl_extension::get_qos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="766" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="766" bodyend="766"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>chi::chi_ctrl_extension</label>
+        <link refid="structchi_1_1chi__ctrl__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; chi_ctrl_extension &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>chi::chi_ctrl_extension</label>
+        <link refid="structchi_1_1chi__ctrl__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>cmn</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>req</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>resp</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>chi::common</label>
+        <link refid="structchi_1_1common"/>
+      </node>
+      <node id="4">
+        <label>chi::request</label>
+        <link refid="structchi_1_1request"/>
+      </node>
+      <node id="5">
+        <label>chi::response</label>
+        <link refid="structchi_1_1response"/>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; chi_ctrl_extension &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="735" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="735" bodyend="771"/>
+    <listofallmembers>
+      <member refid="structchi_1_1chi__ctrl__extension_1a08aafdd2c1a2c151614c93bb8332eba3" prot="public" virt="non-virtual"><scope>chi::chi_ctrl_extension</scope><name>chi_ctrl_extension</name></member>
+      <member refid="structchi_1_1chi__ctrl__extension_1a215f8af7bd9de61dcc68f6db4517b91f" prot="public" virt="non-virtual"><scope>chi::chi_ctrl_extension</scope><name>chi_ctrl_extension</name></member>
+      <member refid="structchi_1_1chi__ctrl__extension_1a7dd883427d6699bd9c10dd53f5789675" prot="public" virt="non-virtual"><scope>chi::chi_ctrl_extension</scope><name>clone</name></member>
+      <member refid="structchi_1_1chi__ctrl__extension_1aec637cbc2729e3e258810f1e36c73013" prot="public" virt="non-virtual"><scope>chi::chi_ctrl_extension</scope><name>cmn</name></member>
+      <member refid="structchi_1_1chi__ctrl__extension_1a660120e6261399f4519e52dedd1892eb" prot="public" virt="non-virtual"><scope>chi::chi_ctrl_extension</scope><name>copy_from</name></member>
+      <member refid="structchi_1_1chi__ctrl__extension_1acddb6eb9d4e84f29c51688cea0e4f38e" prot="public" virt="non-virtual"><scope>chi::chi_ctrl_extension</scope><name>get_qos</name></member>
+      <member refid="structchi_1_1chi__ctrl__extension_1acfbb30556420d932f1f1e01cf002d2b3" prot="public" virt="non-virtual"><scope>chi::chi_ctrl_extension</scope><name>get_src_id</name></member>
+      <member refid="structchi_1_1chi__ctrl__extension_1a6053ce7332a4f0f38083b90ea22b0507" prot="public" virt="non-virtual"><scope>chi::chi_ctrl_extension</scope><name>get_txn_id</name></member>
+      <member refid="structchi_1_1chi__ctrl__extension_1abd5284aec160e34222a5a452862bd27d" prot="public" virt="non-virtual"><scope>chi::chi_ctrl_extension</scope><name>req</name></member>
+      <member refid="structchi_1_1chi__ctrl__extension_1afa7bad129b4d2d1e0c6c40d055612f0b" prot="public" virt="non-virtual"><scope>chi::chi_ctrl_extension</scope><name>resp</name></member>
+      <member refid="structchi_1_1chi__ctrl__extension_1a834f8ae43c5e443e2bd512cd1a7b6ae9" prot="public" virt="non-virtual"><scope>chi::chi_ctrl_extension</scope><name>set_qos</name></member>
+      <member refid="structchi_1_1chi__ctrl__extension_1a72e8077083b7cd5197ee79569695d7c4" prot="public" virt="non-virtual"><scope>chi::chi_ctrl_extension</scope><name>set_src_id</name></member>
+      <member refid="structchi_1_1chi__ctrl__extension_1add201549fc38250bd842bb195491430a" prot="public" virt="non-virtual"><scope>chi::chi_ctrl_extension</scope><name>set_txn_id</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

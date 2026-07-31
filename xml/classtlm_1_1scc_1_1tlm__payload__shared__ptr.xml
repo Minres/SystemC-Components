@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1tlm__payload__shared__ptr" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::tlm_payload_shared_ptr</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a3f8e8ac456815004513510ca26bf4242" prot="private" static="no" mutable="no">
+        <type>T *</type>
+        <definition>T* tlm::scc::tlm_payload_shared_ptr&lt; T &gt;::ptr</definition>
+        <argsstring></argsstring>
+        <name>ptr</name>
+        <qualifiedname>tlm::scc::tlm_payload_shared_ptr::ptr</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="28" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="28" bodyend="28"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a7799aaf4a719311715fa225b31cebfa9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_payload_shared_ptr&lt; T &gt;::tlm_payload_shared_ptr</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>tlm_payload_shared_ptr</name>
+        <qualifiedname>tlm::scc::tlm_payload_shared_ptr::tlm_payload_shared_ptr</qualifiedname>
+        <briefdescription>
+<para>Default constructor, creates a unique_ptr that owns nothing. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="32" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a1b5139fbd14d1cc71677e3649e6701f2" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_payload_shared_ptr&lt; T &gt;::tlm_payload_shared_ptr</definition>
+        <argsstring>(T *p) noexcept</argsstring>
+        <name>tlm_payload_shared_ptr</name>
+        <qualifiedname>tlm::scc::tlm_payload_shared_ptr::tlm_payload_shared_ptr</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Takes ownership of the pointer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="35" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="35" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a5bdd4f4c710c14f1ed9e58cad8863fdd" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_payload_shared_ptr&lt; T &gt;::tlm_payload_shared_ptr</definition>
+        <argsstring>(tlm_payload_shared_ptr const &amp;p) noexcept</argsstring>
+        <name>tlm_payload_shared_ptr</name>
+        <qualifiedname>tlm::scc::tlm_payload_shared_ptr::tlm_payload_shared_ptr</qualifiedname>
+        <param>
+          <type>tlm_payload_shared_ptr const &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="41" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="41" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1ae0ffd3471176b07b256672ea4688acc3" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_payload_shared_ptr&lt; T &gt;::tlm_payload_shared_ptr</definition>
+        <argsstring>(tlm_payload_shared_ptr &amp;&amp;p) noexcept</argsstring>
+        <name>tlm_payload_shared_ptr</name>
+        <qualifiedname>tlm::scc::tlm_payload_shared_ptr::tlm_payload_shared_ptr</qualifiedname>
+        <param>
+          <type>tlm_payload_shared_ptr &amp;&amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor.´ </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="47" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="47" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a5b16f26a380fc3757bde4031c2b4b5f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_payload_shared_ptr&lt; T &gt;::~tlm_payload_shared_ptr</definition>
+        <argsstring>()</argsstring>
+        <name>~tlm_payload_shared_ptr</name>
+        <qualifiedname>tlm::scc::tlm_payload_shared_ptr::~tlm_payload_shared_ptr</qualifiedname>
+        <briefdescription>
+<para>destructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="52" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a39860c30b8679ed7cff38a6b0d31dafa" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a7799aaf4a719311715fa225b31cebfa9" kindref="member">tlm_payload_shared_ptr</ref> &amp;</type>
+        <definition>tlm_payload_shared_ptr &amp; tlm::scc::tlm_payload_shared_ptr&lt; T &gt;::operator=</definition>
+        <argsstring>(tlm_payload_shared_ptr const &amp;p) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>tlm::scc::tlm_payload_shared_ptr::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a7799aaf4a719311715fa225b31cebfa9" kindref="member">tlm_payload_shared_ptr</ref> const &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="57" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="57" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1aca5ccd6b82c7c202608ba9fd3933519e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a7799aaf4a719311715fa225b31cebfa9" kindref="member">tlm_payload_shared_ptr</ref> &amp;</type>
+        <definition>tlm_payload_shared_ptr &amp; tlm::scc::tlm_payload_shared_ptr&lt; T &gt;::operator=</definition>
+        <argsstring>(tlm_payload_shared_ptr &amp;&amp;p) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>tlm::scc::tlm_payload_shared_ptr::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a7799aaf4a719311715fa225b31cebfa9" kindref="member">tlm_payload_shared_ptr</ref> &amp;&amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="66" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="66" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a3403be9d2a221cec1f2894603edf52bd" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a7799aaf4a719311715fa225b31cebfa9" kindref="member">tlm_payload_shared_ptr</ref> &amp;</type>
+        <definition>tlm_payload_shared_ptr &amp; tlm::scc::tlm_payload_shared_ptr&lt; T &gt;::operator=</definition>
+        <argsstring>(T *p) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>tlm::scc::tlm_payload_shared_ptr::operator=</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>raw pointer assignment operator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="75" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="75" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a18cb390c0d877f3d0a6ba0418883e604" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; tlm::scc::tlm_payload_shared_ptr&lt; T &gt;::operator*</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator*</name>
+        <qualifiedname>tlm::scc::tlm_payload_shared_ptr::operator*</qualifiedname>
+        <briefdescription>
+<para>Dereference the stored pointer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="85" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="85" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a7c5e4fed74a5d8033447ddbdb11bd15e" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>T *</type>
+        <definition>T * tlm::scc::tlm_payload_shared_ptr&lt; T &gt;::operator-&gt;</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator-&gt;</name>
+        <qualifiedname>tlm::scc::tlm_payload_shared_ptr::operator-&gt;</qualifiedname>
+        <briefdescription>
+<para>Return the stored pointer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="88" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a82b81085996298e48127bab370ad54c3" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>T *</type>
+        <definition>T * tlm::scc::tlm_payload_shared_ptr&lt; T &gt;::get</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>get</name>
+        <qualifiedname>tlm::scc::tlm_payload_shared_ptr::get</qualifiedname>
+        <briefdescription>
+<para>Return the stored pointer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="91" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="91" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a2a188159d48c01bb229ffc385bd3000c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_payload_shared_ptr&lt; T &gt;::operator bool</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>tlm::scc::tlm_payload_shared_ptr::operator bool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="93" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="93" bodyend="93"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" line="27" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_gp_shared.h" bodystart="27" bodyend="94"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a82b81085996298e48127bab370ad54c3" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_payload_shared_ptr</scope><name>get</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a2a188159d48c01bb229ffc385bd3000c" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_payload_shared_ptr</scope><name>operator bool</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a18cb390c0d877f3d0a6ba0418883e604" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_payload_shared_ptr</scope><name>operator*</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a7c5e4fed74a5d8033447ddbdb11bd15e" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_payload_shared_ptr</scope><name>operator-&gt;</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a39860c30b8679ed7cff38a6b0d31dafa" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_payload_shared_ptr</scope><name>operator=</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1aca5ccd6b82c7c202608ba9fd3933519e" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_payload_shared_ptr</scope><name>operator=</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a3403be9d2a221cec1f2894603edf52bd" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_payload_shared_ptr</scope><name>operator=</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a3f8e8ac456815004513510ca26bf4242" prot="private" virt="non-virtual"><scope>tlm::scc::tlm_payload_shared_ptr</scope><name>ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a7799aaf4a719311715fa225b31cebfa9" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_payload_shared_ptr</scope><name>tlm_payload_shared_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a1b5139fbd14d1cc71677e3649e6701f2" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_payload_shared_ptr</scope><name>tlm_payload_shared_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a5bdd4f4c710c14f1ed9e58cad8863fdd" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_payload_shared_ptr</scope><name>tlm_payload_shared_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1ae0ffd3471176b07b256672ea4688acc3" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_payload_shared_ptr</scope><name>tlm_payload_shared_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a5b16f26a380fc3757bde4031c2b4b5f7" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_payload_shared_ptr</scope><name>~tlm_payload_shared_ptr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

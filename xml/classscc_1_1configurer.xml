@@ -1,0 +1,876 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1configurer" kind="class" language="C++" prot="public">
+    <compoundname>scc::configurer</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <includes refid="configurer_8h" local="no">configurer.h</includes>
+    <innerclass refid="structscc_1_1configurer_1_1ConfigHolder" prot="public">scc::configurer::ConfigHolder</innerclass>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classscc_1_1configurer_1a1d25418d16985d996364b877201c4cf1" prot="public" static="no" strong="no">
+        <type></type>
+        <name></name>
+        <qualifiedname>scc::configurer</qualifiedname>
+        <enumvalue id="classscc_1_1configurer_1a1d25418d16985d996364b877201c4cf1aad38001613f2b000db95ba6ebd1a016b" prot="public">
+          <name>NEVER</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classscc_1_1configurer_1a1d25418d16985d996364b877201c4cf1a90d212316e6127ce706ac473d139123a" prot="public">
+          <name>BEFORE_END_OF_ELABORATION</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classscc_1_1configurer_1a1d25418d16985d996364b877201c4cf1ac8fa8ca0d62f5a8c701759379f853ed4" prot="public">
+          <name>END_OF_ELABORATION</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classscc_1_1configurer_1a1d25418d16985d996364b877201c4cf1a23b4e99b7cc47d7d47d188c21dff33e4" prot="public">
+          <name>START_OF_SIMULATION</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="48" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1configurer_1a78591f63e769afc8873a343172ed64e5" prot="public" static="no">
+        <type>sc_core::sc_module</type>
+        <definition>using scc::configurer::base_type =  sc_core::sc_module</definition>
+        <argsstring></argsstring>
+        <name>base_type</name>
+        <qualifiedname>scc::configurer::base_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="45" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1configurer_1ac3d0b53947313e894ff6fb48af582578" prot="public" static="no">
+        <type>cci::cci_broker_handle</type>
+        <definition>using scc::configurer::broker_t =  cci::cci_broker_handle</definition>
+        <argsstring></argsstring>
+        <name>broker_t</name>
+        <qualifiedname>scc::configurer::broker_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="46" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1configurer_1af4716d1985c897b3a404e2bf86991326" prot="public" static="no">
+        <type>std::vector&lt; std::pair&lt; cci::cci_param_post_write_callback_untyped, std::unique_ptr&lt; cci::cci_param_untyped &gt; &gt; &gt;</type>
+        <definition>using scc::configurer::cci_param_cln =  std::vector&lt;std::pair&lt;cci::cci_param_post_write_callback_untyped, std::unique_ptr&lt;cci::cci_param_untyped&gt;&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>cci_param_cln</name>
+        <qualifiedname>scc::configurer::cci_param_cln</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="47" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classscc_1_1configurer_1aa43cf006405af0066d0838c0eec6e831" prot="protected" static="no" mutable="no">
+        <type>unsigned const</type>
+        <definition>unsigned const scc::configurer::config_phases</definition>
+        <argsstring></argsstring>
+        <name>config_phases</name>
+        <qualifiedname>scc::configurer::config_phases</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="147" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1configurer_1a4885f0400b9c0c275e9938983a833f99" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string scc::configurer::dump_file_name</definition>
+        <argsstring></argsstring>
+        <name>dump_file_name</name>
+        <qualifiedname>scc::configurer::dump_file_name</qualifiedname>
+        <initializer>{&quot;&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="148" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="148" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1configurer_1a6087b9e3e4a5a66f5a571e11022e28cf" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::configurer::with_description</definition>
+        <argsstring></argsstring>
+        <name>with_description</name>
+        <qualifiedname>scc::configurer::with_description</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="149" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="149" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1configurer_1a041ce73e6d08e922a8ab41096b800281" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::configurer::complete</definition>
+        <argsstring></argsstring>
+        <name>complete</name>
+        <qualifiedname>scc::configurer::complete</qualifiedname>
+        <initializer>{true}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="150" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="150" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1configurer_1a084748a6cae688ea0ba95b5c5132fb77" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; scc::configurer::stop_list</definition>
+        <argsstring></argsstring>
+        <name>stop_list</name>
+        <qualifiedname>scc::configurer::stop_list</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="151" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="151" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1configurer_1ace0eddd2bb800ae3231fc4d6fc263e75" prot="protected" static="no" mutable="no">
+        <type>broker_t</type>
+        <definition>broker_t scc::configurer::cci_broker</definition>
+        <argsstring></argsstring>
+        <name>cci_broker</name>
+        <qualifiedname>scc::configurer::cci_broker</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="163" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1configurer_1ae78996684b1dc39f8655755167065436" prot="protected" static="no" mutable="no">
+        <type>cci_param_cln</type>
+        <definition>cci_param_cln scc::configurer::cci2sc_attr</definition>
+        <argsstring></argsstring>
+        <name>cci2sc_attr</name>
+        <qualifiedname>scc::configurer::cci2sc_attr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="165" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1configurer_1a26ff5c5fe8bbe63906e0136cf91920ee" prot="protected" static="no" mutable="no">
+        <type>cci::cci_originator</type>
+        <definition>cci::cci_originator scc::configurer::cci_originator</definition>
+        <argsstring></argsstring>
+        <name>cci_originator</name>
+        <qualifiedname>scc::configurer::cci_originator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="166" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1configurer_1a7a02e2604f585199d4fe7c6f03ce6304" prot="protected" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="structscc_1_1configurer_1_1ConfigHolder" kindref="compound">ConfigHolder</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;ConfigHolder&gt; scc::configurer::root</definition>
+        <argsstring></argsstring>
+        <name>root</name>
+        <qualifiedname>scc::configurer::root</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="167" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="167" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1configurer_1a95efe4659487fece9d4003e450d48a84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::configurer::configurer</definition>
+        <argsstring>(std::string const &amp;filename, unsigned sc_attr_config_phases=BEFORE_END_OF_ELABORATION)</argsstring>
+        <name>configurer</name>
+        <qualifiedname>scc::configurer::configurer</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>sc_attr_config_phases</declname>
+          <defval>BEFORE_END_OF_ELABORATION</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>create a configurer using an input file <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the input file to read containing the values to apply </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sc_attr_config_phases</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>defines when to apply the values to sc_attribute instances </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="54" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" bodystart="672" bodyend="673"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1a8d08c605f36f5ed793d7a50c10374c95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::configurer::configurer</definition>
+        <argsstring>()=delete</argsstring>
+        <name>configurer</name>
+        <qualifiedname>scc::configurer::configurer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="56" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1adcdff187cfbdc77ce7378fec4c4b73c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::configurer::configurer</definition>
+        <argsstring>(const configurer &amp;)=delete</argsstring>
+        <name>configurer</name>
+        <qualifiedname>scc::configurer::configurer</qualifiedname>
+        <param>
+          <type>const configurer &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="58" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1a0be065c5b7c3c1b02480f38aceeeb917" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::configurer::configurer</definition>
+        <argsstring>(configurer &amp;&amp;)=delete</argsstring>
+        <name>configurer</name>
+        <qualifiedname>scc::configurer::configurer</qualifiedname>
+        <param>
+          <type>configurer &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="60" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1a93b9b5cc3db01fdb646ae1f666ac5987" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::configurer::~configurer</definition>
+        <argsstring>()</argsstring>
+        <name>~configurer</name>
+        <qualifiedname>scc::configurer::~configurer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="62" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" bodystart="685" bodyend="685"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1a1962472cc45bd1e8d5f31bea80433abd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classscc_1_1configurer_1a95efe4659487fece9d4003e450d48a84" kindref="member">configurer</ref> &amp;</type>
+        <definition>configurer &amp; scc::configurer::operator=</definition>
+        <argsstring>(const configurer &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::configurer::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classscc_1_1configurer_1a95efe4659487fece9d4003e450d48a84" kindref="member">configurer</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="64" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1ac4da900bc665e16fbab265c115119fb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classscc_1_1configurer_1a95efe4659487fece9d4003e450d48a84" kindref="member">configurer</ref> &amp;</type>
+        <definition>configurer &amp; scc::configurer::operator=</definition>
+        <argsstring>(configurer &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::configurer::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classscc_1_1configurer_1a95efe4659487fece9d4003e450d48a84" kindref="member">configurer</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="66" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1ae7392ce761c23432db33914496447f54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::configurer::read_input_file</definition>
+        <argsstring>(std::string const &amp;filename)</argsstring>
+        <name>read_input_file</name>
+        <qualifiedname>scc::configurer::read_input_file</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="68" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" bodystart="687" bodyend="704"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1a0419a8cd7a38cec2d667a61d62b3a520" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::configurer::configure</definition>
+        <argsstring>()</argsstring>
+        <name>configure</name>
+        <qualifiedname>scc::configurer::configure</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>configure the design hierarchy using the input file. Apply the values to sc_core::sc_attribute in th edsign hierarchy </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="73" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" bodystart="731" bodyend="731"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1a3ed6124bcf26d7b2ba6eb41d1c14b03a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::configurer::dump_configuration</definition>
+        <argsstring>(std::string const &amp;file_name, bool with_description=false, bool complete=true, std::vector&lt; std::string &gt; stop_list=std::vector&lt; std::string &gt;{})</argsstring>
+        <name>dump_configuration</name>
+        <qualifiedname>scc::configurer::dump_configuration</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>file_name</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>with_description</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>complete</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>stop_list</declname>
+          <defval>std::vector&lt; std::string &gt;{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Schedule the dump of the parameters of a design hierarchy to a file during start_of_simulation()</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>file_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the output stream, std::cout by default </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>with_description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if dumped to YAML write also the description of cci param as comments </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>complete</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>includes unused cci preset values liek log_level </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>stop_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a list of hierarchy paths where dumping should stop </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="84" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="84" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1ae8f3ecf105f4acc00cec79268c64c049" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::configurer::dump_configuration</definition>
+        <argsstring>(std::ostream &amp;os=std::cout, bool as_yaml=true, bool with_description=false, bool complete=true, sc_core::sc_object *obj=nullptr)</argsstring>
+        <name>dump_configuration</name>
+        <qualifiedname>scc::configurer::dump_configuration</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+          <defval>std::cout</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>as_yaml</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>with_description</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>complete</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>sc_core::sc_object *</type>
+          <declname>obj</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Immediately dumps the parameters of a design hierarchy to the given output stream As this dumps the parameters immediately it should only be called during start_of_simulation since many parameters are created during before_end_of_elaboration or end_of_elaboration.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>os</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the output stream, std::cout by default </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>as_yaml</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>write in YAML format instead of JSON </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>with_description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if dumped to YAML write also the description of cci param as comments </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>complete</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>includes unused cci preset values liek log_level </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if not null specifies the root object of the dump </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="102" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" bodystart="706" bodyend="729"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1ad4fb1e50abb62aad0d81126eac7daac8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void scc::configurer::set_value</definition>
+        <argsstring>(std::string const &amp;hier_name, T value)</argsstring>
+        <name>set_value</name>
+        <qualifiedname>scc::configurer::set_value</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>hier_name</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set a value of some property (sc_attribute or cci_param) directly</para>
+<para>In case the configurer is being used without CCI the function can only be called after the simulation objects are instantiated since the sc_attributes have to exist.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hier_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the hierarchical name of the property </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value to put </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="113" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="113" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1a618003125ffbc313a18eba62e97e2194" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::configurer::set_value_from_str</definition>
+        <argsstring>(const std::string &amp;hier_name, const std::string &amp;value)</argsstring>
+        <name>set_value_from_str</name>
+        <qualifiedname>scc::configurer::set_value_from_str</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>hier_name</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set a value of some property (sc_attribute or cci_param) directly</para>
+<para>this version automatically converts the string into the needed target data type</para>
+<para>In case the configurer is being used without CCI the function can only be called after the simulation objects are instantiated since the sc_attributes have to exist.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hier_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the hierarchical name of the property </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value to put </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="125" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" bodystart="765" bodyend="851"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1a2536144f65524d836ce35031bbd1bf20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::configurer::set_configuration_value</definition>
+        <argsstring>(sc_core::sc_attr_base *attr_base, sc_core::sc_object *owner)</argsstring>
+        <name>set_configuration_value</name>
+        <qualifiedname>scc::configurer::set_configuration_value</qualifiedname>
+        <param>
+          <type>sc_core::sc_attr_base *</type>
+          <declname>attr_base</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_object *</type>
+          <declname>owner</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set a value of an sc_attribute from given configuration. This is being used by the <ref refid="classscc_1_1ext__attribute" kindref="compound">scc::ext_attribute</ref> which allows to use config values during construction</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>attr_base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>owner</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="133" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" bodystart="733" bodyend="736"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classscc_1_1configurer_1aebc04135c981db869fa5144e803629a6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classscc_1_1configurer_1a95efe4659487fece9d4003e450d48a84" kindref="member">configurer</ref> &amp;</type>
+        <definition>static configurer &amp; scc::configurer::get</definition>
+        <argsstring>()</argsstring>
+        <name>get</name>
+        <qualifiedname>scc::configurer::get</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>find the configurer in the design hierarchy</para>
+<para><simplesect kind="return"><para>reference to the singleton </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="139" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="139" bodyend="144"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classscc_1_1configurer_1a6669aa59d495ce98d4fe8d1759e14596" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::configurer::configurer</definition>
+        <argsstring>(std::string const &amp;filename, unsigned sc_attr_config_phases, sc_core::sc_module_name nm)</argsstring>
+        <name>configurer</name>
+        <qualifiedname>scc::configurer::configurer</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>sc_attr_config_phases</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="152" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" bodystart="675" bodyend="683"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1a2d2858566d90b99d4ef32b2f930712f2" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::configurer::config_check</definition>
+        <argsstring>()</argsstring>
+        <name>config_check</name>
+        <qualifiedname>scc::configurer::config_check</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="153" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" bodystart="853" bodyend="874"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1a7eff7b2a45d971eda5adc0b3e39e9c06" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::configurer::before_end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>before_end_of_elaboration</name>
+        <qualifiedname>scc::configurer::before_end_of_elaboration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="154" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="154" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1a3c831fae47d564fe898e869233986748" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::configurer::end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_elaboration</name>
+        <qualifiedname>scc::configurer::end_of_elaboration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="158" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="158" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1aa78ab03724895900caf77158cf3a610b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::configurer::start_of_simulation</definition>
+        <argsstring>() override</argsstring>
+        <name>start_of_simulation</name>
+        <qualifiedname>scc::configurer::start_of_simulation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="162" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" bodystart="876" bodyend="888"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurer_1af93bc5cafd6d7035e1ee025b9c408fba" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::configurer::set_value</definition>
+        <argsstring>(const std::string &amp;hier_name, cci::cci_value value)</argsstring>
+        <name>set_value</name>
+        <qualifiedname>scc::configurer::set_value</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>hier_name</declname>
+        </param>
+        <param>
+          <type>cci::cci_value</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="164" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.cpp" bodystart="747" bodyend="763"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>design configuration reader </para>
+    </briefdescription>
+    <detaileddescription>
+<para>A class to configure a design hierarchy using a JSON input file. It reads a file and and stores its values into a CCI broker. It can apply the value also to sc_attribute once the design is installed. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::configurer</label>
+        <link refid="classscc_1_1configurer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::configurer</label>
+        <link refid="classscc_1_1configurer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" line="41" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurer.h" bodystart="41" bodyend="168"/>
+    <listofallmembers>
+      <member refid="classscc_1_1configurer_1a78591f63e769afc8873a343172ed64e5" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>base_type</name></member>
+      <member refid="classscc_1_1configurer_1a1d25418d16985d996364b877201c4cf1a90d212316e6127ce706ac473d139123a" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>BEFORE_END_OF_ELABORATION</name></member>
+      <member refid="classscc_1_1configurer_1a7eff7b2a45d971eda5adc0b3e39e9c06" prot="protected" virt="non-virtual"><scope>scc::configurer</scope><name>before_end_of_elaboration</name></member>
+      <member refid="classscc_1_1configurer_1ac3d0b53947313e894ff6fb48af582578" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>broker_t</name></member>
+      <member refid="classscc_1_1configurer_1ae78996684b1dc39f8655755167065436" prot="protected" virt="non-virtual"><scope>scc::configurer</scope><name>cci2sc_attr</name></member>
+      <member refid="classscc_1_1configurer_1ace0eddd2bb800ae3231fc4d6fc263e75" prot="protected" virt="non-virtual"><scope>scc::configurer</scope><name>cci_broker</name></member>
+      <member refid="classscc_1_1configurer_1a26ff5c5fe8bbe63906e0136cf91920ee" prot="protected" virt="non-virtual"><scope>scc::configurer</scope><name>cci_originator</name></member>
+      <member refid="classscc_1_1configurer_1af4716d1985c897b3a404e2bf86991326" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>cci_param_cln</name></member>
+      <member refid="classscc_1_1configurer_1a041ce73e6d08e922a8ab41096b800281" prot="protected" virt="non-virtual"><scope>scc::configurer</scope><name>complete</name></member>
+      <member refid="classscc_1_1configurer_1a2d2858566d90b99d4ef32b2f930712f2" prot="protected" virt="non-virtual"><scope>scc::configurer</scope><name>config_check</name></member>
+      <member refid="classscc_1_1configurer_1aa43cf006405af0066d0838c0eec6e831" prot="protected" virt="non-virtual"><scope>scc::configurer</scope><name>config_phases</name></member>
+      <member refid="classscc_1_1configurer_1a0419a8cd7a38cec2d667a61d62b3a520" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>configure</name></member>
+      <member refid="classscc_1_1configurer_1a95efe4659487fece9d4003e450d48a84" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>configurer</name></member>
+      <member refid="classscc_1_1configurer_1a8d08c605f36f5ed793d7a50c10374c95" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>configurer</name></member>
+      <member refid="classscc_1_1configurer_1adcdff187cfbdc77ce7378fec4c4b73c1" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>configurer</name></member>
+      <member refid="classscc_1_1configurer_1a0be065c5b7c3c1b02480f38aceeeb917" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>configurer</name></member>
+      <member refid="classscc_1_1configurer_1a6669aa59d495ce98d4fe8d1759e14596" prot="protected" virt="non-virtual"><scope>scc::configurer</scope><name>configurer</name></member>
+      <member refid="classscc_1_1configurer_1a3ed6124bcf26d7b2ba6eb41d1c14b03a" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>dump_configuration</name></member>
+      <member refid="classscc_1_1configurer_1ae8f3ecf105f4acc00cec79268c64c049" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>dump_configuration</name></member>
+      <member refid="classscc_1_1configurer_1a4885f0400b9c0c275e9938983a833f99" prot="protected" virt="non-virtual"><scope>scc::configurer</scope><name>dump_file_name</name></member>
+      <member refid="classscc_1_1configurer_1a1d25418d16985d996364b877201c4cf1ac8fa8ca0d62f5a8c701759379f853ed4" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>END_OF_ELABORATION</name></member>
+      <member refid="classscc_1_1configurer_1a3c831fae47d564fe898e869233986748" prot="protected" virt="non-virtual"><scope>scc::configurer</scope><name>end_of_elaboration</name></member>
+      <member refid="classscc_1_1configurer_1aebc04135c981db869fa5144e803629a6" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>get</name></member>
+      <member refid="classscc_1_1configurer_1a1d25418d16985d996364b877201c4cf1aad38001613f2b000db95ba6ebd1a016b" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>NEVER</name></member>
+      <member refid="classscc_1_1configurer_1a1962472cc45bd1e8d5f31bea80433abd" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>operator=</name></member>
+      <member refid="classscc_1_1configurer_1ac4da900bc665e16fbab265c115119fb2" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>operator=</name></member>
+      <member refid="classscc_1_1configurer_1ae7392ce761c23432db33914496447f54" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>read_input_file</name></member>
+      <member refid="classscc_1_1configurer_1a7a02e2604f585199d4fe7c6f03ce6304" prot="protected" virt="non-virtual"><scope>scc::configurer</scope><name>root</name></member>
+      <member refid="classscc_1_1configurer_1a2536144f65524d836ce35031bbd1bf20" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>set_configuration_value</name></member>
+      <member refid="classscc_1_1configurer_1ad4fb1e50abb62aad0d81126eac7daac8" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>set_value</name></member>
+      <member refid="classscc_1_1configurer_1af93bc5cafd6d7035e1ee025b9c408fba" prot="protected" virt="non-virtual"><scope>scc::configurer</scope><name>set_value</name></member>
+      <member refid="classscc_1_1configurer_1a618003125ffbc313a18eba62e97e2194" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>set_value_from_str</name></member>
+      <member refid="classscc_1_1configurer_1a1d25418d16985d996364b877201c4cf1a23b4e99b7cc47d7d47d188c21dff33e4" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>START_OF_SIMULATION</name></member>
+      <member refid="classscc_1_1configurer_1aa78ab03724895900caf77158cf3a610b" prot="protected" virt="non-virtual"><scope>scc::configurer</scope><name>start_of_simulation</name></member>
+      <member refid="classscc_1_1configurer_1a084748a6cae688ea0ba95b5c5132fb77" prot="protected" virt="non-virtual"><scope>scc::configurer</scope><name>stop_list</name></member>
+      <member refid="classscc_1_1configurer_1a6087b9e3e4a5a66f5a571e11022e28cf" prot="protected" virt="non-virtual"><scope>scc::configurer</scope><name>with_description</name></member>
+      <member refid="classscc_1_1configurer_1a93b9b5cc3db01fdb646ae1f666ac5987" prot="public" virt="non-virtual"><scope>scc::configurer</scope><name>~configurer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

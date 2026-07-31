@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if" kind="class" language="C++" prot="private">
+    <compoundname>tlm::scc::tagged_initiator_mixin::bw_transport_if</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_bw_transport_if&lt; TYPES &gt;</basecompoundref>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1a10e20903923030deb70c7e8f7e2cb8a9" prot="public" static="no">
+        <type>std::function&lt; sync_enum_type(unsigned int, transaction_type &amp;, phase_type &amp;, sc_core::sc_time &amp;)&gt;</type>
+        <definition>using tlm::scc::tagged_initiator_mixin&lt; BASE_TYPE, TYPES &gt;::bw_transport_if::transport_fct =  std::function&lt;sync_enum_type(unsigned int, transaction_type&amp;, phase_type&amp;, sc_core::sc_time&amp;)&gt;</definition>
+        <argsstring></argsstring>
+        <name>transport_fct</name>
+        <qualifiedname>tlm::scc::tagged_initiator_mixin::bw_transport_if::transport_fct</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" line="79" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1a3f1cf5c5a9ea932974f778602b4855eb" prot="public" static="no">
+        <type>std::function&lt; void(unsigned int, sc_dt::uint64, sc_dt::uint64)&gt;</type>
+        <definition>using tlm::scc::tagged_initiator_mixin&lt; BASE_TYPE, TYPES &gt;::bw_transport_if::invalidate_dmi_fct =  std::function&lt;void(unsigned int, sc_dt::uint64, sc_dt::uint64)&gt;</definition>
+        <argsstring></argsstring>
+        <name>invalidate_dmi_fct</name>
+        <qualifiedname>tlm::scc::tagged_initiator_mixin::bw_transport_if::invalidate_dmi_fct</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" line="80" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1ad474a62f06ff1777ff8a9c8bfd6c37bc" prot="private" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string tlm::scc::tagged_initiator_mixin&lt; BASE_TYPE, TYPES &gt;::bw_transport_if::m_name</definition>
+        <argsstring></argsstring>
+        <name>m_name</name>
+        <qualifiedname>tlm::scc::tagged_initiator_mixin::bw_transport_if::m_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" line="124" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1a6268343789ac133cf6e950308e943c6a" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tlm::scc::tagged_initiator_mixin&lt; BASE_TYPE, TYPES &gt;::bw_transport_if::tags[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>tags</name>
+        <qualifiedname>tlm::scc::tagged_initiator_mixin::bw_transport_if::tags</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" line="125" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1a9709d5ee87911992fbf280ef432a4612" prot="private" static="no" mutable="no">
+        <type>transport_fct</type>
+        <definition>transport_fct tlm::scc::tagged_initiator_mixin&lt; BASE_TYPE, TYPES &gt;::bw_transport_if::m_transport_ptr</definition>
+        <argsstring></argsstring>
+        <name>m_transport_ptr</name>
+        <qualifiedname>tlm::scc::tagged_initiator_mixin::bw_transport_if::m_transport_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" line="126" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1a90bf03b56fe30014acea12b3eb12f886" prot="private" static="no" mutable="no">
+        <type>invalidate_dmi_fct</type>
+        <definition>invalidate_dmi_fct tlm::scc::tagged_initiator_mixin&lt; BASE_TYPE, TYPES &gt;::bw_transport_if::m_invalidate_direct_mem_ptr</definition>
+        <argsstring></argsstring>
+        <name>m_invalidate_direct_mem_ptr</name>
+        <qualifiedname>tlm::scc::tagged_initiator_mixin::bw_transport_if::m_invalidate_direct_mem_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" line="127" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1aa9aaa457d50d1f4a78b2709e248c4a3c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tagged_initiator_mixin&lt; BASE_TYPE, TYPES &gt;::bw_transport_if::bw_transport_if</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>bw_transport_if</name>
+        <qualifiedname>tlm::scc::tagged_initiator_mixin::bw_transport_if::bw_transport_if</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" line="82" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" bodystart="82" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1a88b80ca50d850cb83ef5f6559ecb1eea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tagged_initiator_mixin&lt; BASE_TYPE, TYPES &gt;::bw_transport_if::set_transport_function</definition>
+        <argsstring>(transport_fct p, unsigned int tag)</argsstring>
+        <name>set_transport_function</name>
+        <qualifiedname>tlm::scc::tagged_initiator_mixin::bw_transport_if::set_transport_function</qualifiedname>
+        <param>
+          <type>transport_fct</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" line="87" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" bodystart="87" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1aa58973771b79f54b1b279fcfe4fe7b2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tagged_initiator_mixin&lt; BASE_TYPE, TYPES &gt;::bw_transport_if::set_invalidate_direct_mem_function</definition>
+        <argsstring>(invalidate_dmi_fct p, unsigned int tag)</argsstring>
+        <name>set_invalidate_direct_mem_function</name>
+        <qualifiedname>tlm::scc::tagged_initiator_mixin::bw_transport_if::set_invalidate_direct_mem_function</qualifiedname>
+        <param>
+          <type>invalidate_dmi_fct</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" line="98" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" bodystart="98" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1a7949af0742cfa22ceb4faba1a40c056a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sync_enum_type</type>
+        <definition>sync_enum_type tlm::scc::tagged_initiator_mixin&lt; BASE_TYPE, TYPES &gt;::bw_transport_if::nb_transport_bw</definition>
+        <argsstring>(transaction_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t)</argsstring>
+        <name>nb_transport_bw</name>
+        <qualifiedname>tlm::scc::tagged_initiator_mixin::bw_transport_if::nb_transport_bw</qualifiedname>
+        <param>
+          <type>transaction_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>&lt; unreachable code</para>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" line="109" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" bodystart="109" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1a0abfd9e7da1ae80ba86a89eb3dd4b1ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tagged_initiator_mixin&lt; BASE_TYPE, TYPES &gt;::bw_transport_if::invalidate_direct_mem_ptr</definition>
+        <argsstring>(sc_dt::uint64 start_range, sc_dt::uint64 end_range)</argsstring>
+        <name>invalidate_direct_mem_ptr</name>
+        <qualifiedname>tlm::scc::tagged_initiator_mixin::bw_transport_if::invalidate_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>start_range</declname>
+        </param>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>end_range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" line="118" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" bodystart="118" bodyend="121"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::scc::tagged_initiator_mixin&lt; BASE_TYPE, TYPES &gt;::bw_transport_if</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_bw_transport_if&lt; TYPES &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::scc::tagged_initiator_mixin&lt; BASE_TYPE, TYPES &gt;::bw_transport_if</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_bw_transport_if&lt; TYPES &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" line="77" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tagged_initiator_mixin.h" bodystart="77" bodyend="128"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1aa9aaa457d50d1f4a78b2709e248c4a3c" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_initiator_mixin::bw_transport_if</scope><name>bw_transport_if</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1a0abfd9e7da1ae80ba86a89eb3dd4b1ea" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_initiator_mixin::bw_transport_if</scope><name>invalidate_direct_mem_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1a3f1cf5c5a9ea932974f778602b4855eb" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_initiator_mixin::bw_transport_if</scope><name>invalidate_dmi_fct</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1a90bf03b56fe30014acea12b3eb12f886" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_initiator_mixin::bw_transport_if</scope><name>m_invalidate_direct_mem_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1ad474a62f06ff1777ff8a9c8bfd6c37bc" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_initiator_mixin::bw_transport_if</scope><name>m_name</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1a9709d5ee87911992fbf280ef432a4612" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_initiator_mixin::bw_transport_if</scope><name>m_transport_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1a7949af0742cfa22ceb4faba1a40c056a" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_initiator_mixin::bw_transport_if</scope><name>nb_transport_bw</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1aa58973771b79f54b1b279fcfe4fe7b2b" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_initiator_mixin::bw_transport_if</scope><name>set_invalidate_direct_mem_function</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1a88b80ca50d850cb83ef5f6559ecb1eea" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_initiator_mixin::bw_transport_if</scope><name>set_transport_function</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1a6268343789ac133cf6e950308e943c6a" prot="private" virt="non-virtual"><scope>tlm::scc::tagged_initiator_mixin::bw_transport_if</scope><name>tags</name></member>
+      <member refid="classtlm_1_1scc_1_1tagged__initiator__mixin_1_1bw__transport__if_1a10e20903923030deb70c7e8f7e2cb8a9" prot="public" virt="non-virtual"><scope>tlm::scc::tagged_initiator_mixin::bw_transport_if</scope><name>transport_fct</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

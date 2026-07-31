@@ -1,0 +1,331 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtilelink_1_1scv_1_1tlc__recorder__module" kind="class" language="C++" prot="public">
+    <compoundname>tilelink::scv::tlc_recorder_module</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref refid="classtilelink_1_1scv_1_1tlc__recorder" prot="public" virt="non-virtual">tilelink::scv::tlc_recorder&lt; tilelink::tl_protocol_types &gt;</basecompoundref>
+    <includes refid="tlc__recorder_8h" local="no">tlc_recorder.h</includes>
+    <templateparamlist>
+      <param>
+        <type>unsigned int</type>
+        <declname>BUSWIDTH</declname>
+        <defname>BUSWIDTH</defname>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval><ref refid="structtilelink_1_1tl__protocol__types" kindref="compound">tilelink::tl_protocol_types</ref></defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classtilelink_1_1scv_1_1tlc__recorder__module_1a7a05403a8a09a1ffa27aa3b4a73fd669" prot="public" static="no">
+        <type><ref refid="classtilelink_1_1scv_1_1tlc__recorder_1a4ebecc34f305f22523cf62f907f452d1" kindref="member">tlc_recorder</ref>&lt; TYPES &gt;</type>
+        <definition>using tilelink::scv::tlc_recorder_module&lt; BUSWIDTH, TYPES &gt;::BASE =  tlc_recorder&lt;TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>BASE</name>
+        <qualifiedname>tilelink::scv::tlc_recorder_module::BASE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="346" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" bodystart="346" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classtilelink_1_1scv_1_1tlc__recorder__module_1a5bb6ce338f284cf21ad583c58c6725f3" prot="public" static="no" mutable="no">
+        <type>BASE::template target_socket_type&lt; BUSWIDTH &gt;</type>
+        <definition>BASE::template target_socket_type&lt;BUSWIDTH&gt; tilelink::scv::tlc_recorder_module&lt; BUSWIDTH, TYPES &gt;::ts</definition>
+        <argsstring></argsstring>
+        <name>ts</name>
+        <qualifiedname>tilelink::scv::tlc_recorder_module::ts</qualifiedname>
+        <initializer>{&quot;ts&quot;}</initializer>
+        <briefdescription>
+<para>The target socket of the recorder to be bound to the initiator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="349" column="48" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" bodystart="349" bodyend="349"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtilelink_1_1scv_1_1tlc__recorder__module_1a977946d2688047a07faf1b88ae40727a" prot="public" static="no" mutable="no">
+        <type>BASE::template initiator_socket_type&lt; BUSWIDTH &gt;</type>
+        <definition>BASE::template initiator_socket_type&lt;BUSWIDTH&gt; tilelink::scv::tlc_recorder_module&lt; BUSWIDTH, TYPES &gt;::is</definition>
+        <argsstring></argsstring>
+        <name>is</name>
+        <qualifiedname>tilelink::scv::tlc_recorder_module::is</qualifiedname>
+        <initializer>{&quot;is&quot;}</initializer>
+        <briefdescription>
+<para>The initiator to be bound to the target socket. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="351" column="51" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" bodystart="351" bodyend="351"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtilelink_1_1scv_1_1tlc__recorder__module_1aa90edbfd8a0a1ff85101b2f279572b08" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tilelink::scv::tlc_recorder_module&lt; BUSWIDTH, TYPES &gt;::SC_HAS_PROCESS</definition>
+        <argsstring>(axitlm_recorder_module)</argsstring>
+        <name>SC_HAS_PROCESS</name>
+        <qualifiedname>tilelink::scv::tlc_recorder_module::SC_HAS_PROCESS</qualifiedname>
+        <param>
+          <type>axitlm_recorder_module</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="347" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classtilelink_1_1scv_1_1tlc__recorder__module_1a06912c2d66ccfb633d9525296feb2481" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tilelink::scv::tlc_recorder_module&lt; BUSWIDTH, TYPES &gt;::tlc_recorder_module</definition>
+        <argsstring>(sc_core::sc_module_name name, bool recording_enabled=true, SCVNS scv_tr_db *tr_db=SCVNS scv_tr_db::get_default_db())</argsstring>
+        <name>tlc_recorder_module</name>
+        <qualifiedname>tilelink::scv::tlc_recorder_module::tlc_recorder_module</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>recording_enabled</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>SCVNS scv_tr_db *</type>
+          <declname>tr_db</declname>
+          <defval>SCVNS scv_tr_db::get_default_db()</defval>
+        </param>
+        <briefdescription>
+<para>The constructor of the component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the SystemC module name of the recorder </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tr_db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a transaction recording database. If none is provided the default one is retrieved. If this database is not initialized (e.g. by not calling scv_tr_db::set_default_db() ) recording is disabled. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="361" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" bodystart="361" bodyend="376"/>
+      </memberdef>
+      <memberdef kind="function" id="classtilelink_1_1scv_1_1tlc__recorder__module_1a5c7aba9640321b86aa0f0f8546a4b516" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tilelink::scv::tlc_recorder_module&lt; BUSWIDTH, TYPES &gt;::~tlc_recorder_module</definition>
+        <argsstring>()</argsstring>
+        <name>~tlc_recorder_module</name>
+        <qualifiedname>tilelink::scv::tlc_recorder_module::~tlc_recorder_module</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="378" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" bodystart="378" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="function" id="classtilelink_1_1scv_1_1tlc__recorder__module_1aecb9e774723dba0ba1e1aa75a2d04c26" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>BASE::template target_socket_type&lt; BUSWIDTH &gt;::base_type::fw_interface_type *</type>
+        <definition>BASE::template target_socket_type&lt; BUSWIDTH &gt;::base_type::fw_interface_type * tilelink::scv::tlc_recorder_module&lt; BUSWIDTH, TYPES &gt;::get_fw_if</definition>
+        <argsstring>() override</argsstring>
+        <name>get_fw_if</name>
+        <qualifiedname>tilelink::scv::tlc_recorder_module::get_fw_if</qualifiedname>
+        <reimplements refid="classtilelink_1_1scv_1_1tlc__recorder_1ad15f2684e099ef963287b0845f112918">get_fw_if</reimplements>
+        <briefdescription>
+<para>the port where fw accesses are forwarded to </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="380" column="79" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" bodystart="380" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="function" id="classtilelink_1_1scv_1_1tlc__recorder__module_1adf9f1bea7b5befd3b7c45a5d81d50a89" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>BASE::template target_socket_type&lt; BUSWIDTH &gt;::base_type::bw_interface_type *</type>
+        <definition>BASE::template target_socket_type&lt; BUSWIDTH &gt;::base_type::bw_interface_type * tilelink::scv::tlc_recorder_module&lt; BUSWIDTH, TYPES &gt;::get_bw_if</definition>
+        <argsstring>() override</argsstring>
+        <name>get_bw_if</name>
+        <qualifiedname>tilelink::scv::tlc_recorder_module::get_bw_if</qualifiedname>
+        <reimplements refid="classtilelink_1_1scv_1_1tlc__recorder_1a24213705eb79cb7febb45aaa7249136f">get_bw_if</reimplements>
+        <briefdescription>
+<para>the port where bw accesses are forwarded to </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="384" column="79" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" bodystart="384" bodyend="386"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtilelink_1_1scv_1_1tlc__recorder__module_1a0edee2f0007b8f1d6cac93a6677227a7" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tilelink::scv::tlc_recorder_module&lt; BUSWIDTH, TYPES &gt;::start_of_simulation</definition>
+        <argsstring>() override</argsstring>
+        <name>start_of_simulation</name>
+        <qualifiedname>tilelink::scv::tlc_recorder_module::start_of_simulation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="389" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" bodystart="389" bodyend="389"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The TLM2 transaction recorder. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This module records all TLM transaction to a SCV transaction stream for further viewing and analysis. The handle of the created transaction is storee in an tlm_extension so that another instance of the scv_tlm2_recorder e.g. further down the opath can link to it. The transaction recorder is simply bound between an existing pair of initiator and target sockets </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="8">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="7">
+        <label>tilelink::bw_blocking_transport_if&lt; tilelink::tl_protocol_types::tlm_payload_type &gt;</label>
+        <link refid="classtilelink_1_1bw__blocking__transport__if"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tilelink::scv::tlc_recorder&lt; tilelink::tl_protocol_types &gt;</label>
+        <link refid="classtilelink_1_1scv_1_1tlc__recorder"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tilelink::scv::tlc_recorder_module&lt; BUSWIDTH, TYPES &gt;</label>
+        <link refid="classtilelink_1_1scv_1_1tlc__recorder__module"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>tilelink::tlc_bw_transport_if&lt; tilelink::tl_protocol_types &gt;</label>
+        <link refid="classtilelink_1_1tlc__bw__transport__if"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tilelink::tlc_fw_transport_if&lt; tilelink::tl_protocol_types &gt;</label>
+      </node>
+      <node id="6">
+        <label>tlm::tlm_bw_transport_if&lt; tilelink::tl_protocol_types &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="8">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="7">
+        <label>tilelink::bw_blocking_transport_if&lt; tilelink::tl_protocol_types::tlm_payload_type &gt;</label>
+        <link refid="classtilelink_1_1bw__blocking__transport__if"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tilelink::scv::tlc_recorder&lt; tilelink::tl_protocol_types &gt;</label>
+        <link refid="classtilelink_1_1scv_1_1tlc__recorder"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tilelink::scv::tlc_recorder_module&lt; BUSWIDTH, TYPES &gt;</label>
+        <link refid="classtilelink_1_1scv_1_1tlc__recorder__module"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>tilelink::tlc_bw_transport_if&lt; tilelink::tl_protocol_types &gt;</label>
+        <link refid="classtilelink_1_1tlc__bw__transport__if"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tilelink::tlc_fw_transport_if&lt; tilelink::tl_protocol_types &gt;</label>
+      </node>
+      <node id="6">
+        <label>tlm::tlm_bw_transport_if&lt; tilelink::tl_protocol_types &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" line="344" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/scv/tlc_recorder.h" bodystart="344" bodyend="390"/>
+    <listofallmembers>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a5c5e06d324a1fce6d8c7a4ee9d8ee375" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>b_snoop</name></member>
+      <member refid="classtilelink_1_1bw__blocking__transport__if_1a33d9fa08c9af952326b014a0fd9160fb" prot="public" virt="pure-virtual" ambiguityscope="tilelink::tlc_bw_transport_if&lt; tilelink::tl_protocol_types &gt;::"><scope>tilelink::scv::tlc_recorder_module</scope><name>b_snoop</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1ad201bca3eec0f06a64b98e2728b8d35e" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>b_transport</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder__module_1a7a05403a8a09a1ffa27aa3b4a73fd669" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>BASE</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a162d3cb7982a9ae08df3966b8c8563b0" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>enableBlTracing</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a1e54dbdf22b8cff06cd36ef4207b19f3" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>enableDmiTracing</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a329109bbba586722f94c3604009c8926" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>enableNbTracing</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a33557632f31d86674baca19912d99ca8" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>enableProtocolChecker</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1adc7a7a009f28c958cbd78148ed2ff03a" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>enableTimedTracing</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a709d562fc47b3ca758b4fed6bbed34aa" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>enableTrDbgTracing</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder__module_1adf9f1bea7b5befd3b7c45a5d81d50a89" prot="public" virt="virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>get_bw_if</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a912a801bae40ce286dbaf1b72169168b" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>get_direct_mem_ptr</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder__module_1aecb9e774723dba0ba1e1aa75a2d04c26" prot="public" virt="virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>get_fw_if</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1aa18e0a54d49d0c9dedd8541e48be6985" prot="protected" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>initialize_streams</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1ab006bd2325407b0a45e28e0daabfaac7" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>initiator_socket_type</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1abcff75cb7359a04a581c89cad6092818" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>invalidate_direct_mem_ptr</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder__module_1a977946d2688047a07faf1b88ae40727a" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>is</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a1e4f1c733a0aebcdd63e023bb04efa0a" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>isRecordingBlockingTxEnabled</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a27f2ab352cefc97884f373bbd910afda" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>isRecordingNonBlockingTxEnabled</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a2a418f7528287c2ec82d50814346502e" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>mm</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a2482f001c611aafa06ee1aabd9fbcb34" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>nb_transport_bw</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a24c72517e07b8f21cecb3845fbb8c0b2" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>nb_transport_fw</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1acd42b7e49fa7908d68ffc1754a228991" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>rd_response_timeout</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a3034157365875ce08fdd6f4a0207b817" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>recording_types</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder__module_1aa90edbfd8a0a1ff85101b2f279572b08" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1aa9b0854f527973571467df84c2875b4e" prot="public" virt="non-virtual" ambiguityscope="tilelink::scv::tlc_recorder&lt; tilelink::tl_protocol_types &gt;::"><scope>tilelink::scv::tlc_recorder_module</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder__module_1a0edee2f0007b8f1d6cac93a6677227a7" prot="private" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>start_of_simulation</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a650fdaea6528eea3fcb2737351b88ed8" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>target_socket_type</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a4ebecc34f305f22523cf62f907f452d1" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>tlc_recorder</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder__module_1a06912c2d66ccfb633d9525296feb2481" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>tlc_recorder_module</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a2eed4dcdfb2ceb3a1ebb5925ea2ca268" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>tlm_recording_payload</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a12eca8b984f49d1fed39d1ef79ff6d27" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>transport_dbg</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder__module_1a5bb6ce338f284cf21ad583c58c6725f3" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>ts</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a8816a948dd59f662744d845d7a3c2283" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>wr_response_timeout</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder_1a37a244d30ee5f632041a62516721df61" prot="public" virt="virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>~tlc_recorder</name></member>
+      <member refid="classtilelink_1_1scv_1_1tlc__recorder__module_1a5c7aba9640321b86aa0f0f8546a4b516" prot="public" virt="non-virtual"><scope>tilelink::scv::tlc_recorder_module</scope><name>~tlc_recorder_module</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

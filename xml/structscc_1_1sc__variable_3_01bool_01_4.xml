@@ -1,0 +1,724 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1sc__variable_3_01bool_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>scc::sc_variable&lt; bool &gt;</compoundname>
+    <basecompoundref refid="structscc_1_1sc__variable__b" prot="public" virt="non-virtual">scc::sc_variable_b</basecompoundref>
+    <basecompoundref refid="structscc_1_1sc__variable__b" prot="public" virt="non-virtual">scc::sc_variable_b</basecompoundref>
+    <includes refid="sc__variable_8h" local="no">sc_variable.h</includes>
+    <innerclass refid="structscc_1_1sc__variable_3_01bool_01_4_1_1creator" prot="public">scc::sc_variable&lt; bool &gt;::creator</innerclass>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1sc__variable_3_01bool_01_4_1aeeca6e07929f19ae18bfed291c7e4b92" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::sc_variable&lt; bool &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="358" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="358" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1sc__variable_3_01bool_01_4_1a1e8f335e1706dac335ef71fb3ae983b0" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">observer::notification_handle</ref> * &gt;</type>
+        <definition>std::vector&lt;observer::notification_handle*&gt; scc::sc_variable&lt; bool &gt;::hndl</definition>
+        <argsstring></argsstring>
+        <name>hndl</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::hndl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="359" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="359" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1sc__variable_3_01bool_01_4_1a7e0012903dd23c3d2b18c7210ab88223" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const bool &amp;</type>
+        <definition>const bool &amp; scc::sc_variable&lt; bool &gt;::operator*</definition>
+        <argsstring>()</argsstring>
+        <name>operator*</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator*</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="309" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="309" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_3_01bool_01_4_1a8278607ae8015ddba08428f040781c5f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_variable&lt; bool &gt;::sc_variable</definition>
+        <argsstring>(const std::string &amp;name, const bool &amp;value)</argsstring>
+        <name>sc_variable</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::sc_variable</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const bool &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="310" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="310" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_3_01bool_01_4_1a3cbad45e21541dc9140f5c251f9d1278" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_variable&lt; bool &gt;::sc_variable</definition>
+        <argsstring>()=delete</argsstring>
+        <name>sc_variable</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::sc_variable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="314" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_3_01bool_01_4_1a19ed756e9fe8ad1f0e5d9827161e65e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_variable&lt; bool &gt;::sc_variable</definition>
+        <argsstring>(sc_variable&lt; bool &gt; const &amp;)=delete</argsstring>
+        <name>sc_variable</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::sc_variable</qualifiedname>
+        <param>
+          <type>sc_variable&lt; bool &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="315" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_3_01bool_01_4_1a26986848715b8cce4178c685767f245f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_variable&lt; bool &gt;::sc_variable</definition>
+        <argsstring>(sc_variable&lt; bool &gt; &amp;&amp;)=delete</argsstring>
+        <name>sc_variable</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::sc_variable</qualifiedname>
+        <param>
+          <type>sc_variable&lt; bool &gt; &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="316" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_3_01bool_01_4_1aa6dd11df875c326313f3b4b80cd70dee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sc_variable &amp;</type>
+        <definition>sc_variable &amp; scc::sc_variable&lt; bool &gt;::operator=</definition>
+        <argsstring>(sc_variable&lt; bool &gt; &amp;&amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator=</qualifiedname>
+        <param>
+          <type>sc_variable&lt; bool &gt; &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="317" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_3_01bool_01_4_1a67b42ec74bed29572a22516e2563d5ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual scc::sc_variable&lt; bool &gt;::~sc_variable</definition>
+        <argsstring>()=default</argsstring>
+        <name>~sc_variable</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::~sc_variable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="318" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_3_01bool_01_4_1ac309d7eb6cd3e15aa510c53e33fb9022" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string scc::sc_variable&lt; bool &gt;::to_string</definition>
+        <argsstring>() const override</argsstring>
+        <name>to_string</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::to_string</qualifiedname>
+        <reimplements refid="structscc_1_1sc__variable__b_1a1ddfaa46a276428cb67e83c6a1f7ed28">to_string</reimplements>
+        <briefdescription>
+<para>retrieve the textual representation of the value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="319" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="319" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_3_01bool_01_4_1ae6c3f62e60d8ad9cedb1c87b5db63f5a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_variable&lt; bool &gt;::get</definition>
+        <argsstring>() const</argsstring>
+        <name>get</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::get</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="324" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="324" bodyend="324"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_3_01bool_01_4_1affdfe880bb66131365673ab219f22c1f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_variable&lt; bool &gt;::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator bool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="325" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="325" bodyend="325"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_3_01bool_01_4_1a94df753a835002f02f627fb59e98fce6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_variable &amp;</type>
+        <definition>sc_variable &amp; scc::sc_variable&lt; bool &gt;::operator=</definition>
+        <argsstring>(const bool other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator=</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="326" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="326" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_3_01bool_01_4_1aedba6e8889b94a2f0e3706e465265222" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_variable &amp;</type>
+        <definition>sc_variable &amp; scc::sc_variable&lt; bool &gt;::operator=</definition>
+        <argsstring>(const sc_variable&lt; bool &gt; &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator=</qualifiedname>
+        <param>
+          <type>const sc_variable&lt; bool &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="332" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="332" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_3_01bool_01_4_1a9e43d73cd5bb6de65fd6e671e0a9ec2a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_variable&lt; bool &gt;::operator==</definition>
+        <argsstring>(bool other) const</argsstring>
+        <name>operator==</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator==</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="338" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="338" bodyend="338"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_3_01bool_01_4_1aeb8b244c4afb55aaa6f8b8470fb1f3b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_variable&lt; bool &gt;::operator!=</definition>
+        <argsstring>(bool other) const</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator!=</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="339" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="339" bodyend="339"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_3_01bool_01_4_1a02d9f81c31f1d14e276af2044fec3f60" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_variable&lt; bool &gt;::trace</definition>
+        <argsstring>(sc_core::sc_trace_file *tf) const override</argsstring>
+        <name>trace</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::trace</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="340" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="340" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_3_01bool_01_4_1a2624573725c99db8db44a01ca0efa16f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void scc::sc_variable&lt; bool &gt;::trace</definition>
+        <argsstring>(observer *obs) const override</argsstring>
+        <name>trace</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::trace</qualifiedname>
+        <reimplements refid="structscc_1_1sc__variable__b_1ad33499a234cd42b573a776c54b90c5b5">trace</reimplements>
+        <param>
+          <type><ref refid="structscc_1_1observer" kindref="compound">observer</ref> *</type>
+          <declname>obs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="346" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="346" bodyend="346"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_1a9857888691a8e5b7414e48ad67a879b4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const bool *</type>
+        <definition>const bool * scc::sc_variable&lt; bool &gt;::operator-&gt;</definition>
+        <argsstring>()</argsstring>
+        <name>operator-&gt;</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator-&gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="103" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="103" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_1a6b188d58321326448c0228851d6cabd0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_variable&lt; bool &gt;::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator bool</qualifiedname>
+        <briefdescription>
+<para>cast operator </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="148" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="148" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_1adac78aeba6128e037e6abcbab286b2e0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_variable&lt; bool &gt;::operator&gt;</definition>
+        <argsstring>(bool other) const</argsstring>
+        <name>operator&gt;</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator&gt;</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>greater than comparison <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="180" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="180" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_1aa108053c794ce99bc391e2c3e2feef4f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_variable&lt; bool &gt;::operator&lt;</definition>
+        <argsstring>(bool other) const</argsstring>
+        <name>operator&lt;</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator&lt;</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>less than comparison <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="186" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="186" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_1ac45bc448bb25ffe9e4f235c7558ee308" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_variable&lt; bool &gt;::operator&gt;=</definition>
+        <argsstring>(bool other) const</argsstring>
+        <name>operator&gt;=</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator&gt;=</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>greater than or equal comparison <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="192" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="192" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_1a1eba20a9a30a30dcb04fb79660f8df14" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_variable&lt; bool &gt;::operator&lt;=</definition>
+        <argsstring>(bool other) const</argsstring>
+        <name>operator&lt;=</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator&lt;=</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>less than or equal comparison <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="198" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="198" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_1ae19dce05ef5a392f8e8e9716e94a27a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_variable &amp;</type>
+        <definition>sc_variable &amp; scc::sc_variable&lt; bool &gt;::operator++</definition>
+        <argsstring>()</argsstring>
+        <name>operator++</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator++</qualifiedname>
+        <briefdescription>
+<para>overloaded prefix ++ operator </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="200" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="200" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_1ae5fb0d720f3f3311c72cd1eb46d76c83" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_variable &amp;</type>
+        <definition>sc_variable &amp; scc::sc_variable&lt; bool &gt;::operator--</definition>
+        <argsstring>()</argsstring>
+        <name>operator--</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator--</qualifiedname>
+        <briefdescription>
+<para>overloaded prefix <ndash/> operator </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="216" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="216" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_1ab12e11ef620e6aa0c5b8296522a3cf75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_variable&lt; bool &gt;::operator+=</definition>
+        <argsstring>(const bool other)</argsstring>
+        <name>operator+=</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator+=</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="233" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="233" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_1a9f857feb916ef156f32cb712986dc40a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_variable&lt; bool &gt;::operator-=</definition>
+        <argsstring>(const bool other)</argsstring>
+        <name>operator-=</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator-=</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="239" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="239" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_1a8053bea50698196db268195f6a5da9b1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_variable&lt; bool &gt;::operator*=</definition>
+        <argsstring>(const bool other)</argsstring>
+        <name>operator*=</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator*=</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="245" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="245" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_1a3ecec6a92f5ad1fab6cbb1f4f39a97f8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_variable&lt; bool &gt;::operator/=</definition>
+        <argsstring>(const bool other)</argsstring>
+        <name>operator/=</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator/=</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="251" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="251" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_1a250917a7aa52af634b6dcb5d2ad76952" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_variable&lt; bool &gt;::operator+</definition>
+        <argsstring>(const bool other) const</argsstring>
+        <name>operator+</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator+</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="257" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="257" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_1a8e9966da12146025e9378cfba89c0393" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_variable&lt; bool &gt;::operator-</definition>
+        <argsstring>(const bool other) const</argsstring>
+        <name>operator-</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator-</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="258" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="258" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_1abbd681479fc0dad8076f12813ca0628a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_variable&lt; bool &gt;::operator/</definition>
+        <argsstring>(const bool other) const</argsstring>
+        <name>operator/</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::operator/</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="260" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="260" bodyend="260"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structscc_1_1sc__variable_1a7a37f979f4f5a735579f61d6d14ded71" prot="public" static="no">
+        <type>sc_variable&lt; bool &gt;</type>
+        <definition>using scc::sc_variable&lt; bool &gt;::this_type = </definition>
+        <argsstring></argsstring>
+        <name>this_type</name>
+        <qualifiedname>scc::sc_variable&lt; bool &gt;::this_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="89" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>specialization for bool as the cast operator for bool would be ambigous </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_variable&lt; bool &gt;</label>
+        <link refid="structscc_1_1sc__variable_3_01bool_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>scc::sc_variable_b</label>
+        <link refid="structscc_1_1sc__variable__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_variable&lt; bool &gt;</label>
+        <link refid="structscc_1_1sc__variable_3_01bool_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>scc::sc_variable_b</label>
+        <link refid="structscc_1_1sc__variable__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="308" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="308" bodyend="360"/>
+    <listofallmembers>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1ae6c3f62e60d8ad9cedb1c87b5db63f5a" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>get</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1a1e8f335e1706dac335ef71fb3ae983b0" prot="private" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>hndl</name></member>
+      <member refid="structscc_1_1sc__variable__b_1a54e81286d38766d3296fbfdd45a93602" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>kind</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1affdfe880bb66131365673ab219f22c1f" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator bool</name></member>
+      <member refid="structscc_1_1sc__variable_1a6b188d58321326448c0228851d6cabd0" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator bool</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1aeb8b244c4afb55aaa6f8b8470fb1f3b5" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator!=</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1a7e0012903dd23c3d2b18c7210ab88223" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator*</name></member>
+      <member refid="structscc_1_1sc__variable_1a8053bea50698196db268195f6a5da9b1" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator*=</name></member>
+      <member refid="structscc_1_1sc__variable_1a250917a7aa52af634b6dcb5d2ad76952" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator+</name></member>
+      <member refid="structscc_1_1sc__variable_1ae19dce05ef5a392f8e8e9716e94a27a0" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator++</name></member>
+      <member refid="structscc_1_1sc__variable_1ab12e11ef620e6aa0c5b8296522a3cf75" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator+=</name></member>
+      <member refid="structscc_1_1sc__variable_1a8e9966da12146025e9378cfba89c0393" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator-</name></member>
+      <member refid="structscc_1_1sc__variable_1ae5fb0d720f3f3311c72cd1eb46d76c83" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator--</name></member>
+      <member refid="structscc_1_1sc__variable_1a9f857feb916ef156f32cb712986dc40a" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator-=</name></member>
+      <member refid="structscc_1_1sc__variable_1a9857888691a8e5b7414e48ad67a879b4" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator-&gt;</name></member>
+      <member refid="structscc_1_1sc__variable_1abbd681479fc0dad8076f12813ca0628a" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator/</name></member>
+      <member refid="structscc_1_1sc__variable_1a3ecec6a92f5ad1fab6cbb1f4f39a97f8" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator/=</name></member>
+      <member refid="structscc_1_1sc__variable_1aa108053c794ce99bc391e2c3e2feef4f" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator&lt;</name></member>
+      <member refid="structscc_1_1sc__variable_1a1eba20a9a30a30dcb04fb79660f8df14" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator&lt;=</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1aa6dd11df875c326313f3b4b80cd70dee" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator=</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1a94df753a835002f02f627fb59e98fce6" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator=</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1aedba6e8889b94a2f0e3706e465265222" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator=</name></member>
+      <member refid="structscc_1_1sc__variable__b_1a0a5e1d1793cc0bf09e522b45f0682336" prot="public" virt="non-virtual" ambiguityscope="scc::sc_variable_b::"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator=</name></member>
+      <member refid="structscc_1_1sc__variable__b_1aabe3a0678ea946b12c19754e66c815d2" prot="public" virt="non-virtual" ambiguityscope="scc::sc_variable_b::"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator=</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1a9e43d73cd5bb6de65fd6e671e0a9ec2a" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator==</name></member>
+      <member refid="structscc_1_1sc__variable_1adac78aeba6128e037e6abcbab286b2e0" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator&gt;</name></member>
+      <member refid="structscc_1_1sc__variable_1ac45bc448bb25ffe9e4f235c7558ee308" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>operator&gt;=</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1a8278607ae8015ddba08428f040781c5f" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>sc_variable</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1a3cbad45e21541dc9140f5c251f9d1278" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>sc_variable</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1a19ed756e9fe8ad1f0e5d9827161e65e6" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>sc_variable</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1a26986848715b8cce4178c685767f245f" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>sc_variable</name></member>
+      <member refid="structscc_1_1sc__variable__b_1adc9d31cb6aa7ca639164fae59948b2df" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>sc_variable_b</name></member>
+      <member refid="structscc_1_1sc__variable__b_1a297b69eb44023b0a8208ebccaf3be74c" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>sc_variable_b</name></member>
+      <member refid="structscc_1_1sc__variable__b_1ae1a37f199e94caba2b8f02cc6c09332f" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>sc_variable_b</name></member>
+      <member refid="structscc_1_1sc__variable__b_1a64a927337d80d2fb5ee45cccb778a90a" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>sc_variable_b</name></member>
+      <member refid="structscc_1_1sc__variable_1a7a37f979f4f5a735579f61d6d14ded71" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>this_type</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1ac309d7eb6cd3e15aa510c53e33fb9022" prot="public" virt="virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>to_string</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1a02d9f81c31f1d14e276af2044fec3f60" prot="public" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>trace</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1a2624573725c99db8db44a01ca0efa16f" prot="public" virt="virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>trace</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1aeeca6e07929f19ae18bfed291c7e4b92" prot="private" virt="non-virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>value</name></member>
+      <member refid="structscc_1_1sc__variable_3_01bool_01_4_1a67b42ec74bed29572a22516e2563d5ae" prot="public" virt="virtual"><scope>scc::sc_variable&lt; bool &gt;</scope><name>~sc_variable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

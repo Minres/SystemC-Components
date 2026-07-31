@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::scv::tlm_id_ext_recording</compoundname>
+    <basecompoundref refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if" prot="public" virt="non-virtual">tlm::scc::scv::tlm_extensions_recording_if&lt; tlm::tlm_base_protocol_types &gt;</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording_1aed321056c44cf3cc47ce738d7e419cde" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::scv::tlm_id_ext_recording::tlm_id_ext_recording</definition>
+        <argsstring>()</argsstring>
+        <name>tlm_id_ext_recording</name>
+        <qualifiedname>tlm::scc::scv::tlm_id_ext_recording::tlm_id_ext_recording</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" line="87" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" bodystart="87" bodyend="87"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording_1a690fe84d0e58a3f788ee7db529c95a29" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void tlm::scc::scv::tlm_id_ext_recording::recordBeginTx</definition>
+        <argsstring>(SCVNS scv_tr_handle &amp;handle, tlm::tlm_base_protocol_types::tlm_payload_type &amp;trans)</argsstring>
+        <name>recordBeginTx</name>
+        <qualifiedname>tlm::scc::scv::tlm_id_ext_recording::recordBeginTx</qualifiedname>
+        <param>
+          <type>SCVNS scv_tr_handle &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_base_protocol_types::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" line="89" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" bodystart="89" bodyend="91"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>tlm::scc::scv::tlm_extensions_recording_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if"/>
+      </node>
+      <node id="1">
+        <label>tlm::scc::scv::tlm_id_ext_recording</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>tlm::scc::scv::tlm_extensions_recording_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>recordBegin</edgelabel>
+          <edgelabel>recordEnd</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::scv::tlm_id_ext_recording</label>
+        <link refid="structtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>util::delegate&lt; void(SCVNS scv_tr_handle &amp;, typename tlm::tlm_base_protocol_types::tlm_payload_type &amp;)&gt;</label>
+        <link refid="classutil_1_1delegate"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" line="85" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" bodystart="85" bodyend="92"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a92a87b3b15db1e40349efcfdc5a24a3a" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_id_ext_recording</scope><name>record_tx_fct</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a424d7503eb14ef2332c270b323bab885" prot="protected" virt="non-virtual"><scope>tlm::scc::scv::tlm_id_ext_recording</scope><name>recordBegin</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording_1a690fe84d0e58a3f788ee7db529c95a29" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_id_ext_recording</scope><name>recordBeginTx</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1afebebeac142f601640e82de835d19631" prot="protected" virt="non-virtual"><scope>tlm::scc::scv::tlm_id_ext_recording</scope><name>recordEnd</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a25e59c20d51c2259723ad993e1da859f" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_id_ext_recording</scope><name>recordEndTx</name></member>
+      <member refid="structtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording_1aed321056c44cf3cc47ce738d7e419cde" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_id_ext_recording</scope><name>tlm_id_ext_recording</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_743dff7038988bd9ebb48a40c41fef05" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm</compoundname>
+    <innerfile refid="base_8cpp">base.cpp</innerfile>
+    <innerfile refid="base_8h">base.h</innerfile>
+    <innerfile refid="protocol__fsm_8h">protocol_fsm.h</innerfile>
+    <innerfile refid="third__party_2axi__chi_2axi_2fsm_2types_8h">types.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/"/>
+  </compounddef>
+</doxygen>

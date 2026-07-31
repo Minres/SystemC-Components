@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder" kind="struct" language="C++" prot="public">
+    <compoundname>scc::tcp4tlm::NotifyEndpointMsgBuilder</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder_1a1954027b90d56fa2c6213d3d14b53747" prot="public" static="no">
+        <type>NotifyEndpointMsg</type>
+        <definition>typedef NotifyEndpointMsg scc::tcp4tlm::NotifyEndpointMsgBuilder::Table</definition>
+        <argsstring></argsstring>
+        <name>Table</name>
+        <qualifiedname>scc::tcp4tlm::NotifyEndpointMsgBuilder::Table</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="204" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="204" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder_1a2953df53b70043ea0f01e81e7fdcf65b" prot="public" static="no" mutable="no">
+        <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+        <definition>::flatbuffers::FlatBufferBuilder&amp; scc::tcp4tlm::NotifyEndpointMsgBuilder::fbb_</definition>
+        <argsstring></argsstring>
+        <name>fbb_</name>
+        <qualifiedname>scc::tcp4tlm::NotifyEndpointMsgBuilder::fbb_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="205" column="38" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="205" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder_1a48e09461f98c53ccf3dea2368d0bf7c5" prot="public" static="no" mutable="no">
+        <type>::flatbuffers::uoffset_t</type>
+        <definition>::flatbuffers::uoffset_t scc::tcp4tlm::NotifyEndpointMsgBuilder::start_</definition>
+        <argsstring></argsstring>
+        <name>start_</name>
+        <qualifiedname>scc::tcp4tlm::NotifyEndpointMsgBuilder::start_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="206" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="206" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder_1a920e70c187e0bdf422780bd6fdad224d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::NotifyEndpointMsgBuilder::add_id</definition>
+        <argsstring>(uint32_t id)</argsstring>
+        <name>add_id</name>
+        <qualifiedname>scc::tcp4tlm::NotifyEndpointMsgBuilder::add_id</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="207" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="207" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder_1ab92f0d64f513308a50cc2f9bb7871f46" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::NotifyEndpointMsgBuilder::add_hostname</definition>
+        <argsstring>(::flatbuffers::Offset&lt;::flatbuffers::String &gt; hostname)</argsstring>
+        <name>add_hostname</name>
+        <qualifiedname>scc::tcp4tlm::NotifyEndpointMsgBuilder::add_hostname</qualifiedname>
+        <param>
+          <type>::flatbuffers::Offset&lt;::flatbuffers::String &gt;</type>
+          <declname>hostname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="208" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="208" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder_1a2be8b32f1293dbac68d752795bd86f0e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::NotifyEndpointMsgBuilder::add_port</definition>
+        <argsstring>(uint16_t port)</argsstring>
+        <name>add_port</name>
+        <qualifiedname>scc::tcp4tlm::NotifyEndpointMsgBuilder::add_port</qualifiedname>
+        <param>
+          <type>uint16_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="209" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="209" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder_1a49fd160c14728347d0f27b5a16a1a2d1" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tcp4tlm::NotifyEndpointMsgBuilder::NotifyEndpointMsgBuilder</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb)</argsstring>
+        <name>NotifyEndpointMsgBuilder</name>
+        <qualifiedname>scc::tcp4tlm::NotifyEndpointMsgBuilder::NotifyEndpointMsgBuilder</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="210" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="210" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder_1a216913929f4f7ec0a23d361bdc0d3947" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>::flatbuffers::Offset&lt; NotifyEndpointMsg &gt;</type>
+        <definition>::flatbuffers::Offset&lt; NotifyEndpointMsg &gt; scc::tcp4tlm::NotifyEndpointMsgBuilder::Finish</definition>
+        <argsstring>()</argsstring>
+        <name>Finish</name>
+        <qualifiedname>scc::tcp4tlm::NotifyEndpointMsgBuilder::Finish</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="214" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="214" bodyend="218"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="203" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="203" bodyend="219"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder_1ab92f0d64f513308a50cc2f9bb7871f46" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::NotifyEndpointMsgBuilder</scope><name>add_hostname</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder_1a920e70c187e0bdf422780bd6fdad224d" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::NotifyEndpointMsgBuilder</scope><name>add_id</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder_1a2be8b32f1293dbac68d752795bd86f0e" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::NotifyEndpointMsgBuilder</scope><name>add_port</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder_1a2953df53b70043ea0f01e81e7fdcf65b" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::NotifyEndpointMsgBuilder</scope><name>fbb_</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder_1a216913929f4f7ec0a23d361bdc0d3947" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::NotifyEndpointMsgBuilder</scope><name>Finish</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder_1a49fd160c14728347d0f27b5a16a1a2d1" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::NotifyEndpointMsgBuilder</scope><name>NotifyEndpointMsgBuilder</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder_1a48e09461f98c53ccf3dea2368d0bf7c5" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::NotifyEndpointMsgBuilder</scope><name>start_</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1NotifyEndpointMsgBuilder_1a1954027b90d56fa2c6213d3d14b53747" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::NotifyEndpointMsgBuilder</scope><name>Table</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

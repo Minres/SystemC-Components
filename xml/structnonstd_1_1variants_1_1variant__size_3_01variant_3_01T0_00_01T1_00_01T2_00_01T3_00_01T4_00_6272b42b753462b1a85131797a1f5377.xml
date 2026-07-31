@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1variant__size_3_01variant_3_01T0_00_01T1_00_01T2_00_01T3_00_01T4_00_6272b42b753462b1a85131797a1f5377" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::variant_size&lt; variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T0</type>
+      </param>
+      <param>
+        <type>class T1</type>
+      </param>
+      <param>
+        <type>class T2</type>
+      </param>
+      <param>
+        <type>class T3</type>
+      </param>
+      <param>
+        <type>class T4</type>
+      </param>
+      <param>
+        <type>class T5</type>
+      </param>
+      <param>
+        <type>class T6</type>
+      </param>
+      <param>
+        <type>class T7</type>
+      </param>
+      <param>
+        <type>class T8</type>
+      </param>
+      <param>
+        <type>class T9</type>
+      </param>
+      <param>
+        <type>class T10</type>
+      </param>
+      <param>
+        <type>class T11</type>
+      </param>
+      <param>
+        <type>class T12</type>
+      </param>
+      <param>
+        <type>class T13</type>
+      </param>
+      <param>
+        <type>class T14</type>
+      </param>
+      <param>
+        <type>class T15</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="structnonstd_1_1variants_1_1variant__size_3_01variant_3_01T0_00_01T1_00_01T2_00_01T3_00_01T4_00_6272b42b753462b1a85131797a1f5377_1a5b775bea3080698b4742aee6fe66450b" prot="public" static="no" strong="no">
+        <type></type>
+        <name>_</name>
+        <qualifiedname>nonstd::variants::variant_size&lt; variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &gt;::_</qualifiedname>
+        <enumvalue id="structnonstd_1_1variants_1_1variant__size_3_01variant_3_01T0_00_01T1_00_01T2_00_01T3_00_01T4_00_6272b42b753462b1a85131797a1f5377_1a5b775bea3080698b4742aee6fe66450ba67cca31242c00c6fdac51ce78861c424" prot="public">
+          <name>value</name>
+          <initializer>= detail::typelist_size&lt;variant_TL16(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15)&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="1281" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="1281" bodyend="1281"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="1280" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="1280" bodyend="1282"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1variant__size_3_01variant_3_01T0_00_01T1_00_01T2_00_01T3_00_01T4_00_6272b42b753462b1a85131797a1f5377_1a5b775bea3080698b4742aee6fe66450b" prot="public" virt="non-virtual"><scope>nonstd::variants::variant_size&lt; variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &gt;</scope><name>_</name></member>
+      <member refid="structnonstd_1_1variants_1_1variant__size_3_01variant_3_01T0_00_01T1_00_01T2_00_01T3_00_01T4_00_6272b42b753462b1a85131797a1f5377_1a5b775bea3080698b4742aee6fe66450ba67cca31242c00c6fdac51ce78861c424" prot="public" virt="non-virtual"><scope>nonstd::variants::variant_size&lt; variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt; &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structahb_1_1pe_1_1ahb__initiator__b_1_1tx__state" kind="struct" language="C++" prot="protected">
+    <compoundname>ahb::pe::ahb_initiator_b::tx_state</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structahb_1_1pe_1_1ahb__initiator__b_1_1tx__state_1a0110b5fc6b6e0c32ddef71852a21eb0a" prot="public" static="no" mutable="no">
+        <type>payload_type *</type>
+        <definition>payload_type* ahb::pe::ahb_initiator_b::tx_state::active_tx</definition>
+        <argsstring></argsstring>
+        <name>active_tx</name>
+        <qualifiedname>ahb::pe::ahb_initiator_b::tx_state::active_tx</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" line="100" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" bodystart="100" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="variable" id="structahb_1_1pe_1_1ahb__initiator__b_1_1tx__state_1a487b51b8f09311d62fffe966730d57de" prot="public" static="no" mutable="no">
+        <type><ref refid="structscc_1_1peq" kindref="compound">scc::peq</ref>&lt; std::tuple&lt; payload_type *, tlm::tlm_phase &gt; &gt;</type>
+        <definition>scc::peq&lt;std::tuple&lt;payload_type*, tlm::tlm_phase&gt; &gt; ahb::pe::ahb_initiator_b::tx_state::peq</definition>
+        <argsstring></argsstring>
+        <name>peq</name>
+        <qualifiedname>ahb::pe::ahb_initiator_b::tx_state::peq</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" line="101" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>ahb::pe::ahb_initiator_b::tx_state</label>
+        <link refid="structahb_1_1pe_1_1ahb__initiator__b_1_1tx__state"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>peq</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="2">
+        <label>scc::peq&lt; std::tuple&lt; payload_type *, tlm::tlm_phase &gt; &gt;</label>
+        <link refid="structscc_1_1peq"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" line="99" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" bodystart="99" bodyend="103"/>
+    <listofallmembers>
+      <member refid="structahb_1_1pe_1_1ahb__initiator__b_1_1tx__state_1a0110b5fc6b6e0c32ddef71852a21eb0a" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_initiator_b::tx_state</scope><name>active_tx</name></member>
+      <member refid="structahb_1_1pe_1_1ahb__initiator__b_1_1tx__state_1a487b51b8f09311d62fffe966730d57de" prot="public" virt="non-virtual"><scope>ahb::pe::ahb_initiator_b::tx_state</scope><name>peq</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

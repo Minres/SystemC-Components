@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacetlm_1_1scc_1_1pe" kind="namespace" language="C++">
+    <compoundname>tlm::scc::pe</compoundname>
+    <innerclass refid="structtlm_1_1scc_1_1pe_1_1intor__fw" prot="public">tlm::scc::pe::intor_fw</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1pe_1_1intor__bw" prot="public">tlm::scc::pe::intor_bw</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1pe_1_1intor__fw__b" prot="public">tlm::scc::pe::intor_fw_b</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb" prot="public">tlm::scc::pe::intor_fw_nb</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1pe_1_1intor__bw__b" prot="public">tlm::scc::pe::intor_bw_b</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1pe_1_1intor__bw__nb" prot="public">tlm::scc::pe::intor_bw_nb</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1pe_1_1parallel__pe" prot="public">tlm::scc::pe::parallel_pe</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacetlm_1_1scc_1_1pe_1a6a6eec1885e2ecc7d636ae07c13d7287" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>type</name>
+        <qualifiedname>tlm::scc::pe::type</qualifiedname>
+        <enumvalue id="namespacetlm_1_1scc_1_1pe_1a6a6eec1885e2ecc7d636ae07c13d7287af0e830424544178301073a09bf236472" prot="public">
+          <name>NB</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacetlm_1_1scc_1_1pe_1a6a6eec1885e2ecc7d636ae07c13d7287aa6f5350f5a2b25a96d66757f761ce65c" prot="public">
+          <name>BL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>enum to express expectations and capabilities. NB means no backpressure (aka non-blocking) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/intor_if.h" line="32" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/intor_if.h" bodystart="32" bodyend="32"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>SCC protocol engines. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/intor_if.h" line="27" column="1"/>
+  </compounddef>
+</doxygen>

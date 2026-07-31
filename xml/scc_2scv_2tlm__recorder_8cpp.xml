@@ -1,0 +1,390 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="scc_2scv_2tlm__recorder_8cpp" kind="file" language="C++">
+    <compoundname>tlm_recorder.cpp</compoundname>
+    <includes local="no">tlm</includes>
+    <includes refid="tlm__extension__recording__registry_8h" local="yes">tlm_extension_recording_registry.h</includes>
+    <includes refid="scc_2scv_2tlm__recorder_8h" local="yes">tlm_recorder.h</includes>
+    <includes local="no">fmt/format.h</includes>
+    <includes refid="tlm__id_8h" local="no">tlm/scc/tlm_id.h</includes>
+    <incdepgraph>
+      <node id="6">
+        <label>util/delegate.h</label>
+        <link refid="delegate_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>ities.h</label>
+        <link refid="ities_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>util/pool_allocator.h</label>
+        <link refid="pool__allocator_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm_extension_recording_registry.h</label>
+        <link refid="tlm__extension__recording__registry_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp</label>
+        <link refid="scc_2scv_2tlm__recorder_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>tlm_recorder.h</label>
+        <link refid="scc_2scv_2tlm__recorder_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>tlm_recording_extension.h</label>
+        <link refid="tlm__recording__extension_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>tlm_gp_shared.h</label>
+        <link refid="tlm__gp__shared_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>tlm/scc/tlm_id.h</label>
+        <link refid="tlm__id_8h_source"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>tlm/scc/tlm_mm.h</label>
+        <link refid="tlm__mm_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>algorithm</label>
+      </node>
+      <node id="14">
+        <label>array</label>
+      </node>
+      <node id="23">
+        <label>assert.h</label>
+      </node>
+      <node id="24">
+        <label>bitset</label>
+      </node>
+      <node id="7">
+        <label>cassert</label>
+      </node>
+      <node id="25">
+        <label>cctype</label>
+      </node>
+      <node id="26">
+        <label>climits</label>
+      </node>
+      <node id="39">
+        <label>cstdint</label>
+      </node>
+      <node id="32">
+        <label>deque</label>
+      </node>
+      <node id="36">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="27">
+        <label>fstream</label>
+      </node>
+      <node id="28">
+        <label>iterator</label>
+      </node>
+      <node id="29">
+        <label>limits</label>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="33">
+        <label>mutex</label>
+      </node>
+      <node id="8">
+        <label>new</label>
+      </node>
+      <node id="15">
+        <label>regex</label>
+      </node>
+      <node id="11">
+        <label>scv-tr.h</label>
+      </node>
+      <node id="16">
+        <label>sstream</label>
+      </node>
+      <node id="17">
+        <label>string</label>
+      </node>
+      <node id="30">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="18">
+        <label>sysc/kernel/sc_dynamic_processes.h</label>
+      </node>
+      <node id="2">
+        <label>tlm</label>
+      </node>
+      <node id="35">
+        <label>tlm_utils/peq_with_cb_and_phase.h</label>
+      </node>
+      <node id="9">
+        <label>type_traits</label>
+      </node>
+      <node id="34">
+        <label>unordered_map</label>
+      </node>
+      <node id="5">
+        <label>unordered_set</label>
+      </node>
+      <node id="10">
+        <label>utility</label>
+      </node>
+      <node id="31">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structtlm_1_1scc_1_1scv_1_1tlm__id__ext__record" prot="public">tlm::scc::scv::tlm_id_ext_record</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording" prot="public">tlm::scc::scv::tlm_id_ext_recording</innerclass>
+    <innernamespace refid="namespacetlm">tlm</innernamespace>
+    <innernamespace refid="namespacetlm_1_1scc">tlm::scc</innernamespace>
+    <innernamespace refid="namespacetlm_1_1scc_1_1scv">tlm::scc::scv</innernamespace>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="scc_2scv_2tlm__recorder_8cpp_1a14c0ae1e60ff59c85eb89bc7ce5d9afc" prot="public" static="no">
+        <name>SC_INCLUDE_DYNAMIC_PROCESSES</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" line="18" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2016-2022<sp/>MINRES<sp/>Technologies<sp/>GmbH</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SC_INCLUDE_DYNAMIC_PROCESSES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SC_INCLUDE_DYNAMIC_PROCESSES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;tlm_extension_recording_registry.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;tlm_recorder.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/format.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm/scc/tlm_id.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm" kindref="compound">tlm</ref><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm_1_1scc" kindref="compound">scc</ref><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm_1_1scc_1_1scv" kindref="compound">scv</ref><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::array&lt;std::string,<sp/>3&gt;<sp/>cmd2char{{</highlight><highlight class="stringliteral">&quot;READ&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;WRITE&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;IGNORE&quot;</highlight><highlight class="normal">}};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::array&lt;std::string,<sp/>7&gt;<sp/>resp2char{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;OK&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;INCOMPLETE&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GENERIC_ERROR&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;ADDRESS_ERROR&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;COMMAND_ERROR&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;BURST_ERROR&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;BYTE_ENABLE_ERROR&quot;</highlight><highlight class="normal">}};</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::array&lt;std::string,<sp/>3&gt;<sp/>gp_option2char{{</highlight><highlight class="stringliteral">&quot;MIN_PAYLOAD&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;FULL_PAYLOAD&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;FULL_PAYLOAD_ACCEPTED&quot;</highlight><highlight class="normal">}};</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::array&lt;std::string,<sp/>5&gt;<sp/>phase2char{{</highlight><highlight class="stringliteral">&quot;UNINITIALIZED_PHASE&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;BEGIN_REQ&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;END_REQ&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;BEGIN_RESP&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;END_RESP&quot;</highlight><highlight class="normal">}};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::array&lt;std::string,<sp/>4&gt;<sp/>dmi2char{{</highlight><highlight class="stringliteral">&quot;DMI_ACCESS_NONE&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;DMI_ACCESS_READ&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;DMI_ACCESS_WRITE&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;DMI_ACCESS_READ_WRITE&quot;</highlight><highlight class="normal">}};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::array&lt;std::string,<sp/>3&gt;<sp/>sync2char{{</highlight><highlight class="stringliteral">&quot;ACCEPTED&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;UPDATED&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;COMPLETED&quot;</highlight><highlight class="normal">}};</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>record(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>tlm::tlm_generic_payload<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>o)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.ptr&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">uintptr_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;o));</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.address&quot;</highlight><highlight class="normal">,<sp/>o.get_address());</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.cmd&quot;</highlight><highlight class="normal">,<sp/>cmd2char.at(o.get_command()));</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.data_ptr&quot;</highlight><highlight class="normal">,<sp/>o.get_data_ptr());</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.data_length&quot;</highlight><highlight class="normal">,<sp/>o.get_data_length());</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.response&quot;</highlight><highlight class="normal">,<sp/>resp2char.at(1<sp/>-<sp/>o.get_response_status()));</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.dmi_allowed&quot;</highlight><highlight class="normal">,<sp/>o.is_dmi_allowed());</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.byte_enable&quot;</highlight><highlight class="normal">,<sp/>o.get_byte_enable_ptr());</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.byte_enable_length&quot;</highlight><highlight class="normal">,<sp/>o.get_byte_enable_length());</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.streaming_width&quot;</highlight><highlight class="normal">,<sp/>o.get_streaming_width());</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.gp_option&quot;</highlight><highlight class="normal">,<sp/>gp_option2char.at(o.get_gp_option()));</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(o.get_data_length()<sp/>&amp;&amp;<sp/>o.get_data_length()<sp/>&lt;<sp/>9<sp/>&amp;&amp;<sp/>o.get_data_ptr())<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>buf<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(&amp;buf,<sp/>o.get_data_ptr(),<sp/>o.get_data_length());</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.data_value&quot;</highlight><highlight class="normal">,<sp/>buf);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>record(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>tlm::tlm_phase<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>o)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=<sp/>o;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>&lt;<sp/>phase2char.size())</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;phase&quot;</highlight><highlight class="normal">,<sp/>phase2char[</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">]);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;phase_id&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>record(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>tlm::tlm_sync_enum<sp/>o)<sp/>{<sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;tlm_sync&quot;</highlight><highlight class="normal">,<sp/>sync2char.at(o));<sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>record(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>tlm::tlm_dmi<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>o)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.dmi_ptr&quot;</highlight><highlight class="normal">,<sp/>o.get_dmi_ptr());</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.start_address&quot;</highlight><highlight class="normal">,<sp/>o.get_start_address());</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.end_address&quot;</highlight><highlight class="normal">,<sp/>o.get_end_address());</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.granted_access&quot;</highlight><highlight class="normal">,<sp/>dmi2char.at(o.get_granted_access()));</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.read_latency&quot;</highlight><highlight class="normal">,<sp/>o.get_read_latency().to_string());</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>handle.record_attribute(</highlight><highlight class="stringliteral">&quot;trans.write_latency&quot;</highlight><highlight class="normal">,<sp/>o.get_write_latency().to_string());</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="structtlm_1_1scc_1_1scv_1_1tlm__id__ext__record" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">tlm_id_ext_record<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if" kindref="compound">tlm_extension_record_if</ref><sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm_id_ext_record()<sp/>{<sp/><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extension__record__if_1a137d8b93971625450c01fb82f70ce2c7" kindref="member">recordBegin</ref><sp/>=<sp/>&amp;tlm_id_ext_record::recordBeginTx;<sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recordBeginTx(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>tlm::tlm_extension_base*<sp/>e,<sp/>std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>prefix)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ext<sp/>=<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal"><ref refid="structtlm_1_1scc_1_1tlm__id__extension" kindref="compound">tlm_id_extension</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(e))<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.record_attribute(fmt::format(</highlight><highlight class="stringliteral">&quot;{}uid&quot;</highlight><highlight class="normal">,<sp/>prefix).c_str(),<sp/>ext-&gt;id);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="structtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">tlm_id_ext_recording<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if" kindref="compound">tlm_extensions_recording_if</ref>&lt;tlm::tlm_base_protocol_types&gt;<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm_id_ext_recording()<sp/>{<sp/>recordBegin<sp/>=<sp/>&amp;recordBeginTx;<sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recordBeginTx(SCVNS<sp/>scv_tr_handle&amp;<sp/>handle,<sp/>tlm::tlm_base_protocol_types::tlm_payload_type&amp;<sp/>trans)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_record_registry::get().<ref refid="structtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_1a07f6b3f1e99994310cf0d289ceccad53" kindref="member">recordBeginTx</ref>(tlm_id_extension::ID,<sp/>handle,<sp/>trans.get_extension&lt;<ref refid="structtlm_1_1scc_1_1tlm__id__extension" kindref="compound">tlm_id_extension</ref>&gt;(),<sp/></highlight><highlight class="stringliteral">&quot;trans.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm_1_1scc_1_1scv" kindref="compound">tlm::scc::scv</ref>;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__GNUG__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal">__attribute__((constructor))</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>register_extensions()<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1scc_1_1tlm__id__extension" kindref="compound">tlm::scc::tlm_id_extension</ref><sp/>ext(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!tlm_extension_recording_registry&lt;tlm::tlm_base_protocol_types&gt;::get().is_ext_registered(ext.ID))<sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_recording_registry&lt;tlm::tlm_base_protocol_types&gt;::get().register_ext_rec(</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ext.ID,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>util::make_unique&lt;tlm_id_ext_recording&gt;());<sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!tlm_extension_record_registry::get().is_ext_registered(ext.ID))</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tlm_extension_record_registry::get().register_ext_rec(ext.ID,<sp/>util::make_unique&lt;tlm_id_ext_record&gt;());<sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>registered<sp/>=<sp/>register_extensions();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scv</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>tlm</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp"/>
+  </compounddef>
+</doxygen>

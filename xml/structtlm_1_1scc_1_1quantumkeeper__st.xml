@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1quantumkeeper__st" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::quantumkeeper_st</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm_utils::tlm_quantumkeeper</basecompoundref>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structtlm_1_1scc_1_1quantumkeeper__st_1a96622677e9d14274611c4b364ebc814d" prot="public" static="no">
+        <type>tlm_utils::tlm_quantumkeeper</type>
+        <definition>using tlm::scc::quantumkeeper_st::base =  tlm_utils::tlm_quantumkeeper</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <qualifiedname>tlm::scc::quantumkeeper_st::base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" line="13" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1quantumkeeper__st_1a7bab3f44ba46ec417abc356d56be137d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::quantumkeeper_st::quantumkeeper_st</definition>
+        <argsstring>()</argsstring>
+        <name>quantumkeeper_st</name>
+        <qualifiedname>tlm::scc::quantumkeeper_st::quantumkeeper_st</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" line="15" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" bodystart="15" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1quantumkeeper__st_1a503edbf1e5ae84c8453029bd0341b0d2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual tlm::scc::quantumkeeper_st::~quantumkeeper_st</definition>
+        <argsstring>()</argsstring>
+        <name>~quantumkeeper_st</name>
+        <qualifiedname>tlm::scc::quantumkeeper_st::~quantumkeeper_st</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" line="17" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" bodystart="17" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1quantumkeeper__st_1a58f7d8e654c733c5f2c3014818c4fe2d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::quantumkeeper_st::reset</definition>
+        <argsstring>() override</argsstring>
+        <name>reset</name>
+        <qualifiedname>tlm::scc::quantumkeeper_st::reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" line="19" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" bodystart="19" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1quantumkeeper__st_1a46c525444886662b0839e8fae0d7e430" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::quantumkeeper_st::reset</definition>
+        <argsstring>(sc_core::sc_time const &amp;t)</argsstring>
+        <name>reset</name>
+        <qualifiedname>tlm::scc::quantumkeeper_st::reset</qualifiedname>
+        <param>
+          <type>sc_core::sc_time const &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" line="21" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" bodystart="21" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1quantumkeeper__st_1a9cfbf2e41736dfcc1919655bc9f259f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::quantumkeeper_st::check_and_sync</definition>
+        <argsstring>(sc_core::sc_time core_inc)</argsstring>
+        <name>check_and_sync</name>
+        <qualifiedname>tlm::scc::quantumkeeper_st::check_and_sync</qualifiedname>
+        <param>
+          <type>sc_core::sc_time</type>
+          <declname>core_inc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" line="26" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" bodystart="26" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1quantumkeeper__st_1a4ff4f388529f6ee128769a3c8eb4703d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time tlm::scc::quantumkeeper_st::get_local_absolute_time</definition>
+        <argsstring>() const</argsstring>
+        <name>get_local_absolute_time</name>
+        <qualifiedname>tlm::scc::quantumkeeper_st::get_local_absolute_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" line="36" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1quantumkeeper__st_1abf1301a73a42a66d52f579229cc8bb0d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::quantumkeeper_st::execute_on_sysc</definition>
+        <argsstring>(std::function&lt; void(void)&gt; fct)</argsstring>
+        <name>execute_on_sysc</name>
+        <qualifiedname>tlm::scc::quantumkeeper_st::execute_on_sysc</qualifiedname>
+        <param>
+          <type>std::function&lt; void(void)&gt;</type>
+          <declname>fct</declname>
+        </param>
+        <briefdescription>
+<para>execute the given function in the SystemC thread </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the function to execute </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" line="42" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1quantumkeeper__st_1a654f3a9a8b3bbdfa2eae99e3420b18fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::quantumkeeper_st::execute_on_sysc</definition>
+        <argsstring>(std::function&lt; void(void)&gt; &amp;fct, sc_core::sc_time when)</argsstring>
+        <name>execute_on_sysc</name>
+        <qualifiedname>tlm::scc::quantumkeeper_st::execute_on_sysc</qualifiedname>
+        <param>
+          <type>std::function&lt; void(void)&gt; &amp;</type>
+          <declname>fct</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time</type>
+          <declname>when</declname>
+        </param>
+        <briefdescription>
+<para>execute the given function in the SystemC thread at a given point in time </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the function to execute </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>when</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the time at which simulation time to execute the function in absolute time ticks </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" line="49" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" bodystart="49" bodyend="53"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::scc::quantumkeeper_st</label>
+        <link refid="structtlm_1_1scc_1_1quantumkeeper__st"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm_utils::tlm_quantumkeeper</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::scc::quantumkeeper_st</label>
+        <link refid="structtlm_1_1scc_1_1quantumkeeper__st"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm_utils::tlm_quantumkeeper</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" line="12" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_st.h" bodystart="12" bodyend="54"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1quantumkeeper__st_1a96622677e9d14274611c4b364ebc814d" prot="public" virt="non-virtual"><scope>tlm::scc::quantumkeeper_st</scope><name>base</name></member>
+      <member refid="structtlm_1_1scc_1_1quantumkeeper__st_1a9cfbf2e41736dfcc1919655bc9f259f7" prot="public" virt="non-virtual"><scope>tlm::scc::quantumkeeper_st</scope><name>check_and_sync</name></member>
+      <member refid="structtlm_1_1scc_1_1quantumkeeper__st_1abf1301a73a42a66d52f579229cc8bb0d" prot="public" virt="non-virtual"><scope>tlm::scc::quantumkeeper_st</scope><name>execute_on_sysc</name></member>
+      <member refid="structtlm_1_1scc_1_1quantumkeeper__st_1a654f3a9a8b3bbdfa2eae99e3420b18fb" prot="public" virt="non-virtual"><scope>tlm::scc::quantumkeeper_st</scope><name>execute_on_sysc</name></member>
+      <member refid="structtlm_1_1scc_1_1quantumkeeper__st_1a4ff4f388529f6ee128769a3c8eb4703d" prot="public" virt="non-virtual"><scope>tlm::scc::quantumkeeper_st</scope><name>get_local_absolute_time</name></member>
+      <member refid="structtlm_1_1scc_1_1quantumkeeper__st_1a7bab3f44ba46ec417abc356d56be137d" prot="public" virt="non-virtual"><scope>tlm::scc::quantumkeeper_st</scope><name>quantumkeeper_st</name></member>
+      <member refid="structtlm_1_1scc_1_1quantumkeeper__st_1a58f7d8e654c733c5f2c3014818c4fe2d" prot="public" virt="non-virtual"><scope>tlm::scc::quantumkeeper_st</scope><name>reset</name></member>
+      <member refid="structtlm_1_1scc_1_1quantumkeeper__st_1a46c525444886662b0839e8fae0d7e430" prot="public" virt="non-virtual"><scope>tlm::scc::quantumkeeper_st</scope><name>reset</name></member>
+      <member refid="structtlm_1_1scc_1_1quantumkeeper__st_1a503edbf1e5ae84c8453029bd0341b0d2" prot="public" virt="virtual"><scope>tlm::scc::quantumkeeper_st</scope><name>~quantumkeeper_st</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

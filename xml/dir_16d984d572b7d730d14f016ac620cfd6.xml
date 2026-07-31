@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_16d984d572b7d730d14f016ac620cfd6" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi</compoundname>
+    <innerdir refid="dir_b0d728736680b9e07b367cd03d988303">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/checker</innerdir>
+    <innerdir refid="dir_743dff7038988bd9ebb48a40c41fef05">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm</innerdir>
+    <innerdir refid="dir_cf72741535ac650021958afb725ed543">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr</innerdir>
+    <innerdir refid="dir_ff9f1cc2327aca43a3ba2b9ea3b4cb19">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe</innerdir>
+    <innerdir refid="dir_9dbdeab66cc4aaf1ebb921a8aafc09a0">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/scv</innerdir>
+    <innerfile refid="axi__tlm_8cpp">axi_tlm.cpp</innerfile>
+    <innerfile refid="axi__tlm_8h">axi_tlm.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/"/>
+  </compounddef>
+</doxygen>

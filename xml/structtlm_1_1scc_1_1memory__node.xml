@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1memory__node" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::memory_node</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1memory__node_1ad3195546b9c5dd9b75983d9aef6ee8f1" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t tlm::scc::memory_node::start</definition>
+        <argsstring></argsstring>
+        <name>start</name>
+        <qualifiedname>tlm::scc::memory_node::start</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" line="31" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" bodystart="31" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1memory__node_1abd45373149d258f53053991b5ab064a7" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t tlm::scc::memory_node::end</definition>
+        <argsstring></argsstring>
+        <name>end</name>
+        <qualifiedname>tlm::scc::memory_node::end</qualifiedname>
+        <initializer>{std::numeric_limits&lt;uint64_t&gt;::max()}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" line="32" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" bodystart="32" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1memory__node_1a45bc0658d5dfa69c194bee9f0dab85be" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string tlm::scc::memory_node::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <qualifiedname>tlm::scc::memory_node::name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" line="33" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1memory__node_1a07b5e0d62a0689791eb1f27bcea1e261" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; memory_node &gt;</type>
+        <definition>std::vector&lt;memory_node&gt; tlm::scc::memory_node::elemets</definition>
+        <argsstring></argsstring>
+        <name>elemets</name>
+        <qualifiedname>tlm::scc::memory_node::elemets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" line="34" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1memory__node_1a7e1962eedb438a7cfdb10193f74099e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::memory_node::memory_node</definition>
+        <argsstring>(uint64_t start, uint64_t end)</argsstring>
+        <name>memory_node</name>
+        <qualifiedname>tlm::scc::memory_node::memory_node</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" line="35" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" bodystart="35" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1memory__node_1abbe78435b5ad54aa3e316964cd6be595" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::memory_node::memory_node</definition>
+        <argsstring>()=default</argsstring>
+        <name>memory_node</name>
+        <qualifiedname>tlm::scc::memory_node::memory_node</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" line="38" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1memory__node_1a13f10e3e25c4d9de31002192c0f39033" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string tlm::scc::memory_node::to_string</definition>
+        <argsstring>(const std::string &amp;prefix=&quot;&quot;) const</argsstring>
+        <name>to_string</name>
+        <qualifiedname>tlm::scc::memory_node::to_string</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>prefix</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" line="39" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.cpp" bodystart="22" bodyend="29"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" line="30" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/memory_map_collector.h" bodystart="30" bodyend="40"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1memory__node_1a07b5e0d62a0689791eb1f27bcea1e261" prot="public" virt="non-virtual"><scope>tlm::scc::memory_node</scope><name>elemets</name></member>
+      <member refid="structtlm_1_1scc_1_1memory__node_1abd45373149d258f53053991b5ab064a7" prot="public" virt="non-virtual"><scope>tlm::scc::memory_node</scope><name>end</name></member>
+      <member refid="structtlm_1_1scc_1_1memory__node_1a7e1962eedb438a7cfdb10193f74099e9" prot="public" virt="non-virtual"><scope>tlm::scc::memory_node</scope><name>memory_node</name></member>
+      <member refid="structtlm_1_1scc_1_1memory__node_1abbe78435b5ad54aa3e316964cd6be595" prot="public" virt="non-virtual"><scope>tlm::scc::memory_node</scope><name>memory_node</name></member>
+      <member refid="structtlm_1_1scc_1_1memory__node_1a45bc0658d5dfa69c194bee9f0dab85be" prot="public" virt="non-virtual"><scope>tlm::scc::memory_node</scope><name>name</name></member>
+      <member refid="structtlm_1_1scc_1_1memory__node_1ad3195546b9c5dd9b75983d9aef6ee8f1" prot="public" virt="non-virtual"><scope>tlm::scc::memory_node</scope><name>start</name></member>
+      <member refid="structtlm_1_1scc_1_1memory__node_1a13f10e3e25c4d9de31002192c0f39033" prot="public" virt="non-virtual"><scope>tlm::scc::memory_node</scope><name>to_string</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

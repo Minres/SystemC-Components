@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder" kind="struct" language="C++" prot="public">
+    <compoundname>scc::tcp4tlm::ResponseEnvelopeBuilder</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder_1ae85a55a57c4fcc3ebb683db97f34cb1d" prot="public" static="no">
+        <type>ResponseEnvelope</type>
+        <definition>typedef ResponseEnvelope scc::tcp4tlm::ResponseEnvelopeBuilder::Table</definition>
+        <argsstring></argsstring>
+        <name>Table</name>
+        <qualifiedname>scc::tcp4tlm::ResponseEnvelopeBuilder::Table</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="685" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="685" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder_1ad263c1f4d18850d635af0d8dc4eb074c" prot="public" static="no" mutable="no">
+        <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+        <definition>::flatbuffers::FlatBufferBuilder&amp; scc::tcp4tlm::ResponseEnvelopeBuilder::fbb_</definition>
+        <argsstring></argsstring>
+        <name>fbb_</name>
+        <qualifiedname>scc::tcp4tlm::ResponseEnvelopeBuilder::fbb_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="686" column="38" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="686" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder_1a7d3c447237ba8b9a459bebc2ed05b7ff" prot="public" static="no" mutable="no">
+        <type>::flatbuffers::uoffset_t</type>
+        <definition>::flatbuffers::uoffset_t scc::tcp4tlm::ResponseEnvelopeBuilder::start_</definition>
+        <argsstring></argsstring>
+        <name>start_</name>
+        <qualifiedname>scc::tcp4tlm::ResponseEnvelopeBuilder::start_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="687" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="687" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder_1a0654580afb3059783cd11609cc6ccf74" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::ResponseEnvelopeBuilder::add_payload_type</definition>
+        <argsstring>(scc::tcp4tlm::ResponsePayload payload_type)</argsstring>
+        <name>add_payload_type</name>
+        <qualifiedname>scc::tcp4tlm::ResponseEnvelopeBuilder::add_payload_type</qualifiedname>
+        <param>
+          <type>scc::tcp4tlm::ResponsePayload</type>
+          <declname>payload_type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="688" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="688" bodyend="690"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder_1a7018cebdf7bb13647522389782b7328b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::ResponseEnvelopeBuilder::add_payload</definition>
+        <argsstring>(::flatbuffers::Offset&lt; void &gt; payload)</argsstring>
+        <name>add_payload</name>
+        <qualifiedname>scc::tcp4tlm::ResponseEnvelopeBuilder::add_payload</qualifiedname>
+        <param>
+          <type>::flatbuffers::Offset&lt; void &gt;</type>
+          <declname>payload</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="691" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="691" bodyend="691"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder_1a5eb2ab2508f23322d305ab1662c59582" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tcp4tlm::ResponseEnvelopeBuilder::ResponseEnvelopeBuilder</definition>
+        <argsstring>(::flatbuffers::FlatBufferBuilder &amp;_fbb)</argsstring>
+        <name>ResponseEnvelopeBuilder</name>
+        <qualifiedname>scc::tcp4tlm::ResponseEnvelopeBuilder::ResponseEnvelopeBuilder</qualifiedname>
+        <param>
+          <type>::flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>_fbb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="692" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="692" bodyend="695"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder_1aa0c8f3fa1a2c7ee34eee29fc4f4e0390" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>::flatbuffers::Offset&lt; ResponseEnvelope &gt;</type>
+        <definition>::flatbuffers::Offset&lt; ResponseEnvelope &gt; scc::tcp4tlm::ResponseEnvelopeBuilder::Finish</definition>
+        <argsstring>()</argsstring>
+        <name>Finish</name>
+        <qualifiedname>scc::tcp4tlm::ResponseEnvelopeBuilder::Finish</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="696" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="696" bodyend="700"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" line="684" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/messages_generated.h" bodystart="684" bodyend="701"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder_1a7018cebdf7bb13647522389782b7328b" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::ResponseEnvelopeBuilder</scope><name>add_payload</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder_1a0654580afb3059783cd11609cc6ccf74" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::ResponseEnvelopeBuilder</scope><name>add_payload_type</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder_1ad263c1f4d18850d635af0d8dc4eb074c" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::ResponseEnvelopeBuilder</scope><name>fbb_</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder_1aa0c8f3fa1a2c7ee34eee29fc4f4e0390" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::ResponseEnvelopeBuilder</scope><name>Finish</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder_1a5eb2ab2508f23322d305ab1662c59582" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::ResponseEnvelopeBuilder</scope><name>ResponseEnvelopeBuilder</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder_1a7d3c447237ba8b9a459bebc2ed05b7ff" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::ResponseEnvelopeBuilder</scope><name>start_</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1ResponseEnvelopeBuilder_1ae85a55a57c4fcc3ebb683db97f34cb1d" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::ResponseEnvelopeBuilder</scope><name>Table</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

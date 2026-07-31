@@ -1,0 +1,329 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1tlm__mm__t" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::tlm_mm_t</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">BASE</basecompoundref>
+    <derivedcompoundref refid="structtlm_1_1scc_1_1tlm__mm" prot="public" virt="non-virtual">tlm::scc::tlm_mm&lt; axis_packet_types, false &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structtlm_1_1scc_1_1tlm__mm" prot="public" virt="non-virtual">tlm::scc::tlm_mm&lt; cxs_flit_types, false &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structtlm_1_1scc_1_1tlm__mm" prot="public" virt="non-virtual">tlm::scc::tlm_mm&lt; cxs_packet_types, false &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structtlm_1_1scc_1_1tlm__mm" prot="public" virt="non-virtual">tlm::scc::tlm_mm&lt; eth_packet_types, false &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structtlm_1_1scc_1_1tlm__mm" prot="public" virt="non-virtual">tlm::scc::tlm_mm&lt; spi_packet_types, false &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structtlm_1_1scc_1_1tlm__mm" prot="public" virt="non-virtual">tlm::scc::tlm_mm&lt; recording_types &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structtlm_1_1scc_1_1tlm__mm" prot="public" virt="non-virtual">tlm::scc::tlm_mm&lt; impl::tlm_recording_types&lt; TYPES &gt; &gt;</derivedcompoundref>
+    <includes refid="tlm__mm_8h" local="no">tlm_mm.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+      </param>
+      <param>
+        <type>bool</type>
+        <declname>CLEANUP_DATA</declname>
+        <defname>CLEANUP_DATA</defname>
+      </param>
+      <param>
+        <type>typename BASE</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1tlm__mm__t_1a34c1f8ede44c5cd8ff5dcc6849056597" prot="private" static="no">
+        <type>typename TYPES::tlm_payload_type</type>
+        <definition>using tlm::scc::tlm_mm_t&lt; TYPES, CLEANUP_DATA, BASE &gt;::payload_type =  typename TYPES::tlm_payload_type</definition>
+        <argsstring></argsstring>
+        <name>payload_type</name>
+        <qualifiedname>tlm::scc::tlm_mm_t::payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="197" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1tlm__mm__t_1a7c5e325277a0a7c623ea1d548241f7d6" prot="private" static="no">
+        <type>typename <ref refid="structtlm_1_1scc_1_1tlm__mm__traits" kindref="compound">tlm_mm_traits</ref>&lt; TYPES &gt;::payload_base</type>
+        <definition>using tlm::scc::tlm_mm_t&lt; TYPES, CLEANUP_DATA, BASE &gt;::payload_base =  typename tlm_mm_traits&lt;TYPES&gt;::payload_base</definition>
+        <argsstring></argsstring>
+        <name>payload_base</name>
+        <qualifiedname>tlm::scc::tlm_mm_t::payload_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="198" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="198" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1tlm__mm__t_1a19c6751d7f1f0dc57c645517fa76fd60" prot="private" static="no" mutable="no">
+        <type><ref refid="classutil_1_1pool__allocator" kindref="compound">util::pool_allocator</ref>&lt; sizeof(payload_type)&gt; &amp;</type>
+        <definition>util::pool_allocator&lt;sizeof(payload_type)&gt;&amp; tlm::scc::tlm_mm_t&lt; TYPES, CLEANUP_DATA, BASE &gt;::allocator</definition>
+        <argsstring></argsstring>
+        <name>allocator</name>
+        <qualifiedname>tlm::scc::tlm_mm_t::allocator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="241" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__mm__t_1a3bdae6df2c3950aea908157f73c96dd0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_mm_t&lt; TYPES, CLEANUP_DATA, BASE &gt;::tlm_mm_t</definition>
+        <argsstring>()</argsstring>
+        <name>tlm_mm_t</name>
+        <qualifiedname>tlm::scc::tlm_mm_t::tlm_mm_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="202" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="202" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__mm__t_1a9d2c0e7803e19c92cef470c4218cd6ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_mm_t&lt; TYPES, CLEANUP_DATA, BASE &gt;::tlm_mm_t</definition>
+        <argsstring>(const tlm_mm_t &amp;)=delete</argsstring>
+        <name>tlm_mm_t</name>
+        <qualifiedname>tlm::scc::tlm_mm_t::tlm_mm_t</qualifiedname>
+        <param>
+          <type>const tlm_mm_t &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="205" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__mm__t_1a5fbb7cca3fcaec77d3c348f95fb89228" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_mm_t&lt; TYPES, CLEANUP_DATA, BASE &gt;::tlm_mm_t</definition>
+        <argsstring>(tlm_mm_t &amp;&amp;)=delete</argsstring>
+        <name>tlm_mm_t</name>
+        <qualifiedname>tlm::scc::tlm_mm_t::tlm_mm_t</qualifiedname>
+        <param>
+          <type>tlm_mm_t &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="207" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__mm__t_1adc52bc8bd4d5e293910353bc88a60688" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm_mm_t &amp;</type>
+        <definition>tlm_mm_t &amp; tlm::scc::tlm_mm_t&lt; TYPES, CLEANUP_DATA, BASE &gt;::operator=</definition>
+        <argsstring>(const tlm_mm_t &amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>tlm::scc::tlm_mm_t::operator=</qualifiedname>
+        <param>
+          <type>const tlm_mm_t &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="209" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__mm__t_1a4bda5dd523172220acf20abb9af55c9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm_mm_t &amp;</type>
+        <definition>tlm_mm_t &amp; tlm::scc::tlm_mm_t&lt; TYPES, CLEANUP_DATA, BASE &gt;::operator=</definition>
+        <argsstring>(tlm_mm_t &amp;&amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>tlm::scc::tlm_mm_t::operator=</qualifiedname>
+        <param>
+          <type>tlm_mm_t &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="211" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__mm__t_1ac434bf5f88a8c0dfadbb754e3028a719" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_mm_t&lt; TYPES, CLEANUP_DATA, BASE &gt;::~tlm_mm_t</definition>
+        <argsstring>()=default</argsstring>
+        <name>~tlm_mm_t</name>
+        <qualifiedname>tlm::scc::tlm_mm_t::~tlm_mm_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="213" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__mm__t_1af66490a12805bd7712add347b7c938fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>payload_type *</type>
+        <definition>payload_type * tlm::scc::tlm_mm_t&lt; TYPES, CLEANUP_DATA, BASE &gt;::allocate</definition>
+        <argsstring>()</argsstring>
+        <name>allocate</name>
+        <qualifiedname>tlm::scc::tlm_mm_t::allocate</qualifiedname>
+        <briefdescription>
+<para>get a plain tlm_payload_type without extensions </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the tlm_payload_type </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="218" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="218" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__mm__t_1ac80a10bf1e8f4e5a49a8700db9442426" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename PEXT</type>
+          </param>
+        </templateparamlist>
+        <type>payload_type *</type>
+        <definition>payload_type * tlm::scc::tlm_mm_t&lt; TYPES, CLEANUP_DATA, BASE &gt;::allocate</definition>
+        <argsstring>()</argsstring>
+        <name>allocate</name>
+        <qualifiedname>tlm::scc::tlm_mm_t::allocate</qualifiedname>
+        <briefdescription>
+<para>get a tlm_payload_type with registered extension </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the tlm_payload_type </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="226" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="226" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1tlm__mm__t_1ac0414b08b6fd2e414db68b2e7b6255a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_mm_t&lt; TYPES, CLEANUP_DATA, BASE &gt;::free</definition>
+        <argsstring>(payload_base *trans)</argsstring>
+        <name>free</name>
+        <qualifiedname>tlm::scc::tlm_mm_t::free</qualifiedname>
+        <param>
+          <type>payload_base *</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+<para>return the extension into the memory pool (removing the extensions) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the returning transaction </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="235" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="235" bodyend="238"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>a tlm payload memory manager </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This memory manager can be used as singleton or as local memory manager. It uses the pool_allocator as singleton to maximize reuse </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BASE</label>
+      </node>
+      <node id="3">
+        <label>tlm::scc::tlm_mm&lt; axis_packet_types, false &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__mm"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tlm::scc::tlm_mm&lt; cxs_flit_types, false &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__mm"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>tlm::scc::tlm_mm&lt; cxs_packet_types, false &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__mm"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>tlm::scc::tlm_mm&lt; eth_packet_types, false &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__mm"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>tlm::scc::tlm_mm&lt; impl::tlm_recording_types&lt; TYPES &gt; &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__mm"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>tlm::scc::tlm_mm&lt; recording_types &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__mm"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>tlm::scc::tlm_mm&lt; spi_packet_types, false &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__mm"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::tlm_mm_t&lt; TYPES, CLEANUP_DATA, BASE &gt;</label>
+        <link refid="classtlm_1_1scc_1_1tlm__mm__t"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BASE</label>
+      </node>
+      <node id="1">
+        <label>tlm::scc::tlm_mm_t&lt; TYPES, CLEANUP_DATA, BASE &gt;</label>
+        <link refid="classtlm_1_1scc_1_1tlm__mm__t"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="196" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="196" bodyend="242"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1af66490a12805bd7712add347b7c938fc" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm_t</scope><name>allocate</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1ac80a10bf1e8f4e5a49a8700db9442426" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm_t</scope><name>allocate</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1a19c6751d7f1f0dc57c645517fa76fd60" prot="private" virt="non-virtual"><scope>tlm::scc::tlm_mm_t</scope><name>allocator</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1ac0414b08b6fd2e414db68b2e7b6255a1" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm_t</scope><name>free</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1adc52bc8bd4d5e293910353bc88a60688" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm_t</scope><name>operator=</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1a4bda5dd523172220acf20abb9af55c9f" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm_t</scope><name>operator=</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1a7c5e325277a0a7c623ea1d548241f7d6" prot="private" virt="non-virtual"><scope>tlm::scc::tlm_mm_t</scope><name>payload_base</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1a34c1f8ede44c5cd8ff5dcc6849056597" prot="private" virt="non-virtual"><scope>tlm::scc::tlm_mm_t</scope><name>payload_type</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1a3bdae6df2c3950aea908157f73c96dd0" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm_t</scope><name>tlm_mm_t</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1a9d2c0e7803e19c92cef470c4218cd6ef" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm_t</scope><name>tlm_mm_t</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1a5fbb7cca3fcaec77d3c348f95fb89228" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm_t</scope><name>tlm_mm_t</name></member>
+      <member refid="classtlm_1_1scc_1_1tlm__mm__t_1ac434bf5f88a8c0dfadbb754e3028a719" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_mm_t</scope><name>~tlm_mm_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

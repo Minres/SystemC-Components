@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceTCB__SPAN__NAMESPACE__NAME_1_1detail" kind="namespace" language="C++">
+    <compoundname>TCB_SPAN_NAMESPACE_NAME::detail</compoundname>
+    <innerclass refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage" prot="public">TCB_SPAN_NAMESPACE_NAME::detail::span_storage</innerclass>
+    <innerclass refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1span__storage_3_01E_00_01dynamic__extent_01_4" prot="public">TCB_SPAN_NAMESPACE_NAME::detail::span_storage&lt; E, dynamic_extent &gt;</innerclass>
+    <innerclass refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__span" prot="public">TCB_SPAN_NAMESPACE_NAME::detail::is_span</innerclass>
+    <innerclass refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__span_3_01span_3_01T_00_01S_01_4_01_4" prot="public">TCB_SPAN_NAMESPACE_NAME::detail::is_span&lt; span&lt; T, S &gt; &gt;</innerclass>
+    <innerclass refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__std__array" prot="public">TCB_SPAN_NAMESPACE_NAME::detail::is_std_array</innerclass>
+    <innerclass refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__std__array_3_01std_1_1array_3_01T_00_01N_01_4_01_4" prot="public">TCB_SPAN_NAMESPACE_NAME::detail::is_std_array&lt; std::array&lt; T, N &gt; &gt;</innerclass>
+    <innerclass refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1has__size__and__data" prot="public">TCB_SPAN_NAMESPACE_NAME::detail::has_size_and_data</innerclass>
+    <innerclass refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1has__size__and__data_3_01T_00_01void__t_3_01decltya7984b4a25dee173dd41cd6330e55690" prot="public">TCB_SPAN_NAMESPACE_NAME::detail::has_size_and_data&lt; T, void_t&lt; decltype(::nonstd::detail::size(std::declval&lt; T &gt;())), decltype(::nonstd::detail::data(std::declval&lt; T &gt;()))&gt; &gt;</innerclass>
+    <innerclass refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container" prot="public">TCB_SPAN_NAMESPACE_NAME::detail::is_container</innerclass>
+    <innerclass refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container__element__type__compatible" prot="public">TCB_SPAN_NAMESPACE_NAME::detail::is_container_element_type_compatible</innerclass>
+    <innerclass refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container__element__type__compatible_3_01T_00_6b6a2d90dd145e59c556b3f820de79cf" prot="public">TCB_SPAN_NAMESPACE_NAME::detail::is_container_element_type_compatible&lt; T, E, typename std::enable_if&lt; !std::is_same&lt; typename std::remove_cv&lt; decltype(::nonstd::detail::data(std::declval&lt; T &gt;()))&gt;::type, void &gt;::value &amp;&amp;std::is_convertible&lt; remove_pointer_t&lt; decltype(::nonstd::detail::data(std::declval&lt; T &gt;()))&gt;(*)[], E(*)[]&gt;::value &gt;::type &gt;</innerclass>
+    <innerclass refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__complete" prot="public">TCB_SPAN_NAMESPACE_NAME::detail::is_complete</innerclass>
+    <innerclass refid="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__complete_3_01T_00_01decltype_07sizeof_07T_08_08_4" prot="public">TCB_SPAN_NAMESPACE_NAME::detail::is_complete&lt; T, decltype(sizeof(T))&gt;</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="span_8h_1a92807f98c8423342ba21ad78586a0d05" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>using TCB_SPAN_NAMESPACE_NAME::detail::void_t =  void</definition>
+        <argsstring></argsstring>
+        <name>void_t</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::void_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="206" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="206" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="span_8h_1a1b38e61519499e0ce1cade35ad93ca62" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>typename std::remove_cv&lt; typename std::remove_reference&lt; T &gt;::type &gt;::type</type>
+        <definition>using TCB_SPAN_NAMESPACE_NAME::detail::uncvref_t =  typename std::remove_cv&lt;typename std::remove_reference&lt;T&gt;::type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>uncvref_t</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::uncvref_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="209" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="span_8h_1a2d153682c1762ef4360d8f49b3e5bae1" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>typename std::remove_pointer&lt; T &gt;::type</type>
+        <definition>using TCB_SPAN_NAMESPACE_NAME::detail::remove_pointer_t =  typename std::remove_pointer&lt;T&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>remove_pointer_t</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::remove_pointer_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="230" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="230" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="span_8h_1a876af6f91231ae4e7e7316f5402682dc" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class C</type>
+          </param>
+        </templateparamlist>
+        <type>decltype(c.size())</type>
+        <definition>decltype(c.size()) TCB_SPAN_NAMESPACE_NAME::detail::size</definition>
+        <argsstring>(const C &amp;c)</argsstring>
+        <name>size</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::size</qualifiedname>
+        <param>
+          <type>const C &amp;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="190" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="190" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="span_8h_1a834a91a810cb058282fffc120d9fa8ab" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+        </templateparamlist>
+        <type>std::size_t</type>
+        <definition>std::size_t TCB_SPAN_NAMESPACE_NAME::detail::size</definition>
+        <argsstring>(const T(&amp;)[N]) noexcept</argsstring>
+        <name>size</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::size</qualifiedname>
+        <param>
+          <type>const </type>
+          <declname>T</declname>
+          <array>(&amp;)[N]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="192" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="192" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="span_8h_1ada90c89c458a0d53c483e767de7b7701" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class C</type>
+          </param>
+        </templateparamlist>
+        <type>decltype(c.data())</type>
+        <definition>decltype(c.data()) TCB_SPAN_NAMESPACE_NAME::detail::data</definition>
+        <argsstring>(C &amp;c)</argsstring>
+        <name>data</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::data</qualifiedname>
+        <param>
+          <type>C &amp;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="194" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="194" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="span_8h_1aa175cdddf002f8c0233d4c5d682cc819" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class C</type>
+          </param>
+        </templateparamlist>
+        <type>decltype(c.data())</type>
+        <definition>decltype(c.data()) TCB_SPAN_NAMESPACE_NAME::detail::data</definition>
+        <argsstring>(const C &amp;c)</argsstring>
+        <name>data</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::data</qualifiedname>
+        <param>
+          <type>const C &amp;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="196" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="196" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="span_8h_1a7805e4f5cd80ba8e0fe70caa5ea8088f" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+        </templateparamlist>
+        <type>T *</type>
+        <definition>T * TCB_SPAN_NAMESPACE_NAME::detail::data</definition>
+        <argsstring>(T(&amp;array)[N]) noexcept</argsstring>
+        <name>data</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::data</qualifiedname>
+        <param>
+          <type>T(&amp;)</type>
+          <declname>array</declname>
+          <array>[N]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="198" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="198" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="span_8h_1a0adcec12099e020716666f2e169c1ccf" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class E</type>
+          </param>
+        </templateparamlist>
+        <type>const E *</type>
+        <definition>const E * TCB_SPAN_NAMESPACE_NAME::detail::data</definition>
+        <argsstring>(std::initializer_list&lt; E &gt; il) noexcept</argsstring>
+        <name>data</name>
+        <qualifiedname>TCB_SPAN_NAMESPACE_NAME::detail::data</qualifiedname>
+        <param>
+          <type>std::initializer_list&lt; E &gt;</type>
+          <declname>il</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="200" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" bodystart="200" bodyend="200"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/span.h" line="162" column="1"/>
+  </compounddef>
+</doxygen>

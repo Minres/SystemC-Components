@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tlm__target__bfs__params" kind="struct" language="C++" prot="public">
+    <compoundname>scc::tlm_target_bfs_params</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1tlm__target__bfs__params_1a27f45afd3f297b197de1ece7ff912477" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t scc::tlm_target_bfs_params::base_addr</definition>
+        <argsstring></argsstring>
+        <name>base_addr</name>
+        <qualifiedname>scc::tlm_target_bfs_params::base_addr</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="40" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tlm__target__bfs__params_1a361a6e8e3ce15ce02baf28dd3be08141" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t scc::tlm_target_bfs_params::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>scc::tlm_target_bfs_params::size</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="41" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tlm__target__bfs__params_1a851f25af00ef8911202e5870430ad24e" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t scc::tlm_target_bfs_params::num_irqs</definition>
+        <argsstring></argsstring>
+        <name>num_irqs</name>
+        <qualifiedname>scc::tlm_target_bfs_params::num_irqs</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="42" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tlm__target__bfs__params_1af27100c2a74278047a8619746f94fe44" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t scc::tlm_target_bfs_params::num_regs</definition>
+        <argsstring></argsstring>
+        <name>num_regs</name>
+        <qualifiedname>scc::tlm_target_bfs_params::num_regs</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="43" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1tlm__target__bfs__params_1aab205f58401cc0e2f28977d5dba973ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tlm_target_bfs_params::tlm_target_bfs_params</definition>
+        <argsstring>(void)</argsstring>
+        <name>tlm_target_bfs_params</name>
+        <qualifiedname>scc::tlm_target_bfs_params::tlm_target_bfs_params</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="44" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="44" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tlm__target__bfs__params_1a4c3b3b6376d2c4dbddfe3391a51b0b27" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tlm_target_bfs_params::tlm_target_bfs_params</definition>
+        <argsstring>(uint64_t base_addr, size_t size, size_t num_irqs, size_t num_regs)</argsstring>
+        <name>tlm_target_bfs_params</name>
+        <qualifiedname>scc::tlm_target_bfs_params::tlm_target_bfs_params</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>base_addr</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>num_irqs</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>num_regs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="49" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="49" bodyend="53"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="39" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="39" bodyend="54"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tlm__target__bfs__params_1a27f45afd3f297b197de1ece7ff912477" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs_params</scope><name>base_addr</name></member>
+      <member refid="structscc_1_1tlm__target__bfs__params_1a851f25af00ef8911202e5870430ad24e" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs_params</scope><name>num_irqs</name></member>
+      <member refid="structscc_1_1tlm__target__bfs__params_1af27100c2a74278047a8619746f94fe44" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs_params</scope><name>num_regs</name></member>
+      <member refid="structscc_1_1tlm__target__bfs__params_1a361a6e8e3ce15ce02baf28dd3be08141" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs_params</scope><name>size</name></member>
+      <member refid="structscc_1_1tlm__target__bfs__params_1aab205f58401cc0e2f28977d5dba973ed" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs_params</scope><name>tlm_target_bfs_params</name></member>
+      <member refid="structscc_1_1tlm__target__bfs__params_1a4c3b3b6376d2c4dbddfe3391a51b0b27" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs_params</scope><name>tlm_target_bfs_params</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

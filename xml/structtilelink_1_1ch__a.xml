@@ -1,0 +1,259 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtilelink_1_1ch__a" kind="struct" language="C++" prot="public">
+    <compoundname>tilelink::ch_a</compoundname>
+    <derivedcompoundref refid="structtilelink_1_1tl__ul" prot="public" virt="non-virtual">tilelink::tl_ul&lt; CFG, TYPES &gt;</derivedcompoundref>
+    <includes refid="tilelink_2signal__if_8h" local="no">signal_if.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename CFG</type>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval><ref refid="structtilelink_1_1master__types" kindref="compound">master_types</ref></defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtilelink_1_1ch__a_1ab31ee0794460257b071b1cdffad9d741" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; sc_dt::sc_uint&lt; 3 &gt; &gt;</type>
+        <definition>TYPES::template m2s_t&lt;sc_dt::sc_uint&lt;3&gt; &gt; tilelink::ch_a&lt; CFG, TYPES &gt;::code</definition>
+        <argsstring></argsstring>
+        <name>code</name>
+        <qualifiedname>tilelink::ch_a::code</qualifiedname>
+        <initializer>{&quot;code&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="98" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="98" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1ch__a_1ab6030df1992ae2d40098e731fe81aa93" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; sc_dt::sc_uint&lt; 3 &gt; &gt;</type>
+        <definition>TYPES::template m2s_t&lt;sc_dt::sc_uint&lt;3&gt; &gt; tilelink::ch_a&lt; CFG, TYPES &gt;::param</definition>
+        <argsstring></argsstring>
+        <name>param</name>
+        <qualifiedname>tilelink::ch_a::param</qualifiedname>
+        <initializer>{&quot;param&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="99" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="99" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1ch__a_1aef12041f0632411ac362b8e328e0ca58" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; sc_dt::sc_uint&lt; CFG::SZWIDTH &gt; &gt;</type>
+        <definition>TYPES::template m2s_t&lt;sc_dt::sc_uint&lt;CFG::SZWIDTH&gt; &gt; tilelink::ch_a&lt; CFG, TYPES &gt;::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>tilelink::ch_a::size</qualifiedname>
+        <initializer>{&quot;size&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="100" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="100" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1ch__a_1a18eed6de768c786f8b08ec0ae66d0f71" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; sc_dt::sc_uint&lt; CFG::MIDWIDTH &gt; &gt;</type>
+        <definition>TYPES::template m2s_t&lt;sc_dt::sc_uint&lt;CFG::MIDWIDTH&gt; &gt; tilelink::ch_a&lt; CFG, TYPES &gt;::source</definition>
+        <argsstring></argsstring>
+        <name>source</name>
+        <qualifiedname>tilelink::ch_a::source</qualifiedname>
+        <initializer>{&quot;source&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="101" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="101" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1ch__a_1ab17725b6333ccbd8576ee536125836c5" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; CFG::addr_t &gt;</type>
+        <definition>TYPES::template m2s_t&lt;CFG::addr_t&gt; tilelink::ch_a&lt; CFG, TYPES &gt;::address</definition>
+        <argsstring></argsstring>
+        <name>address</name>
+        <qualifiedname>tilelink::ch_a::address</qualifiedname>
+        <initializer>{&quot;address&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="102" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="102" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1ch__a_1a1caf804dcd3c92fa7c91863fb98acaba" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; CFG::mask_t &gt;</type>
+        <definition>TYPES::template m2s_t&lt;CFG::mask_t&gt; tilelink::ch_a&lt; CFG, TYPES &gt;::mask</definition>
+        <argsstring></argsstring>
+        <name>mask</name>
+        <qualifiedname>tilelink::ch_a::mask</qualifiedname>
+        <initializer>{&quot;mask&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="103" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="103" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1ch__a_1aadbe73e84762c5e74bd1e89f96447549" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; CFG::data_t &gt;</type>
+        <definition>TYPES::template m2s_t&lt;CFG::data_t&gt; tilelink::ch_a&lt; CFG, TYPES &gt;::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <qualifiedname>tilelink::ch_a::data</qualifiedname>
+        <initializer>{&quot;data&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="104" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="104" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1ch__a_1a1a35e544df666960357dde27a810cdde" prot="public" static="no" mutable="no">
+        <type>TYPES::template s2m_t&lt; bool &gt;</type>
+        <definition>TYPES::template s2m_t&lt;bool&gt; tilelink::ch_a&lt; CFG, TYPES &gt;::corrupt</definition>
+        <argsstring></argsstring>
+        <name>corrupt</name>
+        <qualifiedname>tilelink::ch_a::corrupt</qualifiedname>
+        <initializer>{&quot;corrupt&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="105" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="105" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1ch__a_1a71d02f4a884e3d261320c0a53a64169d" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; bool &gt;</type>
+        <definition>TYPES::template m2s_t&lt;bool&gt; tilelink::ch_a&lt; CFG, TYPES &gt;::valid</definition>
+        <argsstring></argsstring>
+        <name>valid</name>
+        <qualifiedname>tilelink::ch_a::valid</qualifiedname>
+        <initializer>{&quot;valid&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="106" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="106" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1ch__a_1a4ed1f9592a9ab77d935b4cd1e92e7bd1" prot="public" static="no" mutable="no">
+        <type>TYPES::template s2m_t&lt; bool &gt;</type>
+        <definition>TYPES::template s2m_t&lt;bool&gt; tilelink::ch_a&lt; CFG, TYPES &gt;::ready</definition>
+        <argsstring></argsstring>
+        <name>ready</name>
+        <qualifiedname>tilelink::ch_a::ready</qualifiedname>
+        <initializer>{&quot;ready&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="107" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="107" bodyend="107"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtilelink_1_1ch__a_1af02006468b957fed380700665517a0f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tilelink::ch_a&lt; CFG, TYPES &gt;::ch_a</definition>
+        <argsstring>()=default</argsstring>
+        <name>ch_a</name>
+        <qualifiedname>tilelink::ch_a::ch_a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="109" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1ch__a_1aa9f0e517c75bb48485c133232c2e7972" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tilelink::ch_a&lt; CFG, TYPES &gt;::ch_a</definition>
+        <argsstring>(const char *prefix)</argsstring>
+        <name>ch_a</name>
+        <qualifiedname>tilelink::ch_a::ch_a</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>prefix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="110" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="110" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1ch__a_1af331da70e3a0b827ace48ecfb466ba0e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename OTYPES</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void tilelink::ch_a&lt; CFG, TYPES &gt;::bind_a</definition>
+        <argsstring>(ch_a&lt; CFG, OTYPES &gt; &amp;o)</argsstring>
+        <name>bind_a</name>
+        <qualifiedname>tilelink::ch_a::bind_a</qualifiedname>
+        <param>
+          <type>ch_a&lt; CFG, OTYPES &gt; &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="122" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="122" bodyend="133"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A channel signals. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tilelink::ch_a&lt; CFG, TYPES &gt;</label>
+        <link refid="structtilelink_1_1ch__a"/>
+      </node>
+      <node id="2">
+        <label>tilelink::tl_ul&lt; CFG, TYPES &gt;</label>
+        <link refid="structtilelink_1_1tl__ul"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="97" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="97" bodyend="134"/>
+    <listofallmembers>
+      <member refid="structtilelink_1_1ch__a_1ab17725b6333ccbd8576ee536125836c5" prot="public" virt="non-virtual"><scope>tilelink::ch_a</scope><name>address</name></member>
+      <member refid="structtilelink_1_1ch__a_1af331da70e3a0b827ace48ecfb466ba0e" prot="public" virt="non-virtual"><scope>tilelink::ch_a</scope><name>bind_a</name></member>
+      <member refid="structtilelink_1_1ch__a_1af02006468b957fed380700665517a0f0" prot="public" virt="non-virtual"><scope>tilelink::ch_a</scope><name>ch_a</name></member>
+      <member refid="structtilelink_1_1ch__a_1aa9f0e517c75bb48485c133232c2e7972" prot="public" virt="non-virtual"><scope>tilelink::ch_a</scope><name>ch_a</name></member>
+      <member refid="structtilelink_1_1ch__a_1ab31ee0794460257b071b1cdffad9d741" prot="public" virt="non-virtual"><scope>tilelink::ch_a</scope><name>code</name></member>
+      <member refid="structtilelink_1_1ch__a_1a1a35e544df666960357dde27a810cdde" prot="public" virt="non-virtual"><scope>tilelink::ch_a</scope><name>corrupt</name></member>
+      <member refid="structtilelink_1_1ch__a_1aadbe73e84762c5e74bd1e89f96447549" prot="public" virt="non-virtual"><scope>tilelink::ch_a</scope><name>data</name></member>
+      <member refid="structtilelink_1_1ch__a_1a1caf804dcd3c92fa7c91863fb98acaba" prot="public" virt="non-virtual"><scope>tilelink::ch_a</scope><name>mask</name></member>
+      <member refid="structtilelink_1_1ch__a_1ab6030df1992ae2d40098e731fe81aa93" prot="public" virt="non-virtual"><scope>tilelink::ch_a</scope><name>param</name></member>
+      <member refid="structtilelink_1_1ch__a_1a4ed1f9592a9ab77d935b4cd1e92e7bd1" prot="public" virt="non-virtual"><scope>tilelink::ch_a</scope><name>ready</name></member>
+      <member refid="structtilelink_1_1ch__a_1aef12041f0632411ac362b8e328e0ca58" prot="public" virt="non-virtual"><scope>tilelink::ch_a</scope><name>size</name></member>
+      <member refid="structtilelink_1_1ch__a_1a18eed6de768c786f8b08ec0ae66d0f71" prot="public" virt="non-virtual"><scope>tilelink::ch_a</scope><name>source</name></member>
+      <member refid="structtilelink_1_1ch__a_1a71d02f4a884e3d261320c0a53a64169d" prot="public" virt="non-virtual"><scope>tilelink::ch_a</scope><name>valid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

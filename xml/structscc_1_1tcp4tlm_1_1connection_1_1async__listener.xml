@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tcp4tlm_1_1connection_1_1async__listener" kind="struct" language="C++" prot="public" abstract="yes">
+    <compoundname>scc::tcp4tlm::connection::async_listener</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; async_listener &gt;</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1connection_1_1async__listener_1a920ba0bf27fb7ca4fb72638f629388a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::async_listener::send_completed</definition>
+        <argsstring>(const boost::system::error_code &amp;error)=0</argsstring>
+        <name>send_completed</name>
+        <qualifiedname>scc::tcp4tlm::connection::async_listener::send_completed</qualifiedname>
+        <param>
+          <type>const boost::system::error_code &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="56" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1connection_1_1async__listener_1a0c39f1dd1081e59c90406113b9727eaa" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::async_listener::receive_completed</definition>
+        <argsstring>(const boost::system::error_code &amp;error, const TREC *const result)=0</argsstring>
+        <name>receive_completed</name>
+        <qualifiedname>scc::tcp4tlm::connection::async_listener::receive_completed</qualifiedname>
+        <param>
+          <type>const boost::system::error_code &amp;</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type>const TREC *const</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="57" column="22"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::async_listener</label>
+        <link refid="structscc_1_1tcp4tlm_1_1connection_1_1async__listener"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; async_listener &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::async_listener</label>
+        <link refid="structscc_1_1tcp4tlm_1_1connection_1_1async__listener"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; async_listener &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="55" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="55" bodyend="58"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tcp4tlm_1_1connection_1_1async__listener_1a0c39f1dd1081e59c90406113b9727eaa" prot="public" virt="pure-virtual"><scope>scc::tcp4tlm::connection::async_listener</scope><name>receive_completed</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1connection_1_1async__listener_1a920ba0bf27fb7ca4fb72638f629388a8" prot="public" virt="pure-virtual"><scope>scc::tcp4tlm::connection::async_listener</scope><name>send_completed</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

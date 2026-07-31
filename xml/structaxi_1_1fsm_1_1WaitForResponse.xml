@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1fsm_1_1WaitForResponse" kind="struct" language="C++" prot="public">
+    <compoundname>axi::fsm::WaitForResponse</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">bsc::state&lt; WaitForResponse, AxiProtocolFsm &gt;</basecompoundref>
+    <includes refid="protocol__fsm_8h" local="no">protocol_fsm.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structaxi_1_1fsm_1_1WaitForResponse_1aeed471c3512c7b8f158ee0a2d2ac57b7" prot="public" static="no">
+        <type>mpl::list&lt; bsc::transition&lt; <ref refid="structaxi_1_1fsm_1_1BegPartResp" kindref="compound">BegPartResp</ref>, <ref refid="structaxi_1_1fsm_1_1PartialResponse" kindref="compound">PartialResponse</ref> &gt;, bsc::transition&lt; <ref refid="structaxi_1_1fsm_1_1BegResp" kindref="compound">BegResp</ref>, <ref refid="structaxi_1_1fsm_1_1Response" kindref="compound">Response</ref> &gt; &gt;</type>
+        <definition>typedef mpl::list&lt;bsc::transition&lt;BegPartResp, PartialResponse&gt;, bsc::transition&lt;BegResp, Response&gt; &gt; axi::fsm::WaitForResponse::reactions</definition>
+        <argsstring></argsstring>
+        <name>reactions</name>
+        <qualifiedname>axi::fsm::WaitForResponse::reactions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="142" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1WaitForResponse_1a7c7b4dcf8a6229359a1cd293096eb3ba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::fsm::WaitForResponse::WaitForResponse</definition>
+        <argsstring>(my_context ctx)</argsstring>
+        <name>WaitForResponse</name>
+        <qualifiedname>axi::fsm::WaitForResponse::WaitForResponse</qualifiedname>
+        <param>
+          <type>my_context</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="136" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="136" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1WaitForResponse_1a00cb5f64cb792cbe1059e9051ac731c5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::fsm::WaitForResponse::~WaitForResponse</definition>
+        <argsstring>()</argsstring>
+        <name>~WaitForResponse</name>
+        <qualifiedname>axi::fsm::WaitForResponse::~WaitForResponse</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="138" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="138" bodyend="141"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the operation state where the target can do it&apos;s stuff </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::fsm::WaitForResponse</label>
+        <link refid="structaxi_1_1fsm_1_1WaitForResponse"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>bsc::state&lt; WaitForResponse, AxiProtocolFsm &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::fsm::WaitForResponse</label>
+        <link refid="structaxi_1_1fsm_1_1WaitForResponse"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>bsc::state&lt; WaitForResponse, AxiProtocolFsm &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="135" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="135" bodyend="143"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1fsm_1_1WaitForResponse_1aeed471c3512c7b8f158ee0a2d2ac57b7" prot="public" virt="non-virtual"><scope>axi::fsm::WaitForResponse</scope><name>reactions</name></member>
+      <member refid="structaxi_1_1fsm_1_1WaitForResponse_1a7c7b4dcf8a6229359a1cd293096eb3ba" prot="public" virt="non-virtual"><scope>axi::fsm::WaitForResponse</scope><name>WaitForResponse</name></member>
+      <member refid="structaxi_1_1fsm_1_1WaitForResponse_1a00cb5f64cb792cbe1059e9051ac731c5" prot="public" virt="non-virtual"><scope>axi::fsm::WaitForResponse</scope><name>~WaitForResponse</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

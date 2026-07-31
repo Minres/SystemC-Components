@@ -1,0 +1,5 @@
+<map id="tlm::scc::qk::thread_comms_channel" name="tlm::scc::qk::thread_comms_channel">
+<area shape="rect" id="Node000001" title="the communication channel between client threads (incl. SystemC) and the global time keeper" alt="" coords="15,131,149,171"/>
+<area shape="rect" id="Node000002" href="$classrigtorp_1_1SPSCQueue.html" title=" " alt="" coords="5,5,159,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,74,85,130,79,130,79,74"/>
+</map>

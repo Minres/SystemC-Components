@@ -1,0 +1,25 @@
+<map id="eth::eth_channel" name="eth::eth_channel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="552,256,671,281"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="317,113,455,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="469,141,484,148,521,173,555,202,602,254,598,258,551,206,518,177,481,152,467,146"/>
+<area shape="rect" id="Node000003" href="$structtlm_1_1nw_1_1tlm__network__fw__transport__if.html" title=" " alt="" coords="313,163,459,217"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="473,218,574,253,573,258,471,223"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="33,5,213,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="226,59,242,69,259,89,268,109,275,129,291,148,314,163,311,168,288,152,271,131,263,111,255,92,238,73,223,63"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="31,84,214,139"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="228,140,313,166,311,171,226,145"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="31,163,214,217"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="227,187,312,187,312,193,227,193"/>
+<area shape="rect" id="Node000007" href="$structtlm_1_1nw_1_1tlm__network__bw__transport__if.html" title=" " alt="" coords="311,241,461,296"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="474,266,552,266,552,271,474,271"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="31,241,214,296"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="228,266,311,266,311,271,228,271"/>
+<area shape="rect" id="Node000009" href="$structtlm_1_1nw_1_1tlm__network__target__socket.html" title=" " alt="" coords="303,331,469,385"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="468,323,577,279,579,284,470,328"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="5,321,240,419"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="254,361,303,359,303,364,254,367"/>
+<area shape="rect" id="Node000011" href="$structtlm_1_1nw_1_1tlm__network__initiator__socket.html" title=" " alt="" coords="289,443,483,497"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="434,432,481,395,547,331,596,280,600,283,551,335,484,399,438,436"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="5,443,240,542"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="253,479,289,476,289,481,254,484"/>
+</map>

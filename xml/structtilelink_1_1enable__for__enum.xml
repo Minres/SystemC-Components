@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtilelink_1_1enable__for__enum" kind="struct" language="C++" prot="public">
+    <compoundname>tilelink::enable_for_enum</compoundname>
+    <includes refid="tl__tlm_8h" local="no">tl_tlm.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Enum</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structtilelink_1_1enable__for__enum_1ae64a3b3ff182f81000fca6681848f300" prot="public" static="yes" mutable="no">
+        <type>const bool</type>
+        <definition>const bool tilelink::enable_for_enum&lt; Enum &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>tilelink::enable_for_enum::value</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="29" column="52" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>helper function to allow SFINAE </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="29" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="29" bodyend="29"/>
+    <listofallmembers>
+      <member refid="structtilelink_1_1enable__for__enum_1ae64a3b3ff182f81000fca6681848f300" prot="public" virt="non-virtual"><scope>tilelink::enable_for_enum</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__phase__enum_01_4" kind="class" language="C++" prot="public">
+    <compoundname>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_phase_enum &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">scv_enum_base&lt; tlm::scc::scv::tlm_phase_enum &gt;</basecompoundref>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__phase__enum_01_4_1af658c5343ee678dfab9e6b3c41116173" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_phase_enum &gt;::SCV_ENUM_CTOR</definition>
+        <argsstring>(tlm::scc::scv::tlm_phase_enum)</argsstring>
+        <name>SCV_ENUM_CTOR</name>
+        <qualifiedname>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_phase_enum &gt;::SCV_ENUM_CTOR</qualifiedname>
+        <param>
+          <type>tlm::scc::scv::tlm_phase_enum</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" line="65" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" bodystart="65" bodyend="77"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>scv_enum_base&lt; tlm::scc::scv::tlm_phase_enum &gt;</label>
+      </node>
+      <node id="1">
+        <label>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_phase_enum &gt;</label>
+        <link refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__phase__enum_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>scv_enum_base&lt; tlm::scc::scv::tlm_phase_enum &gt;</label>
+      </node>
+      <node id="1">
+        <label>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_phase_enum &gt;</label>
+        <link refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__phase__enum_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" line="63" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" bodystart="63" bodyend="78"/>
+    <listofallmembers>
+      <member refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__phase__enum_01_4_1af658c5343ee678dfab9e6b3c41116173" prot="public" virt="non-virtual"><scope>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_phase_enum &gt;</scope><name>SCV_ENUM_CTOR</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

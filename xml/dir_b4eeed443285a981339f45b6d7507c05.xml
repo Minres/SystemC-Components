@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_b4eeed443285a981339f45b6d7507c05" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi</compoundname>
+    <innerdir refid="dir_16d984d572b7d730d14f016ac620cfd6">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi</innerdir>
+    <innerdir refid="dir_0e219418303dc644f9d277f9c9d57d1a">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/"/>
+  </compounddef>
+</doxygen>

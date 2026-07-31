@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -112,6 +112,7 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:af09e9383c739cbdcb7773be3857e31a2" id="r_af09e9383c739cbdcb7773be3857e31a2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af09e9383c739cbdcb7773be3857e31a2">delay_type</a> = typename <a class="el" href="structscc_1_1delay__spec__type.html">delay_spec_type</a>&lt;USE_CYCLES&gt;::type</td></tr>
+<tr class="memitem:ade668d926bf053631be1c09897f8f4f6" id="r_ade668d926bf053631be1c09897f8f4f6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade668d926bf053631be1c09897f8f4f6">this_class</a> = <a class="el" href="#af75e83ad446e375408b7506def7e6105">memory</a>&lt;SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES&gt;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -145,8 +146,8 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:a92625153fa99f37f97cd115a40fed337"><td class="mdescLeft">&#160;</td><td class="mdescRight">read response delay in cycles if USE_CYCLES==true else in sc_core::sc_time  <br /></td></tr>
 <tr class="memitem:ac77708eadfbe7887bf4c192e5c53d101" id="r_ac77708eadfbe7887bf4c192e5c53d101"><td class="memItemLeft" align="right" valign="top">cci::cci_param&lt; delay_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac77708eadfbe7887bf4c192e5c53d101">wr_resp_delay</a> {&quot;wr_resp_delay&quot;, <a class="el" href="structscc_1_1delay__spec__type.html">delay_spec_type</a>&lt;USE_CYCLES&gt;::get_default_val()}</td></tr>
 <tr class="memdesc:ac77708eadfbe7887bf4c192e5c53d101"><td class="mdescLeft">&#160;</td><td class="mdescRight">write response delay in cycles if USE_CYCLES==true else in sc_core::sc_time  <br /></td></tr>
-<tr class="memitem:adde04b9e35595c07a40829bd48f40f2c" id="r_adde04b9e35595c07a40829bd48f40f2c"><td class="memItemLeft" align="right" valign="top">std::function&lt; int(<a class="el" href="#af75e83ad446e375408b7506def7e6105">memory</a>&lt; SIZE, BUSWIDTH &gt; &amp;, tlm::tlm_generic_payload &amp;, sc_core::sc_time &amp;delay)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adde04b9e35595c07a40829bd48f40f2c">operation_cb</a></td></tr>
-<tr class="memitem:a10110832129f1d98c7c8609d87015da5" id="r_a10110832129f1d98c7c8609d87015da5"><td class="memItemLeft" align="right" valign="top">std::function&lt; bool(<a class="el" href="#af75e83ad446e375408b7506def7e6105">memory</a>&lt; SIZE, BUSWIDTH &gt; &amp;, tlm::tlm_generic_payload &amp;, tlm::tlm_dmi &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10110832129f1d98c7c8609d87015da5">dmi_cb</a></td></tr>
+<tr class="memitem:a96fb4d00c25b5da45c37abc3f74c0e5b" id="r_a96fb4d00c25b5da45c37abc3f74c0e5b"><td class="memItemLeft" align="right" valign="top">std::function&lt; int(this_class &amp;, tlm::tlm_generic_payload &amp;, sc_core::sc_time &amp;delay)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96fb4d00c25b5da45c37abc3f74c0e5b">operation_cb</a></td></tr>
+<tr class="memitem:a644b062d972ee986b79c07a7b6bdd9f6" id="r_a644b062d972ee986b79c07a7b6bdd9f6"><td class="memItemLeft" align="right" valign="top">std::function&lt; bool(this_class &amp;, tlm::tlm_generic_payload &amp;, tlm::tlm_dmi &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a644b062d972ee986b79c07a7b6bdd9f6">dmi_cb</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -172,7 +173,7 @@ class scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;</div><p>si
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00070">70</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00073">73</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
 <a id="af09e9383c739cbdcb7773be3857e31a2" name="af09e9383c739cbdcb7773be3857e31a2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af09e9383c739cbdcb7773be3857e31a2">&#9670;&#160;</a></span>delay_type</h2>
@@ -188,7 +189,25 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00072">72</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00075">75</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+
+</div>
+</div>
+<a id="ade668d926bf053631be1c09897f8f4f6" name="ade668d926bf053631be1c09897f8f4f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade668d926bf053631be1c09897f8f4f6">&#9670;&#160;</a></span>this_class</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24, bool USE_CYCLES = false&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classscc_1_1memory.html">scc::memory</a>&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::this_class = <a class="el" href="#af75e83ad446e375408b7506def7e6105">memory</a>&lt;SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00076">76</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -218,7 +237,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS,
 </dl>
 <p>implementation details /////////////////////////////////////////////////////////////////////////// </p>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00197">197</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00203">203</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -248,7 +267,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00087">87</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00091">91</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -279,7 +298,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
 
 <p>return the size of the array </p>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00093">93</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00097">97</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -314,7 +333,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS,
 
 <p>handle the dmi functionality </p>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00312">312</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00337">337</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -341,7 +360,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS,
 
 <p>! handle the memory operation independent on interface function used </p>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00221">221</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00232">232</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -389,7 +408,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00131">131</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00135">135</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -418,7 +437,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00163">163</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00167">167</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -455,7 +474,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00109">109</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00113">113</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -492,7 +511,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00100">100</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00104">104</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -534,7 +553,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00145">145</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00149">149</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -555,7 +574,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
 
 <p>allow DMI accesses </p>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00114">114</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00118">118</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -581,12 +600,12 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00164">164</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00168">168</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
-<a id="a10110832129f1d98c7c8609d87015da5" name="a10110832129f1d98c7c8609d87015da5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10110832129f1d98c7c8609d87015da5">&#9670;&#160;</a></span>dmi_cb</h2>
+<a id="a644b062d972ee986b79c07a7b6bdd9f6" name="a644b062d972ee986b79c07a7b6bdd9f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a644b062d972ee986b79c07a7b6bdd9f6">&#9670;&#160;</a></span>dmi_cb</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -594,12 +613,12 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
 template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24, bool USE_CYCLES = false&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::function&lt;bool(<a class="el" href="#af75e83ad446e375408b7506def7e6105">memory</a>&lt;SIZE, BUSWIDTH&gt;&amp;, tlm::tlm_generic_payload&amp;, tlm::tlm_dmi&amp;)&gt; <a class="el" href="classscc_1_1memory.html">scc::memory</a>&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::dmi_cb</td>
+          <td class="memname">std::function&lt;bool(this_class&amp;, tlm::tlm_generic_payload&amp;, tlm::tlm_dmi&amp;)&gt; <a class="el" href="classscc_1_1memory.html">scc::memory</a>&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::dmi_cb</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00172">172</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00176">176</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -625,7 +644,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00161">161</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00165">165</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -653,12 +672,12 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
 
 <p>the real memory structure </p>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00153">153</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00157">157</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
-<a id="adde04b9e35595c07a40829bd48f40f2c" name="adde04b9e35595c07a40829bd48f40f2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adde04b9e35595c07a40829bd48f40f2c">&#9670;&#160;</a></span>operation_cb</h2>
+<a id="a96fb4d00c25b5da45c37abc3f74c0e5b" name="a96fb4d00c25b5da45c37abc3f74c0e5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96fb4d00c25b5da45c37abc3f74c0e5b">&#9670;&#160;</a></span>operation_cb</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -666,12 +685,12 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
 template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24, bool USE_CYCLES = false&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::function&lt;int(<a class="el" href="#af75e83ad446e375408b7506def7e6105">memory</a>&lt;SIZE, BUSWIDTH&gt;&amp;, tlm::tlm_generic_payload&amp;, sc_core::sc_time&amp; delay)&gt; <a class="el" href="classscc_1_1memory.html">scc::memory</a>&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::operation_cb</td>
+          <td class="memname">std::function&lt;int(this_class&amp;, tlm::tlm_generic_payload&amp;, sc_core::sc_time&amp; delay)&gt; <a class="el" href="classscc_1_1memory.html">scc::memory</a>&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;::operation_cb</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00171">171</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00175">175</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -691,7 +710,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
 
 <p>read response delay in cycles if USE_CYCLES==true else in sc_core::sc_time </p>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00118">118</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00122">122</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -711,7 +730,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
 
 <p>the target socket to connect to TLM </p>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00075">75</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00079">79</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -731,7 +750,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_
 
 <p>write response delay in cycles if USE_CYCLES==true else in sc_core::sc_time </p>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00122">122</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00126">126</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>

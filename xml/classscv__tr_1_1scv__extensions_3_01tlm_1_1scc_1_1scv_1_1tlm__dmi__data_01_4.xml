@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4" kind="class" language="C++" prot="public">
+    <compoundname>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">scv_extensions_base&lt; tlm::scc::scv::tlm_dmi_data &gt;</basecompoundref>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4_1a2027495c0c8d8c0140b4d4a355b9469b" prot="public" static="no" mutable="no">
+        <type>scv_extensions&lt; unsigned char * &gt;</type>
+        <definition>scv_extensions&lt;unsigned char*&gt; scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;::dmi_ptr</definition>
+        <argsstring></argsstring>
+        <name>dmi_ptr</name>
+        <qualifiedname>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;::dmi_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" line="131" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4_1a6f240455fe71858d73c8a2972b3067f4" prot="public" static="no" mutable="no">
+        <type>scv_extensions&lt; sc_dt::uint64 &gt;</type>
+        <definition>scv_extensions&lt;sc_dt::uint64&gt; scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;::dmi_start_address</definition>
+        <argsstring></argsstring>
+        <name>dmi_start_address</name>
+        <qualifiedname>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;::dmi_start_address</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" line="132" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4_1a49d3d382406fb528a92155f420924186" prot="public" static="no" mutable="no">
+        <type>scv_extensions&lt; sc_dt::uint64 &gt;</type>
+        <definition>scv_extensions&lt;sc_dt::uint64&gt; scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;::dmi_end_address</definition>
+        <argsstring></argsstring>
+        <name>dmi_end_address</name>
+        <qualifiedname>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;::dmi_end_address</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" line="133" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4_1ae4c2264b442e7b4991b3f08dd37d5669" prot="public" static="no" mutable="no">
+        <type>scv_extensions&lt; tlm::tlm_dmi::dmi_access_e &gt;</type>
+        <definition>scv_extensions&lt;tlm::tlm_dmi::dmi_access_e&gt; scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;::dmi_access</definition>
+        <argsstring></argsstring>
+        <name>dmi_access</name>
+        <qualifiedname>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;::dmi_access</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" line="134" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4_1a0725c4d654b8df15f25aaf864f607ce7" prot="public" static="no" mutable="no">
+        <type>scv_extensions&lt; sc_dt::uint64 &gt;</type>
+        <definition>scv_extensions&lt;sc_dt::uint64&gt; scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;::dmi_read_latency</definition>
+        <argsstring></argsstring>
+        <name>dmi_read_latency</name>
+        <qualifiedname>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;::dmi_read_latency</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" line="135" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4_1a418cc2d59997d8bd14cfe81d2bf926dc" prot="public" static="no" mutable="no">
+        <type>scv_extensions&lt; sc_dt::uint64 &gt;</type>
+        <definition>scv_extensions&lt;sc_dt::uint64&gt; scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;::dmi_write_latency</definition>
+        <argsstring></argsstring>
+        <name>dmi_write_latency</name>
+        <qualifiedname>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;::dmi_write_latency</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" line="136" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4_1a813da462b51e3db9daaec1ab95fd72d2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;::SCV_EXTENSIONS_CTOR</definition>
+        <argsstring>(tlm::scc::scv::tlm_dmi_data)</argsstring>
+        <name>SCV_EXTENSIONS_CTOR</name>
+        <qualifiedname>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;::SCV_EXTENSIONS_CTOR</qualifiedname>
+        <param>
+          <type><ref refid="classtlm_1_1scc_1_1scv_1_1tlm__dmi__data" kindref="compound">tlm::scc::scv::tlm_dmi_data</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" line="137" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" bodystart="137" bodyend="145"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>scv_extensions_base&lt; tlm::scc::scv::tlm_dmi_data &gt;</label>
+      </node>
+      <node id="1">
+        <label>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;</label>
+        <link refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>scv_enum_base&lt; tlm::tlm_dmi::dmi_access_e &gt;</label>
+      </node>
+      <node id="2">
+        <label>scv_extensions_base&lt; tlm::scc::scv::tlm_dmi_data &gt;</label>
+      </node>
+      <node id="1">
+        <label>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;</label>
+        <link refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>dmi_access</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scv_tr::scv_extensions&lt; tlm::tlm_dmi::dmi_access_e &gt;</label>
+        <link refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1tlm__dmi_1_1dmi__access__e_01_4"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" line="129" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data_ext.h" bodystart="129" bodyend="146"/>
+    <listofallmembers>
+      <member refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4_1ae4c2264b442e7b4991b3f08dd37d5669" prot="public" virt="non-virtual"><scope>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;</scope><name>dmi_access</name></member>
+      <member refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4_1a49d3d382406fb528a92155f420924186" prot="public" virt="non-virtual"><scope>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;</scope><name>dmi_end_address</name></member>
+      <member refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4_1a2027495c0c8d8c0140b4d4a355b9469b" prot="public" virt="non-virtual"><scope>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;</scope><name>dmi_ptr</name></member>
+      <member refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4_1a0725c4d654b8df15f25aaf864f607ce7" prot="public" virt="non-virtual"><scope>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;</scope><name>dmi_read_latency</name></member>
+      <member refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4_1a6f240455fe71858d73c8a2972b3067f4" prot="public" virt="non-virtual"><scope>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;</scope><name>dmi_start_address</name></member>
+      <member refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4_1a418cc2d59997d8bd14cfe81d2bf926dc" prot="public" virt="non-virtual"><scope>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;</scope><name>dmi_write_latency</name></member>
+      <member refid="classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4_1a813da462b51e3db9daaec1ab95fd72d2" prot="public" virt="non-virtual"><scope>scv_tr::scv_extensions&lt; tlm::scc::scv::tlm_dmi_data &gt;</scope><name>SCV_EXTENSIONS_CTOR</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

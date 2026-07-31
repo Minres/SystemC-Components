@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1detail_1_1optional__delete__ctor__base_3_01T_00_01false_00_01false_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__delete__ctor__base_3_01T_00_01false_00_01false_01_4_1a7c85bb078cfb9bbccc155fbaa2b47965" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;::optional_delete_ctor_base</definition>
+        <argsstring>()=default</argsstring>
+        <name>optional_delete_ctor_base</name>
+        <qualifiedname>nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;::optional_delete_ctor_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="511" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__delete__ctor__base_3_01T_00_01false_00_01false_01_4_1a17d7b6d3cfdba237ab5db763d2387e42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;::optional_delete_ctor_base</definition>
+        <argsstring>(const optional_delete_ctor_base &amp;)=delete</argsstring>
+        <name>optional_delete_ctor_base</name>
+        <qualifiedname>nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;::optional_delete_ctor_base</qualifiedname>
+        <param>
+          <type>const optional_delete_ctor_base &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="512" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__delete__ctor__base_3_01T_00_01false_00_01false_01_4_1a76761b55c2fad61b087478693fbe8aba" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;::optional_delete_ctor_base</definition>
+        <argsstring>(optional_delete_ctor_base &amp;&amp;) noexcept=delete</argsstring>
+        <name>optional_delete_ctor_base</name>
+        <qualifiedname>nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;::optional_delete_ctor_base</qualifiedname>
+        <param>
+          <type>optional_delete_ctor_base &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="513" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__delete__ctor__base_3_01T_00_01false_00_01false_01_4_1adc20a583aa7f08003a99874264148211" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>optional_delete_ctor_base &amp;</type>
+        <definition>optional_delete_ctor_base &amp; nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;::operator=</definition>
+        <argsstring>(const optional_delete_ctor_base &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;::operator=</qualifiedname>
+        <param>
+          <type>const optional_delete_ctor_base &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="514" column="31"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__delete__ctor__base_3_01T_00_01false_00_01false_01_4_1a39091c76b9d330290af2ec85e2f7bc8b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>optional_delete_ctor_base &amp;</type>
+        <definition>optional_delete_ctor_base &amp; nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;::operator=</definition>
+        <argsstring>(optional_delete_ctor_base &amp;&amp;) noexcept=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;::operator=</qualifiedname>
+        <param>
+          <type>optional_delete_ctor_base &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="515" column="31"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="510" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="510" bodyend="516"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1detail_1_1optional__delete__ctor__base_3_01T_00_01false_00_01false_01_4_1adc20a583aa7f08003a99874264148211" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;</scope><name>operator=</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__delete__ctor__base_3_01T_00_01false_00_01false_01_4_1a39091c76b9d330290af2ec85e2f7bc8b" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;</scope><name>operator=</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__delete__ctor__base_3_01T_00_01false_00_01false_01_4_1a7c85bb078cfb9bbccc155fbaa2b47965" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;</scope><name>optional_delete_ctor_base</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__delete__ctor__base_3_01T_00_01false_00_01false_01_4_1a17d7b6d3cfdba237ab5db763d2387e42" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;</scope><name>optional_delete_ctor_base</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__delete__ctor__base_3_01T_00_01false_00_01false_01_4_1a76761b55c2fad61b087478693fbe8aba" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_delete_ctor_base&lt; T, false, false &gt;</scope><name>optional_delete_ctor_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

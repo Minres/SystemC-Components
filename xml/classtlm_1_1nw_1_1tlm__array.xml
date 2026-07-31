@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1nw_1_1tlm__array" kind="class" language="C++" prot="public">
+    <compoundname>tlm::nw::tlm_array</compoundname>
+    <basecompoundref prot="private" virt="non-virtual">std::vector&lt; T &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classtlm_1_1nw_1_1tlm__array_1a297e07e25af121b872c0de700b05486f" prot="private" static="no">
+        <type>std::vector&lt; T &gt;</type>
+        <definition>typedef std::vector&lt;T&gt; tlm::nw::tlm_array&lt; T &gt;::base_type</definition>
+        <argsstring></argsstring>
+        <name>base_type</name>
+        <qualifiedname>tlm::nw::tlm_array::base_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" line="45" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1nw_1_1tlm__array_1ac5808e43d70589b931abbfbdebbbf2d5" prot="private" static="no">
+        <type>base_type::size_type</type>
+        <definition>typedef base_type::size_type tlm::nw::tlm_array&lt; T &gt;::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>tlm::nw::tlm_array::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" line="46" column="43" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classtlm_1_1nw_1_1tlm__array_1a3835a13bf80873f088997717c19398ad" prot="public" static="yes" mutable="no">
+        <type>const char *const</type>
+        <definition>const char* const tlm::nw::tlm_array&lt; T &gt;::kind_string</definition>
+        <argsstring></argsstring>
+        <name>kind_string</name>
+        <qualifiedname>tlm::nw::tlm_array::kind_string</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" line="76" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classtlm_1_1nw_1_1tlm__array_1aa77fa1fabbcc8b182b0107ef93182b1f" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; size_type &gt;</type>
+        <definition>std::vector&lt;size_type&gt; tlm::nw::tlm_array&lt; T &gt;::m_entries</definition>
+        <argsstring></argsstring>
+        <name>m_entries</name>
+        <qualifiedname>tlm::nw::tlm_array::m_entries</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" line="97" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1nw_1_1tlm__array_1a52ce37e066522603f6b906e5ce700d18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::nw::tlm_array&lt; T &gt;::tlm_array</definition>
+        <argsstring>(size_type size=0)</argsstring>
+        <name>tlm_array</name>
+        <qualifiedname>tlm::nw::tlm_array::tlm_array</qualifiedname>
+        <param>
+          <type>size_type</type>
+          <declname>size</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" line="50" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" bodystart="50" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1nw_1_1tlm__array_1ac0df0f9365295431b5f390f6d43f8890" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::tlm_array&lt; T &gt;::expand</definition>
+        <argsstring>(size_type new_size)</argsstring>
+        <name>expand</name>
+        <qualifiedname>tlm::nw::tlm_array::expand</qualifiedname>
+        <param>
+          <type>size_type</type>
+          <declname>new_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" line="69" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" bodystart="69" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1nw_1_1tlm__array_1aa30e0238d87bbb971d6fb5d518d13f57" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * tlm::nw::tlm_array&lt; T &gt;::kind</definition>
+        <argsstring>() const</argsstring>
+        <name>kind</name>
+        <qualifiedname>tlm::nw::tlm_array::kind</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" line="77" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1nw_1_1tlm__array_1a3df705fa1b084ec96b3e22d5cc81e00d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::tlm_array&lt; T &gt;::insert_in_cache</definition>
+        <argsstring>(T *p)</argsstring>
+        <name>insert_in_cache</name>
+        <qualifiedname>tlm::nw::tlm_array::insert_in_cache</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" line="81" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" bodystart="81" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1nw_1_1tlm__array_1a0a572343b4e0f851c6374f47c81e1121" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::tlm_array&lt; T &gt;::free_entire_cache</definition>
+        <argsstring>()</argsstring>
+        <name>free_entire_cache</name>
+        <qualifiedname>tlm::nw::tlm_array::free_entire_cache</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" line="87" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" bodystart="87" bodyend="94"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>std::vector&lt; T &gt;</label>
+      </node>
+      <node id="1">
+        <label>tlm::nw::tlm_array&lt; T &gt;</label>
+        <link refid="classtlm_1_1nw_1_1tlm__array"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>std::vector&lt; T &gt;</label>
+      </node>
+      <node id="1">
+        <label>tlm::nw::tlm_array&lt; T &gt;</label>
+        <link refid="classtlm_1_1nw_1_1tlm__array"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" line="44" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/tlm_array.h" bodystart="44" bodyend="98"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1nw_1_1tlm__array_1a297e07e25af121b872c0de700b05486f" prot="private" virt="non-virtual"><scope>tlm::nw::tlm_array</scope><name>base_type</name></member>
+      <member refid="classtlm_1_1nw_1_1tlm__array_1ac0df0f9365295431b5f390f6d43f8890" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_array</scope><name>expand</name></member>
+      <member refid="classtlm_1_1nw_1_1tlm__array_1a0a572343b4e0f851c6374f47c81e1121" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_array</scope><name>free_entire_cache</name></member>
+      <member refid="classtlm_1_1nw_1_1tlm__array_1a3df705fa1b084ec96b3e22d5cc81e00d" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_array</scope><name>insert_in_cache</name></member>
+      <member refid="classtlm_1_1nw_1_1tlm__array_1aa30e0238d87bbb971d6fb5d518d13f57" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_array</scope><name>kind</name></member>
+      <member refid="classtlm_1_1nw_1_1tlm__array_1a3835a13bf80873f088997717c19398ad" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_array</scope><name>kind_string</name></member>
+      <member refid="classtlm_1_1nw_1_1tlm__array_1aa77fa1fabbcc8b182b0107ef93182b1f" prot="protected" virt="non-virtual"><scope>tlm::nw::tlm_array</scope><name>m_entries</name></member>
+      <member refid="classtlm_1_1nw_1_1tlm__array_1ac5808e43d70589b931abbfbdebbbf2d5" prot="private" virt="non-virtual"><scope>tlm::nw::tlm_array</scope><name>size_type</name></member>
+      <member refid="classtlm_1_1nw_1_1tlm__array_1a52ce37e066522603f6b906e5ce700d18" prot="public" virt="non-virtual"><scope>tlm::nw::tlm_array</scope><name>tlm_array</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

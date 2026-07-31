@@ -1,3 +1,15 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if.html" title="The TLM transaction extensions recorder interface." alt="" coords="5,5,164,60"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,129,112,155"/>
+<area shape="rect" id="Node000001" href="$classutil_1_1bzip2__streambuf.html" title=" " alt="" coords="160,5,303,31"/>
+<area shape="poly" id="edge599_Node000000_Node000001" title=" " alt="" coords="76,117,112,78,159,40,182,28,184,33,161,44,115,81,80,120"/>
+<area shape="rect" id="Node000002" href="$classutil_1_1gzip__streambuf.html" title=" " alt="" coords="164,55,299,80"/>
+<area shape="poly" id="edge600_Node000000_Node000002" title=" " alt="" coords="94,120,159,89,189,78,191,83,161,94,96,125"/>
+<area shape="rect" id="Node000003" href="$classutil_1_1lz4c__steambuf.html" title=" " alt="" coords="165,104,297,129"/>
+<area shape="poly" id="edge601_Node000000_Node000003" title=" " alt="" coords="126,130,164,124,165,129,126,135"/>
+<area shape="rect" id="Node000004" href="$classutil_1_1lz4d__streambuf.html" title=" " alt="" coords="163,153,299,179"/>
+<area shape="poly" id="edge602_Node000000_Node000004" title=" " alt="" coords="126,149,163,154,163,159,125,154"/>
+<area shape="rect" id="Node000005" href="$classutil_1_1xz__streambuf.html" title=" " alt="" coords="168,203,295,228"/>
+<area shape="poly" id="edge603_Node000000_Node000005" title=" " alt="" coords="98,158,161,188,194,200,192,205,159,192,96,163"/>
+<area shape="rect" id="Node000006" href="$classutil_1_1zstd__streambuf.html" title=" " alt="" coords="163,252,300,277"/>
+<area shape="poly" id="edge604_Node000000_Node000006" title=" " alt="" coords="81,164,116,201,161,237,187,249,185,254,159,242,113,205,77,167"/>
 </map>

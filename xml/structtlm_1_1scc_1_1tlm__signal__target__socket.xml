@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1tlm__signal__target__socket" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::tlm_signal_target_socket</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_base_target_socket&lt; 0, tlm_signal_fw_transport_if&lt; bool, tlm_signal_baseprotocol_types&lt; bool &gt; &gt;, tlm_signal_bw_transport_if&lt; bool, tlm_signal_baseprotocol_types&lt; bool &gt; &gt;, 1, sc_core::SC_ONE_OR_MORE_BOUND &gt;</basecompoundref>
+    <derivedcompoundref refid="classtlm_1_1scc_1_1signal__target__mixin" prot="public" virt="non-virtual">tlm::scc::signal_target_mixin&lt; tlm_signal_target_socket&lt; bool &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classtlm_1_1scc_1_1signal__target__mixin" prot="public" virt="non-virtual">tlm::scc::signal_target_mixin&lt; tlm_signal_target_socket&lt; sc_dt::sc_logic &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classtlm_1_1scc_1_1signal__target__mixin" prot="public" virt="non-virtual">tlm::scc::signal_target_mixin&lt; tlm_signal_opt_target_socket&lt; bool &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classtlm_1_1scc_1_1signal__target__mixin" prot="public" virt="non-virtual">tlm::scc::signal_target_mixin&lt; tlm_signal_opt_target_socket&lt; sc_dt::sc_logic &gt; &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename SIG</type>
+        <defval>bool</defval>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval><ref refid="structtlm_1_1scc_1_1tlm__signal__baseprotocol__types" kindref="compound">tlm_signal_baseprotocol_types</ref>&lt;SIG&gt;</defval>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>N</declname>
+        <defname>N</defname>
+        <defval>1</defval>
+      </param>
+      <param>
+        <type>sc_core::sc_port_policy</type>
+        <declname>POL</declname>
+        <defname>POL</defname>
+        <defval>sc_core::SC_ONE_OR_MORE_BOUND</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structtlm_1_1scc_1_1tlm__signal__target__socket_1ac63fd4bb7b8762cf14b78992737ec343" prot="public" static="no">
+        <type>SIG</type>
+        <definition>using tlm::scc::tlm_signal_target_socket&lt; SIG, TYPES, N, POL &gt;::tlm_signal_type =  SIG</definition>
+        <argsstring></argsstring>
+        <name>tlm_signal_type</name>
+        <qualifiedname>tlm::scc::tlm_signal_target_socket::tlm_signal_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" line="90" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtlm_1_1scc_1_1tlm__signal__target__socket_1a97a17f8a5a20b80053e48d1ad1d1b46a" prot="public" static="no">
+        <type>TYPES</type>
+        <definition>using tlm::scc::tlm_signal_target_socket&lt; SIG, TYPES, N, POL &gt;::protocol_types =  TYPES</definition>
+        <argsstring></argsstring>
+        <name>protocol_types</name>
+        <qualifiedname>tlm::scc::tlm_signal_target_socket::protocol_types</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" line="91" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtlm_1_1scc_1_1tlm__signal__target__socket_1aa11061ff43d49d408d794833d9a80461" prot="public" static="no">
+        <type>typename TYPES::tlm_payload_type</type>
+        <definition>using tlm::scc::tlm_signal_target_socket&lt; SIG, TYPES, N, POL &gt;::transaction_type =  typename TYPES::tlm_payload_type</definition>
+        <argsstring></argsstring>
+        <name>transaction_type</name>
+        <qualifiedname>tlm::scc::tlm_signal_target_socket::transaction_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" line="92" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtlm_1_1scc_1_1tlm__signal__target__socket_1a136202533def9c7e6de8939edd57feca" prot="public" static="no">
+        <type>typename TYPES::tlm_phase_type</type>
+        <definition>using tlm::scc::tlm_signal_target_socket&lt; SIG, TYPES, N, POL &gt;::phase_type =  typename TYPES::tlm_phase_type</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>tlm::scc::tlm_signal_target_socket::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" line="93" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__target__socket_1ae5330bb068837b6db1aafeac9170b54b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_signal_target_socket&lt; SIG, TYPES, N, POL &gt;::tlm_signal_target_socket</definition>
+        <argsstring>()</argsstring>
+        <name>tlm_signal_target_socket</name>
+        <qualifiedname>tlm::scc::tlm_signal_target_socket::tlm_signal_target_socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" line="95" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" bodystart="95" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__target__socket_1a2781947bbba31f455e8d062ef1a8b64d" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_signal_target_socket&lt; SIG, TYPES, N, POL &gt;::tlm_signal_target_socket</definition>
+        <argsstring>(const char *name)</argsstring>
+        <name>tlm_signal_target_socket</name>
+        <qualifiedname>tlm::scc::tlm_signal_target_socket::tlm_signal_target_socket</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" line="98" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" bodystart="98" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__target__socket_1a27a069d24322cdf244dbf5086cd008ba" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>virtual const char * tlm::scc::tlm_signal_target_socket&lt; SIG, TYPES, N, POL &gt;::kind</definition>
+        <argsstring>() const</argsstring>
+        <name>kind</name>
+        <qualifiedname>tlm::scc::tlm_signal_target_socket::kind</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" line="101" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" bodystart="101" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__signal__target__socket_1a3c7661e60151a87431c1fd126e48d471" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>type_index</type>
+        <definition>virtual type_index tlm::scc::tlm_signal_target_socket&lt; SIG, TYPES, N, POL &gt;::get_protocol_types</definition>
+        <argsstring>() const</argsstring>
+        <name>get_protocol_types</name>
+        <qualifiedname>tlm::scc::tlm_signal_target_socket::get_protocol_types</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" line="103" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" bodystart="103" bodyend="103"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5">
+        <label>tlm::scc::signal_target_mixin&lt; tlm_signal_opt_target_socket&lt; bool &gt; &gt;</label>
+        <link refid="classtlm_1_1scc_1_1signal__target__mixin"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>tlm::scc::signal_target_mixin&lt; tlm_signal_opt_target_socket&lt; sc_dt::sc_logic &gt; &gt;</label>
+        <link refid="classtlm_1_1scc_1_1signal__target__mixin"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::scc::signal_target_mixin&lt; tlm_signal_target_socket&lt; bool &gt; &gt;</label>
+        <link refid="classtlm_1_1scc_1_1signal__target__mixin"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tlm::scc::signal_target_mixin&lt; tlm_signal_target_socket&lt; sc_dt::sc_logic &gt; &gt;</label>
+        <link refid="classtlm_1_1scc_1_1signal__target__mixin"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::tlm_signal_target_socket&lt; SIG, TYPES, N, POL &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__signal__target__socket"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_base_target_socket&lt; 0, tlm_signal_fw_transport_if&lt; bool, tlm_signal_baseprotocol_types&lt; bool &gt; &gt;, tlm_signal_bw_transport_if&lt; bool, tlm_signal_baseprotocol_types&lt; bool &gt; &gt;, 1, sc_core::SC_ONE_OR_MORE_BOUND &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::scc::tlm_signal_target_socket&lt; SIG, TYPES, N, POL &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__signal__target__socket"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_base_target_socket&lt; 0, tlm_signal_fw_transport_if&lt; bool, tlm_signal_baseprotocol_types&lt; bool &gt; &gt;, tlm_signal_bw_transport_if&lt; bool, tlm_signal_baseprotocol_types&lt; bool &gt; &gt;, 1, sc_core::SC_ONE_OR_MORE_BOUND &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" line="88" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_signal_sockets.h" bodystart="89" bodyend="104"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__target__socket_1a3c7661e60151a87431c1fd126e48d471" prot="public" virt="virtual"><scope>tlm::scc::tlm_signal_target_socket</scope><name>get_protocol_types</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__target__socket_1a27a069d24322cdf244dbf5086cd008ba" prot="public" virt="virtual"><scope>tlm::scc::tlm_signal_target_socket</scope><name>kind</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__target__socket_1a136202533def9c7e6de8939edd57feca" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_target_socket</scope><name>phase_type</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__target__socket_1a97a17f8a5a20b80053e48d1ad1d1b46a" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_target_socket</scope><name>protocol_types</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__target__socket_1ae5330bb068837b6db1aafeac9170b54b" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_target_socket</scope><name>tlm_signal_target_socket</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__target__socket_1a2781947bbba31f455e8d062ef1a8b64d" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_target_socket</scope><name>tlm_signal_target_socket</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__target__socket_1ac63fd4bb7b8762cf14b78992737ec343" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_target_socket</scope><name>tlm_signal_type</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__signal__target__socket_1aa11061ff43d49d408d794833d9a80461" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_signal_target_socket</scope><name>transaction_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

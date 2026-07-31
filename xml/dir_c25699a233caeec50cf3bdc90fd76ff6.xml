@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_c25699a233caeec50cf3bdc90fd76ff6" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv</compoundname>
+    <innerfile refid="chi__recorder_8h">chi_recorder.h</innerfile>
+    <innerfile refid="chi_2scv_2recorder__modules_8h">recorder_modules.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/"/>
+  </compounddef>
+</doxygen>

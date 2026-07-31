@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1vcd__mt__trace__file_1_1trace__entry" kind="struct" language="C++" prot="private">
+    <compoundname>scc::vcd_mt_trace_file::trace_entry</compoundname>
+    <basecompoundref refid="structscc_1_1observer_1_1notification__handle" prot="public" virt="non-virtual">scc::observer::notification_handle</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1vcd__mt__trace__file_1_1trace__entry_1a8c15434b7a7223028cc85acc365420e5" prot="public" static="no" mutable="no">
+        <type>bool(*</type>
+        <definition>bool(* scc::vcd_mt_trace_file::trace_entry::compare_and_update) (trace::vcd_trace *)</definition>
+        <argsstring>)(trace::vcd_trace *)</argsstring>
+        <name>compare_and_update</name>
+        <qualifiedname>scc::vcd_mt_trace_file::trace_entry::compare_and_update</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.hh" line="143" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.hh" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1vcd__mt__trace__file_1_1trace__entry_1abd4592291d65c26c1a794107dd3a8b3e" prot="public" static="no" mutable="no">
+        <type><ref refid="structscc_1_1trace_1_1vcd__trace" kindref="compound">trace::vcd_trace</ref> *</type>
+        <definition>trace::vcd_trace* scc::vcd_mt_trace_file::trace_entry::trc</definition>
+        <argsstring></argsstring>
+        <name>trc</name>
+        <qualifiedname>scc::vcd_mt_trace_file::trace_entry::trc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.hh" line="144" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.hh" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1vcd__mt__trace__file_1_1trace__entry_1a81f6be77190b9a95b4a4fca6cbf762d7" prot="public" static="no" mutable="no">
+        <type>vcd_mt_trace_file *</type>
+        <definition>vcd_mt_trace_file* scc::vcd_mt_trace_file::trace_entry::that</definition>
+        <argsstring></argsstring>
+        <name>that</name>
+        <qualifiedname>scc::vcd_mt_trace_file::trace_entry::that</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.hh" line="145" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.hh" bodystart="145" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1vcd__mt__trace__file_1_1trace__entry_1a275c857a681c5a533cdb299e0eb87bbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::vcd_mt_trace_file::trace_entry::notify</definition>
+        <argsstring>() override</argsstring>
+        <name>notify</name>
+        <qualifiedname>scc::vcd_mt_trace_file::trace_entry::notify</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.hh" line="146" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.cpp" bodystart="182" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1vcd__mt__trace__file_1_1trace__entry_1a5546eeb1c463964abd450ee9b77cc525" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::vcd_mt_trace_file::trace_entry::trace_entry</definition>
+        <argsstring>(vcd_mt_trace_file *owner, bool(*compare_and_update)(trace::vcd_trace *), trace::vcd_trace *trc)</argsstring>
+        <name>trace_entry</name>
+        <qualifiedname>scc::vcd_mt_trace_file::trace_entry::trace_entry</qualifiedname>
+        <param>
+          <type>vcd_mt_trace_file *</type>
+          <declname>owner</declname>
+        </param>
+        <param>
+          <type>bool(*)(<ref refid="structscc_1_1trace_1_1vcd__trace" kindref="compound">trace::vcd_trace</ref> *)</type>
+          <declname>compare_and_update</declname>
+        </param>
+        <param>
+          <type><ref refid="structscc_1_1trace_1_1vcd__trace" kindref="compound">trace::vcd_trace</ref> *</type>
+          <declname>trc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.hh" line="147" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.hh" bodystart="147" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1vcd__mt__trace__file_1_1trace__entry_1a4d1cf942fec5db2eeea10aaf49c32dd9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual scc::vcd_mt_trace_file::trace_entry::~trace_entry</definition>
+        <argsstring>()</argsstring>
+        <name>~trace_entry</name>
+        <qualifiedname>scc::vcd_mt_trace_file::trace_entry::~trace_entry</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.hh" line="151" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.hh" bodystart="151" bodyend="151"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>scc::observer::notification_handle</label>
+        <link refid="structscc_1_1observer_1_1notification__handle"/>
+      </node>
+      <node id="1">
+        <label>scc::vcd_mt_trace_file::trace_entry</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5">
+        <label>sc_core::sc_trace_file</label>
+      </node>
+      <node id="6">
+        <label>scc::observer</label>
+        <link refid="structscc_1_1observer"/>
+      </node>
+      <node id="2">
+        <label>scc::observer::notification_handle</label>
+        <link refid="structscc_1_1observer_1_1notification__handle"/>
+      </node>
+      <node id="3">
+        <label>scc::trace::vcd_trace</label>
+        <link refid="structscc_1_1trace_1_1vcd__trace"/>
+      </node>
+      <node id="4">
+        <label>scc::vcd_mt_trace_file</label>
+        <link refid="structscc_1_1vcd__mt__trace__file"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>scc::vcd_mt_trace_file::trace_entry</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>trc</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>that</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.hh" line="142" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/vcd_mt_trace.hh" bodystart="142" bodyend="152"/>
+    <listofallmembers>
+      <member refid="structscc_1_1vcd__mt__trace__file_1_1trace__entry_1a8c15434b7a7223028cc85acc365420e5" prot="public" virt="non-virtual"><scope>scc::vcd_mt_trace_file::trace_entry</scope><name>compare_and_update</name></member>
+      <member refid="structscc_1_1vcd__mt__trace__file_1_1trace__entry_1a275c857a681c5a533cdb299e0eb87bbb" prot="public" virt="non-virtual"><scope>scc::vcd_mt_trace_file::trace_entry</scope><name>notify</name></member>
+      <member refid="structscc_1_1vcd__mt__trace__file_1_1trace__entry_1a81f6be77190b9a95b4a4fca6cbf762d7" prot="public" virt="non-virtual"><scope>scc::vcd_mt_trace_file::trace_entry</scope><name>that</name></member>
+      <member refid="structscc_1_1vcd__mt__trace__file_1_1trace__entry_1a5546eeb1c463964abd450ee9b77cc525" prot="public" virt="non-virtual"><scope>scc::vcd_mt_trace_file::trace_entry</scope><name>trace_entry</name></member>
+      <member refid="structscc_1_1vcd__mt__trace__file_1_1trace__entry_1abd4592291d65c26c1a794107dd3a8b3e" prot="public" virt="non-virtual"><scope>scc::vcd_mt_trace_file::trace_entry</scope><name>trc</name></member>
+      <member refid="structscc_1_1observer_1_1notification__handle_1a43b6ffffeebf3b9b6861ae9634458d50" prot="public" virt="virtual"><scope>scc::vcd_mt_trace_file::trace_entry</scope><name>~notification_handle</name></member>
+      <member refid="structscc_1_1vcd__mt__trace__file_1_1trace__entry_1a4d1cf942fec5db2eeea10aaf49c32dd9" prot="public" virt="virtual"><scope>scc::vcd_mt_trace_file::trace_entry</scope><name>~trace_entry</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

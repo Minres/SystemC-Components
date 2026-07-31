@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -269,210 +269,197 @@ $(function(){initNavTree('ring__buffer_8h_source.html','',''); });
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span></div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a6cea186e2be1e7f8af6eb067bc38cb85">  196</a></span>    <a class="code hl_function" href="classutil_1_1ring__buffer.html#a6cea186e2be1e7f8af6eb067bc38cb85">ring_buffer</a>(<a class="code hl_function" href="classutil_1_1ring__buffer.html#a1b2eb75a2668ac1d7e5cb43e57d08708">ring_buffer</a>&amp;&amp; other) = <span class="keyword">delete</span>;</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span></div>
-<div class="foldopen" id="foldopen00199" data-start="{" data-end="}">
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a11d663b368ad724f26dd1107ccbd2b18">  199</a></span>    <a class="code hl_function" href="classutil_1_1ring__buffer.html#a11d663b368ad724f26dd1107ccbd2b18">ring_buffer</a>(std::initializer_list&lt;T&gt; il)</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    : buf(std::unique_ptr&lt;T[]&gt;(new T[il.<a class="code hl_function" href="classutil_1_1ring__buffer.html#a4c62989a903135adb8f2bc7922950857">size</a>()]))</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    , cap(il.<a class="code hl_function" href="classutil_1_1ring__buffer.html#a4c62989a903135adb8f2bc7922950857">size</a>())</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    , front_idx(0)</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    , back_idx(0)</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    , sz(il.<a class="code hl_function" href="classutil_1_1ring__buffer.html#a4c62989a903135adb8f2bc7922950857">size</a>()) {</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <span class="keywordtype">size_t</span> i = 0;</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span> v : il)</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>            buf[i++] = std::move(v);</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    }</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#ac6f1a89c766ac3a2a3b8574ade663a9a">  199</a></span>    <a class="code hl_function" href="classutil_1_1ring__buffer.html#a1b2eb75a2668ac1d7e5cb43e57d08708">ring_buffer</a>&amp; <a class="code hl_function" href="classutil_1_1ring__buffer.html#ac6f1a89c766ac3a2a3b8574ade663a9a">operator=</a>(<a class="code hl_function" href="classutil_1_1ring__buffer.html#a1b2eb75a2668ac1d7e5cb43e57d08708">ring_buffer</a> <span class="keyword">const</span>&amp; rhs) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <a class="code hl_function" href="classutil_1_1ring__buffer.html#a1b2eb75a2668ac1d7e5cb43e57d08708">ring_buffer</a>&amp; <a class="code hl_function" href="classutil_1_1ring__buffer.html#ac6f1a89c766ac3a2a3b8574ade663a9a">operator=</a>(<a class="code hl_function" href="classutil_1_1ring__buffer.html#a1b2eb75a2668ac1d7e5cb43e57d08708">ring_buffer</a>&amp;&amp; rhs) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span></div>
+<div class="foldopen" id="foldopen00204" data-start="{" data-end="}">
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#aac40a4193266a276bc62e475b0edeea3">  204</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#aac40a4193266a276bc62e475b0edeea3">operator==</a>(<a class="code hl_function" href="classutil_1_1ring__buffer.html#a1b2eb75a2668ac1d7e5cb43e57d08708">ring_buffer&lt;T&gt;</a> <span class="keyword">const</span>&amp; other) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <span class="keywordflow">if</span>(cap == other.cap &amp;&amp; sz == other.sz) {</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>            <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; sz; i++) {</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>                <span class="keywordtype">size_t</span> idx1 = (front_idx + i) % cap;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>                <span class="keywordtype">size_t</span> idx2 = (other.front_idx + i) % other.cap;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>                <span class="keywordflow">if</span>(buf[idx1] != other.buf[idx2])</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>            }</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        }</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    }</div>
 </div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span></div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#ac6f1a89c766ac3a2a3b8574ade663a9a">  211</a></span>    <a class="code hl_function" href="classutil_1_1ring__buffer.html#a1b2eb75a2668ac1d7e5cb43e57d08708">ring_buffer</a>&amp; <a class="code hl_function" href="classutil_1_1ring__buffer.html#ac6f1a89c766ac3a2a3b8574ade663a9a">operator=</a>(<a class="code hl_function" href="classutil_1_1ring__buffer.html#a1b2eb75a2668ac1d7e5cb43e57d08708">ring_buffer</a> <span class="keyword">const</span>&amp; rhs) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <a class="code hl_function" href="classutil_1_1ring__buffer.html#a1b2eb75a2668ac1d7e5cb43e57d08708">ring_buffer</a>&amp; <a class="code hl_function" href="classutil_1_1ring__buffer.html#ac6f1a89c766ac3a2a3b8574ade663a9a">operator=</a>(<a class="code hl_function" href="classutil_1_1ring__buffer.html#a1b2eb75a2668ac1d7e5cb43e57d08708">ring_buffer</a>&amp;&amp; rhs) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span></div>
-<div class="foldopen" id="foldopen00216" data-start="{" data-end="}">
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#aac40a4193266a276bc62e475b0edeea3">  216</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#aac40a4193266a276bc62e475b0edeea3">operator==</a>(<a class="code hl_function" href="classutil_1_1ring__buffer.html#a1b2eb75a2668ac1d7e5cb43e57d08708">ring_buffer&lt;T&gt;</a> <span class="keyword">const</span>&amp; other) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <span class="keywordflow">if</span>(cap == other.cap &amp;&amp; sz == other.sz) {</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>            <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; sz; i++) {</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>                <span class="keywordtype">size_t</span> idx1 = (front_idx + i) % cap;</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>                <span class="keywordtype">size_t</span> idx2 = (other.front_idx + i) % other.cap;</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>                <span class="keywordflow">if</span>(buf[idx1] != other.buf[idx2])</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>            }</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        }</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    }</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span></div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a034ba5df2dc1ab7e9920972ba9588ba6">  218</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#a034ba5df2dc1ab7e9920972ba9588ba6">operator!=</a>(<a class="code hl_function" href="classutil_1_1ring__buffer.html#a1b2eb75a2668ac1d7e5cb43e57d08708">ring_buffer&lt;T&gt;</a> <span class="keyword">const</span>&amp; other) <span class="keyword">const</span> <span class="keyword">noexcept</span> { <span class="keywordflow">return</span> !<a class="code hl_function" href="classutil_1_1ring__buffer.html#aac40a4193266a276bc62e475b0edeea3">operator==</a>(other); }</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span></div>
+<div class="foldopen" id="foldopen00221" data-start="{" data-end="}">
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a49deb06dbca8dbfdc0c397b52f356c49">  221</a></span>    <span class="keyword">operator</span> std::vector&lt;T&gt;()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        std::vector&lt;T&gt; v;</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        v.reserve(sz);</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        std::copy(std::begin(*<span class="keyword">this</span>), std::end(*<span class="keyword">this</span>), std::back_inserter(v));</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="keywordflow">return</span> v;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    }</div>
 </div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span></div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a034ba5df2dc1ab7e9920972ba9588ba6">  230</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#a034ba5df2dc1ab7e9920972ba9588ba6">operator!=</a>(<a class="code hl_function" href="classutil_1_1ring__buffer.html#a1b2eb75a2668ac1d7e5cb43e57d08708">ring_buffer&lt;T&gt;</a> <span class="keyword">const</span>&amp; other) <span class="keyword">const</span> <span class="keyword">noexcept</span> { <span class="keywordflow">return</span> !<a class="code hl_function" href="classutil_1_1ring__buffer.html#aac40a4193266a276bc62e475b0edeea3">operator==</a>(other); }</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span></div>
-<div class="foldopen" id="foldopen00233" data-start="{" data-end="}">
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a49deb06dbca8dbfdc0c397b52f356c49">  233</a></span>    <span class="keyword">operator</span> std::vector&lt;T&gt;()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        std::vector&lt;T&gt; v;</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        v.reserve(sz);</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        std::copy(std::begin(*<span class="keyword">this</span>), std::end(*<span class="keyword">this</span>), std::back_inserter(v));</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        <span class="keywordflow">return</span> v;</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    }</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span></div>
+<div class="foldopen" id="foldopen00229" data-start="{" data-end="}">
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#ada502177a8cef850c4e0acfcb7292f27">  229</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#ada502177a8cef850c4e0acfcb7292f27">push_back</a>(T <span class="keyword">const</span>&amp; item) {</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <span class="keywordflow">if</span>(!cap)</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>            <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;ring_buffer: trying to add an element to a buffer of size 0&quot;</span>);</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        <span class="keywordflow">if</span>(sz &amp;&amp; back_idx == front_idx)</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>            <span class="keywordflow">throw</span> std::overflow_error(<span class="stringliteral">&quot;ring_buffer: overflow error&quot;</span>);</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        sz++;</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        buf[back_idx] = item;</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        back_idx = (back_idx + 1) % cap;</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    }</div>
 </div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span></div>
-<div class="foldopen" id="foldopen00241" data-start="{" data-end="}">
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#ada502177a8cef850c4e0acfcb7292f27">  241</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#ada502177a8cef850c4e0acfcb7292f27">push_back</a>(T <span class="keyword">const</span>&amp; item) {</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        <span class="keywordflow">if</span>(!cap)</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>            <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;ring_buffer: trying to add an element to a buffer of size 0&quot;</span>);</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        <span class="keywordflow">if</span>(sz &amp;&amp; back_idx == front_idx)</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>            <span class="keywordflow">throw</span> std::overflow_error(<span class="stringliteral">&quot;ring_buffer: overflow error&quot;</span>);</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        sz++;</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        buf[back_idx] = item;</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        back_idx = (back_idx + 1) % cap;</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    }</div>
-</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span> </div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#ada502177a8cef850c4e0acfcb7292f27">push_back</a>(T&amp;&amp; item) {</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        <span class="keywordflow">if</span>(!cap)</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>            <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;ring_buffer: trying to add an element to a buffer of size 0&quot;</span>);</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        <span class="keywordflow">if</span>(sz &amp;&amp; back_idx == front_idx)</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>            <span class="keywordflow">throw</span> std::overflow_error(<span class="stringliteral">&quot;ring_buffer: overflow error&quot;</span>);</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        sz++;</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        buf[back_idx] = std::move(item);</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        back_idx = (back_idx + 1) % cap;</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    }</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#ada502177a8cef850c4e0acfcb7292f27">push_back</a>(T&amp;&amp; item) {</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        <span class="keywordflow">if</span>(!cap)</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>            <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;ring_buffer: trying to add an element to a buffer of size 0&quot;</span>);</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        <span class="keywordflow">if</span>(sz &amp;&amp; back_idx == front_idx)</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>            <span class="keywordflow">throw</span> std::overflow_error(<span class="stringliteral">&quot;ring_buffer: overflow error&quot;</span>);</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        sz++;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        buf[back_idx] = std::move(item);</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        back_idx = (back_idx + 1) % cap;</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    }</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#aa1f15b4f7e57dfe7b7551e128964d298">  250</a></span>    iterator <a class="code hl_function" href="classutil_1_1ring__buffer.html#aa1f15b4f7e57dfe7b7551e128964d298">begin</a>() noexcept { <span class="keywordflow">return</span> iterator(<span class="keyword">this</span>, front_idx); }</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#aafc35b1d9ff8ad8a659e3f3f0f9ef77a">  253</a></span>    const_iterator <a class="code hl_function" href="classutil_1_1ring__buffer.html#aafc35b1d9ff8ad8a659e3f3f0f9ef77a">begin</a>() const noexcept { <span class="keywordflow">return</span> const_iterator(<span class="keyword">this</span>, front_idx); }</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span></div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a38fef7fb093ee836dfa6067a18beaa6b">  256</a></span>    const_iterator <a class="code hl_function" href="classutil_1_1ring__buffer.html#a38fef7fb093ee836dfa6067a18beaa6b">cbegin</a>() const noexcept { <span class="keywordflow">return</span> const_iterator(<span class="keyword">this</span>, front_idx); }</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a6177f26b4ebb369ccb2809d53efd1aac">  259</a></span>    iterator <a class="code hl_function" href="classutil_1_1ring__buffer.html#a6177f26b4ebb369ccb2809d53efd1aac">end</a>() noexcept { <span class="keywordflow">return</span> iterator(<span class="keyword">this</span>, (<span class="keywordtype">size_t</span>)(-1)); }</div>
 <div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span></div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#aa1f15b4f7e57dfe7b7551e128964d298">  262</a></span>    iterator <a class="code hl_function" href="classutil_1_1ring__buffer.html#aa1f15b4f7e57dfe7b7551e128964d298">begin</a>() noexcept { <span class="keywordflow">return</span> iterator(<span class="keyword">this</span>, front_idx); }</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a67ca8edbc25df84d03b76c79c98be735">  262</a></span>    const_iterator <a class="code hl_function" href="classutil_1_1ring__buffer.html#a67ca8edbc25df84d03b76c79c98be735">end</a>() const noexcept { <span class="keywordflow">return</span> const_iterator(<span class="keyword">this</span>, (<span class="keywordtype">size_t</span>)(-1)); }</div>
 <div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span></div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#aafc35b1d9ff8ad8a659e3f3f0f9ef77a">  265</a></span>    const_iterator <a class="code hl_function" href="classutil_1_1ring__buffer.html#aafc35b1d9ff8ad8a659e3f3f0f9ef77a">begin</a>() const noexcept { <span class="keywordflow">return</span> const_iterator(<span class="keyword">this</span>, front_idx); }</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a1a11909746ef4fefe05ce5ffd3d46706">  265</a></span>    const_iterator <a class="code hl_function" href="classutil_1_1ring__buffer.html#a1a11909746ef4fefe05ce5ffd3d46706">cend</a>() const noexcept { <span class="keywordflow">return</span> const_iterator(<span class="keyword">this</span>, (<span class="keywordtype">size_t</span>)(-1)); }</div>
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span></div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a38fef7fb093ee836dfa6067a18beaa6b">  268</a></span>    const_iterator <a class="code hl_function" href="classutil_1_1ring__buffer.html#a38fef7fb093ee836dfa6067a18beaa6b">cbegin</a>() const noexcept { <span class="keywordflow">return</span> const_iterator(<span class="keyword">this</span>, front_idx); }</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span></div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a6177f26b4ebb369ccb2809d53efd1aac">  271</a></span>    iterator <a class="code hl_function" href="classutil_1_1ring__buffer.html#a6177f26b4ebb369ccb2809d53efd1aac">end</a>() noexcept { <span class="keywordflow">return</span> iterator(<span class="keyword">this</span>, (<span class="keywordtype">size_t</span>)(-1)); }</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span></div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a67ca8edbc25df84d03b76c79c98be735">  274</a></span>    const_iterator <a class="code hl_function" href="classutil_1_1ring__buffer.html#a67ca8edbc25df84d03b76c79c98be735">end</a>() const noexcept { <span class="keywordflow">return</span> const_iterator(<span class="keyword">this</span>, (<span class="keywordtype">size_t</span>)(-1)); }</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span></div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a1a11909746ef4fefe05ce5ffd3d46706">  277</a></span>    const_iterator <a class="code hl_function" href="classutil_1_1ring__buffer.html#a1a11909746ef4fefe05ce5ffd3d46706">cend</a>() const noexcept { <span class="keywordflow">return</span> const_iterator(<span class="keyword">this</span>, (<span class="keywordtype">size_t</span>)(-1)); }</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span></div>
-<div class="foldopen" id="foldopen00280" data-start="{" data-end="}">
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a8e20e2accd921ebb9eacadec852df626">  280</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#a8e20e2accd921ebb9eacadec852df626">pop_front</a>() {</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        <span class="keywordflow">if</span>(!sz)</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>            <span class="keywordflow">throw</span> std::underflow_error(<span class="stringliteral">&quot;ring_buffer: buffer is empty&quot;</span>);</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        front_idx = (front_idx + 1) % cap;</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        sz--;</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    }</div>
+<div class="foldopen" id="foldopen00268" data-start="{" data-end="}">
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a8e20e2accd921ebb9eacadec852df626">  268</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#a8e20e2accd921ebb9eacadec852df626">pop_front</a>() {</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        <span class="keywordflow">if</span>(!sz)</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>            <span class="keywordflow">throw</span> std::underflow_error(<span class="stringliteral">&quot;ring_buffer: buffer is empty&quot;</span>);</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        front_idx = (front_idx + 1) % cap;</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        sz--;</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    }</div>
 </div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span></div>
-<div class="foldopen" id="foldopen00288" data-start="{" data-end="}">
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a037e640c0b254cc99aa4361fdd7759c3">  288</a></span>    T&amp; <a class="code hl_function" href="classutil_1_1ring__buffer.html#a037e640c0b254cc99aa4361fdd7759c3">front</a>() {</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        <span class="keywordflow">if</span>(!sz)</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>            <span class="keywordflow">throw</span> std::underflow_error(<span class="stringliteral">&quot;ring_buffer: buffer is empty&quot;</span>);</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        <span class="keywordflow">return</span> buf[front_idx];</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    }</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span></div>
+<div class="foldopen" id="foldopen00276" data-start="{" data-end="}">
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a037e640c0b254cc99aa4361fdd7759c3">  276</a></span>    T&amp; <a class="code hl_function" href="classutil_1_1ring__buffer.html#a037e640c0b254cc99aa4361fdd7759c3">front</a>() {</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        <span class="keywordflow">if</span>(!sz)</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>            <span class="keywordflow">throw</span> std::underflow_error(<span class="stringliteral">&quot;ring_buffer: buffer is empty&quot;</span>);</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        <span class="keywordflow">return</span> buf[front_idx];</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    }</div>
 </div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span></div>
-<div class="foldopen" id="foldopen00295" data-start="{" data-end="}">
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#ab4f0004e268fbe00acc7bf422db86333">  295</a></span>    T <span class="keyword">const</span>&amp; <a class="code hl_function" href="classutil_1_1ring__buffer.html#ab4f0004e268fbe00acc7bf422db86333">front</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        <span class="keywordflow">if</span>(!sz)</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>            <span class="keywordflow">throw</span> std::underflow_error(<span class="stringliteral">&quot;ring_buffer: buffer is empty&quot;</span>);</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        <span class="keywordflow">return</span> buf[front_idx];</div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    }</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span></div>
+<div class="foldopen" id="foldopen00283" data-start="{" data-end="}">
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#ab4f0004e268fbe00acc7bf422db86333">  283</a></span>    T <span class="keyword">const</span>&amp; <a class="code hl_function" href="classutil_1_1ring__buffer.html#ab4f0004e268fbe00acc7bf422db86333">front</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        <span class="keywordflow">if</span>(!sz)</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>            <span class="keywordflow">throw</span> std::underflow_error(<span class="stringliteral">&quot;ring_buffer: buffer is empty&quot;</span>);</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        <span class="keywordflow">return</span> buf[front_idx];</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    }</div>
 </div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span></div>
-<div class="foldopen" id="foldopen00302" data-start="{" data-end="}">
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a59e8741eb81d021ea9356bbac9374bff">  302</a></span>    T&amp; <a class="code hl_function" href="classutil_1_1ring__buffer.html#a59e8741eb81d021ea9356bbac9374bff">back</a>() {</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        <span class="keywordflow">if</span>(!sz)</div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>            <span class="keywordflow">throw</span> std::underflow_error(<span class="stringliteral">&quot;ring_buffer: buffer is empty&quot;</span>);</div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>        <span class="keywordflow">return</span> buf[(back_idx + cap - 1) % cap];</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    }</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span></div>
+<div class="foldopen" id="foldopen00290" data-start="{" data-end="}">
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a59e8741eb81d021ea9356bbac9374bff">  290</a></span>    T&amp; <a class="code hl_function" href="classutil_1_1ring__buffer.html#a59e8741eb81d021ea9356bbac9374bff">back</a>() {</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        <span class="keywordflow">if</span>(!sz)</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>            <span class="keywordflow">throw</span> std::underflow_error(<span class="stringliteral">&quot;ring_buffer: buffer is empty&quot;</span>);</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>        <span class="keywordflow">return</span> buf[(back_idx + cap - 1) % cap];</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    }</div>
 </div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span></div>
-<div class="foldopen" id="foldopen00309" data-start="{" data-end="}">
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a2c52ada21d4801d9fa249272b1a22e41">  309</a></span>    T <span class="keyword">const</span>&amp; <a class="code hl_function" href="classutil_1_1ring__buffer.html#a2c52ada21d4801d9fa249272b1a22e41">back</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>        <span class="keywordflow">if</span>(!sz)</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>            <span class="keywordflow">throw</span> std::underflow_error(<span class="stringliteral">&quot;ring_buffer: buffer is empty&quot;</span>);</div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>        <span class="keywordflow">return</span> buf[(back_idx + cap - 1) % cap];</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    }</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span></div>
+<div class="foldopen" id="foldopen00297" data-start="{" data-end="}">
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a2c52ada21d4801d9fa249272b1a22e41">  297</a></span>    T <span class="keyword">const</span>&amp; <a class="code hl_function" href="classutil_1_1ring__buffer.html#a2c52ada21d4801d9fa249272b1a22e41">back</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        <span class="keywordflow">if</span>(!sz)</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>            <span class="keywordflow">throw</span> std::underflow_error(<span class="stringliteral">&quot;ring_buffer: buffer is empty&quot;</span>);</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>        <span class="keywordflow">return</span> buf[(back_idx + cap - 1) % cap];</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    }</div>
 </div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span></div>
-<div class="foldopen" id="foldopen00316" data-start="{" data-end="}">
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a21e59a0178c221e56108e324e9111017">  316</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#a21e59a0178c221e56108e324e9111017">clear</a>(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>        <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; sz; i++) {</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>            buf[(front_idx + i) % cap].~T();</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>        }</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span> </div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>        front_idx = back_idx;</div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>        sz = 0;</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    }</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span></div>
+<div class="foldopen" id="foldopen00304" data-start="{" data-end="}">
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a21e59a0178c221e56108e324e9111017">  304</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#a21e59a0178c221e56108e324e9111017">clear</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>        <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; sz; i++) {</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>            buf[(front_idx + i) % cap].~T();</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>        }</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span> </div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>        front_idx = back_idx;</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>        sz = 0;</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    }</div>
 </div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span></div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#afb90a804a281574929ab62114a479320">  326</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#afb90a804a281574929ab62114a479320">empty</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span> <span class="keyword">noexcept</span> { <span class="keywordflow">return</span> (sz == 0); }</div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span></div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a0ff427de9e4dba0f494a5b88b3f9535f">  329</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#a0ff427de9e4dba0f494a5b88b3f9535f">full</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span> <span class="keyword">noexcept</span> { <span class="keywordflow">return</span> (sz == cap); }</div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span></div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#aea593638d9ca4f15334fc7a672610ce1">  332</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#aea593638d9ca4f15334fc7a672610ce1">capacity</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span> <span class="keyword">noexcept</span> { <span class="keywordflow">return</span> cap; };</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span></div>
-<div class="foldopen" id="foldopen00335" data-start="{" data-end="}">
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a33fe1249d7d7e7abfa50f2cfe6575b61">  335</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#a33fe1249d7d7e7abfa50f2cfe6575b61">resize</a>(<span class="keywordtype">size_t</span> new_cap) {</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>        <span class="keywordflow">if</span>(new_cap &lt; sz)</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>            <span class="keywordflow">throw</span> std::bad_array_new_length();</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>        std::unique_ptr&lt;T[]&gt; newbuf(new_cap ? <span class="keyword">new</span> T[new_cap] : <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>        <span class="keywordflow">if</span>(new_cap) {</div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>            <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; sz; i++) {</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>                newbuf[i] = std::move(buf[(front_idx + i) % cap]);</div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>            }</div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>        } <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>            sz = 0;</div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>        cap = new_cap;</div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>        buf.swap(newbuf);</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>        front_idx = 0;</div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>        back_idx = cap ? (front_idx + sz) % cap : 0;</div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>    }</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span></div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#afb90a804a281574929ab62114a479320">  314</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#afb90a804a281574929ab62114a479320">empty</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span> <span class="keyword">noexcept</span> { <span class="keywordflow">return</span> (sz == 0); }</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span></div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a0ff427de9e4dba0f494a5b88b3f9535f">  317</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#a0ff427de9e4dba0f494a5b88b3f9535f">full</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span> <span class="keyword">noexcept</span> { <span class="keywordflow">return</span> (sz == cap); }</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span></div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#aea593638d9ca4f15334fc7a672610ce1">  320</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#aea593638d9ca4f15334fc7a672610ce1">capacity</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span> <span class="keyword">noexcept</span> { <span class="keywordflow">return</span> cap; };</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span></div>
+<div class="foldopen" id="foldopen00323" data-start="{" data-end="}">
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a33fe1249d7d7e7abfa50f2cfe6575b61">  323</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#a33fe1249d7d7e7abfa50f2cfe6575b61">resize</a>(<span class="keywordtype">size_t</span> new_cap) {</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>        <span class="keywordflow">if</span>(new_cap &lt; sz)</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>            <span class="keywordflow">throw</span> std::bad_array_new_length();</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>        std::unique_ptr&lt;T[]&gt; newbuf(new_cap ? <span class="keyword">new</span> T[new_cap] : <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        <span class="keywordflow">if</span>(new_cap) {</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>            <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; sz; i++) {</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>                newbuf[i] = std::move(buf[(front_idx + i) % cap]);</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>            }</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>        } <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>            sz = 0;</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        cap = new_cap;</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>        buf.swap(newbuf);</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        front_idx = 0;</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>        back_idx = cap ? (front_idx + sz) % cap : 0;</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    }</div>
 </div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span></div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a4c62989a903135adb8f2bc7922950857">  352</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#a4c62989a903135adb8f2bc7922950857">size</a>() const noexcept { <span class="keywordflow">return</span> sz; }</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span> </div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>    <span class="keywordtype">size_t</span> increment(<span class="keywordtype">size_t</span> pos) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        <span class="keywordflow">if</span>(cap &amp;&amp; pos != (<span class="keywordtype">size_t</span>)-1)</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>            pos = (pos + 1) % cap;</div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        <span class="keywordflow">if</span>(pos == back_idx)</div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>            pos = (size_t)-1;</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>        <span class="keywordflow">return</span> pos;</div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>    }</div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span></div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>    <span class="keywordtype">size_t</span> decrement(<span class="keywordtype">size_t</span> pos) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>        <span class="keywordflow">if</span>(cap) {</div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>            <span class="keywordflow">if</span>(pos == (<span class="keywordtype">size_t</span>)-1)</div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>                pos = (back_idx + cap - 1) % cap;</div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span>(pos != front_idx)</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>                pos = (pos + cap - 1) % cap;</div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>        }</div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>        <span class="keywordflow">return</span> pos;</div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>    }</div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span></div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    <span class="keywordtype">size_t</span> add(<span class="keywordtype">size_t</span> oldpos, <span class="keywordtype">size_t</span> delta) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>        <span class="keywordflow">if</span>(cap &amp;&amp; oldpos != -1) {</div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>            <span class="keywordtype">size_t</span> np = oldpos + (delta % cap);</div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>            <span class="keywordflow">if</span>(np &gt;= cap &amp;&amp; np &gt;= back_idx + cap)</div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>                np = (size_t)(-1);</div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>                np %= cap;</div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>            <span class="keywordflow">return</span> np;</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>        }</div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>        <span class="keywordflow">return</span> oldpos;</div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>    }</div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span></div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>    <span class="keywordtype">size_t</span> subtract(<span class="keywordtype">size_t</span> oldpos, <span class="keywordtype">size_t</span> delta) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>        <span class="keywordflow">if</span>(cap) {</div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>            <span class="keywordtype">size_t</span> np = (oldpos == (size_t)-1 ? back_idx : oldpos) - (delta % cap) + cap;</div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>            <span class="keywordflow">if</span>(np &lt; front_idx)</div>
-<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>                np = front_idx;</div>
-<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>                np %= cap;</div>
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>            <span class="keywordflow">return</span> np;</div>
-<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>        }</div>
-<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>        <span class="keywordflow">return</span> oldpos;</div>
-<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>    }</div>
-<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span> </div>
-<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>    std::unique_ptr&lt;T[]&gt; buf;</div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>    <span class="keywordtype">size_t</span> front_idx, back_idx, cap, sz;</div>
-<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>};</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span></div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno"><a class="line" href="classutil_1_1ring__buffer.html#a4c62989a903135adb8f2bc7922950857">  340</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="classutil_1_1ring__buffer.html#a4c62989a903135adb8f2bc7922950857">size</a>() const noexcept { <span class="keywordflow">return</span> sz; }</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span> </div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>    <span class="keywordtype">size_t</span> increment(<span class="keywordtype">size_t</span> pos) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>        <span class="keywordflow">if</span>(cap &amp;&amp; pos != (<span class="keywordtype">size_t</span>)-1)</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>            pos = (pos + 1) % cap;</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>        <span class="keywordflow">if</span>(pos == back_idx)</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>            pos = (size_t)-1;</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>        <span class="keywordflow">return</span> pos;</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>    }</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span></div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    <span class="keywordtype">size_t</span> decrement(<span class="keywordtype">size_t</span> pos) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>        <span class="keywordflow">if</span>(cap) {</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>            <span class="keywordflow">if</span>(pos == (<span class="keywordtype">size_t</span>)-1)</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>                pos = (back_idx + cap - 1) % cap;</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span>(pos != front_idx)</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>                pos = (pos + cap - 1) % cap;</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        }</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>        <span class="keywordflow">return</span> pos;</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    }</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span></div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    <span class="keywordtype">size_t</span> add(<span class="keywordtype">size_t</span> oldpos, <span class="keywordtype">size_t</span> delta) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>        <span class="keywordflow">if</span>(cap &amp;&amp; oldpos != -1) {</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>            <span class="keywordtype">size_t</span> np = oldpos + (delta % cap);</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>            <span class="keywordflow">if</span>(np &gt;= cap &amp;&amp; np &gt;= back_idx + cap)</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>                np = (size_t)(-1);</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>                np %= cap;</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>            <span class="keywordflow">return</span> np;</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>        }</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>        <span class="keywordflow">return</span> oldpos;</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>    }</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span></div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    <span class="keywordtype">size_t</span> subtract(<span class="keywordtype">size_t</span> oldpos, <span class="keywordtype">size_t</span> delta) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>        <span class="keywordflow">if</span>(cap) {</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>            <span class="keywordtype">size_t</span> np = (oldpos == (size_t)-1 ? back_idx : oldpos) - (delta % cap) + cap;</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>            <span class="keywordflow">if</span>(np &lt; front_idx)</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>                np = front_idx;</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>                np %= cap;</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>            <span class="keywordflow">return</span> np;</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>        }</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>        <span class="keywordflow">return</span> oldpos;</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>    }</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span> </div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>    std::unique_ptr&lt;T[]&gt; buf;</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>    <span class="keywordtype">size_t</span> front_idx, back_idx, cap, sz;</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>};</div>
 </div>
-<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span> </div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>} <span class="comment">// namespace util</span></div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span> </div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>} <span class="comment">// namespace util</span></div>
 <div class="ttc" id="aclassutil_1_1ring__buffer_1_1iterator__type_html_a143d260260f313fad7d36a2c33fb9444"><div class="ttname"><a href="classutil_1_1ring__buffer_1_1iterator__type.html#a143d260260f313fad7d36a2c33fb9444">util::ring_buffer::iterator_type::operator--</a></div><div class="ttdeci">iterator_type&lt; C_ &gt; &amp; operator--()</div><div class="ttdoc">Decrement operator (prefix).</div><div class="ttdef"><b>Definition</b> <a href="#l00107">ring_buffer.h:107</a></div></div>
 <div class="ttc" id="aclassutil_1_1ring__buffer_1_1iterator__type_html_a3158adc057f372503f8758a873d0aa5c"><div class="ttname"><a href="classutil_1_1ring__buffer_1_1iterator__type.html#a3158adc057f372503f8758a873d0aa5c">util::ring_buffer::iterator_type::operator++</a></div><div class="ttdeci">iterator_type&lt; C_ &gt; operator++(int)</div><div class="ttdoc">Increment operator (postfix).</div><div class="ttdef"><b>Definition</b> <a href="#l00087">ring_buffer.h:87</a></div></div>
 <div class="ttc" id="aclassutil_1_1ring__buffer_1_1iterator__type_html_a31fae0cc0f257396f52e4765a4b903b4"><div class="ttname"><a href="classutil_1_1ring__buffer_1_1iterator__type.html#a31fae0cc0f257396f52e4765a4b903b4">util::ring_buffer::iterator_type::operator++</a></div><div class="ttdeci">iterator_type&lt; C_ &gt; &amp; operator++()</div><div class="ttdoc">Increment operator (prefix).</div><div class="ttdef"><b>Definition</b> <a href="#l00094">ring_buffer.h:94</a></div></div>
@@ -491,32 +478,31 @@ $(function(){initNavTree('ring__buffer_8h_source.html','',''); });
 <div class="ttc" id="aclassutil_1_1ring__buffer_1_1iterator__type_html_ae5685ca56f33cf8ae39f853d463fc568"><div class="ttname"><a href="classutil_1_1ring__buffer_1_1iterator__type.html#ae5685ca56f33cf8ae39f853d463fc568">util::ring_buffer::iterator_type::operator!=</a></div><div class="ttdeci">bool operator!=(iterator_type&lt; C_ &gt; const &amp;it) const</div><div class="ttdoc">Inequality comparison.</div><div class="ttdef"><b>Definition</b> <a href="#l00116">ring_buffer.h:116</a></div></div>
 <div class="ttc" id="aclassutil_1_1ring__buffer_1_1iterator__type_html_af6950b6fb33b5b6fa54f114a6a29c7cd"><div class="ttname"><a href="classutil_1_1ring__buffer_1_1iterator__type.html#af6950b6fb33b5b6fa54f114a6a29c7cd">util::ring_buffer::iterator_type::operator-&gt;</a></div><div class="ttdeci">pointer operator-&gt;()</div><div class="ttdoc">Object pointer.</div><div class="ttdef"><b>Definition</b> <a href="#l00073">ring_buffer.h:73</a></div></div>
 <div class="ttc" id="aclassutil_1_1ring__buffer_html"><div class="ttname"><a href="classutil_1_1ring__buffer.html">util::ring_buffer</a></div><div class="ttdoc">Circular buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00041">ring_buffer.h:41</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_a034ba5df2dc1ab7e9920972ba9588ba6"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a034ba5df2dc1ab7e9920972ba9588ba6">util::ring_buffer::operator!=</a></div><div class="ttdeci">bool operator!=(ring_buffer&lt; T &gt; const &amp;other) const noexcept</div><div class="ttdoc">Inequality operator.</div><div class="ttdef"><b>Definition</b> <a href="#l00230">ring_buffer.h:230</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_a037e640c0b254cc99aa4361fdd7759c3"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a037e640c0b254cc99aa4361fdd7759c3">util::ring_buffer::front</a></div><div class="ttdeci">T &amp; front()</div><div class="ttdoc">Return a reference to first (oldest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00288">ring_buffer.h:288</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_a0ff427de9e4dba0f494a5b88b3f9535f"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a0ff427de9e4dba0f494a5b88b3f9535f">util::ring_buffer::full</a></div><div class="ttdeci">bool full(void) const noexcept</div><div class="ttdoc">Return true if buffer is full.</div><div class="ttdef"><b>Definition</b> <a href="#l00329">ring_buffer.h:329</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_a11d663b368ad724f26dd1107ccbd2b18"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a11d663b368ad724f26dd1107ccbd2b18">util::ring_buffer::ring_buffer</a></div><div class="ttdeci">ring_buffer(std::initializer_list&lt; T &gt; il)</div><div class="ttdoc">Initializer list constructor.</div><div class="ttdef"><b>Definition</b> <a href="#l00199">ring_buffer.h:199</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_a1a11909746ef4fefe05ce5ffd3d46706"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a1a11909746ef4fefe05ce5ffd3d46706">util::ring_buffer::cend</a></div><div class="ttdeci">const_iterator cend() const noexcept</div><div class="ttdoc">Return an iterator pointing past the last (newest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00277">ring_buffer.h:277</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_a034ba5df2dc1ab7e9920972ba9588ba6"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a034ba5df2dc1ab7e9920972ba9588ba6">util::ring_buffer::operator!=</a></div><div class="ttdeci">bool operator!=(ring_buffer&lt; T &gt; const &amp;other) const noexcept</div><div class="ttdoc">Inequality operator.</div><div class="ttdef"><b>Definition</b> <a href="#l00218">ring_buffer.h:218</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_a037e640c0b254cc99aa4361fdd7759c3"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a037e640c0b254cc99aa4361fdd7759c3">util::ring_buffer::front</a></div><div class="ttdeci">T &amp; front()</div><div class="ttdoc">Return a reference to first (oldest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00276">ring_buffer.h:276</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_a0ff427de9e4dba0f494a5b88b3f9535f"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a0ff427de9e4dba0f494a5b88b3f9535f">util::ring_buffer::full</a></div><div class="ttdeci">bool full(void) const noexcept</div><div class="ttdoc">Return true if buffer is full.</div><div class="ttdef"><b>Definition</b> <a href="#l00317">ring_buffer.h:317</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_a1a11909746ef4fefe05ce5ffd3d46706"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a1a11909746ef4fefe05ce5ffd3d46706">util::ring_buffer::cend</a></div><div class="ttdeci">const_iterator cend() const noexcept</div><div class="ttdoc">Return an iterator pointing past the last (newest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00265">ring_buffer.h:265</a></div></div>
 <div class="ttc" id="aclassutil_1_1ring__buffer_html_a1b2eb75a2668ac1d7e5cb43e57d08708"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a1b2eb75a2668ac1d7e5cb43e57d08708">util::ring_buffer::ring_buffer</a></div><div class="ttdeci">ring_buffer(size_t size)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition</b> <a href="#l00178">ring_buffer.h:178</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_a21e59a0178c221e56108e324e9111017"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a21e59a0178c221e56108e324e9111017">util::ring_buffer::clear</a></div><div class="ttdeci">void clear(void)</div><div class="ttdoc">Remove all elements from buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00316">ring_buffer.h:316</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_a2c52ada21d4801d9fa249272b1a22e41"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a2c52ada21d4801d9fa249272b1a22e41">util::ring_buffer::back</a></div><div class="ttdeci">T const &amp; back() const</div><div class="ttdoc">Return reference to last (newest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00309">ring_buffer.h:309</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_a33fe1249d7d7e7abfa50f2cfe6575b61"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a33fe1249d7d7e7abfa50f2cfe6575b61">util::ring_buffer::resize</a></div><div class="ttdeci">void resize(size_t new_cap)</div><div class="ttdoc">(Re)allocate buffer with a different capacity</div><div class="ttdef"><b>Definition</b> <a href="#l00335">ring_buffer.h:335</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_a38fef7fb093ee836dfa6067a18beaa6b"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a38fef7fb093ee836dfa6067a18beaa6b">util::ring_buffer::cbegin</a></div><div class="ttdeci">const_iterator cbegin() const noexcept</div><div class="ttdoc">Return a const iterator pointing to first (oldest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00268">ring_buffer.h:268</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_a4c62989a903135adb8f2bc7922950857"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a4c62989a903135adb8f2bc7922950857">util::ring_buffer::size</a></div><div class="ttdeci">size_t size() const noexcept</div><div class="ttdoc">Return number of elements in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00352">ring_buffer.h:352</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_a59e8741eb81d021ea9356bbac9374bff"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a59e8741eb81d021ea9356bbac9374bff">util::ring_buffer::back</a></div><div class="ttdeci">T &amp; back()</div><div class="ttdoc">Return reference to last (newest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00302">ring_buffer.h:302</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_a6177f26b4ebb369ccb2809d53efd1aac"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a6177f26b4ebb369ccb2809d53efd1aac">util::ring_buffer::end</a></div><div class="ttdeci">iterator end() noexcept</div><div class="ttdoc">Return an iterator pointing past the last (newest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00271">ring_buffer.h:271</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_a67ca8edbc25df84d03b76c79c98be735"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a67ca8edbc25df84d03b76c79c98be735">util::ring_buffer::end</a></div><div class="ttdeci">const_iterator end() const noexcept</div><div class="ttdoc">Return a const iterator pointing past the last (newest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00274">ring_buffer.h:274</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_a21e59a0178c221e56108e324e9111017"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a21e59a0178c221e56108e324e9111017">util::ring_buffer::clear</a></div><div class="ttdeci">void clear(void)</div><div class="ttdoc">Remove all elements from buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00304">ring_buffer.h:304</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_a2c52ada21d4801d9fa249272b1a22e41"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a2c52ada21d4801d9fa249272b1a22e41">util::ring_buffer::back</a></div><div class="ttdeci">T const &amp; back() const</div><div class="ttdoc">Return reference to last (newest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00297">ring_buffer.h:297</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_a33fe1249d7d7e7abfa50f2cfe6575b61"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a33fe1249d7d7e7abfa50f2cfe6575b61">util::ring_buffer::resize</a></div><div class="ttdeci">void resize(size_t new_cap)</div><div class="ttdoc">(Re)allocate buffer with a different capacity</div><div class="ttdef"><b>Definition</b> <a href="#l00323">ring_buffer.h:323</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_a38fef7fb093ee836dfa6067a18beaa6b"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a38fef7fb093ee836dfa6067a18beaa6b">util::ring_buffer::cbegin</a></div><div class="ttdeci">const_iterator cbegin() const noexcept</div><div class="ttdoc">Return a const iterator pointing to first (oldest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00256">ring_buffer.h:256</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_a4c62989a903135adb8f2bc7922950857"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a4c62989a903135adb8f2bc7922950857">util::ring_buffer::size</a></div><div class="ttdeci">size_t size() const noexcept</div><div class="ttdoc">Return number of elements in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00340">ring_buffer.h:340</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_a59e8741eb81d021ea9356bbac9374bff"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a59e8741eb81d021ea9356bbac9374bff">util::ring_buffer::back</a></div><div class="ttdeci">T &amp; back()</div><div class="ttdoc">Return reference to last (newest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00290">ring_buffer.h:290</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_a6177f26b4ebb369ccb2809d53efd1aac"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a6177f26b4ebb369ccb2809d53efd1aac">util::ring_buffer::end</a></div><div class="ttdeci">iterator end() noexcept</div><div class="ttdoc">Return an iterator pointing past the last (newest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00259">ring_buffer.h:259</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_a67ca8edbc25df84d03b76c79c98be735"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a67ca8edbc25df84d03b76c79c98be735">util::ring_buffer::end</a></div><div class="ttdeci">const_iterator end() const noexcept</div><div class="ttdoc">Return a const iterator pointing past the last (newest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00262">ring_buffer.h:262</a></div></div>
 <div class="ttc" id="aclassutil_1_1ring__buffer_html_a6cea186e2be1e7f8af6eb067bc38cb85"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a6cea186e2be1e7f8af6eb067bc38cb85">util::ring_buffer::ring_buffer</a></div><div class="ttdeci">ring_buffer(ring_buffer &amp;&amp;other)=delete</div><div class="ttdoc">Copy constructor.</div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_a8e20e2accd921ebb9eacadec852df626"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a8e20e2accd921ebb9eacadec852df626">util::ring_buffer::pop_front</a></div><div class="ttdeci">void pop_front()</div><div class="ttdoc">Remove oldest element from buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00280">ring_buffer.h:280</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_a8e20e2accd921ebb9eacadec852df626"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a8e20e2accd921ebb9eacadec852df626">util::ring_buffer::pop_front</a></div><div class="ttdeci">void pop_front()</div><div class="ttdoc">Remove oldest element from buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00268">ring_buffer.h:268</a></div></div>
 <div class="ttc" id="aclassutil_1_1ring__buffer_html_a99626adbbc6531b561bd2df154699468"><div class="ttname"><a href="classutil_1_1ring__buffer.html#a99626adbbc6531b561bd2df154699468">util::ring_buffer::ring_buffer</a></div><div class="ttdeci">ring_buffer()</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition</b> <a href="#l00186">ring_buffer.h:186</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_aa1f15b4f7e57dfe7b7551e128964d298"><div class="ttname"><a href="classutil_1_1ring__buffer.html#aa1f15b4f7e57dfe7b7551e128964d298">util::ring_buffer::begin</a></div><div class="ttdeci">iterator begin() noexcept</div><div class="ttdoc">Return an iterator pointing to first (oldest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00262">ring_buffer.h:262</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_aac40a4193266a276bc62e475b0edeea3"><div class="ttname"><a href="classutil_1_1ring__buffer.html#aac40a4193266a276bc62e475b0edeea3">util::ring_buffer::operator==</a></div><div class="ttdeci">bool operator==(ring_buffer&lt; T &gt; const &amp;other) const noexcept</div><div class="ttdoc">Equality operator.</div><div class="ttdef"><b>Definition</b> <a href="#l00216">ring_buffer.h:216</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_aafc35b1d9ff8ad8a659e3f3f0f9ef77a"><div class="ttname"><a href="classutil_1_1ring__buffer.html#aafc35b1d9ff8ad8a659e3f3f0f9ef77a">util::ring_buffer::begin</a></div><div class="ttdeci">const_iterator begin() const noexcept</div><div class="ttdoc">Return a const iterator pointing to first (oldest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00265">ring_buffer.h:265</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_aa1f15b4f7e57dfe7b7551e128964d298"><div class="ttname"><a href="classutil_1_1ring__buffer.html#aa1f15b4f7e57dfe7b7551e128964d298">util::ring_buffer::begin</a></div><div class="ttdeci">iterator begin() noexcept</div><div class="ttdoc">Return an iterator pointing to first (oldest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00250">ring_buffer.h:250</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_aac40a4193266a276bc62e475b0edeea3"><div class="ttname"><a href="classutil_1_1ring__buffer.html#aac40a4193266a276bc62e475b0edeea3">util::ring_buffer::operator==</a></div><div class="ttdeci">bool operator==(ring_buffer&lt; T &gt; const &amp;other) const noexcept</div><div class="ttdoc">Equality operator.</div><div class="ttdef"><b>Definition</b> <a href="#l00204">ring_buffer.h:204</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_aafc35b1d9ff8ad8a659e3f3f0f9ef77a"><div class="ttname"><a href="classutil_1_1ring__buffer.html#aafc35b1d9ff8ad8a659e3f3f0f9ef77a">util::ring_buffer::begin</a></div><div class="ttdeci">const_iterator begin() const noexcept</div><div class="ttdoc">Return a const iterator pointing to first (oldest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00253">ring_buffer.h:253</a></div></div>
 <div class="ttc" id="aclassutil_1_1ring__buffer_html_ab0420726450bbf4ca236f17e6f91ac74"><div class="ttname"><a href="classutil_1_1ring__buffer.html#ab0420726450bbf4ca236f17e6f91ac74">util::ring_buffer::ring_buffer</a></div><div class="ttdeci">ring_buffer(ring_buffer const &amp;other)=delete</div><div class="ttdoc">Copy constructor.</div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_ab4f0004e268fbe00acc7bf422db86333"><div class="ttname"><a href="classutil_1_1ring__buffer.html#ab4f0004e268fbe00acc7bf422db86333">util::ring_buffer::front</a></div><div class="ttdeci">T const &amp; front() const</div><div class="ttdoc">Return a reference to first (oldest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00295">ring_buffer.h:295</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_ab4f0004e268fbe00acc7bf422db86333"><div class="ttname"><a href="classutil_1_1ring__buffer.html#ab4f0004e268fbe00acc7bf422db86333">util::ring_buffer::front</a></div><div class="ttdeci">T const &amp; front() const</div><div class="ttdoc">Return a reference to first (oldest) element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00283">ring_buffer.h:283</a></div></div>
 <div class="ttc" id="aclassutil_1_1ring__buffer_html_ac6f1a89c766ac3a2a3b8574ade663a9a"><div class="ttname"><a href="classutil_1_1ring__buffer.html#ac6f1a89c766ac3a2a3b8574ade663a9a">util::ring_buffer::operator=</a></div><div class="ttdeci">ring_buffer &amp; operator=(ring_buffer const &amp;rhs)=delete</div><div class="ttdoc">Assignment operator.</div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_ada502177a8cef850c4e0acfcb7292f27"><div class="ttname"><a href="classutil_1_1ring__buffer.html#ada502177a8cef850c4e0acfcb7292f27">util::ring_buffer::push_back</a></div><div class="ttdeci">void push_back(T const &amp;item)</div><div class="ttdoc">Inserts new element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00241">ring_buffer.h:241</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_aea593638d9ca4f15334fc7a672610ce1"><div class="ttname"><a href="classutil_1_1ring__buffer.html#aea593638d9ca4f15334fc7a672610ce1">util::ring_buffer::capacity</a></div><div class="ttdeci">size_t capacity(void) const noexcept</div><div class="ttdoc">Return maximum buffer size.</div><div class="ttdef"><b>Definition</b> <a href="#l00332">ring_buffer.h:332</a></div></div>
-<div class="ttc" id="aclassutil_1_1ring__buffer_html_afb90a804a281574929ab62114a479320"><div class="ttname"><a href="classutil_1_1ring__buffer.html#afb90a804a281574929ab62114a479320">util::ring_buffer::empty</a></div><div class="ttdeci">bool empty(void) const noexcept</div><div class="ttdoc">Return true if buffer is empty.</div><div class="ttdef"><b>Definition</b> <a href="#l00326">ring_buffer.h:326</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_ada502177a8cef850c4e0acfcb7292f27"><div class="ttname"><a href="classutil_1_1ring__buffer.html#ada502177a8cef850c4e0acfcb7292f27">util::ring_buffer::push_back</a></div><div class="ttdeci">void push_back(T const &amp;item)</div><div class="ttdoc">Inserts new element in buffer.</div><div class="ttdef"><b>Definition</b> <a href="#l00229">ring_buffer.h:229</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_aea593638d9ca4f15334fc7a672610ce1"><div class="ttname"><a href="classutil_1_1ring__buffer.html#aea593638d9ca4f15334fc7a672610ce1">util::ring_buffer::capacity</a></div><div class="ttdeci">size_t capacity(void) const noexcept</div><div class="ttdoc">Return maximum buffer size.</div><div class="ttdef"><b>Definition</b> <a href="#l00320">ring_buffer.h:320</a></div></div>
+<div class="ttc" id="aclassutil_1_1ring__buffer_html_afb90a804a281574929ab62114a479320"><div class="ttname"><a href="classutil_1_1ring__buffer.html#afb90a804a281574929ab62114a479320">util::ring_buffer::empty</a></div><div class="ttdeci">bool empty(void) const noexcept</div><div class="ttdoc">Return true if buffer is empty.</div><div class="ttdef"><b>Definition</b> <a href="#l00314">ring_buffer.h:314</a></div></div>
 <div class="ttc" id="anamespaceutil_html"><div class="ttname"><a href="namespaceutil.html">util</a></div><div class="ttdoc">SCC common utilities.</div><div class="ttdef"><b>Definition</b> <a href="bit__field_8h_source.html#l00030">bit_field.h:30</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1detail_1_1struct__t" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::detail::struct_t</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnonstd_1_1variants_1_1detail_1_1struct__t_1a8dc572f3474f388252452619474013c3" prot="public" static="no" mutable="no">
+        <type>T</type>
+        <definition>T nonstd::variants::detail::struct_t&lt; T &gt;::_</definition>
+        <argsstring></argsstring>
+        <name>_</name>
+        <qualifiedname>nonstd::variants::detail::struct_t::_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="908" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="908" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="908" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="908" bodyend="908"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1struct__t_1a8dc572f3474f388252452619474013c3" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::struct_t</scope><name>_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

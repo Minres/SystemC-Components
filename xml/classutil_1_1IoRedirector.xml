@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1IoRedirector" kind="class" language="C++" prot="public">
+    <compoundname>util::IoRedirector</compoundname>
+    <includes refid="io-redirector_8h" local="no">io-redirector.h</includes>
+    <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classutil_1_1IoRedirector_1a5393c16fa803b4865f4bacf85cbad899" prot="private" static="no" strong="no">
+        <type></type>
+        <name></name>
+        <qualifiedname>util::IoRedirector</qualifiedname>
+        <enumvalue id="classutil_1_1IoRedirector_1a5393c16fa803b4865f4bacf85cbad899ad84a1455e5eae653513cae658a79f094" prot="private">
+          <name>bufSize</name>
+          <initializer>= 1024</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="35" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="enum" id="classutil_1_1IoRedirector_1a4f39bcfc78480a05b4ca1001f849b96c" prot="private" static="no" strong="no">
+        <type></type>
+        <name>PIPES</name>
+        <qualifiedname>util::IoRedirector::PIPES</qualifiedname>
+        <enumvalue id="classutil_1_1IoRedirector_1a4f39bcfc78480a05b4ca1001f849b96ca2b052b292409e67b9fa865801dedd57a" prot="private">
+          <name>READ</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classutil_1_1IoRedirector_1a4f39bcfc78480a05b4ca1001f849b96ca8b1311f73f1aefc7a999766e9bec5f1c" prot="private">
+          <name>WRITE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="52" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" bodystart="52" bodyend="52"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classutil_1_1IoRedirector_1a651b96a95e98a1021fbff4b45f22c56e" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int util::IoRedirector::m_pipe[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>m_pipe</name>
+        <qualifiedname>util::IoRedirector::m_pipe</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="61" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1IoRedirector_1adb512fa5fd79c447d7f669d7f5877998" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int util::IoRedirector::m_oldStdOut</definition>
+        <argsstring></argsstring>
+        <name>m_oldStdOut</name>
+        <qualifiedname>util::IoRedirector::m_oldStdOut</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="62" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1IoRedirector_1a87cb0a5d3867bfa6394e299ff011ab89" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int util::IoRedirector::m_oldStdErr</definition>
+        <argsstring></argsstring>
+        <name>m_oldStdErr</name>
+        <qualifiedname>util::IoRedirector::m_oldStdErr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="63" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1IoRedirector_1a9db5c06a46f05ec78db6789e75f1e84c" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool util::IoRedirector::m_capturing</definition>
+        <argsstring></argsstring>
+        <name>m_capturing</name>
+        <qualifiedname>util::IoRedirector::m_capturing</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="64" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1IoRedirector_1a207fcf7963b56f6d95828876afcd2d93" prot="private" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex util::IoRedirector::m_mutex</definition>
+        <argsstring></argsstring>
+        <name>m_mutex</name>
+        <qualifiedname>util::IoRedirector::m_mutex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="65" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1IoRedirector_1a04ddb632421c8bf7d85526d2a79dee70" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string util::IoRedirector::m_captured</definition>
+        <argsstring></argsstring>
+        <name>m_captured</name>
+        <qualifiedname>util::IoRedirector::m_captured</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="66" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classutil_1_1IoRedirector_1a5c4a8a120955e58dddf1aeb38e85cf10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::IoRedirector::start</definition>
+        <argsstring>()</argsstring>
+        <name>start</name>
+        <qualifiedname>util::IoRedirector::start</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="38" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.cpp" bodystart="47" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1IoRedirector_1a19737338fdd2dcb2d656191d52d1ea3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::IoRedirector::stop</definition>
+        <argsstring>()</argsstring>
+        <name>stop</name>
+        <qualifiedname>util::IoRedirector::stop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="40" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.cpp" bodystart="68" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1IoRedirector_1a6c7925d4faf2e1c66630c564c43dbcf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>auto util::IoRedirector::is_active</definition>
+        <argsstring>()</argsstring>
+        <name>is_active</name>
+        <qualifiedname>util::IoRedirector::is_active</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="42" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.cpp" bodystart="63" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1IoRedirector_1a89c451daceae0431744f44a04ca8e405" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>auto util::IoRedirector::get_output</definition>
+        <argsstring>(bool blocking=false)</argsstring>
+        <name>get_output</name>
+        <qualifiedname>util::IoRedirector::get_output</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>blocking</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="44" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.cpp" bodystart="109" bodyend="142"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classutil_1_1IoRedirector_1a091f42f209250a7d1786174e52896fa7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IoRedirector &amp;</type>
+        <definition>static IoRedirector &amp; util::IoRedirector::get</definition>
+        <argsstring>()</argsstring>
+        <name>get</name>
+        <qualifiedname>util::IoRedirector::get</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="46" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" bodystart="46" bodyend="49"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classutil_1_1IoRedirector_1a4eebc761a1c87be22b8b3e25f92dd693" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::IoRedirector::IoRedirector</definition>
+        <argsstring>()</argsstring>
+        <name>IoRedirector</name>
+        <qualifiedname>util::IoRedirector::IoRedirector</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="54" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.cpp" bodystart="37" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1IoRedirector_1a78a0d26360e1e5d90776cf28c8e8c5e2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>auto util::IoRedirector::copy_fd</definition>
+        <argsstring>(int fd)</argsstring>
+        <name>copy_fd</name>
+        <qualifiedname>util::IoRedirector::copy_fd</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>fd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="56" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.cpp" bodystart="144" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1IoRedirector_1a475e771cc30a83e7c5f5f5300f45c181" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::IoRedirector::create_pipes</definition>
+        <argsstring>()</argsstring>
+        <name>create_pipes</name>
+        <qualifiedname>util::IoRedirector::create_pipes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="57" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.cpp" bodystart="154" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1IoRedirector_1a0e5561e004fe7c960494a41967c8a5ea" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::IoRedirector::copy_fd_to</definition>
+        <argsstring>(int src_fd, int destfd)</argsstring>
+        <name>copy_fd_to</name>
+        <qualifiedname>util::IoRedirector::copy_fd_to</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>src_fd</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>destfd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="58" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.cpp" bodystart="166" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1IoRedirector_1a9e81b458ff94ba96b69e10988523020c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void util::IoRedirector::close_fd</definition>
+        <argsstring>(int &amp;fd)</argsstring>
+        <name>close_fd</name>
+        <qualifiedname>util::IoRedirector::close_fd</qualifiedname>
+        <param>
+          <type>int &amp;</type>
+          <declname>fd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="59" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.cpp" bodystart="175" bodyend="183"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>allows to capture the strings written to std::cout and std::cerr (MT-safe) </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" line="34" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/io-redirector.h" bodystart="34" bodyend="67"/>
+    <listofallmembers>
+      <member refid="classutil_1_1IoRedirector_1a5393c16fa803b4865f4bacf85cbad899ad84a1455e5eae653513cae658a79f094" prot="private" virt="non-virtual"><scope>util::IoRedirector</scope><name>bufSize</name></member>
+      <member refid="classutil_1_1IoRedirector_1a9e81b458ff94ba96b69e10988523020c" prot="private" virt="non-virtual"><scope>util::IoRedirector</scope><name>close_fd</name></member>
+      <member refid="classutil_1_1IoRedirector_1a78a0d26360e1e5d90776cf28c8e8c5e2" prot="private" virt="non-virtual"><scope>util::IoRedirector</scope><name>copy_fd</name></member>
+      <member refid="classutil_1_1IoRedirector_1a0e5561e004fe7c960494a41967c8a5ea" prot="private" virt="non-virtual"><scope>util::IoRedirector</scope><name>copy_fd_to</name></member>
+      <member refid="classutil_1_1IoRedirector_1a475e771cc30a83e7c5f5f5300f45c181" prot="private" virt="non-virtual"><scope>util::IoRedirector</scope><name>create_pipes</name></member>
+      <member refid="classutil_1_1IoRedirector_1a091f42f209250a7d1786174e52896fa7" prot="public" virt="non-virtual"><scope>util::IoRedirector</scope><name>get</name></member>
+      <member refid="classutil_1_1IoRedirector_1a89c451daceae0431744f44a04ca8e405" prot="public" virt="non-virtual"><scope>util::IoRedirector</scope><name>get_output</name></member>
+      <member refid="classutil_1_1IoRedirector_1a4eebc761a1c87be22b8b3e25f92dd693" prot="private" virt="non-virtual"><scope>util::IoRedirector</scope><name>IoRedirector</name></member>
+      <member refid="classutil_1_1IoRedirector_1a6c7925d4faf2e1c66630c564c43dbcf1" prot="public" virt="non-virtual"><scope>util::IoRedirector</scope><name>is_active</name></member>
+      <member refid="classutil_1_1IoRedirector_1a04ddb632421c8bf7d85526d2a79dee70" prot="private" virt="non-virtual"><scope>util::IoRedirector</scope><name>m_captured</name></member>
+      <member refid="classutil_1_1IoRedirector_1a9db5c06a46f05ec78db6789e75f1e84c" prot="private" virt="non-virtual"><scope>util::IoRedirector</scope><name>m_capturing</name></member>
+      <member refid="classutil_1_1IoRedirector_1a207fcf7963b56f6d95828876afcd2d93" prot="private" virt="non-virtual"><scope>util::IoRedirector</scope><name>m_mutex</name></member>
+      <member refid="classutil_1_1IoRedirector_1a87cb0a5d3867bfa6394e299ff011ab89" prot="private" virt="non-virtual"><scope>util::IoRedirector</scope><name>m_oldStdErr</name></member>
+      <member refid="classutil_1_1IoRedirector_1adb512fa5fd79c447d7f669d7f5877998" prot="private" virt="non-virtual"><scope>util::IoRedirector</scope><name>m_oldStdOut</name></member>
+      <member refid="classutil_1_1IoRedirector_1a651b96a95e98a1021fbff4b45f22c56e" prot="private" virt="non-virtual"><scope>util::IoRedirector</scope><name>m_pipe</name></member>
+      <member refid="classutil_1_1IoRedirector_1a4f39bcfc78480a05b4ca1001f849b96c" prot="private" virt="non-virtual"><scope>util::IoRedirector</scope><name>PIPES</name></member>
+      <member refid="classutil_1_1IoRedirector_1a4f39bcfc78480a05b4ca1001f849b96ca2b052b292409e67b9fa865801dedd57a" prot="private" virt="non-virtual"><scope>util::IoRedirector</scope><name>READ</name></member>
+      <member refid="classutil_1_1IoRedirector_1a5c4a8a120955e58dddf1aeb38e85cf10" prot="public" virt="non-virtual"><scope>util::IoRedirector</scope><name>start</name></member>
+      <member refid="classutil_1_1IoRedirector_1a19737338fdd2dcb2d656191d52d1ea3a" prot="public" virt="non-virtual"><scope>util::IoRedirector</scope><name>stop</name></member>
+      <member refid="classutil_1_1IoRedirector_1a4f39bcfc78480a05b4ca1001f849b96ca8b1311f73f1aefc7a999766e9bec5f1c" prot="private" virt="non-virtual"><scope>util::IoRedirector</scope><name>WRITE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1tlm__gp__mm__v" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::tlm_gp_mm_v</compoundname>
+    <basecompoundref refid="structtlm_1_1scc_1_1tlm__gp__mm" prot="public" virt="non-virtual">tlm::scc::tlm_gp_mm</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1tlm__gp__mm__v_1ad9a4f8eff13276bf2c288a1b081764bb" prot="public" static="no" mutable="no">
+        <type>friend</type>
+        <definition>friend tlm::scc::tlm_gp_mm_v::tlm_gp_mm</definition>
+        <argsstring></argsstring>
+        <name>tlm_gp_mm</name>
+        <qualifiedname>tlm::scc::tlm_gp_mm_v::tlm_gp_mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="98" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__gp__mm__v_1a198fd14ed6c010e152bbd6177d91dccd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual tlm::scc::tlm_gp_mm_v::~tlm_gp_mm_v</definition>
+        <argsstring>()</argsstring>
+        <name>~tlm_gp_mm_v</name>
+        <qualifiedname>tlm::scc::tlm_gp_mm_v::~tlm_gp_mm_v</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="100" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="100" bodyend="100"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__gp__mm__v_1ae791e8e3090044cd573cf97c3b612e3e" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_gp_mm_v::tlm_gp_mm_v</definition>
+        <argsstring>(size_t sz)</argsstring>
+        <name>tlm_gp_mm_v</name>
+        <qualifiedname>tlm::scc::tlm_gp_mm_v::tlm_gp_mm_v</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>sz</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="103" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="103" bodyend="104"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>tlm::scc::tlm_gp_mm</label>
+        <link refid="structtlm_1_1scc_1_1tlm__gp__mm"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::tlm_gp_mm_v</label>
+        <link refid="structtlm_1_1scc_1_1tlm__gp__mm__v"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_extension&lt; tlm_gp_mm &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>tlm::scc::tlm_gp_mm</label>
+        <link refid="structtlm_1_1scc_1_1tlm__gp__mm"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::tlm_gp_mm_v</label>
+        <link refid="structtlm_1_1scc_1_1tlm__gp__mm__v"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_extension&lt; tlm_gp_mm &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" line="96" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_mm.h" bodystart="96" bodyend="105"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1tlm__gp__mm_1a97f72e674011922e5ea256ffd19c44ee" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_gp_mm_v</scope><name>add_data_ptr</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__gp__mm_1a35f656c887cb7aeada3c2f042e29ecea" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_gp_mm_v</scope><name>add_data_ptr</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__gp__mm_1aec9a71407237e5a84158c0b96a47432f" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_gp_mm_v</scope><name>be_ptr</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__gp__mm_1af9c3f41fbf5994e9e7cf3e6eabc3b5f3" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_gp_mm_v</scope><name>clone</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__gp__mm_1a31c541d1b50e57440ebf87c48acb7121" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_gp_mm_v</scope><name>copy_from</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__gp__mm_1aae004a1d3b70e5ec0753c63524dbc0af" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_gp_mm_v</scope><name>create</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__gp__mm_1a1b461d84f0aa19ad298e6cce9e4f7d63" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_gp_mm_v</scope><name>data_ptr</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__gp__mm_1aa2494ee0dae2f721682a659eec17113c" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_gp_mm_v</scope><name>data_size</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__gp__mm__v_1ad9a4f8eff13276bf2c288a1b081764bb" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_gp_mm_v</scope><name>tlm_gp_mm</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__gp__mm_1a09947e51dfb5c60c8f25f55f522d353e" prot="protected" virt="non-virtual" ambiguityscope="tlm::scc::tlm_gp_mm::"><scope>tlm::scc::tlm_gp_mm_v</scope><name>tlm_gp_mm</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__gp__mm__v_1ae791e8e3090044cd573cf97c3b612e3e" prot="protected" virt="non-virtual"><scope>tlm::scc::tlm_gp_mm_v</scope><name>tlm_gp_mm_v</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__gp__mm_1ad3105f2f4474acebff0ab83232620fbd" prot="public" virt="virtual"><scope>tlm::scc::tlm_gp_mm_v</scope><name>~tlm_gp_mm</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__gp__mm__v_1a198fd14ed6c010e152bbd6177d91dccd" prot="public" virt="virtual"><scope>tlm::scc::tlm_gp_mm_v</scope><name>~tlm_gp_mm_v</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

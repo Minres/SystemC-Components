@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1detail_1_1type__of__size_3_01nulltype_00_01N_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::detail::type_of_size&lt; nulltype, N &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>size_t</type>
+        <declname>N</declname>
+        <defname>N</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structnonstd_1_1variants_1_1detail_1_1type__of__size_3_01nulltype_00_01N_01_4_1a2c259a718e28b07ccb2a8214d1d23275" prot="public" static="no">
+        <type>variant_CONFIG_ALIGN_AS_FALLBACK</type>
+        <definition>typedef variant_CONFIG_ALIGN_AS_FALLBACK nonstd::variants::detail::type_of_size&lt; nulltype, N &gt;::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>nonstd::variants::detail::type_of_size&lt; nulltype, N &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="906" column="73" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="906" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="906" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="906" bodyend="906"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1type__of__size_3_01nulltype_00_01N_01_4_1a2c259a718e28b07ccb2a8214d1d23275" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::type_of_size&lt; nulltype, N &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

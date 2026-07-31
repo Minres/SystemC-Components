@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename R</type>
+      </param>
+      <param>
+        <type>typename Visitor</type>
+      </param>
+      <param>
+        <type>typename T2</type>
+      </param>
+      <param>
+        <type>typename T3</type>
+      </param>
+      <param>
+        <type>typename T4</type>
+      </param>
+      <param>
+        <type>typename T5</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4_1af8fd512f0c9e06a3cb681fd403305511" prot="public" static="no" mutable="no">
+        <type>const Visitor &amp;</type>
+        <definition>const Visitor&amp; nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;::visitor</definition>
+        <argsstring></argsstring>
+        <name>visitor</name>
+        <qualifiedname>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;::visitor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2411" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2411" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4_1a16bea9f56a70fedf5ad593f3c5db5b80" prot="public" static="no" mutable="no">
+        <type>T2 const  &amp;</type>
+        <definition>T2 const&amp; nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;::val2</definition>
+        <argsstring></argsstring>
+        <name>val2</name>
+        <qualifiedname>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;::val2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2412" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2412" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4_1a47bd235af2ad51a992bf21d626b7c6d5" prot="public" static="no" mutable="no">
+        <type>T3 const  &amp;</type>
+        <definition>T3 const&amp; nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;::val3</definition>
+        <argsstring></argsstring>
+        <name>val3</name>
+        <qualifiedname>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;::val3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2413" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2413" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4_1aae4380e78b201ae4420b5e5a1ad7e924" prot="public" static="no" mutable="no">
+        <type>T4 const  &amp;</type>
+        <definition>T4 const&amp; nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;::val4</definition>
+        <argsstring></argsstring>
+        <name>val4</name>
+        <qualifiedname>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;::val4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2414" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2414" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4_1a20e4d547f9dabc73d6bfb459cd1425be" prot="public" static="no" mutable="no">
+        <type>T5 const  &amp;</type>
+        <definition>T5 const&amp; nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;::val5</definition>
+        <argsstring></argsstring>
+        <name>val5</name>
+        <qualifiedname>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;::val5</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2415" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2415" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4_1aaf4c2d1e79120715a84bf6aa1a54042c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;::TypedVisitorUnwrapper</definition>
+        <argsstring>(const Visitor &amp;visitor_, T2 const &amp;val2_, T3 const &amp;val3_, T4 const &amp;val4_, T5 const &amp;val5_)</argsstring>
+        <name>TypedVisitorUnwrapper</name>
+        <qualifiedname>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;::TypedVisitorUnwrapper</qualifiedname>
+        <param>
+          <type>const Visitor &amp;</type>
+          <declname>visitor_</declname>
+        </param>
+        <param>
+          <type>T2 const &amp;</type>
+          <declname>val2_</declname>
+        </param>
+        <param>
+          <type>T3 const &amp;</type>
+          <declname>val3_</declname>
+        </param>
+        <param>
+          <type>T4 const &amp;</type>
+          <declname>val4_</declname>
+        </param>
+        <param>
+          <type>T5 const &amp;</type>
+          <declname>val5_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2417" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2417" bodyend="2424"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4_1ab22fd73ecbbb58e02680f2799bbab4a4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>R</type>
+        <definition>R nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;::operator()</definition>
+        <argsstring>(const T &amp;val1) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;::operator()</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>val1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2426" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2426" bodyend="2426"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>nonstd::variants::detail::S2</label>
+        <link refid="structnonstd_1_1variants_1_1detail_1_1S2"/>
+      </node>
+      <node id="5">
+        <label>nonstd::variants::detail::S3</label>
+        <link refid="structnonstd_1_1variants_1_1detail_1_1S3"/>
+      </node>
+      <node id="7">
+        <label>nonstd::variants::detail::S4</label>
+        <link refid="structnonstd_1_1variants_1_1detail_1_1S4"/>
+      </node>
+      <node id="9">
+        <label>nonstd::variants::detail::S5</label>
+        <link refid="structnonstd_1_1variants_1_1detail_1_1S5"/>
+      </node>
+      <node id="2">
+        <label>nonstd::variants::detail::TX&lt; S2 &gt;</label>
+        <link refid="structnonstd_1_1variants_1_1detail_1_1TX"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>nonstd::variants::detail::TX&lt; S3 &gt;</label>
+        <link refid="structnonstd_1_1variants_1_1detail_1_1TX"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>nonstd::variants::detail::TX&lt; S4 &gt;</label>
+        <link refid="structnonstd_1_1variants_1_1detail_1_1TX"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>nonstd::variants::detail::TX&lt; S5 &gt;</label>
+        <link refid="structnonstd_1_1variants_1_1detail_1_1TX"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;</label>
+        <link refid="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>val2</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>val3</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>val4</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>val5</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2410" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2410" bodyend="2427"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4_1ab22fd73ecbbb58e02680f2799bbab4a4" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;</scope><name>operator()</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4_1aaf4c2d1e79120715a84bf6aa1a54042c" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;</scope><name>TypedVisitorUnwrapper</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4_1a16bea9f56a70fedf5ad593f3c5db5b80" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;</scope><name>val2</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4_1a47bd235af2ad51a992bf21d626b7c6d5" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;</scope><name>val3</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4_1aae4380e78b201ae4420b5e5a1ad7e924" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;</scope><name>val4</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4_1a20e4d547f9dabc73d6bfb459cd1425be" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;</scope><name>val5</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4_1af8fd512f0c9e06a3cb681fd403305511" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;</scope><name>visitor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

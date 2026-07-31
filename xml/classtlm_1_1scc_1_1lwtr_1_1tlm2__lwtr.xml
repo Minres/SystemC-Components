@@ -1,0 +1,943 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::lwtr::tlm2_lwtr</compoundname>
+    <basecompoundref prot="public" virt="virtual">tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</basecompoundref>
+    <basecompoundref prot="public" virt="virtual">tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</basecompoundref>
+    <includes refid="tlm2__lwtr_8h" local="no">tlm2_lwtr.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+        <defval>tlm::tlm_base_protocol_types</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a7c8d79c90346d41e7e613f828c88d959" prot="private" static="no" strong="no">
+        <type></type>
+        <name>DIR</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::DIR</qualifiedname>
+        <enumvalue id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a7c8d79c90346d41e7e613f828c88d959a67425aae6fa21facb81dd42ba8514d53" prot="private">
+          <name>FW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a7c8d79c90346d41e7e613f828c88d959ab788939b93f10b39806704549419e9b9" prot="private">
+          <name>BW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a7c8d79c90346d41e7e613f828c88d959acbb6afadc14a02b1313c68e526e355a6" prot="private">
+          <name>REQ</name>
+          <initializer>= FW</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a7c8d79c90346d41e7e613f828c88d959a9c09891bcfb3005750640ba60a9d323b" prot="private">
+          <name>RESP</name>
+          <initializer>= BW</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="289" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="289" bodyend="289"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aef6b9f1140faba74fd78503c22b641ab" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::enableBlTracing</definition>
+        <argsstring></argsstring>
+        <name>enableBlTracing</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::enableBlTracing</qualifiedname>
+        <briefdescription>
+<para>the attribute to selectively enable/disable recording of blocking protocol tx </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="121" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a031d8873a673d37ecd4bb60ad8c3e8f5" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::enableNbTracing</definition>
+        <argsstring></argsstring>
+        <name>enableNbTracing</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::enableNbTracing</qualifiedname>
+        <briefdescription>
+<para>the attribute to selectively enable/disable recording of non-blocking protocol tx </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="124" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1acfcedc70de6436e900a48961d6612f60" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::enableTimedTracing</definition>
+        <argsstring></argsstring>
+        <name>enableTimedTracing</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::enableTimedTracing</qualifiedname>
+        <initializer>{&quot;enableTimedTracing&quot;, true}</initializer>
+        <briefdescription>
+<para>the attribute to selectively enable/disable timed recording </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="127" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="127" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a4024003afce6abe8e37fecc1979320da" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::enableDmiTracing</definition>
+        <argsstring></argsstring>
+        <name>enableDmiTracing</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::enableDmiTracing</qualifiedname>
+        <initializer>{&quot;enableDmiTracing&quot;, false}</initializer>
+        <briefdescription>
+<para>the attribute to selectively enable/disable DMI recording </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="130" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="130" bodyend="130"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1adc0986c955a2002d2bf51f70cb8e562d" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_port&lt; tlm::tlm_fw_transport_if&lt; TYPES &gt; &gt;</type>
+        <definition>sc_core::sc_port&lt;tlm::tlm_fw_transport_if&lt;TYPES&gt; &gt; tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::fw_port</definition>
+        <argsstring></argsstring>
+        <name>fw_port</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::fw_port</qualifiedname>
+        <initializer>{&quot;fw_port&quot;}</initializer>
+        <briefdescription>
+<para>the port where fw accesses are forwarded to </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="261" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="261" bodyend="261"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a79d63f3d0f1563d84b31223fcca074d7" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_port&lt; tlm::tlm_bw_transport_if&lt; TYPES &gt; &gt;</type>
+        <definition>sc_core::sc_port&lt;tlm::tlm_bw_transport_if&lt;TYPES&gt; &gt; tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::bw_port</definition>
+        <argsstring></argsstring>
+        <name>bw_port</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::bw_port</qualifiedname>
+        <initializer>{&quot;bw_port&quot;}</initializer>
+        <briefdescription>
+<para>the port where bw accesses are forwarded to </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="264" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="264" bodyend="264"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a261a091aa4a2f9c112c92f5690afe4cf" prot="private" static="no" mutable="no">
+        <type>std::string const</type>
+        <definition>std::string const tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::full_name</definition>
+        <argsstring></argsstring>
+        <name>full_name</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::full_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="267" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a97c9058a7e02bd5bd02fe2b501197ef9" prot="private" static="no" mutable="no">
+        <type><ref refid="structscc_1_1peq" kindref="compound">::scc::peq</ref>&lt; <ref refid="structtlm_1_1scc_1_1lwtr_1_1nb__rec__entry" kindref="compound">nb_rec_entry</ref> &gt;</type>
+        <definition>::scc::peq&lt;nb_rec_entry&gt; tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::nb_timed_peq</definition>
+        <argsstring></argsstring>
+        <name>nb_timed_peq</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::nb_timed_peq</qualifiedname>
+        <briefdescription>
+<para>event queue to hold time points of non-blocking transactions </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="269" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="269" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a6d137e7a7b6243d2587caa58de03fa25" prot="private" static="no" mutable="no">
+        <type>tx_db *</type>
+        <definition>tx_db* tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::m_db</definition>
+        <argsstring></argsstring>
+        <name>m_db</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::m_db</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>transaction recording database </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="276" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="276" bodyend="276"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a82ca032fd3a2da91d02aefbc8cad1f97" prot="private" static="no" mutable="no">
+        <type>::lwtr::tx_relation_handle</type>
+        <definition>::lwtr::tx_relation_handle tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::pred_succ_hndl</definition>
+        <argsstring></argsstring>
+        <name>pred_succ_hndl</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::pred_succ_hndl</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>the relationship name handles </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="278" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="278" bodyend="278"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1ad6f36dbacf372dade37d67160c1649a7" prot="private" static="no" mutable="no">
+        <type>::lwtr::tx_relation_handle</type>
+        <definition>::lwtr::tx_relation_handle tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::par_chld_hndl</definition>
+        <argsstring></argsstring>
+        <name>par_chld_hndl</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::par_chld_hndl</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="278" column="47" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="278" bodyend="278"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aa50a8272d83b30d15c6a89c7768cecce" prot="private" static="no" mutable="no">
+        <type>tx_fiber *</type>
+        <definition>tx_fiber* tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::b_streamHandle</definition>
+        <argsstring></argsstring>
+        <name>b_streamHandle</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::b_streamHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>blocking transaction recording stream handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="280" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="280" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1adb08c0a0de8443f619451cf7587d96c4" prot="private" static="no" mutable="no">
+        <type>std::array&lt; tx_generator&lt; sc_core::sc_time, sc_core::sc_time &gt; *, 3 &gt;</type>
+        <definition>std::array&lt;tx_generator&lt;sc_core::sc_time, sc_core::sc_time&gt;*, 3&gt; tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::b_trHandle</definition>
+        <argsstring></argsstring>
+        <name>b_trHandle</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::b_trHandle</qualifiedname>
+        <initializer>{{nullptr, nullptr, nullptr}}</initializer>
+        <briefdescription>
+<para>transaction generator handle for blocking transactions </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="282" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="282" bodyend="282"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1ada4a691d463a61f166f032c86e8a3872" prot="private" static="no" mutable="no">
+        <type>tx_fiber *</type>
+        <definition>tx_fiber* tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::b_streamHandleTimed</definition>
+        <argsstring></argsstring>
+        <name>b_streamHandleTimed</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::b_streamHandleTimed</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>timed blocking transaction recording stream handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="284" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="284" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aa73efaa95750f6cb3eb45027b9c862e2" prot="private" static="no" mutable="no">
+        <type>std::array&lt; tx_generator&lt;&gt; *, 3 &gt;</type>
+        <definition>std::array&lt;tx_generator&lt;&gt;*, 3&gt; tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::b_trTimedHandle</definition>
+        <argsstring></argsstring>
+        <name>b_trTimedHandle</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::b_trTimedHandle</qualifiedname>
+        <initializer>{{nullptr, nullptr, nullptr}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>transaction generator handle for blocking transactions with annotated delays </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="287" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="287" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a8b2c53836f6d77768d268033d0100b13" prot="private" static="no" mutable="no">
+        <type>tx_fiber *</type>
+        <definition>tx_fiber* tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::nb_streamHandle</definition>
+        <argsstring></argsstring>
+        <name>nb_streamHandle</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::nb_streamHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>non-blocking transaction recording stream handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="291" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="291" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a341fa3adfb2ec8fdfa8597ec5670c721" prot="private" static="no" mutable="no">
+        <type>tx_fiber *</type>
+        <definition>tx_fiber* tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::nb_streamHandleTimed</definition>
+        <argsstring></argsstring>
+        <name>nb_streamHandleTimed</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::nb_streamHandleTimed</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>non-blocking transaction recording stream handle with timing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="293" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="293" bodyend="293"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a48f3ce0bdf07bd141772852c9b055d5e" prot="private" static="no" mutable="no">
+        <type>std::array&lt; tx_generator&lt; std::string, std::string &gt; *, 2 &gt;</type>
+        <definition>std::array&lt;tx_generator&lt;std::string, std::string&gt;*, 2&gt; tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::nb_trHandle</definition>
+        <argsstring></argsstring>
+        <name>nb_trHandle</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::nb_trHandle</qualifiedname>
+        <initializer>{{nullptr, nullptr}}</initializer>
+        <briefdescription>
+<para>transaction generator handle for non-blocking transactions </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="295" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="295" bodyend="295"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aa344bccd27854af36a98c2d41a4075ed" prot="private" static="no" mutable="no">
+        <type>std::array&lt; tx_generator&lt;&gt; *, 2 &gt;</type>
+        <definition>std::array&lt;tx_generator&lt;&gt;*, 2&gt; tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::nb_trTimedHandle</definition>
+        <argsstring></argsstring>
+        <name>nb_trTimedHandle</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::nb_trTimedHandle</qualifiedname>
+        <initializer>{{nullptr, nullptr}}</initializer>
+        <briefdescription>
+<para>transaction generator handle for non-blocking transactions with annotated delays </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="297" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="297" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a6255bf81a5cb4b2bc7a03d1d3447fd57" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, tx_handle &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, tx_handle&gt; tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::nbtx_req_handle_map</definition>
+        <argsstring></argsstring>
+        <name>nbtx_req_handle_map</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::nbtx_req_handle_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="298" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="298" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a536f4b05f7ebb7a61bf094784bc9b6f5" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, tx_handle &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, tx_handle&gt; tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::nbtx_last_req_handle_map</definition>
+        <argsstring></argsstring>
+        <name>nbtx_last_req_handle_map</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::nbtx_last_req_handle_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="299" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="299" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1afa883c6476552abf669afad1e199c81d" prot="private" static="no" mutable="no">
+        <type>tx_fiber *</type>
+        <definition>tx_fiber* tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::dmi_streamHandle</definition>
+        <argsstring></argsstring>
+        <name>dmi_streamHandle</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::dmi_streamHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>dmi transaction recording stream handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="302" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="302" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a2fb9c14296f38ee3277744eb15d3d016" prot="private" static="no" mutable="no">
+        <type>tx_generator *</type>
+        <definition>tx_generator* tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::dmi_trGetHandle</definition>
+        <argsstring></argsstring>
+        <name>dmi_trGetHandle</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::dmi_trGetHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>transaction generator handle for DMI transactions </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="304" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="304" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a89f3c1c95b3582863c820529051df4c4" prot="private" static="no" mutable="no">
+        <type>tx_generator&lt; sc_dt::uint64, sc_dt::uint64 &gt; *</type>
+        <definition>tx_generator&lt;sc_dt::uint64, sc_dt::uint64&gt;* tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::dmi_trInvalidateHandle</definition>
+        <argsstring></argsstring>
+        <name>dmi_trInvalidateHandle</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::dmi_trInvalidateHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="305" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="305" bodyend="305"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a9caed48a9557d0be7222e7ce357ad818" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::tlm2_lwtr</definition>
+        <argsstring>(bool recording_enabled=true, tx_db *tr_db=tx_db::get_default_db())</argsstring>
+        <name>tlm2_lwtr</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::tlm2_lwtr</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>recording_enabled</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>tx_db *</type>
+          <declname>tr_db</declname>
+          <defval>tx_db::get_default_db()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="142" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="142" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1adfc37aa95f4ad5997a18e9301ffb0f45" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::tlm2_lwtr</definition>
+        <argsstring>(const char *full_name, bool recording_enabled=true, tx_db *tr_db=tx_db::get_default_db())</argsstring>
+        <name>tlm2_lwtr</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::tlm2_lwtr</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>full_name</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>recording_enabled</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>tx_db *</type>
+          <declname>tr_db</declname>
+          <defval>tx_db::get_default_db()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="155" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="155" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a4dba0af35d107d732b5e138c116208b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::~tlm2_lwtr</definition>
+        <argsstring>() override</argsstring>
+        <name>~tlm2_lwtr</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::~tlm2_lwtr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="169" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="169" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1ac01a1e1f6d6a7bdbe46ce83ee00f62a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::nb_transport_fw</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, typename TYPES::tlm_phase_type &amp;phase, sc_core::sc_time &amp;delay) override</argsstring>
+        <name>nb_transport_fw</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::nb_transport_fw</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>The non-blocking forward transport function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is forwarded and recorded to a transaction stream named &quot;nb_fw&quot; with current timestamps. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>phase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the current phase of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the annotated delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the sync state of the transaction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="200" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="439" bodyend="514"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aedb47b619c3965a911816a8b77c299cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::nb_transport_bw</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, typename TYPES::tlm_phase_type &amp;phase, sc_core::sc_time &amp;delay) override</argsstring>
+        <name>nb_transport_bw</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::nb_transport_bw</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>The non-blocking backward transport function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is forwarded and recorded to a transaction stream named &quot;nb_bw&quot; with current timestamps. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>phase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the current phase of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the annotated delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the sync state of the transaction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="212" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="517" bodyend="583"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a04bd712f8b9ad3cc4932d808e99b9e6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::b_transport</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, sc_core::sc_time &amp;delay) override</argsstring>
+        <name>b_transport</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::b_transport</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>The blocking transport function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is forwarded and recorded to a transaction stream named &quot;b_tx&quot; with current timestamps. Additionally a &quot;b_tx_timed&quot; is been created recording the transactions at their annotated delay <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the annotated delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="223" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="375" bodyend="436"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aa31b83c1cd573bab0e08c09f5e1b00e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::get_direct_mem_ptr</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, tlm::tlm_dmi &amp;dmi_data) override</argsstring>
+        <name>get_direct_mem_ptr</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::get_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_dmi &amp;</type>
+          <declname>dmi_data</declname>
+        </param>
+        <briefdescription>
+<para>The direct memory interface forward function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is just forwarded and not recorded. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dmi_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the structure holding the dmi information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>if the dmi structure is valid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="231" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="639" bodyend="648"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aa0acded6b251453f3e8324c5a42e218f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::invalidate_direct_mem_ptr</definition>
+        <argsstring>(sc_dt::uint64 start_addr, sc_dt::uint64 end_addr) override</argsstring>
+        <name>invalidate_direct_mem_ptr</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::invalidate_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>start_addr</declname>
+        </param>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>end_addr</declname>
+        </param>
+        <briefdescription>
+<para>The direct memory interface backward function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is just forwarded and not recorded. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>start_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the start address of the memory area being invalid </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the end address of the memory area being invalid </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="238" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="655" bodyend="664"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1ac510ec6dc065f853aceb31f283338d0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::transport_dbg</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans) override</argsstring>
+        <name>transport_dbg</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::transport_dbg</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+<para>The debug transportfunction. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is just forwarded and not recorded. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the sync state of the transaction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="245" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="671" bodyend="673"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a3aa41cbf129d6a8132d63140e955ed97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::isRecordingBlockingTxEnabled</definition>
+        <argsstring>() const</argsstring>
+        <name>isRecordingBlockingTxEnabled</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::isRecordingBlockingTxEnabled</qualifiedname>
+        <briefdescription>
+<para>get the current state of transaction recording </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>if true transaction recording is enabled otherwise transaction recording is bypassed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="251" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="251" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1abd8488304f9aa9ddf4bdabb6f363fa52" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::isRecordingNonBlockingTxEnabled</definition>
+        <argsstring>() const</argsstring>
+        <name>isRecordingNonBlockingTxEnabled</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::isRecordingNonBlockingTxEnabled</qualifiedname>
+        <briefdescription>
+<para>get the current state of transaction recording </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>if true transaction recording is enabled otherwise transaction recording is bypassed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="257" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="257" bodyend="257"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a621ac4595dd74bdff092f9385996b0fb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::nbtx_cb</definition>
+        <argsstring>()</argsstring>
+        <name>nbtx_cb</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::nbtx_cb</qualifiedname>
+        <briefdescription>
+<para>The thread processing the non-blocking requests with their annotated times to generate the timed view of non-blocking tx. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="274" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="585" bodyend="637"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a31ce137d34daf99f0c4f8a729c4174b6" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::phase2string</definition>
+        <argsstring>(const tlm::tlm_phase &amp;p)</argsstring>
+        <name>phase2string</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::phase2string</qualifiedname>
+        <param>
+          <type>const tlm::tlm_phase &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="347" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="347" bodyend="351"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a5e5550d103aa2cc1078f2ffde62e5b95" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;::initialize_streams</definition>
+        <argsstring>()</argsstring>
+        <name>initialize_streams</name>
+        <qualifiedname>tlm::scc::lwtr::tlm2_lwtr::initialize_streams</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="308" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="308" bodyend="344"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The TLM2 transaction recorder. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This module records all TLM transaction to a LWTR transaction stream for further viewing and analysis. The handle of the created transaction is stored in an tlm_extension so that another instance of the <ref refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr" kindref="compound">tlm2_lwtr</ref> e.g. further down the path can link to it. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;</label>
+        <link refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;</label>
+        <link refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" line="118" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/tlm2_lwtr.h" bodystart="118" bodyend="352"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aa50a8272d83b30d15c6a89c7768cecce" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>b_streamHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1ada4a691d463a61f166f032c86e8a3872" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>b_streamHandleTimed</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a04bd712f8b9ad3cc4932d808e99b9e6b" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>b_transport</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1adb08c0a0de8443f619451cf7587d96c4" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>b_trHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aa73efaa95750f6cb3eb45027b9c862e2" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>b_trTimedHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a7c8d79c90346d41e7e613f828c88d959ab788939b93f10b39806704549419e9b9" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>BW</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a79d63f3d0f1563d84b31223fcca074d7" prot="protected" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>bw_port</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a7c8d79c90346d41e7e613f828c88d959" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>DIR</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1afa883c6476552abf669afad1e199c81d" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>dmi_streamHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a2fb9c14296f38ee3277744eb15d3d016" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>dmi_trGetHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a89f3c1c95b3582863c820529051df4c4" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>dmi_trInvalidateHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aef6b9f1140faba74fd78503c22b641ab" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>enableBlTracing</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a4024003afce6abe8e37fecc1979320da" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>enableDmiTracing</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a031d8873a673d37ecd4bb60ad8c3e8f5" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>enableNbTracing</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1acfcedc70de6436e900a48961d6612f60" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>enableTimedTracing</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a261a091aa4a2f9c112c92f5690afe4cf" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>full_name</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a7c8d79c90346d41e7e613f828c88d959a67425aae6fa21facb81dd42ba8514d53" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>FW</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1adc0986c955a2002d2bf51f70cb8e562d" prot="protected" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>fw_port</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aa31b83c1cd573bab0e08c09f5e1b00e1" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>get_direct_mem_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a5e5550d103aa2cc1078f2ffde62e5b95" prot="protected" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>initialize_streams</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aa0acded6b251453f3e8324c5a42e218f" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>invalidate_direct_mem_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a3aa41cbf129d6a8132d63140e955ed97" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>isRecordingBlockingTxEnabled</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1abd8488304f9aa9ddf4bdabb6f363fa52" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>isRecordingNonBlockingTxEnabled</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a6d137e7a7b6243d2587caa58de03fa25" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>m_db</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a8b2c53836f6d77768d268033d0100b13" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>nb_streamHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a341fa3adfb2ec8fdfa8597ec5670c721" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>nb_streamHandleTimed</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a97c9058a7e02bd5bd02fe2b501197ef9" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>nb_timed_peq</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aedb47b619c3965a911816a8b77c299cb" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>nb_transport_bw</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1ac01a1e1f6d6a7bdbe46ce83ee00f62a1" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>nb_transport_fw</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a48f3ce0bdf07bd141772852c9b055d5e" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>nb_trHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1aa344bccd27854af36a98c2d41a4075ed" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>nb_trTimedHandle</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a621ac4595dd74bdff092f9385996b0fb" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>nbtx_cb</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a536f4b05f7ebb7a61bf094784bc9b6f5" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>nbtx_last_req_handle_map</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a6255bf81a5cb4b2bc7a03d1d3447fd57" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>nbtx_req_handle_map</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1ad6f36dbacf372dade37d67160c1649a7" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>par_chld_hndl</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a31ce137d34daf99f0c4f8a729c4174b6" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>phase2string</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a82ca032fd3a2da91d02aefbc8cad1f97" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>pred_succ_hndl</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a7c8d79c90346d41e7e613f828c88d959acbb6afadc14a02b1313c68e526e355a6" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>REQ</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a7c8d79c90346d41e7e613f828c88d959a9c09891bcfb3005750640ba60a9d323b" prot="private" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>RESP</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a9caed48a9557d0be7222e7ce357ad818" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>tlm2_lwtr</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1adfc37aa95f4ad5997a18e9301ffb0f45" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>tlm2_lwtr</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1ac510ec6dc065f853aceb31f283338d0d" prot="public" virt="non-virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>transport_dbg</name></member>
+      <member refid="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr_1a4dba0af35d107d732b5e138c116208b7" prot="public" virt="virtual"><scope>tlm::scc::lwtr::tlm2_lwtr</scope><name>~tlm2_lwtr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

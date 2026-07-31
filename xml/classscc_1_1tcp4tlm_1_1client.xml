@@ -1,0 +1,329 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1tcp4tlm_1_1client" kind="class" language="C++" prot="public">
+    <compoundname>scc::tcp4tlm::client</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename REQ</type>
+      </param>
+      <param>
+        <type>typename RESP</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classscc_1_1tcp4tlm_1_1client_1aeac9f08b086097e18259c932d39f5d63" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string scc::tcp4tlm::client&lt; REQ, RESP &gt;::host</definition>
+        <argsstring></argsstring>
+        <name>host</name>
+        <qualifiedname>scc::tcp4tlm::client::host</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="55" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1tcp4tlm_1_1client_1adc3e3e83b40ab64dcb08bf30710989ba" prot="protected" static="no" mutable="no">
+        <type>unsigned short</type>
+        <definition>unsigned short scc::tcp4tlm::client&lt; REQ, RESP &gt;::port</definition>
+        <argsstring></argsstring>
+        <name>port</name>
+        <qualifiedname>scc::tcp4tlm::client::port</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="56" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1tcp4tlm_1_1client_1a9f3e0dc3e22cc57a5a394b9b4b19d40a" prot="protected" static="no" mutable="no">
+        <type>unsigned short</type>
+        <definition>unsigned short scc::tcp4tlm::client&lt; REQ, RESP &gt;::retry_count</definition>
+        <argsstring></argsstring>
+        <name>retry_count</name>
+        <qualifiedname>scc::tcp4tlm::client::retry_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="57" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1tcp4tlm_1_1client_1aa12049f977faa55b13d869c32acd75fd" prot="protected" static="no" mutable="no">
+        <type>boost::asio::io_context</type>
+        <definition>boost::asio::io_context scc::tcp4tlm::client&lt; REQ, RESP &gt;::io_service</definition>
+        <argsstring></argsstring>
+        <name>io_service</name>
+        <qualifiedname>scc::tcp4tlm::client::io_service</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="58" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1tcp4tlm_1_1client_1afd2cb36c766e71fe5e7ab0c22320067b" prot="protected" static="no" mutable="no">
+        <type><ref refid="classscc_1_1tcp4tlm_1_1connection" kindref="compound">connection</ref>&lt; REQ, RESP &gt;::ptr</type>
+        <definition>connection&lt;REQ,RESP&gt;::ptr scc::tcp4tlm::client&lt; REQ, RESP &gt;::trace_conn</definition>
+        <argsstring></argsstring>
+        <name>trace_conn</name>
+        <qualifiedname>scc::tcp4tlm::client::trace_conn</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="59" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1tcp4tlm_1_1client_1a59927df69b2a7b97765d84fe1ca0137c" prot="protected" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; scc::tcp4tlm::client&lt; REQ, RESP &gt;::is_connected</definition>
+        <argsstring></argsstring>
+        <name>is_connected</name>
+        <qualifiedname>scc::tcp4tlm::client::is_connected</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="60" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1tcp4tlm_1_1client_1a71ab4158266724c61974323691ab0cfd" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::client&lt; REQ, RESP &gt;::local_connection</definition>
+        <argsstring></argsstring>
+        <name>local_connection</name>
+        <qualifiedname>scc::tcp4tlm::client::local_connection</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="61" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1client_1ad8e717fd40444916ad394ce2e4ffe6c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::tcp4tlm::client&lt; REQ, RESP &gt;::client</definition>
+        <argsstring>()</argsstring>
+        <name>client</name>
+        <qualifiedname>scc::tcp4tlm::client::client</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="30" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="103" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1client_1a9815f8b16e3fe5545707575cc180620b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>scc::tcp4tlm::client&lt; REQ, RESP &gt;::~client</definition>
+        <argsstring>()</argsstring>
+        <name>~client</name>
+        <qualifiedname>scc::tcp4tlm::client::~client</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="31" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="112" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1client_1a8f63e908728a8357398474229cd49768" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::client&lt; REQ, RESP &gt;::configure</definition>
+        <argsstring>(std::string host, unsigned port_nr)</argsstring>
+        <name>configure</name>
+        <qualifiedname>scc::tcp4tlm::client::configure</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>host</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>port_nr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="33" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1client_1a4d61fece72b91124521e6d9fded035df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::client&lt; REQ, RESP &gt;::connect</definition>
+        <argsstring>()</argsstring>
+        <name>connect</name>
+        <qualifiedname>scc::tcp4tlm::client::connect</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="38" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="118" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1client_1adaa4b0dd68ff731084de3a2520ff591a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::client&lt; REQ, RESP &gt;::is_remote_connected</definition>
+        <argsstring>()</argsstring>
+        <name>is_remote_connected</name>
+        <qualifiedname>scc::tcp4tlm::client::is_remote_connected</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="40" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1client_1a3ba15e800274a7d144866c6ab286dbc6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classscc_1_1tcp4tlm_1_1connection" kindref="compound">connection</ref>&lt; REQ, RESP &gt; &amp;</type>
+        <definition>connection&lt; REQ, RESP &gt; &amp; scc::tcp4tlm::client&lt; REQ, RESP &gt;::client_connection</definition>
+        <argsstring>(unsigned short retry_count=0)</argsstring>
+        <name>client_connection</name>
+        <qualifiedname>scc::tcp4tlm::client::client_connection</qualifiedname>
+        <param>
+          <type>unsigned short</type>
+          <declname>retry_count</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="42" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="42" bodyend="52"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1client_1a03da0b6f7f39696c02b039cb9468f407" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::client&lt; REQ, RESP &gt;::setup_endpoint</definition>
+        <argsstring>(boost::asio::ip::tcp::endpoint &amp;ep)</argsstring>
+        <name>setup_endpoint</name>
+        <qualifiedname>scc::tcp4tlm::client::setup_endpoint</qualifiedname>
+        <param>
+          <type>boost::asio::ip::tcp::endpoint &amp;</type>
+          <declname>ep</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="75" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="75" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1client_1a1a3bc6120a9e8f2602b6b2796638cbcb" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::client&lt; REQ, RESP &gt;::setup_endpoint</definition>
+        <argsstring>(boost::asio::ip::udp::endpoint &amp;ep)</argsstring>
+        <name>setup_endpoint</name>
+        <qualifiedname>scc::tcp4tlm::client::setup_endpoint</qualifiedname>
+        <param>
+          <type>boost::asio::ip::udp::endpoint &amp;</type>
+          <declname>ep</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="82" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="82" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1client_1a95eab46113139b253404151fe89f8014" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::client&lt; REQ, RESP &gt;::is_local_socket</definition>
+        <argsstring>(boost::asio::ip::tcp::socket &amp;socket)</argsstring>
+        <name>is_local_socket</name>
+        <qualifiedname>scc::tcp4tlm::client::is_local_socket</qualifiedname>
+        <param>
+          <type>boost::asio::ip::tcp::socket &amp;</type>
+          <declname>socket</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="89" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="89" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1client_1ab1d06d983b9df8da906c302ecdb0d3ff" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::client&lt; REQ, RESP &gt;::is_local_socket</definition>
+        <argsstring>(boost::asio::ip::udp::socket &amp;socket)</argsstring>
+        <name>is_local_socket</name>
+        <qualifiedname>scc::tcp4tlm::client::is_local_socket</qualifiedname>
+        <param>
+          <type>boost::asio::ip::udp::socket &amp;</type>
+          <declname>socket</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="93" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="93" bodyend="95"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>scc::tcp4tlm::client&lt; REQ, RESP &gt;</label>
+        <link refid="classscc_1_1tcp4tlm_1_1client"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>trace_conn</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>scc::tcp4tlm::connection&lt; REQ, RESP &gt;</label>
+        <link refid="classscc_1_1tcp4tlm_1_1connection"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::enable_shared_from_this&lt; connection&lt; REQ, RESP &gt; &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" line="28" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/client.h" bodystart="28" bodyend="100"/>
+    <listofallmembers>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1ad8e717fd40444916ad394ce2e4ffe6c8" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::client</scope><name>client</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a3ba15e800274a7d144866c6ab286dbc6" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::client</scope><name>client_connection</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a8f63e908728a8357398474229cd49768" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::client</scope><name>configure</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a4d61fece72b91124521e6d9fded035df" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::client</scope><name>connect</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1aeac9f08b086097e18259c932d39f5d63" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm::client</scope><name>host</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1aa12049f977faa55b13d869c32acd75fd" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm::client</scope><name>io_service</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a59927df69b2a7b97765d84fe1ca0137c" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm::client</scope><name>is_connected</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a95eab46113139b253404151fe89f8014" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm::client</scope><name>is_local_socket</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1ab1d06d983b9df8da906c302ecdb0d3ff" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm::client</scope><name>is_local_socket</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1adaa4b0dd68ff731084de3a2520ff591a" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::client</scope><name>is_remote_connected</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a71ab4158266724c61974323691ab0cfd" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm::client</scope><name>local_connection</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1adc3e3e83b40ab64dcb08bf30710989ba" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm::client</scope><name>port</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a9f3e0dc3e22cc57a5a394b9b4b19d40a" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm::client</scope><name>retry_count</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a03da0b6f7f39696c02b039cb9468f407" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm::client</scope><name>setup_endpoint</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a1a3bc6120a9e8f2602b6b2796638cbcb" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm::client</scope><name>setup_endpoint</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1afd2cb36c766e71fe5e7ab0c22320067b" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm::client</scope><name>trace_conn</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1client_1a9815f8b16e3fe5545707575cc180620b" prot="public" virt="virtual"><scope>scc::tcp4tlm::client</scope><name>~client</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

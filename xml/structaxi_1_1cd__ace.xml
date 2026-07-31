@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1cd__ace" kind="struct" language="C++" prot="public">
+    <compoundname>axi::cd_ace</compoundname>
+    <includes refid="axi_2signal__if_8h" local="no">signal_if.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename CFG</type>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval><ref refid="structaxi_1_1master__types" kindref="compound">master_types</ref></defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structaxi_1_1cd__ace_1a39db9eb2463e91e8098cb72def40323c" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; bool &gt;</type>
+        <definition>TYPES::template m2s_t&lt;bool&gt; axi::cd_ace&lt; CFG, TYPES &gt;::cd_valid</definition>
+        <argsstring></argsstring>
+        <name>cd_valid</name>
+        <qualifiedname>axi::cd_ace::cd_valid</qualifiedname>
+        <initializer>{&quot;cd_valid&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="672" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="672" bodyend="672"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1cd__ace_1ad2946289ea7761c5f0b90694452ae674" prot="public" static="no" mutable="no">
+        <type>TYPES::template s2m_t&lt; bool &gt;</type>
+        <definition>TYPES::template s2m_t&lt;bool&gt; axi::cd_ace&lt; CFG, TYPES &gt;::cd_ready</definition>
+        <argsstring></argsstring>
+        <name>cd_ready</name>
+        <qualifiedname>axi::cd_ace::cd_ready</qualifiedname>
+        <initializer>{&quot;cd_ready&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="673" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="673" bodyend="673"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1cd__ace_1a00284bf066c2c49329287071dd739609" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; typename CFG::data_t &gt;</type>
+        <definition>TYPES::template m2s_t&lt;typename CFG::data_t&gt; axi::cd_ace&lt; CFG, TYPES &gt;::cd_data</definition>
+        <argsstring></argsstring>
+        <name>cd_data</name>
+        <qualifiedname>axi::cd_ace::cd_data</qualifiedname>
+        <initializer>{&quot;cd_data&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="674" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="674" bodyend="674"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1cd__ace_1a431355e2ad70a5f63b5ea43a3f3af178" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_full_t&lt; bool &gt;</type>
+        <definition>TYPES::template m2s_full_t&lt;bool&gt; axi::cd_ace&lt; CFG, TYPES &gt;::cd_last</definition>
+        <argsstring></argsstring>
+        <name>cd_last</name>
+        <qualifiedname>axi::cd_ace::cd_last</qualifiedname>
+        <initializer>{&quot;cd_last&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="675" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="675" bodyend="675"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1cd__ace_1a3d53f0b6b46f592b722c61d02c4ba92a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::cd_ace&lt; CFG, TYPES &gt;::cd_ace</definition>
+        <argsstring>()=default</argsstring>
+        <name>cd_ace</name>
+        <qualifiedname>axi::cd_ace::cd_ace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="677" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1cd__ace_1aae1cd6099a2dcd6abdbeb67d8249c722" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::cd_ace&lt; CFG, TYPES &gt;::cd_ace</definition>
+        <argsstring>(const char *prefix)</argsstring>
+        <name>cd_ace</name>
+        <qualifiedname>axi::cd_ace::cd_ace</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>prefix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="678" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="678" bodyend="682"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1cd__ace_1a7dec2b4407bfaa57eb5a085f8d3f3812" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename OTYPES</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void axi::cd_ace&lt; CFG, TYPES &gt;::bind_cd</definition>
+        <argsstring>(cd_ace&lt; CFG, OTYPES &gt; &amp;o)</argsstring>
+        <name>bind_cd</name>
+        <qualifiedname>axi::cd_ace::bind_cd</qualifiedname>
+        <param>
+          <type>cd_ace&lt; CFG, OTYPES &gt; &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="684" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="684" bodyend="689"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>snoop data(cd) channel signals </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="671" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="671" bodyend="690"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1cd__ace_1a7dec2b4407bfaa57eb5a085f8d3f3812" prot="public" virt="non-virtual"><scope>axi::cd_ace</scope><name>bind_cd</name></member>
+      <member refid="structaxi_1_1cd__ace_1a3d53f0b6b46f592b722c61d02c4ba92a" prot="public" virt="non-virtual"><scope>axi::cd_ace</scope><name>cd_ace</name></member>
+      <member refid="structaxi_1_1cd__ace_1aae1cd6099a2dcd6abdbeb67d8249c722" prot="public" virt="non-virtual"><scope>axi::cd_ace</scope><name>cd_ace</name></member>
+      <member refid="structaxi_1_1cd__ace_1a00284bf066c2c49329287071dd739609" prot="public" virt="non-virtual"><scope>axi::cd_ace</scope><name>cd_data</name></member>
+      <member refid="structaxi_1_1cd__ace_1a431355e2ad70a5f63b5ea43a3f3af178" prot="public" virt="non-virtual"><scope>axi::cd_ace</scope><name>cd_last</name></member>
+      <member refid="structaxi_1_1cd__ace_1ad2946289ea7761c5f0b90694452ae674" prot="public" virt="non-virtual"><scope>axi::cd_ace</scope><name>cd_ready</name></member>
+      <member refid="structaxi_1_1cd__ace_1a39db9eb2463e91e8098cb72def40323c" prot="public" virt="non-virtual"><scope>axi::cd_ace</scope><name>cd_valid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1pe_1_1intor__fw__nb" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::pe::intor_fw_nb</compoundname>
+    <basecompoundref refid="structtlm_1_1scc_1_1pe_1_1intor__fw" prot="public" virt="non-virtual">tlm::scc::pe::intor_fw&lt; type::NB &gt;</basecompoundref>
+    <derivedcompoundref refid="classaxi_1_1pe_1_1rate__limiting__buffer" prot="private" virt="non-virtual">axi::pe::rate_limiting_buffer</derivedcompoundref>
+    <derivedcompoundref refid="classaxi_1_1pe_1_1replay__buffer" prot="private" virt="non-virtual">axi::pe::replay_buffer</derivedcompoundref>
+    <derivedcompoundref refid="classaxi_1_1pe_1_1tx__reorderer" prot="private" virt="non-virtual">axi::pe::tx_reorderer</derivedcompoundref>
+    <derivedcompoundref refid="classtlm_1_1scc_1_1pe_1_1parallel__pe" prot="public" virt="non-virtual">tlm::scc::pe::parallel_pe</derivedcompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>axi::pe::rate_limiting_buffer</label>
+        <link refid="classaxi_1_1pe_1_1rate__limiting__buffer"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>axi::pe::replay_buffer</label>
+        <link refid="classaxi_1_1pe_1_1replay__buffer"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>axi::pe::tx_reorderer</label>
+        <link refid="classaxi_1_1pe_1_1tx__reorderer"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>tlm::scc::pe::intor_fw&lt; type::NB &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::pe::intor_fw_nb</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>tlm::scc::pe::parallel_pe</label>
+        <link refid="classtlm_1_1scc_1_1pe_1_1parallel__pe"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>tlm::scc::pe::intor_fw&lt; type::NB &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::pe::intor_fw_nb</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__fw__nb"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/intor_if.h" line="62" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/intor_if.h" bodystart="62" bodyend="62"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1pe_1_1intor__fw_1a1e85d9861b52f3ec31c17e107ccd852b" prot="public" virt="pure-virtual"><scope>tlm::scc::pe::intor_fw_nb</scope><name>snoop_resp</name></member>
+      <member refid="structtlm_1_1scc_1_1pe_1_1intor__fw_1a69f17795eabb5192d5388dd6b67e4109" prot="public" virt="pure-virtual"><scope>tlm::scc::pe::intor_fw_nb</scope><name>transport</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

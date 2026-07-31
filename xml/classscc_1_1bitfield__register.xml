@@ -1,0 +1,646 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1bitfield__register" kind="class" language="C++" prot="public">
+    <compoundname>scc::bitfield_register</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_object</basecompoundref>
+    <basecompoundref refid="classscc_1_1resource__access__if" prot="public" virt="non-virtual">scc::resource_access_if</basecompoundref>
+    <includes refid="tlm__target__bfs__register__base_8h" local="no">tlm_target_bfs_register_base.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename datatype_t</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classscc_1_1bitfield__register_1a9175c226eee1ed649391487351acee90" prot="public" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t scc::bitfield_register&lt; datatype_t &gt;::offset</definition>
+        <argsstring></argsstring>
+        <name>offset</name>
+        <qualifiedname>scc::bitfield_register::offset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="219" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="219" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classscc_1_1bitfield__register_1a8823d0be41f57423a6b71d45f3c37b73" prot="protected" static="no" mutable="no">
+        <type>const datatype_t</type>
+        <definition>const datatype_t scc::bitfield_register&lt; datatype_t &gt;::resetValue</definition>
+        <argsstring></argsstring>
+        <name>resetValue</name>
+        <qualifiedname>scc::bitfield_register::resetValue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="222" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1bitfield__register_1a2f014ad4487754904cb5435a1ab46750" prot="protected" static="no" mutable="no">
+        <type>const datatype_t</type>
+        <definition>const datatype_t scc::bitfield_register&lt; datatype_t &gt;::writeMask</definition>
+        <argsstring></argsstring>
+        <name>writeMask</name>
+        <qualifiedname>scc::bitfield_register::writeMask</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="223" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="223" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1bitfield__register_1aba41842350ec5d4649d590166c5a12f7" prot="protected" static="no" mutable="no">
+        <type>const datatype_t</type>
+        <definition>const datatype_t scc::bitfield_register&lt; datatype_t &gt;::readMask</definition>
+        <argsstring></argsstring>
+        <name>readMask</name>
+        <qualifiedname>scc::bitfield_register::readMask</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="224" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="224" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1bitfield__register_1a4e1bd17d1313e26dddc0a52d791f1f50" prot="protected" static="no" mutable="no">
+        <type>datatype_t</type>
+        <definition>datatype_t scc::bitfield_register&lt; datatype_t &gt;::storage</definition>
+        <argsstring></argsstring>
+        <name>storage</name>
+        <qualifiedname>scc::bitfield_register::storage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="225" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="225" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1bitfield__register_1aa6acf5cc5a7107bb13fde79d00483165" prot="protected" static="no" mutable="no">
+        <type>std::function&lt; void(<ref refid="classscc_1_1bitfield__register_1acc6109e4236ac6df2989d91377d65281" kindref="member">bitfield_register</ref>&lt; datatype_t &gt; &amp;, datatype_t &amp;)&gt;</type>
+        <definition>std::function&lt;void(bitfield_register&lt;datatype_t&gt;&amp;, datatype_t&amp;)&gt; scc::bitfield_register&lt; datatype_t &gt;::writeCallback</definition>
+        <argsstring></argsstring>
+        <name>writeCallback</name>
+        <qualifiedname>scc::bitfield_register::writeCallback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="227" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="227" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1bitfield__register_1a5bef9452c8cda63ca12cc09f1c8cf5dc" prot="protected" static="no" mutable="no">
+        <type>std::function&lt; void(const <ref refid="classscc_1_1bitfield__register_1acc6109e4236ac6df2989d91377d65281" kindref="member">bitfield_register</ref>&lt; datatype_t &gt; &amp;, datatype_t &amp;)&gt;</type>
+        <definition>std::function&lt;void(const bitfield_register&lt;datatype_t&gt;&amp;, datatype_t&amp;)&gt; scc::bitfield_register&lt; datatype_t &gt;::readCallback</definition>
+        <argsstring></argsstring>
+        <name>readCallback</name>
+        <qualifiedname>scc::bitfield_register::readCallback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="228" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1bitfield__register_1a04ad3074d4925ed0dc5dbc2258f311f6" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; std::reference_wrapper&lt; <ref refid="classscc_1_1abstract__bitfield" kindref="compound">abstract_bitfield</ref>&lt; datatype_t &gt; &gt; &gt;</type>
+        <definition>std::vector&lt;std::reference_wrapper&lt;abstract_bitfield&lt;datatype_t&gt; &gt; &gt; scc::bitfield_register&lt; datatype_t &gt;::bitfields</definition>
+        <argsstring></argsstring>
+        <name>bitfields</name>
+        <qualifiedname>scc::bitfield_register::bitfields</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="229" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="229" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1bitfield__register_1acc6109e4236ac6df2989d91377d65281" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::bitfield_register&lt; datatype_t &gt;::bitfield_register</definition>
+        <argsstring>(sc_core::sc_module_name name, size_t offset, datatype_t resetValue=0, datatype_t writeMask=-1, datatype_t readMask=-1)</argsstring>
+        <name>bitfield_register</name>
+        <qualifiedname>scc::bitfield_register::bitfield_register</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>datatype_t</type>
+          <declname>resetValue</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>datatype_t</type>
+          <declname>writeMask</declname>
+          <defval>-1</defval>
+        </param>
+        <param>
+          <type>datatype_t</type>
+          <declname>readMask</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of this register </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Offset of the peripheral base address this register is mapped </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>resetValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>This value gets written to the register on a reset condition </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>writeMask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Only bits that are set get overwritten on a write access. Cleared bits are left unchanged. This field has priority over the individual bitfields or the write callback. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>readMask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bits that are cleared in this field always read as 0. Can be overridden in bitfields or the read callback. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="99" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="99" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1bitfield__register_1a53025a4faf810398fdc81de12ff13a30" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>char const *</type>
+        <definition>char const  * scc::bitfield_register&lt; datatype_t &gt;::full_name</definition>
+        <argsstring>() const override</argsstring>
+        <name>full_name</name>
+        <qualifiedname>scc::bitfield_register::full_name</qualifiedname>
+        <reimplements refid="classscc_1_1resource__access__if_1ab84e9879450aa4146de9983d2245ddce">full_name</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the name </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="110" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="110" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1bitfield__register_1a648f082879bf572e7ce41b39b750c5ca" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t scc::bitfield_register&lt; datatype_t &gt;::size</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>size</name>
+        <qualifiedname>scc::bitfield_register::size</qualifiedname>
+        <reimplements refid="classscc_1_1resource__access__if_1a4b1353d979e7ce465dba34f05e10710e">size</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The size of the register in bytes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="114" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="114" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1bitfield__register_1a42ba983ea8228973c81996031225c084" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void scc::bitfield_register&lt; datatype_t &gt;::reset</definition>
+        <argsstring>() override</argsstring>
+        <name>reset</name>
+        <qualifiedname>scc::bitfield_register::reset</qualifiedname>
+        <reimplements refid="classscc_1_1resource__access__if_1a94f5dba6b42b12379254975b72a475d6">reset</reimplements>
+        <briefdescription>
+<para>reset the resource </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="116" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="116" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1bitfield__register_1a1721bd204fd8aa28516aed265d1adc6a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool scc::bitfield_register&lt; datatype_t &gt;::write</definition>
+        <argsstring>(const uint8_t *data, std::size_t length, uint64_t offset, sc_core::sc_time &amp;d) override</argsstring>
+        <name>write</name>
+        <qualifiedname>scc::bitfield_register::write</qualifiedname>
+        <reimplements refid="classscc_1_1resource__access__if_1a422ba53aebac338f82b95969e4115e26">write</reimplements>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="118" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="118" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1bitfield__register_1a3d467b0ccc7d7e514103d6028b71b45e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool scc::bitfield_register&lt; datatype_t &gt;::read</definition>
+        <argsstring>(uint8_t *data, std::size_t length, uint64_t offset, sc_core::sc_time &amp;d) const override</argsstring>
+        <name>read</name>
+        <qualifiedname>scc::bitfield_register::read</qualifiedname>
+        <reimplements refid="classscc_1_1resource__access__if_1aff9a8c6c68d5aa91a6278b8ae3f6c30a">read</reimplements>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="136" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="136" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1bitfield__register_1a2d1bc4059c09327a21d9539dca879a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool scc::bitfield_register&lt; datatype_t &gt;::write_dbg</definition>
+        <argsstring>(const uint8_t *data, std::size_t length, uint64_t offset=0) override</argsstring>
+        <name>write_dbg</name>
+        <qualifiedname>scc::bitfield_register::write_dbg</qualifiedname>
+        <reimplements refid="classscc_1_1resource__access__if_1ad9d368dd1a31310e1f147d019daa326c">write_dbg</reimplements>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>debug write to the resource </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of data to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of the data to write </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true it the access is successful </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="154" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="154" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1bitfield__register_1a847ea7fff0ba047c4cb5bd79a773e077" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool scc::bitfield_register&lt; datatype_t &gt;::read_dbg</definition>
+        <argsstring>(uint8_t *data, std::size_t length, uint64_t offset=0) const override</argsstring>
+        <name>read_dbg</name>
+        <qualifiedname>scc::bitfield_register::read_dbg</qualifiedname>
+        <reimplements refid="classscc_1_1resource__access__if_1a81f86119c44d699f70b8980e12e97717">read_dbg</reimplements>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>debug read the data from the resource </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>buffer to read the data into </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>length of data to read </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>offset of the data to read </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true it the access is successful </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="162" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="162" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1bitfield__register_1ac1f66cb5c4cd232ce9e0ec139a60f19a" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>datatype_t</type>
+        <definition>datatype_t scc::bitfield_register&lt; datatype_t &gt;::get</definition>
+        <argsstring>() const</argsstring>
+        <name>get</name>
+        <qualifiedname>scc::bitfield_register::get</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the data stored in this register </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="174" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="174" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1bitfield__register_1aca70099c9c53461ff31d6f0fff3d83f4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::bitfield_register&lt; datatype_t &gt;::put</definition>
+        <argsstring>(datatype_t value)</argsstring>
+        <name>put</name>
+        <qualifiedname>scc::bitfield_register::put</qualifiedname>
+        <param>
+          <type>datatype_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Updates the stored data with <computeroutput>value</computeroutput> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="178" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="178" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1bitfield__register_1a4b0cbc7035b2566f2bd372491d7de6f8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::bitfield_register&lt; datatype_t &gt;::registerBitfield</definition>
+        <argsstring>(abstract_bitfield&lt; datatype_t &gt; &amp;bitfield)</argsstring>
+        <name>registerBitfield</name>
+        <qualifiedname>scc::bitfield_register::registerBitfield</qualifiedname>
+        <param>
+          <type><ref refid="classscc_1_1abstract__bitfield" kindref="compound">abstract_bitfield</ref>&lt; datatype_t &gt; &amp;</type>
+          <declname>bitfield</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="180" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="180" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1bitfield__register_1ae6a2d64769de1723ef5b8df4b53b4b9a" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>scc::bitfield_register&lt; datatype_t &gt;::operator datatype_t</definition>
+        <argsstring>() const</argsstring>
+        <name>operator datatype_t</name>
+        <qualifiedname>scc::bitfield_register::operator datatype_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convenience function to access the stored data </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="185" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="185" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1bitfield__register_1abad8c82a566e8ca0b993a5a15b8d7266" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classscc_1_1bitfield__register_1acc6109e4236ac6df2989d91377d65281" kindref="member">bitfield_register</ref>&lt; datatype_t &gt; &amp;</type>
+        <definition>bitfield_register&lt; datatype_t &gt; &amp; scc::bitfield_register&lt; datatype_t &gt;::operator=</definition>
+        <argsstring>(datatype_t other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::bitfield_register::operator=</qualifiedname>
+        <param>
+          <type>datatype_t</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convenience function to update the stored data </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="189" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="189" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1bitfield__register_1a07ac94af2d7b7ef4c6dfdd4d6b7e1bf8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::bitfield_register&lt; datatype_t &gt;::setWriteCallback</definition>
+        <argsstring>(std::function&lt; void(bitfield_register&lt; datatype_t &gt; &amp;, datatype_t &amp;valueToWrite)&gt; callback)</argsstring>
+        <name>setWriteCallback</name>
+        <qualifiedname>scc::bitfield_register::setWriteCallback</qualifiedname>
+        <param>
+          <type>std::function&lt; void(<ref refid="classscc_1_1bitfield__register_1acc6109e4236ac6df2989d91377d65281" kindref="member">bitfield_register</ref>&lt; datatype_t &gt; &amp;, datatype_t &amp;valueToWrite)&gt;</type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register a <computeroutput>callback</computeroutput> that is called on write. Overwrites previously stored callbacks. Signature: <computeroutput>void onWrite(<ref refid="classscc_1_1bitfield__register" kindref="compound">bitfield_register</ref>&lt;datatype_t&gt;&amp; reg, datatype_t&amp; valueToWrite)</computeroutput></para>
+<para>Callback is called after the individual bitfields.</para>
+<para>If you want to change the value that gets written to the register change the value of the parameter valueToWrite. Direct writes to the register do not work. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="205" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="205" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1bitfield__register_1af4cfd62eaec146af87541c895a18c245" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::bitfield_register&lt; datatype_t &gt;::setReadCallback</definition>
+        <argsstring>(std::function&lt; void(const bitfield_register&lt; datatype_t &gt; &amp;, datatype_t &amp;result)&gt; callback)</argsstring>
+        <name>setReadCallback</name>
+        <qualifiedname>scc::bitfield_register::setReadCallback</qualifiedname>
+        <param>
+          <type>std::function&lt; void(const <ref refid="classscc_1_1bitfield__register_1acc6109e4236ac6df2989d91377d65281" kindref="member">bitfield_register</ref>&lt; datatype_t &gt; &amp;, datatype_t &amp;result)&gt;</type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register a <computeroutput>callback</computeroutput> that gets called on read. Overwrites previously stored callbacks. Signature: <computeroutput>void onRead(const <ref refid="classscc_1_1bitfield__register" kindref="compound">bitfield_register</ref>&lt;datatype_t&gt;&amp; reg, datatype_t&amp; result)</computeroutput></para>
+<para>Callback is called after the individual bitfields. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="215" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="215" bodyend="217"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Register that can contain bitfields. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>datatype_t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Datatype of the register value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::bitfield_register&lt; datatype_t &gt;</label>
+        <link refid="classscc_1_1bitfield__register"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scc::resource_access_if</label>
+        <link refid="classscc_1_1resource__access__if"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::bitfield_register&lt; datatype_t &gt;</label>
+        <link refid="classscc_1_1bitfield__register"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scc::resource_access_if</label>
+        <link refid="classscc_1_1resource__access__if"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="86" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="86" bodyend="230"/>
+    <listofallmembers>
+      <member refid="classscc_1_1bitfield__register_1acc6109e4236ac6df2989d91377d65281" prot="public" virt="non-virtual"><scope>scc::bitfield_register</scope><name>bitfield_register</name></member>
+      <member refid="classscc_1_1bitfield__register_1a04ad3074d4925ed0dc5dbc2258f311f6" prot="protected" virt="non-virtual"><scope>scc::bitfield_register</scope><name>bitfields</name></member>
+      <member refid="classscc_1_1bitfield__register_1a53025a4faf810398fdc81de12ff13a30" prot="public" virt="virtual"><scope>scc::bitfield_register</scope><name>full_name</name></member>
+      <member refid="classscc_1_1bitfield__register_1ac1f66cb5c4cd232ce9e0ec139a60f19a" prot="public" virt="non-virtual"><scope>scc::bitfield_register</scope><name>get</name></member>
+      <member refid="classscc_1_1bitfield__register_1a9175c226eee1ed649391487351acee90" prot="public" virt="non-virtual"><scope>scc::bitfield_register</scope><name>offset</name></member>
+      <member refid="classscc_1_1bitfield__register_1ae6a2d64769de1723ef5b8df4b53b4b9a" prot="public" virt="non-virtual"><scope>scc::bitfield_register</scope><name>operator datatype_t</name></member>
+      <member refid="classscc_1_1bitfield__register_1abad8c82a566e8ca0b993a5a15b8d7266" prot="public" virt="non-virtual"><scope>scc::bitfield_register</scope><name>operator=</name></member>
+      <member refid="classscc_1_1bitfield__register_1aca70099c9c53461ff31d6f0fff3d83f4" prot="public" virt="non-virtual"><scope>scc::bitfield_register</scope><name>put</name></member>
+      <member refid="classscc_1_1bitfield__register_1a3d467b0ccc7d7e514103d6028b71b45e" prot="public" virt="virtual"><scope>scc::bitfield_register</scope><name>read</name></member>
+      <member refid="classscc_1_1resource__access__if_1afba178290da5121755e18cdb44a06568" prot="public" virt="non-virtual" ambiguityscope="scc::resource_access_if::"><scope>scc::bitfield_register</scope><name>read</name></member>
+      <member refid="classscc_1_1bitfield__register_1a847ea7fff0ba047c4cb5bd79a773e077" prot="public" virt="virtual"><scope>scc::bitfield_register</scope><name>read_dbg</name></member>
+      <member refid="classscc_1_1bitfield__register_1a5bef9452c8cda63ca12cc09f1c8cf5dc" prot="protected" virt="non-virtual"><scope>scc::bitfield_register</scope><name>readCallback</name></member>
+      <member refid="classscc_1_1bitfield__register_1aba41842350ec5d4649d590166c5a12f7" prot="protected" virt="non-virtual"><scope>scc::bitfield_register</scope><name>readMask</name></member>
+      <member refid="classscc_1_1bitfield__register_1a4b0cbc7035b2566f2bd372491d7de6f8" prot="public" virt="non-virtual"><scope>scc::bitfield_register</scope><name>registerBitfield</name></member>
+      <member refid="classscc_1_1bitfield__register_1a42ba983ea8228973c81996031225c084" prot="public" virt="virtual"><scope>scc::bitfield_register</scope><name>reset</name></member>
+      <member refid="classscc_1_1bitfield__register_1a8823d0be41f57423a6b71d45f3c37b73" prot="protected" virt="non-virtual"><scope>scc::bitfield_register</scope><name>resetValue</name></member>
+      <member refid="classscc_1_1bitfield__register_1af4cfd62eaec146af87541c895a18c245" prot="public" virt="non-virtual"><scope>scc::bitfield_register</scope><name>setReadCallback</name></member>
+      <member refid="classscc_1_1bitfield__register_1a07ac94af2d7b7ef4c6dfdd4d6b7e1bf8" prot="public" virt="non-virtual"><scope>scc::bitfield_register</scope><name>setWriteCallback</name></member>
+      <member refid="classscc_1_1bitfield__register_1a648f082879bf572e7ce41b39b750c5ca" prot="public" virt="virtual"><scope>scc::bitfield_register</scope><name>size</name></member>
+      <member refid="classscc_1_1bitfield__register_1a4e1bd17d1313e26dddc0a52d791f1f50" prot="protected" virt="non-virtual"><scope>scc::bitfield_register</scope><name>storage</name></member>
+      <member refid="classscc_1_1bitfield__register_1a1721bd204fd8aa28516aed265d1adc6a" prot="public" virt="virtual"><scope>scc::bitfield_register</scope><name>write</name></member>
+      <member refid="classscc_1_1resource__access__if_1a43d5c525222211b9b7a586a352282cdc" prot="public" virt="non-virtual" ambiguityscope="scc::resource_access_if::"><scope>scc::bitfield_register</scope><name>write</name></member>
+      <member refid="classscc_1_1bitfield__register_1a2d1bc4059c09327a21d9539dca879a07" prot="public" virt="virtual"><scope>scc::bitfield_register</scope><name>write_dbg</name></member>
+      <member refid="classscc_1_1bitfield__register_1aa6acf5cc5a7107bb13fde79d00483165" prot="protected" virt="non-virtual"><scope>scc::bitfield_register</scope><name>writeCallback</name></member>
+      <member refid="classscc_1_1bitfield__register_1a2f014ad4487754904cb5435a1ab46750" prot="protected" virt="non-virtual"><scope>scc::bitfield_register</scope><name>writeMask</name></member>
+      <member refid="classscc_1_1resource__access__if_1a11e3e1ab0e5f4ccfd156149fa77a7eed" prot="public" virt="virtual"><scope>scc::bitfield_register</scope><name>~resource_access_if</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

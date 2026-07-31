@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceobi" kind="namespace" language="C++">
+    <compoundname>obi</compoundname>
+    <innerclass refid="structobi_1_1obi__extension" prot="public">obi::obi_extension</innerclass>
+    <innernamespace refid="namespaceobi_1_1pin">obi::pin</innernamespace>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceobi_1ab5285bd6492ca8e15b2f6bd073c8aa51" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned obi::get_obi_id</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;trans)</argsstring>
+        <name>get_obi_id</name>
+        <qualifiedname>obi::get_obi_id</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" line="78" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" bodystart="78" bodyend="82"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>TLM2.0 components modeling OBI. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/obi/obi_tlm.h" line="25" column="1"/>
+  </compounddef>
+</doxygen>

@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -90,8 +90,8 @@ Collaboration diagram for axi::axi_initiator_socket&lt; BUSWIDTH, TYPES, N, POL 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a425db053b42dd7ff7bcfb96f11aae114" id="r_a425db053b42dd7ff7bcfb96f11aae114"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a425db053b42dd7ff7bcfb96f11aae114">base_type</a></td></tr>
-<tr class="memdesc:a425db053b42dd7ff7bcfb96f11aae114"><td class="mdescLeft">&#160;</td><td class="mdescRight">base type alias  <br /></td></tr>
+<tr class="memitem:ac37fd9800ffa293f6b75063bd7d24d74" id="r_ac37fd9800ffa293f6b75063bd7d24d74"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac37fd9800ffa293f6b75063bd7d24d74">base_type</a> = tlm::tlm_base_initiator_socket&lt;BUSWIDTH, <a class="el" href="namespaceaxi.html#ab17a1a259e883a02dd68e4f8e823d5af">axi_fw_transport_if</a>&lt;TYPES&gt;, <a class="el" href="namespaceaxi.html#a805751c34d41d1e062fb5d9cae799971">axi_bw_transport_if</a>&lt;TYPES&gt;, N, POL&gt;</td></tr>
+<tr class="memdesc:ac37fd9800ffa293f6b75063bd7d24d74"><td class="mdescLeft">&#160;</td><td class="mdescRight">base type alias  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -106,10 +106,10 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><div class="compoundTemplParams">template&lt;unsigned int BUSWIDTH = 32, typename TYPES = axi_protocol_types, int N = 1, sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND&gt;<br />
 struct axi::axi_initiator_socket&lt; BUSWIDTH, TYPES, N, POL &gt;</div><p>AXI initiator socket class using payloads carrying AXI3 or AXi4 extensions </p>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00977">977</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00974">974</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
-<a id="a425db053b42dd7ff7bcfb96f11aae114" name="a425db053b42dd7ff7bcfb96f11aae114"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a425db053b42dd7ff7bcfb96f11aae114">&#9670;&#160;</a></span>base_type</h2>
+<a id="ac37fd9800ffa293f6b75063bd7d24d74" name="ac37fd9800ffa293f6b75063bd7d24d74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac37fd9800ffa293f6b75063bd7d24d74">&#9670;&#160;</a></span>base_type</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -117,17 +117,14 @@ struct axi::axi_initiator_socket&lt; BUSWIDTH, TYPES, N, POL &gt;</div><p>AXI in
 template&lt;unsigned int BUSWIDTH = 32, typename TYPES = axi_protocol_types, int N = 1, sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="structaxi_1_1axi__initiator__socket.html">axi::axi_initiator_socket</a>&lt; BUSWIDTH, TYPES, N, POL &gt;::base_type</td>
+          <td class="memname">using <a class="el" href="structaxi_1_1axi__initiator__socket.html">axi::axi_initiator_socket</a>&lt; BUSWIDTH, TYPES, N, POL &gt;::base_type = tlm::tlm_base_initiator_socket&lt;BUSWIDTH, <a class="el" href="namespaceaxi.html#ab17a1a259e883a02dd68e4f8e823d5af">axi_fw_transport_if</a>&lt;TYPES&gt;, <a class="el" href="namespaceaxi.html#a805751c34d41d1e062fb5d9cae799971">axi_bw_transport_if</a>&lt;TYPES&gt;, N, POL&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">        tlm::tlm_base_initiator_socket&lt;BUSWIDTH, axi_fw_transport_if&lt;TYPES&gt;, <a class="code hl_typedef" href="namespaceaxi.html#a805751c34d41d1e062fb5d9cae799971">axi_bw_transport_if&lt;TYPES&gt;</a>, N, POL&gt;</div>
-<div class="ttc" id="anamespaceaxi_html_a805751c34d41d1e062fb5d9cae799971"><div class="ttname"><a href="namespaceaxi.html#a805751c34d41d1e062fb5d9cae799971">axi::axi_bw_transport_if</a></div><div class="ttdeci">tlm::tlm_bw_transport_if&lt; TYPES &gt; axi_bw_transport_if</div><div class="ttdoc">alias declaration for the backward interface:</div><div class="ttdef"><b>Definition</b> <a href="axi__tlm_8h_source.html#l00956">axi_tlm.h:956</a></div></div>
-</div><!-- fragment -->
+
 <p>base type alias </p>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00980">980</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00977">977</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -159,7 +156,7 @@ template&lt;unsigned int BUSWIDTH = 32, typename TYPES = axi_protocol_types, int
 
 <p>default constructor using a generated instance name </p>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00985">985</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00981">981</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -196,7 +193,7 @@ template&lt;unsigned int BUSWIDTH = 32, typename TYPES = axi_protocol_types, int
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00991">991</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00987">987</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -229,7 +226,7 @@ template&lt;unsigned int BUSWIDTH = 32, typename TYPES = axi_protocol_types, int
 <p>get the kind of this sc_object </p>
 <dl class="section return"><dt>Returns</dt><dd>the kind string </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00997">997</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00993">993</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>

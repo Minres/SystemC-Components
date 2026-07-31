@@ -1,0 +1,306 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1fsm_1_1fsm__handle" kind="struct" language="C++" prot="public">
+    <compoundname>axi::fsm::fsm_handle</compoundname>
+    <includes refid="third__party_2axi__chi_2axi_2fsm_2types_8h" local="no">types.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" prot="public" static="no" mutable="no">
+        <type><ref refid="structaxi_1_1fsm_1_1AxiProtocolFsm" kindref="compound">AxiProtocolFsm</ref> *const</type>
+        <definition>AxiProtocolFsm* const axi::fsm::fsm_handle::fsm</definition>
+        <argsstring></argsstring>
+        <name>fsm</name>
+        <qualifiedname>axi::fsm::fsm_handle::fsm</qualifiedname>
+        <briefdescription>
+<para>pointer to the FSM </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="59" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1fsm__handle_1a4198e085c0adb0dcfafc623aa9890d8b" prot="public" static="no" mutable="no">
+        <type>tlm::scc::tlm_gp_shared_ptr</type>
+        <definition>tlm::scc::tlm_gp_shared_ptr axi::fsm::fsm_handle::trans</definition>
+        <argsstring></argsstring>
+        <name>trans</name>
+        <qualifiedname>axi::fsm::fsm_handle::trans</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>pointer to the associated AXITLM payload </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="61" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1fsm__handle_1a7c7367afac927398add8c4ec3856d85f" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t axi::fsm::fsm_handle::beat_count</definition>
+        <argsstring></argsstring>
+        <name>beat_count</name>
+        <qualifiedname>axi::fsm::fsm_handle::beat_count</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>beat count of this transaction </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="63" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1fsm__handle_1abdff7e6de49b857153d99cafbc31c634" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool axi::fsm::fsm_handle::is_snoop</definition>
+        <argsstring></argsstring>
+        <name>is_snoop</name>
+        <qualifiedname>axi::fsm::fsm_handle::is_snoop</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>indicator if this is a snoop access </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="65" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1fsm__handle_1a492c1c639c3ce74f9ffd917372a43c4a" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event axi::fsm::fsm_handle::finish</definition>
+        <argsstring></argsstring>
+        <name>finish</name>
+        <qualifiedname>axi::fsm::fsm_handle::finish</qualifiedname>
+        <briefdescription>
+<para>event indicating the end of the transaction </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="67" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1fsm__handle_1afd9b5e0e1163fda5e7bac40832dc53a8" prot="public" static="no" mutable="no">
+        <type>tlm::scc::tlm_gp_shared_ptr</type>
+        <definition>tlm::scc::tlm_gp_shared_ptr axi::fsm::fsm_handle::gp</definition>
+        <argsstring></argsstring>
+        <name>gp</name>
+        <qualifiedname>axi::fsm::fsm_handle::gp</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+<para>additional data being used in the various adapters, </para>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000005"><xreftitle>Todo</xreftitle><xrefdescription><para>refactor to remove this forward definitions </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="69" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="69" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1fsm__handle_1a633b3635dcd508cb5c1a0d4b20668268" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t axi::fsm::fsm_handle::i64</definition>
+        <argsstring></argsstring>
+        <name>i64</name>
+        <qualifiedname>axi::fsm::fsm_handle::i64</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="71" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1fsm__handle_1a4c19743d2a0e0eb591b0931e7d51c429" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t axi::fsm::fsm_handle::i0</definition>
+        <argsstring></argsstring>
+        <name>i0</name>
+        <qualifiedname>axi::fsm::fsm_handle::i0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="73" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1fsm__handle_1aced02233e88173afd6e2d92817359415" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t axi::fsm::fsm_handle::i1</definition>
+        <argsstring></argsstring>
+        <name>i1</name>
+        <qualifiedname>axi::fsm::fsm_handle::i1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="74" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1fsm__handle_1a378fd889569cdae0460c4ae8f148cb9b" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">axi::fsm::fsm_handle</ref></type>
+        <definition>struct axi::fsm::fsm_handle axi::fsm::fsm_handle::i32</definition>
+        <argsstring></argsstring>
+        <name>i32</name>
+        <qualifiedname>axi::fsm::fsm_handle::i32</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="75" column="13"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1fsm__handle_1a3c230345dc2a92aab7119a92e8a251bd" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* axi::fsm::fsm_handle::p</definition>
+        <argsstring></argsstring>
+        <name>p</name>
+        <qualifiedname>axi::fsm::fsm_handle::p</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="76" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1fsm__handle_1a162b93b97cc8c1827752a9fdc1766bae" prot="public" static="no" mutable="no">
+        <type>union <ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">axi::fsm::fsm_handle</ref></type>
+        <definition>union axi::fsm::fsm_handle axi::fsm::fsm_handle::aux</definition>
+        <argsstring></argsstring>
+        <name>aux</name>
+        <qualifiedname>axi::fsm::fsm_handle::aux</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="77" column="9"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1fsm__handle_1ab23479decf35d6b9c1f4b54334485b88" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time axi::fsm::fsm_handle::start</definition>
+        <argsstring></argsstring>
+        <name>start</name>
+        <qualifiedname>axi::fsm::fsm_handle::start</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="78" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1fsm__handle_1a7a75f2d20f5fd5c956fbfff8193ba460" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::fsm::fsm_handle::state</definition>
+        <argsstring></argsstring>
+        <name>state</name>
+        <qualifiedname>axi::fsm::fsm_handle::state</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="79" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="79" bodyend="79"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1fsm__handle_1a6bae2451506edbf1a79e5ff6df20985b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::fsm::fsm_handle::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <qualifiedname>axi::fsm::fsm_handle::reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>reset all data members to their default </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="83" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="83" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1fsm__handle_1a6c90ab03005b8694406b1faadf8e6c6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::fsm::fsm_handle::fsm_handle</definition>
+        <argsstring>()</argsstring>
+        <name>fsm_handle</name>
+        <qualifiedname>axi::fsm::fsm_handle::fsm_handle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="93" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp" bodystart="34" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1fsm__handle_1a1987aa35f412bd02bbbc993b79db0248" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::fsm::fsm_handle::~fsm_handle</definition>
+        <argsstring>()</argsstring>
+        <name>~fsm_handle</name>
+        <qualifiedname>axi::fsm::fsm_handle::~fsm_handle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="95" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp" bodystart="39" bodyend="42"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>a handle class holding the FSM and associated data </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>axi::fsm::AxiProtocolFsm</label>
+        <link refid="structaxi_1_1fsm_1_1AxiProtocolFsm"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>axi::fsm::fsm_handle</label>
+        <link refid="structaxi_1_1fsm_1_1fsm__handle"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>fsm</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>bsc::state_machine&lt; AxiProtocolFsm, Idle &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" line="57" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/types.h" bodystart="57" bodyend="96"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1a162b93b97cc8c1827752a9fdc1766bae" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>aux</name></member>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1a7c7367afac927398add8c4ec3856d85f" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>beat_count</name></member>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1a492c1c639c3ce74f9ffd917372a43c4a" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>finish</name></member>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>fsm</name></member>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1a6c90ab03005b8694406b1faadf8e6c6c" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>fsm_handle</name></member>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1afd9b5e0e1163fda5e7bac40832dc53a8" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>gp</name></member>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1a4c19743d2a0e0eb591b0931e7d51c429" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>i0</name></member>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1aced02233e88173afd6e2d92817359415" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>i1</name></member>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1a378fd889569cdae0460c4ae8f148cb9b" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>i32</name></member>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1a633b3635dcd508cb5c1a0d4b20668268" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>i64</name></member>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1abdff7e6de49b857153d99cafbc31c634" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>is_snoop</name></member>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1a3c230345dc2a92aab7119a92e8a251bd" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>p</name></member>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1a6bae2451506edbf1a79e5ff6df20985b" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>reset</name></member>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1ab23479decf35d6b9c1f4b54334485b88" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>start</name></member>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1a7a75f2d20f5fd5c956fbfff8193ba460" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>state</name></member>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1a4198e085c0adb0dcfafc623aa9890d8b" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>trans</name></member>
+      <member refid="structaxi_1_1fsm_1_1fsm__handle_1a1987aa35f412bd02bbbc993b79db0248" prot="public" virt="non-virtual"><scope>axi::fsm::fsm_handle</scope><name>~fsm_handle</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1sc__owning__signal" kind="class" language="C++" prot="public">
+    <compoundname>scc::sc_owning_signal</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_signal&lt; T *, sc_core::SC_ONE_WRITER &gt;</basecompoundref>
+    <includes refid="sc__owning__signal_8h" local="no">sc_owning_signal.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>sc_core::sc_writer_policy</type>
+        <declname>POL</declname>
+        <defname>POL</defname>
+        <defval>sc_core::SC_ONE_WRITER</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="protected-type">
+      <memberdef kind="typedef" id="classscc_1_1sc__owning__signal_1a3da2ad0d8eb5c91ac1e1f3aff223532d" prot="protected" static="no">
+        <type>sc_core::sc_writer_policy_check&lt; POL &gt;</type>
+        <definition>using scc::sc_owning_signal&lt; T, POL &gt;::policy_type =  sc_core::sc_writer_policy_check&lt;POL&gt;</definition>
+        <argsstring></argsstring>
+        <name>policy_type</name>
+        <qualifiedname>scc::sc_owning_signal::policy_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" line="37" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__owning__signal_1a5d024ba85d712fea9777eec81765bf98" prot="protected" static="no">
+        <type>sc_core::sc_signal&lt; T *, POL &gt;</type>
+        <definition>using scc::sc_owning_signal&lt; T, POL &gt;::super =  sc_core::sc_signal&lt;T*, POL&gt;</definition>
+        <argsstring></argsstring>
+        <name>super</name>
+        <qualifiedname>scc::sc_owning_signal::super</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" line="38" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__owning__signal_1aa0d5c002fd1c6badfc01d12cafcb18a8" prot="protected" static="no">
+        <type>T *</type>
+        <definition>using scc::sc_owning_signal&lt; T, POL &gt;::type =  T*</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>scc::sc_owning_signal::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" line="39" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1sc__owning__signal_1a3e19fc0d9a1da13b396ec96aa37eaaaf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_owning_signal&lt; T, POL &gt;::sc_owning_signal</definition>
+        <argsstring>()</argsstring>
+        <name>sc_owning_signal</name>
+        <qualifiedname>scc::sc_owning_signal::sc_owning_signal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" line="42" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" bodystart="42" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__owning__signal_1ad654edac4470c2c00b6029c3f11a29c3" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_owning_signal&lt; T, POL &gt;::sc_owning_signal</definition>
+        <argsstring>(const char *name_)</argsstring>
+        <name>sc_owning_signal</name>
+        <qualifiedname>scc::sc_owning_signal::sc_owning_signal</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" line="45" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" bodystart="45" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__owning__signal_1a55d4579df65d75955f4d756f88f01b67" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_owning_signal&lt; T, POL &gt;::sc_owning_signal</definition>
+        <argsstring>(const char *name_, T *initial_value_)</argsstring>
+        <name>sc_owning_signal</name>
+        <qualifiedname>scc::sc_owning_signal::sc_owning_signal</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name_</declname>
+        </param>
+        <param>
+          <type>T *</type>
+          <declname>initial_value_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" line="48" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" bodystart="48" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__owning__signal_1a75e49ff355ab0eabcfc799b4e9f1842d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual scc::sc_owning_signal&lt; T, POL &gt;::~sc_owning_signal</definition>
+        <argsstring>()</argsstring>
+        <name>~sc_owning_signal</name>
+        <qualifiedname>scc::sc_owning_signal::~sc_owning_signal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" line="51" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__owning__signal_1afd2b6b29f6fde076f88fdf7c7cf54f43" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_owning_signal&lt; T, POL &gt;::write</definition>
+        <argsstring>(const type &amp;value_) override</argsstring>
+        <name>write</name>
+        <qualifiedname>scc::sc_owning_signal::write</qualifiedname>
+        <param>
+          <type>const type &amp;</type>
+          <declname>value_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" line="54" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" bodystart="54" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__owning__signal_1a7540fc8a9b5c078863ec966f814ee16f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_owning_signal&lt; T, POL &gt;::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <qualifiedname>scc::sc_owning_signal::clear</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" line="69" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" bodystart="69" bodyend="73"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classscc_1_1sc__owning__signal_1a7f35d4c29e0e7629097ff032ab13e998" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_owning_signal&lt; T, POL &gt;::update</definition>
+        <argsstring>() override</argsstring>
+        <name>update</name>
+        <qualifiedname>scc::sc_owning_signal::update</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" line="78" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" bodystart="78" bodyend="84"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>sc_signal which takes ownership of the data (acquire()/release()) </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>POL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_signal&lt; T *, sc_core::SC_ONE_WRITER &gt;</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_owning_signal&lt; T, POL &gt;</label>
+        <link refid="classscc_1_1sc__owning__signal"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_signal&lt; T *, sc_core::SC_ONE_WRITER &gt;</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_owning_signal&lt; T, POL &gt;</label>
+        <link refid="classscc_1_1sc__owning__signal"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" line="35" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_owning_signal.h" bodystart="35" bodyend="85"/>
+    <listofallmembers>
+      <member refid="classscc_1_1sc__owning__signal_1a7540fc8a9b5c078863ec966f814ee16f" prot="public" virt="non-virtual"><scope>scc::sc_owning_signal</scope><name>clear</name></member>
+      <member refid="classscc_1_1sc__owning__signal_1a3da2ad0d8eb5c91ac1e1f3aff223532d" prot="protected" virt="non-virtual"><scope>scc::sc_owning_signal</scope><name>policy_type</name></member>
+      <member refid="classscc_1_1sc__owning__signal_1a3e19fc0d9a1da13b396ec96aa37eaaaf" prot="public" virt="non-virtual"><scope>scc::sc_owning_signal</scope><name>sc_owning_signal</name></member>
+      <member refid="classscc_1_1sc__owning__signal_1ad654edac4470c2c00b6029c3f11a29c3" prot="public" virt="non-virtual"><scope>scc::sc_owning_signal</scope><name>sc_owning_signal</name></member>
+      <member refid="classscc_1_1sc__owning__signal_1a55d4579df65d75955f4d756f88f01b67" prot="public" virt="non-virtual"><scope>scc::sc_owning_signal</scope><name>sc_owning_signal</name></member>
+      <member refid="classscc_1_1sc__owning__signal_1a5d024ba85d712fea9777eec81765bf98" prot="protected" virt="non-virtual"><scope>scc::sc_owning_signal</scope><name>super</name></member>
+      <member refid="classscc_1_1sc__owning__signal_1aa0d5c002fd1c6badfc01d12cafcb18a8" prot="protected" virt="non-virtual"><scope>scc::sc_owning_signal</scope><name>type</name></member>
+      <member refid="classscc_1_1sc__owning__signal_1a7f35d4c29e0e7629097ff032ab13e998" prot="protected" virt="non-virtual"><scope>scc::sc_owning_signal</scope><name>update</name></member>
+      <member refid="classscc_1_1sc__owning__signal_1afd2b6b29f6fde076f88fdf7c7cf54f43" prot="public" virt="non-virtual"><scope>scc::sc_owning_signal</scope><name>write</name></member>
+      <member refid="classscc_1_1sc__owning__signal_1a75e49ff355ab0eabcfc799b4e9f1842d" prot="public" virt="virtual"><scope>scc::sc_owning_signal</scope><name>~sc_owning_signal</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

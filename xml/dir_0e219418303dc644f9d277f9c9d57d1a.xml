@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_0e219418303dc644f9d277f9c9d57d1a" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi</compoundname>
+    <innerdir refid="dir_5a81cb97cf39ae2ce47704391afae617">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr</innerdir>
+    <innerdir refid="dir_c300acfaf76be35507e54190f8e2eab8">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe</innerdir>
+    <innerdir refid="dir_c25699a233caeec50cf3bdc90fd76ff6">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv</innerdir>
+    <innerfile refid="chi__tlm_8cpp">chi_tlm.cpp</innerfile>
+    <innerfile refid="chi__tlm_8h">chi_tlm.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceaxi_1_1lwtr_1_1_0d004236262037273373262012067035314340271321255130" kind="namespace" language="C++">
+    <compoundname>axi::lwtr</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_ace_lwtr.cpp" line="89" column="1"/>
+  </compounddef>
+</doxygen>

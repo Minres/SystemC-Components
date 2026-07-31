@@ -1,0 +1,288 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1cci__param__restricted" kind="struct" language="C++" prot="public">
+    <compoundname>scc::cci_param_restricted</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">cci::cci_param&lt; T, cci::CCI_MUTABLE_PARAM &gt;</basecompoundref>
+    <includes refid="cci__param__restricted_8h" local="no">cci_param_restricted.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>cci::cci_param_mutable_type</type>
+        <declname>TM</declname>
+        <defname>TM</defname>
+        <defval>cci::CCI_MUTABLE_PARAM</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="user-defined">
+      <header>Constructors</header>
+      <memberdef kind="function" id="structscc_1_1cci__param__restricted_1a966b92a6e7f3adf56c3533985cecc878" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename RESTR</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>scc::cci_param_restricted&lt; T, TM &gt;::cci_param_restricted</definition>
+        <argsstring>(const std::string &amp;name, const T &amp;default_value, RESTR const &amp;restr, const std::string &amp;desc=&quot;&quot;, cci::cci_name_type name_type=cci::CCI_RELATIVE_NAME, const cci::cci_originator &amp;originator=sc_core::sc_get_current_object() ? cci::cci_originator() :cci::cci_originator(&quot;sc_main&quot;))</argsstring>
+        <name>cci_param_restricted</name>
+        <qualifiedname>scc::cci_param_restricted::cci_param_restricted</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>default_value</declname>
+        </param>
+        <param>
+          <type>RESTR const &amp;</type>
+          <declname>restr</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>desc</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>cci::cci_name_type</type>
+          <declname>name_type</declname>
+          <defval>cci::CCI_RELATIVE_NAME</defval>
+        </param>
+        <param>
+          <type>const cci::cci_originator &amp;</type>
+          <declname>originator</declname>
+          <defval>sc_core::sc_get_current_object() ? cci::cci_originator() :cci::cci_originator(&quot;sc_main&quot;)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor with (local/hierarchical) name, default value, restriction, description and originator.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the parameter </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>default_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Default value of the parameter (Typed value) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>restr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Restriction to apply, will be checked before every write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>desc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the parameter </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Either the name should be absolute or relative </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>originator</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Originator of the parameter </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="212" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="212" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1cci__param__restricted_1a4bfb0b712c768ba24fdcde092b7467f4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename RESTR</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>scc::cci_param_restricted&lt; T, TM &gt;::cci_param_restricted</definition>
+        <argsstring>(const std::string &amp;name, const T &amp;default_value, RESTR const &amp;restr, cci::cci_broker_handle private_broker, const std::string &amp;desc=&quot;&quot;, cci::cci_name_type name_type=cci::CCI_RELATIVE_NAME, const cci::cci_originator &amp;originator=sc_core::sc_get_current_object() ? cci::cci_originator() :cci::cci_originator(&quot;sc_main&quot;))</argsstring>
+        <name>cci_param_restricted</name>
+        <qualifiedname>scc::cci_param_restricted::cci_param_restricted</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>default_value</declname>
+        </param>
+        <param>
+          <type>RESTR const &amp;</type>
+          <declname>restr</declname>
+        </param>
+        <param>
+          <type>cci::cci_broker_handle</type>
+          <declname>private_broker</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>desc</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>cci::cci_name_type</type>
+          <declname>name_type</declname>
+          <defval>cci::CCI_RELATIVE_NAME</defval>
+        </param>
+        <param>
+          <type>const cci::cci_originator &amp;</type>
+          <declname>originator</declname>
+          <defval>sc_core::sc_get_current_object() ? cci::cci_originator() :cci::cci_originator(&quot;sc_main&quot;)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor with (local/hierarchical) name, default value, restriction, private broker, description, name type and originator.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the parameter </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>default_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Default value of the parameter (Typed value) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>private_broker</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Associated private broker </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>restr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Restriction to apply, will be checked befor every write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>desc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Description of the parameter </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Either the name should be absolute or relative </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>originator</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Originator of the parameter </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="234" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="234" bodyend="241"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>extension of cci_param&lt;T, TM&gt; which automatically registeres a callback to restrict the valid values given to the parameter. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The parameter can be use with a restriction created by:<itemizedlist>
+<listitem><para><ref refid="namespacescc_1af837755465d0c4911efaa87d2824e96a" kindref="member">min_max_restriction(T min, T max)</ref></para>
+</listitem><listitem><para><ref refid="namespacescc_1a98553e045ed6ba303e915a1bc74bb8d7" kindref="member">min_max_excl_restriction(T min, T max)</ref></para>
+</listitem><listitem><para><ref refid="namespacescc_1ae4fe172b09afbeb2fc67be93bf407388" kindref="member">min_restriction(T min)</ref>, <ref refid="namespacescc_1a0bfeb10cb76d710cc3f4f481db797f5f" kindref="member">gte_restriction(T min)</ref></para>
+</listitem><listitem><para><ref refid="namespacescc_1a34b61cc3b88fe38fed8d3e79bce21509" kindref="member">min_excl_restriction(T min)</ref>, gt_excl_restriction(T min)</para>
+</listitem><listitem><para><ref refid="namespacescc_1acbe6e85e005ea75031c2162ebdf3f707" kindref="member">max_restriction(T max)</ref>, <ref refid="namespacescc_1ac619ebd656148900682d802d7ef5fa88" kindref="member">lte_restriction(T max)</ref></para>
+</listitem><listitem><para><ref refid="namespacescc_1aae3871d3d47fa790ff8199b38a55400e" kindref="member">max_excl_restriction(T max)</ref>, <ref refid="namespacescc_1aca9573d6e004e93682a1b87adaa80a24" kindref="member">lt_excl_restriction(T max)</ref></para>
+</listitem><listitem><para><ref refid="namespacescc_1a4ce9ef8bd8388134b8a4468f6f1bbe8b" kindref="member">discrete_restriction(std::initializer_list&lt;T&gt; values)</ref>, <ref refid="namespacescc_1a6a9ccf5781600af8bb997b45e9dedc75" kindref="member">discrete_restriction(std::array&lt;T, SZ&gt; values)</ref>, <ref refid="namespacescc_1a46ddf9cad4e03e3fb0063e743e1acfca" kindref="member">discrete_restriction(std::vector&lt;T&gt; values)</ref></para>
+</listitem></itemizedlist>
+</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of the parameter value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TM</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the parameter type lock behavior </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>cci::cci_param&lt; T, cci::CCI_MUTABLE_PARAM &gt;</label>
+      </node>
+      <node id="1">
+        <label>scc::cci_param_restricted&lt; T, TM &gt;</label>
+        <link refid="structscc_1_1cci__param__restricted"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>cci::cci_param&lt; T, cci::CCI_MUTABLE_PARAM &gt;</label>
+      </node>
+      <node id="1">
+        <label>scc::cci_param_restricted&lt; T, TM &gt;</label>
+        <link refid="structscc_1_1cci__param__restricted"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" line="196" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_param_restricted.h" bodystart="196" bodyend="243"/>
+    <listofallmembers>
+      <member refid="structscc_1_1cci__param__restricted_1a966b92a6e7f3adf56c3533985cecc878" prot="public" virt="non-virtual"><scope>scc::cci_param_restricted</scope><name>cci_param_restricted</name></member>
+      <member refid="structscc_1_1cci__param__restricted_1a4bfb0b712c768ba24fdcde092b7467f4" prot="public" virt="non-virtual"><scope>scc::cci_param_restricted</scope><name>cci_param_restricted</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

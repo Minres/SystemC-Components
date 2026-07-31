@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1pe_1_1intor__bw__nb" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::pe::intor_bw_nb</compoundname>
+    <basecompoundref refid="structtlm_1_1scc_1_1pe_1_1intor__bw" prot="public" virt="non-virtual">tlm::scc::pe::intor_bw&lt; type::NB &gt;</basecompoundref>
+    <derivedcompoundref refid="structace__target__pe_1_1bw__intor__impl" prot="public" virt="non-virtual">axi::pe::ace_target_pe::bw_intor_impl</derivedcompoundref>
+    <derivedcompoundref refid="structaxi__target__pe_1_1bw__intor__impl" prot="public" virt="non-virtual">axi::pe::axi_target_pe::bw_intor_impl</derivedcompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>axi::pe::ace_target_pe::bw_intor_impl</label>
+        <link refid="structace__target__pe_1_1bw__intor__impl"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>axi::pe::axi_target_pe::bw_intor_impl</label>
+        <link refid="structaxi__target__pe_1_1bw__intor__impl"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>tlm::scc::pe::intor_bw&lt; type::NB &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__bw"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::pe::intor_bw_nb</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__bw__nb"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>tlm::scc::pe::intor_bw&lt; type::NB &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__bw"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::pe::intor_bw_nb</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__bw__nb"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/intor_if.h" line="64" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/intor_if.h" bodystart="64" bodyend="64"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1pe_1_1intor__bw_1af250b11afa4a9e1c6cf76668847bd3be" prot="public" virt="pure-virtual"><scope>tlm::scc::pe::intor_bw_nb</scope><name>transport</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

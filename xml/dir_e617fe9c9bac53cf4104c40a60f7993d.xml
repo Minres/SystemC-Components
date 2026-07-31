@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_e617fe9c9bac53cf4104c40a60f7993d" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc</compoundname>
+    <innerdir refid="dir_17d1f64d038bb3ce9d53b72e1f5c6380">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr</innerdir>
+    <innerdir refid="dir_17208d574043cc69bca219bb6ee20a2c">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe</innerdir>
+    <innerdir refid="dir_ccc7a211a2851b43eecd4550f593cd66">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk</innerdir>
+    <innerdir refid="dir_dce7ea34a91c0189183270decd6916da">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv</innerdir>
+    <innerfile refid="scc_2initiator__mixin_8h">initiator_mixin.h</innerfile>
+    <innerfile refid="memory__map__collector_8cpp">memory_map_collector.cpp</innerfile>
+    <innerfile refid="memory__map__collector_8h">memory_map_collector.h</innerfile>
+    <innerfile refid="quantum__keeper_8h">quantum_keeper.h</innerfile>
+    <innerfile refid="quantum__keeper__mt_8h">quantum_keeper_mt.h</innerfile>
+    <innerfile refid="quantum__keeper__st_8h">quantum_keeper_st.h</innerfile>
+    <innerfile refid="signal__initiator__mixin_8h">signal_initiator_mixin.h</innerfile>
+    <innerfile refid="signal__target__mixin_8h">signal_target_mixin.h</innerfile>
+    <innerfile refid="tagged__initiator__mixin_8h">tagged_initiator_mixin.h</innerfile>
+    <innerfile refid="tagged__target__mixin_8h">tagged_target_mixin.h</innerfile>
+    <innerfile refid="scc_2target__mixin_8h">target_mixin.h</innerfile>
+    <innerfile refid="tlm2__pv__av_8h">tlm2_pv_av.h</innerfile>
+    <innerfile refid="tlm__extensions_8h">tlm_extensions.h</innerfile>
+    <innerfile refid="tlm__gp__shared_8h">tlm_gp_shared.h</innerfile>
+    <innerfile refid="tlm__id_8h">tlm_id.h</innerfile>
+    <innerfile refid="tlm__mm_8h">tlm_mm.h</innerfile>
+    <innerfile refid="tlm__signal_8h">tlm_signal.h</innerfile>
+    <innerfile refid="tlm__signal__conv_8h">tlm_signal_conv.h</innerfile>
+    <innerfile refid="tlm__signal__gp_8h">tlm_signal_gp.h</innerfile>
+    <innerfile refid="tlm__signal__sockets_8h">tlm_signal_sockets.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/"/>
+  </compounddef>
+</doxygen>

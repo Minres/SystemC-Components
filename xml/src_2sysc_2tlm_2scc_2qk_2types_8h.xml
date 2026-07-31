@@ -1,0 +1,306 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="src_2sysc_2tlm_2scc_2qk_2types_8h" kind="file" language="C++">
+    <compoundname>types.h</compoundname>
+    <includes local="no">future</includes>
+    <includes refid="SPSCQueue_8h" local="no">rigtorp/SPSCQueue.h</includes>
+    <includes refid="report_8h" local="no">scc/report.h</includes>
+    <includedby refid="global__time__keeper_8h" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>rigtorp/SPSCQueue.h</label>
+        <link refid="SPSCQueue_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>util/ities.h</label>
+        <link refid="ities_8h_source"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>scc/report.h</label>
+        <link refid="report_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>utilities.h</label>
+        <link refid="utilities_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h</label>
+        <link refid="src_2sysc_2tlm_2scc_2qk_2types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>algorithm</label>
+      </node>
+      <node id="13">
+        <label>array</label>
+      </node>
+      <node id="29">
+        <label>assert.h</label>
+      </node>
+      <node id="4">
+        <label>atomic</label>
+      </node>
+      <node id="30">
+        <label>bitset</label>
+      </node>
+      <node id="5">
+        <label>cassert</label>
+      </node>
+      <node id="17">
+        <label>cci_configuration</label>
+      </node>
+      <node id="14">
+        <label>cctype</label>
+      </node>
+      <node id="31">
+        <label>climits</label>
+      </node>
+      <node id="6">
+        <label>cstddef</label>
+      </node>
+      <node id="19">
+        <label>cstring</label>
+      </node>
+      <node id="32">
+        <label>fstream</label>
+      </node>
+      <node id="2">
+        <label>future</label>
+      </node>
+      <node id="20">
+        <label>iomanip</label>
+      </node>
+      <node id="21">
+        <label>iostream</label>
+      </node>
+      <node id="33">
+        <label>iterator</label>
+      </node>
+      <node id="15">
+        <label>limits</label>
+      </node>
+      <node id="18">
+        <label>locale</label>
+      </node>
+      <node id="7">
+        <label>memory</label>
+      </node>
+      <node id="22">
+        <label>mutex</label>
+      </node>
+      <node id="8">
+        <label>new</label>
+      </node>
+      <node id="23">
+        <label>sstream</label>
+      </node>
+      <node id="9">
+        <label>stdexcept</label>
+      </node>
+      <node id="34">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="24">
+        <label>sysc/kernel/sc_time.h</label>
+      </node>
+      <node id="25">
+        <label>sysc/utils/sc_report.h</label>
+      </node>
+      <node id="16">
+        <label>systemc</label>
+      </node>
+      <node id="10">
+        <label>type_traits</label>
+      </node>
+      <node id="26">
+        <label>unordered_map</label>
+      </node>
+      <node id="35">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.cpp</label>
+        <link refid="global__time__keeper_8cpp_source"/>
+      </node>
+      <node id="2">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.h</label>
+        <link refid="global__time__keeper_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/sc_time_syncronizer.cpp</label>
+        <link refid="sc__time__syncronizer_8cpp_source"/>
+      </node>
+      <node id="5">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/sc_time_syncronizer.h</label>
+        <link refid="sc__time__syncronizer_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h</label>
+        <link refid="src_2sysc_2tlm_2scc_2qk_2types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/quantum_keeper_mt.h</label>
+        <link refid="quantum__keeper__mt_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structtlm_1_1scc_1_1qk_1_1comms__entry" prot="public">tlm::scc::qk::comms_entry</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel" prot="public">tlm::scc::qk::thread_comms_channel</innerclass>
+    <innernamespace refid="namespacetlm">tlm</innernamespace>
+    <innernamespace refid="namespacetlm_1_1scc">tlm::scc</innernamespace>
+    <innernamespace refid="namespacetlm_1_1scc_1_1qk">tlm::scc::qk</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__SCC_TLM_QK_TYPES_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SCC_TLM_QK_TYPES_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;future&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;rigtorp/SPSCQueue.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scc/report.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>DEBUG_MT_SCHEDULING</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm" kindref="compound">tlm</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm_1_1scc" kindref="compound">scc</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">qk<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cpp_lib_hardware_interference_size</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>kCacheLineSize<sp/>=<sp/>std::hardware_destructive_interference_size;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>kCacheLineSize<sp/>=<sp/>64;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">callback_fct<sp/>=<sp/>sc_core::sc_time(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">callback_task<sp/>=<sp/>std::packaged_task&lt;callback_fct&gt;;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="structtlm_1_1scc_1_1qk_1_1comms__entry" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1scc_1_1qk_1_1comms__entry" kindref="compound">comms_entry</ref><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>time_tick;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>callback_task<sp/>task;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1abcfab58ffacb115fb8b4d391f987ad06" kindref="member">thread_comms_channel</ref><sp/>{</highlight></codeline>
+<codeline lineno="42" refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1abcfab58ffacb115fb8b4d391f987ad06" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1abcfab58ffacb115fb8b4d391f987ad06" kindref="member">thread_comms_channel</ref>(uint64_t<sp/>my_id)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>client2time_keeper(7)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>my_id(my_id)<sp/>{}</highlight></codeline>
+<codeline lineno="50" refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1a725890d393e77205c85d20944e8518da" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1a725890d393e77205c85d20944e8518da" kindref="member">thread_comms_channel</ref>(<ref refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel_1abcfab58ffacb115fb8b4d391f987ad06" kindref="member">thread_comms_channel</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>o)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>client2time_keeper(o.client2time_keeper.capacity())</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>my_id(o.my_id)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>thread_local_time(o.thread_local_time)<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(o.client2time_keeper.size()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classrigtorp_1_1SPSCQueue" kindref="compound">rigtorp::SPSCQueue&lt;comms_entry&gt;</ref><sp/>client2time_keeper;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/>my_id;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>waiting4sc{</highlight><highlight class="keyword">true</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>thread_local_time{0};</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>scc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>tlm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__SCC_TLM_QK_TYPES_H__</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h"/>
+  </compounddef>
+</doxygen>

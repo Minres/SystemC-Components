@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1wdata__axi" kind="struct" language="C++" prot="public">
+    <compoundname>axi::wdata_axi</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename CFG</type>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval><ref refid="structaxi_1_1master__types" kindref="compound">master_types</ref></defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structaxi_1_1wdata__axi_1a6c6f08d7b3c8d6d5ceb32721dc80b7d8" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_opt_t&lt; sc_dt::sc_uint&lt; CFG::IDWIDTH &gt; &gt;</type>
+        <definition>TYPES::template m2s_opt_t&lt;sc_dt::sc_uint&lt;CFG::IDWIDTH&gt; &gt; axi::wdata_axi&lt; CFG, TYPES &gt;::w_id</definition>
+        <argsstring></argsstring>
+        <name>w_id</name>
+        <qualifiedname>axi::wdata_axi::w_id</qualifiedname>
+        <initializer>{&quot;w_id&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="200" column="40" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="200" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1wdata__axi_1a6f18ff405009842fec2a44d9bf3e8017" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; typename CFG::data_t &gt;</type>
+        <definition>TYPES::template m2s_t&lt;typename CFG::data_t&gt; axi::wdata_axi&lt; CFG, TYPES &gt;::w_data</definition>
+        <argsstring></argsstring>
+        <name>w_data</name>
+        <qualifiedname>axi::wdata_axi::w_data</qualifiedname>
+        <initializer>{&quot;w_data&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="201" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="201" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1wdata__axi_1a77884d7702415e7fb215d9f050f652a2" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; typename CFG::strb_t &gt;</type>
+        <definition>TYPES::template m2s_t&lt;typename CFG::strb_t&gt; axi::wdata_axi&lt; CFG, TYPES &gt;::w_strb</definition>
+        <argsstring></argsstring>
+        <name>w_strb</name>
+        <qualifiedname>axi::wdata_axi::w_strb</qualifiedname>
+        <initializer>{&quot;w_strb&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="202" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="202" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1wdata__axi_1ae501c4578e95114a8420767c8f993639" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_full_t&lt; bool &gt;</type>
+        <definition>TYPES::template m2s_full_t&lt;bool&gt; axi::wdata_axi&lt; CFG, TYPES &gt;::w_last</definition>
+        <argsstring></argsstring>
+        <name>w_last</name>
+        <qualifiedname>axi::wdata_axi::w_last</qualifiedname>
+        <initializer>{&quot;w_last&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="203" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="203" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1wdata__axi_1a7ea49b79cd3b4a8800b8d1bafbdb1ef2" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_t&lt; bool &gt;</type>
+        <definition>TYPES::template m2s_t&lt;bool&gt; axi::wdata_axi&lt; CFG, TYPES &gt;::w_valid</definition>
+        <argsstring></argsstring>
+        <name>w_valid</name>
+        <qualifiedname>axi::wdata_axi::w_valid</qualifiedname>
+        <initializer>{&quot;w_valid&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="204" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="204" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1wdata__axi_1af47c0f2c23b5be25cd02e1a42617293b" prot="public" static="no" mutable="no">
+        <type>TYPES::template s2m_t&lt; bool &gt;</type>
+        <definition>TYPES::template s2m_t&lt;bool&gt; axi::wdata_axi&lt; CFG, TYPES &gt;::w_ready</definition>
+        <argsstring></argsstring>
+        <name>w_ready</name>
+        <qualifiedname>axi::wdata_axi::w_ready</qualifiedname>
+        <initializer>{&quot;w_ready&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="205" column="36" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="205" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1wdata__axi_1a0473f06c540a37f33b17ae5ed71e0274" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_opt_t&lt; typename CFG::user_t &gt;</type>
+        <definition>TYPES::template m2s_opt_t&lt;typename CFG::user_t&gt; axi::wdata_axi&lt; CFG, TYPES &gt;::w_user</definition>
+        <argsstring></argsstring>
+        <name>w_user</name>
+        <qualifiedname>axi::wdata_axi::w_user</qualifiedname>
+        <initializer>{&quot;w_user&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="206" column="40" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="206" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1wdata__axi_1a385664fa77192e7eca1936c24f06cce3" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_full_t&lt; bool &gt;</type>
+        <definition>TYPES::template m2s_full_t&lt;bool&gt; axi::wdata_axi&lt; CFG, TYPES &gt;::w_ack</definition>
+        <argsstring></argsstring>
+        <name>w_ack</name>
+        <qualifiedname>axi::wdata_axi::w_ack</qualifiedname>
+        <initializer>{&quot;w_ack&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="207" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="207" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1wdata__axi_1aee7a79a28b2b4451011e98bba23c74b1" prot="public" static="no" mutable="no">
+        <type>TYPES::template m2s_opt_t&lt; bool &gt;</type>
+        <definition>TYPES::template m2s_opt_t&lt;bool&gt; axi::wdata_axi&lt; CFG, TYPES &gt;::w_trace</definition>
+        <argsstring></argsstring>
+        <name>w_trace</name>
+        <qualifiedname>axi::wdata_axi::w_trace</qualifiedname>
+        <initializer>{&quot;w_trace&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="208" column="40" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="208" bodyend="208"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1wdata__axi_1ab6fea06af6a69e51d234d4f09a6e443c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::wdata_axi&lt; CFG, TYPES &gt;::wdata_axi</definition>
+        <argsstring>()=default</argsstring>
+        <name>wdata_axi</name>
+        <qualifiedname>axi::wdata_axi::wdata_axi</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="210" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1wdata__axi_1a085f7dba812e5ef8dd2ca18a7a4aef11" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::wdata_axi&lt; CFG, TYPES &gt;::wdata_axi</definition>
+        <argsstring>(const char *prefix)</argsstring>
+        <name>wdata_axi</name>
+        <qualifiedname>axi::wdata_axi::wdata_axi</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>prefix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="211" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="211" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1wdata__axi_1a227be2f584dc22c70f677145bfe827c4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename OTYPES</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void axi::wdata_axi&lt; CFG, TYPES &gt;::bind_w</definition>
+        <argsstring>(wdata_axi&lt; CFG, OTYPES &gt; &amp;o)</argsstring>
+        <name>bind_w</name>
+        <qualifiedname>axi::wdata_axi::bind_w</qualifiedname>
+        <param>
+          <type>wdata_axi&lt; CFG, OTYPES &gt; &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="222" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="222" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1wdata__axi_1aba4fd3ab0eba131bbbe96cdf9f5cb57e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename OTYPES</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void axi::wdata_axi&lt; CFG, TYPES &gt;::bind_wdata</definition>
+        <argsstring>(wdata_axi&lt; CFG, OTYPES &gt; &amp;o)</argsstring>
+        <name>bind_wdata</name>
+        <qualifiedname>axi::wdata_axi::bind_wdata</qualifiedname>
+        <param>
+          <type>wdata_axi&lt; CFG, OTYPES &gt; &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="233" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="233" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1wdata__axi_1a7f2bea298c2fc7f3148d56e62d96c23a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename OTYPES</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void axi::wdata_axi&lt; CFG, TYPES &gt;::bind_w</definition>
+        <argsstring>(wdata_axi_lite&lt; CFG, OTYPES &gt; &amp;o)</argsstring>
+        <name>bind_w</name>
+        <qualifiedname>axi::wdata_axi::bind_w</qualifiedname>
+        <param>
+          <type><ref refid="structaxi_1_1wdata__axi__lite" kindref="compound">wdata_axi_lite</ref>&lt; CFG, OTYPES &gt; &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="234" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="746" bodyend="751"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1wdata__axi_1a1a6c6026d3c9ae1974217b120331d8c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename OTYPES</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void axi::wdata_axi&lt; CFG, TYPES &gt;::bind_wdata</definition>
+        <argsstring>(wdata_axi_lite&lt; CFG, OTYPES &gt; &amp;o)</argsstring>
+        <name>bind_wdata</name>
+        <qualifiedname>axi::wdata_axi::bind_wdata</qualifiedname>
+        <param>
+          <type><ref refid="structaxi_1_1wdata__axi__lite" kindref="compound">wdata_axi_lite</ref>&lt; CFG, OTYPES &gt; &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="235" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="235" bodyend="235"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="199" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="199" bodyend="236"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1wdata__axi_1a227be2f584dc22c70f677145bfe827c4" prot="public" virt="non-virtual"><scope>axi::wdata_axi</scope><name>bind_w</name></member>
+      <member refid="structaxi_1_1wdata__axi_1a7f2bea298c2fc7f3148d56e62d96c23a" prot="public" virt="non-virtual"><scope>axi::wdata_axi</scope><name>bind_w</name></member>
+      <member refid="structaxi_1_1wdata__axi_1aba4fd3ab0eba131bbbe96cdf9f5cb57e" prot="public" virt="non-virtual"><scope>axi::wdata_axi</scope><name>bind_wdata</name></member>
+      <member refid="structaxi_1_1wdata__axi_1a1a6c6026d3c9ae1974217b120331d8c8" prot="public" virt="non-virtual"><scope>axi::wdata_axi</scope><name>bind_wdata</name></member>
+      <member refid="structaxi_1_1wdata__axi_1a385664fa77192e7eca1936c24f06cce3" prot="public" virt="non-virtual"><scope>axi::wdata_axi</scope><name>w_ack</name></member>
+      <member refid="structaxi_1_1wdata__axi_1a6f18ff405009842fec2a44d9bf3e8017" prot="public" virt="non-virtual"><scope>axi::wdata_axi</scope><name>w_data</name></member>
+      <member refid="structaxi_1_1wdata__axi_1a6c6f08d7b3c8d6d5ceb32721dc80b7d8" prot="public" virt="non-virtual"><scope>axi::wdata_axi</scope><name>w_id</name></member>
+      <member refid="structaxi_1_1wdata__axi_1ae501c4578e95114a8420767c8f993639" prot="public" virt="non-virtual"><scope>axi::wdata_axi</scope><name>w_last</name></member>
+      <member refid="structaxi_1_1wdata__axi_1af47c0f2c23b5be25cd02e1a42617293b" prot="public" virt="non-virtual"><scope>axi::wdata_axi</scope><name>w_ready</name></member>
+      <member refid="structaxi_1_1wdata__axi_1a77884d7702415e7fb215d9f050f652a2" prot="public" virt="non-virtual"><scope>axi::wdata_axi</scope><name>w_strb</name></member>
+      <member refid="structaxi_1_1wdata__axi_1aee7a79a28b2b4451011e98bba23c74b1" prot="public" virt="non-virtual"><scope>axi::wdata_axi</scope><name>w_trace</name></member>
+      <member refid="structaxi_1_1wdata__axi_1a0473f06c540a37f33b17ae5ed71e0274" prot="public" virt="non-virtual"><scope>axi::wdata_axi</scope><name>w_user</name></member>
+      <member refid="structaxi_1_1wdata__axi_1a7ea49b79cd3b4a8800b8d1bafbdb1ef2" prot="public" virt="non-virtual"><scope>axi::wdata_axi</scope><name>w_valid</name></member>
+      <member refid="structaxi_1_1wdata__axi_1ab6fea06af6a69e51d234d4f09a6e443c" prot="public" virt="non-virtual"><scope>axi::wdata_axi</scope><name>wdata_axi</name></member>
+      <member refid="structaxi_1_1wdata__axi_1a085f7dba812e5ef8dd2ca18a7a4aef11" prot="public" virt="non-virtual"><scope>axi::wdata_axi</scope><name>wdata_axi</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

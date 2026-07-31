@@ -1,0 +1,635 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1observer" kind="struct" language="C++" prot="public" abstract="yes">
+    <compoundname>scc::observer</compoundname>
+    <derivedcompoundref refid="structscc_1_1fst__trace__file" prot="public" virt="non-virtual">scc::fst_trace_file</derivedcompoundref>
+    <derivedcompoundref refid="structscc_1_1vcd__mt__trace__file" prot="public" virt="non-virtual">scc::vcd_mt_trace_file</derivedcompoundref>
+    <derivedcompoundref refid="structscc_1_1vcd__push__trace__file" prot="public" virt="non-virtual">scc::vcd_push_trace_file</derivedcompoundref>
+    <includes refid="observer_8h" local="no">observer.h</includes>
+    <innerclass refid="structscc_1_1observer_1_1notification__handle" prot="public">scc::observer::notification_handle</innerclass>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1observer_1a4e3b58718a1011575924dc4847d0f460" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(bool const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>bool const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="61" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a7a55760658c1152b6ba0ec68b8554ec8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(sc_dt::sc_bit const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>sc_dt::sc_bit const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="62" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1ac177ede67d8c0a5b8aa0c0149be9c8bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(sc_dt::sc_logic const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>sc_dt::sc_logic const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="63" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1af58d64116b2d393a3fe7fd09da81d187" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(unsigned char const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>unsigned char const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="65" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1ab5b77deceda1aeb8436a68d37df7ba59" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(unsigned short const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>unsigned short const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="66" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a39648be8b8f3a91cd79dd8f6033bcdcd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(unsigned int const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>unsigned int const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="67" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1afcffcec21020af7a4c9e1352bf3e1884" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(unsigned long const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>unsigned long const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="68" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a6d42f046372fb4d07e5cf24af018aa5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(char const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>char const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="69" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a6369314194b6439906fbec77657a4c76" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(short const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>short const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="70" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a6e32b8f1eb9f4b08cae3e4ad8ed9ed04" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(int const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>int const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="71" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1ad31be47ee8901a014b0d7477783f8c2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(long const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>long const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="72" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a436d8c425d948cda9c561dccda2def30" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(sc_dt::int64 const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>sc_dt::int64 const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="73" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a7ef25e6c38e9f66751772d0960f395cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(sc_dt::uint64 const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>sc_dt::uint64 const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="74" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a882e31de60fcbc7f246c4eb99ab2d976" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(float const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>float const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="76" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a95e456e977268b4752e623f99ab4a54c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(double const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>double const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="77" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a240a9570311d10f32c39c867c407e465" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(sc_dt::sc_int_base const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>sc_dt::sc_int_base const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="78" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a63d44ed731f3212f7110da4f81e58883" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(sc_dt::sc_uint_base const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>sc_dt::sc_uint_base const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="79" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a9ab29edda594095442018be912035f56" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(sc_dt::sc_signed const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>sc_dt::sc_signed const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="80" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1ab82ada754cb9df70194f70ed09b27cda" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(sc_dt::sc_unsigned const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>sc_dt::sc_unsigned const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="81" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a5625f840d1d5b5ba173633e183428f41" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(sc_dt::sc_fxval const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>sc_dt::sc_fxval const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="83" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1aadfae817d9bea13e877e1a69fac9f9f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(sc_dt::sc_fxval_fast const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>sc_dt::sc_fxval_fast const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="84" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1adc3cd05a7abe8882c9e9920698b95e12" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(sc_dt::sc_fxnum const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>sc_dt::sc_fxnum const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="85" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a3c60de11135e2901f82cd336c0f9dbaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(sc_dt::sc_fxnum_fast const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>sc_dt::sc_fxnum_fast const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="86" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a8d5e8d9d675133bc9dc37ebb8b36d70d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(sc_dt::sc_bv_base const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>sc_dt::sc_bv_base const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="88" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a9f2c64542df872188a53bd8a92a1120b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">notification_handle</ref> *</type>
+        <definition>virtual notification_handle * scc::observer::observe</definition>
+        <argsstring>(sc_dt::sc_lv_base const &amp;o, std::string const &amp;nm)=0</argsstring>
+        <name>observe</name>
+        <qualifiedname>scc::observer::observe</qualifiedname>
+        <param>
+          <type>sc_dt::sc_lv_base const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="89" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1observer_1a4a9cf27bb9978c57464db804f9f91461" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual scc::observer::~observer</definition>
+        <argsstring>()</argsstring>
+        <name>~observer</name>
+        <qualifiedname>scc::observer::~observer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="94" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" bodystart="94" bodyend="94"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The interface defining an observer. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>scc::fst_trace_file</label>
+        <link refid="structscc_1_1fst__trace__file"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>scc::observer</label>
+        <link refid="structscc_1_1observer"/>
+      </node>
+      <node id="3">
+        <label>scc::vcd_mt_trace_file</label>
+        <link refid="structscc_1_1vcd__mt__trace__file"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>scc::vcd_push_trace_file</label>
+        <link refid="structscc_1_1vcd__push__trace__file"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" line="53" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/observer.h" bodystart="53" bodyend="95"/>
+    <listofallmembers>
+      <member refid="structscc_1_1observer_1a4e3b58718a1011575924dc4847d0f460" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a7a55760658c1152b6ba0ec68b8554ec8" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1ac177ede67d8c0a5b8aa0c0149be9c8bf" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1af58d64116b2d393a3fe7fd09da81d187" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1ab5b77deceda1aeb8436a68d37df7ba59" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a39648be8b8f3a91cd79dd8f6033bcdcd" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1afcffcec21020af7a4c9e1352bf3e1884" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a6d42f046372fb4d07e5cf24af018aa5d" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a6369314194b6439906fbec77657a4c76" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a6e32b8f1eb9f4b08cae3e4ad8ed9ed04" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1ad31be47ee8901a014b0d7477783f8c2e" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a436d8c425d948cda9c561dccda2def30" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a7ef25e6c38e9f66751772d0960f395cb" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a882e31de60fcbc7f246c4eb99ab2d976" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a95e456e977268b4752e623f99ab4a54c" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a240a9570311d10f32c39c867c407e465" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a63d44ed731f3212f7110da4f81e58883" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a9ab29edda594095442018be912035f56" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1ab82ada754cb9df70194f70ed09b27cda" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a5625f840d1d5b5ba173633e183428f41" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1aadfae817d9bea13e877e1a69fac9f9f8" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1adc3cd05a7abe8882c9e9920698b95e12" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a3c60de11135e2901f82cd336c0f9dbaf" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a8d5e8d9d675133bc9dc37ebb8b36d70d" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a9f2c64542df872188a53bd8a92a1120b" prot="public" virt="pure-virtual"><scope>scc::observer</scope><name>observe</name></member>
+      <member refid="structscc_1_1observer_1a4a9cf27bb9978c57464db804f9f91461" prot="public" virt="virtual"><scope>scc::observer</scope><name>~observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

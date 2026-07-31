@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tcp4tlm__bridge_1_1timed__task" kind="struct" language="C++" prot="protected">
+    <compoundname>scc::tcp4tlm_bridge::timed_task</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1_1timed__task_1a7bdee379a81fbd523479db0093eb26af" prot="public" static="no" mutable="no">
+        <type>callback_task</type>
+        <definition>callback_task scc::tcp4tlm_bridge::timed_task::t</definition>
+        <argsstring></argsstring>
+        <name>t</name>
+        <qualifiedname>scc::tcp4tlm_bridge::timed_task::t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="129" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__bridge_1_1timed__task_1a6d4d1e407a13459431ebf737cc6ecb19" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time scc::tcp4tlm_bridge::timed_task::timepoint</definition>
+        <argsstring></argsstring>
+        <name>timepoint</name>
+        <qualifiedname>scc::tcp4tlm_bridge::timed_task::timepoint</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="130" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" line="128" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_bridge.h" bodystart="128" bodyend="131"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tcp4tlm__bridge_1_1timed__task_1a7bdee379a81fbd523479db0093eb26af" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge::timed_task</scope><name>t</name></member>
+      <member refid="structscc_1_1tcp4tlm__bridge_1_1timed__task_1a6d4d1e407a13459431ebf737cc6ecb19" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_bridge::timed_task</scope><name>timepoint</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

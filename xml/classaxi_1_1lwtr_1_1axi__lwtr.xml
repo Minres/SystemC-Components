@@ -1,0 +1,1033 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classaxi_1_1lwtr_1_1axi__lwtr" kind="class" language="C++" prot="public">
+    <compoundname>axi::lwtr::axi_lwtr</compoundname>
+    <basecompoundref prot="public" virt="virtual">axi::axi_fw_transport_if&lt; axi::axi_protocol_types &gt;</basecompoundref>
+    <basecompoundref prot="public" virt="virtual">axi::axi_bw_transport_if&lt; axi::axi_protocol_types &gt;</basecompoundref>
+    <includes refid="axi__lwtr_8h" local="no">axi_lwtr.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TYPES</type>
+        <defval><ref refid="structaxi_1_1axi__protocol__types" kindref="compound">axi::axi_protocol_types</ref></defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classaxi_1_1lwtr_1_1axi__lwtr_1a16e287d33a83fd07bf8658797fa2e8b1" prot="private" static="no" strong="no">
+        <type></type>
+        <name>DIR</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::DIR</qualifiedname>
+        <enumvalue id="classaxi_1_1lwtr_1_1axi__lwtr_1a16e287d33a83fd07bf8658797fa2e8b1a4dd10c0d0e8bbc2df5bc4ff74957b6bc" prot="private">
+          <name>FW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classaxi_1_1lwtr_1_1axi__lwtr_1a16e287d33a83fd07bf8658797fa2e8b1a5476be41ab67e68315b051e1077c80a6" prot="private">
+          <name>BW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classaxi_1_1lwtr_1_1axi__lwtr_1a16e287d33a83fd07bf8658797fa2e8b1a55e563827f86f1ac6eb8d54cbe8dcc31" prot="private">
+          <name>REQ</name>
+          <initializer>= FW</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classaxi_1_1lwtr_1_1axi__lwtr_1a16e287d33a83fd07bf8658797fa2e8b1ac04b87db94bfcb9c69afe59fb295b736" prot="private">
+          <name>RESP</name>
+          <initializer>= BW</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="219" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="219" bodyend="219"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1aa1c48ae7f1ce5b148a58fa5e0c854b3b" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::enableBlTracing</definition>
+        <argsstring></argsstring>
+        <name>enableBlTracing</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::enableBlTracing</qualifiedname>
+        <briefdescription>
+<para>the attribute to selectively enable/disable recording of blocking protocol tx </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="56" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a52a0014d7d6c8551b473feca7197df79" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::enableNbTracing</definition>
+        <argsstring></argsstring>
+        <name>enableNbTracing</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::enableNbTracing</qualifiedname>
+        <briefdescription>
+<para>the attribute to selectively enable/disable recording of non-blocking protocol tx </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="59" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a7fc13ab53503ee20a1cc22ffe93b7efe" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::enableTimedTracing</definition>
+        <argsstring></argsstring>
+        <name>enableTimedTracing</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::enableTimedTracing</qualifiedname>
+        <initializer>{&quot;enableTimedTracing&quot;, true}</initializer>
+        <briefdescription>
+<para>the attribute to selectively enable/disable timed recording </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="62" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a084f6f2db2b4fca3b003727a3dbe097b" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::enableDmiTracing</definition>
+        <argsstring></argsstring>
+        <name>enableDmiTracing</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::enableDmiTracing</qualifiedname>
+        <initializer>{&quot;enableDmiTracing&quot;, false}</initializer>
+        <briefdescription>
+<para>the attribute to selectively enable/disable DMI recording </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="65" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a8a979b3deab40029fdf74fc198b7ff4b" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::enableProtocolChecker</definition>
+        <argsstring></argsstring>
+        <name>enableProtocolChecker</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::enableProtocolChecker</qualifiedname>
+        <initializer>{&quot;enableProtocolChecker&quot;, false}</initializer>
+        <briefdescription>
+<para>the attribute to enable/disable protocol checking </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="68" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1aec81df8621f26dd639e4d0715cb23e2b" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; unsigned &gt;</type>
+        <definition>cci::cci_param&lt;unsigned&gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::rd_response_timeout</definition>
+        <argsstring></argsstring>
+        <name>rd_response_timeout</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::rd_response_timeout</qualifiedname>
+        <initializer>{&quot;rd_response_timeout&quot;, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="70" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1af654fc8e0ce6e47ac51ec686011b05ac" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; unsigned &gt;</type>
+        <definition>cci::cci_param&lt;unsigned&gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::wr_response_timeout</definition>
+        <argsstring></argsstring>
+        <name>wr_response_timeout</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::wr_response_timeout</qualifiedname>
+        <initializer>{&quot;wr_response_timeout&quot;, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="72" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="72" bodyend="72"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a8ee6d06b28e34e83e65a043eb68e1180" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_port&lt; <ref refid="namespaceaxi_1ab17a1a259e883a02dd68e4f8e823d5af" kindref="member">axi::axi_fw_transport_if</ref>&lt; TYPES &gt; &gt;</type>
+        <definition>sc_core::sc_port&lt;axi::axi_fw_transport_if&lt;TYPES&gt; &gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::fw_port</definition>
+        <argsstring></argsstring>
+        <name>fw_port</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::fw_port</qualifiedname>
+        <initializer>{&quot;fw_port&quot;}</initializer>
+        <briefdescription>
+<para>the port where fw accesses are forwarded to </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="190" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="190" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1ab4de76d8f411487b65f664f37fe24290" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_port&lt; <ref refid="namespaceaxi_1a805751c34d41d1e062fb5d9cae799971" kindref="member">axi::axi_bw_transport_if</ref>&lt; TYPES &gt; &gt;</type>
+        <definition>sc_core::sc_port&lt;axi::axi_bw_transport_if&lt;TYPES&gt; &gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::bw_port</definition>
+        <argsstring></argsstring>
+        <name>bw_port</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::bw_port</qualifiedname>
+        <initializer>{&quot;bw_port&quot;}</initializer>
+        <briefdescription>
+<para>the port where bw accesses are forwarded to </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="193" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="193" bodyend="193"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1affc6fad087f825818474f3e0b9f5dd44" prot="private" static="no" mutable="no">
+        <type>std::string const</type>
+        <definition>std::string const axi::lwtr::axi_lwtr&lt; TYPES &gt;::full_name</definition>
+        <argsstring></argsstring>
+        <name>full_name</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::full_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="196" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a3e977a79797b3ce26092605745ab7d3a" prot="private" static="no" mutable="no">
+        <type><ref refid="structscc_1_1peq" kindref="compound">::scc::peq</ref>&lt; <ref refid="structtlm_1_1scc_1_1lwtr_1_1nb__rec__entry" kindref="compound">nb_rec_entry</ref> &gt;</type>
+        <definition>::scc::peq&lt;nb_rec_entry&gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::nb_timed_peq</definition>
+        <argsstring></argsstring>
+        <name>nb_timed_peq</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::nb_timed_peq</qualifiedname>
+        <briefdescription>
+<para>event queue to hold time points of non-blocking transactions </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="198" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a3c6be4937e5e167877f371cf82396507" prot="private" static="no" mutable="no">
+        <type>const unsigned</type>
+        <definition>const unsigned axi::lwtr::axi_lwtr&lt; TYPES &gt;::bus_width</definition>
+        <argsstring></argsstring>
+        <name>bus_width</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::bus_width</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="204" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="204" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a201c7018d4fbb6d69bef4df71000aaf0" prot="private" static="no" mutable="no">
+        <type>tx_db *</type>
+        <definition>tx_db* axi::lwtr::axi_lwtr&lt; TYPES &gt;::m_db</definition>
+        <argsstring></argsstring>
+        <name>m_db</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::m_db</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>transaction recording database </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="206" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="206" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a853b80d82fdb3d9f69c2ffd9ee7d0902" prot="private" static="no" mutable="no">
+        <type>::lwtr::tx_relation_handle</type>
+        <definition>::lwtr::tx_relation_handle axi::lwtr::axi_lwtr&lt; TYPES &gt;::pred_succ_hndl</definition>
+        <argsstring></argsstring>
+        <name>pred_succ_hndl</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::pred_succ_hndl</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>the relationship name handles </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="208" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="208" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1ad3d1b994ca8bc604b135903966130586" prot="private" static="no" mutable="no">
+        <type>::lwtr::tx_relation_handle</type>
+        <definition>::lwtr::tx_relation_handle axi::lwtr::axi_lwtr&lt; TYPES &gt;::par_chld_hndl</definition>
+        <argsstring></argsstring>
+        <name>par_chld_hndl</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::par_chld_hndl</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="208" column="47" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="208" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a10e7f4132ee6089fb94a4abac4690bea" prot="private" static="no" mutable="no">
+        <type>tx_fiber *</type>
+        <definition>tx_fiber* axi::lwtr::axi_lwtr&lt; TYPES &gt;::b_streamHandle</definition>
+        <argsstring></argsstring>
+        <name>b_streamHandle</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::b_streamHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>blocking transaction recording stream handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="210" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="210" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a31e031f3e0005137dbca7440d25e3619" prot="private" static="no" mutable="no">
+        <type>std::array&lt; tx_generator&lt; sc_core::sc_time, sc_core::sc_time &gt; *, 3 &gt;</type>
+        <definition>std::array&lt;tx_generator&lt;sc_core::sc_time, sc_core::sc_time&gt;*, 3&gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::b_trHandle</definition>
+        <argsstring></argsstring>
+        <name>b_trHandle</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::b_trHandle</qualifiedname>
+        <initializer>{{nullptr, nullptr, nullptr}}</initializer>
+        <briefdescription>
+<para>transaction generator handle for blocking transactions </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="212" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="212" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a88f02187f57846016013f13c3cbc499c" prot="private" static="no" mutable="no">
+        <type>tx_fiber *</type>
+        <definition>tx_fiber* axi::lwtr::axi_lwtr&lt; TYPES &gt;::b_streamHandleTimed</definition>
+        <argsstring></argsstring>
+        <name>b_streamHandleTimed</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::b_streamHandleTimed</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>timed blocking transaction recording stream handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="214" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="214" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1aa680731fab65635e28db1b0734abb3e3" prot="private" static="no" mutable="no">
+        <type>std::array&lt; tx_generator&lt;&gt; *, 3 &gt;</type>
+        <definition>std::array&lt;tx_generator&lt;&gt;*, 3&gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::b_trTimedHandle</definition>
+        <argsstring></argsstring>
+        <name>b_trTimedHandle</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::b_trTimedHandle</qualifiedname>
+        <initializer>{{nullptr, nullptr, nullptr}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>transaction generator handle for blocking transactions with annotated delays </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="217" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="217" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1aaeb1b35e4adad75a32a884811fed0748" prot="private" static="no" mutable="no">
+        <type>tx_fiber *</type>
+        <definition>tx_fiber* axi::lwtr::axi_lwtr&lt; TYPES &gt;::nb_streamHandle</definition>
+        <argsstring></argsstring>
+        <name>nb_streamHandle</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::nb_streamHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>non-blocking transaction recording stream handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="221" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="221" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a049baefd107c54601d447e6da00c58bf" prot="private" static="no" mutable="no">
+        <type>tx_fiber *</type>
+        <definition>tx_fiber* axi::lwtr::axi_lwtr&lt; TYPES &gt;::nb_streamHandleTimed</definition>
+        <argsstring></argsstring>
+        <name>nb_streamHandleTimed</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::nb_streamHandleTimed</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>non-blocking transaction recording stream handle with timing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="223" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="223" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1ae12351b29c95fb9192dea4ede80ff311" prot="private" static="no" mutable="no">
+        <type>std::array&lt; tx_generator&lt; std::string, std::string &gt; *, 2 &gt;</type>
+        <definition>std::array&lt;tx_generator&lt;std::string, std::string&gt;*, 2&gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::nb_trHandle</definition>
+        <argsstring></argsstring>
+        <name>nb_trHandle</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::nb_trHandle</qualifiedname>
+        <initializer>{{nullptr, nullptr}}</initializer>
+        <briefdescription>
+<para>transaction generator handle for non-blocking transactions </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="225" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="225" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a3ab0a5b603ed51f83a4bbc15e998fcf1" prot="private" static="no" mutable="no">
+        <type>std::array&lt; tx_generator&lt;&gt; *, 2 &gt;</type>
+        <definition>std::array&lt;tx_generator&lt;&gt;*, 2&gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::nb_trTimedHandle</definition>
+        <argsstring></argsstring>
+        <name>nb_trTimedHandle</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::nb_trTimedHandle</qualifiedname>
+        <initializer>{{nullptr, nullptr}}</initializer>
+        <briefdescription>
+<para>transaction generator handle for non-blocking transactions with annotated delays </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="227" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="227" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1afcfd4ccee8a6c3f49ac748befae7ca76" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, tx_handle &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, tx_handle&gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::nbtx_req_handle_map</definition>
+        <argsstring></argsstring>
+        <name>nbtx_req_handle_map</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::nbtx_req_handle_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="228" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1ad767dfd580b457e326d6e4eac61ccec8" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, tx_handle &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, tx_handle&gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::nbtx_last_req_handle_map</definition>
+        <argsstring></argsstring>
+        <name>nbtx_last_req_handle_map</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::nbtx_last_req_handle_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="229" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="229" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a06fa3e3511fcd3b8807bfd3baa05d65c" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, tx_handle &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, tx_handle&gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::nbtx_resp_handle_map</definition>
+        <argsstring></argsstring>
+        <name>nbtx_resp_handle_map</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::nbtx_resp_handle_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="230" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a52151344e99eb5fe09024a93b5bc234e" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, tx_handle &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, tx_handle&gt; axi::lwtr::axi_lwtr&lt; TYPES &gt;::nbtx_last_resp_handle_map</definition>
+        <argsstring></argsstring>
+        <name>nbtx_last_resp_handle_map</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::nbtx_last_resp_handle_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="231" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a15f6bafbcdec1e554f864527d4034090" prot="private" static="no" mutable="no">
+        <type>tx_fiber *</type>
+        <definition>tx_fiber* axi::lwtr::axi_lwtr&lt; TYPES &gt;::dmi_streamHandle</definition>
+        <argsstring></argsstring>
+        <name>dmi_streamHandle</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::dmi_streamHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>dmi transaction recording stream handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="233" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="233" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1aa0d4a7e6161ef9a74acd43b80c234de0" prot="private" static="no" mutable="no">
+        <type>tx_generator *</type>
+        <definition>tx_generator* axi::lwtr::axi_lwtr&lt; TYPES &gt;::dmi_trGetHandle</definition>
+        <argsstring></argsstring>
+        <name>dmi_trGetHandle</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::dmi_trGetHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+<para>transaction generator handle for DMI transactions </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="235" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="235" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a34a8588ee5ae08fa9cdd03c9aff19043" prot="private" static="no" mutable="no">
+        <type>tx_generator&lt; sc_dt::uint64, sc_dt::uint64 &gt; *</type>
+        <definition>tx_generator&lt;sc_dt::uint64, sc_dt::uint64&gt;* axi::lwtr::axi_lwtr&lt; TYPES &gt;::dmi_trInvalidateHandle</definition>
+        <argsstring></argsstring>
+        <name>dmi_trInvalidateHandle</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::dmi_trInvalidateHandle</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="236" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="236" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1lwtr_1_1axi__lwtr_1a7d49fea55724b31a382d6aa328e5431a" prot="private" static="no" mutable="no">
+        <type><ref refid="structaxi_1_1checker_1_1checker__if" kindref="compound">axi::checker::checker_if</ref>&lt; TYPES &gt; *</type>
+        <definition>axi::checker::checker_if&lt;TYPES&gt;* axi::lwtr::axi_lwtr&lt; TYPES &gt;::checker</definition>
+        <argsstring></argsstring>
+        <name>checker</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::checker</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="282" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="282" bodyend="282"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classaxi_1_1lwtr_1_1axi__lwtr_1a263167af3b7d2545cdb94a4c510854a2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::lwtr::axi_lwtr&lt; TYPES &gt;::axi_lwtr</definition>
+        <argsstring>(char const *full_name, unsigned bus_width, bool recording_enabled=true, tx_db *tr_db=tx_db::get_default_db())</argsstring>
+        <name>axi_lwtr</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::axi_lwtr</qualifiedname>
+        <param>
+          <type>char const *</type>
+          <declname>full_name</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>bus_width</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>recording_enabled</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>tx_db *</type>
+          <declname>tr_db</declname>
+          <defval>tx_db::get_default_db()</defval>
+        </param>
+        <briefdescription>
+<para>The constructor of the component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the SystemC module name of the recorder </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tr_db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a transaction recording database. If none is provided the default one is retrieved. If this database is not initialized (e.g. by not calling lwtr_tr_db::set_default_db() ) recording is disabled. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="82" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="82" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1lwtr_1_1axi__lwtr_1a2fbf8f59d6ade5fadd104e449c649554" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual axi::lwtr::axi_lwtr&lt; TYPES &gt;::~axi_lwtr</definition>
+        <argsstring>() override</argsstring>
+        <name>~axi_lwtr</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::~axi_lwtr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="97" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="97" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1lwtr_1_1axi__lwtr_1a07c2b8d161b823b9bad35d7be7e28877" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum axi::lwtr::axi_lwtr&lt; TYPES &gt;::nb_transport_fw</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, typename TYPES::tlm_phase_type &amp;phase, sc_core::sc_time &amp;delay) override</argsstring>
+        <name>nb_transport_fw</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::nb_transport_fw</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>The non-blocking forward transport function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is forwarded and recorded to a transaction stream named &quot;nb_fw&quot; with current timestamps. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>phase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the current phase of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the annotated delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the sync state of the transaction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="131" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="370" bodyend="458"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1lwtr_1_1axi__lwtr_1a3043f76da29f02dad154035de29cc5c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm::tlm_sync_enum axi::lwtr::axi_lwtr&lt; TYPES &gt;::nb_transport_bw</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, typename TYPES::tlm_phase_type &amp;phase, sc_core::sc_time &amp;delay) override</argsstring>
+        <name>nb_transport_bw</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::nb_transport_bw</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>typename TYPES::tlm_phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>The non-blocking backward transport function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is forwarded and recorded to a transaction stream named &quot;nb_bw&quot; with current timestamps. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>phase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the current phase of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the annotated delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the sync state of the transaction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="142" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="461" bodyend="549"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1lwtr_1_1axi__lwtr_1a146eef73b4e2a94505b623372dcd8492" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::lwtr::axi_lwtr&lt; TYPES &gt;::b_transport</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, sc_core::sc_time &amp;delay) override</argsstring>
+        <name>b_transport</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::b_transport</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>The blocking transport function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is forwarded and recorded to a transaction stream named &quot;b_tx&quot; with current timestamps. Additionally a &quot;b_tx_timed&quot; is been created recording the transactions at their annotated delay <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the annotated delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="152" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="305" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1lwtr_1_1axi__lwtr_1a2a8bf4c59ad37b5df84b51c9a3f6d1af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool axi::lwtr::axi_lwtr&lt; TYPES &gt;::get_direct_mem_ptr</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans, tlm::tlm_dmi &amp;dmi_data) override</argsstring>
+        <name>get_direct_mem_ptr</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::get_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_dmi &amp;</type>
+          <declname>dmi_data</declname>
+        </param>
+        <briefdescription>
+<para>The direct memory interface forward function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is just forwarded and not recorded. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dmi_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the structure holding the dmi information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>if the dmi structure is valid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="160" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="610" bodyend="619"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1lwtr_1_1axi__lwtr_1a3f876bcec4a916c0d14cb533c6cc3aa9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::lwtr::axi_lwtr&lt; TYPES &gt;::invalidate_direct_mem_ptr</definition>
+        <argsstring>(sc_dt::uint64 start_addr, sc_dt::uint64 end_addr) override</argsstring>
+        <name>invalidate_direct_mem_ptr</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::invalidate_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>start_addr</declname>
+        </param>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>end_addr</declname>
+        </param>
+        <briefdescription>
+<para>The direct memory interface backward function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is just forwarded and not recorded. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>start_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the start address of the memory area being invalid </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the end address of the memory area being invalid </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="167" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="626" bodyend="635"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1lwtr_1_1axi__lwtr_1aae9b9ba9215a46f5769defc426eede60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int axi::lwtr::axi_lwtr&lt; TYPES &gt;::transport_dbg</definition>
+        <argsstring>(typename TYPES::tlm_payload_type &amp;trans) override</argsstring>
+        <name>transport_dbg</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::transport_dbg</qualifiedname>
+        <param>
+          <type>typename TYPES::tlm_payload_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+<para>The debug transportfunction. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This type of transaction is just forwarded and not recorded. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the generic payload of the transaction </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the sync state of the transaction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="174" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="642" bodyend="644"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1lwtr_1_1axi__lwtr_1a70ddb9f0a978d56ed2e7279b7adab6f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool axi::lwtr::axi_lwtr&lt; TYPES &gt;::isRecordingBlockingTxEnabled</definition>
+        <argsstring>() const</argsstring>
+        <name>isRecordingBlockingTxEnabled</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::isRecordingBlockingTxEnabled</qualifiedname>
+        <briefdescription>
+<para>get the current state of transaction recording </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>if true transaction recording is enabled otherwise transaction recording is bypassed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="180" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="180" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1lwtr_1_1axi__lwtr_1a0f5e67b5a91c13990e690a2a5e88244a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool axi::lwtr::axi_lwtr&lt; TYPES &gt;::isRecordingNonBlockingTxEnabled</definition>
+        <argsstring>() const</argsstring>
+        <name>isRecordingNonBlockingTxEnabled</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::isRecordingNonBlockingTxEnabled</qualifiedname>
+        <briefdescription>
+<para>get the current state of transaction recording </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>if true transaction recording is enabled otherwise transaction recording is bypassed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="186" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="186" bodyend="186"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classaxi_1_1lwtr_1_1axi__lwtr_1a35b678be5c88402086a90ab963ad65c2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::lwtr::axi_lwtr&lt; TYPES &gt;::nbtx_cb</definition>
+        <argsstring>()</argsstring>
+        <name>nbtx_cb</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::nbtx_cb</qualifiedname>
+        <briefdescription>
+<para>The thread processing the non-blocking requests with their annotated times to generate the timed view of non-blocking tx. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="203" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="551" bodyend="608"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classaxi_1_1lwtr_1_1axi__lwtr_1ad6aa96d3cf4ab212ec5f522c2c93494c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::lwtr::axi_lwtr&lt; TYPES &gt;::initialize_streams</definition>
+        <argsstring>()</argsstring>
+        <name>initialize_streams</name>
+        <qualifiedname>axi::lwtr::axi_lwtr::initialize_streams</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="239" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="239" bodyend="279"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The TLM2 transaction recorder. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This module records all TLM transaction to a LWTR transaction stream for further viewing and analysis. The handle of the created transaction is stored in an tlm_extension so that another instance of the <ref refid="classaxi_1_1lwtr_1_1axi__lwtr" kindref="compound">axi_lwtr</ref> e.g. further down the path can link to it. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>axi::axi_bw_transport_if&lt; axi::axi_protocol_types &gt;</label>
+      </node>
+      <node id="2">
+        <label>axi::axi_fw_transport_if&lt; axi::axi_protocol_types &gt;</label>
+      </node>
+      <node id="1">
+        <label>axi::lwtr::axi_lwtr&lt; TYPES &gt;</label>
+        <link refid="classaxi_1_1lwtr_1_1axi__lwtr"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>axi::axi_bw_transport_if&lt; axi::axi_protocol_types &gt;</label>
+      </node>
+      <node id="2">
+        <label>axi::axi_fw_transport_if&lt; axi::axi_protocol_types &gt;</label>
+      </node>
+      <node id="1">
+        <label>axi::lwtr::axi_lwtr&lt; TYPES &gt;</label>
+        <link refid="classaxi_1_1lwtr_1_1axi__lwtr"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" line="53" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/lwtr/axi_lwtr.h" bodystart="53" bodyend="283"/>
+    <listofallmembers>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a263167af3b7d2545cdb94a4c510854a2" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>axi_lwtr</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a10e7f4132ee6089fb94a4abac4690bea" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>b_streamHandle</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a88f02187f57846016013f13c3cbc499c" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>b_streamHandleTimed</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a146eef73b4e2a94505b623372dcd8492" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>b_transport</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a31e031f3e0005137dbca7440d25e3619" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>b_trHandle</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1aa680731fab65635e28db1b0734abb3e3" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>b_trTimedHandle</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a3c6be4937e5e167877f371cf82396507" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>bus_width</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a16e287d33a83fd07bf8658797fa2e8b1a5476be41ab67e68315b051e1077c80a6" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>BW</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1ab4de76d8f411487b65f664f37fe24290" prot="protected" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>bw_port</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a7d49fea55724b31a382d6aa328e5431a" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>checker</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a16e287d33a83fd07bf8658797fa2e8b1" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>DIR</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a15f6bafbcdec1e554f864527d4034090" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>dmi_streamHandle</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1aa0d4a7e6161ef9a74acd43b80c234de0" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>dmi_trGetHandle</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a34a8588ee5ae08fa9cdd03c9aff19043" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>dmi_trInvalidateHandle</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1aa1c48ae7f1ce5b148a58fa5e0c854b3b" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>enableBlTracing</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a084f6f2db2b4fca3b003727a3dbe097b" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>enableDmiTracing</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a52a0014d7d6c8551b473feca7197df79" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>enableNbTracing</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a8a979b3deab40029fdf74fc198b7ff4b" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>enableProtocolChecker</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a7fc13ab53503ee20a1cc22ffe93b7efe" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>enableTimedTracing</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1affc6fad087f825818474f3e0b9f5dd44" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>full_name</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a16e287d33a83fd07bf8658797fa2e8b1a4dd10c0d0e8bbc2df5bc4ff74957b6bc" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>FW</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a8ee6d06b28e34e83e65a043eb68e1180" prot="protected" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>fw_port</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a2a8bf4c59ad37b5df84b51c9a3f6d1af" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>get_direct_mem_ptr</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1ad6aa96d3cf4ab212ec5f522c2c93494c" prot="protected" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>initialize_streams</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a3f876bcec4a916c0d14cb533c6cc3aa9" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>invalidate_direct_mem_ptr</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a70ddb9f0a978d56ed2e7279b7adab6f4" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>isRecordingBlockingTxEnabled</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a0f5e67b5a91c13990e690a2a5e88244a" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>isRecordingNonBlockingTxEnabled</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a201c7018d4fbb6d69bef4df71000aaf0" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>m_db</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1aaeb1b35e4adad75a32a884811fed0748" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>nb_streamHandle</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a049baefd107c54601d447e6da00c58bf" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>nb_streamHandleTimed</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a3e977a79797b3ce26092605745ab7d3a" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>nb_timed_peq</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a3043f76da29f02dad154035de29cc5c0" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>nb_transport_bw</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a07c2b8d161b823b9bad35d7be7e28877" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>nb_transport_fw</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1ae12351b29c95fb9192dea4ede80ff311" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>nb_trHandle</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a3ab0a5b603ed51f83a4bbc15e998fcf1" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>nb_trTimedHandle</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a35b678be5c88402086a90ab963ad65c2" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>nbtx_cb</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1ad767dfd580b457e326d6e4eac61ccec8" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>nbtx_last_req_handle_map</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a52151344e99eb5fe09024a93b5bc234e" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>nbtx_last_resp_handle_map</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1afcfd4ccee8a6c3f49ac748befae7ca76" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>nbtx_req_handle_map</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a06fa3e3511fcd3b8807bfd3baa05d65c" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>nbtx_resp_handle_map</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1ad3d1b994ca8bc604b135903966130586" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>par_chld_hndl</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a853b80d82fdb3d9f69c2ffd9ee7d0902" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>pred_succ_hndl</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1aec81df8621f26dd639e4d0715cb23e2b" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>rd_response_timeout</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a16e287d33a83fd07bf8658797fa2e8b1a55e563827f86f1ac6eb8d54cbe8dcc31" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>REQ</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a16e287d33a83fd07bf8658797fa2e8b1ac04b87db94bfcb9c69afe59fb295b736" prot="private" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>RESP</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1aae9b9ba9215a46f5769defc426eede60" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>transport_dbg</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1af654fc8e0ce6e47ac51ec686011b05ac" prot="public" virt="non-virtual"><scope>axi::lwtr::axi_lwtr</scope><name>wr_response_timeout</name></member>
+      <member refid="classaxi_1_1lwtr_1_1axi__lwtr_1a2fbf8f59d6ade5fadd104e449c649554" prot="public" virt="virtual"><scope>axi::lwtr::axi_lwtr</scope><name>~axi_lwtr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

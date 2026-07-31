@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structeth_1_1ethernet__frame" kind="struct" language="C++" prot="public">
+    <compoundname>eth::ethernet_frame</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structeth_1_1ethernet__frame_1a7130ac537c123ab1a0173076444288f3" prot="public" static="no" mutable="no">
+        <type><ref refid="structeth_1_1ethernet__header" kindref="compound">ethernet_header</ref></type>
+        <definition>ethernet_header eth::ethernet_frame::l2</definition>
+        <argsstring></argsstring>
+        <name>l2</name>
+        <qualifiedname>eth::ethernet_frame::l2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="58" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structeth_1_1ethernet__frame_1ac7373447275e9d360bce9dc0ba123f76" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool eth::ethernet_frame::has_vlan</definition>
+        <argsstring></argsstring>
+        <name>has_vlan</name>
+        <qualifiedname>eth::ethernet_frame::has_vlan</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="59" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structeth_1_1ethernet__frame_1a9fcac40704076c36c030b87d1ea553f3" prot="public" static="no" mutable="no">
+        <type>std::uint16_t</type>
+        <definition>std::uint16_t eth::ethernet_frame::vlan_tpid</definition>
+        <argsstring></argsstring>
+        <name>vlan_tpid</name>
+        <qualifiedname>eth::ethernet_frame::vlan_tpid</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="60" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structeth_1_1ethernet__frame_1a28baa36446ae112c5034914c38919051" prot="public" static="no" mutable="no">
+        <type>std::uint16_t</type>
+        <definition>std::uint16_t eth::ethernet_frame::vlan_id</definition>
+        <argsstring></argsstring>
+        <name>vlan_id</name>
+        <qualifiedname>eth::ethernet_frame::vlan_id</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="61" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structeth_1_1ethernet__frame_1a81b84a4b474d9a9f8a6b6a52da027745" prot="public" static="no" mutable="no">
+        <type>std::uint16_t</type>
+        <definition>std::uint16_t eth::ethernet_frame::vlan_pcp</definition>
+        <argsstring></argsstring>
+        <name>vlan_pcp</name>
+        <qualifiedname>eth::ethernet_frame::vlan_pcp</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="62" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structeth_1_1ethernet__frame_1a3aa5d0adeb09e015dd7a738d336920e2" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool eth::ethernet_frame::vlan_dei</definition>
+        <argsstring></argsstring>
+        <name>vlan_dei</name>
+        <qualifiedname>eth::ethernet_frame::vlan_dei</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="63" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structeth_1_1ethernet__frame_1a72fca02e5d866c255af0c1f59655724d" prot="public" static="no" mutable="no">
+        <type>ether_kind</type>
+        <definition>ether_kind eth::ethernet_frame::kind</definition>
+        <argsstring></argsstring>
+        <name>kind</name>
+        <qualifiedname>eth::ethernet_frame::kind</qualifiedname>
+        <initializer>= ether_kind::ETHER_TYPE</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="65" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structeth_1_1ethernet__frame_1af39e5671d6c0ffef29a3d526dcc16879" prot="public" static="no" mutable="no">
+        <type>std::uint16_t</type>
+        <definition>std::uint16_t eth::ethernet_frame::etherType_or_len</definition>
+        <argsstring></argsstring>
+        <name>etherType_or_len</name>
+        <qualifiedname>eth::ethernet_frame::etherType_or_len</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="66" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structeth_1_1ethernet__frame_1a21c37068fe761816f87b510dca85d175" prot="public" static="no" mutable="no">
+        <type>nonstd::span&lt; const std::uint8_t &gt;</type>
+        <definition>nonstd::span&lt;const std::uint8_t&gt; eth::ethernet_frame::payload</definition>
+        <argsstring></argsstring>
+        <name>payload</name>
+        <qualifiedname>eth::ethernet_frame::payload</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="67" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structeth_1_1ethernet__frame_1a21628aeb2200ab0a4638629010007ead" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structeth_1_1ethernet__frame" kindref="compound">ethernet_frame</ref></type>
+        <definition>ethernet_frame eth::ethernet_frame::parse_ethernet</definition>
+        <argsstring>(nonstd::span&lt; const std::uint8_t &gt; frame)</argsstring>
+        <name>parse_ethernet</name>
+        <qualifiedname>eth::ethernet_frame::parse_ethernet</qualifiedname>
+        <param>
+          <type>nonstd::span&lt; const std::uint8_t &gt;</type>
+          <declname>frame</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="68" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.cpp" bodystart="3" bodyend="56"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>eth::ethernet_frame</label>
+        <link refid="structeth_1_1ethernet__frame"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>l2</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>eth::ethernet_header</label>
+        <link refid="structeth_1_1ethernet__header"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" line="57" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/eth/eth_tlm.h" bodystart="57" bodyend="69"/>
+    <listofallmembers>
+      <member refid="structeth_1_1ethernet__frame_1af39e5671d6c0ffef29a3d526dcc16879" prot="public" virt="non-virtual"><scope>eth::ethernet_frame</scope><name>etherType_or_len</name></member>
+      <member refid="structeth_1_1ethernet__frame_1ac7373447275e9d360bce9dc0ba123f76" prot="public" virt="non-virtual"><scope>eth::ethernet_frame</scope><name>has_vlan</name></member>
+      <member refid="structeth_1_1ethernet__frame_1a72fca02e5d866c255af0c1f59655724d" prot="public" virt="non-virtual"><scope>eth::ethernet_frame</scope><name>kind</name></member>
+      <member refid="structeth_1_1ethernet__frame_1a7130ac537c123ab1a0173076444288f3" prot="public" virt="non-virtual"><scope>eth::ethernet_frame</scope><name>l2</name></member>
+      <member refid="structeth_1_1ethernet__frame_1a21628aeb2200ab0a4638629010007ead" prot="public" virt="non-virtual"><scope>eth::ethernet_frame</scope><name>parse_ethernet</name></member>
+      <member refid="structeth_1_1ethernet__frame_1a21c37068fe761816f87b510dca85d175" prot="public" virt="non-virtual"><scope>eth::ethernet_frame</scope><name>payload</name></member>
+      <member refid="structeth_1_1ethernet__frame_1a3aa5d0adeb09e015dd7a738d336920e2" prot="public" virt="non-virtual"><scope>eth::ethernet_frame</scope><name>vlan_dei</name></member>
+      <member refid="structeth_1_1ethernet__frame_1a28baa36446ae112c5034914c38919051" prot="public" virt="non-virtual"><scope>eth::ethernet_frame</scope><name>vlan_id</name></member>
+      <member refid="structeth_1_1ethernet__frame_1a81b84a4b474d9a9f8a6b6a52da027745" prot="public" virt="non-virtual"><scope>eth::ethernet_frame</scope><name>vlan_pcp</name></member>
+      <member refid="structeth_1_1ethernet__frame_1a9fcac40704076c36c030b87d1ea553f3" prot="public" virt="non-virtual"><scope>eth::ethernet_frame</scope><name>vlan_tpid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

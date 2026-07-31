@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classchi_1_1scv_1_1chitlm__recorder__module" kind="class" language="C++" prot="public">
+    <compoundname>chi::scv::chitlm_recorder_module</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">BASE</basecompoundref>
+    <includes refid="chi_2scv_2recorder__modules_8h" local="no">recorder_modules.h</includes>
+    <templateparamlist>
+      <param>
+        <type>unsigned int</type>
+        <declname>BUSWIDTH</declname>
+        <defname>BUSWIDTH</defname>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+      </param>
+      <param>
+        <type>typename BASE</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chitlm__recorder__module_1aa2b9e9a42a59eec89cfd0d82b54dd63d" prot="public" static="no" mutable="no">
+        <type>BASE::template target_socket_type&lt; BUSWIDTH &gt;</type>
+        <definition>BASE::template target_socket_type&lt;BUSWIDTH&gt; chi::scv::chitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;::tsckt</definition>
+        <argsstring></argsstring>
+        <name>tsckt</name>
+        <qualifiedname>chi::scv::chitlm_recorder_module::tsckt</qualifiedname>
+        <initializer>{&quot;tsckt&quot;}</initializer>
+        <briefdescription>
+<para>The target socket of the recorder to be bound to the initiator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" line="36" column="48" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="variable" id="classchi_1_1scv_1_1chitlm__recorder__module_1aac42c5708fa227bccac57e54f239cca4" prot="public" static="no" mutable="no">
+        <type>BASE::template initiator_socket_type&lt; BUSWIDTH &gt;</type>
+        <definition>BASE::template initiator_socket_type&lt;BUSWIDTH&gt; chi::scv::chitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;::isckt</definition>
+        <argsstring></argsstring>
+        <name>isckt</name>
+        <qualifiedname>chi::scv::chitlm_recorder_module::isckt</qualifiedname>
+        <initializer>{&quot;isckt&quot;}</initializer>
+        <briefdescription>
+<para>The initiator to be bound to the target socket. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" line="38" column="51" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" bodystart="38" bodyend="38"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classchi_1_1scv_1_1chitlm__recorder__module_1ac47c43aa4484d312f1c2d492fd5243e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>chi::scv::chitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;::chitlm_recorder_module</definition>
+        <argsstring>(sc_core::sc_module_name name, bool recording_enabled=true, SCVNS scv_tr_db *tr_db=SCVNS scv_tr_db::get_default_db())</argsstring>
+        <name>chitlm_recorder_module</name>
+        <qualifiedname>chi::scv::chitlm_recorder_module::chitlm_recorder_module</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>recording_enabled</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>SCVNS scv_tr_db *</type>
+          <declname>tr_db</declname>
+          <defval>SCVNS scv_tr_db::get_default_db()</defval>
+        </param>
+        <briefdescription>
+<para>The constructor of the component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the SystemC module name of the recorder </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tr_db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a transaction recording database. If none is provided the default one is retrieved. If this database is not initialized (e.g. by not calling scv_tr_db::set_default_db() ) recording is disabled. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" line="48" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" bodystart="48" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1scv_1_1chitlm__recorder__module_1ab84c02ce15694c4251950b8cb1b73641" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual chi::scv::chitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;::~chitlm_recorder_module</definition>
+        <argsstring>()</argsstring>
+        <name>~chitlm_recorder_module</name>
+        <qualifiedname>chi::scv::chitlm_recorder_module::~chitlm_recorder_module</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" line="57" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1scv_1_1chitlm__recorder__module_1ae3750e30797d605a9dbc323747130bcf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_fw_transport_if&lt; TYPES &gt; *</type>
+        <definition>tlm::tlm_fw_transport_if&lt; TYPES &gt; * chi::scv::chitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;::get_fw_if</definition>
+        <argsstring>() override</argsstring>
+        <name>get_fw_if</name>
+        <qualifiedname>chi::scv::chitlm_recorder_module::get_fw_if</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" line="59" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classchi_1_1scv_1_1chitlm__recorder__module_1a626380f5538e71b7e32952c8d409d936" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_bw_transport_if&lt; TYPES &gt; *</type>
+        <definition>tlm::tlm_bw_transport_if&lt; TYPES &gt; * chi::scv::chitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;::get_bw_if</definition>
+        <argsstring>() override</argsstring>
+        <name>get_bw_if</name>
+        <qualifiedname>chi::scv::chitlm_recorder_module::get_bw_if</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" line="61" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classchi_1_1scv_1_1chitlm__recorder__module_1a7cdb741431e239262ed3d793800287e8" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::scv::chitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;::start_of_simulation</definition>
+        <argsstring>() override</argsstring>
+        <name>start_of_simulation</name>
+        <qualifiedname>chi::scv::chitlm_recorder_module::start_of_simulation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" line="64" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" bodystart="64" bodyend="64"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The TLM2 transaction recorder. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This module records all TLM transaction to a SCV transaction stream for further viewing and analysis. The handle of the created transaction is storee in an tlm_extension so that another instance of the scv_tlm2_recorder e.g. further down the opath can link to it. The transaction recorder is simply bound between an existing pair of initiator and target sockets </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>BASE</label>
+      </node>
+      <node id="1">
+        <label>chi::scv::chitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;</label>
+        <link refid="classchi_1_1scv_1_1chitlm__recorder__module"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>BASE</label>
+      </node>
+      <node id="1">
+        <label>chi::scv::chitlm_recorder_module&lt; BUSWIDTH, TYPES, BASE &gt;</label>
+        <link refid="classchi_1_1scv_1_1chitlm__recorder__module"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" line="33" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/scv/recorder_modules.h" bodystart="33" bodyend="65"/>
+    <listofallmembers>
+      <member refid="classchi_1_1scv_1_1chitlm__recorder__module_1ac47c43aa4484d312f1c2d492fd5243e1" prot="public" virt="non-virtual"><scope>chi::scv::chitlm_recorder_module</scope><name>chitlm_recorder_module</name></member>
+      <member refid="classchi_1_1scv_1_1chitlm__recorder__module_1a626380f5538e71b7e32952c8d409d936" prot="public" virt="non-virtual"><scope>chi::scv::chitlm_recorder_module</scope><name>get_bw_if</name></member>
+      <member refid="classchi_1_1scv_1_1chitlm__recorder__module_1ae3750e30797d605a9dbc323747130bcf" prot="public" virt="non-virtual"><scope>chi::scv::chitlm_recorder_module</scope><name>get_fw_if</name></member>
+      <member refid="classchi_1_1scv_1_1chitlm__recorder__module_1aac42c5708fa227bccac57e54f239cca4" prot="public" virt="non-virtual"><scope>chi::scv::chitlm_recorder_module</scope><name>isckt</name></member>
+      <member refid="classchi_1_1scv_1_1chitlm__recorder__module_1a7cdb741431e239262ed3d793800287e8" prot="private" virt="non-virtual"><scope>chi::scv::chitlm_recorder_module</scope><name>start_of_simulation</name></member>
+      <member refid="classchi_1_1scv_1_1chitlm__recorder__module_1aa2b9e9a42a59eec89cfd0d82b54dd63d" prot="public" virt="non-virtual"><scope>chi::scv::chitlm_recorder_module</scope><name>tsckt</name></member>
+      <member refid="classchi_1_1scv_1_1chitlm__recorder__module_1ab84c02ce15694c4251950b8cb1b73641" prot="public" virt="virtual"><scope>chi::scv::chitlm_recorder_module</scope><name>~chitlm_recorder_module</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

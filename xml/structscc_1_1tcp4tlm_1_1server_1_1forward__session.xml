@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tcp4tlm_1_1server_1_1forward__session" kind="struct" language="C++" prot="private">
+    <compoundname>scc::tcp4tlm::server::forward_session</compoundname>
+    <basecompoundref refid="structscc_1_1tcp4tlm_1_1connection_1_1async__listener" prot="public" virt="non-virtual">scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::async_listener</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1server_1_1forward__session_1ad54f4a543e7c4a71811c89d3d40eebf2" prot="private" static="no" mutable="no">
+        <type><ref refid="structscc_1_1tcp4tlm_1_1i__server" kindref="compound">i_server</ref>&lt; REQ, RESP &gt; *</type>
+        <definition>i_server&lt;REQ, RESP&gt;* scc::tcp4tlm::server&lt; REQ, RESP &gt;::forward_session::server_instance</definition>
+        <argsstring></argsstring>
+        <name>server_instance</name>
+        <qualifiedname>scc::tcp4tlm::server::forward_session::server_instance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" line="70" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm_1_1server_1_1forward__session_1ad5f231ba8343e9c5c116d3f94dd9331f" prot="private" static="no" mutable="no">
+        <type>con_ptr</type>
+        <definition>con_ptr scc::tcp4tlm::server&lt; REQ, RESP &gt;::forward_session::conn_shptr</definition>
+        <argsstring></argsstring>
+        <name>conn_shptr</name>
+        <qualifiedname>scc::tcp4tlm::server::forward_session::conn_shptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" line="71" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1server_1_1forward__session_1aa6cc9fa368b3d813d196fa7e45b15ba2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tcp4tlm::server&lt; REQ, RESP &gt;::forward_session::forward_session</definition>
+        <argsstring>(i_server&lt; REQ, RESP &gt; *server_)</argsstring>
+        <name>forward_session</name>
+        <qualifiedname>scc::tcp4tlm::server::forward_session::forward_session</qualifiedname>
+        <param>
+          <type><ref refid="structscc_1_1tcp4tlm_1_1i__server" kindref="compound">i_server</ref>&lt; REQ, RESP &gt; *</type>
+          <declname>server_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" line="33" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" bodystart="33" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1server_1_1forward__session_1a91d9e952bd13d060c57dd6a2df0add51" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual scc::tcp4tlm::server&lt; REQ, RESP &gt;::forward_session::~forward_session</definition>
+        <argsstring>()</argsstring>
+        <name>~forward_session</name>
+        <qualifiedname>scc::tcp4tlm::server::forward_session::~forward_session</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" line="37" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1server_1_1forward__session_1aa080f20f4636dfe0a1492f08b29c6c91" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>con_ptr &amp;</type>
+        <definition>con_ptr &amp; scc::tcp4tlm::server&lt; REQ, RESP &gt;::forward_session::get_connection</definition>
+        <argsstring>()</argsstring>
+        <name>get_connection</name>
+        <qualifiedname>scc::tcp4tlm::server::forward_session::get_connection</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" line="39" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" bodystart="39" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1server_1_1forward__session_1a01fec0f4dc70ad68d47e5409d1326189" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::server&lt; REQ, RESP &gt;::forward_session::start</definition>
+        <argsstring>()</argsstring>
+        <name>start</name>
+        <qualifiedname>scc::tcp4tlm::server::forward_session::start</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" line="41" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" bodystart="41" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1server_1_1forward__session_1a5bfb3a01766119f4c3a83ba443c87b0e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::server&lt; REQ, RESP &gt;::forward_session::receive_completed</definition>
+        <argsstring>(const boost::system::error_code &amp;e, const REQ *const data)</argsstring>
+        <name>receive_completed</name>
+        <qualifiedname>scc::tcp4tlm::server::forward_session::receive_completed</qualifiedname>
+        <param>
+          <type>const boost::system::error_code &amp;</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>const REQ *const</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" line="50" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" bodystart="50" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm_1_1server_1_1forward__session_1a98f05aa331ef9e6b7ea71251fc9f8a06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::server&lt; REQ, RESP &gt;::forward_session::send_completed</definition>
+        <argsstring>(const boost::system::error_code &amp;e)</argsstring>
+        <name>send_completed</name>
+        <qualifiedname>scc::tcp4tlm::server::forward_session::send_completed</qualifiedname>
+        <param>
+          <type>const boost::system::error_code &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" line="61" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" bodystart="61" bodyend="67"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>con_listener</label>
+        <link refid="structscc_1_1tcp4tlm_1_1connection_1_1async__listener"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>scc::tcp4tlm::server&lt; REQ, RESP &gt;::forward_session</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::enable_shared_from_this&lt; async_listener &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>con_listener</label>
+        <link refid="structscc_1_1tcp4tlm_1_1connection_1_1async__listener"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>scc::tcp4tlm::server&lt; REQ, RESP &gt;::forward_session</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::enable_shared_from_this&lt; async_listener &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" line="32" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/server.h" bodystart="32" bodyend="72"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tcp4tlm_1_1server_1_1forward__session_1ad5f231ba8343e9c5c116d3f94dd9331f" prot="private" virt="non-virtual"><scope>scc::tcp4tlm::server::forward_session</scope><name>conn_shptr</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1server_1_1forward__session_1aa6cc9fa368b3d813d196fa7e45b15ba2" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::server::forward_session</scope><name>forward_session</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1server_1_1forward__session_1aa080f20f4636dfe0a1492f08b29c6c91" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::server::forward_session</scope><name>get_connection</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1server_1_1forward__session_1a5bfb3a01766119f4c3a83ba443c87b0e" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::server::forward_session</scope><name>receive_completed</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1connection_1_1async__listener_1a0c39f1dd1081e59c90406113b9727eaa" prot="public" virt="pure-virtual" ambiguityscope="scc::tcp4tlm::connection::async_listener::"><scope>scc::tcp4tlm::server::forward_session</scope><name>receive_completed</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1server_1_1forward__session_1a98f05aa331ef9e6b7ea71251fc9f8a06" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::server::forward_session</scope><name>send_completed</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1server_1_1forward__session_1ad54f4a543e7c4a71811c89d3d40eebf2" prot="private" virt="non-virtual"><scope>scc::tcp4tlm::server::forward_session</scope><name>server_instance</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1server_1_1forward__session_1a01fec0f4dc70ad68d47e5409d1326189" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::server::forward_session</scope><name>start</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1server_1_1forward__session_1a91d9e952bd13d060c57dd6a2df0add51" prot="public" virt="virtual"><scope>scc::tcp4tlm::server::forward_session</scope><name>~forward_session</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

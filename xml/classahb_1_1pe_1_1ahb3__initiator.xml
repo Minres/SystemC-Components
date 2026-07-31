@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classahb_1_1pe_1_1ahb3__initiator" kind="class" language="C++" prot="public">
+    <compoundname>ahb::pe::ahb3_initiator</compoundname>
+    <basecompoundref refid="classahb_1_1pe_1_1ahb__initiator__b" prot="public" virt="non-virtual">ahb::pe::ahb_initiator_b</basecompoundref>
+    <includes refid="ahb__initiator_8h" local="no">ahb_initiator.h</includes>
+    <templateparamlist>
+      <param>
+        <type>unsigned int</type>
+        <declname>BUSWIDTH</declname>
+        <defname>BUSWIDTH</defname>
+        <defval>32</defval>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval>tlm::tlm_base_protocol_types</defval>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>N</declname>
+        <defname>N</defname>
+        <defval>1</defval>
+      </param>
+      <param>
+        <type>sc_core::sc_port_policy</type>
+        <declname>POL</declname>
+        <defname>POL</defname>
+        <defval>sc_core::SC_ONE_OR_MORE_BOUND</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classahb_1_1pe_1_1ahb3__initiator_1a1d5ec95f55863daba3f0efb03808a11a" prot="public" static="no">
+        <type>ahb_initiator_b</type>
+        <definition>using ahb::pe::ahb3_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::base =  ahb_initiator_b</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <qualifiedname>ahb::pe::ahb3_initiator::base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" line="131" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classahb_1_1pe_1_1ahb3__initiator_1a0ee5fb66378ab3109a9309d388d3419c" prot="public" static="no">
+        <type>base::payload_type</type>
+        <definition>using ahb::pe::ahb3_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::payload_type =  base::payload_type</definition>
+        <argsstring></argsstring>
+        <name>payload_type</name>
+        <qualifiedname>ahb::pe::ahb3_initiator::payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" line="133" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classahb_1_1pe_1_1ahb3__initiator_1a6ec759a6fd22a506f3111819942710f6" prot="public" static="no">
+        <type>base::phase_type</type>
+        <definition>using ahb::pe::ahb3_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::phase_type =  base::phase_type</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>ahb::pe::ahb3_initiator::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" line="134" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classahb_1_1pe_1_1ahb3__initiator_1ad3c676406791dcf9648687662e417d0a" prot="private" static="no" mutable="no">
+        <type>tlm::tlm_initiator_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;</type>
+        <definition>tlm::tlm_initiator_socket&lt;BUSWIDTH, TYPES, N, POL&gt;&amp; ahb::pe::ahb3_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::socket</definition>
+        <argsstring></argsstring>
+        <name>socket</name>
+        <qualifiedname>ahb::pe::ahb3_initiator::socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" line="158" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb3__initiator_1a20ddafbb98967dbc7c95aa08d5bc37bb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ahb::pe::ahb3_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::ahb3_initiator</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm, tlm::tlm_initiator_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;socket)</argsstring>
+        <name>ahb3_initiator</name>
+        <qualifiedname>ahb::pe::ahb3_initiator::ahb3_initiator</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_initiator_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;</type>
+          <declname>socket</declname>
+        </param>
+        <briefdescription>
+<para>the constructor </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the module name </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>socket</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>reference to the initiator socket used to send and receive transactions </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" line="141" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" bodystart="141" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb3__initiator_1a91f3a137b1c4cb0a8b1cd6f1797f58e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ahb::pe::ahb3_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::ahb3_initiator</definition>
+        <argsstring>()=delete</argsstring>
+        <name>ahb3_initiator</name>
+        <qualifiedname>ahb::pe::ahb3_initiator::ahb3_initiator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" line="147" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb3__initiator_1ab0623a88ffede21b9b5f52781b7b524a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ahb::pe::ahb3_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::ahb3_initiator</definition>
+        <argsstring>(ahb3_initiator const &amp;)=delete</argsstring>
+        <name>ahb3_initiator</name>
+        <qualifiedname>ahb::pe::ahb3_initiator::ahb3_initiator</qualifiedname>
+        <param>
+          <type>ahb3_initiator const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" line="149" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb3__initiator_1ac6faa95892df5801b74cd99066feabd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ahb::pe::ahb3_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::ahb3_initiator</definition>
+        <argsstring>(ahb3_initiator &amp;&amp;)=delete</argsstring>
+        <name>ahb3_initiator</name>
+        <qualifiedname>ahb::pe::ahb3_initiator::ahb3_initiator</qualifiedname>
+        <param>
+          <type>ahb3_initiator &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" line="151" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb3__initiator_1af6b72912f3636409797a936c03285904" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classahb_1_1pe_1_1ahb3__initiator_1a20ddafbb98967dbc7c95aa08d5bc37bb" kindref="member">ahb3_initiator</ref> &amp;</type>
+        <definition>ahb3_initiator &amp; ahb::pe::ahb3_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::operator=</definition>
+        <argsstring>(ahb3_initiator const &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>ahb::pe::ahb3_initiator::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classahb_1_1pe_1_1ahb3__initiator_1a20ddafbb98967dbc7c95aa08d5bc37bb" kindref="member">ahb3_initiator</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" line="153" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pe_1_1ahb3__initiator_1a357fd8ab27a56204e04e65f2218116ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classahb_1_1pe_1_1ahb3__initiator_1a20ddafbb98967dbc7c95aa08d5bc37bb" kindref="member">ahb3_initiator</ref> &amp;</type>
+        <definition>ahb3_initiator &amp; ahb::pe::ahb3_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;::operator=</definition>
+        <argsstring>(ahb3_initiator &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>ahb::pe::ahb3_initiator::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classahb_1_1pe_1_1ahb3__initiator_1a20ddafbb98967dbc7c95aa08d5bc37bb" kindref="member">ahb3_initiator</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" line="155" column="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>the ahb initiator socket protocol engine adapted to a particular initiator socket configuration </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ahb::pe::ahb3_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classahb_1_1pe_1_1ahb3__initiator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ahb::pe::ahb_initiator_b</label>
+        <link refid="classahb_1_1pe_1_1ahb__initiator__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ahb::pe::ahb3_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classahb_1_1pe_1_1ahb3__initiator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ahb::pe::ahb_initiator_b</label>
+        <link refid="classahb_1_1pe_1_1ahb__initiator__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>addr_chnl</edgelabel>
+          <edgelabel>data_chnl</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="8">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="7">
+        <label>sc_core::sc_semaphore_if</label>
+      </node>
+      <node id="6">
+        <label>scc::ordered_semaphore</label>
+        <link refid="classscc_1_1ordered__semaphore"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>scc::ordered_semaphore_t&lt; 1 &gt;</label>
+        <link refid="structscc_1_1ordered__semaphore__t"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>scc::traceable</label>
+        <link refid="structscc_1_1traceable"/>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" line="129" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/ahb_initiator.h" bodystart="129" bodyend="159"/>
+    <listofallmembers>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a0d5b08a6a50651965763ca2f0bf223d5" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>addr_chnl</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__initiator_1a20ddafbb98967dbc7c95aa08d5bc37bb" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>ahb3_initiator</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__initiator_1a91f3a137b1c4cb0a8b1cd6f1797f58e4" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>ahb3_initiator</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__initiator_1ab0623a88ffede21b9b5f52781b7b524a" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>ahb3_initiator</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__initiator_1ac6faa95892df5801b74cd99066feabd1" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>ahb3_initiator</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a9e22069d7c83aa3e70ff42000655e866" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>ahb_initiator_b</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a6ed0129dbf9a01707b8ce58496904f1a" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>ahb_initiator_b</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a62b5b30d6c81227c8baf3d8c56d588a8" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>ahb_initiator_b</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1accf8b70204b8bc8bda2e125681ce7ea1" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>ahb_initiator_b</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a6864b33b2516cc9d62857b7452eab36a" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>any_tx_finished</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a8569ff4b12690128c312d7c8fe5d6378" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>artv</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a9ac6906ccf643f4adce5d1c0ccf884ce" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>awtv</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__initiator_1a1d5ec95f55863daba3f0efb03808a11a" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>base</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a99526e36d733bc993871255b820f60ae" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>br</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1aa5ab4486f30a621c7a3af7301a05509e" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>calculate_beats</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a05dac03fd4274c3ecaa5299d013163f8" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>clk_i</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1ac6792b1c8c1c3d1b0bdd73d7bb30bdaa" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>clk_period</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a13bdaecaa87c53bc7115c8d3fcbc2f60" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>coherent</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a753ba225e1812608ba356708dceee9b0" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>data_chnl</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a3f0c6286208c67db522b2a7b5537894d" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>get_transferwith_in_bytes</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1ad8d6158f8ae983cb4ff1f8ab1286616b" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>invalidate_direct_mem_ptr</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1ae59e368f347a84d77287ba4302f0281e" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>nb_transport_bw</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__initiator_1af6b72912f3636409797a936c03285904" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>operator=</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__initiator_1a357fd8ab27a56204e04e65f2218116ec" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>operator=</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1ae8382c7a72d70f0a1d6faf8fa4a5e258" prot="public" virt="non-virtual" ambiguityscope="ahb::pe::ahb_initiator_b::"><scope>ahb::pe::ahb3_initiator</scope><name>operator=</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a12b77cc39e71a3aad631f49e3030c48c" prot="public" virt="non-virtual" ambiguityscope="ahb::pe::ahb_initiator_b::"><scope>ahb::pe::ahb3_initiator</scope><name>operator=</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__initiator_1a0ee5fb66378ab3109a9309d388d3419c" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>payload_type</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__initiator_1a6ec759a6fd22a506f3111819942710f6" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>phase_type</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1adda5c39ee3fca86dfb3139817c2aa7ba" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>rbr</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a204b984412fb9d06e9ff383b278982b1" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a3e1042dd4a1ee2143153f66eca0a4e0a" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>snoop_resp</name></member>
+      <member refid="classahb_1_1pe_1_1ahb3__initiator_1ad3c676406791dcf9648687662e417d0a" prot="private" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>socket</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a8824d2d2caab0b6ef30fbe69ed27c09c" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>socket_fw</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a9b4e137018747621b328f061601aadd7" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>transfer_width_in_bytes</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1abf362e537cf45c1cde8cfe0a2d224058" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>transport</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a25468f42fc4ba0542987c2d8f2b03027" prot="protected" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>tx_state_by_id</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1a30bc72030e093be869defe765aae7a7f" prot="public" virt="non-virtual"><scope>ahb::pe::ahb3_initiator</scope><name>wbv</name></member>
+      <member refid="classahb_1_1pe_1_1ahb__initiator__b_1afe7abe1ce35abb4478621fa4ace687f1" prot="public" virt="virtual"><scope>ahb::pe::ahb3_initiator</scope><name>~ahb_initiator_b</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

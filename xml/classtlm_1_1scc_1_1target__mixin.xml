@@ -1,0 +1,441 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1target__mixin" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::target_mixin</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">BASE_TYPE</basecompoundref>
+    <includes refid="scc_2target__mixin_8h" local="no">target_mixin.h</includes>
+    <innerclass refid="classtlm_1_1scc_1_1target__mixin_1_1bw__process" prot="private">tlm::scc::target_mixin::bw_process</innerclass>
+    <innerclass refid="classtlm_1_1scc_1_1target__mixin_1_1fw__process" prot="private">tlm::scc::target_mixin::fw_process</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename BASE_TYPE</type>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval>tlm::tlm_base_protocol_types</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1target__mixin_1a4108b5581d30b545e69d9457d07cf660" prot="public" static="no">
+        <type>typename TYPES::tlm_payload_type</type>
+        <definition>using tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::transaction_type =  typename TYPES::tlm_payload_type</definition>
+        <argsstring></argsstring>
+        <name>transaction_type</name>
+        <qualifiedname>tlm::scc::target_mixin::transaction_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="41" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1target__mixin_1a71f01324a57b102f29dbe3a45ba883db" prot="public" static="no">
+        <type>typename TYPES::tlm_phase_type</type>
+        <definition>using tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::phase_type =  typename TYPES::tlm_phase_type</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>tlm::scc::target_mixin::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="42" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1target__mixin_1ac45f02df33cf9b9a8adb6180e0eafc15" prot="public" static="no">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>using tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::sync_enum_type =  tlm::tlm_sync_enum</definition>
+        <argsstring></argsstring>
+        <name>sync_enum_type</name>
+        <qualifiedname>tlm::scc::target_mixin::sync_enum_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="43" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1target__mixin_1ae696d376a3fb9b77947f73e36105df0b" prot="public" static="no">
+        <type>tlm::tlm_fw_transport_if&lt; TYPES &gt;</type>
+        <definition>using tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::fw_interface_type =  tlm::tlm_fw_transport_if&lt;TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>fw_interface_type</name>
+        <qualifiedname>tlm::scc::target_mixin::fw_interface_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="44" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtlm_1_1scc_1_1target__mixin_1a33e1f90dabb776f67b7965ad1ef2bfa0" prot="public" static="no">
+        <type>tlm::tlm_bw_transport_if&lt; TYPES &gt;</type>
+        <definition>using tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::bw_interface_type =  tlm::tlm_bw_transport_if&lt;TYPES&gt;</definition>
+        <argsstring></argsstring>
+        <name>bw_interface_type</name>
+        <qualifiedname>tlm::scc::target_mixin::bw_interface_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="45" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1target__mixin_1a61ae0ee619454d2c2478023160d0848b" prot="private" static="no" mutable="no">
+        <type>fw_process</type>
+        <definition>fw_process tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::m_fw_process</definition>
+        <argsstring></argsstring>
+        <name>m_fw_process</name>
+        <qualifiedname>tlm::scc::target_mixin::m_fw_process</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="486" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="486" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1target__mixin_1a16d84c9590de750ba028641c81fd7e8f" prot="private" static="no" mutable="no">
+        <type>bw_process</type>
+        <definition>bw_process tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::m_bw_process</definition>
+        <argsstring></argsstring>
+        <name>m_bw_process</name>
+        <qualifiedname>tlm::scc::target_mixin::m_bw_process</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="487" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="487" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1target__mixin_1a5f2b2b9dc2a0eb8b950b565cb46f2486" prot="private" static="no" mutable="no">
+        <type>std::map&lt; transaction_type *, sc_core::sc_event * &gt;</type>
+        <definition>std::map&lt;transaction_type*, sc_core::sc_event*&gt; tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::m_pending_trans</definition>
+        <argsstring></argsstring>
+        <name>m_pending_trans</name>
+        <qualifiedname>tlm::scc::target_mixin::m_pending_trans</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="488" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="488" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1target__mixin_1ac20c3d45dd8ea46588404aae25729174" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::m_end_request</definition>
+        <argsstring></argsstring>
+        <name>m_end_request</name>
+        <qualifiedname>tlm::scc::target_mixin::m_end_request</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="489" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="489" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1target__mixin_1a3504555496e2de89f731907a87e2069e" prot="private" static="no" mutable="no">
+        <type>transaction_type *</type>
+        <definition>transaction_type* tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::m_current_transaction</definition>
+        <argsstring></argsstring>
+        <name>m_current_transaction</name>
+        <qualifiedname>tlm::scc::target_mixin::m_current_transaction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="490" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="490" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1target__mixin_1ada793d086dc8ad37842c24a9582507f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::target_mixin</definition>
+        <argsstring>()</argsstring>
+        <name>target_mixin</name>
+        <qualifiedname>tlm::scc::target_mixin::target_mixin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>default constructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="51" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="51" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1target__mixin_1a1bcdf80419e019f4b408046d87bc6e01" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::target_mixin</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;n)</argsstring>
+        <name>target_mixin</name>
+        <qualifiedname>tlm::scc::target_mixin::target_mixin</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>constructor with explicit instance name</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="58" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="58" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1target__mixin_1ace893a8e4d315753b68e4abb1422de99" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_bw_transport_if&lt; TYPES &gt; *</type>
+        <definition>tlm::tlm_bw_transport_if&lt; TYPES &gt; * tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::operator-&gt;</definition>
+        <argsstring>()</argsstring>
+        <name>operator-&gt;</name>
+        <qualifiedname>tlm::scc::target_mixin::operator-&gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return the bw_process interface</para>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="72" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="72" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1target__mixin_1a4153b08df7faa544b49a2bfea55889a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::register_nb_transport_fw</definition>
+        <argsstring>(std::function&lt; sync_enum_type(transaction_type &amp;, phase_type &amp;, sc_core::sc_time &amp;)&gt; cb)</argsstring>
+        <name>register_nb_transport_fw</name>
+        <qualifiedname>tlm::scc::target_mixin::register_nb_transport_fw</qualifiedname>
+        <param>
+          <type>std::function&lt; sync_enum_type(transaction_type &amp;, phase_type &amp;, sc_core::sc_time &amp;)&gt;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>register a non-blocking forward path callback function</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="78" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="78" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1target__mixin_1aca694d17ae44b59155264d7cec4a8f1d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::register_b_transport</definition>
+        <argsstring>(std::function&lt; void(transaction_type &amp;, sc_core::sc_time &amp;)&gt; cb)</argsstring>
+        <name>register_b_transport</name>
+        <qualifiedname>tlm::scc::target_mixin::register_b_transport</qualifiedname>
+        <param>
+          <type>std::function&lt; void(transaction_type &amp;, sc_core::sc_time &amp;)&gt;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>register a blocking forward path callback function</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="87" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="87" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1target__mixin_1a057d97237a890edb377446f880a42587" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::register_transport_dbg</definition>
+        <argsstring>(std::function&lt; unsigned int(transaction_type &amp;)&gt; cb)</argsstring>
+        <name>register_transport_dbg</name>
+        <qualifiedname>tlm::scc::target_mixin::register_transport_dbg</qualifiedname>
+        <param>
+          <type>std::function&lt; unsigned int(transaction_type &amp;)&gt;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="95" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="95" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1target__mixin_1a9c7efd2a33f100337946f87f03ad5f62" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::register_get_direct_mem_ptr</definition>
+        <argsstring>(std::function&lt; bool(transaction_type &amp;, tlm::tlm_dmi &amp;)&gt; cb)</argsstring>
+        <name>register_get_direct_mem_ptr</name>
+        <qualifiedname>tlm::scc::target_mixin::register_get_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>std::function&lt; bool(transaction_type &amp;, tlm::tlm_dmi &amp;)&gt;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>register a DMI callback function</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="104" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="104" bodyend="107"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1target__mixin_1a741ec84986e4dd7ff0149d5b479de6ac" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>sync_enum_type</type>
+        <definition>sync_enum_type tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::bw_nb_transport</definition>
+        <argsstring>(transaction_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t)</argsstring>
+        <name>bw_nb_transport</name>
+        <qualifiedname>tlm::scc::target_mixin::bw_nb_transport</qualifiedname>
+        <param>
+          <type>transaction_type &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="111" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="111" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1target__mixin_1a8c2ac3223655d942919bb33f6a58d309" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;::bw_invalidate_direct_mem_ptr</definition>
+        <argsstring>(sc_dt::uint64 s, sc_dt::uint64 e)</argsstring>
+        <name>bw_invalidate_direct_mem_ptr</name>
+        <qualifiedname>tlm::scc::target_mixin::bw_invalidate_direct_mem_ptr</qualifiedname>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>sc_dt::uint64</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="115" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="115" bodyend="115"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>an target socket mixin adding default implementation of callback functions similar to tlm::simple_target_socket </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BASE_TYPE</label>
+      </node>
+      <node id="1">
+        <label>tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;</label>
+        <link refid="classtlm_1_1scc_1_1target__mixin"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BASE_TYPE</label>
+      </node>
+      <node id="1">
+        <label>tlm::scc::target_mixin&lt; BASE_TYPE, TYPES &gt;</label>
+        <link refid="classtlm_1_1scc_1_1target__mixin"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" line="36" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/target_mixin.h" bodystart="36" bodyend="491"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1a33e1f90dabb776f67b7965ad1ef2bfa0" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>bw_interface_type</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1a8c2ac3223655d942919bb33f6a58d309" prot="private" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>bw_invalidate_direct_mem_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1a741ec84986e4dd7ff0149d5b479de6ac" prot="private" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>bw_nb_transport</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1ae696d376a3fb9b77947f73e36105df0b" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>fw_interface_type</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1a16d84c9590de750ba028641c81fd7e8f" prot="private" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>m_bw_process</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1a3504555496e2de89f731907a87e2069e" prot="private" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>m_current_transaction</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1ac20c3d45dd8ea46588404aae25729174" prot="private" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>m_end_request</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1a61ae0ee619454d2c2478023160d0848b" prot="private" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>m_fw_process</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1a5f2b2b9dc2a0eb8b950b565cb46f2486" prot="private" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>m_pending_trans</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1ace893a8e4d315753b68e4abb1422de99" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>operator-&gt;</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1a71f01324a57b102f29dbe3a45ba883db" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>phase_type</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1aca694d17ae44b59155264d7cec4a8f1d" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>register_b_transport</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1a9c7efd2a33f100337946f87f03ad5f62" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>register_get_direct_mem_ptr</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1a4153b08df7faa544b49a2bfea55889a3" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>register_nb_transport_fw</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1a057d97237a890edb377446f880a42587" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>register_transport_dbg</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1ac45f02df33cf9b9a8adb6180e0eafc15" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>sync_enum_type</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1ada793d086dc8ad37842c24a9582507f3" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>target_mixin</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1a1bcdf80419e019f4b408046d87bc6e01" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>target_mixin</name></member>
+      <member refid="classtlm_1_1scc_1_1target__mixin_1a4108b5581d30b545e69d9457d07cf660" prot="public" virt="non-virtual"><scope>tlm::scc::target_mixin</scope><name>transaction_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

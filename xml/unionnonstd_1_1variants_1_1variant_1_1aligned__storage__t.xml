@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="unionnonstd_1_1variants_1_1variant_1_1aligned__storage__t" kind="union" language="C++" prot="private">
+    <compoundname>nonstd::variants::variant::aligned_storage_t</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="unionnonstd_1_1variants_1_1variant_1_1aligned__storage__t_1a184344e3ed7f1e365540755f971bcf07" prot="public" static="no" mutable="no">
+        <type>align_as_type</type>
+        <definition>align_as_type nonstd::variants::variant&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15 &gt;::aligned_storage_t::data[1+(data_size - 1)/sizeof(align_as_type)]</definition>
+        <argsstring>[1+(data_size - 1)/sizeof(align_as_type)]</argsstring>
+        <name>data</name>
+        <qualifiedname>nonstd::variants::variant::aligned_storage_t::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2158" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2158" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2157" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2157" bodyend="2159"/>
+    <listofallmembers>
+      <member refid="unionnonstd_1_1variants_1_1variant_1_1aligned__storage__t_1a184344e3ed7f1e365540755f971bcf07" prot="public" virt="non-virtual"><scope>nonstd::variants::variant::aligned_storage_t</scope><name>data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

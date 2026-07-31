@@ -1,0 +1,507 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classahb_1_1pin_1_1target" kind="class" language="C++" prot="public">
+    <compoundname>ahb::pin::target</compoundname>
+    <basecompoundref prot="private" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>unsigned</type>
+        <declname>DATA_WIDTH</declname>
+        <defname>DATA_WIDTH</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ADDR_WIDTH</declname>
+        <defname>ADDR_WIDTH</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classahb_1_1pin_1_1target_1a91d00824d950938e0b6eb5a97ec1e588" prot="private" static="no">
+        <type>typename std::conditional&lt; is_larger(ADDR_WIDTH), sc_dt::sc_biguint&lt; ADDR_WIDTH &gt;, sc_dt::sc_uint&lt; ADDR_WIDTH &gt; &gt;::type</type>
+        <definition>using ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::addr_t =  typename std::conditional&lt;is_larger(ADDR_WIDTH), sc_dt::sc_biguint&lt;ADDR_WIDTH&gt;, sc_dt::sc_uint&lt;ADDR_WIDTH&gt;&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>addr_t</name>
+        <qualifiedname>ahb::pin::target::addr_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="36" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classahb_1_1pin_1_1target_1ace5c0e188a60c49ce6d5189ac6504303" prot="private" static="no">
+        <type>typename std::conditional&lt; is_larger(DATA_WIDTH), sc_dt::sc_biguint&lt; DATA_WIDTH &gt;, sc_dt::sc_uint&lt; DATA_WIDTH &gt; &gt;::type</type>
+        <definition>using ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::data_t =  typename std::conditional&lt;is_larger(DATA_WIDTH), sc_dt::sc_biguint&lt;DATA_WIDTH&gt;, sc_dt::sc_uint&lt;DATA_WIDTH&gt;&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>data_t</name>
+        <qualifiedname>ahb::pin::target::data_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="37" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1afa959ddb7d6f529173107bf117f6f250" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HCLK_i</definition>
+        <argsstring></argsstring>
+        <name>HCLK_i</name>
+        <qualifiedname>ahb::pin::target::HCLK_i</qualifiedname>
+        <initializer>{&quot;HCLK_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="40" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1aa46a171dc72ff5c771c8af0fb135f3d8" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HRESETn_i</definition>
+        <argsstring></argsstring>
+        <name>HRESETn_i</name>
+        <qualifiedname>ahb::pin::target::HRESETn_i</qualifiedname>
+        <initializer>{&quot;HRESETn_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="41" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1af5ecf03072a6cb20fb070e97ebf22194" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; addr_t &gt;</type>
+        <definition>sc_core::sc_in&lt;addr_t&gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HADDR_i</definition>
+        <argsstring></argsstring>
+        <name>HADDR_i</name>
+        <qualifiedname>ahb::pin::target::HADDR_i</qualifiedname>
+        <initializer>{&quot;HADDR_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="42" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1ac7c06b195b6b1320e4468cf9c07b788e" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; sc_dt::sc_uint&lt; 3 &gt; &gt;</type>
+        <definition>sc_core::sc_in&lt;sc_dt::sc_uint&lt;3&gt; &gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HBURST_i</definition>
+        <argsstring></argsstring>
+        <name>HBURST_i</name>
+        <qualifiedname>ahb::pin::target::HBURST_i</qualifiedname>
+        <initializer>{&quot;HBURST_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="43" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1a4c2ea1209f6665b075ede2767f922111" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HMASTLOCK_i</definition>
+        <argsstring></argsstring>
+        <name>HMASTLOCK_i</name>
+        <qualifiedname>ahb::pin::target::HMASTLOCK_i</qualifiedname>
+        <initializer>{&quot;HMASTLOCK_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="44" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1a160991a39ff170511a24df71a7fdfc94" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; sc_dt::sc_uint&lt; 4 &gt; &gt;</type>
+        <definition>sc_core::sc_in&lt;sc_dt::sc_uint&lt;4&gt; &gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HPROT_i</definition>
+        <argsstring></argsstring>
+        <name>HPROT_i</name>
+        <qualifiedname>ahb::pin::target::HPROT_i</qualifiedname>
+        <initializer>{&quot;HPROT_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="45" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1ae05723ab161c7f4320a8cb9f99d80b62" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; sc_dt::sc_uint&lt; 3 &gt; &gt;</type>
+        <definition>sc_core::sc_in&lt;sc_dt::sc_uint&lt;3&gt; &gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HSIZE_i</definition>
+        <argsstring></argsstring>
+        <name>HSIZE_i</name>
+        <qualifiedname>ahb::pin::target::HSIZE_i</qualifiedname>
+        <initializer>{&quot;HSIZE_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="46" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1aef826ad57fada8e0cef555c722d02338" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; sc_dt::sc_uint&lt; 2 &gt; &gt;</type>
+        <definition>sc_core::sc_in&lt;sc_dt::sc_uint&lt;2&gt; &gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HTRANS_i</definition>
+        <argsstring></argsstring>
+        <name>HTRANS_i</name>
+        <qualifiedname>ahb::pin::target::HTRANS_i</qualifiedname>
+        <initializer>{&quot;HTRANS_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="47" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1a26e72bf15894f2d1668ec2821734e5dc" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; data_t &gt;</type>
+        <definition>sc_core::sc_in&lt;data_t&gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HWDATA_i</definition>
+        <argsstring></argsstring>
+        <name>HWDATA_i</name>
+        <qualifiedname>ahb::pin::target::HWDATA_i</qualifiedname>
+        <initializer>{&quot;HWDATA_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="48" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1a7f8b3d83a29176a749e953315a313567" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HWRITE_i</definition>
+        <argsstring></argsstring>
+        <name>HWRITE_i</name>
+        <qualifiedname>ahb::pin::target::HWRITE_i</qualifiedname>
+        <initializer>{&quot;HWRITE_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="49" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1a71c760a4e8088673efc2da66a0f5a55e" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HSEL_i</definition>
+        <argsstring></argsstring>
+        <name>HSEL_i</name>
+        <qualifiedname>ahb::pin::target::HSEL_i</qualifiedname>
+        <initializer>{&quot;HSEL_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="50" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1ab1cab20d6412c6699dd38c3682e05aeb" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; data_t &gt;</type>
+        <definition>sc_core::sc_out&lt;data_t&gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HRDATA_o</definition>
+        <argsstring></argsstring>
+        <name>HRDATA_o</name>
+        <qualifiedname>ahb::pin::target::HRDATA_o</qualifiedname>
+        <initializer>{&quot;HRDATA_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="51" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1a8b48809e210f8bac1dde71a561828a27" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; bool &gt;</type>
+        <definition>sc_core::sc_out&lt;bool&gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HREADY_o</definition>
+        <argsstring></argsstring>
+        <name>HREADY_o</name>
+        <qualifiedname>ahb::pin::target::HREADY_o</qualifiedname>
+        <initializer>{&quot;HREADY_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="52" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1a1c64b4d9781cc41f63f1e05ef24a09ca" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_out&lt; bool &gt;</type>
+        <definition>sc_core::sc_out&lt;bool&gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::HRESP_o</definition>
+        <argsstring></argsstring>
+        <name>HRESP_o</name>
+        <qualifiedname>ahb::pin::target::HRESP_o</qualifiedname>
+        <initializer>{&quot;HRESP_o&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="53" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1aaf39858cceac76638fc99d14c1c9732d" prot="public" static="no" mutable="no">
+        <type><ref refid="classtlm_1_1scc_1_1initiator__mixin" kindref="compound">tlm::scc::initiator_mixin</ref>&lt; tlm::tlm_initiator_socket&lt; 0 &gt; &gt;</type>
+        <definition>tlm::scc::initiator_mixin&lt;tlm::tlm_initiator_socket&lt;0&gt; &gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::isckt</definition>
+        <argsstring></argsstring>
+        <name>isckt</name>
+        <qualifiedname>ahb::pin::target::isckt</qualifiedname>
+        <initializer>{&quot;isckt&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="55" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="55" bodyend="55"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1aa235ad43df396eca7b61d9d3142e9c29" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::end_req_evt</definition>
+        <argsstring></argsstring>
+        <name>end_req_evt</name>
+        <qualifiedname>ahb::pin::target::end_req_evt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="71" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1ad699d9ff9b5e38a63d08ca0da9c489e7" prot="private" static="no" mutable="no">
+        <type>tlm_utils::peq_with_get&lt; tlm::tlm_generic_payload &gt;</type>
+        <definition>tlm_utils::peq_with_get&lt;tlm::tlm_generic_payload&gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::resp_que</definition>
+        <argsstring></argsstring>
+        <name>resp_que</name>
+        <qualifiedname>ahb::pin::target::resp_que</qualifiedname>
+        <initializer>{&quot;resp_que&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="72" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="72" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1ad2de928428f1dbd086ea4ad5ff4a8e26" prot="private" static="no" mutable="no">
+        <type>tlm_utils::peq_with_get&lt; tlm::tlm_generic_payload &gt;</type>
+        <definition>tlm_utils::peq_with_get&lt;tlm::tlm_generic_payload&gt; ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::tx_in_flight</definition>
+        <argsstring></argsstring>
+        <name>tx_in_flight</name>
+        <qualifiedname>ahb::pin::target::tx_in_flight</qualifiedname>
+        <initializer>{&quot;tx_in_flight&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="73" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="73" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="variable" id="classahb_1_1pin_1_1target_1a45d1a28c1c97b99372875614e87ffa99" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::waiting4end_req</definition>
+        <argsstring></argsstring>
+        <name>waiting4end_req</name>
+        <qualifiedname>ahb::pin::target::waiting4end_req</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="74" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="74" bodyend="74"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classahb_1_1pin_1_1target_1a4e1b601b78aeb7068a369124240c5fbe" prot="private" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static constexpr bool ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::is_larger</definition>
+        <argsstring>(unsigned x)</argsstring>
+        <name>is_larger</name>
+        <qualifiedname>ahb::pin::target::is_larger</qualifiedname>
+        <param>
+          <type>unsigned</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="35" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pin_1_1target_1a220a185c0f4bd3cbbfe979abc3f713e3" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_generic_payload *</type>
+        <definition>static tlm::tlm_generic_payload * ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::wait4tx</definition>
+        <argsstring>(tlm_utils::peq_with_get&lt; tlm::tlm_generic_payload &gt; &amp;que)</argsstring>
+        <name>wait4tx</name>
+        <qualifiedname>ahb::pin::target::wait4tx</qualifiedname>
+        <param>
+          <type>tlm_utils::peq_with_get&lt; tlm::tlm_generic_payload &gt; &amp;</type>
+          <declname>que</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="63" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="63" bodyend="70"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classahb_1_1pin_1_1target_1a15d20dc00c3e2afca6e977bae041a039" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::target</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm)</argsstring>
+        <name>target</name>
+        <qualifiedname>ahb::pin::target::target</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="57" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="81" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pin_1_1target_1aa9e9ee914c24c179129f0c6e4d7fc7ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::~target</definition>
+        <argsstring>()</argsstring>
+        <name>~target</name>
+        <qualifiedname>ahb::pin::target::~target</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="58" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classahb_1_1pin_1_1target_1ab5aa1e492c5b232456a888377d59b792" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::bus_addr_task</definition>
+        <argsstring>()</argsstring>
+        <name>bus_addr_task</name>
+        <qualifiedname>ahb::pin::target::bus_addr_task</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="61" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="103" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="classahb_1_1pin_1_1target_1a73718aec8657b8dbdd9905c6a604c9f7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;::bus_data_task</definition>
+        <argsstring>()</argsstring>
+        <name>bus_data_task</name>
+        <qualifiedname>ahb::pin::target::bus_data_task</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="62" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="140" bodyend="202"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;</label>
+        <link refid="classahb_1_1pin_1_1target"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ahb::pin::target&lt; DATA_WIDTH, ADDR_WIDTH &gt;</label>
+        <link refid="classahb_1_1pin_1_1target"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>isckt</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="3">
+        <label>tlm::scc::initiator_mixin&lt; tlm::tlm_initiator_socket&lt; 0 &gt; &gt;</label>
+        <link refid="classtlm_1_1scc_1_1initiator__mixin"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_initiator_socket&lt; 0 &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" line="34" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pin/target.h" bodystart="34" bodyend="75"/>
+    <listofallmembers>
+      <member refid="classahb_1_1pin_1_1target_1a91d00824d950938e0b6eb5a97ec1e588" prot="private" virt="non-virtual"><scope>ahb::pin::target</scope><name>addr_t</name></member>
+      <member refid="classahb_1_1pin_1_1target_1ab5aa1e492c5b232456a888377d59b792" prot="private" virt="non-virtual"><scope>ahb::pin::target</scope><name>bus_addr_task</name></member>
+      <member refid="classahb_1_1pin_1_1target_1a73718aec8657b8dbdd9905c6a604c9f7" prot="private" virt="non-virtual"><scope>ahb::pin::target</scope><name>bus_data_task</name></member>
+      <member refid="classahb_1_1pin_1_1target_1ace5c0e188a60c49ce6d5189ac6504303" prot="private" virt="non-virtual"><scope>ahb::pin::target</scope><name>data_t</name></member>
+      <member refid="classahb_1_1pin_1_1target_1aa235ad43df396eca7b61d9d3142e9c29" prot="private" virt="non-virtual"><scope>ahb::pin::target</scope><name>end_req_evt</name></member>
+      <member refid="classahb_1_1pin_1_1target_1af5ecf03072a6cb20fb070e97ebf22194" prot="public" virt="non-virtual"><scope>ahb::pin::target</scope><name>HADDR_i</name></member>
+      <member refid="classahb_1_1pin_1_1target_1ac7c06b195b6b1320e4468cf9c07b788e" prot="public" virt="non-virtual"><scope>ahb::pin::target</scope><name>HBURST_i</name></member>
+      <member refid="classahb_1_1pin_1_1target_1afa959ddb7d6f529173107bf117f6f250" prot="public" virt="non-virtual"><scope>ahb::pin::target</scope><name>HCLK_i</name></member>
+      <member refid="classahb_1_1pin_1_1target_1a4c2ea1209f6665b075ede2767f922111" prot="public" virt="non-virtual"><scope>ahb::pin::target</scope><name>HMASTLOCK_i</name></member>
+      <member refid="classahb_1_1pin_1_1target_1a160991a39ff170511a24df71a7fdfc94" prot="public" virt="non-virtual"><scope>ahb::pin::target</scope><name>HPROT_i</name></member>
+      <member refid="classahb_1_1pin_1_1target_1ab1cab20d6412c6699dd38c3682e05aeb" prot="public" virt="non-virtual"><scope>ahb::pin::target</scope><name>HRDATA_o</name></member>
+      <member refid="classahb_1_1pin_1_1target_1a8b48809e210f8bac1dde71a561828a27" prot="public" virt="non-virtual"><scope>ahb::pin::target</scope><name>HREADY_o</name></member>
+      <member refid="classahb_1_1pin_1_1target_1aa46a171dc72ff5c771c8af0fb135f3d8" prot="public" virt="non-virtual"><scope>ahb::pin::target</scope><name>HRESETn_i</name></member>
+      <member refid="classahb_1_1pin_1_1target_1a1c64b4d9781cc41f63f1e05ef24a09ca" prot="public" virt="non-virtual"><scope>ahb::pin::target</scope><name>HRESP_o</name></member>
+      <member refid="classahb_1_1pin_1_1target_1a71c760a4e8088673efc2da66a0f5a55e" prot="public" virt="non-virtual"><scope>ahb::pin::target</scope><name>HSEL_i</name></member>
+      <member refid="classahb_1_1pin_1_1target_1ae05723ab161c7f4320a8cb9f99d80b62" prot="public" virt="non-virtual"><scope>ahb::pin::target</scope><name>HSIZE_i</name></member>
+      <member refid="classahb_1_1pin_1_1target_1aef826ad57fada8e0cef555c722d02338" prot="public" virt="non-virtual"><scope>ahb::pin::target</scope><name>HTRANS_i</name></member>
+      <member refid="classahb_1_1pin_1_1target_1a26e72bf15894f2d1668ec2821734e5dc" prot="public" virt="non-virtual"><scope>ahb::pin::target</scope><name>HWDATA_i</name></member>
+      <member refid="classahb_1_1pin_1_1target_1a7f8b3d83a29176a749e953315a313567" prot="public" virt="non-virtual"><scope>ahb::pin::target</scope><name>HWRITE_i</name></member>
+      <member refid="classahb_1_1pin_1_1target_1a4e1b601b78aeb7068a369124240c5fbe" prot="private" virt="non-virtual"><scope>ahb::pin::target</scope><name>is_larger</name></member>
+      <member refid="classahb_1_1pin_1_1target_1aaf39858cceac76638fc99d14c1c9732d" prot="public" virt="non-virtual"><scope>ahb::pin::target</scope><name>isckt</name></member>
+      <member refid="classahb_1_1pin_1_1target_1ad699d9ff9b5e38a63d08ca0da9c489e7" prot="private" virt="non-virtual"><scope>ahb::pin::target</scope><name>resp_que</name></member>
+      <member refid="classahb_1_1pin_1_1target_1a15d20dc00c3e2afca6e977bae041a039" prot="public" virt="non-virtual"><scope>ahb::pin::target</scope><name>target</name></member>
+      <member refid="classahb_1_1pin_1_1target_1ad2de928428f1dbd086ea4ad5ff4a8e26" prot="private" virt="non-virtual"><scope>ahb::pin::target</scope><name>tx_in_flight</name></member>
+      <member refid="classahb_1_1pin_1_1target_1a220a185c0f4bd3cbbfe979abc3f713e3" prot="private" virt="non-virtual"><scope>ahb::pin::target</scope><name>wait4tx</name></member>
+      <member refid="classahb_1_1pin_1_1target_1a45d1a28c1c97b99372875614e87ffa99" prot="private" virt="non-virtual"><scope>ahb::pin::target</scope><name>waiting4end_req</name></member>
+      <member refid="classahb_1_1pin_1_1target_1aa9e9ee914c24c179129f0c6e4d7fc7ca" prot="public" virt="virtual"><scope>ahb::pin::target</scope><name>~target</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

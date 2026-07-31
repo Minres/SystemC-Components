@@ -1,0 +1,9 @@
+<map id="tlm::scc::qk::global_time_keeper" name="tlm::scc::qk::global_time_keeper">
+<area shape="rect" id="Node000001" title="the global time keeper, a singleton" alt="" coords="668,58,800,98"/>
+<area shape="rect" id="Node000002" href="$structtlm_1_1scc_1_1qk_1_1thread__comms__channel.html" title="the communication channel between client threads (incl. SystemC) and the global time keeper" alt="" coords="348,13,483,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="497,41,668,66,667,71,496,47"/>
+<area shape="rect" id="Node000003" href="$classrigtorp_1_1SPSCQueue.html" title=" " alt="" coords="5,5,159,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="172,30,348,30,348,35,172,35"/>
+<area shape="rect" id="Node000004" href="$classrigtorp_1_1SPSCQueue.html" title=" " alt="" coords="324,77,507,132"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="520,100,644,91,668,88,668,93,644,97,521,105"/>
+</map>

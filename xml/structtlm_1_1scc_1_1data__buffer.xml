@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1data__buffer" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::data_buffer</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_extension&lt; data_buffer &gt;</basecompoundref>
+    <includes refid="tlm__extensions_8h" local="no">tlm_extensions.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1data__buffer_1a5ad0c7593139283d54722419c192b541" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; unsigned char &gt;</type>
+        <definition>std::vector&lt;unsigned char&gt; tlm::scc::data_buffer::buffer_</definition>
+        <argsstring></argsstring>
+        <name>buffer_</name>
+        <qualifiedname>tlm::scc::data_buffer::buffer_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" line="131" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1data__buffer_1a14a2915322e33e5d57d88247b496d94c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm_extension_base *</type>
+        <definition>tlm_extension_base * tlm::scc::data_buffer::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <qualifiedname>tlm::scc::data_buffer::clone</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" line="119" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" bodystart="119" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1data__buffer_1a255e3741dbe23736a2982bb807542f2a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::data_buffer::copy_from</definition>
+        <argsstring>(tlm_extension_base const &amp;from) override</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>tlm::scc::data_buffer::copy_from</qualifiedname>
+        <param>
+          <type>tlm_extension_base const &amp;</type>
+          <declname>from</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" line="124" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" bodystart="124" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1data__buffer_1aabbb75f10b00faf5ee0d0ac4ab6f2382" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; unsigned char &gt; const &amp;</type>
+        <definition>std::vector&lt; unsigned char &gt; const  &amp; tlm::scc::data_buffer::data</definition>
+        <argsstring>() const</argsstring>
+        <name>data</name>
+        <qualifiedname>tlm::scc::data_buffer::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" line="126" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" bodystart="126" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1data__buffer_1a503fca6268dd80911128f21ace4c7537" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::data_buffer::set_size</definition>
+        <argsstring>(uint32_t size)</argsstring>
+        <name>set_size</name>
+        <qualifiedname>tlm::scc::data_buffer::set_size</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" line="127" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" bodystart="127" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1data__buffer_1acbf8fbf588c447a1aceb6362c1490d72" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned char *</type>
+        <definition>unsigned char * tlm::scc::data_buffer::get_buf_ptr</definition>
+        <argsstring>()</argsstring>
+        <name>get_buf_ptr</name>
+        <qualifiedname>tlm::scc::data_buffer::get_buf_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" line="128" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" bodystart="128" bodyend="128"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Extension for data buffering. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides an extension for a data buffer. It can be used to populate a generic payloads data pointer with automatic memory management as the extension is deleted once the payload is deleted or returned to the memory manager.</para>
+<para><simplesect kind="note"><para>This extension is unmanaged and must be freed manually. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::scc::data_buffer</label>
+        <link refid="structtlm_1_1scc_1_1data__buffer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; data_buffer &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::scc::data_buffer</label>
+        <link refid="structtlm_1_1scc_1_1data__buffer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; data_buffer &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" line="117" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" bodystart="117" bodyend="132"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1data__buffer_1a5ad0c7593139283d54722419c192b541" prot="private" virt="non-virtual"><scope>tlm::scc::data_buffer</scope><name>buffer_</name></member>
+      <member refid="structtlm_1_1scc_1_1data__buffer_1a14a2915322e33e5d57d88247b496d94c" prot="public" virt="non-virtual"><scope>tlm::scc::data_buffer</scope><name>clone</name></member>
+      <member refid="structtlm_1_1scc_1_1data__buffer_1a255e3741dbe23736a2982bb807542f2a" prot="public" virt="non-virtual"><scope>tlm::scc::data_buffer</scope><name>copy_from</name></member>
+      <member refid="structtlm_1_1scc_1_1data__buffer_1aabbb75f10b00faf5ee0d0ac4ab6f2382" prot="public" virt="non-virtual"><scope>tlm::scc::data_buffer</scope><name>data</name></member>
+      <member refid="structtlm_1_1scc_1_1data__buffer_1acbf8fbf588c447a1aceb6362c1490d72" prot="public" virt="non-virtual"><scope>tlm::scc::data_buffer</scope><name>get_buf_ptr</name></member>
+      <member refid="structtlm_1_1scc_1_1data__buffer_1a503fca6268dd80911128f21ace4c7537" prot="public" virt="non-virtual"><scope>tlm::scc::data_buffer</scope><name>set_size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

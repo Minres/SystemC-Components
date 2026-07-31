@@ -1,0 +1,449 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceahb" kind="namespace" language="C++">
+    <compoundname>ahb</compoundname>
+    <innerclass refid="structahb_1_1enable__for__enum" prot="public">ahb::enable_for_enum</innerclass>
+    <innerclass refid="structahb_1_1ahb__extension" prot="public">ahb::ahb_extension</innerclass>
+    <innerclass refid="structahb_1_1enable__for__enum_3_01lock__e_01_4" prot="public">ahb::enable_for_enum&lt; lock_e &gt;</innerclass>
+    <innerclass refid="structahb_1_1enable__for__enum_3_01resp__e_01_4" prot="public">ahb::enable_for_enum&lt; resp_e &gt;</innerclass>
+    <innerclass refid="structahb_1_1enable__for__enum_3_01trans__e_01_4" prot="public">ahb::enable_for_enum&lt; trans_e &gt;</innerclass>
+    <innerclass refid="structahb_1_1enable__for__enum_3_01burst__e_01_4" prot="public">ahb::enable_for_enum&lt; burst_e &gt;</innerclass>
+    <innernamespace refid="namespaceahb_1_1pe">ahb::pe</innernamespace>
+    <innernamespace refid="namespaceahb_1_1pin">ahb::pin</innernamespace>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceahb_1a10dbe392702cdb72e81c57c9dda2fdd0" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>lock_e</name>
+        <qualifiedname>ahb::lock_e</qualifiedname>
+        <enumvalue id="namespaceahb_1a10dbe392702cdb72e81c57c9dda2fdd0a1e23852820b9154316c7c06e2b7ba051" prot="public">
+          <name>NORMAL</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceahb_1a10dbe392702cdb72e81c57c9dda2fdd0a44f4d4d74b5fb62744efc586d21ae6b1" prot="public">
+          <name>EXLUSIVE</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceahb_1a10dbe392702cdb72e81c57c9dda2fdd0aaeff3f3f2731681b2ed6a27786a56203" prot="public">
+          <name>LOCKED</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="67" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="67" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceahb_1aab00abe0964d6346d5c28db6d24b5ad5" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>resp_e</name>
+        <qualifiedname>ahb::resp_e</qualifiedname>
+        <enumvalue id="namespaceahb_1aab00abe0964d6346d5c28db6d24b5ad5a74eb855e4de6fe58228f03006c02fd8a" prot="public">
+          <name>OKAY</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceahb_1aab00abe0964d6346d5c28db6d24b5ad5a1bd72b97a305c531eda0055de64e4cb9" prot="public">
+          <name>EXOKAY</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceahb_1aab00abe0964d6346d5c28db6d24b5ad5af1714594a4a7584916a93ea188089db0" prot="public">
+          <name>SLVERR</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceahb_1aab00abe0964d6346d5c28db6d24b5ad5a4203d7ca5a39f887307a22836cc6965d" prot="public">
+          <name>DECERR</name>
+          <initializer>= 0x3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="69" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="69" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceahb_1a08df7812ac70b210c84b19ea00d4e75b" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>trans_e</name>
+        <qualifiedname>ahb::trans_e</qualifiedname>
+        <enumvalue id="namespaceahb_1a08df7812ac70b210c84b19ea00d4e75baa5daf7f2ebbba4975d61dab1c40188c7" prot="public">
+          <name>IDLE</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceahb_1a08df7812ac70b210c84b19ea00d4e75ba802706a9238e2928077f97736854bad4" prot="public">
+          <name>BUSY</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceahb_1a08df7812ac70b210c84b19ea00d4e75ba9cf24c3c41e725a8bc70f559eef10863" prot="public">
+          <name>NONSEQ</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceahb_1a08df7812ac70b210c84b19ea00d4e75ba5826d2990481dd71b3e258ddf8435676" prot="public">
+          <name>SEQ</name>
+          <initializer>= 0x3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="71" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceahb_1aa5283d41e153c6f8085d871bd41d33f8" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>burst_e</name>
+        <qualifiedname>ahb::burst_e</qualifiedname>
+        <enumvalue id="namespaceahb_1aa5283d41e153c6f8085d871bd41d33f8a0679273e201afd0bf57af3961f8a23b8" prot="public">
+          <name>SINGLE</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceahb_1aa5283d41e153c6f8085d871bd41d33f8afc67535e5273d466beba3c06c0dbd988" prot="public">
+          <name>INCR</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceahb_1aa5283d41e153c6f8085d871bd41d33f8a2b15f8f3aec0cd761dcae3f7baecb4c7" prot="public">
+          <name>WRAP4</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceahb_1aa5283d41e153c6f8085d871bd41d33f8aa7f5516b2e48edb3a578a6be801c685a" prot="public">
+          <name>INCR4</name>
+          <initializer>= 0x3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceahb_1aa5283d41e153c6f8085d871bd41d33f8a6613995a4a40c664aedaf6635bf0e374" prot="public">
+          <name>WRAP8</name>
+          <initializer>= 0x4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceahb_1aa5283d41e153c6f8085d871bd41d33f8a8496a2bca4b7c3af21e299e906a91a87" prot="public">
+          <name>INCR8</name>
+          <initializer>= 0x5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceahb_1aa5283d41e153c6f8085d871bd41d33f8ad1ff3f6fa0a8d97c7d132e25dd1e755c" prot="public">
+          <name>WRAP16</name>
+          <initializer>= 0x6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceahb_1aa5283d41e153c6f8085d871bd41d33f8adb62ba607b9785528db0fd8680b66a4a" prot="public">
+          <name>INCR16</name>
+          <initializer>= 0x7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="73" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="73" bodyend="73"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceahb_1a198968c3c8d11fe11967c5fae812887b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * ahb::to_char&lt; burst_e &gt;</definition>
+        <argsstring>(burst_e v)</argsstring>
+        <name>to_char&lt; burst_e &gt;</name>
+        <qualifiedname>ahb::to_char&lt; burst_e &gt;</qualifiedname>
+        <param>
+          <type>burst_e</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.cpp" line="23" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.cpp" bodystart="23" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceahb_1ab37b65c51cf79b47046d5d1b0b009e24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * ahb::to_char&lt; resp_e &gt;</definition>
+        <argsstring>(resp_e v)</argsstring>
+        <name>to_char&lt; resp_e &gt;</name>
+        <qualifiedname>ahb::to_char&lt; resp_e &gt;</qualifiedname>
+        <param>
+          <type>resp_e</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.cpp" line="46" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.cpp" bodystart="46" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceahb_1a0b5a8be06fb50a66b1e37312dc37ffa1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; ahb::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const tlm::tlm_generic_payload &amp;t)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>ahb::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const tlm::tlm_generic_payload &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.cpp" line="61" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.cpp" bodystart="61" bodyend="72" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" declline="65" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceahb_1abe1b176036c3ac1a7db5ab387cce529c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename E</type>
+          </param>
+        </templateparamlist>
+        <type>E</type>
+        <definition>E ahb::into</definition>
+        <argsstring>(typename std::underlying_type&lt; E &gt;::type t)</argsstring>
+        <name>into</name>
+        <qualifiedname>ahb::into</qualifiedname>
+        <param>
+          <type>typename std::underlying_type&lt; E &gt;::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>helper function to convert integer into class enums <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="36" column="22" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" declline="36" declcolumn="22"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceahb_1a76ac0692d61cadc07f51519ff681bb56" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename E</type>
+          </param>
+          <param>
+            <type>typename ULT</type>
+            <defval>typename std::underlying_type&lt;E&gt;::type</defval>
+          </param>
+          <param>
+            <type>typename X</type>
+            <defval>typename std::enable_if&lt;std::is_enum&lt;E&gt;::value &amp;&amp; !std::is_convertible&lt;E, ULT&gt;::value, bool&gt;::type</defval>
+          </param>
+        </templateparamlist>
+        <type>ULT</type>
+        <definition>ULT ahb::to_int</definition>
+        <argsstring>(E t)</argsstring>
+        <name>to_int</name>
+        <qualifiedname>ahb::to_int</qualifiedname>
+        <param>
+          <type>E</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>helper function to convert class enums into integer <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="44" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="44" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceahb_1a0bcc4909554e9c7b0e69e38777a6c3c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename E</type>
+          </param>
+        </templateparamlist>
+        <type>const char *</type>
+        <definition>const char * ahb::to_char</definition>
+        <argsstring>(E t)</argsstring>
+        <name>to_char</name>
+        <qualifiedname>ahb::to_char</qualifiedname>
+        <param>
+          <type>E</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>helper function to convert class enums into char string <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="52" column="24" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" declline="52" declcolumn="24"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceahb_1ab4c2c7ad177b34c0eb6be68e7ce134c5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename E</type>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; enable_for_enum&lt; E &gt;::value, bool &gt;::type</type>
+          </param>
+        </templateparamlist>
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; ahb::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, E e)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>ahb::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>E</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>os</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" line="60" column="8" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.h" bodystart="60" bodyend="63"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>TLM2.0 components modeling AHB. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/ahb_tlm.cpp" line="19" column="1"/>
+  </compounddef>
+</doxygen>

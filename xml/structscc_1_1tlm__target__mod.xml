@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tlm__target__mod" kind="struct" language="C++" prot="public">
+    <compoundname>scc::tlm_target_mod</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref refid="classscc_1_1tlm__target" prot="public" virt="non-virtual">scc::tlm_target&lt; LT, 8 &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>unsigned int</type>
+        <declname>BUSWIDTH</declname>
+        <defname>BUSWIDTH</defname>
+        <defval>LT</defval>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>ADDR_UNIT_BITWIDTH</declname>
+        <defname>ADDR_UNIT_BITWIDTH</defname>
+        <defval>8</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1tlm__target__mod_1aef519b1dc3e810acdb6d46eef5e2a087" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tlm_target_mod&lt; BUSWIDTH, ADDR_UNIT_BITWIDTH &gt;::tlm_target_mod</definition>
+        <argsstring>(sc_core::sc_module_name nm, sc_core::sc_time &amp;clk_period)</argsstring>
+        <name>tlm_target_mod</name>
+        <qualifiedname>scc::tlm_target_mod::tlm_target_mod</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>clk_period</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target.h" line="136" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target.h" bodystart="136" bodyend="138"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="3">
+        <label>scc::tlm_target&lt; LT, 8 &gt;</label>
+        <link refid="classscc_1_1tlm__target"/>
+      </node>
+      <node id="1">
+        <label>scc::tlm_target_mod&lt; BUSWIDTH, ADDR_UNIT_BITWIDTH &gt;</label>
+        <link refid="structscc_1_1tlm__target__mod"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="3">
+        <label>scc::tlm_target&lt; LT, 8 &gt;</label>
+        <link refid="classscc_1_1tlm__target"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>socket</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>socket_map</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>scc::tlm_target_mod&lt; BUSWIDTH, ADDR_UNIT_BITWIDTH &gt;</label>
+        <link refid="structscc_1_1tlm__target__mod"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>tlm::scc::scv::tlm_rec_target_socket&lt; BUSWIDTH &gt;</label>
+        <link refid="classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>recorder</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>tlm::scc::scv::tlm_recorder&lt; tlm::tlm_base_protocol_types &gt;</label>
+        <link refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tlm::scc::target_mixin&lt; tlm::scc::scv::tlm_rec_target_socket&lt; BUSWIDTH &gt; &gt;</label>
+        <link refid="classtlm_1_1scc_1_1target__mixin"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+      <node id="8">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+      <node id="6">
+        <label>tlm::tlm_target_socket&lt; BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ONE_OR_MORE_BOUND &gt;</label>
+      </node>
+      <node id="10">
+        <label>util::range_lut&lt; resource_access_t &gt;</label>
+        <link refid="classutil_1_1range__lut"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target.h" line="135" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target.h" bodystart="135" bodyend="139"/>
+    <listofallmembers>
+      <member refid="classscc_1_1tlm__target_1a8afaa2a7f59441bdb979b162b1d719f8" prot="public" virt="non-virtual"><scope>scc::tlm_target_mod</scope><name>addResource</name></member>
+      <member refid="classscc_1_1tlm__target_1a1362ce5ffea24f28ff06119094eb7ea4" prot="public" virt="non-virtual"><scope>scc::tlm_target_mod</scope><name>b_tranport_cb</name></member>
+      <member refid="classscc_1_1tlm__target_1aaf14d6a9daf90495ed1332b32c54226e" prot="protected" virt="non-virtual"><scope>scc::tlm_target_mod</scope><name>get_payload_extension</name></member>
+      <member refid="classscc_1_1tlm__target_1a5019c62d054b355e0a12066b3c636756" prot="public" virt="non-virtual"><scope>scc::tlm_target_mod</scope><name>get_size</name></member>
+      <member refid="classscc_1_1tlm__target_1ad8245def6cefbcebf39d7081653fec26" prot="protected" virt="non-virtual"><scope>scc::tlm_target_mod</scope><name>resource_access_t</name></member>
+      <member refid="classscc_1_1tlm__target_1a75b25d87c86ba3c787405369994b8038" prot="public" virt="non-virtual"><scope>scc::tlm_target_mod</scope><name>socket</name></member>
+      <member refid="classscc_1_1tlm__target_1a9882e476ca4728b812ce09bb6d09764d" prot="protected" virt="non-virtual"><scope>scc::tlm_target_mod</scope><name>socket_map</name></member>
+      <member refid="classscc_1_1tlm__target_1a02ad669c63d2cb793552e75765d8bb50" prot="public" virt="non-virtual"><scope>scc::tlm_target_mod</scope><name>this_type</name></member>
+      <member refid="classscc_1_1tlm__target_1ac116fffbea832e2ae7aef91886e9eb8f" prot="public" virt="non-virtual"><scope>scc::tlm_target_mod</scope><name>tlm_target</name></member>
+      <member refid="structscc_1_1tlm__target__mod_1aef519b1dc3e810acdb6d46eef5e2a087" prot="public" virt="non-virtual"><scope>scc::tlm_target_mod</scope><name>tlm_target_mod</name></member>
+      <member refid="classscc_1_1tlm__target_1a9357cca0258b1f1b2412ce4b6fee0723" prot="public" virt="non-virtual"><scope>scc::tlm_target_mod</scope><name>tranport_dbg_cb</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

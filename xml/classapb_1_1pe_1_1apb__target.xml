@@ -1,0 +1,310 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classapb_1_1pe_1_1apb__target" kind="class" language="C++" prot="public">
+    <compoundname>apb::pe::apb_target</compoundname>
+    <basecompoundref refid="classapb_1_1pe_1_1apb__target__b" prot="public" virt="non-virtual">apb::pe::apb_target_b</basecompoundref>
+    <includes refid="apb__target_8h" local="no">apb_target.h</includes>
+    <templateparamlist>
+      <param>
+        <type>unsigned int</type>
+        <declname>BUSWIDTH</declname>
+        <defname>BUSWIDTH</defname>
+        <defval>32</defval>
+      </param>
+      <param>
+        <type>typename TYPES</type>
+        <defval>tlm::tlm_base_protocol_types</defval>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>N</declname>
+        <defname>N</defname>
+        <defval>1</defval>
+      </param>
+      <param>
+        <type>sc_core::sc_port_policy</type>
+        <declname>POL</declname>
+        <defname>POL</defname>
+        <defval>sc_core::SC_ONE_OR_MORE_BOUND</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classapb_1_1pe_1_1apb__target_1a934fbc4cd30e37e7d796428ca8906a4f" prot="public" static="no">
+        <type><ref refid="classapb_1_1pe_1_1apb__target__b_1a829c710b4f11717de2957931d53a7a71" kindref="member">apb_target_b</ref></type>
+        <definition>using apb::pe::apb_target&lt; BUSWIDTH, TYPES, N, POL &gt;::base =  apb_target_b</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <qualifiedname>apb::pe::apb_target::base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="97" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classapb_1_1pe_1_1apb__target_1a6c9159a91d20eedce3ddef961a7614db" prot="public" static="no">
+        <type>base::payload_type</type>
+        <definition>using apb::pe::apb_target&lt; BUSWIDTH, TYPES, N, POL &gt;::payload_type =  base::payload_type</definition>
+        <argsstring></argsstring>
+        <name>payload_type</name>
+        <qualifiedname>apb::pe::apb_target::payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="98" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classapb_1_1pe_1_1apb__target_1a9438b1fc0f4b85466aa510be7c15851d" prot="public" static="no">
+        <type>base::phase_type</type>
+        <definition>using apb::pe::apb_target&lt; BUSWIDTH, TYPES, N, POL &gt;::phase_type =  base::phase_type</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>apb::pe::apb_target::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="99" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classapb_1_1pe_1_1apb__target_1a1dccc6d2c3bb498131f98bc436e03389" prot="private" static="no" mutable="no">
+        <type>tlm::tlm_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;</type>
+        <definition>tlm::tlm_target_socket&lt;BUSWIDTH, TYPES, N, POL&gt;&amp; apb::pe::apb_target&lt; BUSWIDTH, TYPES, N, POL &gt;::socket</definition>
+        <argsstring></argsstring>
+        <name>socket</name>
+        <qualifiedname>apb::pe::apb_target::socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="125" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target_1adb0e4e90568d28c784c449ce4fb18e4d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>apb::pe::apb_target&lt; BUSWIDTH, TYPES, N, POL &gt;::apb_target</definition>
+        <argsstring>(tlm::tlm_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;socket)</argsstring>
+        <name>apb_target</name>
+        <qualifiedname>apb::pe::apb_target::apb_target</qualifiedname>
+        <param>
+          <type>tlm::tlm_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;</type>
+          <declname>socket</declname>
+        </param>
+        <briefdescription>
+<para>the constructor </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>socket</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>reference to the initiator socket used to send and receive transactions </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="104" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="104" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target_1a881a5989a0c03a29107c676b26a23ad7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>apb::pe::apb_target&lt; BUSWIDTH, TYPES, N, POL &gt;::apb_target</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm, tlm::tlm_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;socket)</argsstring>
+        <name>apb_target</name>
+        <qualifiedname>apb::pe::apb_target::apb_target</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;</type>
+          <declname>socket</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="108" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="108" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target_1a82c0d49b9aeb3530638a051042034e9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>apb::pe::apb_target&lt; BUSWIDTH, TYPES, N, POL &gt;::apb_target</definition>
+        <argsstring>()=delete</argsstring>
+        <name>apb_target</name>
+        <qualifiedname>apb::pe::apb_target::apb_target</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="114" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target_1af3d8cf03156a2f5547793be67b70697e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>apb::pe::apb_target&lt; BUSWIDTH, TYPES, N, POL &gt;::apb_target</definition>
+        <argsstring>(apb_target const &amp;)=delete</argsstring>
+        <name>apb_target</name>
+        <qualifiedname>apb::pe::apb_target::apb_target</qualifiedname>
+        <param>
+          <type>apb_target const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="116" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target_1a3b1770e95801f8f9bdfb8fc709d6b5ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>apb::pe::apb_target&lt; BUSWIDTH, TYPES, N, POL &gt;::apb_target</definition>
+        <argsstring>(apb_target &amp;&amp;)=delete</argsstring>
+        <name>apb_target</name>
+        <qualifiedname>apb::pe::apb_target::apb_target</qualifiedname>
+        <param>
+          <type>apb_target &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="118" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target_1abb2eb6d35d3a4b1504a980bcb4330f43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classapb_1_1pe_1_1apb__target_1adb0e4e90568d28c784c449ce4fb18e4d" kindref="member">apb_target</ref> &amp;</type>
+        <definition>apb_target &amp; apb::pe::apb_target&lt; BUSWIDTH, TYPES, N, POL &gt;::operator=</definition>
+        <argsstring>(apb_target const &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>apb::pe::apb_target::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classapb_1_1pe_1_1apb__target_1adb0e4e90568d28c784c449ce4fb18e4d" kindref="member">apb_target</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="120" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classapb_1_1pe_1_1apb__target_1a788994e1db335d9ee6ebcd064a98011b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classapb_1_1pe_1_1apb__target_1adb0e4e90568d28c784c449ce4fb18e4d" kindref="member">apb_target</ref> &amp;</type>
+        <definition>apb_target &amp; apb::pe::apb_target&lt; BUSWIDTH, TYPES, N, POL &gt;::operator=</definition>
+        <argsstring>(apb_target &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>apb::pe::apb_target::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classapb_1_1pe_1_1apb__target_1adb0e4e90568d28c784c449ce4fb18e4d" kindref="member">apb_target</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="122" column="16"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>the target socket protocol engine adapted to a particular target socket configuration </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>apb::pe::apb_target&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classapb_1_1pe_1_1apb__target"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>apb::pe::apb_target_b</label>
+        <link refid="classapb_1_1pe_1_1apb__target__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>apb::pe::apb_target&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classapb_1_1pe_1_1apb__target"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>apb::pe::apb_target_b</label>
+        <link refid="classapb_1_1pe_1_1apb__target__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="4">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" line="95" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/apb/pe/apb_target.h" bodystart="95" bodyend="126"/>
+    <listofallmembers>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1aba2951cf257348906542f5be7a20239e" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>active_tx</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target_1adb0e4e90568d28c784c449ce4fb18e4d" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>apb_target</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target_1a881a5989a0c03a29107c676b26a23ad7" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>apb_target</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target_1a82c0d49b9aeb3530638a051042034e9c" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>apb_target</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target_1af3d8cf03156a2f5547793be67b70697e" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>apb_target</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target_1a3b1770e95801f8f9bdfb8fc709d6b5ba" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>apb_target</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a829c710b4f11717de2957931d53a7a71" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>apb_target_b</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1aa743a9b1eec1c66b471ef4e677a0c906" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>apb_target_b</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1aa4b405daedb83a298e8ed6b62c8fe1c4" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>apb_target_b</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a336d6cce276a5961b54f61baaad47b15" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>apb_target_b</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a47b1eda5accb4c78cbc72c4e72c5fb18" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>b_transport</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target_1a934fbc4cd30e37e7d796428ca8906a4f" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>base</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1adc72b42c87c37214faaad1a4682721eb" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>clk_i</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1ab905a25776996fe25b7e8030ba5dd14f" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>clk_if</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1ad7f7855a299ffe404c4e6a0bbafefde8" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>end_of_elaboration</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a890d12f8e3632b57399726eb535d7ee8" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>get_direct_mem_ptr</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a97e6e42e71cc787cf432fd8570a19303" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>mhndl</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a23d0a6db70e7583f8ab18f3e00e95efd" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>nb_transport_fw</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a3724f08d32974c53b8146f270a595884" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>operation_cb</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target_1abb2eb6d35d3a4b1504a980bcb4330f43" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>operator=</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target_1a788994e1db335d9ee6ebcd064a98011b" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>operator=</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a76a31c72687e7a1fcd687fda99e7c2f9" prot="protected" virt="non-virtual" ambiguityscope="apb::pe::apb_target_b::"><scope>apb::pe::apb_target</scope><name>operator=</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a2bbf85eee978eaa7ee9b5d3fe7326e52" prot="protected" virt="non-virtual" ambiguityscope="apb::pe::apb_target_b::"><scope>apb::pe::apb_target</scope><name>operator=</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target_1a6c9159a91d20eedce3ddef961a7614db" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>payload_type</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target_1a9438b1fc0f4b85466aa510be7c15851d" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>phase_type</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1aed8e09876e15e0843435ebf03725cae0" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>response</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a82690c72793fe8a829abe6ee61ad258f" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1aaeae28bc8b7e56cfc3157132323f609e" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>set_operation_cb</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target_1a1dccc6d2c3bb498131f98bc436e03389" prot="private" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>socket</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1a45fa4440231832d6b634268a0b988ebd" prot="protected" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>socket_bw</name></member>
+      <member refid="classapb_1_1pe_1_1apb__target__b_1aa05fdb83ba4a7914af3bc6678496afb3" prot="public" virt="non-virtual"><scope>apb::pe::apb_target</scope><name>transport_dbg</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

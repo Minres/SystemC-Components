@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src</compoundname>
+    <innerdir refid="dir_fdedb0aba14d44ce9d99bc100e026e6a">/home/eyck/Projects/MINRES/SystemC-Components/src/common</innerdir>
+    <innerdir refid="dir_3c4c7c1a85608ccd561c026bec818e51">/home/eyck/Projects/MINRES/SystemC-Components/src/components</innerdir>
+    <innerdir refid="dir_ee3f1a7951c308657a65f8199076c1d6">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces</innerdir>
+    <innerdir refid="dir_ecd2599f241f99e60c436470b0a1e2a4">/home/eyck/Projects/MINRES/SystemC-Components/src/sysc</innerdir>
+    <innerfile refid="scc_8h">scc.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/"/>
+  </compounddef>
+</doxygen>

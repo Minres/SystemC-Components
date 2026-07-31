@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structchi_1_1chi__credit__extension" kind="struct" language="C++" prot="public">
+    <compoundname>chi::chi_credit_extension</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_extension&lt; chi_credit_extension&lt; TYPE &gt; &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>credit_type_e</type>
+        <declname>TYPE</declname>
+        <defname>TYPE</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structchi_1_1chi__credit__extension_1af4eefaf830d075b6e10a602dc2ed658e" prot="public" static="no" mutable="no">
+        <type>unsigned short</type>
+        <definition>unsigned short chi::chi_credit_extension&lt; TYPE &gt;::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <qualifiedname>chi::chi_credit_extension::count</qualifiedname>
+        <initializer>{1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="869" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="869" bodyend="869"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structchi_1_1chi__credit__extension_1a06eb5ba830f3b13b05c2132296d3a6c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>chi::chi_credit_extension&lt; TYPE &gt;::chi_credit_extension</definition>
+        <argsstring>()=default</argsstring>
+        <name>chi_credit_extension</name>
+        <qualifiedname>chi::chi_credit_extension::chi_credit_extension</qualifiedname>
+        <briefdescription>
+<para>the default constructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="852" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__credit__extension_1ac15043a3b816c1480b7e789fa1755138" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>chi::chi_credit_extension&lt; TYPE &gt;::chi_credit_extension</definition>
+        <argsstring>(unsigned short count)</argsstring>
+        <name>chi_credit_extension</name>
+        <qualifiedname>chi::chi_credit_extension::chi_credit_extension</qualifiedname>
+        <param>
+          <type>unsigned short</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="854" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="854" bodyend="855"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__credit__extension_1ae5b302b56219f373592727dc111ef976" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_extension_base *</type>
+        <definition>tlm::tlm_extension_base * chi::chi_credit_extension&lt; TYPE &gt;::clone</definition>
+        <argsstring>() const</argsstring>
+        <name>clone</name>
+        <qualifiedname>chi::chi_credit_extension::clone</qualifiedname>
+        <briefdescription>
+<para>the clone function to create deep copies of </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>pointer to heap-allocated extension </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="860" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="860" bodyend="860"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1chi__credit__extension_1aa07574963798c191703f3e28d24a0d1d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::chi_credit_extension&lt; TYPE &gt;::copy_from</definition>
+        <argsstring>(tlm::tlm_extension_base const &amp;ext)</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>chi::chi_credit_extension::copy_from</qualifiedname>
+        <param>
+          <type>tlm::tlm_extension_base const &amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+<para>deep copy all values from ext </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ext</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="865" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="865" bodyend="867"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>chi::chi_credit_extension&lt; TYPE &gt;</label>
+        <link refid="structchi_1_1chi__credit__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; chi_credit_extension&lt; TYPE &gt; &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>chi::chi_credit_extension&lt; TYPE &gt;</label>
+        <link refid="structchi_1_1chi__credit__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; chi_credit_extension&lt; TYPE &gt; &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="848" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="848" bodyend="870"/>
+    <listofallmembers>
+      <member refid="structchi_1_1chi__credit__extension_1a06eb5ba830f3b13b05c2132296d3a6c4" prot="public" virt="non-virtual"><scope>chi::chi_credit_extension</scope><name>chi_credit_extension</name></member>
+      <member refid="structchi_1_1chi__credit__extension_1ac15043a3b816c1480b7e789fa1755138" prot="public" virt="non-virtual"><scope>chi::chi_credit_extension</scope><name>chi_credit_extension</name></member>
+      <member refid="structchi_1_1chi__credit__extension_1ae5b302b56219f373592727dc111ef976" prot="public" virt="non-virtual"><scope>chi::chi_credit_extension</scope><name>clone</name></member>
+      <member refid="structchi_1_1chi__credit__extension_1aa07574963798c191703f3e28d24a0d1d" prot="public" virt="non-virtual"><scope>chi::chi_credit_extension</scope><name>copy_from</name></member>
+      <member refid="structchi_1_1chi__credit__extension_1af4eefaf830d075b6e10a602dc2ed658e" prot="public" virt="non-virtual"><scope>chi::chi_credit_extension</scope><name>count</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

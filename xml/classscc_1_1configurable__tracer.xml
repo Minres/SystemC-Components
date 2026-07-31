@@ -1,0 +1,809 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1configurable__tracer" kind="class" language="C++" prot="public">
+    <compoundname>scc::configurable_tracer</compoundname>
+    <basecompoundref refid="classscc_1_1tracer" prot="public" virt="non-virtual">scc::tracer</basecompoundref>
+    <includes refid="configurable__tracer_8h" local="no">configurable_tracer.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classscc_1_1configurable__tracer_1aec6c804b2b6e68b3851d429cd041ddb7" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; cci::cci_param_untyped * &gt;</type>
+        <definition>std::vector&lt;cci::cci_param_untyped*&gt; scc::configurable_tracer::params</definition>
+        <argsstring></argsstring>
+        <name>params</name>
+        <qualifiedname>scc::configurable_tracer::params</qualifiedname>
+        <briefdescription>
+<para>array of created cci parameter </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="136" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1configurable__tracer_1a57d134e93844c47dc8d1dfd1d99a1879" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool scc::configurable_tracer::control_added</definition>
+        <argsstring></argsstring>
+        <name>control_added</name>
+        <qualifiedname>scc::configurable_tracer::control_added</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="137" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" bodystart="137" bodyend="137"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1configurable__tracer_1a738b641216b1c413e857bb902edcf6d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>configurable_tracer::configurable_tracer</definition>
+        <argsstring>(std::string const &amp;&amp;name, bool enable_tx=true, bool enable_vcd=true, sc_core::sc_object *top=nullptr)</argsstring>
+        <name>configurable_tracer</name>
+        <qualifiedname>scc::configurable_tracer::configurable_tracer</qualifiedname>
+        <param>
+          <type>std::string const &amp;&amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enable_tx</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enable_vcd</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>sc_core::sc_object *</type>
+          <declname>top</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>constructs a tracer object</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>basename of the trace file(s) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enable_tx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>enables transaction tracing </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enable_vcd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>enable VCD (signal based) tracing </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>top</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the topleve to use to trace variables </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="45" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp" bodystart="26" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurable__tracer_1a119da80deea7eda6297f97a9cb28af5c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::configurable_tracer::configurable_tracer</definition>
+        <argsstring>(std::string const &amp;name, bool enable_tx=true, bool enable_vcd=true, sc_core::sc_object *top=nullptr)</argsstring>
+        <name>configurable_tracer</name>
+        <qualifiedname>scc::configurable_tracer::configurable_tracer</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enable_tx</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enable_vcd</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>sc_core::sc_object *</type>
+          <declname>top</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>constructs a tracer object</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>basename of the trace file(s) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enable_tx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>enables transaction tracing </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enable_vcd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>enable VCD (signal based) tracing </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>top</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the topleve to use to trace variables </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="54" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" bodystart="54" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurable__tracer_1a4012d18b6431645dd8e3c637d381dbd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>configurable_tracer::configurable_tracer</definition>
+        <argsstring>(std::string const &amp;&amp;name, file_type type, bool enable_vcd=true, sc_core::sc_object *top=nullptr)</argsstring>
+        <name>configurable_tracer</name>
+        <qualifiedname>scc::configurable_tracer::configurable_tracer</qualifiedname>
+        <param>
+          <type>std::string const &amp;&amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enable_vcd</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>sc_core::sc_object *</type>
+          <declname>top</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>constructs a tracer object</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>basename of the trace file(s) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of trace file for transactions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>enable VCD (signal based) tracing </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>top</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the topleve to use to trace variables </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="64" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp" bodystart="29" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurable__tracer_1a47bb53dc2a1b421a1c7dbb5ca1d14fc8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::configurable_tracer::configurable_tracer</definition>
+        <argsstring>(std::string const &amp;name, file_type type, bool enable_vcd=true, sc_core::sc_object *top=nullptr)</argsstring>
+        <name>configurable_tracer</name>
+        <qualifiedname>scc::configurable_tracer::configurable_tracer</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enable_vcd</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>sc_core::sc_object *</type>
+          <declname>top</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>constructs a tracer object</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>basename of the trace file(s) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of trace file for transactions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enable_vcd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>enable VCD (signal based) tracing </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>top</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the topleve to use to trace variables </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="73" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" bodystart="73" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurable__tracer_1a68dbbf48870d5f62511c4ba41696d726" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>configurable_tracer::configurable_tracer</definition>
+        <argsstring>(std::string const &amp;&amp;name, file_type tx_type, file_type sig_type, sc_core::sc_object *top=nullptr)</argsstring>
+        <name>configurable_tracer</name>
+        <qualifiedname>scc::configurable_tracer::configurable_tracer</qualifiedname>
+        <param>
+          <type>std::string const &amp;&amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref></type>
+          <declname>tx_type</declname>
+        </param>
+        <param>
+          <type><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref></type>
+          <declname>sig_type</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_object *</type>
+          <declname>top</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>constructs a tracer object</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>basename of the trace file(s) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tx_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of trace file for transactions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sig_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of trace file for signals </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>top</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the topleve to use to trace variables </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="83" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp" bodystart="32" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurable__tracer_1a11e490616ee6222d5a006506ae74457a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::configurable_tracer::configurable_tracer</definition>
+        <argsstring>(std::string const &amp;name, file_type tx_type, file_type sig_type, sc_core::sc_object *top=nullptr)</argsstring>
+        <name>configurable_tracer</name>
+        <qualifiedname>scc::configurable_tracer::configurable_tracer</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref></type>
+          <declname>tx_type</declname>
+        </param>
+        <param>
+          <type><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref></type>
+          <declname>sig_type</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_object *</type>
+          <declname>top</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="84" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" bodystart="84" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurable__tracer_1aee08eb17bce549befd6658b2f4b34339" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>configurable_tracer::configurable_tracer</definition>
+        <argsstring>(std::string const &amp;&amp;name, file_type type, sc_core::sc_trace_file *tf=nullptr, sc_core::sc_object *top=nullptr)</argsstring>
+        <name>configurable_tracer</name>
+        <qualifiedname>scc::configurable_tracer::configurable_tracer</qualifiedname>
+        <param>
+          <type>std::string const &amp;&amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>sc_core::sc_object *</type>
+          <declname>top</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>constructs a tracer object</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>basename of the trace file(s) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of trace file for transactions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the trace file to use for signal and POD tracing </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>top</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the topleve to use to trace variables </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="94" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp" bodystart="35" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurable__tracer_1ab9a1317af99e933426c3aac76ee5dc93" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::configurable_tracer::configurable_tracer</definition>
+        <argsstring>(std::string const &amp;name, file_type type, sc_core::sc_trace_file *tf=nullptr, sc_core::sc_object *top=nullptr)</argsstring>
+        <name>configurable_tracer</name>
+        <qualifiedname>scc::configurable_tracer::configurable_tracer</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>sc_core::sc_object *</type>
+          <declname>top</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>constructs a tracer object</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>basename of the trace file(s) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of trace file for transactions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the trace file to use for signal and POD tracing </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>top</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the topleve to use to trace variables </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="103" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" bodystart="103" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurable__tracer_1acd4ab692d0973eefa668643924f861b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::configurable_tracer::~configurable_tracer</definition>
+        <argsstring>()</argsstring>
+        <name>~configurable_tracer</name>
+        <qualifiedname>scc::configurable_tracer::~configurable_tracer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>destructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="108" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurable__tracer_1ab425b03f4e39ad0ca3316f5d356effc0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::configurable_tracer::add_control</definition>
+        <argsstring>()</argsstring>
+        <name>add_control</name>
+        <qualifiedname>scc::configurable_tracer::add_control</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>adds default trace control attribute of name &apos;enableTracing&apos; to each sc_module in a design hierarchy </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="112" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" bodystart="112" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurable__tracer_1a3ecc38fa9a5b009151a0d1c263e85461" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::configurable_tracer::add_control</definition>
+        <argsstring>(bool trace_default)</argsstring>
+        <name>add_control</name>
+        <qualifiedname>scc::configurable_tracer::add_control</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>trace_default</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>adds default trace control attribute of name &apos;enableTracing&apos; to each sc_module in a design hierarchy</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trace_default</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the default value of the attribute to be added </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="118" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" bodystart="118" bodyend="124"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classscc_1_1configurable__tracer_1ac7b5301c5f276ffdc414236fa3a0c08b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void configurable_tracer::descend</definition>
+        <argsstring>(const sc_core::sc_object *, bool trace_all=false) override</argsstring>
+        <name>descend</name>
+        <qualifiedname>scc::configurable_tracer::descend</qualifiedname>
+        <reimplements refid="structscc_1_1tracer__base_1acd704016de6f8bab88468ae4f0201420">descend</reimplements>
+        <param>
+          <type>const sc_core::sc_object *</type>
+          <defname>obj</defname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>trace_all</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>depth-first walk thru the design hierarchy and trace signals resp. call <ref refid="namespacescc_1_1trace" kindref="compound">trace()</ref> function </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="128" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp" bodystart="44" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurable__tracer_1a782862b5f9bdbd04af20008f6ea31e3a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>auto scc::configurable_tracer::get_trace_enabled</definition>
+        <argsstring>(const sc_core::sc_object *, bool=false)</argsstring>
+        <name>get_trace_enabled</name>
+        <qualifiedname>scc::configurable_tracer::get_trace_enabled</qualifiedname>
+        <param>
+          <type>const sc_core::sc_object *</type>
+        </param>
+        <param>
+          <type>bool</type>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>check for existence of &apos;enableTracing&apos; attribute and return value of default otherwise </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="130" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp" bodystart="83" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurable__tracer_1a899a3622b0f14fd8733020b7bc48b188" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void configurable_tracer::augment_object_hierarchical</definition>
+        <argsstring>(sc_core::sc_object *, bool)</argsstring>
+        <name>augment_object_hierarchical</name>
+        <qualifiedname>scc::configurable_tracer::augment_object_hierarchical</qualifiedname>
+        <param>
+          <type>sc_core::sc_object *</type>
+          <defname>obj</defname>
+        </param>
+        <param>
+          <type>bool</type>
+          <defname>trace_enable</defname>
+        </param>
+        <briefdescription>
+<para>add the &apos;enableTracing&apos; attribute to sc_module </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="132" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp" bodystart="97" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1configurable__tracer_1a6131b6a18cd53fc83df1c411ceab0378" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void configurable_tracer::end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_elaboration</name>
+        <qualifiedname>scc::configurable_tracer::end_of_elaboration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="134" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp" bodystart="120" bodyend="123"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>configurable tracer for automatic port and signal tracing </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class traverses the SystemC object hierarchy and registers all signals and ports found with the tracing infrastructure. Using a sc_core::sc_attribute or a CCI param named &quot;enableTracing&quot; this can be switch on or off on a per module basis </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::configurable_tracer</label>
+        <link refid="classscc_1_1configurable__tracer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>scc::tracer</label>
+        <link refid="classscc_1_1tracer"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scc::tracer_base</label>
+        <link refid="structscc_1_1tracer__base"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::configurable_tracer</label>
+        <link refid="classscc_1_1configurable__tracer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>scc::tracer</label>
+        <link refid="classscc_1_1tracer"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scc::tracer_base</label>
+        <link refid="structscc_1_1tracer__base"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" line="35" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.h" bodystart="35" bodyend="138"/>
+    <listofallmembers>
+      <member refid="classscc_1_1configurable__tracer_1ab425b03f4e39ad0ca3316f5d356effc0" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>add_control</name></member>
+      <member refid="classscc_1_1configurable__tracer_1a3ecc38fa9a5b009151a0d1c263e85461" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>add_control</name></member>
+      <member refid="classscc_1_1configurable__tracer_1a899a3622b0f14fd8733020b7bc48b188" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>augment_object_hierarchical</name></member>
+      <member refid="structscc_1_1tracer__base_1aa537e06076101c84363724d8c90d6d6e" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>cci_broker</name></member>
+      <member refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613cea637fd28f81560350bbf29e3fba628152" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>CFTR</name></member>
+      <member refid="classscc_1_1tracer_1ab78fca7725eef82493f259370e912f0b" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>close_db_in_eos</name></member>
+      <member refid="classscc_1_1tracer_1ae56b0396e64124ed07fb619f9b84f875" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>close_db_in_eos_handle</name></member>
+      <member refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613cea31692a65e5e057026b5ac07540a9ac45" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>COMPRESSED</name></member>
+      <member refid="classscc_1_1configurable__tracer_1a738b641216b1c413e857bb902edcf6d8" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>configurable_tracer</name></member>
+      <member refid="classscc_1_1configurable__tracer_1a119da80deea7eda6297f97a9cb28af5c" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>configurable_tracer</name></member>
+      <member refid="classscc_1_1configurable__tracer_1a4012d18b6431645dd8e3c637d381dbd3" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>configurable_tracer</name></member>
+      <member refid="classscc_1_1configurable__tracer_1a47bb53dc2a1b421a1c7dbb5ca1d14fc8" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>configurable_tracer</name></member>
+      <member refid="classscc_1_1configurable__tracer_1a68dbbf48870d5f62511c4ba41696d726" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>configurable_tracer</name></member>
+      <member refid="classscc_1_1configurable__tracer_1a11e490616ee6222d5a006506ae74457a" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>configurable_tracer</name></member>
+      <member refid="classscc_1_1configurable__tracer_1aee08eb17bce549befd6658b2f4b34339" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>configurable_tracer</name></member>
+      <member refid="classscc_1_1configurable__tracer_1ab9a1317af99e933426c3aac76ee5dc93" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>configurable_tracer</name></member>
+      <member refid="classscc_1_1configurable__tracer_1a57d134e93844c47dc8d1dfd1d99a1879" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>control_added</name></member>
+      <member refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ceafca269b217502e0a19a68d05ebacd388" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>CUSTOM</name></member>
+      <member refid="structscc_1_1tracer__base_1a59e5921907988766ad45773991dc8fd9" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>default_trace_enable</name></member>
+      <member refid="structscc_1_1tracer__base_1a77e5c593bc12d3bdf8e7d035d9f1da4d" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>default_trace_enable_handle</name></member>
+      <member refid="classscc_1_1configurable__tracer_1ac7b5301c5f276ffdc414236fa3a0c08b" prot="protected" virt="virtual"><scope>scc::configurable_tracer</scope><name>descend</name></member>
+      <member refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613cea622c22a4e923eac0a369fde57434e85a" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>ENABLE</name></member>
+      <member refid="classscc_1_1configurable__tracer_1a6131b6a18cd53fc83df1c411ceab0378" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>end_of_elaboration</name></member>
+      <member refid="classscc_1_1tracer_1a5df99939fbd165eda9a8e6c71b6316f9" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>end_of_simulation</name></member>
+      <member refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>file_type</name></member>
+      <member refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613cea11d4c8b8466e051386f7c26e637e02fd" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>FST</name></member>
+      <member refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613cea9f097b0a71870a9485d94350e705a8bc" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>FTR</name></member>
+      <member refid="structscc_1_1tracer__base_1aac98a9d8c33cf434273b90308cfaa20d" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>get_default_trace_enable</name></member>
+      <member refid="structscc_1_1tracer__base_1adde89eb29e8db70db3c664ffdb988fb5" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>get_name</name></member>
+      <member refid="classscc_1_1configurable__tracer_1a782862b5f9bdbd04af20008f6ea31e3a" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>get_trace_enabled</name></member>
+      <member refid="structscc_1_1tracer__base_1a46c28f6f1f804b5d2d2cd37df7fd1600" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>get_trace_file</name></member>
+      <member refid="structscc_1_1tracer__base_1aa79fbb746822722e69e0404fc344918d" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>get_trace_file</name></member>
+      <member refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ceac7e336e80f5e9799d395f1ce113d075b" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>LWCFTR</name></member>
+      <member refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613cea113eceefb55f242f9f83304380f71ce3" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>LWFTR</name></member>
+      <member refid="classscc_1_1tracer_1a7582da0578480d4aef7a367fd4415c3a" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>lwtr_db</name></member>
+      <member refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613cea29c3f1a5fdec2e4d110c9dcf637d7b5f" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>NONE</name></member>
+      <member refid="classscc_1_1configurable__tracer_1aec6c804b2b6e68b3851d429cd041ddb7" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>params</name></member>
+      <member refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613cea7e7ada40c34873b311398efaede82ed1" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>PULL_VCD</name></member>
+      <member refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613cea9521360da95fa319a17724477e80314b" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>PUSH_VCD</name></member>
+      <member refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613cea0e9e688e80cf58c16b85def53262e6f7" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>SC_VCD</name></member>
+      <member refid="structscc_1_1tracer__base_1a4661ffdd290ee29bc6bfde50ca554b7d" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>set_default_trace_enable</name></member>
+      <member refid="structscc_1_1tracer__base_1a9c05d4bdee7c23ee7b3328c1e6f89888" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>set_trace_file</name></member>
+      <member refid="structscc_1_1tracer__base_1abe84fc98c6bb97f4071c14a19f531abf" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>set_trace_types</name></member>
+      <member refid="classscc_1_1tracer_1ae4e17afd056239841e866cb7b97f5a25" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>sig_trace_type</name></member>
+      <member refid="classscc_1_1tracer_1af7b87aee0ff20b10d0016282c77a9bb1" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>sig_trace_type_handle</name></member>
+      <member refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613cea6d062539565a22a492eed807b215929a" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>SQLITE</name></member>
+      <member refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613cea265d1012f308bf8ff1c8f4a16d48dc6b" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>TEXT</name></member>
+      <member refid="classscc_1_1tracer_1a4f284c061d3b35d260d0df39e8fbf1cd" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>tracer</name></member>
+      <member refid="classscc_1_1tracer_1ab750905ee61da060b61d17103724541e" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>tracer</name></member>
+      <member refid="classscc_1_1tracer_1a9600023b7da5c818a76f2b2c50b739a7" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>tracer</name></member>
+      <member refid="classscc_1_1tracer_1a0a9b5a23c415dad3d02ca0a07d4af5b6" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>tracer</name></member>
+      <member refid="classscc_1_1tracer_1a933bd06d072597b3f1ced9bf9bebbef3" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>tracer</name></member>
+      <member refid="classscc_1_1tracer_1af919b140de14d6510d8e233862317f60" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>tracer</name></member>
+      <member refid="classscc_1_1tracer_1a225be8643d7469071dd98e95e2991178" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>tracer</name></member>
+      <member refid="classscc_1_1tracer_1aa731b1c9ada4f4ef44cc1c84eaf02a97" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>tracer</name></member>
+      <member refid="structscc_1_1tracer__base_1aa001f2732378922fbc4414fa8ae4bfa5" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>tracer_base</name></member>
+      <member refid="structscc_1_1tracer__base_1a6aec3d56e7e73c0cef1046164a250c6a" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>tracer_base</name></member>
+      <member refid="structscc_1_1tracer__base_1ab89161002098e41cd35933fe21680335" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>trf</name></member>
+      <member refid="structscc_1_1tracer__base_1a6088c75fecd3fdd7dabdf886054eafbb" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>try_trace</name></member>
+      <member refid="classscc_1_1tracer_1ab2077b85b4a1892fe5228addc32cee59" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>tx_trace_type</name></member>
+      <member refid="classscc_1_1tracer_1a1a5e513e41ff3a869d70411e1c9695ca" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>tx_trace_type_handle</name></member>
+      <member refid="classscc_1_1tracer_1a5527f05a6e17ff54b4d0bc58a92b122d" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>txdb</name></member>
+      <member refid="structscc_1_1tracer__base_1a6a2ebee4379a80b0266d257582b8db0e" prot="protected" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>types_to_trace</name></member>
+      <member refid="classscc_1_1configurable__tracer_1acd4ab692d0973eefa668643924f861b7" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>~configurable_tracer</name></member>
+      <member refid="classscc_1_1tracer_1ac9c6bc0cb7994fe4e8f3fb9c715e2364" prot="public" virt="virtual"><scope>scc::configurable_tracer</scope><name>~tracer</name></member>
+      <member refid="structscc_1_1tracer__base_1af67c0e3931c52e0ed74f266c27ea5c58" prot="public" virt="non-virtual"><scope>scc::configurable_tracer</scope><name>~tracer_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

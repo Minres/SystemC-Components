@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1qk_1_1client__deputy" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::qk::client_deputy</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1client__deputy_1ae79feb5cf66abdff766c58ff4bb67b47" prot="public" static="no" mutable="no">
+        <type><ref refid="structscc_1_1peq" kindref="compound">::scc::peq</ref>&lt; callback_task &gt;</type>
+        <definition>::scc::peq&lt;callback_task&gt; tlm::scc::qk::client_deputy::peq</definition>
+        <argsstring></argsstring>
+        <name>peq</name>
+        <qualifiedname>tlm::scc::qk::client_deputy::peq</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/sc_time_syncronizer.h" line="11" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/sc_time_syncronizer.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtlm_1_1scc_1_1qk_1_1client__deputy_1a7d3715d771c8e7fe5db21fdb40ae2eed" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tlm::scc::qk::client_deputy::blocked</definition>
+        <argsstring></argsstring>
+        <name>blocked</name>
+        <qualifiedname>tlm::scc::qk::client_deputy::blocked</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/sc_time_syncronizer.h" line="12" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/sc_time_syncronizer.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1qk_1_1client__deputy_1a4be68c220ad48192c12770de4af0bff3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::qk::client_deputy::client_deputy</definition>
+        <argsstring>(char const *nm)</argsstring>
+        <name>client_deputy</name>
+        <qualifiedname>tlm::scc::qk::client_deputy::client_deputy</qualifiedname>
+        <param>
+          <type>char const *</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/sc_time_syncronizer.h" line="13" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/sc_time_syncronizer.h" bodystart="13" bodyend="15"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="2">
+        <label>scc::peq&lt; callback_task &gt;</label>
+        <link refid="structscc_1_1peq"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::qk::client_deputy</label>
+        <link refid="structtlm_1_1scc_1_1qk_1_1client__deputy"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>peq</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/sc_time_syncronizer.h" line="10" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/sc_time_syncronizer.h" bodystart="10" bodyend="16"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1qk_1_1client__deputy_1a7d3715d771c8e7fe5db21fdb40ae2eed" prot="public" virt="non-virtual"><scope>tlm::scc::qk::client_deputy</scope><name>blocked</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1client__deputy_1a4be68c220ad48192c12770de4af0bff3" prot="public" virt="non-virtual"><scope>tlm::scc::qk::client_deputy</scope><name>client_deputy</name></member>
+      <member refid="structtlm_1_1scc_1_1qk_1_1client__deputy_1ae79feb5cf66abdff766c58ff4bb67b47" prot="public" virt="non-virtual"><scope>tlm::scc::qk::client_deputy</scope><name>peq</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

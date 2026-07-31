@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1nw_1_1target__mixin_1_1fw__process_1_1mm__end__event__ext" kind="class" language="C++" prot="private">
+    <compoundname>tlm::nw::target_mixin::fw_process::mm_end_event_ext</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_extension&lt; mm_end_event_ext &gt;</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classtlm_1_1nw_1_1target__mixin_1_1fw__process_1_1mm__end__event__ext_1a2c3fc7fa8fc58a23dfdaaa4bc46a8b20" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event tlm::nw::target_mixin&lt; BASE_TYPE, REQUESTOR, TYPES &gt;::fw_process::mm_end_event_ext::done</definition>
+        <argsstring></argsstring>
+        <name>done</name>
+        <qualifiedname>tlm::nw::target_mixin::fw_process::mm_end_event_ext::done</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" line="422" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" bodystart="422" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1nw_1_1target__mixin_1_1fw__process_1_1mm__end__event__ext_1a4dacc39c0d9ee44482fb234520299240" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_extension_base *</type>
+        <definition>tlm::tlm_extension_base * tlm::nw::target_mixin&lt; BASE_TYPE, REQUESTOR, TYPES &gt;::fw_process::mm_end_event_ext::clone</definition>
+        <argsstring>() const</argsstring>
+        <name>clone</name>
+        <qualifiedname>tlm::nw::target_mixin::fw_process::mm_end_event_ext::clone</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" line="419" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" bodystart="419" bodyend="419"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1nw_1_1target__mixin_1_1fw__process_1_1mm__end__event__ext_1abf4980c28abdc897ba5ac34c86d9738c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::target_mixin&lt; BASE_TYPE, REQUESTOR, TYPES &gt;::fw_process::mm_end_event_ext::free</definition>
+        <argsstring>()</argsstring>
+        <name>free</name>
+        <qualifiedname>tlm::nw::target_mixin::fw_process::mm_end_event_ext::free</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" line="420" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" bodystart="420" bodyend="420"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1nw_1_1target__mixin_1_1fw__process_1_1mm__end__event__ext_1a150bf58433504d89c6bda32377ecdcdf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::nw::target_mixin&lt; BASE_TYPE, REQUESTOR, TYPES &gt;::fw_process::mm_end_event_ext::copy_from</definition>
+        <argsstring>(tlm::tlm_extension_base const &amp;)</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>tlm::nw::target_mixin::fw_process::mm_end_event_ext::copy_from</qualifiedname>
+        <param>
+          <type>tlm::tlm_extension_base const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" line="421" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" bodystart="421" bodyend="421"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::nw::target_mixin&lt; BASE_TYPE, REQUESTOR, TYPES &gt;::fw_process::mm_end_event_ext</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; mm_end_event_ext &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::nw::target_mixin&lt; BASE_TYPE, REQUESTOR, TYPES &gt;::fw_process::mm_end_event_ext</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; mm_end_event_ext &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" line="417" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/target_mixin.h" bodystart="417" bodyend="423"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1nw_1_1target__mixin_1_1fw__process_1_1mm__end__event__ext_1a4dacc39c0d9ee44482fb234520299240" prot="public" virt="non-virtual"><scope>tlm::nw::target_mixin::fw_process::mm_end_event_ext</scope><name>clone</name></member>
+      <member refid="classtlm_1_1nw_1_1target__mixin_1_1fw__process_1_1mm__end__event__ext_1a150bf58433504d89c6bda32377ecdcdf" prot="public" virt="non-virtual"><scope>tlm::nw::target_mixin::fw_process::mm_end_event_ext</scope><name>copy_from</name></member>
+      <member refid="classtlm_1_1nw_1_1target__mixin_1_1fw__process_1_1mm__end__event__ext_1a2c3fc7fa8fc58a23dfdaaa4bc46a8b20" prot="public" virt="non-virtual"><scope>tlm::nw::target_mixin::fw_process::mm_end_event_ext</scope><name>done</name></member>
+      <member refid="classtlm_1_1nw_1_1target__mixin_1_1fw__process_1_1mm__end__event__ext_1abf4980c28abdc897ba5ac34c86d9738c" prot="public" virt="non-virtual"><scope>tlm::nw::target_mixin::fw_process::mm_end_event_ext</scope><name>free</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacetlm_1_1scc_1_1scv_1_1impl" kind="namespace" language="C++">
+    <compoundname>tlm::scc::scv::impl</compoundname>
+    <innerclass refid="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload" prot="public">tlm::scc::scv::impl::tlm_recording_payload</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__types" prot="public">tlm::scc::scv::impl::tlm_recording_types</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.h" line="52" column="1"/>
+  </compounddef>
+</doxygen>

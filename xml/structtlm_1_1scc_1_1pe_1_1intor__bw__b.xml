@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1pe_1_1intor__bw__b" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::pe::intor_bw_b</compoundname>
+    <basecompoundref refid="structtlm_1_1scc_1_1pe_1_1intor__bw" prot="public" virt="non-virtual">tlm::scc::pe::intor_bw&lt; type::BL &gt;</basecompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>tlm::scc::pe::intor_bw&lt; type::BL &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__bw"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::pe::intor_bw_b</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__bw__b"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>tlm::scc::pe::intor_bw&lt; type::BL &gt;</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__bw"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tlm::scc::pe::intor_bw_b</label>
+        <link refid="structtlm_1_1scc_1_1pe_1_1intor__bw__b"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/intor_if.h" line="63" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/pe/intor_if.h" bodystart="63" bodyend="63"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1pe_1_1intor__bw_1af250b11afa4a9e1c6cf76668847bd3be" prot="public" virt="pure-virtual"><scope>tlm::scc::pe::intor_bw_b</scope><name>transport</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceaxi_1_1pe" kind="namespace" language="C++">
+    <compoundname>axi::pe</compoundname>
+    <innerclass refid="classaxi_1_1pe_1_1ace__target__pe" prot="public">axi::pe::ace_target_pe</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1axi__initiator__b" prot="public">axi::pe::axi_initiator_b</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1axi__initiator" prot="public">axi::pe::axi_initiator</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1ace__lite__initiator" prot="public">axi::pe::ace_lite_initiator</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1ace__initiator" prot="public">axi::pe::ace_initiator</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1axi__target__pe" prot="public">axi::pe::axi_target_pe</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1rate__limiting__buffer" prot="public">axi::pe::rate_limiting_buffer</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1ordered__target" prot="public">axi::pe::ordered_target</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1tx__reorderer" prot="public">axi::pe::tx_reorderer</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1reordering__target" prot="public">axi::pe::reordering_target</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1replay__buffer" prot="public">axi::pe::replay_buffer</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1replay__target" prot="public">axi::pe::replay_target</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1simple__ace__target" prot="public">axi::pe::simple_ace_target</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1simple__initiator__b" prot="public">axi::pe::simple_initiator_b</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1simple__axi__initiator" prot="public">axi::pe::simple_axi_initiator</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1simple__ace__initiator" prot="public">axi::pe::simple_ace_initiator</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1simple__target" prot="public">axi::pe::simple_target</innerclass>
+    <innerclass refid="classaxi_1_1pe_1_1target__info__if" prot="public">axi::pe::target_info_if</innerclass>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceaxi_1_1pe_1a82b5f92f5eb7a561079cb4dc23deced1" prot="public" static="no" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int axi::pe::CATCH_ALL_SEQUENCE</definition>
+        <argsstring></argsstring>
+        <name>CATCH_ALL_SEQUENCE</name>
+        <qualifiedname>axi::pe::CATCH_ALL_SEQUENCE</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.cpp" line="6" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.cpp" bodystart="6" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceaxi_1_1pe_1aa017c58b8950a59d21f7f7f3c05cf054" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::pe::SC_HAS_PROCESS</definition>
+        <argsstring>(axi_initiator_b)</argsstring>
+        <name>SC_HAS_PROCESS</name>
+        <qualifiedname>axi::pe::SC_HAS_PROCESS</qualifiedname>
+        <param>
+          <type><ref refid="classaxi_1_1pe_1_1axi__initiator__b" kindref="compound">axi_initiator_b</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_initiator.cpp" line="37" column="1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_initiator.cpp" declline="37" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceaxi_1_1pe_1a1572b5f19942e9221fda13bc071b6da0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned axi::pe::get_cci_randomized_value</definition>
+        <argsstring>(cci::cci_param&lt; int &gt; const &amp;p)</argsstring>
+        <name>get_cci_randomized_value</name>
+        <qualifiedname>axi::pe::get_cci_randomized_value</qualifiedname>
+        <param>
+          <type>cci::cci_param&lt; int &gt; const &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_target_pe.h" line="39" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_target_pe.h" bodystart="39" bodyend="43"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>protocol engine implementations </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h" line="37" column="1"/>
+  </compounddef>
+</doxygen>

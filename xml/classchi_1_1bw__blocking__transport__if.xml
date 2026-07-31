@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classchi_1_1bw__blocking__transport__if" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>chi::bw_blocking_transport_if</compoundname>
+    <basecompoundref prot="public" virt="virtual">sc_core::sc_interface</basecompoundref>
+    <includes refid="chi__tlm_8h" local="no">chi_tlm.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TRANS</type>
+        <defval>tlm::tlm_generic_payload</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classchi_1_1bw__blocking__transport__if_1a1a0ef89ad25cb7c823a6191922ba86fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void chi::bw_blocking_transport_if&lt; TRANS &gt;::b_snoop</definition>
+        <argsstring>(TRANS &amp;trans, sc_core::sc_time &amp;t)=0</argsstring>
+        <name>b_snoop</name>
+        <qualifiedname>chi::bw_blocking_transport_if::b_snoop</qualifiedname>
+        <reimplementedby refid="classchi_1_1pe_1_1chi__rn__initiator__b_1ad90883b4c3aafa84b670184b6d71474c">b_snoop</reimplementedby>
+        <param>
+          <type>TRANS &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>snoop access to a snooped master </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the payload </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>annotated delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="908" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>interface definition for the blocking backward interface. This is need to allow snoop accesses in blocking mode </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>chi::bw_blocking_transport_if&lt; TRANS &gt;</label>
+        <link refid="classchi_1_1bw__blocking__transport__if"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_interface</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>chi::bw_blocking_transport_if&lt; TRANS &gt;</label>
+        <link refid="classchi_1_1bw__blocking__transport__if"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_interface</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="901" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="901" bodyend="909"/>
+    <listofallmembers>
+      <member refid="classchi_1_1bw__blocking__transport__if_1a1a0ef89ad25cb7c823a6191922ba86fb" prot="public" virt="pure-virtual"><scope>chi::bw_blocking_transport_if</scope><name>b_snoop</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

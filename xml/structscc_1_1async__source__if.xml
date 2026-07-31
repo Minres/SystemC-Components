@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1async__source__if" kind="struct" language="C++" prot="public" abstract="yes">
+    <compoundname>scc::async_source_if</compoundname>
+    <basecompoundref prot="public" virt="virtual">sc_core::sc_interface</basecompoundref>
+    <derivedcompoundref refid="structscc_1_1async__queue" prot="public" virt="non-virtual">scc::async_queue&lt; T &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1async__source__if_1a721b9568212f5897690c5181df00679c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool scc::async_source_if&lt; T &gt;::try_get</definition>
+        <argsstring>(T &amp;v)=0</argsstring>
+        <name>try_get</name>
+        <qualifiedname>scc::async_source_if::try_get</qualifiedname>
+        <reimplementedby refid="structscc_1_1async__queue_1a6fa8bd9b3c6c7e9b0f8df1999fda731d">try_get</reimplementedby>
+        <reimplementedby refid="structscc_1_1async__queue_1a6fa8bd9b3c6c7e9b0f8df1999fda731d">try_get</reimplementedby>
+        <reimplementedby refid="structscc_1_1async__queue_1a6fa8bd9b3c6c7e9b0f8df1999fda731d">try_get</reimplementedby>
+        <param>
+          <type>T &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" line="9" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1async__source__if_1a3e3ca0349a9b69891c9bac56fc6f0f21" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>sc_core::sc_event const &amp;</type>
+        <definition>virtual sc_core::sc_event const  &amp; scc::async_source_if&lt; T &gt;::data_event</definition>
+        <argsstring>() const =0</argsstring>
+        <name>data_event</name>
+        <qualifiedname>scc::async_source_if::data_event</qualifiedname>
+        <reimplementedby refid="structscc_1_1async__queue_1adf97d7490da876d88211c727df547391">data_event</reimplementedby>
+        <reimplementedby refid="structscc_1_1async__queue_1adf97d7490da876d88211c727df547391">data_event</reimplementedby>
+        <reimplementedby refid="structscc_1_1async__queue_1adf97d7490da876d88211c727df547391">data_event</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" line="10" column="37"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="3">
+        <label>scc::async_queue&lt; T &gt;</label>
+        <link refid="structscc_1_1async__queue"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>scc::async_source_if&lt; T &gt;</label>
+        <link refid="structscc_1_1async__source__if"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="1">
+        <label>scc::async_source_if&lt; T &gt;</label>
+        <link refid="structscc_1_1async__source__if"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" line="8" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" bodystart="8" bodyend="11"/>
+    <listofallmembers>
+      <member refid="structscc_1_1async__source__if_1a3e3ca0349a9b69891c9bac56fc6f0f21" prot="public" virt="pure-virtual"><scope>scc::async_source_if</scope><name>data_event</name></member>
+      <member refid="structscc_1_1async__source__if_1a721b9568212f5897690c5181df00679c" prot="public" virt="pure-virtual"><scope>scc::async_source_if</scope><name>try_get</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

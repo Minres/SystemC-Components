@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtilelink_1_1signal__types" kind="struct" language="C++" prot="public">
+    <compoundname>tilelink::signal_types</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structtilelink_1_1signal__types_1af4b452eff2f576d70def4ad12ce94af9" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_signal&lt; T &gt;</type>
+        <definition>using tilelink::signal_types::m2s_t =  sc_core::sc_signal&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>m2s_t</name>
+        <qualifiedname>tilelink::signal_types::m2s_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="46" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtilelink_1_1signal__types_1a6825cfc649b29be1547767209a78cdd5" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_signal&lt; T &gt;</type>
+        <definition>using tilelink::signal_types::s2m_t =  sc_core::sc_signal&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>s2m_t</name>
+        <qualifiedname>tilelink::signal_types::s2m_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="47" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtilelink_1_1signal__types_1a15162da49d042502510b0c1f53a1f7e6" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_signal&lt; T &gt;</type>
+        <definition>using tilelink::signal_types::m2s_full_t =  sc_core::sc_signal&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>m2s_full_t</name>
+        <qualifiedname>tilelink::signal_types::m2s_full_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="48" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtilelink_1_1signal__types_1aabf826ac7397d76eac9e77c1b4dee3aa" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_signal&lt; T &gt;</type>
+        <definition>using tilelink::signal_types::s2m_full_t =  sc_core::sc_signal&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>s2m_full_t</name>
+        <qualifiedname>tilelink::signal_types::s2m_full_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="49" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtilelink_1_1signal__types_1a4246b9d15f6e8dff090912f3dc05b25d" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_signal&lt; T &gt;</type>
+        <definition>using tilelink::signal_types::m2s_opt_t =  sc_core::sc_signal&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>m2s_opt_t</name>
+        <qualifiedname>tilelink::signal_types::m2s_opt_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="50" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtilelink_1_1signal__types_1a94caa79c3f393437643274f1651e8073" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_signal&lt; T &gt;</type>
+        <definition>using tilelink::signal_types::s2m_opt_t =  sc_core::sc_signal&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>s2m_opt_t</name>
+        <qualifiedname>tilelink::signal_types::s2m_opt_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="51" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" line="45" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/signal_if.h" bodystart="45" bodyend="52"/>
+    <listofallmembers>
+      <member refid="structtilelink_1_1signal__types_1a15162da49d042502510b0c1f53a1f7e6" prot="public" virt="non-virtual"><scope>tilelink::signal_types</scope><name>m2s_full_t</name></member>
+      <member refid="structtilelink_1_1signal__types_1a4246b9d15f6e8dff090912f3dc05b25d" prot="public" virt="non-virtual"><scope>tilelink::signal_types</scope><name>m2s_opt_t</name></member>
+      <member refid="structtilelink_1_1signal__types_1af4b452eff2f576d70def4ad12ce94af9" prot="public" virt="non-virtual"><scope>tilelink::signal_types</scope><name>m2s_t</name></member>
+      <member refid="structtilelink_1_1signal__types_1aabf826ac7397d76eac9e77c1b4dee3aa" prot="public" virt="non-virtual"><scope>tilelink::signal_types</scope><name>s2m_full_t</name></member>
+      <member refid="structtilelink_1_1signal__types_1a94caa79c3f393437643274f1651e8073" prot="public" virt="non-virtual"><scope>tilelink::signal_types</scope><name>s2m_opt_t</name></member>
+      <member refid="structtilelink_1_1signal__types_1a6825cfc649b29be1547767209a78cdd5" prot="public" virt="non-virtual"><scope>tilelink::signal_types</scope><name>s2m_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1std11_1_1conditional_3_01false_00_01Then_00_01Else_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::std11::conditional&lt; false, Then, Else &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Then</type>
+      </param>
+      <param>
+        <type>class Else</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structnonstd_1_1variants_1_1std11_1_1conditional_3_01false_00_01Then_00_01Else_01_4_1a150073e30d5d23076a55542ddf6913a7" prot="public" static="no">
+        <type>Else</type>
+        <definition>typedef Else nonstd::variants::std11::conditional&lt; false, Then, Else &gt;::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>nonstd::variants::std11::conditional&lt; false, Then, Else &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="473" column="46" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="473" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="473" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="473" bodyend="473"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1std11_1_1conditional_3_01false_00_01Then_00_01Else_01_4_1a150073e30d5d23076a55542ddf6913a7" prot="public" virt="non-virtual"><scope>nonstd::variants::std11::conditional&lt; false, Then, Else &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1lite__slave__types" kind="struct" language="C++" prot="public">
+    <compoundname>axi::lite_slave_types</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structaxi_1_1lite__slave__types_1ac14f4da585411c3e8265d59e85e618c3" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_in&lt; T &gt;</type>
+        <definition>using axi::lite_slave_types::m2s_t =  sc_core::sc_in&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>m2s_t</name>
+        <qualifiedname>axi::lite_slave_types::m2s_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="55" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1lite__slave__types_1a0233a9f6c30dc9e672036acecb807a29" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>sc_core::sc_out&lt; T &gt;</type>
+        <definition>using axi::lite_slave_types::s2m_t =  sc_core::sc_out&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>s2m_t</name>
+        <qualifiedname>axi::lite_slave_types::s2m_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="56" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1lite__slave__types_1a1ecae19554bc4cf7ae7057b3b33c887c" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classscc_1_1sc__in__opt" kindref="compound">scc::sc_in_opt</ref>&lt; T &gt;</type>
+        <definition>using axi::lite_slave_types::m2s_full_t =  scc::sc_in_opt&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>m2s_full_t</name>
+        <qualifiedname>axi::lite_slave_types::m2s_full_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="57" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1lite__slave__types_1a0effb1658fa01ad4bc2d50e2bd6ab7ef" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classscc_1_1sc__out__opt" kindref="compound">scc::sc_out_opt</ref>&lt; T &gt;</type>
+        <definition>using axi::lite_slave_types::s2m_full_t =  scc::sc_out_opt&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>s2m_full_t</name>
+        <qualifiedname>axi::lite_slave_types::s2m_full_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="58" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1lite__slave__types_1a70c7f9d26252b88ba313b273a5a2658e" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classscc_1_1sc__in__opt" kindref="compound">scc::sc_in_opt</ref>&lt; T &gt;</type>
+        <definition>using axi::lite_slave_types::m2s_opt_t =  scc::sc_in_opt&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>m2s_opt_t</name>
+        <qualifiedname>axi::lite_slave_types::m2s_opt_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="59" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1lite__slave__types_1a5a5245318d385e57383577d04503d65e" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classscc_1_1sc__out__opt" kindref="compound">scc::sc_out_opt</ref>&lt; T &gt;</type>
+        <definition>using axi::lite_slave_types::s2m_opt_t =  scc::sc_out_opt&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>s2m_opt_t</name>
+        <qualifiedname>axi::lite_slave_types::s2m_opt_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="60" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="54" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="54" bodyend="61"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1lite__slave__types_1a1ecae19554bc4cf7ae7057b3b33c887c" prot="public" virt="non-virtual"><scope>axi::lite_slave_types</scope><name>m2s_full_t</name></member>
+      <member refid="structaxi_1_1lite__slave__types_1a70c7f9d26252b88ba313b273a5a2658e" prot="public" virt="non-virtual"><scope>axi::lite_slave_types</scope><name>m2s_opt_t</name></member>
+      <member refid="structaxi_1_1lite__slave__types_1ac14f4da585411c3e8265d59e85e618c3" prot="public" virt="non-virtual"><scope>axi::lite_slave_types</scope><name>m2s_t</name></member>
+      <member refid="structaxi_1_1lite__slave__types_1a0effb1658fa01ad4bc2d50e2bd6ab7ef" prot="public" virt="non-virtual"><scope>axi::lite_slave_types</scope><name>s2m_full_t</name></member>
+      <member refid="structaxi_1_1lite__slave__types_1a5a5245318d385e57383577d04503d65e" prot="public" virt="non-virtual"><scope>axi::lite_slave_types</scope><name>s2m_opt_t</name></member>
+      <member refid="structaxi_1_1lite__slave__types_1a0233a9f6c30dc9e672036acecb807a29" prot="public" virt="non-virtual"><scope>axi::lite_slave_types</scope><name>s2m_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

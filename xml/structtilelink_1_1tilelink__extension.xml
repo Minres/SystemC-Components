@@ -1,0 +1,448 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtilelink_1_1tilelink__extension" kind="struct" language="C++" prot="public">
+    <compoundname>tilelink::tilelink_extension</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_extension&lt; tilelink_extension &gt;</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structtilelink_1_1tilelink__extension_1ad4bcdb09dae48dccd6c882d767fdea3f" prot="private" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t tilelink::tilelink_extension::source</definition>
+        <argsstring></argsstring>
+        <name>source</name>
+        <qualifiedname>tilelink::tilelink_extension::source</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="150" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="150" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1tilelink__extension_1a9f4c4e4ccefeb7ec5b846e58e6955a84" prot="private" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t tilelink::tilelink_extension::sink</definition>
+        <argsstring></argsstring>
+        <name>sink</name>
+        <qualifiedname>tilelink::tilelink_extension::sink</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="151" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="151" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1tilelink__extension_1aafbb296521a55ae0211ea65d6cb43e44" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tilelink::tilelink_extension::corrupt</definition>
+        <argsstring></argsstring>
+        <name>corrupt</name>
+        <qualifiedname>tilelink::tilelink_extension::corrupt</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="152" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="152" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1tilelink__extension_1a12b36d34adc0e2fa39ebf11b25576325" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tilelink::tilelink_extension::denied</definition>
+        <argsstring></argsstring>
+        <name>denied</name>
+        <qualifiedname>tilelink::tilelink_extension::denied</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="153" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="153" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1tilelink__extension_1a6a4eb97624f41154d8bc50a241949487" prot="private" static="no" mutable="no">
+        <type>param_e</type>
+        <definition>param_e tilelink::tilelink_extension::param</definition>
+        <argsstring></argsstring>
+        <name>param</name>
+        <qualifiedname>tilelink::tilelink_extension::param</qualifiedname>
+        <initializer>{CAP_2T}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="154" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="154" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtilelink_1_1tilelink__extension_1af2e29f8d7af73ec9c1fcac5df23503bf" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacetilelink_1ab3a7813671a43163e376568686756a79" kindref="member">opcode_e</ref></type>
+        <definition>opcode_e tilelink::tilelink_extension::opcode</definition>
+        <argsstring></argsstring>
+        <name>opcode</name>
+        <qualifiedname>tilelink::tilelink_extension::opcode</qualifiedname>
+        <initializer>{opcode_e::ILLEGAL}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="155" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="155" bodyend="155"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1ac9750acf746561f999c5255d598702aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacetilelink_1ab3a7813671a43163e376568686756a79" kindref="member">opcode_e</ref></type>
+        <definition>opcode_e tilelink::tilelink_extension::get_opcode</definition>
+        <argsstring>() const</argsstring>
+        <name>get_opcode</name>
+        <qualifiedname>tilelink::tilelink_extension::get_opcode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="113" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="338" bodyend="338"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1a90b4929a95079053ebf4f65b521e38d5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tilelink::tilelink_extension::set_opcode</definition>
+        <argsstring>(opcode_e)</argsstring>
+        <name>set_opcode</name>
+        <qualifiedname>tilelink::tilelink_extension::set_opcode</qualifiedname>
+        <param>
+          <type><ref refid="namespacetilelink_1ab3a7813671a43163e376568686756a79" kindref="member">opcode_e</ref></type>
+          <defname>opcode</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="114" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="340" bodyend="340"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1a031879c7b6b270a071a774809b471c73" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>param_e</type>
+        <definition>param_e tilelink::tilelink_extension::get_param</definition>
+        <argsstring>() const</argsstring>
+        <name>get_param</name>
+        <qualifiedname>tilelink::tilelink_extension::get_param</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="116" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="342" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1afea134bf8dce47a48336e481ad32f27e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tilelink::tilelink_extension::set_param</definition>
+        <argsstring>(param_e)</argsstring>
+        <name>set_param</name>
+        <qualifiedname>tilelink::tilelink_extension::set_param</qualifiedname>
+        <param>
+          <type>param_e</type>
+          <defname>param</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="117" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="344" bodyend="344"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1abf3360f7316bb86c5c3e242ed19e431f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t tilelink::tilelink_extension::get_source</definition>
+        <argsstring>() const</argsstring>
+        <name>get_source</name>
+        <qualifiedname>tilelink::tilelink_extension::get_source</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="119" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="346" bodyend="346"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1a9ad1d7843a8bcbcc5dbd3940bdf0dc83" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tilelink::tilelink_extension::set_source</definition>
+        <argsstring>(uint64_t)</argsstring>
+        <name>set_source</name>
+        <qualifiedname>tilelink::tilelink_extension::set_source</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <defname>source</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="120" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="348" bodyend="348"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1a096cb2841cda04e9630fed4933b538c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t tilelink::tilelink_extension::get_sink</definition>
+        <argsstring>() const</argsstring>
+        <name>get_sink</name>
+        <qualifiedname>tilelink::tilelink_extension::get_sink</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="122" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="350" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1a5d437b1c9c76fb295c764d66d4fa8548" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tilelink::tilelink_extension::set_sink</definition>
+        <argsstring>(uint64_t)</argsstring>
+        <name>set_sink</name>
+        <qualifiedname>tilelink::tilelink_extension::set_sink</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <defname>sink</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="123" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="352" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1acc66403caff34cb8206b23a606007105" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tilelink::tilelink_extension::is_corrupt</definition>
+        <argsstring>() const</argsstring>
+        <name>is_corrupt</name>
+        <qualifiedname>tilelink::tilelink_extension::is_corrupt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="125" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="354" bodyend="354"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1a645c552d4464a9a1b6a4811c77d92c6c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tilelink::tilelink_extension::set_corrupt</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_corrupt</name>
+        <qualifiedname>tilelink::tilelink_extension::set_corrupt</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>corrupt</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="126" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="356" bodyend="356"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1ad9a92d3deeec8a2ca679bc1931824130" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tilelink::tilelink_extension::is_denied</definition>
+        <argsstring>() const</argsstring>
+        <name>is_denied</name>
+        <qualifiedname>tilelink::tilelink_extension::is_denied</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="128" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="358" bodyend="358"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1aada725807bccbf56bf8e87e48f6bca0f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tilelink::tilelink_extension::set_denied</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_denied</name>
+        <qualifiedname>tilelink::tilelink_extension::set_denied</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>denied</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="129" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="360" bodyend="360"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1ade9af32514b9abd3c48057b797298dbd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tilelink::tilelink_extension::tilelink_extension</definition>
+        <argsstring>()=default</argsstring>
+        <name>tilelink_extension</name>
+        <qualifiedname>tilelink::tilelink_extension::tilelink_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="131" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1adcf863726d6c1e622caeaff2d7de69c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tilelink::tilelink_extension::tilelink_extension</definition>
+        <argsstring>(opcode_e opc, param_e p)</argsstring>
+        <name>tilelink_extension</name>
+        <qualifiedname>tilelink::tilelink_extension::tilelink_extension</qualifiedname>
+        <param>
+          <type><ref refid="namespacetilelink_1ab3a7813671a43163e376568686756a79" kindref="member">opcode_e</ref></type>
+          <declname>opc</declname>
+        </param>
+        <param>
+          <type>param_e</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="133" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="133" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1ae14955d97d79406f6575a228800ef150" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tilelink::tilelink_extension::tilelink_extension</definition>
+        <argsstring>(const tilelink_extension &amp;o)=default</argsstring>
+        <name>tilelink_extension</name>
+        <qualifiedname>tilelink::tilelink_extension::tilelink_extension</qualifiedname>
+        <param>
+          <type>const tilelink_extension &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="137" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1aae5366c3bae93c3fbbb74e13a234e105" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm::tlm_extension_base *</type>
+        <definition>tlm::tlm_extension_base * tilelink::tilelink_extension::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <qualifiedname>tilelink::tilelink_extension::clone</qualifiedname>
+        <briefdescription>
+<para>the clone function to create deep copies of </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>pointer to heap-allocated extension </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="142" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="362" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="structtilelink_1_1tilelink__extension_1a2081dc1a934b6cfcd8720665c4ccdca8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tilelink::tilelink_extension::copy_from</definition>
+        <argsstring>(tlm::tlm_extension_base const &amp;ext) override</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>tilelink::tilelink_extension::copy_from</qualifiedname>
+        <param>
+          <type>tlm::tlm_extension_base const &amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+<para>deep copy all values from ext </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ext</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="147" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="364" bodyend="368"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tilelink::tilelink_extension</label>
+        <link refid="structtilelink_1_1tilelink__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; tilelink_extension &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tilelink::tilelink_extension</label>
+        <link refid="structtilelink_1_1tilelink__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; tilelink_extension &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" line="112" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/tilelink/tl_tlm.h" bodystart="112" bodyend="156"/>
+    <listofallmembers>
+      <member refid="structtilelink_1_1tilelink__extension_1aae5366c3bae93c3fbbb74e13a234e105" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>clone</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1a2081dc1a934b6cfcd8720665c4ccdca8" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>copy_from</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1aafbb296521a55ae0211ea65d6cb43e44" prot="private" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>corrupt</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1a12b36d34adc0e2fa39ebf11b25576325" prot="private" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>denied</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1ac9750acf746561f999c5255d598702aa" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>get_opcode</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1a031879c7b6b270a071a774809b471c73" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>get_param</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1a096cb2841cda04e9630fed4933b538c3" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>get_sink</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1abf3360f7316bb86c5c3e242ed19e431f" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>get_source</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1acc66403caff34cb8206b23a606007105" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>is_corrupt</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1ad9a92d3deeec8a2ca679bc1931824130" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>is_denied</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1af2e29f8d7af73ec9c1fcac5df23503bf" prot="private" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>opcode</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1a6a4eb97624f41154d8bc50a241949487" prot="private" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>param</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1a645c552d4464a9a1b6a4811c77d92c6c" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>set_corrupt</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1aada725807bccbf56bf8e87e48f6bca0f" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>set_denied</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1a90b4929a95079053ebf4f65b521e38d5" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>set_opcode</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1afea134bf8dce47a48336e481ad32f27e" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>set_param</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1a5d437b1c9c76fb295c764d66d4fa8548" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>set_sink</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1a9ad1d7843a8bcbcc5dbd3940bdf0dc83" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>set_source</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1a9f4c4e4ccefeb7ec5b846e58e6955a84" prot="private" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>sink</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1ad4bcdb09dae48dccd6c882d767fdea3f" prot="private" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>source</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1ade9af32514b9abd3c48057b797298dbd" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>tilelink_extension</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1adcf863726d6c1e622caeaff2d7de69c2" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>tilelink_extension</name></member>
+      <member refid="structtilelink_1_1tilelink__extension_1ae14955d97d79406f6575a228800ef150" prot="public" virt="non-virtual"><scope>tilelink::tilelink_extension</scope><name>tilelink_extension</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

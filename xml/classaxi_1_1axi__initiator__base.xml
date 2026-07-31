@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classaxi_1_1axi__initiator__base" kind="class" language="C++" prot="public">
+    <compoundname>axi::axi_initiator_base</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <derivedcompoundref refid="classaxi_1_1axi__initiator" prot="public" virt="non-virtual">axi::axi_initiator&lt; BUSWIDTH &gt;</derivedcompoundref>
+    <includes refid="src_2interfaces_2axi_2axi__initiator_8h" local="no">axi_initiator.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classaxi_1_1axi__initiator__base_1af596636ca7b958ffd07705866851a9fc" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_in&lt; bool &gt;</type>
+        <definition>sc_core::sc_in&lt;bool&gt; axi::axi_initiator_base::clk_i</definition>
+        <argsstring></argsstring>
+        <name>clk_i</name>
+        <qualifiedname>axi::axi_initiator_base::clk_i</qualifiedname>
+        <initializer>{&quot;clk_i&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="37" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1axi__initiator__base_1a07f214537773f9997981521dadd25c39" prot="public" static="no" mutable="no">
+        <type>tlm_utils::simple_target_socket&lt; axi_initiator_base, scc::LT &gt;</type>
+        <definition>tlm_utils::simple_target_socket&lt;axi_initiator_base, scc::LT&gt; axi::axi_initiator_base::tsck</definition>
+        <argsstring></argsstring>
+        <name>tsck</name>
+        <qualifiedname>axi::axi_initiator_base::tsck</qualifiedname>
+        <initializer>{&quot;tsck&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="41" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classaxi_1_1axi__initiator__base_1a7facb5c71b8be060065abea476e9092d" prot="private" static="no" mutable="no">
+        <type><ref refid="classaxi_1_1pe_1_1simple__initiator__b" kindref="compound">axi::pe::simple_initiator_b</ref> &amp;</type>
+        <definition>axi::pe::simple_initiator_b&amp; axi::axi_initiator_base::pe</definition>
+        <argsstring></argsstring>
+        <name>pe</name>
+        <qualifiedname>axi::axi_initiator_base::pe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="59" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1axi__initiator__base_1a5bfeff3016382849fcd8bda345f1f91f" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t axi::axi_initiator_base::buswidth</definition>
+        <argsstring></argsstring>
+        <name>buswidth</name>
+        <qualifiedname>axi::axi_initiator_base::buswidth</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="60" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1axi__initiator__base_1a63f4126b09ca9e191ee4f8c93c12ff1a" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned axi::axi_initiator_base::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <qualifiedname>axi::axi_initiator_base::id</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="61" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaxi_1_1axi__initiator__base_1a5041b10f079ff94624d805cf01e14392" prot="private" static="no" mutable="no">
+        <type>std::function&lt; void(tlm::tlm_generic_payload &amp;p)&gt;</type>
+        <definition>std::function&lt;void(tlm::tlm_generic_payload&amp; p)&gt; axi::axi_initiator_base::setup_cb</definition>
+        <argsstring></argsstring>
+        <name>setup_cb</name>
+        <qualifiedname>axi::axi_initiator_base::setup_cb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="62" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classaxi_1_1axi__initiator__base_1ab9acbdbf3ac128f3e0f9faad80f7a5d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::tlm_generic_payload *</type>
+        <definition>tlm::tlm_generic_payload * axi_initiator_base::create_axi_trans</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;p)</argsstring>
+        <name>create_axi_trans</name>
+        <qualifiedname>axi::axi_initiator_base::create_axi_trans</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create and attach AXI extension. AXI protocol engine expects the incoming transactions to be controlled by a memory manager. If transaction does not have an associated memory manager, copy the payload into a new one with mm. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="48" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.cpp" bodystart="52" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1axi__initiator__base_1ab9edf97fbc658dd389fc066970fcd99c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi_initiator_base::b_transport</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;trans, sc_core::sc_time &amp;delay)</argsstring>
+        <name>b_transport</name>
+        <qualifiedname>axi::axi_initiator_base::b_transport</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="50" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.cpp" bodystart="46" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1axi__initiator__base_1a0ac23c78b2a204c2ee1e88de4ac51dbf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi_initiator_base::axi_initiator_base</definition>
+        <argsstring>(const sc_core::sc_module_name &amp;nm, axi::pe::simple_initiator_b &amp;pe, uint32_t width)</argsstring>
+        <name>axi_initiator_base</name>
+        <qualifiedname>axi::axi_initiator_base::axi_initiator_base</qualifiedname>
+        <param>
+          <type>const sc_core::sc_module_name &amp;</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type><ref refid="classaxi_1_1pe_1_1simple__initiator__b" kindref="compound">axi::pe::simple_initiator_b</ref> &amp;</type>
+          <declname>pe</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>width</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="52" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.cpp" bodystart="26" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1axi__initiator__base_1a6bd03842184e3cb89f5d9157cbfe018b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual axi::axi_initiator_base::~axi_initiator_base</definition>
+        <argsstring>()</argsstring>
+        <name>~axi_initiator_base</name>
+        <qualifiedname>axi::axi_initiator_base::~axi_initiator_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="54" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" bodystart="54" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classaxi_1_1axi__initiator__base_1a30af3412ffb37743306bd55a369f5541" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::axi_initiator_base::setTxSetupCb</definition>
+        <argsstring>(const std::function&lt; void(tlm::tlm_generic_payload &amp;p)&gt; &amp;setupCb)</argsstring>
+        <name>setTxSetupCb</name>
+        <qualifiedname>axi::axi_initiator_base::setTxSetupCb</qualifiedname>
+        <param>
+          <type>const std::function&lt; void(tlm::tlm_generic_payload &amp;p)&gt; &amp;</type>
+          <declname>setupCb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="56" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para><ref refid="classaxi_1_1axi__initiator" kindref="compound">axi_initiator</ref> class provides an input_socket for incoming TLM transactions. It attaches AXI extension to the tlm_generic_payload and forwards it to the AXI Protocol Engine. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>axi::axi_initiator&lt; BUSWIDTH &gt;</label>
+        <link refid="classaxi_1_1axi__initiator"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>axi::axi_initiator_base</label>
+        <link refid="classaxi_1_1axi__initiator__base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::axi_initiator_base</label>
+        <link refid="classaxi_1_1axi__initiator__base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" line="35" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h" bodystart="35" bodyend="63"/>
+    <listofallmembers>
+      <member refid="classaxi_1_1axi__initiator__base_1a0ac23c78b2a204c2ee1e88de4ac51dbf" prot="public" virt="non-virtual"><scope>axi::axi_initiator_base</scope><name>axi_initiator_base</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1ab9edf97fbc658dd389fc066970fcd99c" prot="public" virt="non-virtual"><scope>axi::axi_initiator_base</scope><name>b_transport</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1a5bfeff3016382849fcd8bda345f1f91f" prot="private" virt="non-virtual"><scope>axi::axi_initiator_base</scope><name>buswidth</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1af596636ca7b958ffd07705866851a9fc" prot="public" virt="non-virtual"><scope>axi::axi_initiator_base</scope><name>clk_i</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1ab9acbdbf3ac128f3e0f9faad80f7a5d6" prot="public" virt="non-virtual"><scope>axi::axi_initiator_base</scope><name>create_axi_trans</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1a63f4126b09ca9e191ee4f8c93c12ff1a" prot="private" virt="non-virtual"><scope>axi::axi_initiator_base</scope><name>id</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1a7facb5c71b8be060065abea476e9092d" prot="private" virt="non-virtual"><scope>axi::axi_initiator_base</scope><name>pe</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1a30af3412ffb37743306bd55a369f5541" prot="public" virt="non-virtual"><scope>axi::axi_initiator_base</scope><name>setTxSetupCb</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1a5041b10f079ff94624d805cf01e14392" prot="private" virt="non-virtual"><scope>axi::axi_initiator_base</scope><name>setup_cb</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1a07f214537773f9997981521dadd25c39" prot="public" virt="non-virtual"><scope>axi::axi_initiator_base</scope><name>tsck</name></member>
+      <member refid="classaxi_1_1axi__initiator__base_1a6bd03842184e3cb89f5d9157cbfe018b" prot="public" virt="virtual"><scope>axi::axi_initiator_base</scope><name>~axi_initiator_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

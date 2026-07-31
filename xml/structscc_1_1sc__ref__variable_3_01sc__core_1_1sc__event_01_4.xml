@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</compoundname>
+    <basecompoundref refid="structscc_1_1sc__variable__b" prot="public" virt="non-virtual">scc::sc_variable_b</basecompoundref>
+    <basecompoundref refid="structscc_1_1sc__variable__b" prot="public" virt="non-virtual">scc::sc_variable_b</basecompoundref>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4_1aa88efbf3fc0abd03a95359f725fae7b6" prot="public" static="no" mutable="no">
+        <type>const sc_core::sc_event &amp;</type>
+        <definition>const sc_core::sc_event&amp; scc::sc_ref_variable&lt; sc_core::sc_event &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>scc::sc_ref_variable&lt; sc_core::sc_event &gt;::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="503" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="503" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4_1af717ca47ef3359bcbeefc4e800cb0d82" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const sc_core::sc_event &amp;</type>
+        <definition>const sc_core::sc_event &amp; scc::sc_ref_variable&lt; sc_core::sc_event &gt;::operator*</definition>
+        <argsstring>()</argsstring>
+        <name>operator*</name>
+        <qualifiedname>scc::sc_ref_variable&lt; sc_core::sc_event &gt;::operator*</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="504" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="504" bodyend="504"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4_1a0d7f06c204073d91a7b5f44895d9670b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_ref_variable&lt; sc_core::sc_event &gt;::sc_ref_variable</definition>
+        <argsstring>(const std::string &amp;name, const sc_core::sc_event &amp;value)</argsstring>
+        <name>sc_ref_variable</name>
+        <qualifiedname>scc::sc_ref_variable&lt; sc_core::sc_event &gt;::sc_ref_variable</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const sc_core::sc_event &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="505" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="505" bodyend="507"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4_1a66f767ee0f750927fa2ed6023fb40551" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string scc::sc_ref_variable&lt; sc_core::sc_event &gt;::to_string</definition>
+        <argsstring>() const override</argsstring>
+        <name>to_string</name>
+        <qualifiedname>scc::sc_ref_variable&lt; sc_core::sc_event &gt;::to_string</qualifiedname>
+        <reimplements refid="structscc_1_1sc__variable__b_1a1ddfaa46a276428cb67e83c6a1f7ed28">to_string</reimplements>
+        <briefdescription>
+<para>retrieve the textual representation of the value </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="508" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="508" bodyend="512"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4_1a57c127e0f2f75a7a0938e05d596c3715" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void scc::sc_ref_variable&lt; sc_core::sc_event &gt;::trace</definition>
+        <argsstring>(observer *obs) const override</argsstring>
+        <name>trace</name>
+        <qualifiedname>scc::sc_ref_variable&lt; sc_core::sc_event &gt;::trace</qualifiedname>
+        <reimplements refid="structscc_1_1sc__variable__b_1ad33499a234cd42b573a776c54b90c5b5">trace</reimplements>
+        <param>
+          <type><ref refid="structscc_1_1observer" kindref="compound">observer</ref> *</type>
+          <declname>obs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="514" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="514" bodyend="514"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4_1a613bdf31964a06bbde0c5496b82fe046" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_ref_variable&lt; sc_core::sc_event &gt;::trace</definition>
+        <argsstring>(sc_core::sc_trace_file *tf) const override</argsstring>
+        <name>trace</name>
+        <qualifiedname>scc::sc_ref_variable&lt; sc_core::sc_event &gt;::trace</qualifiedname>
+        <param>
+          <type>sc_core::sc_trace_file *</type>
+          <declname>tf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="516" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="516" bodyend="516"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable_1ac6d57ed7d5713ffcaecf08541a5a5943" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual scc::sc_ref_variable&lt; sc_core::sc_event &gt;::~sc_ref_variable</definition>
+        <argsstring>()=default</argsstring>
+        <name>~sc_ref_variable</name>
+        <qualifiedname>scc::sc_ref_variable&lt; sc_core::sc_event &gt;::~sc_ref_variable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="463" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__ref__variable_1afce4a1898d1bd8088e3faafd6ea1c4c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_ref_variable&lt; sc_core::sc_event &gt;::notify</definition>
+        <argsstring>() const</argsstring>
+        <name>notify</name>
+        <qualifiedname>scc::sc_ref_variable&lt; sc_core::sc_event &gt;::notify</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="492" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="492" bodyend="495"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1sc__ref__variable_1a996e8170bef5c339d294641266754981" prot="private" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool scc::sc_ref_variable&lt; sc_core::sc_event &gt;::active_notification</definition>
+        <argsstring></argsstring>
+        <name>active_notification</name>
+        <qualifiedname>scc::sc_ref_variable&lt; sc_core::sc_event &gt;::active_notification</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="498" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="498" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1sc__ref__variable_1a8410b6151e8f4bcb7568e11344a4f4d4" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="structscc_1_1observer_1_1notification__handle" kindref="compound">observer::notification_handle</ref> * &gt;</type>
+        <definition>std::vector&lt;observer::notification_handle*&gt; scc::sc_ref_variable&lt; sc_core::sc_event &gt;::hndl</definition>
+        <argsstring></argsstring>
+        <name>hndl</name>
+        <qualifiedname>scc::sc_ref_variable&lt; sc_core::sc_event &gt;::hndl</qualifiedname>
+        <briefdescription>
+<para>the observer handle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="500" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="500" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</label>
+        <link refid="structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>scc::sc_variable_b</label>
+        <link refid="structscc_1_1sc__variable__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</label>
+        <link refid="structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>scc::sc_variable_b</label>
+        <link refid="structscc_1_1sc__variable__b"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="502" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="502" bodyend="517"/>
+    <listofallmembers>
+      <member refid="structscc_1_1sc__ref__variable_1a996e8170bef5c339d294641266754981" prot="private" virt="non-virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>active_notification</name></member>
+      <member refid="structscc_1_1sc__ref__variable_1a8410b6151e8f4bcb7568e11344a4f4d4" prot="private" virt="non-virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>hndl</name></member>
+      <member refid="structscc_1_1sc__variable__b_1a54e81286d38766d3296fbfdd45a93602" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>kind</name></member>
+      <member refid="structscc_1_1sc__ref__variable_1afce4a1898d1bd8088e3faafd6ea1c4c3" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>notify</name></member>
+      <member refid="structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4_1af717ca47ef3359bcbeefc4e800cb0d82" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>operator*</name></member>
+      <member refid="structscc_1_1sc__variable__b_1a0a5e1d1793cc0bf09e522b45f0682336" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>operator=</name></member>
+      <member refid="structscc_1_1sc__variable__b_1aabe3a0678ea946b12c19754e66c815d2" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>operator=</name></member>
+      <member refid="structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4_1a0d7f06c204073d91a7b5f44895d9670b" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>sc_ref_variable</name></member>
+      <member refid="structscc_1_1sc__variable__b_1adc9d31cb6aa7ca639164fae59948b2df" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>sc_variable_b</name></member>
+      <member refid="structscc_1_1sc__variable__b_1a297b69eb44023b0a8208ebccaf3be74c" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>sc_variable_b</name></member>
+      <member refid="structscc_1_1sc__variable__b_1ae1a37f199e94caba2b8f02cc6c09332f" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>sc_variable_b</name></member>
+      <member refid="structscc_1_1sc__variable__b_1a64a927337d80d2fb5ee45cccb778a90a" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>sc_variable_b</name></member>
+      <member refid="structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4_1a66f767ee0f750927fa2ed6023fb40551" prot="public" virt="virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>to_string</name></member>
+      <member refid="structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4_1a57c127e0f2f75a7a0938e05d596c3715" prot="public" virt="virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>trace</name></member>
+      <member refid="structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4_1a613bdf31964a06bbde0c5496b82fe046" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>trace</name></member>
+      <member refid="structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4_1aa88efbf3fc0abd03a95359f725fae7b6" prot="public" virt="non-virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>value</name></member>
+      <member refid="structscc_1_1sc__ref__variable_1ac6d57ed7d5713ffcaecf08541a5a5943" prot="public" virt="virtual"><scope>scc::sc_ref_variable&lt; sc_core::sc_event &gt;</scope><name>~sc_ref_variable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1515 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structchi_1_1request" kind="struct" language="C++" prot="public">
+    <compoundname>chi::request</compoundname>
+    <includes refid="chi__tlm_8h" local="no">chi_tlm.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structchi_1_1request_1ac3d9c1323e82a1c76f3c5a7c5e681c3c" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::tgt_id</definition>
+        <argsstring></argsstring>
+        <name>tgt_id</name>
+        <qualifiedname>chi::request::tgt_id</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="530" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="530" bodyend="530"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a7068d3b7bcba08929a9298132d83a051" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::lp_id</definition>
+        <argsstring></argsstring>
+        <name>lp_id</name>
+        <qualifiedname>chi::request::lp_id</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="530" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="530" bodyend="530"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a0fef70460cafe6e62c82e87ba0017633" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::return_txn_id</definition>
+        <argsstring></argsstring>
+        <name>return_txn_id</name>
+        <qualifiedname>chi::request::return_txn_id</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="530" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="530" bodyend="530"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a1ed7a25dbcfc14632e060776aebee3a5" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::stash_lp_id</definition>
+        <argsstring></argsstring>
+        <name>stash_lp_id</name>
+        <qualifiedname>chi::request::stash_lp_id</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="530" column="40" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="530" bodyend="530"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a71f30ae455c4bcd5374c6ecfa2711ebf" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>chi::request::size</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="530" column="52" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="530" bodyend="530"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1ae06b6588299896a8ab12f188ab12a9e9" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::max_flit</definition>
+        <argsstring></argsstring>
+        <name>max_flit</name>
+        <qualifiedname>chi::request::max_flit</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="530" column="57" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="530" bodyend="530"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a2ae3d3811f8ff2f1f36b707db00bb934" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::mem_attr</definition>
+        <argsstring></argsstring>
+        <name>mem_attr</name>
+        <qualifiedname>chi::request::mem_attr</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="530" column="66" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="530" bodyend="530"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a30b3e1d333838d879b727ee4298bc3cf" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::pcrd_type</definition>
+        <argsstring></argsstring>
+        <name>pcrd_type</name>
+        <qualifiedname>chi::request::pcrd_type</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="530" column="75" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="530" bodyend="530"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a45893b81868a79d5ee3efd7dc2fc6001" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::order</definition>
+        <argsstring></argsstring>
+        <name>order</name>
+        <qualifiedname>chi::request::order</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="530" column="85" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="530" bodyend="530"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a34debce61dca935e7a283a2891f91bd2" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool chi::request::endian</definition>
+        <argsstring></argsstring>
+        <name>endian</name>
+        <qualifiedname>chi::request::endian</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="531" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="531" bodyend="531"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a4af92931c0f1959c96de0abc75da5541" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool chi::request::trace_tag</definition>
+        <argsstring></argsstring>
+        <name>trace_tag</name>
+        <qualifiedname>chi::request::trace_tag</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="531" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="531" bodyend="531"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a5a1e32c34049dfb7bc77cee2a5118020" prot="private" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t chi::request::return_n_id</definition>
+        <argsstring></argsstring>
+        <name>return_n_id</name>
+        <qualifiedname>chi::request::return_n_id</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="532" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="532" bodyend="532"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1ace340f8768385d086236aa874cf514b9" prot="private" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t chi::request::stash_n_id</definition>
+        <argsstring></argsstring>
+        <name>stash_n_id</name>
+        <qualifiedname>chi::request::stash_n_id</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="532" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="532" bodyend="532"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a7703326bc03aaaec6cf4b352dae0d674" prot="private" static="no" mutable="no">
+        <type>req_optype_e</type>
+        <definition>req_optype_e chi::request::opcode</definition>
+        <argsstring></argsstring>
+        <name>opcode</name>
+        <qualifiedname>chi::request::opcode</qualifiedname>
+        <initializer>{req_optype_e::ReqLCrdReturn}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="533" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="533" bodyend="533"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a1ece94a60f9b61361bd3a57203924fd9" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool chi::request::stash_n_id_valid</definition>
+        <argsstring></argsstring>
+        <name>stash_n_id_valid</name>
+        <qualifiedname>chi::request::stash_n_id_valid</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="534" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="534" bodyend="534"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a73772c7d14ab5fc267a06db1b5f74606" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool chi::request::stash_lp_id_valid</definition>
+        <argsstring></argsstring>
+        <name>stash_lp_id_valid</name>
+        <qualifiedname>chi::request::stash_lp_id_valid</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="534" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="534" bodyend="534"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a652571c27515a673627581ed87ba9030" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool chi::request::ns</definition>
+        <argsstring></argsstring>
+        <name>ns</name>
+        <qualifiedname>chi::request::ns</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="534" column="45" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="534" bodyend="534"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a7aed62fb151e7aa63c2c745a13af104c" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool chi::request::exp_comp_ack</definition>
+        <argsstring></argsstring>
+        <name>exp_comp_ack</name>
+        <qualifiedname>chi::request::exp_comp_ack</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="534" column="48" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="534" bodyend="534"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1aac95bdf37414e2ac1070c2fa91d1010a" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool chi::request::allow_retry</definition>
+        <argsstring></argsstring>
+        <name>allow_retry</name>
+        <qualifiedname>chi::request::allow_retry</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="534" column="61" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="534" bodyend="534"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1ae6058619f8ff2670e0a1a96bb3ba0789" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool chi::request::snp_attr</definition>
+        <argsstring></argsstring>
+        <name>snp_attr</name>
+        <qualifiedname>chi::request::snp_attr</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="534" column="73" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="534" bodyend="534"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a043ed79b2706527c3b452c85d0d231dc" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool chi::request::excl</definition>
+        <argsstring></argsstring>
+        <name>excl</name>
+        <qualifiedname>chi::request::excl</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="535" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="535" bodyend="535"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1ad6065312269898d42a5e9a9cbc669790" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool chi::request::snoop_me</definition>
+        <argsstring></argsstring>
+        <name>snoop_me</name>
+        <qualifiedname>chi::request::snoop_me</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="535" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="535" bodyend="535"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a07adcab1f782802593c7558750435b8e" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool chi::request::likely_shared</definition>
+        <argsstring></argsstring>
+        <name>likely_shared</name>
+        <qualifiedname>chi::request::likely_shared</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="535" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="535" bodyend="535"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1aee0954707e4ad9cec8fb6b2822e98fb1" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t chi::request::rsvdc</definition>
+        <argsstring></argsstring>
+        <name>rsvdc</name>
+        <qualifiedname>chi::request::rsvdc</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="536" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="536" bodyend="536"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a33f0f9209aba8403c7b3184e872eadfb" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t chi::request::tag_group_id</definition>
+        <argsstring></argsstring>
+        <name>tag_group_id</name>
+        <qualifiedname>chi::request::tag_group_id</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="536" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="536" bodyend="536"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a9094b7806c3364bd1d142e2d1f35e256" prot="private" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t chi::request::mpam</definition>
+        <argsstring></argsstring>
+        <name>mpam</name>
+        <qualifiedname>chi::request::mpam</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="537" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="537" bodyend="537"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1request_1a10fc81ed8aab2d1067a5af37c537687f" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::tag_op</definition>
+        <argsstring></argsstring>
+        <name>tag_op</name>
+        <qualifiedname>chi::request::tag_op</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="538" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="538" bodyend="538"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structchi_1_1request_1a79ae9b73ade371c8b329ef67f90f7a75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_tgt_id</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_tgt_id</name>
+        <qualifiedname>chi::request::set_tgt_id</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>id</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="420" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1210" bodyend="1210"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a965673c572e8598562a23017f7d2dc66" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::get_tgt_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_tgt_id</name>
+        <qualifiedname>chi::request::get_tgt_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="421" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1211" bodyend="1211"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1ad2202e608ccbe33110121adacbc9edb3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_lp_id</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_lp_id</name>
+        <qualifiedname>chi::request::set_lp_id</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>id</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="424" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1215" bodyend="1215"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a839ef95908b734600c7ffe43f9c79ace" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::get_lp_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_lp_id</name>
+        <qualifiedname>chi::request::get_lp_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="425" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1216" bodyend="1216"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a9cb4dede9e81f02bc2636c094e29cb76" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_return_txn_id</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_return_txn_id</name>
+        <qualifiedname>chi::request::set_return_txn_id</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>id</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="428" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1220" bodyend="1220"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a2815d8daa30a29f629fcd7de4726cc1c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::get_return_txn_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_return_txn_id</name>
+        <qualifiedname>chi::request::get_return_txn_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="429" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1221" bodyend="1221"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a2f7c21fcabc3f94850e27a4eff279116" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_stash_lp_id</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_stash_lp_id</name>
+        <qualifiedname>chi::request::set_stash_lp_id</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>id</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="431" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1224" bodyend="1224"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a01f64db59b830c4d3ad191c92e5191be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::get_stash_lp_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_stash_lp_id</name>
+        <qualifiedname>chi::request::get_stash_lp_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="432" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1225" bodyend="1225"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a1bd361b83a666536c0242a992527fb2d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_size</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_size</name>
+        <qualifiedname>chi::request::set_size</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>sz</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="435" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1229" bodyend="1232"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a870bae9da406928f755b21f4a5a4d86d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::get_size</definition>
+        <argsstring>() const</argsstring>
+        <name>get_size</name>
+        <qualifiedname>chi::request::get_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="436" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1233" bodyend="1233"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1ab9a966d7b67ca3fba74698b1b8c85bc5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_max_flit</definition>
+        <argsstring>(uint8_t data_id)</argsstring>
+        <name>set_max_flit</name>
+        <qualifiedname>chi::request::set_max_flit</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>data_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="439" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1236" bodyend="1236"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1aff4310fcbd56a231181ffc50f7a89c66" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::get_max_flit</definition>
+        <argsstring>() const</argsstring>
+        <name>get_max_flit</name>
+        <qualifiedname>chi::request::get_max_flit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="440" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1237" bodyend="1237"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1acda68f32877d4daf12bc8879b028ad27" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_mem_attr</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_mem_attr</name>
+        <qualifiedname>chi::request::set_mem_attr</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>mem_attr</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="442" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1241" bodyend="1244"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a329b2e4d47f70c0559e907b1783ab738" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::get_mem_attr</definition>
+        <argsstring>() const</argsstring>
+        <name>get_mem_attr</name>
+        <qualifiedname>chi::request::get_mem_attr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="443" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1245" bodyend="1245"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1aeb6581a482b9eee65ee889b4b39031a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_device</definition>
+        <argsstring>(bool is_device)</argsstring>
+        <name>set_device</name>
+        <qualifiedname>chi::request::set_device</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>is_device</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="445" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1247" bodyend="1252"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a3ddd70e0b5adaa1798082fb55d61f15f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::request::is_device</definition>
+        <argsstring>() const</argsstring>
+        <name>is_device</name>
+        <qualifiedname>chi::request::is_device</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="446" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1253" bodyend="1253"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a34d5cf26ea8508ecbdee393b747dc755" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_ewa</definition>
+        <argsstring>(bool is_device)</argsstring>
+        <name>set_ewa</name>
+        <qualifiedname>chi::request::set_ewa</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>is_device</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="448" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1254" bodyend="1259"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a9d35e417b9ec5530ccf54a22f0b0ca92" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::request::is_ewa</definition>
+        <argsstring>() const</argsstring>
+        <name>is_ewa</name>
+        <qualifiedname>chi::request::is_ewa</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="449" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1260" bodyend="1260"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a306296b1aaef614c2f3746e85204e76b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_allocate</definition>
+        <argsstring>(bool is_device)</argsstring>
+        <name>set_allocate</name>
+        <qualifiedname>chi::request::set_allocate</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>is_device</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="451" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1261" bodyend="1266"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a0bb4865f5b64e146a27f646ecae65d09" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::request::is_allocate</definition>
+        <argsstring>() const</argsstring>
+        <name>is_allocate</name>
+        <qualifiedname>chi::request::is_allocate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="452" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1267" bodyend="1267"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a36fd5fc73d5eabd8595d8a42811f5a43" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_cacheable</definition>
+        <argsstring>(bool is_device)</argsstring>
+        <name>set_cacheable</name>
+        <qualifiedname>chi::request::set_cacheable</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>is_device</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="454" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1268" bodyend="1273"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a4963e7803be6ed830e8dc1b693134c1a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::request::is_cacheable</definition>
+        <argsstring>() const</argsstring>
+        <name>is_cacheable</name>
+        <qualifiedname>chi::request::is_cacheable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="455" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1274" bodyend="1274"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a28d44605f1e452944a3eb2596fa9450e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_pcrd_type</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_pcrd_type</name>
+        <qualifiedname>chi::request::set_pcrd_type</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>pcrd_type</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="458" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1278" bodyend="1278"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a8e1880ec82fcce37359c2876c34e40fb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::get_pcrd_type</definition>
+        <argsstring>() const</argsstring>
+        <name>get_pcrd_type</name>
+        <qualifiedname>chi::request::get_pcrd_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="459" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1279" bodyend="1279"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a0f0b400521d67e2b626363d4298f3bdb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_endian</definition>
+        <argsstring>(bool)</argsstring>
+        <name>set_endian</name>
+        <qualifiedname>chi::request::set_endian</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>endian</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="461" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1282" bodyend="1282"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a021315174b099428c23476af38fc662c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::request::is_endian</definition>
+        <argsstring>() const</argsstring>
+        <name>is_endian</name>
+        <qualifiedname>chi::request::is_endian</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="462" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1283" bodyend="1283"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a12fab07d0830503d08083b263ba98b10" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_order</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_order</name>
+        <qualifiedname>chi::request::set_order</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>order</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="465" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1287" bodyend="1287"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a861c1deac292957f3bbd9eb1187dfa95" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::get_order</definition>
+        <argsstring>() const</argsstring>
+        <name>get_order</name>
+        <qualifiedname>chi::request::get_order</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="466" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1288" bodyend="1288"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a9f8c31a88c5e3c72cf03c43b4e51b86b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_trace_tag</definition>
+        <argsstring>(bool tg=true)</argsstring>
+        <name>set_trace_tag</name>
+        <qualifiedname>chi::request::set_trace_tag</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>tg</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="469" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1292" bodyend="1292"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a565b9c5d5b257457b39457df1b2b1183" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::request::is_trace_tag</definition>
+        <argsstring>() const</argsstring>
+        <name>is_trace_tag</name>
+        <qualifiedname>chi::request::is_trace_tag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="470" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1293" bodyend="1293"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a87c299798530f9be2274c91608b83e76" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_opcode</definition>
+        <argsstring>(chi::req_optype_e op)</argsstring>
+        <name>set_opcode</name>
+        <qualifiedname>chi::request::set_opcode</qualifiedname>
+        <param>
+          <type>chi::req_optype_e</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="471" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1295" bodyend="1295"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1afea9ce62c2036a3d41bd49cb618cc23d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>chi::req_optype_e</type>
+        <definition>req_optype_e chi::request::get_opcode</definition>
+        <argsstring>() const</argsstring>
+        <name>get_opcode</name>
+        <qualifiedname>chi::request::get_opcode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="472" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1296" bodyend="1296"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a406de6f018be516f551a525461a66cca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_return_n_id</definition>
+        <argsstring>(uint16_t)</argsstring>
+        <name>set_return_n_id</name>
+        <qualifiedname>chi::request::set_return_n_id</qualifiedname>
+        <param>
+          <type>uint16_t</type>
+          <defname>return_n_id</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="474" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1299" bodyend="1299"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1af9d73c477fe703a3b88cc6b9e7fe420f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t chi::request::get_return_n_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_return_n_id</name>
+        <qualifiedname>chi::request::get_return_n_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="475" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1300" bodyend="1300"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a1414e03d4f0a0d0d7159fab41b51aa77" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_stash_n_id</definition>
+        <argsstring>(uint16_t)</argsstring>
+        <name>set_stash_n_id</name>
+        <qualifiedname>chi::request::set_stash_n_id</qualifiedname>
+        <param>
+          <type>uint16_t</type>
+          <defname>stash_n_id</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="477" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1303" bodyend="1303"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1aa5535e4ccec93cb256756896f3a73cf2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t chi::request::get_stash_n_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_stash_n_id</name>
+        <qualifiedname>chi::request::get_stash_n_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="478" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1304" bodyend="1304"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a7cd655a8e222b0cf2168a2aace116449" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_stash_n_id_valid</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_stash_n_id_valid</name>
+        <qualifiedname>chi::request::set_stash_n_id_valid</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>stash_n_id_valid</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="481" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1308" bodyend="1308"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1af7e11d0d532e2c602a2f0bafd50a77b2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::request::is_stash_n_id_valid</definition>
+        <argsstring>() const</argsstring>
+        <name>is_stash_n_id_valid</name>
+        <qualifiedname>chi::request::is_stash_n_id_valid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="482" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1309" bodyend="1309"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1ae46c8ed58ccb4d669b0f546aa3b94217" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_stash_lp_id_valid</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_stash_lp_id_valid</name>
+        <qualifiedname>chi::request::set_stash_lp_id_valid</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>stash_lp_id_valid</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="484" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1312" bodyend="1312"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1ae8d4d95bb4d756a3334147e8754ebd5b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::request::is_stash_lp_id_valid</definition>
+        <argsstring>() const</argsstring>
+        <name>is_stash_lp_id_valid</name>
+        <qualifiedname>chi::request::is_stash_lp_id_valid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="485" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1313" bodyend="1313"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a280eebb1ad5599d38e40fcd6093c077b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_non_secure</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_non_secure</name>
+        <qualifiedname>chi::request::set_non_secure</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>ns</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="488" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1317" bodyend="1317"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a55cfdd18b059a640909d22e9e2155125" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::request::is_non_secure</definition>
+        <argsstring>() const</argsstring>
+        <name>is_non_secure</name>
+        <qualifiedname>chi::request::is_non_secure</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="489" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1318" bodyend="1318"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1af8ef1743153e0154ebd18a46c8aebcb3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_exp_comp_ack</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_exp_comp_ack</name>
+        <qualifiedname>chi::request::set_exp_comp_ack</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>exp_comp_ack</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="492" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1322" bodyend="1322"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a4545a724e30f337608c880c4c9890cf7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::request::is_exp_comp_ack</definition>
+        <argsstring>() const</argsstring>
+        <name>is_exp_comp_ack</name>
+        <qualifiedname>chi::request::is_exp_comp_ack</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="493" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1323" bodyend="1323"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a240f12c4f704fa49c700d7d56280f82f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_allow_retry</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_allow_retry</name>
+        <qualifiedname>chi::request::set_allow_retry</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>allow_retry</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="495" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1326" bodyend="1326"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a0340c04018d5238c839ca682cf4167f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::request::is_allow_retry</definition>
+        <argsstring>() const</argsstring>
+        <name>is_allow_retry</name>
+        <qualifiedname>chi::request::is_allow_retry</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="496" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1327" bodyend="1327"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a0b0a25576de8f5b9ca5d2a7fdd1a8e1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_snp_attr</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_snp_attr</name>
+        <qualifiedname>chi::request::set_snp_attr</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>snp_attr</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="498" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1330" bodyend="1330"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a046131f5a648c7bb6df8282cd8742146" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::request::is_snp_attr</definition>
+        <argsstring>() const</argsstring>
+        <name>is_snp_attr</name>
+        <qualifiedname>chi::request::is_snp_attr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="499" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1331" bodyend="1331"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1af69913d15a277a6d84264a59d1d524d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_excl</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_excl</name>
+        <qualifiedname>chi::request::set_excl</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>excl</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="502" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1335" bodyend="1335"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1acb0f2305c27a85db7c8a1fd0a25a633a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::request::is_excl</definition>
+        <argsstring>() const</argsstring>
+        <name>is_excl</name>
+        <qualifiedname>chi::request::is_excl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="503" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1336" bodyend="1336"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1aa0e3ca583fe0d51c01fbec0fa5a6b7dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_snoop_me</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_snoop_me</name>
+        <qualifiedname>chi::request::set_snoop_me</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>snoop_me</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="506" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1340" bodyend="1340"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a653055036026e0df8115ae51a578f220" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::request::is_snoop_me</definition>
+        <argsstring>() const</argsstring>
+        <name>is_snoop_me</name>
+        <qualifiedname>chi::request::is_snoop_me</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="507" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1341" bodyend="1341"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1adc670ebabc1153bca2733eb1135cd75f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_likely_shared</definition>
+        <argsstring>(bool=true)</argsstring>
+        <name>set_likely_shared</name>
+        <qualifiedname>chi::request::set_likely_shared</qualifiedname>
+        <param>
+          <type>bool</type>
+          <defname>likely_shared</defname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="510" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1345" bodyend="1345"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a29618b9f35c7ae488419a5e70a8cc06d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::request::is_likely_shared</definition>
+        <argsstring>() const</argsstring>
+        <name>is_likely_shared</name>
+        <qualifiedname>chi::request::is_likely_shared</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="511" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1346" bodyend="1346"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1ac4afa3e5ff5f3abecc92463fae2f2de8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_tag_op</definition>
+        <argsstring>(uint8_t)</argsstring>
+        <name>set_tag_op</name>
+        <qualifiedname>chi::request::set_tag_op</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <defname>tag_op</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="514" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1353" bodyend="1353"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1adad4edf6f8afce573f1b72479230ea03" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t chi::request::get_tag_op</definition>
+        <argsstring>() const</argsstring>
+        <name>get_tag_op</name>
+        <qualifiedname>chi::request::get_tag_op</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="515" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1354" bodyend="1354"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1aa0d583d8419ba32797f18bbb4286c3df" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_tag_group_id</definition>
+        <argsstring>(uint32_t)</argsstring>
+        <name>set_tag_group_id</name>
+        <qualifiedname>chi::request::set_tag_group_id</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <defname>tag_group_id</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="518" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1355" bodyend="1355"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1af1c806158ddd94bfa526139287c93709" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t chi::request::get_tag_group_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_tag_group_id</name>
+        <qualifiedname>chi::request::get_tag_group_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="519" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1356" bodyend="1356"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a7e9cc55a30c92a4cde28f91835261296" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_mpam</definition>
+        <argsstring>(uint16_t)</argsstring>
+        <name>set_mpam</name>
+        <qualifiedname>chi::request::set_mpam</qualifiedname>
+        <param>
+          <type>uint16_t</type>
+          <defname>mpam</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="522" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1357" bodyend="1357"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1ab472821ea4954b1eb1070a5b7931f64c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t chi::request::get_mpam</definition>
+        <argsstring>() const</argsstring>
+        <name>get_mpam</name>
+        <qualifiedname>chi::request::get_mpam</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="523" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1358" bodyend="1358"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a0b9dfe8943753d67ea64cf29cd2aa601" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void chi::request::set_rsvdc</definition>
+        <argsstring>(uint32_t)</argsstring>
+        <name>set_rsvdc</name>
+        <qualifiedname>chi::request::set_rsvdc</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <defname>rsvdc</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="526" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1350" bodyend="1350"/>
+      </memberdef>
+      <memberdef kind="function" id="structchi_1_1request_1a807726f8ade0b50d06aea6dc869b0729" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t chi::request::get_rsvdc</definition>
+        <argsstring>() const</argsstring>
+        <name>get_rsvdc</name>
+        <qualifiedname>chi::request::get_rsvdc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="527" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="1351" bodyend="1351"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>request : This structure to be used in extension of payload for providing transaction request on REQ channel (TXREQ channel for RN node) </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" line="417" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/chi_tlm.h" bodystart="417" bodyend="539"/>
+    <listofallmembers>
+      <member refid="structchi_1_1request_1aac95bdf37414e2ac1070c2fa91d1010a" prot="private" virt="non-virtual"><scope>chi::request</scope><name>allow_retry</name></member>
+      <member refid="structchi_1_1request_1a34debce61dca935e7a283a2891f91bd2" prot="private" virt="non-virtual"><scope>chi::request</scope><name>endian</name></member>
+      <member refid="structchi_1_1request_1a043ed79b2706527c3b452c85d0d231dc" prot="private" virt="non-virtual"><scope>chi::request</scope><name>excl</name></member>
+      <member refid="structchi_1_1request_1a7aed62fb151e7aa63c2c745a13af104c" prot="private" virt="non-virtual"><scope>chi::request</scope><name>exp_comp_ack</name></member>
+      <member refid="structchi_1_1request_1a839ef95908b734600c7ffe43f9c79ace" prot="public" virt="non-virtual"><scope>chi::request</scope><name>get_lp_id</name></member>
+      <member refid="structchi_1_1request_1aff4310fcbd56a231181ffc50f7a89c66" prot="public" virt="non-virtual"><scope>chi::request</scope><name>get_max_flit</name></member>
+      <member refid="structchi_1_1request_1a329b2e4d47f70c0559e907b1783ab738" prot="public" virt="non-virtual"><scope>chi::request</scope><name>get_mem_attr</name></member>
+      <member refid="structchi_1_1request_1ab472821ea4954b1eb1070a5b7931f64c" prot="public" virt="non-virtual"><scope>chi::request</scope><name>get_mpam</name></member>
+      <member refid="structchi_1_1request_1afea9ce62c2036a3d41bd49cb618cc23d" prot="public" virt="non-virtual"><scope>chi::request</scope><name>get_opcode</name></member>
+      <member refid="structchi_1_1request_1a861c1deac292957f3bbd9eb1187dfa95" prot="public" virt="non-virtual"><scope>chi::request</scope><name>get_order</name></member>
+      <member refid="structchi_1_1request_1a8e1880ec82fcce37359c2876c34e40fb" prot="public" virt="non-virtual"><scope>chi::request</scope><name>get_pcrd_type</name></member>
+      <member refid="structchi_1_1request_1af9d73c477fe703a3b88cc6b9e7fe420f" prot="public" virt="non-virtual"><scope>chi::request</scope><name>get_return_n_id</name></member>
+      <member refid="structchi_1_1request_1a2815d8daa30a29f629fcd7de4726cc1c" prot="public" virt="non-virtual"><scope>chi::request</scope><name>get_return_txn_id</name></member>
+      <member refid="structchi_1_1request_1a807726f8ade0b50d06aea6dc869b0729" prot="public" virt="non-virtual"><scope>chi::request</scope><name>get_rsvdc</name></member>
+      <member refid="structchi_1_1request_1a870bae9da406928f755b21f4a5a4d86d" prot="public" virt="non-virtual"><scope>chi::request</scope><name>get_size</name></member>
+      <member refid="structchi_1_1request_1a01f64db59b830c4d3ad191c92e5191be" prot="public" virt="non-virtual"><scope>chi::request</scope><name>get_stash_lp_id</name></member>
+      <member refid="structchi_1_1request_1aa5535e4ccec93cb256756896f3a73cf2" prot="public" virt="non-virtual"><scope>chi::request</scope><name>get_stash_n_id</name></member>
+      <member refid="structchi_1_1request_1af1c806158ddd94bfa526139287c93709" prot="public" virt="non-virtual"><scope>chi::request</scope><name>get_tag_group_id</name></member>
+      <member refid="structchi_1_1request_1adad4edf6f8afce573f1b72479230ea03" prot="public" virt="non-virtual"><scope>chi::request</scope><name>get_tag_op</name></member>
+      <member refid="structchi_1_1request_1a965673c572e8598562a23017f7d2dc66" prot="public" virt="non-virtual"><scope>chi::request</scope><name>get_tgt_id</name></member>
+      <member refid="structchi_1_1request_1a0bb4865f5b64e146a27f646ecae65d09" prot="public" virt="non-virtual"><scope>chi::request</scope><name>is_allocate</name></member>
+      <member refid="structchi_1_1request_1a0340c04018d5238c839ca682cf4167f5" prot="public" virt="non-virtual"><scope>chi::request</scope><name>is_allow_retry</name></member>
+      <member refid="structchi_1_1request_1a4963e7803be6ed830e8dc1b693134c1a" prot="public" virt="non-virtual"><scope>chi::request</scope><name>is_cacheable</name></member>
+      <member refid="structchi_1_1request_1a3ddd70e0b5adaa1798082fb55d61f15f" prot="public" virt="non-virtual"><scope>chi::request</scope><name>is_device</name></member>
+      <member refid="structchi_1_1request_1a021315174b099428c23476af38fc662c" prot="public" virt="non-virtual"><scope>chi::request</scope><name>is_endian</name></member>
+      <member refid="structchi_1_1request_1a9d35e417b9ec5530ccf54a22f0b0ca92" prot="public" virt="non-virtual"><scope>chi::request</scope><name>is_ewa</name></member>
+      <member refid="structchi_1_1request_1acb0f2305c27a85db7c8a1fd0a25a633a" prot="public" virt="non-virtual"><scope>chi::request</scope><name>is_excl</name></member>
+      <member refid="structchi_1_1request_1a4545a724e30f337608c880c4c9890cf7" prot="public" virt="non-virtual"><scope>chi::request</scope><name>is_exp_comp_ack</name></member>
+      <member refid="structchi_1_1request_1a29618b9f35c7ae488419a5e70a8cc06d" prot="public" virt="non-virtual"><scope>chi::request</scope><name>is_likely_shared</name></member>
+      <member refid="structchi_1_1request_1a55cfdd18b059a640909d22e9e2155125" prot="public" virt="non-virtual"><scope>chi::request</scope><name>is_non_secure</name></member>
+      <member refid="structchi_1_1request_1a653055036026e0df8115ae51a578f220" prot="public" virt="non-virtual"><scope>chi::request</scope><name>is_snoop_me</name></member>
+      <member refid="structchi_1_1request_1a046131f5a648c7bb6df8282cd8742146" prot="public" virt="non-virtual"><scope>chi::request</scope><name>is_snp_attr</name></member>
+      <member refid="structchi_1_1request_1ae8d4d95bb4d756a3334147e8754ebd5b" prot="public" virt="non-virtual"><scope>chi::request</scope><name>is_stash_lp_id_valid</name></member>
+      <member refid="structchi_1_1request_1af7e11d0d532e2c602a2f0bafd50a77b2" prot="public" virt="non-virtual"><scope>chi::request</scope><name>is_stash_n_id_valid</name></member>
+      <member refid="structchi_1_1request_1a565b9c5d5b257457b39457df1b2b1183" prot="public" virt="non-virtual"><scope>chi::request</scope><name>is_trace_tag</name></member>
+      <member refid="structchi_1_1request_1a07adcab1f782802593c7558750435b8e" prot="private" virt="non-virtual"><scope>chi::request</scope><name>likely_shared</name></member>
+      <member refid="structchi_1_1request_1a7068d3b7bcba08929a9298132d83a051" prot="private" virt="non-virtual"><scope>chi::request</scope><name>lp_id</name></member>
+      <member refid="structchi_1_1request_1ae06b6588299896a8ab12f188ab12a9e9" prot="private" virt="non-virtual"><scope>chi::request</scope><name>max_flit</name></member>
+      <member refid="structchi_1_1request_1a2ae3d3811f8ff2f1f36b707db00bb934" prot="private" virt="non-virtual"><scope>chi::request</scope><name>mem_attr</name></member>
+      <member refid="structchi_1_1request_1a9094b7806c3364bd1d142e2d1f35e256" prot="private" virt="non-virtual"><scope>chi::request</scope><name>mpam</name></member>
+      <member refid="structchi_1_1request_1a652571c27515a673627581ed87ba9030" prot="private" virt="non-virtual"><scope>chi::request</scope><name>ns</name></member>
+      <member refid="structchi_1_1request_1a7703326bc03aaaec6cf4b352dae0d674" prot="private" virt="non-virtual"><scope>chi::request</scope><name>opcode</name></member>
+      <member refid="structchi_1_1request_1a45893b81868a79d5ee3efd7dc2fc6001" prot="private" virt="non-virtual"><scope>chi::request</scope><name>order</name></member>
+      <member refid="structchi_1_1request_1a30b3e1d333838d879b727ee4298bc3cf" prot="private" virt="non-virtual"><scope>chi::request</scope><name>pcrd_type</name></member>
+      <member refid="structchi_1_1request_1a5a1e32c34049dfb7bc77cee2a5118020" prot="private" virt="non-virtual"><scope>chi::request</scope><name>return_n_id</name></member>
+      <member refid="structchi_1_1request_1a0fef70460cafe6e62c82e87ba0017633" prot="private" virt="non-virtual"><scope>chi::request</scope><name>return_txn_id</name></member>
+      <member refid="structchi_1_1request_1aee0954707e4ad9cec8fb6b2822e98fb1" prot="private" virt="non-virtual"><scope>chi::request</scope><name>rsvdc</name></member>
+      <member refid="structchi_1_1request_1a306296b1aaef614c2f3746e85204e76b" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_allocate</name></member>
+      <member refid="structchi_1_1request_1a240f12c4f704fa49c700d7d56280f82f" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_allow_retry</name></member>
+      <member refid="structchi_1_1request_1a36fd5fc73d5eabd8595d8a42811f5a43" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_cacheable</name></member>
+      <member refid="structchi_1_1request_1aeb6581a482b9eee65ee889b4b39031a1" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_device</name></member>
+      <member refid="structchi_1_1request_1a0f0b400521d67e2b626363d4298f3bdb" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_endian</name></member>
+      <member refid="structchi_1_1request_1a34d5cf26ea8508ecbdee393b747dc755" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_ewa</name></member>
+      <member refid="structchi_1_1request_1af69913d15a277a6d84264a59d1d524d7" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_excl</name></member>
+      <member refid="structchi_1_1request_1af8ef1743153e0154ebd18a46c8aebcb3" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_exp_comp_ack</name></member>
+      <member refid="structchi_1_1request_1adc670ebabc1153bca2733eb1135cd75f" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_likely_shared</name></member>
+      <member refid="structchi_1_1request_1ad2202e608ccbe33110121adacbc9edb3" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_lp_id</name></member>
+      <member refid="structchi_1_1request_1ab9a966d7b67ca3fba74698b1b8c85bc5" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_max_flit</name></member>
+      <member refid="structchi_1_1request_1acda68f32877d4daf12bc8879b028ad27" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_mem_attr</name></member>
+      <member refid="structchi_1_1request_1a7e9cc55a30c92a4cde28f91835261296" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_mpam</name></member>
+      <member refid="structchi_1_1request_1a280eebb1ad5599d38e40fcd6093c077b" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_non_secure</name></member>
+      <member refid="structchi_1_1request_1a87c299798530f9be2274c91608b83e76" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_opcode</name></member>
+      <member refid="structchi_1_1request_1a12fab07d0830503d08083b263ba98b10" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_order</name></member>
+      <member refid="structchi_1_1request_1a28d44605f1e452944a3eb2596fa9450e" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_pcrd_type</name></member>
+      <member refid="structchi_1_1request_1a406de6f018be516f551a525461a66cca" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_return_n_id</name></member>
+      <member refid="structchi_1_1request_1a9cb4dede9e81f02bc2636c094e29cb76" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_return_txn_id</name></member>
+      <member refid="structchi_1_1request_1a0b9dfe8943753d67ea64cf29cd2aa601" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_rsvdc</name></member>
+      <member refid="structchi_1_1request_1a1bd361b83a666536c0242a992527fb2d" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_size</name></member>
+      <member refid="structchi_1_1request_1aa0e3ca583fe0d51c01fbec0fa5a6b7dc" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_snoop_me</name></member>
+      <member refid="structchi_1_1request_1a0b0a25576de8f5b9ca5d2a7fdd1a8e1e" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_snp_attr</name></member>
+      <member refid="structchi_1_1request_1a2f7c21fcabc3f94850e27a4eff279116" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_stash_lp_id</name></member>
+      <member refid="structchi_1_1request_1ae46c8ed58ccb4d669b0f546aa3b94217" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_stash_lp_id_valid</name></member>
+      <member refid="structchi_1_1request_1a1414e03d4f0a0d0d7159fab41b51aa77" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_stash_n_id</name></member>
+      <member refid="structchi_1_1request_1a7cd655a8e222b0cf2168a2aace116449" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_stash_n_id_valid</name></member>
+      <member refid="structchi_1_1request_1aa0d583d8419ba32797f18bbb4286c3df" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_tag_group_id</name></member>
+      <member refid="structchi_1_1request_1ac4afa3e5ff5f3abecc92463fae2f2de8" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_tag_op</name></member>
+      <member refid="structchi_1_1request_1a79ae9b73ade371c8b329ef67f90f7a75" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_tgt_id</name></member>
+      <member refid="structchi_1_1request_1a9f8c31a88c5e3c72cf03c43b4e51b86b" prot="public" virt="non-virtual"><scope>chi::request</scope><name>set_trace_tag</name></member>
+      <member refid="structchi_1_1request_1a71f30ae455c4bcd5374c6ecfa2711ebf" prot="private" virt="non-virtual"><scope>chi::request</scope><name>size</name></member>
+      <member refid="structchi_1_1request_1ad6065312269898d42a5e9a9cbc669790" prot="private" virt="non-virtual"><scope>chi::request</scope><name>snoop_me</name></member>
+      <member refid="structchi_1_1request_1ae6058619f8ff2670e0a1a96bb3ba0789" prot="private" virt="non-virtual"><scope>chi::request</scope><name>snp_attr</name></member>
+      <member refid="structchi_1_1request_1a1ed7a25dbcfc14632e060776aebee3a5" prot="private" virt="non-virtual"><scope>chi::request</scope><name>stash_lp_id</name></member>
+      <member refid="structchi_1_1request_1a73772c7d14ab5fc267a06db1b5f74606" prot="private" virt="non-virtual"><scope>chi::request</scope><name>stash_lp_id_valid</name></member>
+      <member refid="structchi_1_1request_1ace340f8768385d086236aa874cf514b9" prot="private" virt="non-virtual"><scope>chi::request</scope><name>stash_n_id</name></member>
+      <member refid="structchi_1_1request_1a1ece94a60f9b61361bd3a57203924fd9" prot="private" virt="non-virtual"><scope>chi::request</scope><name>stash_n_id_valid</name></member>
+      <member refid="structchi_1_1request_1a33f0f9209aba8403c7b3184e872eadfb" prot="private" virt="non-virtual"><scope>chi::request</scope><name>tag_group_id</name></member>
+      <member refid="structchi_1_1request_1a10fc81ed8aab2d1067a5af37c537687f" prot="private" virt="non-virtual"><scope>chi::request</scope><name>tag_op</name></member>
+      <member refid="structchi_1_1request_1ac3d9c1323e82a1c76f3c5a7c5e681c3c" prot="private" virt="non-virtual"><scope>chi::request</scope><name>tgt_id</name></member>
+      <member refid="structchi_1_1request_1a4af92931c0f1959c96de0abc75da5541" prot="private" virt="non-virtual"><scope>chi::request</scope><name>trace_tag</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

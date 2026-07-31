@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1detail_1_1optional__operations__base" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::detail::optional_operations_base</compoundname>
+    <basecompoundref refid="structnonstd_1_1detail_1_1optional__storage__base" prot="public" virt="non-virtual">nonstd::detail::optional_storage_base&lt; T &gt;</basecompoundref>
+    <derivedcompoundref refid="structnonstd_1_1detail_1_1optional__copy__base_3_01T_00_01false_01_4" prot="public" virt="non-virtual">nonstd::detail::optional_copy_base&lt; T, false &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structnonstd_1_1detail_1_1optional__copy__base" prot="public" virt="non-virtual">nonstd::detail::optional_copy_base&lt; T, bool &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structnonstd_1_1detail_1_1optional__copy__base_3_01T_00_01false_01_4" prot="public" virt="non-virtual">nonstd::detail::optional_copy_base&lt; T, false &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__operations__base_1a83a7cb2961fe94ad4615435056dd9185" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void nonstd::detail::optional_operations_base&lt; T &gt;::hard_reset</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hard_reset</name>
+        <qualifiedname>nonstd::detail::optional_operations_base::hard_reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="341" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="341" bodyend="344"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__operations__base_1a37953a0ee1634c83c5e878a25744b369" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void nonstd::detail::optional_operations_base&lt; T &gt;::construct</definition>
+        <argsstring>(Args &amp;&amp;... args)</argsstring>
+        <name>construct</name>
+        <qualifiedname>nonstd::detail::optional_operations_base::construct</qualifiedname>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="346" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="346" bodyend="349"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__operations__base_1a9cb1c6fd0765d256f2a021789064aa4b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Opt</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void nonstd::detail::optional_operations_base&lt; T &gt;::assign</definition>
+        <argsstring>(Opt &amp;&amp;rhs)</argsstring>
+        <name>assign</name>
+        <qualifiedname>nonstd::detail::optional_operations_base::assign</qualifiedname>
+        <param>
+          <type>Opt &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="351" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="351" bodyend="364"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__operations__base_1a21d892f402adf6cec3539f7c72f77654" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool nonstd::detail::optional_operations_base&lt; T &gt;::has_value</definition>
+        <argsstring>() const</argsstring>
+        <name>has_value</name>
+        <qualifiedname>nonstd::detail::optional_operations_base::has_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="366" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="366" bodyend="366"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__operations__base_1a149d2fc5a9724cc1e1030c8c358c8315" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <type>TL_OPTIONAL_11_CONSTEXPR T &amp;</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR T &amp; nonstd::detail::optional_operations_base&lt; T &gt;::get</definition>
+        <argsstring>() &amp;</argsstring>
+        <name>get</name>
+        <qualifiedname>nonstd::detail::optional_operations_base::get</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="368" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="368" bodyend="368"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__operations__base_1a4da1651ed388bdc7c4a72cef7151c6a5" prot="public" static="no" const="yes" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <type>TL_OPTIONAL_11_CONSTEXPR const T &amp;</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR const T &amp; nonstd::detail::optional_operations_base&lt; T &gt;::get</definition>
+        <argsstring>() const &amp;</argsstring>
+        <name>get</name>
+        <qualifiedname>nonstd::detail::optional_operations_base::get</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="369" column="38" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="369" bodyend="369"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__operations__base_1a24b9930d4921cb31db83233a02243d60" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <type>TL_OPTIONAL_11_CONSTEXPR T &amp;&amp;</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR T &amp;&amp; nonstd::detail::optional_operations_base&lt; T &gt;::get</definition>
+        <argsstring>() &amp;&amp;</argsstring>
+        <name>get</name>
+        <qualifiedname>nonstd::detail::optional_operations_base::get</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="370" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="370" bodyend="370"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1detail_1_1optional__operations__base_1adbb916a214345796f44b0055882539cc" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <type>const T &amp;&amp;</type>
+        <definition>const T &amp;&amp; nonstd::detail::optional_operations_base&lt; T &gt;::get</definition>
+        <argsstring>() const &amp;&amp;</argsstring>
+        <name>get</name>
+        <qualifiedname>nonstd::detail::optional_operations_base::get</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="372" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="372" bodyend="372"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="8">
+        <label>nonstd::detail::optional_copy_assign_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__copy__assign__base"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>nonstd::detail::optional_copy_assign_base&lt; T, false &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__copy__assign__base_3_01T_00_01false_01_4"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>nonstd::detail::optional_copy_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__copy__base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>nonstd::detail::optional_copy_base&lt; T, false &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__copy__base_3_01T_00_01false_01_4"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>nonstd::detail::optional_move_assign_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__move__assign__base"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>nonstd::detail::optional_move_assign_base&lt; T, false &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__move__assign__base_3_01T_00_01false_01_4"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>nonstd::detail::optional_move_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__move__base"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>nonstd::detail::optional_move_base&lt; T, false &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__move__base_3_01T_00_01false_01_4"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>nonstd::detail::optional_operations_base&lt; T &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__operations__base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>nonstd::detail::optional_storage_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__storage__base"/>
+      </node>
+      <node id="12">
+        <label>nonstd::optional&lt; T &amp; &gt;</label>
+        <link refid="classnonstd_1_1optional_3_01T_01_6_01_4"/>
+        <childnode refid="10" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>nonstd::optional&lt; T &gt;</label>
+        <link refid="classnonstd_1_1optional"/>
+        <childnode refid="10" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>nonstd::optional&lt; fixup_void&lt; invoke_result_t&lt; F, U &gt; &gt; &gt;</label>
+        <link refid="classnonstd_1_1optional"/>
+        <childnode refid="10" relation="private-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>nonstd::detail::optional_operations_base&lt; T &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__operations__base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>nonstd::detail::optional_storage_base&lt; T, bool &gt;::dummy</label>
+        <link refid="structnonstd_1_1detail_1_1optional__storage__base_1_1dummy"/>
+      </node>
+      <node id="2">
+        <label>nonstd::detail::optional_storage_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__storage__base"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_dummy</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="338" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="338" bodyend="374"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1detail_1_1optional__operations__base_1a9cb1c6fd0765d256f2a021789064aa4b" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_operations_base</scope><name>assign</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__operations__base_1a37953a0ee1634c83c5e878a25744b369" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_operations_base</scope><name>construct</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__operations__base_1a149d2fc5a9724cc1e1030c8c358c8315" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_operations_base</scope><name>get</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__operations__base_1a4da1651ed388bdc7c4a72cef7151c6a5" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_operations_base</scope><name>get</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__operations__base_1a24b9930d4921cb31db83233a02243d60" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_operations_base</scope><name>get</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__operations__base_1adbb916a214345796f44b0055882539cc" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_operations_base</scope><name>get</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__operations__base_1a83a7cb2961fe94ad4615435056dd9185" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_operations_base</scope><name>hard_reset</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__operations__base_1a21d892f402adf6cec3539f7c72f77654" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_operations_base</scope><name>has_value</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__storage__base_1a2741d9046cf25ed644ca69ec5367c6c3" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_operations_base</scope><name>m_dummy</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__storage__base_1a6c5e1ff12440d39b33b5117c976e3e03" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_operations_base</scope><name>m_has_value</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__storage__base_1aaee6e740ef1d863a76adf9553f4958ef" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_operations_base</scope><name>m_value</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__storage__base_1a6191d025339379e6aa86ade2780cb0e8" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_operations_base</scope><name>optional_storage_base</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__storage__base_1abbccb81d22407a68a534e49cb122d35e" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_operations_base</scope><name>optional_storage_base</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__storage__base_1a9205e8aa707495ca296fd1efbb973802" prot="public" virt="non-virtual"><scope>nonstd::detail::optional_operations_base</scope><name>~optional_storage_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

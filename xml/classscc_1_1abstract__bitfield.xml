@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1abstract__bitfield" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>scc::abstract_bitfield</compoundname>
+    <derivedcompoundref refid="classscc_1_1bitfield" prot="public" virt="non-virtual">scc::bitfield&lt; datatype_t &gt;</derivedcompoundref>
+    <includes refid="tlm__target__bfs__register__base_8h" local="no">tlm_target_bfs_register_base.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename datatype_t</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classscc_1_1abstract__bitfield_1af27701931d66370379052391a1f45e73" prot="public" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t scc::abstract_bitfield&lt; datatype_t &gt;::bitOffset</definition>
+        <argsstring></argsstring>
+        <name>bitOffset</name>
+        <qualifiedname>scc::abstract_bitfield::bitOffset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="75" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1abstract__bitfield_1af757776a2b6f3f265966973069fb23f8" prot="public" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t scc::abstract_bitfield&lt; datatype_t &gt;::bitSize</definition>
+        <argsstring></argsstring>
+        <name>bitSize</name>
+        <qualifiedname>scc::abstract_bitfield::bitSize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="76" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1abstract__bitfield_1aef6555c640f343ffc259b4879089c170" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string scc::abstract_bitfield&lt; datatype_t &gt;::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <qualifiedname>scc::abstract_bitfield::name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="77" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1abstract__bitfield_1a28d343a09d327969455b9ee1c6352e62" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string scc::abstract_bitfield&lt; datatype_t &gt;::urid</definition>
+        <argsstring></argsstring>
+        <name>urid</name>
+        <qualifiedname>scc::abstract_bitfield::urid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="78" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1abstract__bitfield_1a3c3c8e2b374a41e0ae5dce9d02d28128" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::abstract_bitfield&lt; datatype_t &gt;::abstract_bitfield</definition>
+        <argsstring>(std::string name, size_t bitOffset, size_t bitSize, std::string urid)</argsstring>
+        <name>abstract_bitfield</name>
+        <qualifiedname>scc::abstract_bitfield::abstract_bitfield</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>bitOffset</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>bitSize</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>urid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="59" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="59" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1abstract__bitfield_1a95e0934f8acea8c8fe2e14d15bc59e60" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void scc::abstract_bitfield&lt; datatype_t &gt;::write</definition>
+        <argsstring>(datatype_t &amp;valueToWrite)=0</argsstring>
+        <name>write</name>
+        <qualifiedname>scc::abstract_bitfield::write</qualifiedname>
+        <reimplementedby refid="classscc_1_1bitfield_1a2c417871e6f756c53841f0effa624da4">write</reimplementedby>
+        <param>
+          <type>datatype_t &amp;</type>
+          <declname>valueToWrite</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="65" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1abstract__bitfield_1a98963276f0a200f4fe0c46ff88334b9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>datatype_t</type>
+        <definition>virtual datatype_t scc::abstract_bitfield&lt; datatype_t &gt;::read</definition>
+        <argsstring>()=0</argsstring>
+        <name>read</name>
+        <qualifiedname>scc::abstract_bitfield::read</qualifiedname>
+        <reimplementedby refid="classscc_1_1bitfield_1ac3eb649ab96907e7b206c65d31a8f21a">read</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="66" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1abstract__bitfield_1a3f6988c8f3099c0158e0db28a1ba31b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual scc::abstract_bitfield&lt; datatype_t &gt;::~abstract_bitfield</definition>
+        <argsstring>()=default</argsstring>
+        <name>~abstract_bitfield</name>
+        <qualifiedname>scc::abstract_bitfield::~abstract_bitfield</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="67" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1abstract__bitfield_1a8636b0fe5f68719fbdda0a41433515db" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::abstract_bitfield&lt; datatype_t &gt;::affected</definition>
+        <argsstring>(size_t byteOffset, size_t byteLength) const noexcept</argsstring>
+        <name>affected</name>
+        <qualifiedname>scc::abstract_bitfield::affected</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>byteOffset</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>byteLength</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="69" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="69" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1abstract__bitfield_1ac9f48a5f2f8615664120077d8657c24f" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>datatype_t</type>
+        <definition>datatype_t scc::abstract_bitfield&lt; datatype_t &gt;::mask</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>mask</name>
+        <qualifiedname>scc::abstract_bitfield::mask</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="73" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="73" bodyend="73"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract baseclass for bitfield. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Used to resolve cyclic dependency between <ref refid="classscc_1_1bitfield__register" kindref="compound">bitfield_register</ref> and bitfield. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>scc::abstract_bitfield&lt; datatype_t &gt;</label>
+        <link refid="classscc_1_1abstract__bitfield"/>
+      </node>
+      <node id="2">
+        <label>scc::bitfield&lt; datatype_t &gt;</label>
+        <link refid="classscc_1_1bitfield"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" line="57" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs_register_base.h" bodystart="57" bodyend="79"/>
+    <listofallmembers>
+      <member refid="classscc_1_1abstract__bitfield_1a3c3c8e2b374a41e0ae5dce9d02d28128" prot="public" virt="non-virtual"><scope>scc::abstract_bitfield</scope><name>abstract_bitfield</name></member>
+      <member refid="classscc_1_1abstract__bitfield_1a8636b0fe5f68719fbdda0a41433515db" prot="public" virt="non-virtual"><scope>scc::abstract_bitfield</scope><name>affected</name></member>
+      <member refid="classscc_1_1abstract__bitfield_1af27701931d66370379052391a1f45e73" prot="public" virt="non-virtual"><scope>scc::abstract_bitfield</scope><name>bitOffset</name></member>
+      <member refid="classscc_1_1abstract__bitfield_1af757776a2b6f3f265966973069fb23f8" prot="public" virt="non-virtual"><scope>scc::abstract_bitfield</scope><name>bitSize</name></member>
+      <member refid="classscc_1_1abstract__bitfield_1ac9f48a5f2f8615664120077d8657c24f" prot="public" virt="non-virtual"><scope>scc::abstract_bitfield</scope><name>mask</name></member>
+      <member refid="classscc_1_1abstract__bitfield_1aef6555c640f343ffc259b4879089c170" prot="public" virt="non-virtual"><scope>scc::abstract_bitfield</scope><name>name</name></member>
+      <member refid="classscc_1_1abstract__bitfield_1a98963276f0a200f4fe0c46ff88334b9c" prot="public" virt="pure-virtual"><scope>scc::abstract_bitfield</scope><name>read</name></member>
+      <member refid="classscc_1_1abstract__bitfield_1a28d343a09d327969455b9ee1c6352e62" prot="public" virt="non-virtual"><scope>scc::abstract_bitfield</scope><name>urid</name></member>
+      <member refid="classscc_1_1abstract__bitfield_1a95e0934f8acea8c8fe2e14d15bc59e60" prot="public" virt="pure-virtual"><scope>scc::abstract_bitfield</scope><name>write</name></member>
+      <member refid="classscc_1_1abstract__bitfield_1a3f6988c8f3099c0158e0db28a1ba31b6" prot="public" virt="virtual"><scope>scc::abstract_bitfield</scope><name>~abstract_bitfield</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

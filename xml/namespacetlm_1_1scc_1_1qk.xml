@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacetlm_1_1scc_1_1qk" kind="namespace" language="C++">
+    <compoundname>tlm::scc::qk</compoundname>
+    <innerclass refid="structtlm_1_1scc_1_1qk_1_1global__time__keeper" prot="public">tlm::scc::qk::global_time_keeper</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1qk_1_1client__deputy" prot="public">tlm::scc::qk::client_deputy</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1qk_1_1sc__time__syncronizer" prot="public">tlm::scc::qk::sc_time_syncronizer</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1qk_1_1comms__entry" prot="public">tlm::scc::qk::comms_entry</innerclass>
+    <innerclass refid="structtlm_1_1scc_1_1qk_1_1thread__comms__channel" prot="public">tlm::scc::qk::thread_comms_channel</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="src_2sysc_2tlm_2scc_2qk_2types_8h_1a11c3bd6a354e04320d938207426902ca" prot="public" static="no">
+        <type>sc_core::sc_time(void)</type>
+        <definition>using tlm::scc::qk::callback_fct =  sc_core::sc_time(void)</definition>
+        <argsstring></argsstring>
+        <name>callback_fct</name>
+        <qualifiedname>tlm::scc::qk::callback_fct</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" line="21" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="src_2sysc_2tlm_2scc_2qk_2types_8h_1afb66420f27e669e324ae5ab82cce484c" prot="public" static="no">
+        <type>std::packaged_task&lt; callback_fct &gt;</type>
+        <definition>using tlm::scc::qk::callback_task =  std::packaged_task&lt;callback_fct&gt;</definition>
+        <argsstring></argsstring>
+        <name>callback_task</name>
+        <qualifiedname>tlm::scc::qk::callback_task</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" line="22" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="src_2sysc_2tlm_2scc_2qk_2types_8h_1abd7e826aacd7de229b1ddbb525423198" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>size_t</type>
+        <definition>size_t tlm::scc::qk::kCacheLineSize</definition>
+        <argsstring></argsstring>
+        <name>kCacheLineSize</name>
+        <qualifiedname>tlm::scc::qk::kCacheLineSize</qualifiedname>
+        <initializer>= 64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" line="16" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/types.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/qk/global_time_keeper.cpp" line="7" column="1"/>
+  </compounddef>
+</doxygen>

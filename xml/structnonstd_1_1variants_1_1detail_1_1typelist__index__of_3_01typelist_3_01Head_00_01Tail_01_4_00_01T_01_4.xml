@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1detail_1_1typelist__index__of_3_01typelist_3_01Head_00_01Tail_01_4_00_01T_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::detail::typelist_index_of&lt; typelist&lt; Head, Tail &gt;, T &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Head</type>
+      </param>
+      <param>
+        <type>class Tail</type>
+      </param>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-type">
+      <memberdef kind="enum" id="structnonstd_1_1variants_1_1detail_1_1typelist__index__of_3_01typelist_3_01Head_00_01Tail_01_4_00_01T_01_4_1a75e960695bce66dd6111409532daffdc" prot="private" static="no" strong="no">
+        <type></type>
+        <name>TV</name>
+        <qualifiedname>nonstd::variants::detail::typelist_index_of&lt; typelist&lt; Head, Tail &gt;, T &gt;::TV</qualifiedname>
+        <enumvalue id="structnonstd_1_1variants_1_1detail_1_1typelist__index__of_3_01typelist_3_01Head_00_01Tail_01_4_00_01T_01_4_1a75e960695bce66dd6111409532daffdcae45157a277f143ef6bad4fe76d2b23a1" prot="private">
+          <name>nextVal</name>
+          <initializer>= typelist_index_of&lt;Tail, T&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="785" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="785" bodyend="785"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="structnonstd_1_1variants_1_1detail_1_1typelist__index__of_3_01typelist_3_01Head_00_01Tail_01_4_00_01T_01_4_1ab4d0ff73923b6cb8b40832ba113593fb" prot="public" static="no" strong="no">
+        <type></type>
+        <name>V</name>
+        <qualifiedname>nonstd::variants::detail::typelist_index_of&lt; typelist&lt; Head, Tail &gt;, T &gt;::V</qualifiedname>
+        <enumvalue id="structnonstd_1_1variants_1_1detail_1_1typelist__index__of_3_01typelist_3_01Head_00_01Tail_01_4_00_01T_01_4_1ab4d0ff73923b6cb8b40832ba113593fbaa5e4ef8e43fc6865e33bf58bd716698b" prot="public">
+          <name>value</name>
+          <initializer>= nextVal == -1 ? -1 : 1 + nextVal</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="788" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="788" bodyend="788"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="783" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="783" bodyend="789"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__index__of_3_01typelist_3_01Head_00_01Tail_01_4_00_01T_01_4_1a75e960695bce66dd6111409532daffdcae45157a277f143ef6bad4fe76d2b23a1" prot="private" virt="non-virtual"><scope>nonstd::variants::detail::typelist_index_of&lt; typelist&lt; Head, Tail &gt;, T &gt;</scope><name>nextVal</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__index__of_3_01typelist_3_01Head_00_01Tail_01_4_00_01T_01_4_1a75e960695bce66dd6111409532daffdc" prot="private" virt="non-virtual"><scope>nonstd::variants::detail::typelist_index_of&lt; typelist&lt; Head, Tail &gt;, T &gt;</scope><name>TV</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__index__of_3_01typelist_3_01Head_00_01Tail_01_4_00_01T_01_4_1ab4d0ff73923b6cb8b40832ba113593fb" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::typelist_index_of&lt; typelist&lt; Head, Tail &gt;, T &gt;</scope><name>V</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__index__of_3_01typelist_3_01Head_00_01Tail_01_4_00_01T_01_4_1ab4d0ff73923b6cb8b40832ba113593fbaa5e4ef8e43fc6865e33bf58bd716698b" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::typelist_index_of&lt; typelist&lt; Head, Tail &gt;, T &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

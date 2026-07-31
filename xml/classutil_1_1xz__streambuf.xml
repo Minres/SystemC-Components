@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1xz__streambuf" kind="class" language="C++" prot="public">
+    <compoundname>util::xz_streambuf</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::streambuf</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classutil_1_1xz__streambuf_1aa864784a91357de1fefc3186fa269538" prot="private" static="no" mutable="no">
+        <type>FILE *</type>
+        <definition>FILE* util::xz_streambuf::file_</definition>
+        <argsstring></argsstring>
+        <name>file_</name>
+        <qualifiedname>util::xz_streambuf::file_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" line="43" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1xz__streambuf_1a158b914771c72df1eec7bf98f4c8489b" prot="private" static="no" mutable="no">
+        <type>lzma_stream</type>
+        <definition>lzma_stream util::xz_streambuf::strm_</definition>
+        <argsstring></argsstring>
+        <name>strm_</name>
+        <qualifiedname>util::xz_streambuf::strm_</qualifiedname>
+        <initializer>= LZMA_STREAM_INIT</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" line="44" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1xz__streambuf_1ae5a41ae5b101943efe2b59550e502de3" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; char &gt;</type>
+        <definition>std::vector&lt;char&gt; util::xz_streambuf::buffer_</definition>
+        <argsstring></argsstring>
+        <name>buffer_</name>
+        <qualifiedname>util::xz_streambuf::buffer_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" line="45" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classutil_1_1xz__streambuf_1a70114c41c541036734bbcf97f325bb13" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; char &gt;</type>
+        <definition>std::vector&lt;char&gt; util::xz_streambuf::inbuf_</definition>
+        <argsstring></argsstring>
+        <name>inbuf_</name>
+        <qualifiedname>util::xz_streambuf::inbuf_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" line="46" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classutil_1_1xz__streambuf_1a684c256d9d5a89d2f53d20cbf951dde4" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::xz_streambuf::xz_streambuf</definition>
+        <argsstring>(const std::string &amp;path)</argsstring>
+        <name>xz_streambuf</name>
+        <qualifiedname>util::xz_streambuf::xz_streambuf</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" line="35" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.cpp" bodystart="20" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1xz__streambuf_1a66efaba463d8d4f8bd8425ccee347ee6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>util::xz_streambuf::~xz_streambuf</definition>
+        <argsstring>() override</argsstring>
+        <name>~xz_streambuf</name>
+        <qualifiedname>util::xz_streambuf::~xz_streambuf</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" line="37" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.cpp" bodystart="33" bodyend="37"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classutil_1_1xz__streambuf_1ab8b3e3e1bcb6a55d8d647fbba898422c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int_type</type>
+        <definition>auto util::xz_streambuf::underflow</definition>
+        <argsstring>() override</argsstring>
+        <name>underflow</name>
+        <qualifiedname>util::xz_streambuf::underflow</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" line="40" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.cpp" bodystart="39" bodyend="62"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>std::streambuf</label>
+      </node>
+      <node id="1">
+        <label>util::xz_streambuf</label>
+        <link refid="classutil_1_1xz__streambuf"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>std::streambuf</label>
+      </node>
+      <node id="1">
+        <label>util::xz_streambuf</label>
+        <link refid="classutil_1_1xz__streambuf"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" line="33" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/xz_streambuf.h" bodystart="33" bodyend="47"/>
+    <listofallmembers>
+      <member refid="classutil_1_1xz__streambuf_1ae5a41ae5b101943efe2b59550e502de3" prot="private" virt="non-virtual"><scope>util::xz_streambuf</scope><name>buffer_</name></member>
+      <member refid="classutil_1_1xz__streambuf_1aa864784a91357de1fefc3186fa269538" prot="private" virt="non-virtual"><scope>util::xz_streambuf</scope><name>file_</name></member>
+      <member refid="classutil_1_1xz__streambuf_1a70114c41c541036734bbcf97f325bb13" prot="private" virt="non-virtual"><scope>util::xz_streambuf</scope><name>inbuf_</name></member>
+      <member refid="classutil_1_1xz__streambuf_1a158b914771c72df1eec7bf98f4c8489b" prot="private" virt="non-virtual"><scope>util::xz_streambuf</scope><name>strm_</name></member>
+      <member refid="classutil_1_1xz__streambuf_1ab8b3e3e1bcb6a55d8d647fbba898422c" prot="protected" virt="non-virtual"><scope>util::xz_streambuf</scope><name>underflow</name></member>
+      <member refid="classutil_1_1xz__streambuf_1a684c256d9d5a89d2f53d20cbf951dde4" prot="public" virt="non-virtual"><scope>util::xz_streambuf</scope><name>xz_streambuf</name></member>
+      <member refid="classutil_1_1xz__streambuf_1a66efaba463d8d4f8bd8425ccee347ee6" prot="public" virt="non-virtual"><scope>util::xz_streambuf</scope><name>~xz_streambuf</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

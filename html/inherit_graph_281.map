@@ -1,3 +1,15 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$structtlm_1_1nw_1_1tlm__network__baseprotocol__types.html" title=" " alt="" coords="5,5,148,45"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,192,137,232"/>
+<area shape="rect" id="Node000001" href="$classscc_1_1tcp4tlm_1_1connection.html" title=" " alt="" coords="205,5,369,45"/>
+<area shape="poly" id="edge579_Node000000_Node000001" title=" " alt="" coords="86,178,125,116,152,83,184,55,205,43,207,48,187,59,156,87,129,119,90,181"/>
+<area shape="rect" id="Node000002" href="$classscc_1_1tcp4tlm_1_1connection.html" title=" " alt="" coords="185,70,388,125"/>
+<area shape="poly" id="edge580_Node000000_Node000002" title=" " alt="" coords="109,181,184,134,208,122,210,127,187,138,112,186"/>
+<area shape="rect" id="Node000003" href="$classscc_1_1tcp4tlm_1_1connection.html" title=" " alt="" coords="185,149,388,203"/>
+<area shape="poly" id="edge581_Node000000_Node000003" title=" " alt="" coords="151,196,185,190,186,196,151,201"/>
+<area shape="rect" id="Node000004" href="$classscc_1_1tcp4tlm_1_1connection.html" title=" " alt="" coords="204,228,369,268"/>
+<area shape="poly" id="edge582_Node000000_Node000004" title=" " alt="" coords="152,223,204,232,203,237,151,228"/>
+<area shape="rect" id="Node000005" href="$classscc_1_1tcp4tlm_1_1connection.html" title="The connection class provides FlatBuffers framing primitives on top of a socket." alt="" coords="204,292,369,332"/>
+<area shape="poly" id="edge583_Node000000_Node000005" title=" " alt="" coords="115,237,186,278,216,289,214,294,184,282,112,242"/>
+<area shape="rect" id="Node000006" href="$structscc_1_1tcp4tlm_1_1connection_1_1async__listener.html" title=" " alt="" coords="198,357,375,411"/>
+<area shape="poly" id="edge584_Node000000_Node000006" title=" " alt="" coords="95,242,134,293,159,319,187,342,207,354,205,359,184,346,156,323,130,296,91,245"/>
 </map>

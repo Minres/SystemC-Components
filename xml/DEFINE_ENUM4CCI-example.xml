@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="DEFINE_ENUM4CCI-example" kind="example">
+    <compoundname>DEFINE_ENUM4CCI</compoundname>
+    <briefdescription>
+<para>Generates the declaration of an enum class including cci pack/unpack converter functions. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Generates the declaration of an enum class including cci pack/unpack converter functions.<simplesect kind="note"><para>This cannot be used inside name spaces!</para>
+</simplesect>
+(log_lvl, (NONE)(LOW)(MEDIUM)(HIGH)(FULL))</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>name of the enum class. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val_seq</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>sequence of the enum class values </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>code declaring the enum class. <programlisting filename="DEFINE_ENUM4CCI"></programlisting> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/cci_util.h"/>
+  </compounddef>
+</doxygen>

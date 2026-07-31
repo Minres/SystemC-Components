@@ -1,0 +1,647 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="base_8cpp" kind="file" language="C++">
+    <compoundname>base.cpp</compoundname>
+    <includes refid="base_8h" local="yes">base.h</includes>
+    <includes refid="protocol__fsm_8h" local="yes">protocol_fsm.h</includes>
+    <includes refid="report_8h" local="no">scc/report.h</includes>
+    <includes refid="utilities_8h" local="no">scc/utilities.h</includes>
+    <includes local="no">systemc</includes>
+    <includes refid="tlm__id_8h" local="no">tlm/scc/tlm_id.h</includes>
+    <includes refid="tlm__mm_8h" local="no">tlm/scc/tlm_mm.h</includes>
+    <incdepgraph>
+      <node id="35">
+        <label>util/ities.h</label>
+        <link refid="ities_8h_source"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>util/pool_allocator.h</label>
+        <link refid="pool__allocator_8h_source"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>scc/fifo_w_cb.h</label>
+        <link refid="fifo__w__cb_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>scc/peq.h</label>
+        <link refid="peq_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>scc/report.h</label>
+        <link refid="report_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>utilities.h</label>
+        <link refid="utilities_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>tlm/scc/tlm_gp_shared.h</label>
+        <link refid="tlm__gp__shared_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>tlm/scc/tlm_id.h</label>
+        <link refid="tlm__id_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>tlm/scc/tlm_mm.h</label>
+        <link refid="tlm__mm_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>axi/axi_tlm.h</label>
+        <link refid="axi__tlm_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp</label>
+        <link refid="base_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>base.h</label>
+        <link refid="base_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>protocol_fsm.h</label>
+        <link refid="protocol__fsm_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>types.h</label>
+        <link refid="third__party_2axi__chi_2axi_2fsm_2types_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>algorithm</label>
+      </node>
+      <node id="4">
+        <label>array</label>
+      </node>
+      <node id="37">
+        <label>assert.h</label>
+      </node>
+      <node id="38">
+        <label>bitset</label>
+      </node>
+      <node id="44">
+        <label>boost/mpl/list.hpp</label>
+      </node>
+      <node id="15">
+        <label>boost/optional.hpp</label>
+      </node>
+      <node id="45">
+        <label>boost/statechart/custom_reaction.hpp</label>
+      </node>
+      <node id="46">
+        <label>boost/statechart/event.hpp</label>
+      </node>
+      <node id="47">
+        <label>boost/statechart/state.hpp</label>
+      </node>
+      <node id="48">
+        <label>boost/statechart/state_machine.hpp</label>
+      </node>
+      <node id="49">
+        <label>boost/statechart/transition.hpp</label>
+      </node>
+      <node id="24">
+        <label>cci_configuration</label>
+      </node>
+      <node id="22">
+        <label>cctype</label>
+      </node>
+      <node id="39">
+        <label>climits</label>
+      </node>
+      <node id="6">
+        <label>cstdint</label>
+      </node>
+      <node id="26">
+        <label>cstring</label>
+      </node>
+      <node id="11">
+        <label>deque</label>
+      </node>
+      <node id="40">
+        <label>fstream</label>
+      </node>
+      <node id="9">
+        <label>functional</label>
+      </node>
+      <node id="27">
+        <label>iomanip</label>
+      </node>
+      <node id="28">
+        <label>iostream</label>
+      </node>
+      <node id="41">
+        <label>iterator</label>
+      </node>
+      <node id="16">
+        <label>limits</label>
+      </node>
+      <node id="25">
+        <label>locale</label>
+      </node>
+      <node id="17">
+        <label>map</label>
+      </node>
+      <node id="23">
+        <label>memory</label>
+      </node>
+      <node id="29">
+        <label>mutex</label>
+      </node>
+      <node id="30">
+        <label>sstream</label>
+      </node>
+      <node id="31">
+        <label>stdexcept</label>
+      </node>
+      <node id="42">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="13">
+        <label>sysc/communication/sc_prim_channel.h</label>
+      </node>
+      <node id="32">
+        <label>sysc/kernel/sc_time.h</label>
+      </node>
+      <node id="33">
+        <label>sysc/utils/sc_report.h</label>
+      </node>
+      <node id="18">
+        <label>systemc</label>
+      </node>
+      <node id="7">
+        <label>tlm</label>
+      </node>
+      <node id="8">
+        <label>type_traits</label>
+      </node>
+      <node id="34">
+        <label>unordered_map</label>
+      </node>
+      <node id="19">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceaxi">axi</innernamespace>
+    <innernamespace refid="namespaceaxi_1_1fsm">axi::fsm</innernamespace>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="base_8cpp_1a14c0ae1e60ff59c85eb89bc7ce5d9afc" prot="public" static="no">
+        <name>SC_INCLUDE_DYNAMIC_PROCESSES</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp" line="18" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2020<sp/>-<sp/>2022<sp/>Arteris<sp/>IP</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.axi_util.cpp</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SC_INCLUDE_DYNAMIC_PROCESSES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SC_INCLUDE_DYNAMIC_PROCESSES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;protocol_fsm.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scc/report.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scc/utilities.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;systemc&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm/scc/tlm_id.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm/scc/tlm_mm.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">sc_core;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetlm" kindref="compound">tlm</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceaxi" kindref="compound">axi</ref><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fsm<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">fsm_handle::fsm_handle()</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">:<sp/>fsm{new<sp/><ref refid="structaxi_1_1fsm_1_1AxiProtocolFsm" kindref="compound">AxiProtocolFsm</ref>()}<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>fsm-&gt;initiate();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">fsm_handle::~fsm_handle()<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>fsm-&gt;terminate();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>fsm;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="structaxi_1_1fsm_1_1base_1a59d8b6978f975d7e748555c5e6699962" refkind="member"><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1base_1a59d8b6978f975d7e748555c5e6699962" kindref="member">base::base</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>transfer_width,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>coherent,<sp/>protocol_time_point_e<sp/>wr_start)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">:<sp/>transfer_width_in_bytes(transfer_width<sp/>/<sp/>8)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">,<sp/>wr_start(wr_start)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">,<sp/>coherent(coherent)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(wr_start<sp/>==<sp/>RequestPhaseBeg<sp/>||<sp/>wr_start<sp/>==<sp/>WValidE);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>idle_fsm.clear();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>active_fsm.clear();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_spawn_options<sp/>opts;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>opts.dont_initialize();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>opts.spawn_method();</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>opts.set_sensitivity(&amp;fsm_event_queue.event());</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_spawn(sc_bind(&amp;<ref refid="structaxi_1_1fsm_1_1base_1ab0c33b46e6d313a33ce1a356ccc596af" kindref="member">base::process_fsm_event</ref>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">),<sp/>sc_core::sc_gen_unique_name(</highlight><highlight class="stringliteral">&quot;fsm_event_method&quot;</highlight><highlight class="normal">),<sp/>&amp;opts);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>fsm_clk_queue.set_avail_cb([</highlight><highlight class="keyword">this</highlight><highlight class="normal">]()<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(fsm_clk_queue_hndl.valid())</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_clk_queue_hndl.enable();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>fsm_clk_queue.set_empty_cb([</highlight><highlight class="keyword">this</highlight><highlight class="normal">]()<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(fsm_clk_queue_hndl.valid())</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_clk_queue_hndl.disable();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="structaxi_1_1fsm_1_1base_1aa22ba0281d929364938d62b0d3930b7b" refkind="member"><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">fsm_handle</ref>*<sp/><ref refid="structaxi_1_1fsm_1_1base_1aa22ba0281d929364938d62b0d3930b7b" kindref="member">base::find_or_create</ref>(<ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref>*<sp/>gp,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1ace" kindref="compound">ace</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>active_fsm.find(gp);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!gp<sp/>||<sp/>it<sp/>==<sp/>active_fsm.end())<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(gp)<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SCCTRACE(instance_name)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;creating<sp/>fsm<sp/>for<sp/>trans<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>*gp;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SCCTRACE(instance_name)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;creating<sp/>fsm<sp/>for<sp/>new<sp/>transaction&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(idle_fsm.empty())<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fsm_hndl<sp/>=<sp/><ref refid="structaxi_1_1fsm_1_1base_1a36fd237711e396d96e8d146bf11d13eb" kindref="member">create_fsm_handle</ref>();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a531305a4a623f70f41f2249028dbedde" kindref="member">setup_callbacks</ref>(fsm_hndl);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>idle_fsm.push_back(fsm_hndl);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>allocated_fsm.emplace_back(fsm_hndl);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fsm_hndl<sp/>=<sp/>idle_fsm.front();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>idle_fsm.pop_front();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;reset();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(gp<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;trans<sp/>=<sp/>gp;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;trans<sp/>=</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1ace" kindref="compound">ace</ref><sp/>?<sp/><ref refid="structtlm_1_1scc_1_1tlm__mm_1ad96d412a19c84b6d945e939d313f361a" kindref="member">tlm::scc::tlm_mm&lt;&gt;::get</ref>().<ref refid="classtlm_1_1scc_1_1tlm__mm__t_1af66490a12805bd7712add347b7c938fc" kindref="member">allocate</ref>&lt;<ref refid="structaxi_1_1ace__extension" kindref="compound">ace_extension</ref>&gt;()<sp/>:<sp/><ref refid="structtlm_1_1scc_1_1tlm__mm_1ad96d412a19c84b6d945e939d313f361a" kindref="member">tlm::scc::tlm_mm&lt;&gt;::get</ref>().<ref refid="classtlm_1_1scc_1_1tlm__mm__t_1af66490a12805bd7712add347b7c938fc" kindref="member">allocate</ref>&lt;<ref refid="structaxi_1_1axi4__extension" kindref="compound">axi4_extension</ref>&gt;();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>active_fsm.insert(std::make_pair(fsm_hndl-&gt;trans.get(),<sp/>fsm_hndl));</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;start<sp/>=<sp/>sc_time_stamp();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fsm_hndl;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it-&gt;second-&gt;start<sp/>=<sp/>sc_time_stamp();</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>it-&gt;second;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="structaxi_1_1fsm_1_1base_1ab0c33b46e6d313a33ce1a356ccc596af" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1base_1ab0c33b46e6d313a33ce1a356ccc596af" kindref="member">base::process_fsm_event</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>e<sp/>=<sp/>fsm_event_queue.get_next())<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>entry<sp/>=<sp/>e.get();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(std::get&lt;2&gt;(entry))</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" kindref="member">schedule</ref>(std::get&lt;0&gt;(entry),<sp/>std::get&lt;1&gt;(entry),<sp/>0);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(std::get&lt;0&gt;(entry),<sp/>std::get&lt;1&gt;(entry));</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="structaxi_1_1fsm_1_1base_1a61c01b63aa94fc6e2a5ec6ee6f4e06c4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1base_1a61c01b63aa94fc6e2a5ec6ee6f4e06c4" kindref="member">base::process_fsm_clk_queue</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!fsm_clk_queue_hndl.valid())</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_clk_queue_hndl<sp/>=<sp/>sc_process_handle(sc_get_current_process_handle());</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(fsm_clk_queue.avail())</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(fsm_clk_queue.avail())<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>entry<sp/>=<sp/>fsm_clk_queue.front();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(std::get&lt;2&gt;(entry)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SCCTRACE(instance_name)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;processing<sp/>event<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>evt2str(std::get&lt;0&gt;(entry))<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>of<sp/>trans<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>*std::get&lt;1&gt;(entry);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(std::get&lt;0&gt;(entry),<sp/>std::get&lt;1&gt;(entry));</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::get&lt;2&gt;(entry)<sp/>-=<sp/>1;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_clk_queue.push_back(entry);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_clk_queue.pop_front();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fall<sp/>asleep<sp/>if<sp/>there<sp/>is<sp/>nothing<sp/>to<sp/>process</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_clk_queue_hndl.disable();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">base::react</ref>(protocol_time_point_e<sp/>event,<sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">axi::fsm::fsm_handle</ref>*<sp/>fsm_hndl)<sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>SCCTRACE(instance_name)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;in<sp/>react()<sp/>base<sp/>has<sp/><sp/>coherent<sp/>=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>coherent<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>with<sp/>event<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>evt2str(event);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>fsm_hndl-&gt;state<sp/>=<sp/>event;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(event)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WValidE:</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" kindref="member">fsm</ref>-&gt;process_event(<ref refid="structaxi_1_1fsm_1_1WReq" kindref="compound">WReq</ref>());</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WReadyE:</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>RequestPhaseBeg:</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespaceaxi_1ad48f42fa6a7b36b4928191327f2f4c94" kindref="member">is_burst</ref>(*fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1a4198e085c0adb0dcfafc623aa9890d8b" kindref="member">trans</ref>)<sp/>&amp;&amp;<sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1a4198e085c0adb0dcfafc623aa9890d8b" kindref="member">trans</ref>-&gt;is_write()<sp/>&amp;&amp;<sp/>!is_dataless(fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1a4198e085c0adb0dcfafc623aa9890d8b" kindref="member">trans</ref>-&gt;get_extension&lt;<ref refid="structaxi_1_1ace__extension" kindref="compound">axi::ace_extension</ref>&gt;()))</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" kindref="member">fsm</ref>-&gt;process_event(<ref refid="structaxi_1_1fsm_1_1BegPartReq" kindref="compound">BegPartReq</ref>());</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" kindref="member">fsm</ref>-&gt;process_event(<ref refid="structaxi_1_1fsm_1_1BegReq" kindref="compound">BegReq</ref>());</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>BegPartReqE:</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" kindref="member">fsm</ref>-&gt;process_event(<ref refid="structaxi_1_1fsm_1_1BegPartReq" kindref="compound">BegPartReq</ref>());</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>EndPartReqE:</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" kindref="member">fsm</ref>-&gt;process_event(<ref refid="structaxi_1_1fsm_1_1EndPartReq" kindref="compound">EndPartReq</ref>());</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>BegReqE:</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" kindref="member">fsm</ref>-&gt;process_event(<ref refid="structaxi_1_1fsm_1_1BegReq" kindref="compound">BegReq</ref>());</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>EndReqE:</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" kindref="member">fsm</ref>-&gt;process_event(<ref refid="structaxi_1_1fsm_1_1EndReq" kindref="compound">EndReq</ref>());</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>BegPartRespE:</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" kindref="member">fsm</ref>-&gt;process_event(<ref refid="structaxi_1_1fsm_1_1BegPartResp" kindref="compound">BegPartResp</ref>());</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>EndPartRespE:</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" kindref="member">fsm</ref>-&gt;process_event(<ref refid="structaxi_1_1fsm_1_1EndPartResp" kindref="compound">EndPartResp</ref>());</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>BegRespE:</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" kindref="member">fsm</ref>-&gt;process_event(<ref refid="structaxi_1_1fsm_1_1BegResp" kindref="compound">BegResp</ref>());</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>EndRespE:</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SCCTRACE(instance_name)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;in<sp/>EndResp<sp/>of<sp/>base()<sp/>with<sp/>coherent<sp/>=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>coherent;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!coherent<sp/>||<sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1abdff7e6de49b857153d99cafbc31c634" kindref="member">is_snoop</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SCCTRACE(instance_name)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;freeing<sp/>fsm<sp/>for<sp/>trans<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>*fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1a4198e085c0adb0dcfafc623aa9890d8b" kindref="member">trans</ref>;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" kindref="member">fsm</ref>-&gt;process_event(<ref refid="structaxi_1_1fsm_1_1EndResp" kindref="compound">EndResp</ref>());</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>active_fsm.erase(fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1a4198e085c0adb0dcfafc623aa9890d8b" kindref="member">trans</ref>.<ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a82b81085996298e48127bab370ad54c3" kindref="member">get</ref>());</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1a4198e085c0adb0dcfafc623aa9890d8b" kindref="member">trans</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>idle_fsm.push_back(fsm_hndl);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>finish_evt.notify();</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" kindref="member">fsm</ref>-&gt;process_event(EndRespNoAck());</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Ack:</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SCCTRACE(instance_name)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;freeing<sp/>fsm<sp/>for<sp/>trans<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>*fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1a4198e085c0adb0dcfafc623aa9890d8b" kindref="member">trans</ref>;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1aae572170fa8ec0379aa6118c504e6266" kindref="member">fsm</ref>-&gt;process_event(AckRecv());</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>active_fsm.erase(fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1a4198e085c0adb0dcfafc623aa9890d8b" kindref="member">trans</ref>.<ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a82b81085996298e48127bab370ad54c3" kindref="member">get</ref>());</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1a4198e085c0adb0dcfafc623aa9890d8b" kindref="member">trans</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>idle_fsm.push_back(fsm_hndl);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>finish_evt.notify();</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SCCFATAL(instance_name)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>valid<sp/>protocol<sp/>time<sp/>point&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189" refid="structaxi_1_1fsm_1_1base_1a2f69b9b543de0409a982e194e7ee84d1" refkind="member"><highlight class="normal">tlm_sync_enum<sp/><ref refid="structaxi_1_1fsm_1_1base_1a2f69b9b543de0409a982e194e7ee84d1" kindref="member">base::nb_fw</ref>(<ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref>&amp;<sp/>trans,<sp/>phase_type<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>phase,<sp/>sc_time&amp;<sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>SCCTRACE(instance_name)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;base::nb_fw<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>phase<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>with<sp/>delay<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>t<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>of<sp/>trans<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>trans;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(phase<sp/>==<sp/>BEGIN_PARTIAL_REQ<sp/>||<sp/>phase<sp/>==<sp/>BEGIN_REQ)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>read/write</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fsm_hndl<sp/>=<sp/><ref refid="structaxi_1_1fsm_1_1base_1aa22ba0281d929364938d62b0d3930b7b" kindref="member">find_or_create</ref>(&amp;trans);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!trans.is_read())<sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>protocol_time_point_e<sp/>evt<sp/>=<sp/>axi::fsm::RequestPhaseBeg;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1a7c7367afac927398add8c4ec3856d85f" kindref="member">beat_count</ref><sp/>==<sp/>0<sp/>&amp;&amp;<sp/>wr_start<sp/>!=<sp/>RequestPhaseBeg)</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>evt<sp/>=<sp/>wr_start;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>evt<sp/>=<sp/>phase<sp/>==<sp/>BEGIN_PARTIAL_REQ<sp/>?<sp/>BegPartReqE<sp/>:<sp/>BegReqE;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(t<sp/>==<sp/>SC_ZERO_TIME)<sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(evt,<sp/>&amp;trans);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" kindref="member">schedule</ref>(evt,<sp/>&amp;trans,<sp/>t);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(t<sp/>==<sp/>SC_ZERO_TIME)<sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(BegReqE,<sp/>&amp;trans);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" kindref="member">schedule</ref>(BegReqE,<sp/>&amp;trans,<sp/>t);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(phase<sp/>==<sp/>END_PARTIAL_RESP<sp/>||<sp/>phase<sp/>==<sp/>END_RESP)<sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(t<sp/>==<sp/>SC_ZERO_TIME)<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(phase<sp/>==<sp/>END_RESP<sp/>?<sp/>EndRespE<sp/>:<sp/>EndPartRespE,<sp/>&amp;trans);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" kindref="member">schedule</ref>(phase<sp/>==<sp/>END_RESP<sp/>?<sp/>EndRespE<sp/>:<sp/>EndPartRespE,<sp/>&amp;trans,<sp/>t);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(phase<sp/>==<sp/>END_REQ)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>snoop<sp/>access<sp/>resp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(t<sp/>==<sp/>SC_ZERO_TIME)<sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(EndReqE,<sp/>&amp;trans);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" kindref="member">schedule</ref>(EndReqE,<sp/>&amp;trans,<sp/>t);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(phase<sp/>==<sp/>BEGIN_PARTIAL_RESP<sp/>||<sp/>phase<sp/>==<sp/>BEGIN_RESP)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>snoop<sp/>access<sp/>resp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(t<sp/>==<sp/>SC_ZERO_TIME)<sp/>{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(phase<sp/>==<sp/>BEGIN_RESP<sp/>?<sp/>BegRespE<sp/>:<sp/>BegPartRespE,<sp/>&amp;trans);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" kindref="member">schedule</ref>(phase<sp/>==<sp/>BEGIN_RESP<sp/>?<sp/>BegRespE<sp/>:<sp/>BegPartRespE,<sp/>&amp;trans,<sp/>t);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(phase<sp/>==<sp/>axi::ACK)<sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(t<sp/>==<sp/>SC_ZERO_TIME)<sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(Ack,<sp/>&amp;trans);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" kindref="member">schedule</ref>(Ack,<sp/>&amp;trans,<sp/>t);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>TLM_ACCEPTED;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234" refid="structaxi_1_1fsm_1_1base_1a87dbb07802109ff958c86cd08f8aaaaf" refkind="member"><highlight class="normal">tlm_sync_enum<sp/><ref refid="structaxi_1_1fsm_1_1base_1a87dbb07802109ff958c86cd08f8aaaaf" kindref="member">base::nb_bw</ref>(<ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref>&amp;<sp/>trans,<sp/>phase_type<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>phase,<sp/>sc_time&amp;<sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>SCCTRACE(instance_name)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;base::nb_bw<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>phase<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>of<sp/>trans<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>trans;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(phase<sp/>==<sp/>END_PARTIAL_REQ<sp/>||<sp/>phase<sp/>==<sp/>END_REQ)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>read/write</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(t<sp/>==<sp/>SC_ZERO_TIME)<sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(phase<sp/>==<sp/>END_REQ<sp/>?<sp/>EndReqE<sp/>:<sp/>EndPartReqE,<sp/>&amp;trans);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" kindref="member">schedule</ref>(phase<sp/>==<sp/>END_REQ<sp/>?<sp/>EndReqE<sp/>:<sp/>EndPartReqE,<sp/>&amp;trans,<sp/>t);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(phase<sp/>==<sp/>BEGIN_PARTIAL_RESP<sp/>||<sp/>phase<sp/>==<sp/>BEGIN_RESP)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>read/write<sp/>response</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(t<sp/>==<sp/>SC_ZERO_TIME)<sp/>{</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(phase<sp/>==<sp/>BEGIN_RESP<sp/>?<sp/>BegRespE<sp/>:<sp/>BegPartRespE,<sp/>&amp;trans);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" kindref="member">schedule</ref>(phase<sp/>==<sp/>BEGIN_RESP<sp/>?<sp/>BegRespE<sp/>:<sp/>BegPartRespE,<sp/>&amp;trans,<sp/>t);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(phase<sp/>==<sp/>BEGIN_REQ)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>snoop<sp/>read</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fsm_hndl<sp/>=<sp/><ref refid="structaxi_1_1fsm_1_1base_1aa22ba0281d929364938d62b0d3930b7b" kindref="member">find_or_create</ref>(&amp;trans,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_hndl-&gt;<ref refid="structaxi_1_1fsm_1_1fsm__handle_1abdff7e6de49b857153d99cafbc31c634" kindref="member">is_snoop</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(t<sp/>==<sp/>SC_ZERO_TIME)<sp/>{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(BegReqE,<sp/>&amp;trans);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" kindref="member">schedule</ref>(BegReqE,<sp/>&amp;trans,<sp/>t);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(phase<sp/>==<sp/>END_PARTIAL_RESP<sp/>||<sp/>phase<sp/>==<sp/>END_RESP)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>snoop<sp/>read<sp/>response</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(t<sp/>==<sp/>SC_ZERO_TIME)<sp/>{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(phase<sp/>==<sp/>END_RESP<sp/>?<sp/>EndRespE<sp/>:<sp/>EndPartRespE,<sp/>&amp;trans);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" kindref="member">schedule</ref>(phase<sp/>==<sp/>END_RESP<sp/>?<sp/>EndRespE<sp/>:<sp/>EndPartRespE,<sp/>&amp;trans,<sp/>t);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>TLM_ACCEPTED;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>fsm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>axi</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp"/>
+  </compounddef>
+</doxygen>

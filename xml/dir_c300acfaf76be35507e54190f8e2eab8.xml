@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_c300acfaf76be35507e54190f8e2eab8" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe</compoundname>
+    <innerfile refid="chi__rn__initiator_8cpp">chi_rn_initiator.cpp</innerfile>
+    <innerfile refid="chi__rn__initiator_8h">chi_rn_initiator.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/"/>
+  </compounddef>
+</doxygen>

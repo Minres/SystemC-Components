@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structchi_1_1lwtr_1_1nb__chi__rec__entry" kind="struct" language="C++" prot="public">
+    <compoundname>chi::lwtr::nb_chi_rec_entry</compoundname>
+    <basecompoundref refid="structtlm_1_1scc_1_1lwtr_1_1nb__rec__entry" prot="public" virt="non-virtual">tlm::scc::lwtr::nb_rec_entry</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structchi_1_1lwtr_1_1nb__chi__rec__entry_1a90987ba08bfd9987b25ff6fd8fb0af02" prot="public" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool chi::lwtr::nb_chi_rec_entry::snoop</definition>
+        <argsstring></argsstring>
+        <name>snoop</name>
+        <qualifiedname>chi::lwtr::nb_chi_rec_entry::snoop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" line="53" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structchi_1_1lwtr_1_1nb__chi__rec__entry_1ac9f61ea33fee7eface4391dbcc8c0a0d" prot="public" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool chi::lwtr::nb_chi_rec_entry::credit</definition>
+        <argsstring></argsstring>
+        <name>credit</name>
+        <qualifiedname>chi::lwtr::nb_chi_rec_entry::credit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" line="54" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structchi_1_1lwtr_1_1nb__chi__rec__entry_1a84ec11bd8a39a6a28b3ec584223da68c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>chi::lwtr::nb_chi_rec_entry::nb_chi_rec_entry</definition>
+        <argsstring>(tlm::scc::tlm_gp_shared_ptr tr, tlm::tlm_phase const ph, uintptr_t const id, tx_handle parent, bool snoop=false, bool credit=false)</argsstring>
+        <name>nb_chi_rec_entry</name>
+        <qualifiedname>chi::lwtr::nb_chi_rec_entry::nb_chi_rec_entry</qualifiedname>
+        <param>
+          <type>tlm::scc::tlm_gp_shared_ptr</type>
+          <declname>tr</declname>
+        </param>
+        <param>
+          <type>tlm::tlm_phase const</type>
+          <declname>ph</declname>
+        </param>
+        <param>
+          <type>uintptr_t const</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>tx_handle</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>snoop</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>credit</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" line="55" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" bodystart="55" bodyend="59"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>chi::lwtr::nb_chi_rec_entry</label>
+        <link refid="structchi_1_1lwtr_1_1nb__chi__rec__entry"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::lwtr::nb_rec_entry</label>
+        <link refid="structtlm_1_1scc_1_1lwtr_1_1nb__rec__entry"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>chi::lwtr::nb_chi_rec_entry</label>
+        <link refid="structchi_1_1lwtr_1_1nb__chi__rec__entry"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::scc::lwtr::nb_rec_entry</label>
+        <link refid="structtlm_1_1scc_1_1lwtr_1_1nb__rec__entry"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>tr</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tlm::scc::tlm_payload_shared_ptr&lt; tlm::tlm_generic_payload &gt;</label>
+        <link refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" line="52" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" bodystart="52" bodyend="60"/>
+    <listofallmembers>
+      <member refid="structchi_1_1lwtr_1_1nb__chi__rec__entry_1ac9f61ea33fee7eface4391dbcc8c0a0d" prot="public" virt="non-virtual"><scope>chi::lwtr::nb_chi_rec_entry</scope><name>credit</name></member>
+      <member refid="structtlm_1_1scc_1_1lwtr_1_1nb__rec__entry_1aac87f24d638652ea34eea11c010043da" prot="public" virt="non-virtual"><scope>chi::lwtr::nb_chi_rec_entry</scope><name>id</name></member>
+      <member refid="structchi_1_1lwtr_1_1nb__chi__rec__entry_1a84ec11bd8a39a6a28b3ec584223da68c" prot="public" virt="non-virtual"><scope>chi::lwtr::nb_chi_rec_entry</scope><name>nb_chi_rec_entry</name></member>
+      <member refid="structtlm_1_1scc_1_1lwtr_1_1nb__rec__entry_1a49540749e2f07d7047bcd076faa4d68b" prot="public" virt="non-virtual"><scope>chi::lwtr::nb_chi_rec_entry</scope><name>parent</name></member>
+      <member refid="structtlm_1_1scc_1_1lwtr_1_1nb__rec__entry_1a1fe75b5213cfe3fbe5a01e32c9ff8baf" prot="public" virt="non-virtual"><scope>chi::lwtr::nb_chi_rec_entry</scope><name>ph</name></member>
+      <member refid="structchi_1_1lwtr_1_1nb__chi__rec__entry_1a90987ba08bfd9987b25ff6fd8fb0af02" prot="public" virt="non-virtual"><scope>chi::lwtr::nb_chi_rec_entry</scope><name>snoop</name></member>
+      <member refid="structtlm_1_1scc_1_1lwtr_1_1nb__rec__entry_1ab9ec98ed361fd02630906409dba36e3a" prot="public" virt="non-virtual"><scope>chi::lwtr::nb_chi_rec_entry</scope><name>tr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

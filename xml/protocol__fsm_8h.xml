@@ -1,0 +1,400 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="protocol__fsm_8h" kind="file" language="C++">
+    <compoundname>protocol_fsm.h</compoundname>
+    <includes refid="third__party_2axi__chi_2axi_2fsm_2types_8h" local="yes">types.h</includes>
+    <includes local="no">array</includes>
+    <includes local="no">boost/mpl/list.hpp</includes>
+    <includes local="no">boost/statechart/custom_reaction.hpp</includes>
+    <includes local="no">boost/statechart/event.hpp</includes>
+    <includes local="no">boost/statechart/state.hpp</includes>
+    <includes local="no">boost/statechart/state_machine.hpp</includes>
+    <includes local="no">boost/statechart/transition.hpp</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">iostream</includes>
+    <includedby refid="ace__initiator_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_initiator.h</includedby>
+    <includedby refid="ace__lite__initiator_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_initiator.h</includedby>
+    <includedby refid="ace__lite__target_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h</includedby>
+    <includedby refid="ace__target_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_target.h</includedby>
+    <includedby refid="axi4__initiator_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h</includedby>
+    <includedby refid="axi4__target_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_target.h</includedby>
+    <includedby refid="base_8cpp" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp</includedby>
+    <includedby refid="ace__target__pe_8cpp" local="no">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp</includedby>
+    <includedby refid="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_initiator.h</includedby>
+    <includedby refid="axi__target__pe_8cpp" local="no">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_target_pe.cpp</includedby>
+    <includedby refid="simple__initiator_8cpp" local="no">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_initiator.cpp</includedby>
+    <incdepgraph>
+      <node id="9">
+        <label>tlm/scc/tlm_gp_shared.h</label>
+        <link refid="tlm__gp__shared_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>axi/axi_tlm.h</label>
+        <link refid="axi__tlm_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h</label>
+        <link refid="protocol__fsm_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>types.h</label>
+        <link refid="third__party_2axi__chi_2axi_2fsm_2types_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>array</label>
+      </node>
+      <node id="10">
+        <label>boost/mpl/list.hpp</label>
+      </node>
+      <node id="11">
+        <label>boost/statechart/custom_reaction.hpp</label>
+      </node>
+      <node id="12">
+        <label>boost/statechart/event.hpp</label>
+      </node>
+      <node id="13">
+        <label>boost/statechart/state.hpp</label>
+      </node>
+      <node id="14">
+        <label>boost/statechart/state_machine.hpp</label>
+      </node>
+      <node id="15">
+        <label>boost/statechart/transition.hpp</label>
+      </node>
+      <node id="5">
+        <label>cstdint</label>
+      </node>
+      <node id="8">
+        <label>functional</label>
+      </node>
+      <node id="16">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>tlm</label>
+      </node>
+      <node id="7">
+        <label>type_traits</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_initiator.h</label>
+        <link refid="ace__initiator_8h_source"/>
+      </node>
+      <node id="3">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_initiator.h</label>
+        <link refid="ace__lite__initiator_8h_source"/>
+      </node>
+      <node id="4">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h</label>
+        <link refid="ace__lite__target_8h_source"/>
+      </node>
+      <node id="5">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_target.h</label>
+        <link refid="ace__target_8h_source"/>
+      </node>
+      <node id="6">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h</label>
+        <link refid="axi4__initiator_8h_source"/>
+      </node>
+      <node id="7">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_target.h</label>
+        <link refid="axi4__target_8h_source"/>
+      </node>
+      <node id="8">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp</label>
+        <link refid="base_8cpp_source"/>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h</label>
+        <link refid="protocol__fsm_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp</label>
+        <link refid="ace__target__pe_8cpp_source"/>
+      </node>
+      <node id="11">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_initiator.cpp</label>
+        <link refid="third__party_2axi__chi_2axi_2pe_2axi__initiator_8cpp_source"/>
+      </node>
+      <node id="10">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_initiator.h</label>
+        <link refid="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_target_pe.cpp</label>
+        <link refid="axi__target__pe_8cpp_source"/>
+      </node>
+      <node id="13">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_initiator.cpp</label>
+        <link refid="simple__initiator_8cpp_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structaxi_1_1fsm_1_1WReq" prot="public">axi::fsm::WReq</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1BegPartReq" prot="public">axi::fsm::BegPartReq</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1EndPartReq" prot="public">axi::fsm::EndPartReq</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1BegReq" prot="public">axi::fsm::BegReq</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1EndReq" prot="public">axi::fsm::EndReq</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1BegPartResp" prot="public">axi::fsm::BegPartResp</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1EndPartResp" prot="public">axi::fsm::EndPartResp</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1BegResp" prot="public">axi::fsm::BegResp</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1EndResp" prot="public">axi::fsm::EndResp</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1EndRespNoAck" prot="public">axi::fsm::EndRespNoAck</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1AckRecv" prot="public">axi::fsm::AckRecv</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1AxiProtocolFsm" prot="public">axi::fsm::AxiProtocolFsm</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1Idle" prot="public">axi::fsm::Idle</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1ATrans" prot="public">axi::fsm::ATrans</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1PartialRequest" prot="public">axi::fsm::PartialRequest</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1WriteIdle" prot="public">axi::fsm::WriteIdle</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1Request" prot="public">axi::fsm::Request</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1WaitForResponse" prot="public">axi::fsm::WaitForResponse</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1PartialResponse" prot="public">axi::fsm::PartialResponse</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1ReadIdle" prot="public">axi::fsm::ReadIdle</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1Response" prot="public">axi::fsm::Response</innerclass>
+    <innerclass refid="structaxi_1_1fsm_1_1WaitAck" prot="public">axi::fsm::WaitAck</innerclass>
+    <innernamespace refid="namespaceaxi">axi</innernamespace>
+    <innernamespace refid="namespaceaxi_1_1fsm">axi::fsm</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2020<sp/>-2022<sp/>Arteris<sp/>IP</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.axi_util.cpp</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;types.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/mpl/list.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/statechart/custom_reaction.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/statechart/event.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/statechart/state.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/statechart/state_machine.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/statechart/transition.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mpl<sp/>=<sp/>boost::mpl;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">bsc<sp/>=<sp/>boost::statechart;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceaxi" kindref="compound">axi</ref><sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fsm<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Event<sp/>Declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="structaxi_1_1fsm_1_1WReq" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1WReq" kindref="compound">WReq</ref><sp/>:<sp/>bsc::event&lt;WReq&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="37" refid="structaxi_1_1fsm_1_1BegPartReq" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1BegPartReq" kindref="compound">BegPartReq</ref><sp/>:<sp/>bsc::event&lt;BegPartReq&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="38" refid="structaxi_1_1fsm_1_1EndPartReq" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1EndPartReq" kindref="compound">EndPartReq</ref><sp/>:<sp/>bsc::event&lt;EndPartReq&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="39" refid="structaxi_1_1fsm_1_1BegReq" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1BegReq" kindref="compound">BegReq</ref><sp/>:<sp/>bsc::event&lt;BegReq&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="40" refid="structaxi_1_1fsm_1_1EndReq" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1EndReq" kindref="compound">EndReq</ref><sp/>:<sp/>bsc::event&lt;EndReq&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="41" refid="structaxi_1_1fsm_1_1BegPartResp" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1BegPartResp" kindref="compound">BegPartResp</ref><sp/>:<sp/>bsc::event&lt;BegPartResp&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="42" refid="structaxi_1_1fsm_1_1EndPartResp" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1EndPartResp" kindref="compound">EndPartResp</ref><sp/>:<sp/>bsc::event&lt;EndPartResp&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="43" refid="structaxi_1_1fsm_1_1BegResp" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1BegResp" kindref="compound">BegResp</ref><sp/>:<sp/>bsc::event&lt;BegResp&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="44" refid="structaxi_1_1fsm_1_1EndResp" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1EndResp" kindref="compound">EndResp</ref><sp/>:<sp/>bsc::event&lt;EndResp&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="45" refid="structaxi_1_1fsm_1_1EndRespNoAck" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1EndRespNoAck" kindref="compound">EndRespNoAck</ref><sp/>:<sp/>bsc::event&lt;EndRespNoAck&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="46" refid="structaxi_1_1fsm_1_1AckRecv" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1AckRecv" kindref="compound">AckRecv</ref><sp/>:<sp/>bsc::event&lt;AckRecv&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>State<sp/>forward<sp/>Declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1Idle" kindref="compound">Idle</ref>;<sp/></highlight><highlight class="comment">//<sp/>forward<sp/>declaration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1ATrans" kindref="compound">ATrans</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1PartialRequest" kindref="compound">PartialRequest</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1WriteIdle" kindref="compound">WriteIdle</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1Request" kindref="compound">Request</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1WaitForResponse" kindref="compound">WaitForResponse</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1PartialResponse" kindref="compound">PartialResponse</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1ReadIdle" kindref="compound">ReadIdle</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1Response" kindref="compound">Response</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1WaitAck" kindref="compound">WaitAck</ref>;</highlight></codeline>
+<codeline lineno="61" refid="structaxi_1_1fsm_1_1AxiProtocolFsm" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1AxiProtocolFsm" kindref="compound">AxiProtocolFsm</ref><sp/>:<sp/>bsc::state_machine&lt;AxiProtocolFsm,<sp/>Idle&gt;<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>InvokeResponsePhaseBeg(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1BegResp" kindref="compound">BegResp</ref>&amp;)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(cb.at(axi::fsm::ResponsePhaseBeg))</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cb.at(axi::fsm::ResponsePhaseBeg)();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>InvokeResponsePhaseBeg(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1BegPartResp" kindref="compound">BegPartResp</ref>&amp;)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(cb.at(axi::fsm::ResponsePhaseBeg))</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cb.at(axi::fsm::ResponsePhaseBeg)();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>terminate()<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>f<sp/>:<sp/>cb)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>f<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsc::state_machine&lt;AxiProtocolFsm,<sp/>Idle&gt;::terminate();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>axi::fsm::protocol_cb<sp/>cb;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="78" refid="structaxi_1_1fsm_1_1Idle" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">Idle<sp/>:<sp/>bsc::state&lt;Idle,<sp/>AxiProtocolFsm&gt;<sp/>{<sp/></highlight><highlight class="comment">//<sp/>@suppress(&quot;Class<sp/>has<sp/>a<sp/>virtual<sp/>method<sp/>and<sp/>non-virtual<sp/>destructor&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>Idle(my_context<sp/>ctx)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>my_base(ctx)<sp/>{}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>~Idle()<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::RequestPhaseBeg))</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::RequestPhaseBeg)();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>mpl::list&lt;bsc::transition&lt;BegPartReq,<sp/>PartialRequest&gt;,<sp/>bsc::transition&lt;BegReq,<sp/>Request&gt;,<sp/>bsc::transition&lt;WReq,<sp/>ATrans&gt;&gt;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reactions;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="89" refid="structaxi_1_1fsm_1_1ATrans" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">ATrans<sp/>:<sp/>bsc::state&lt;ATrans,<sp/>AxiProtocolFsm&gt;<sp/>{<sp/></highlight><highlight class="comment">//<sp/>@suppress(&quot;Class<sp/>has<sp/>a<sp/>virtual<sp/>method<sp/>and<sp/>non-virtual<sp/>destructor&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>ATrans(my_context<sp/>ctx)</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>my_base(ctx)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::WValidE))</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::WValidE)();</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>~ATrans()<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::WReadyE))</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::WReadyE)();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>mpl::list&lt;bsc::transition&lt;BegPartReq,<sp/>PartialRequest&gt;,<sp/>bsc::transition&lt;BegReq,<sp/>Request&gt;&gt;<sp/>reactions;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="102" refid="structaxi_1_1fsm_1_1PartialRequest" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">PartialRequest<sp/>:<sp/>bsc::state&lt;PartialRequest,<sp/>AxiProtocolFsm&gt;<sp/>{<sp/></highlight><highlight class="comment">//<sp/>@suppress(&quot;Class<sp/>has<sp/>a<sp/>virtual<sp/>method<sp/>and<sp/>non-virtual<sp/>destructor&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>PartialRequest(my_context<sp/>ctx)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>my_base(ctx)<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::BegPartReqE))</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::BegPartReqE)();</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>~PartialRequest()<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::EndPartReqE))</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::EndPartReqE)();</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>bsc::transition&lt;EndPartReq,<sp/>WriteIdle&gt;<sp/>reactions;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="115" refid="structaxi_1_1fsm_1_1WriteIdle" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1WriteIdle" kindref="compound">WriteIdle</ref><sp/>:<sp/>bsc::simple_state&lt;WriteIdle,<sp/>AxiProtocolFsm&gt;<sp/>{<sp/></highlight><highlight class="comment">//<sp/>@suppress(&quot;Class<sp/>has<sp/>a<sp/>virtual<sp/>method<sp/>and<sp/>non-virtual<sp/>destructor&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>mpl::list&lt;bsc::transition&lt;BegPartReq,<sp/>PartialRequest&gt;,<sp/>bsc::transition&lt;BegReq,<sp/>Request&gt;&gt;<sp/>reactions;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="119" refid="structaxi_1_1fsm_1_1Request" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">Request<sp/>:<sp/>bsc::state&lt;Request,<sp/>AxiProtocolFsm&gt;<sp/>{<sp/></highlight><highlight class="comment">//<sp/>@suppress(&quot;Class<sp/>has<sp/>a<sp/>virtual<sp/>method<sp/>and<sp/>non-virtual<sp/>destructor&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>Request(my_context<sp/>ctx)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>my_base(ctx)<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::BegReqE))</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::BegReqE)();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>~Request()<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::EndReqE))</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::EndReqE)();</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>mpl::list&lt;bsc::transition&lt;EndReq,<sp/>WaitForResponse&gt;,</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsc::transition&lt;BegResp,<sp/>Response,<sp/>AxiProtocolFsm,<sp/>&amp;AxiProtocolFsm::InvokeResponsePhaseBeg&gt;,</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsc::transition&lt;BegPartResp,<sp/>PartialResponse,<sp/>AxiProtocolFsm,<sp/>&amp;AxiProtocolFsm::InvokeResponsePhaseBeg&gt;&gt;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reactions;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="135" refid="structaxi_1_1fsm_1_1WaitForResponse" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">WaitForResponse<sp/>:<sp/>bsc::state&lt;WaitForResponse,<sp/>AxiProtocolFsm&gt;<sp/>{<sp/></highlight><highlight class="comment">//<sp/>@suppress(&quot;Class<sp/>has<sp/>a<sp/>virtual<sp/>method<sp/>and<sp/>non-virtual<sp/>destructor&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>WaitForResponse(my_context<sp/>ctx)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>my_base(ctx)<sp/>{}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>~WaitForResponse()<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::ResponsePhaseBeg))</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::ResponsePhaseBeg)();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>mpl::list&lt;bsc::transition&lt;BegPartResp,<sp/>PartialResponse&gt;,<sp/>bsc::transition&lt;BegResp,<sp/>Response&gt;&gt;<sp/>reactions;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="145" refid="structaxi_1_1fsm_1_1PartialResponse" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">PartialResponse<sp/>:<sp/>bsc::state&lt;PartialResponse,<sp/>AxiProtocolFsm&gt;<sp/>{<sp/></highlight><highlight class="comment">//<sp/>@suppress(&quot;Class<sp/>has<sp/>a<sp/>virtual<sp/>method<sp/>and<sp/>non-virtual<sp/>destructor&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>PartialResponse(my_context<sp/>ctx)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>my_base(ctx)<sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::BegPartRespE))</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::BegPartRespE)();</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>~PartialResponse()<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::EndPartRespE))</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::EndPartRespE)();</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>bsc::transition&lt;EndPartResp,<sp/>ReadIdle&gt;<sp/>reactions;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="158" refid="structaxi_1_1fsm_1_1ReadIdle" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1ReadIdle" kindref="compound">ReadIdle</ref><sp/>:<sp/>bsc::simple_state&lt;ReadIdle,<sp/>AxiProtocolFsm&gt;<sp/>{<sp/></highlight><highlight class="comment">//<sp/>@suppress(&quot;Class<sp/>has<sp/>a<sp/>virtual<sp/>method<sp/>and<sp/>non-virtual<sp/>destructor&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>mpl::list&lt;bsc::transition&lt;BegPartResp,<sp/>PartialResponse&gt;,<sp/>bsc::transition&lt;BegResp,<sp/>Response&gt;&gt;<sp/>reactions;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="162" refid="structaxi_1_1fsm_1_1Response" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">Response<sp/>:<sp/>bsc::state&lt;Response,<sp/>AxiProtocolFsm&gt;<sp/>{<sp/></highlight><highlight class="comment">//<sp/>@suppress(&quot;Class<sp/>has<sp/>a<sp/>virtual<sp/>method<sp/>and<sp/>non-virtual<sp/>destructor&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>Response(my_context<sp/>ctx)</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>my_base(ctx)<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::BegRespE))</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::BegRespE)();</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>~Response()<sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::EndRespE))</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::EndRespE)();</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>mpl::list&lt;bsc::transition&lt;EndResp,<sp/>Idle&gt;,<sp/>bsc::transition&lt;EndRespNoAck,<sp/>WaitAck&gt;&gt;<sp/>reactions;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="175" refid="structaxi_1_1fsm_1_1WaitAck" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">WaitAck<sp/>:<sp/>bsc::state&lt;WaitAck,<sp/>AxiProtocolFsm&gt;<sp/>{<sp/></highlight><highlight class="comment">//<sp/>@suppress(&quot;Class<sp/>has<sp/>a<sp/>virtual<sp/>method<sp/>and<sp/>non-virtual<sp/>destructor&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>WaitAck(my_context<sp/>ctx)</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>my_base(ctx)<sp/>{}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>~WaitAck()<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::Ack))</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context&lt;AxiProtocolFsm&gt;().cb.at(axi::fsm::Ack)();</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>bsc::transition&lt;AckRecv,<sp/>Idle&gt;<sp/>reactions;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="184"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>fsm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>axi</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h"/>
+  </compounddef>
+</doxygen>

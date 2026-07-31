@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1ace__cfg" kind="struct" language="C++" prot="public">
+    <compoundname>axi::ace_cfg</compoundname>
+    <includes refid="axi_2signal__if_8h" local="no">signal_if.h</includes>
+    <templateparamlist>
+      <param>
+        <type>unsigned int</type>
+        <declname>BUSWDTH</declname>
+        <defname>BUSWDTH</defname>
+        <defval>32</defval>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>ADDRWDTH</declname>
+        <defname>ADDRWDTH</defname>
+        <defval>32</defval>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>IDWDTH</declname>
+        <defname>IDWDTH</defname>
+        <defval>32</defval>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>USERWDTH</declname>
+        <defname>USERWDTH</defname>
+        <defval>1</defval>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>AWSNOOPWDTH</declname>
+        <defname>AWSNOOPWDTH</defname>
+        <defval>3</defval>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>RESPWDTH</declname>
+        <defname>RESPWDTH</defname>
+        <defval>4</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structaxi_1_1ace__cfg_1a22343cac18ebd6ab28e1e88f426e6d6d" prot="public" static="no">
+        <type>typename <ref refid="structaxi_1_1select__if" kindref="compound">select_if</ref>&lt; BUSWDTH&lt;=64, sc_dt::sc_uint&lt; BUSWIDTH &gt;, sc_dt::sc_biguint&lt; BUSWIDTH &gt; &gt;::type</type>
+        <definition>using axi::ace_cfg&lt; BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH, AWSNOOPWDTH, RESPWDTH &gt;::data_t =  typename select_if&lt;BUSWDTH &lt;= 64, sc_dt::sc_uint&lt;BUSWIDTH&gt;, sc_dt::sc_biguint&lt;BUSWIDTH&gt;&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>data_t</name>
+        <qualifiedname>axi::ace_cfg::data_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="134" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1ace__cfg_1a83bbb0eaef4b2945c1b2ab59e5d32464" prot="public" static="no">
+        <type>typename <ref refid="structaxi_1_1select__if" kindref="compound">select_if</ref>&lt; USERWIDTH&lt;=64, sc_dt::sc_uint&lt; USERWIDTH &gt;, sc_dt::sc_biguint&lt; USERWIDTH &gt; &gt;::type</type>
+        <definition>using axi::ace_cfg&lt; BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH, AWSNOOPWDTH, RESPWDTH &gt;::user_t =  typename select_if&lt;USERWIDTH &lt;= 64, sc_dt::sc_uint&lt;USERWIDTH&gt;, sc_dt::sc_biguint&lt;USERWIDTH&gt;&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>user_t</name>
+        <qualifiedname>axi::ace_cfg::user_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="135" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1ace__cfg_1a2a899884ba4859568f258604be05f396" prot="public" static="no">
+        <type>typename <ref refid="structaxi_1_1select__if" kindref="compound">select_if</ref>&lt;(BUSWDTH/8)&lt;=64, sc_dt::sc_uint&lt; BUSWIDTH/8 &gt;, sc_dt::sc_biguint&lt; BUSWIDTH/8 &gt; &gt;::type</type>
+        <definition>using axi::ace_cfg&lt; BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH, AWSNOOPWDTH, RESPWDTH &gt;::strb_t =  typename select_if&lt;(BUSWDTH / 8) &lt;= 64, sc_dt::sc_uint&lt;BUSWIDTH / 8&gt;, sc_dt::sc_biguint&lt;BUSWIDTH / 8&gt;&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>strb_t</name>
+        <qualifiedname>axi::ace_cfg::strb_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="136" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1ace__cfg_1a78a51e9fafdc11aa1c95fe096288a8b5" prot="public" static="no">
+        <type><ref refid="structaxi_1_1slave__types" kindref="compound">::axi::slave_types</ref></type>
+        <definition>using axi::ace_cfg&lt; BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH, AWSNOOPWDTH, RESPWDTH &gt;::slave_types =  ::axi::slave_types</definition>
+        <argsstring></argsstring>
+        <name>slave_types</name>
+        <qualifiedname>axi::ace_cfg::slave_types</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="137" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1ace__cfg_1acb32c494beb36754cc37b59f5d6d19ad" prot="public" static="no">
+        <type><ref refid="structaxi_1_1master__types" kindref="compound">::axi::master_types</ref></type>
+        <definition>using axi::ace_cfg&lt; BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH, AWSNOOPWDTH, RESPWDTH &gt;::master_types =  ::axi::master_types</definition>
+        <argsstring></argsstring>
+        <name>master_types</name>
+        <qualifiedname>axi::ace_cfg::master_types</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="138" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structaxi_1_1ace__cfg_1a5393ef6fe7507c994360a13e5de15bf9" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool axi::ace_cfg&lt; BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH, AWSNOOPWDTH, RESPWDTH &gt;::IS_LITE</definition>
+        <argsstring></argsstring>
+        <name>IS_LITE</name>
+        <qualifiedname>axi::ace_cfg::IS_LITE</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="127" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ace__cfg_1ac47c938b375e01c36b150eaff1fdd1d8" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int axi::ace_cfg&lt; BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH, AWSNOOPWDTH, RESPWDTH &gt;::BUSWIDTH</definition>
+        <argsstring></argsstring>
+        <name>BUSWIDTH</name>
+        <qualifiedname>axi::ace_cfg::BUSWIDTH</qualifiedname>
+        <initializer>= BUSWDTH</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="128" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ace__cfg_1ad310ab438bb1ca2b49cdc277feabdcd2" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int axi::ace_cfg&lt; BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH, AWSNOOPWDTH, RESPWDTH &gt;::ADDRWIDTH</definition>
+        <argsstring></argsstring>
+        <name>ADDRWIDTH</name>
+        <qualifiedname>axi::ace_cfg::ADDRWIDTH</qualifiedname>
+        <initializer>= ADDRWDTH</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="129" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ace__cfg_1a4b6afc6ccab6ab6484a8f2f6583d6f35" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int axi::ace_cfg&lt; BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH, AWSNOOPWDTH, RESPWDTH &gt;::IDWIDTH</definition>
+        <argsstring></argsstring>
+        <name>IDWIDTH</name>
+        <qualifiedname>axi::ace_cfg::IDWIDTH</qualifiedname>
+        <initializer>= IDWDTH</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="130" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ace__cfg_1ab095ecb0183becd7e2cd57aeb568fd48" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int axi::ace_cfg&lt; BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH, AWSNOOPWDTH, RESPWDTH &gt;::USERWIDTH</definition>
+        <argsstring></argsstring>
+        <name>USERWIDTH</name>
+        <qualifiedname>axi::ace_cfg::USERWIDTH</qualifiedname>
+        <initializer>= USERWDTH</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="131" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ace__cfg_1ac83da613086127454482daa42b60c9d3" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int axi::ace_cfg&lt; BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH, AWSNOOPWDTH, RESPWDTH &gt;::AWSNOOPWIDTH</definition>
+        <argsstring></argsstring>
+        <name>AWSNOOPWIDTH</name>
+        <qualifiedname>axi::ace_cfg::AWSNOOPWIDTH</qualifiedname>
+        <initializer>= AWSNOOPWDTH</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="132" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1ace__cfg_1a5950566616e96f7399e08aae9092a4ca" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int axi::ace_cfg&lt; BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH, AWSNOOPWDTH, RESPWDTH &gt;::RESPWIDTH</definition>
+        <argsstring></argsstring>
+        <name>RESPWIDTH</name>
+        <qualifiedname>axi::ace_cfg::RESPWIDTH</qualifiedname>
+        <initializer>= RESPWDTH</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="133" column="35" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>BUSWDTH</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ADDRWDTH</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>IDWDTH</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>USERWDTH</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>CACHELINE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>cacheline size in Bytes, defaults value is 64 bytes </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" line="121" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/signal_if.h" bodystart="121" bodyend="139"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1ace__cfg_1ad310ab438bb1ca2b49cdc277feabdcd2" prot="public" virt="non-virtual"><scope>axi::ace_cfg</scope><name>ADDRWIDTH</name></member>
+      <member refid="structaxi_1_1ace__cfg_1ac83da613086127454482daa42b60c9d3" prot="public" virt="non-virtual"><scope>axi::ace_cfg</scope><name>AWSNOOPWIDTH</name></member>
+      <member refid="structaxi_1_1ace__cfg_1ac47c938b375e01c36b150eaff1fdd1d8" prot="public" virt="non-virtual"><scope>axi::ace_cfg</scope><name>BUSWIDTH</name></member>
+      <member refid="structaxi_1_1ace__cfg_1a22343cac18ebd6ab28e1e88f426e6d6d" prot="public" virt="non-virtual"><scope>axi::ace_cfg</scope><name>data_t</name></member>
+      <member refid="structaxi_1_1ace__cfg_1a4b6afc6ccab6ab6484a8f2f6583d6f35" prot="public" virt="non-virtual"><scope>axi::ace_cfg</scope><name>IDWIDTH</name></member>
+      <member refid="structaxi_1_1ace__cfg_1a5393ef6fe7507c994360a13e5de15bf9" prot="public" virt="non-virtual"><scope>axi::ace_cfg</scope><name>IS_LITE</name></member>
+      <member refid="structaxi_1_1ace__cfg_1acb32c494beb36754cc37b59f5d6d19ad" prot="public" virt="non-virtual"><scope>axi::ace_cfg</scope><name>master_types</name></member>
+      <member refid="structaxi_1_1ace__cfg_1a5950566616e96f7399e08aae9092a4ca" prot="public" virt="non-virtual"><scope>axi::ace_cfg</scope><name>RESPWIDTH</name></member>
+      <member refid="structaxi_1_1ace__cfg_1a78a51e9fafdc11aa1c95fe096288a8b5" prot="public" virt="non-virtual"><scope>axi::ace_cfg</scope><name>slave_types</name></member>
+      <member refid="structaxi_1_1ace__cfg_1a2a899884ba4859568f258604be05f396" prot="public" virt="non-virtual"><scope>axi::ace_cfg</scope><name>strb_t</name></member>
+      <member refid="structaxi_1_1ace__cfg_1a83bbb0eaef4b2945c1b2ab59e5d32464" prot="public" virt="non-virtual"><scope>axi::ace_cfg</scope><name>user_t</name></member>
+      <member refid="structaxi_1_1ace__cfg_1ab095ecb0183becd7e2cd57aeb568fd48" prot="public" virt="non-virtual"><scope>axi::ace_cfg</scope><name>USERWIDTH</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

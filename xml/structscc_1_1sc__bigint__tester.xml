@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1sc__bigint__tester" kind="struct" language="C++" prot="public">
+    <compoundname>scc::sc_bigint_tester</compoundname>
+    <templateparamlist>
+      <param>
+        <type>size_t</type>
+        <declname>size</declname>
+        <defname>size</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1sc__bigint__tester_1a62e330e6339946716e08bc09606a2ed9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_bigint_tester&lt; size &gt;::operator()</definition>
+        <argsstring>(sc_trace_file *trace_file, const sc_object *object, trace_types types_to_trace)</argsstring>
+        <name>operator()</name>
+        <qualifiedname>scc::sc_bigint_tester::operator()</qualifiedname>
+        <param>
+          <type>sc_trace_file *</type>
+          <declname>trace_file</declname>
+        </param>
+        <param>
+          <type>const sc_object *</type>
+          <declname>object</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191" kindref="member">trace_types</ref></type>
+          <declname>types_to_trace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" line="93" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" bodystart="93" bodyend="95"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" line="92" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/tracer_base.cpp" bodystart="92" bodyend="96"/>
+    <listofallmembers>
+      <member refid="structscc_1_1sc__bigint__tester_1a62e330e6339946716e08bc09606a2ed9" prot="public" virt="non-virtual"><scope>scc::sc_bigint_tester</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="configurable__tracer_8cpp" kind="file" language="C++">
+    <compoundname>configurable_tracer.cpp</compoundname>
+    <includes refid="configurable__tracer_8h" local="yes">configurable_tracer.h</includes>
+    <includes refid="traceable_8h" local="yes">traceable.h</includes>
+    <includes local="no">cstdio</includes>
+    <includes local="no">fmt/format.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp</label>
+        <link refid="configurable__tracer_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>configurable_tracer.h</label>
+        <link refid="configurable__tracer_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>traceable.h</label>
+        <link refid="traceable_8h_source"/>
+      </node>
+      <node id="3">
+        <label>tracer.h</label>
+        <link refid="tracer_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tracer_base.h</label>
+        <link refid="tracer__base_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>utilities.h</label>
+        <link refid="utilities_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>array</label>
+      </node>
+      <node id="11">
+        <label>cci_configuration</label>
+      </node>
+      <node id="7">
+        <label>cctype</label>
+      </node>
+      <node id="17">
+        <label>cstdio</label>
+      </node>
+      <node id="18">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="8">
+        <label>limits</label>
+      </node>
+      <node id="12">
+        <label>locale</label>
+      </node>
+      <node id="9">
+        <label>memory</label>
+      </node>
+      <node id="15">
+        <label>string</label>
+      </node>
+      <node id="13">
+        <label>sysc/tracing/sc_trace.h</label>
+      </node>
+      <node id="10">
+        <label>systemc</label>
+      </node>
+      <node id="14">
+        <label>type_traits</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="configurable__tracer_8cpp_1aebce0af9da65f121b174e81eee3cb076" prot="public" static="no">
+        <name>EN_TRACING_STR</name>
+        <initializer>&quot;enableTracing&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp" line="24" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2018-2022<sp/>MINRES<sp/>Technologies<sp/>GmbH</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;configurable_tracer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;traceable.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdio&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/format.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">sc_core;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacescc" kindref="compound">scc</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EN_TRACING_STR<sp/>&quot;enableTracing&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classscc_1_1configurable__tracer_1a738b641216b1c413e857bb902edcf6d8" refkind="member"><highlight class="normal"><ref refid="classscc_1_1configurable__tracer_1a738b641216b1c413e857bb902edcf6d8" kindref="member">configurable_tracer::configurable_tracer</ref>(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;&amp;<sp/>name,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable_tx,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable_vcd,<sp/>sc_core::sc_object*<sp/>top)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">:<sp/>tracer(std::move(name),<sp/>enable_tx<sp/>?<sp/>ENABLE<sp/>:<sp/>NONE,<sp/>enable_vcd<sp/>?<sp/>ENABLE<sp/>:<sp/>NONE,<sp/>top)<sp/>{}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classscc_1_1configurable__tracer_1a4012d18b6431645dd8e3c637d381dbd3" refkind="member"><highlight class="normal"><ref refid="classscc_1_1configurable__tracer_1a738b641216b1c413e857bb902edcf6d8" kindref="member">configurable_tracer::configurable_tracer</ref>(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;&amp;<sp/>name,<sp/><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>type,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable_vcd,<sp/>sc_core::sc_object*<sp/>top)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">:<sp/>tracer(std::move(name),<sp/>type,<sp/>enable_vcd<sp/>?<sp/>ENABLE<sp/>:<sp/>NONE,<sp/>top)<sp/>{}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classscc_1_1configurable__tracer_1a68dbbf48870d5f62511c4ba41696d726" refkind="member"><highlight class="normal"><ref refid="classscc_1_1configurable__tracer_1a738b641216b1c413e857bb902edcf6d8" kindref="member">configurable_tracer::configurable_tracer</ref>(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;&amp;<sp/>name,<sp/><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>tx_type,<sp/><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>sig_type,<sp/>sc_core::sc_object*<sp/>top)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">:<sp/>tracer(std::move(name),<sp/>tx_type,<sp/>sig_type,<sp/>top)<sp/>{}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classscc_1_1configurable__tracer_1aee08eb17bce549befd6658b2f4b34339" refkind="member"><highlight class="normal"><ref refid="classscc_1_1configurable__tracer_1a738b641216b1c413e857bb902edcf6d8" kindref="member">configurable_tracer::configurable_tracer</ref>(std::string<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;&amp;<sp/>name,<sp/><ref refid="classscc_1_1tracer_1a8ba2e352a1b382212c1411fef82613ce" kindref="member">file_type</ref><sp/>type,<sp/>sc_core::sc_trace_file*<sp/>tf,<sp/>sc_core::sc_object*<sp/>top)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">:<sp/>tracer(std::move(name),<sp/>type,<sp/>tf,<sp/>top)<sp/>{}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classscc_1_1configurable__tracer_1acd4ab692d0973eefa668643924f861b7" refkind="member"><highlight class="normal"><ref refid="classscc_1_1configurable__tracer_1acd4ab692d0973eefa668643924f861b7" kindref="member">scc::configurable_tracer::~configurable_tracer</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ptr<sp/>:<sp/><ref refid="classscc_1_1configurable__tracer_1aec6c804b2b6e68b3851d429cd041ddb7" kindref="member">params</ref>)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>ptr;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>const<sp/>std::unordered_set&lt;std::string&gt;<sp/>traceable_kinds<sp/>=<sp/>{};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classscc_1_1configurable__tracer_1ac7b5301c5f276ffdc414236fa3a0c08b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1configurable__tracer_1ac7b5301c5f276ffdc414236fa3a0c08b" kindref="member">configurable_tracer::descend</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sc_core::sc_object*<sp/>obj,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespacescc_1_1trace" kindref="compound">trace</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(obj<sp/>==<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>kind<sp/>=<sp/>obj-&gt;kind();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((types_to_trace<sp/>&amp;<sp/><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191ae8aec3b875fcfac29de4bc603e426577" kindref="member">trace_types::SIGNALS</ref>)<sp/>==<sp/><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191ae8aec3b875fcfac29de4bc603e426577" kindref="member">trace_types::SIGNALS</ref><sp/>&amp;&amp;<sp/>kind<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;tlm_signal&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1_1trace" kindref="compound">trace</ref>)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj-&gt;trace(trf);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(kind<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;sc_vector&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1_1trace" kindref="compound">trace</ref>)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>o<sp/>:<sp/>obj-&gt;get_child_objects())</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classscc_1_1configurable__tracer_1ac7b5301c5f276ffdc414236fa3a0c08b" kindref="member">descend</ref>(o,<sp/><ref refid="namespacescc_1_1trace" kindref="compound">trace</ref>);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(kind<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;sc_module&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>module_name<sp/>=<sp/>obj-&gt;name();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>trace_enable<sp/>=<sp/><ref refid="classscc_1_1configurable__tracer_1a782862b5f9bdbd04af20008f6ea31e3a" kindref="member">get_trace_enabled</ref>(obj,<sp/><ref refid="structscc_1_1tracer__base_1a77e5c593bc12d3bdf8e7d035d9f1da4d" kindref="member">default_trace_enable_handle</ref>.get_cci_value().get&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">&gt;());</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(trace_enable)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj-&gt;trace(trf);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>o<sp/>:<sp/>obj-&gt;get_child_objects())</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classscc_1_1configurable__tracer_1ac7b5301c5f276ffdc414236fa3a0c08b" kindref="member">descend</ref>(o,<sp/>trace_enable);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(kind<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;sc_variable&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1_1trace" kindref="compound">trace</ref><sp/>&amp;&amp;<sp/>(types_to_trace<sp/>&amp;<sp/><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191a4d6ae4d01611352da487e8f731549e9d" kindref="member">trace_types::VARIABLES</ref>)<sp/>==<sp/><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191a4d6ae4d01611352da487e8f731549e9d" kindref="member">trace_types::VARIABLES</ref>)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj-&gt;trace(trf);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(kind<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;sc_signal&quot;</highlight><highlight class="normal"><sp/>||<sp/>kind<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;sc_clock&quot;</highlight><highlight class="normal"><sp/>||<sp/>kind<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;sc_buffer&quot;</highlight><highlight class="normal"><sp/>||<sp/>kind<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;sc_signal_rv&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1_1trace" kindref="compound">trace</ref><sp/>&amp;&amp;<sp/>(types_to_trace<sp/>&amp;<sp/><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191ae8aec3b875fcfac29de4bc603e426577" kindref="member">trace_types::SIGNALS</ref>)<sp/>==<sp/><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191ae8aec3b875fcfac29de4bc603e426577" kindref="member">trace_types::SIGNALS</ref>)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>try_trace(trf,<sp/>obj,<sp/>types_to_trace);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(kind<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;sc_in&quot;</highlight><highlight class="normal"><sp/>||<sp/>kind<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;sc_out&quot;</highlight><highlight class="normal"><sp/>||<sp/>kind<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;sc_inout&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="namespacescc_1_1trace" kindref="compound">trace</ref><sp/>&amp;&amp;<sp/>(types_to_trace<sp/>&amp;<sp/><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191a379f0209b3f2aa2adafe3f8b4f1727e4" kindref="member">trace_types::PORTS</ref>)<sp/>==<sp/><ref refid="namespacescc_1a16c18825e698bcd4b014919563c5c191a379f0209b3f2aa2adafe3f8b4f1727e4" kindref="member">trace_types::PORTS</ref>)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>try_trace(trf,<sp/>obj,<sp/>types_to_trace);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">*<sp/>tr<sp/>=<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal"><ref refid="structscc_1_1traceable" kindref="compound">scc::traceable</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(obj))<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(tr-&gt;is_trace_enabled())</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj-&gt;trace(trf);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>o<sp/>:<sp/>obj-&gt;get_child_objects())</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classscc_1_1configurable__tracer_1ac7b5301c5f276ffdc414236fa3a0c08b" kindref="member">descend</ref>(o,<sp/>tr-&gt;is_trace_enabled());</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>}<sp/>else<sp/>if(trace<sp/>&amp;&amp;<sp/>traceable_kinds.find(kind)!=traceable_kinds.end())<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>try_trace(trf,<sp/>obj,<sp/>types_to_trace);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classscc_1_1configurable__tracer_1a782862b5f9bdbd04af20008f6ea31e3a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1configurable__tracer_1a782862b5f9bdbd04af20008f6ea31e3a" kindref="member">scc::configurable_tracer::get_trace_enabled</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sc_core::sc_object*<sp/>obj,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fall_back)<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">*<sp/>attr<sp/>=<sp/>obj-&gt;get_attribute(EN_TRACING_STR);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(attr<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">sc_core::sc_attribute&lt;bool&gt;*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(attr)<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">*<sp/>a<sp/>=<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">sc_core::sc_attribute&lt;bool&gt;*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(attr);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>a-&gt;value;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>hier_name{obj-&gt;name()};</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>h<sp/>=<sp/><ref refid="classscc_1_1cci__broker" kindref="compound">cci_broker</ref>.get_param_handle(hier_name.append(</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal"><sp/>EN_TRACING_STR));</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(h.is_valid())</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>h.get_cci_value().get_bool();</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fall_back;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classscc_1_1configurable__tracer_1a899a3622b0f14fd8733020b7bc48b188" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classscc_1_1configurable__tracer_1a899a3622b0f14fd8733020b7bc48b188" kindref="member">configurable_tracer::augment_object_hierarchical</ref>(sc_core::sc_object*<sp/>obj,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>trace_enable)<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(</highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal">sc_core::sc_module*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(obj)<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>||<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal"><ref refid="structscc_1_1traceable" kindref="compound">scc::traceable</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(obj)<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">*<sp/>attr<sp/>=<sp/>obj-&gt;get_attribute(EN_TRACING_STR);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(attr<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>||<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">sc_core::sc_attribute&lt;bool&gt;*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(attr)<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>we<sp/>have<sp/>no<sp/>sc_attribute</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>hier_name{obj-&gt;name()};</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(hier_name.substr(0,<sp/>3)<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;$$$&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hier_name<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal"><sp/>EN_TRACING_STR;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>h<sp/>=<sp/><ref refid="classscc_1_1cci__broker" kindref="compound">cci_broker</ref>.get_param_handle(hier_name);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!h.is_valid())<sp/></highlight><highlight class="comment">//<sp/>we<sp/>have<sp/>no<sp/>cci_param<sp/>so<sp/>create<sp/>one</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classscc_1_1configurable__tracer_1aec6c804b2b6e68b3851d429cd041ddb7" kindref="member">params</ref>.push_back(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>cci::cci_param&lt;bool&gt;(hier_name,<sp/>trace_enable,<sp/><ref refid="classscc_1_1cci__broker" kindref="compound">cci_broker</ref>,</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Enables<sp/>the<sp/>signal<sp/>tracing<sp/>of<sp/>this<sp/>module&quot;</highlight><highlight class="normal">,<sp/>cci::CCI_ABSOLUTE_NAME,</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classscc_1_1cci__broker" kindref="compound">cci_broker</ref>.get_originator()));</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h.set_cci_value(cci::cci_value{<ref refid="structscc_1_1tracer__base_1a77e5c593bc12d3bdf8e7d035d9f1da4d" kindref="member">default_trace_enable_handle</ref>.get_cci_value().get&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">&gt;()});</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>battr<sp/>=<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal">sc_core::sc_attribute&lt;bool&gt;*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(attr))<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>battr-&gt;value<sp/>=<sp/><ref refid="structscc_1_1tracer__base_1a77e5c593bc12d3bdf8e7d035d9f1da4d" kindref="member">default_trace_enable_handle</ref>.get_cci_value().get&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">&gt;();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">*<sp/>o<sp/>:<sp/>obj-&gt;get_child_objects())</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classscc_1_1configurable__tracer_1a899a3622b0f14fd8733020b7bc48b188" kindref="member">augment_object_hierarchical</ref>(o,<sp/>trace_enable);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>configurable_tracer::end_of_elaboration()<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1configurable__tracer_1ab425b03f4e39ad0ca3316f5d356effc0" kindref="member">add_control</ref>();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>tracer::end_of_elaboration();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/configurable_tracer.cpp"/>
+  </compounddef>
+</doxygen>

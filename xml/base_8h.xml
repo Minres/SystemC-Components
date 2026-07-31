@@ -1,0 +1,558 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="base_8h" kind="file" language="C++">
+    <compoundname>base.h</compoundname>
+    <includes refid="third__party_2axi__chi_2axi_2fsm_2types_8h" local="yes">types.h</includes>
+    <includes refid="axi__tlm_8h" local="no">axi/axi_tlm.h</includes>
+    <includes local="no">deque</includes>
+    <includes refid="fifo__w__cb_8h" local="no">scc/fifo_w_cb.h</includes>
+    <includes refid="peq_8h" local="no">scc/peq.h</includes>
+    <includes refid="report_8h" local="no">scc/report.h</includes>
+    <includes refid="tlm__gp__shared_8h" local="no">tlm/scc/tlm_gp_shared.h</includes>
+    <includes local="no">unordered_map</includes>
+    <includedby refid="ace__initiator_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_initiator.h</includedby>
+    <includedby refid="ace__lite__initiator_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_initiator.h</includedby>
+    <includedby refid="ace__lite__target_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h</includedby>
+    <includedby refid="ace__target_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_target.h</includedby>
+    <includedby refid="axi4__initiator_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h</includedby>
+    <includedby refid="axi4__target_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_target.h</includedby>
+    <includedby refid="base_8cpp" local="yes">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp</includedby>
+    <includedby refid="ace__target__pe_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h</includedby>
+    <includedby refid="axi__target__pe_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_target_pe.h</includedby>
+    <includedby refid="simple__initiator_8h" local="no">/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_initiator.h</includedby>
+    <incdepgraph>
+      <node id="34">
+        <label>util/ities.h</label>
+        <link refid="ities_8h_source"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>scc/fifo_w_cb.h</label>
+        <link refid="fifo__w__cb_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>scc/peq.h</label>
+        <link refid="peq_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>scc/report.h</label>
+        <link refid="report_8h_source"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>utilities.h</label>
+        <link refid="utilities_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>tlm/scc/tlm_gp_shared.h</label>
+        <link refid="tlm__gp__shared_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>axi/axi_tlm.h</label>
+        <link refid="axi__tlm_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h</label>
+        <link refid="base_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>types.h</label>
+        <link refid="third__party_2axi__chi_2axi_2fsm_2types_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>algorithm</label>
+      </node>
+      <node id="3">
+        <label>array</label>
+      </node>
+      <node id="36">
+        <label>assert.h</label>
+      </node>
+      <node id="37">
+        <label>bitset</label>
+      </node>
+      <node id="14">
+        <label>boost/optional.hpp</label>
+      </node>
+      <node id="23">
+        <label>cci_configuration</label>
+      </node>
+      <node id="21">
+        <label>cctype</label>
+      </node>
+      <node id="38">
+        <label>climits</label>
+      </node>
+      <node id="5">
+        <label>cstdint</label>
+      </node>
+      <node id="25">
+        <label>cstring</label>
+      </node>
+      <node id="10">
+        <label>deque</label>
+      </node>
+      <node id="39">
+        <label>fstream</label>
+      </node>
+      <node id="8">
+        <label>functional</label>
+      </node>
+      <node id="26">
+        <label>iomanip</label>
+      </node>
+      <node id="27">
+        <label>iostream</label>
+      </node>
+      <node id="40">
+        <label>iterator</label>
+      </node>
+      <node id="15">
+        <label>limits</label>
+      </node>
+      <node id="24">
+        <label>locale</label>
+      </node>
+      <node id="16">
+        <label>map</label>
+      </node>
+      <node id="22">
+        <label>memory</label>
+      </node>
+      <node id="28">
+        <label>mutex</label>
+      </node>
+      <node id="29">
+        <label>sstream</label>
+      </node>
+      <node id="30">
+        <label>stdexcept</label>
+      </node>
+      <node id="41">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="12">
+        <label>sysc/communication/sc_prim_channel.h</label>
+      </node>
+      <node id="31">
+        <label>sysc/kernel/sc_time.h</label>
+      </node>
+      <node id="32">
+        <label>sysc/utils/sc_report.h</label>
+      </node>
+      <node id="17">
+        <label>systemc</label>
+      </node>
+      <node id="6">
+        <label>tlm</label>
+      </node>
+      <node id="7">
+        <label>type_traits</label>
+      </node>
+      <node id="33">
+        <label>unordered_map</label>
+      </node>
+      <node id="18">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="27">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.cpp</label>
+        <link refid="src_2interfaces_2axi_2axi__initiator_8cpp_source"/>
+      </node>
+      <node id="26">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_initiator.h</label>
+        <link refid="src_2interfaces_2axi_2axi__initiator_8h_source"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.cpp</label>
+        <link refid="axi__target_8cpp_source"/>
+      </node>
+      <node id="21">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/axi_target.h</label>
+        <link refid="axi__target_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_initiator.h</label>
+        <link refid="ace__initiator_8h_source"/>
+      </node>
+      <node id="3">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_initiator.h</label>
+        <link refid="ace__lite__initiator_8h_source"/>
+      </node>
+      <node id="4">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_lite_target.h</label>
+        <link refid="ace__lite__target_8h_source"/>
+      </node>
+      <node id="5">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/ace_target.h</label>
+        <link refid="ace__target_8h_source"/>
+      </node>
+      <node id="6">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_initiator.h</label>
+        <link refid="axi4__initiator_8h_source"/>
+      </node>
+      <node id="7">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/axi4_target.h</label>
+        <link refid="axi4__target_8h_source"/>
+      </node>
+      <node id="23">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/scc_interfaces.h</label>
+        <link refid="scc__interfaces_8h_source"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/src/scc.h</label>
+        <link refid="scc_8h_source"/>
+      </node>
+      <node id="8">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp</label>
+        <link refid="base_8cpp_source"/>
+      </node>
+      <node id="1">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h</label>
+        <link refid="base_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.cpp</label>
+        <link refid="ace__target__pe_8cpp_source"/>
+      </node>
+      <node id="9">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ace_target_pe.h</label>
+        <link refid="ace__target__pe_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_target_pe.cpp</label>
+        <link refid="axi__target__pe_8cpp_source"/>
+      </node>
+      <node id="12">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/axi_target_pe.h</label>
+        <link refid="axi__target__pe_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.cpp</label>
+        <link refid="ordered__target_8cpp_source"/>
+      </node>
+      <node id="14">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/ordered_target.h</label>
+        <link refid="ordered__target_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.cpp</label>
+        <link refid="reordering__target_8cpp_source"/>
+      </node>
+      <node id="16">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/reordering_target.h</label>
+        <link refid="reordering__target_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.cpp</label>
+        <link refid="replay__target_8cpp_source"/>
+      </node>
+      <node id="18">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/replay_target.h</label>
+        <link refid="replay__target_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_ace_target.h</label>
+        <link refid="simple__ace__target_8h_source"/>
+      </node>
+      <node id="28">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_initiator.cpp</label>
+        <link refid="simple__initiator_8cpp_source"/>
+      </node>
+      <node id="25">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_initiator.h</label>
+        <link refid="simple__initiator_8h_source"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/pe/simple_target.h</label>
+        <link refid="simple__target_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structaxi_1_1fsm_1_1base" prot="public">axi::fsm::base</innerclass>
+    <innernamespace refid="namespaceaxi">axi</innernamespace>
+    <innernamespace refid="namespaceaxi_1_1fsm">axi::fsm</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2020<sp/>-<sp/>2022<sp/>Arteris<sp/>IP</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>limitations<sp/>under<sp/>the<sp/>License.axi_util.cpp</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;types.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;axi/axi_tlm.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;deque&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scc/fifo_w_cb.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scc/peq.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scc/report.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlm/scc/tlm_gp_shared.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceaxi" kindref="compound">axi</ref><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fsm<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">fsm_handle</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/>operator&lt;&lt;(std::ostream&amp;<sp/>os,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::tuple&lt;axi::fsm::fsm_handle*,<sp/>axi::fsm::protocol_time_point_e&gt;&amp;)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;<sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">axi::operator&lt;&lt;;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="structaxi_1_1fsm_1_1base" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1base_1a59d8b6978f975d7e748555c5e6699962" kindref="member">base</ref><sp/>{</highlight></codeline>
+<codeline lineno="42" refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref><sp/>=<sp/>axi::axi_protocol_types::tlm_payload_type;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">phase_type<sp/>=<sp/>axi::axi_protocol_types::tlm_phase_type;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a59d8b6978f975d7e748555c5e6699962" kindref="member">base</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>transfer_width,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>coherent<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>axi::fsm::protocol_time_point_e<sp/>wr_start<sp/>=<sp/>axi::fsm::RequestPhaseBeg);</highlight></codeline>
+<codeline lineno="53" refid="structaxi_1_1fsm_1_1base_1aa412c197ef069b63df64cc5eef07d6e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1base_1aa412c197ef069b63df64cc5eef07d6e8" kindref="member">~base</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm::tlm_sync_enum<sp/><ref refid="structaxi_1_1fsm_1_1base_1a2f69b9b543de0409a982e194e7ee84d1" kindref="member">nb_fw</ref>(<ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref>&amp;<sp/>trans,<sp/>phase_type<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>phase,<sp/>sc_core::sc_time&amp;<sp/>t);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>tlm::tlm_sync_enum<sp/><ref refid="structaxi_1_1fsm_1_1base_1a87dbb07802109ff958c86cd08f8aaaaf" kindref="member">nb_bw</ref>(<ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref>&amp;<sp/>trans,<sp/>phase_type<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>phase,<sp/>sc_core::sc_time&amp;<sp/>t);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">axi::fsm::fsm_handle</ref>*<sp/><ref refid="structaxi_1_1fsm_1_1base_1aa22ba0281d929364938d62b0d3930b7b" kindref="member">find_or_create</ref>(<ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref>*<sp/>gp<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1ace" kindref="compound">ace</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="83" refid="structaxi_1_1fsm_1_1base_1a36fd237711e396d96e8d146bf11d13eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">axi::fsm::fsm_handle</ref>*<sp/><ref refid="structaxi_1_1fsm_1_1base_1a36fd237711e396d96e8d146bf11d13eb" kindref="member">create_fsm_handle</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="89" refid="structaxi_1_1fsm_1_1base_1a531305a4a623f70f41f2249028dbedde" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1base_1a531305a4a623f70f41f2249028dbedde" kindref="member">setup_callbacks</ref>(<ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">axi::fsm::fsm_handle</ref>*)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1base_1ab0c33b46e6d313a33ce1a356ccc596af" kindref="member">process_fsm_event</ref>();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1base_1a61c01b63aa94fc6e2a5ec6ee6f4e06c4" kindref="member">process_fsm_clk_queue</ref>();</highlight></codeline>
+<codeline lineno="103" refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" kindref="member">schedule</ref>(axi::fsm::protocol_time_point_e<sp/>e,<sp/>tlm::scc::tlm_gp_shared_ptr&amp;<sp/>gp,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>cycles)<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" kindref="member">schedule</ref>(e,<sp/>gp.<ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a82b81085996298e48127bab370ad54c3" kindref="member">get</ref>(),<sp/>cycles);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" kindref="member">schedule</ref>(axi::fsm::protocol_time_point_e<sp/>e,<sp/><ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref>*<sp/>gp,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>cycles)<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SCCTRACE(instance_name)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;pushing<sp/>sync<sp/>event<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>evt2str(e)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>for<sp/>transaction<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>*gp<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>(sync:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cycles<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_clk_queue.push_back(std::make_tuple(e,<sp/>gp,<sp/>cycles));</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114" refid="structaxi_1_1fsm_1_1base_1a31caedc7c2d747f44ae4a358d7af9e50" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1base_1a31caedc7c2d747f44ae4a358d7af9e50" kindref="member">schedule</ref>(axi::fsm::protocol_time_point_e<sp/>e,<sp/>tlm::scc::tlm_gp_shared_ptr&amp;<sp/>gp,<sp/>sc_core::sc_time<sp/>delay,</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>syncronize<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" kindref="member">schedule</ref>(e,<sp/>gp.<ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a82b81085996298e48127bab370ad54c3" kindref="member">get</ref>(),<sp/>delay,<sp/>syncronize);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" kindref="member">schedule</ref>(axi::fsm::protocol_time_point_e<sp/>e,<sp/><ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref>*<sp/>gp,<sp/>sc_core::sc_time<sp/>delay,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>syncronize<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SCCTRACE(instance_name)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;pushing<sp/>event<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>evt2str(e)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>for<sp/>transaction<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>*gp<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>(delay<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>delay<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsm_event_queue.<ref refid="structscc_1_1peq_1a9bbd1130cf192a991e03c3be3d074394" kindref="member">notify</ref>(std::make_tuple(e,<sp/>gp,<sp/>syncronize),<sp/>delay);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127" refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(axi::fsm::protocol_time_point_e<sp/>event,<sp/>tlm::scc::tlm_gp_shared_ptr&amp;<sp/>trans)<sp/>{<sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(event,<sp/>trans.<ref refid="classtlm_1_1scc_1_1tlm__payload__shared__ptr_1a82b81085996298e48127bab370ad54c3" kindref="member">get</ref>());<sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(axi::fsm::protocol_time_point_e<sp/>event,<sp/><ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref>*<sp/>trans)<sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SCCTRACE(instance_name)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;processing<sp/>event<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>evt2str(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(event))<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>for<sp/>trans<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>*trans;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fsm_hndl<sp/>=<sp/>active_fsm[trans];</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!fsm_hndl)<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SCCFATAL(instance_name)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>valid<sp/>FSM<sp/>found<sp/>for<sp/>trans<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::hex<sp/>&lt;&lt;<sp/>trans;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::runtime_error(</highlight><highlight class="stringliteral">&quot;No<sp/>valid<sp/>FSM<sp/>found<sp/>for<sp/>trans&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(event,<sp/>fsm_hndl);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" kindref="member">react</ref>(axi::fsm::protocol_time_point_e,<sp/><ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">axi::fsm::fsm_handle</ref>*);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structscc_1_1peq" kindref="compound">::scc::peq&lt;std::tuple&lt;axi::fsm::protocol_time_point_e, payload_type*, bool&gt;</ref>&gt;<sp/>fsm_event_queue;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classscc_1_1fifo__w__cb" kindref="compound">::scc::fifo_w_cb&lt;std::tuple&lt;axi::fsm::protocol_time_point_e, payload_type*, unsigned&gt;</ref>&gt;<sp/>fsm_clk_queue;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_process_handle<sp/>fsm_clk_queue_hndl;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>transfer_width_in_bytes;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>axi::fsm::protocol_time_point_e<sp/>wr_start;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>coherent;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;payload_type*,<sp/>axi::fsm::fsm_handle*&gt;<sp/>active_fsm;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>std::deque&lt;axi::fsm::fsm_handle*&gt;<sp/>idle_fsm;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::unique_ptr&lt;axi::fsm::fsm_handle&gt;&gt;<sp/>allocated_fsm;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>instance_name;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>sc_core::sc_event<sp/>finish_evt;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>fsm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>axi</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h"/>
+  </compounddef>
+</doxygen>

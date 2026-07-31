@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -90,18 +90,19 @@ Collaboration diagram for scc::host_mem_map_extension:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a547b7a9d31ead886575aa3380c132a3d" id="r_a547b7a9d31ead886575aa3380c132a3d"><td class="memItemLeft" align="right" valign="top">tlm_extension_base *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a547b7a9d31ead886575aa3380c132a3d">clone</a> () const override</td></tr>
 <tr class="memitem:aee91efbb8bf65f8fc2b9a57787b2bc76" id="r_aee91efbb8bf65f8fc2b9a57787b2bc76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee91efbb8bf65f8fc2b9a57787b2bc76">copy_from</a> (tlm_extension_base const &amp;ext) override</td></tr>
-<tr class="memitem:a3d6faaa75457895b31ae41f432cb19c1" id="r_a3d6faaa75457895b31ae41f432cb19c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d6faaa75457895b31ae41f432cb19c1">host_mem_map_extension</a> (uint8_t *ptr)</td></tr>
+<tr class="memitem:a2d693cda573236eefe9da4358cfe5090" id="r_a2d693cda573236eefe9da4358cfe5090"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d693cda573236eefe9da4358cfe5090">host_mem_map_extension</a> (uint8_t *data, size_t size)</td></tr>
+<tr class="memitem:a57553b6c05de03e712756d512beac7f9" id="r_a57553b6c05de03e712756d512beac7f9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57553b6c05de03e712756d512beac7f9">host_mem_map_extension</a> (size_t size)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ab7de2927a91d55dca1aa2bd6cc678e60" id="r_ab7de2927a91d55dca1aa2bd6cc678e60"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7de2927a91d55dca1aa2bd6cc678e60">ptr</a> {nullptr}</td></tr>
+<tr class="memitem:a6823a6f4be95c665198d71042b120167" id="r_a6823a6f4be95c665198d71042b120167"><td class="memItemLeft" align="right" valign="top">nonstd::span&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6823a6f4be95c665198d71042b120167">range</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00183">183</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00187">187</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a3d6faaa75457895b31ae41f432cb19c1" name="a3d6faaa75457895b31ae41f432cb19c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d6faaa75457895b31ae41f432cb19c1">&#9670;&#160;</a></span>host_mem_map_extension()</h2>
+<a id="a2d693cda573236eefe9da4358cfe5090" name="a2d693cda573236eefe9da4358cfe5090"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d693cda573236eefe9da4358cfe5090">&#9670;&#160;</a></span>host_mem_map_extension() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -112,7 +113,38 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">scc::host_mem_map_extension::host_mem_map_extension </td>
           <td>(</td>
-          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>ptr</em></span></td><td>)</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00190">190</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+
+</div>
+</div>
+<a id="a57553b6c05de03e712756d512beac7f9" name="a57553b6c05de03e712756d512beac7f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57553b6c05de03e712756d512beac7f9">&#9670;&#160;</a></span>host_mem_map_extension() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">scc::host_mem_map_extension::host_mem_map_extension </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -123,7 +155,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00186">186</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00192">192</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -150,7 +182,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00189">189</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00195">195</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -178,7 +210,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00184">184</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00188">188</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -205,24 +237,24 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00185">185</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00189">189</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
-<a id="ab7de2927a91d55dca1aa2bd6cc678e60" name="ab7de2927a91d55dca1aa2bd6cc678e60"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab7de2927a91d55dca1aa2bd6cc678e60">&#9670;&#160;</a></span>ptr</h2>
+<a id="a6823a6f4be95c665198d71042b120167" name="a6823a6f4be95c665198d71042b120167"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6823a6f4be95c665198d71042b120167">&#9670;&#160;</a></span>range</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t* scc::host_mem_map_extension::ptr {nullptr}</td>
+          <td class="memname">nonstd::span&lt;uint8_t&gt; scc::host_mem_map_extension::range</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00190">190</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00196">196</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>

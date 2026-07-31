@@ -1,0 +1,405 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data" kind="class" language="C++" prot="public">
+    <compoundname>tlm::scc::scv::tlm_gp_data</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a8292caedc05030a78aa4ba2de3647fd5" prot="public" static="no" mutable="no">
+        <type>sc_dt::uint64</type>
+        <definition>sc_dt::uint64 tlm::scc::scv::tlm_gp_data::address</definition>
+        <argsstring></argsstring>
+        <name>address</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::address</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="119" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="119" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1ad95052c8a663d84aa9019dfdfb7ec4cd" prot="public" static="no" mutable="no">
+        <type>tlm::tlm_command</type>
+        <definition>tlm::tlm_command tlm::scc::scv::tlm_gp_data::command</definition>
+        <argsstring></argsstring>
+        <name>command</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::command</qualifiedname>
+        <initializer>{tlm::TLM_IGNORE_COMMAND}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="120" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="120" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a6fe604a1b2fba4057fba43cf9ee19db3" prot="public" static="no" mutable="no">
+        <type>unsigned char *</type>
+        <definition>unsigned char* tlm::scc::scv::tlm_gp_data::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::data</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="121" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="121" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a3a9c2304862d798b5e0dd85d6fc7f08a" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tlm::scc::scv::tlm_gp_data::data_length</definition>
+        <argsstring></argsstring>
+        <name>data_length</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::data_length</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="122" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="122" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a9bd48fbb798e274c30c01aa22ebdb7c1" prot="public" static="no" mutable="no">
+        <type>tlm::tlm_response_status</type>
+        <definition>tlm::tlm_response_status tlm::scc::scv::tlm_gp_data::response_status</definition>
+        <argsstring></argsstring>
+        <name>response_status</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::response_status</qualifiedname>
+        <initializer>{tlm::TLM_INCOMPLETE_RESPONSE}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="123" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="123" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a72416e718c298e6dbcfb16ef02c3e11f" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tlm::scc::scv::tlm_gp_data::dmi_allowed</definition>
+        <argsstring></argsstring>
+        <name>dmi_allowed</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::dmi_allowed</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="124" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="124" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1acc0ffd73fd787655f866967753768d54" prot="public" static="no" mutable="no">
+        <type>unsigned char *</type>
+        <definition>unsigned char* tlm::scc::scv::tlm_gp_data::byte_enable</definition>
+        <argsstring></argsstring>
+        <name>byte_enable</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::byte_enable</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="125" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="125" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a04809f43bcd8303ae97f3d294b360801" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tlm::scc::scv::tlm_gp_data::byte_enable_length</definition>
+        <argsstring></argsstring>
+        <name>byte_enable_length</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::byte_enable_length</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="126" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="126" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1aef8a69cf921e686948d5fbd0cc280590" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tlm::scc::scv::tlm_gp_data::streaming_width</definition>
+        <argsstring></argsstring>
+        <name>streaming_width</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::streaming_width</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="127" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="127" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a5305044c001120bd1faa32a0901cadb1" prot="public" static="no" mutable="no">
+        <type>tlm::tlm_gp_option</type>
+        <definition>tlm::tlm_gp_option tlm::scc::scv::tlm_gp_data::gp_option</definition>
+        <argsstring></argsstring>
+        <name>gp_option</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::gp_option</qualifiedname>
+        <initializer>{tlm::TLM_MIN_PAYLOAD}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="128" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="128" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1ac23dd3a0b747804c115a53a646fec981" prot="public" static="no" mutable="no">
+        <type>uintptr_t</type>
+        <definition>uintptr_t tlm::scc::scv::tlm_gp_data::uid</definition>
+        <argsstring></argsstring>
+        <name>uid</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::uid</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="129" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="129" bodyend="129"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a0d11db1ab31c9ef7165636fdcd21c2df" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::scv::tlm_gp_data::tlm_gp_data</definition>
+        <argsstring>(tlm::tlm_generic_payload const &amp;o)</argsstring>
+        <name>tlm_gp_data</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::tlm_gp_data</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload const &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="36" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="36" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a2f78118fa1f081290585ee6f1de631d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::scv::tlm_gp_data::tlm_gp_data</definition>
+        <argsstring>()=default</argsstring>
+        <name>tlm_gp_data</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::tlm_gp_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="49" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1aa5d910f7343a1bd4be0b3da71856ef5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::scv::tlm_gp_data::tlm_gp_data</definition>
+        <argsstring>(tlm_gp_data const &amp;x)=default</argsstring>
+        <name>tlm_gp_data</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::tlm_gp_data</qualifiedname>
+        <param>
+          <type>tlm_gp_data const &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="51" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a290f9c7cb4bdb2c367b0268d7204cc89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::scv::tlm_gp_data::tlm_gp_data</definition>
+        <argsstring>(tlm_gp_data &amp;&amp;x)=default</argsstring>
+        <name>tlm_gp_data</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::tlm_gp_data</qualifiedname>
+        <param>
+          <type>tlm_gp_data &amp;&amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="53" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1aec5a6a74b43fcd68d5e58e51aeb3261d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm_gp_data &amp;</type>
+        <definition>tlm_gp_data &amp; tlm::scc::scv::tlm_gp_data::operator=</definition>
+        <argsstring>(tlm_gp_data const &amp;x)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::operator=</qualifiedname>
+        <param>
+          <type>tlm_gp_data const &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="55" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a11f840d5a6cb9cd21e6321738c94a3e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm_gp_data &amp;</type>
+        <definition>tlm_gp_data &amp; tlm::scc::scv::tlm_gp_data::operator=</definition>
+        <argsstring>(tlm_gp_data &amp;&amp;x)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::operator=</qualifiedname>
+        <param>
+          <type>tlm_gp_data &amp;&amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="57" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a4af9d8c2ee37f5e05a700752b221ec57" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual tlm::scc::scv::tlm_gp_data::~tlm_gp_data</definition>
+        <argsstring>()</argsstring>
+        <name>~tlm_gp_data</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::~tlm_gp_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="62" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a17f45dc4b7fd001490a3d52048766bcc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::scv::tlm_gp_data::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="64" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="64" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a7811e1e03646addf8f13a299220e812c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::scv::tlm_gp_data::update_generic_payload</definition>
+        <argsstring>(tlm::tlm_generic_payload &amp;other, bool transfer_ownership=false)</argsstring>
+        <name>update_generic_payload</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::update_generic_payload</qualifiedname>
+        <param>
+          <type>tlm::tlm_generic_payload &amp;</type>
+          <declname>other</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>transfer_ownership</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>update the payload from the <ref refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data" kindref="compound">tlm_gp_data</ref>. Esp. usefull when used in randomization. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the tlm_generic_payload to update </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>transfer_ownership</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if set to true the ownership of the data and byte_enable pointers is transferred </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="74" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="74" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a4a864ff6f334a161bbbbf4957eddb7d7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string tlm::scc::scv::tlm_gp_data::get_response_string</definition>
+        <argsstring>() const</argsstring>
+        <name>get_response_string</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::get_response_string</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="91" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="91" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a7bea870ddba22a6aca7552c696c884e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t tlm::scc::scv::tlm_gp_data::get_data_value</definition>
+        <argsstring>()</argsstring>
+        <name>get_data_value</name>
+        <qualifiedname>tlm::scc::scv::tlm_gp_data::get_data_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="111" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="111" bodyend="117"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" line="30" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/scv/tlm_gp_data.h" bodystart="30" bodyend="130"/>
+    <listofallmembers>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a8292caedc05030a78aa4ba2de3647fd5" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>address</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1acc0ffd73fd787655f866967753768d54" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>byte_enable</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a04809f43bcd8303ae97f3d294b360801" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>byte_enable_length</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1ad95052c8a663d84aa9019dfdfb7ec4cd" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>command</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a6fe604a1b2fba4057fba43cf9ee19db3" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>data</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a3a9c2304862d798b5e0dd85d6fc7f08a" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>data_length</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a72416e718c298e6dbcfb16ef02c3e11f" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>dmi_allowed</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a7bea870ddba22a6aca7552c696c884e5" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>get_data_value</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a4a864ff6f334a161bbbbf4957eddb7d7" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>get_response_string</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a5305044c001120bd1faa32a0901cadb1" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>gp_option</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1aec5a6a74b43fcd68d5e58e51aeb3261d" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>operator=</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a11f840d5a6cb9cd21e6321738c94a3e7" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>operator=</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a17f45dc4b7fd001490a3d52048766bcc" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>reset</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a9bd48fbb798e274c30c01aa22ebdb7c1" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>response_status</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1aef8a69cf921e686948d5fbd0cc280590" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>streaming_width</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a0d11db1ab31c9ef7165636fdcd21c2df" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>tlm_gp_data</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a2f78118fa1f081290585ee6f1de631d9" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>tlm_gp_data</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1aa5d910f7343a1bd4be0b3da71856ef5b" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>tlm_gp_data</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a290f9c7cb4bdb2c367b0268d7204cc89" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>tlm_gp_data</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1ac23dd3a0b747804c115a53a646fec981" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>uid</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a7811e1e03646addf8f13a299220e812c" prot="public" virt="non-virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>update_generic_payload</name></member>
+      <member refid="classtlm_1_1scc_1_1scv_1_1tlm__gp__data_1a4af9d8c2ee37f5e05a700752b221ec57" prot="public" virt="virtual"><scope>tlm::scc::scv::tlm_gp_data</scope><name>~tlm_gp_data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_7f3dc196e026fa4db4f0066219b4e605" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin</compoundname>
+    <innerfile refid="ace__initiator_8h">ace_initiator.h</innerfile>
+    <innerfile refid="ace__lite__initiator_8h">ace_lite_initiator.h</innerfile>
+    <innerfile refid="ace__lite__target_8h">ace_lite_target.h</innerfile>
+    <innerfile refid="ace__target_8h">ace_target.h</innerfile>
+    <innerfile refid="axi4__initiator_8h">axi4_initiator.h</innerfile>
+    <innerfile refid="axi4__target_8h">axi4_target.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/axi/pin/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01nulltype_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::detail::typelist_max&lt; nulltype &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01nulltype_01_4_1a7eaeaca531a87a22b649267eec437a6c" prot="public" static="no" strong="no">
+        <type></type>
+        <name>V</name>
+        <qualifiedname>nonstd::variants::detail::typelist_max&lt; nulltype &gt;::V</qualifiedname>
+        <enumvalue id="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01nulltype_01_4_1a7eaeaca531a87a22b649267eec437a6caa8c809fc690379afbbda1281cbdb7e08" prot="public">
+          <name>value</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="672" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="672" bodyend="672"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01nulltype_01_4_1af95d698da1bb9e57109be3ac01bf24de" prot="public" static="no">
+        <type>void</type>
+        <definition>typedef void nonstd::variants::detail::typelist_max&lt; nulltype &gt;::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>nonstd::variants::detail::typelist_max&lt; nulltype &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="673" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="673" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="671" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="671" bodyend="674"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01nulltype_01_4_1af95d698da1bb9e57109be3ac01bf24de" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::typelist_max&lt; nulltype &gt;</scope><name>type</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01nulltype_01_4_1a7eaeaca531a87a22b649267eec437a6c" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::typelist_max&lt; nulltype &gt;</scope><name>V</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01nulltype_01_4_1a7eaeaca531a87a22b649267eec437a6caa8c809fc690379afbbda1281cbdb7e08" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::typelist_max&lt; nulltype &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

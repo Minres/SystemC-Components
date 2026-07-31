@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="indexpage" kind="page">
+    <compoundname>index</compoundname>
+    <title>scc</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="index_1md__2home_2eyck_2Projects_2MINRES_2SystemC-Components_2README"/> <ulink url="https://github.com/Minres/SystemC-Components/actions/workflows/ci-compliance.yml"><image type="html" name="https://github.com/Minres/SystemC-Components/actions/workflows/ci-compliance.yml/badge.svg" alt="CI C++ Std compliance" inline="yes"></image>
+</ulink> <ulink url="https://github.com/Minres/SystemC-Components/actions/workflows/ci-unit-tests.yml"><image type="html" name="https://github.com/Minres/SystemC-Components/actions/workflows/ci-unit-tests.yml/badge.svg" alt="CI Unit Tests" inline="yes"></image>
+</ulink></para>
+<sect1 id="index_1autotoc_md16">
+<title>SystemC-Components (SCC)</title><para>SCC is supposed to be a light weight productivity library for SystemC and TLM 2.0 based modeling tasks using C++11.</para>
+<para>Here is a short list of features.</para>
+<para><itemizedlist>
+<listitem><para>Extended logging and log configuration implementation</para>
+<para>This is built on top of the SystemC report implementation and allows use of iostream based logging as well as instance based log level connfiguration</para>
+</listitem><listitem><para>Config file reader and configuration handler</para>
+<para>The configurer allows to read a JSON file and apply the values to cci_param as well as to sc_attributes. This can be used for instance-based logging as well as instance-based trace configuration</para>
+</listitem><listitem><para>Automatic tracer</para>
+<para>The tracer(s) allow to automatically discover signals and sc_variables (see below) and register them with the trace file. If the configurer is being used the tracing can be controlled on an per-instance basis</para>
+</listitem><listitem><para>Various optimized trace file implementations<itemizedlist>
+<listitem><para>compressed VCD</para>
+</listitem><listitem><para>FST (used by <ulink url="http://gtkwave.sourceforge.net/">GTKWave</ulink> and <ulink url="https://surfer-project.org/">Surfer</ulink>)</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>Tracing TLM2 Sockets</para>
+<para>TLM2.0 compliant sockets which can be configured to trace transactions passing thru them using the SCV transaction recording facilities. The project is set-up to be used with Eclipse CDT and its build system</para>
+</listitem><listitem><para>Stripped down version of SCV</para>
+<para>To reduce the dependency SCC comes with a stripped down version of Accelleras SystemC Verification (SCV) library. This library does not support introspection and randomization anymore, its primary purpose is to enable transaction recording. Those traces can be visualized using <ulink url="https://minres.github.io/SCViewer/">SCViewer</ulink>.</para>
+</listitem><listitem><para>Extended and optimized transaction recording database(s)</para>
+<para>Aside of the SCV text file format SCC comes with other file format writers. scv_tr_sqlite is a SQLite based database back-end for the SystemC Verification library (SCV) transaction recording infrastructure while scv_tr_compressed is a text base database back-end with compression to reduce the file size. Last but not least there is a highly compressed streaming data format called &apos;**F**ast **T**ransaction **R**ecording (FTR)&apos; (see also <ulink url="https://github.com/Minres/LWTR4SC">LWTR2SC</ulink>). These formats are also supporte by the <ulink url="https://minres.github.io/SCViewer/">SCViewer</ulink>.</para>
+</listitem><listitem><para>sysc::sc_variable</para>
+<para>A plain C/C++ variable wrapper to access a storage location via the SystemC object tree. It allows also to register value change observers to react on changes.</para>
+</listitem><listitem><para>sysc::sc_register</para>
+<para>A resource wrapper to access a storage location via a TLM 2.0 socket. It allows to register read and write callback to implement register functionality upon reading/writing the register.</para>
+</listitem><listitem><para>sysc::tlm_target</para>
+<para>A component distributing TLM2.0 accesses to target resources e.g. sysc::sc_register</para>
+</listitem><listitem><para>sysc::router</para>
+<para>A simple component to route TLM2.0 accesses of a set of masters to a set of targets based on generic payload addresses</para>
+</listitem><listitem><para>a set of bus and network protocols at the AT level:<itemizedlist>
+<listitem><para>APB</para>
+</listitem><listitem><para>AHB</para>
+</listitem><listitem><para>AXI/ACE</para>
+</listitem><listitem><para>CHI</para>
+</listitem><listitem><para>OBI</para>
+</listitem><listitem><para>OCP</para>
+</listitem><listitem><para>TileLink</para>
+</listitem><listitem><para>SPI</para>
+</listitem><listitem><para>UART</para>
+</listitem><listitem><para>AXIStream</para>
+</listitem><listitem><para>CXS</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>various TLM2.0 AT &lt;-&gt; pin-level adapters for common bus protocols like<itemizedlist>
+<listitem><para>APB</para>
+</listitem><listitem><para>AHB</para>
+</listitem><listitem><para>AXI/ACE/ACE-Lite</para>
+</listitem><listitem><para>OBI (target)</para>
+</listitem><listitem><para>OCP (target)</para>
+</listitem><listitem><para>TileLink UH (initiator)</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para>The full documentation can be found at the <ulink url="https://minres.github.io/SystemC-Components/">Github pages</ulink></para>
+</sect1>
+<sect1 id="index_1autotoc_md17">
+<title>Build notes</title><para>If SystemC 2.x is build using cmake with <computeroutput>SC_WITH_PHASE_CALLBACK_TRACING=ON</computeroutput> (which is the default for SystemC 2.3.4), tracing will not work. Either SystemC is being installed with SC_WITH_PHASE_CALLBACK_TRACING=OFF (which is the prefered way as this setting is in sync with the automake configure configuration, see <ulink url="https://github.com/accellera-official/systemc/issues/24">https://github.com/accellera-official/systemc/issues/24</ulink>) or the SCC is being build using <computeroutput>SC_WITH_PHASE_CALLBACK_TRACING=ON</computeroutput>.</para>
+</sect1>
+<sect1 id="index_1autotoc_md18">
+<title>Build instructions using conan</title><para>The repo is cmake based and (preferably) uses conan. Make sure that you have at least cmake 3.24 and conan version &gt;2.0 installed. Other combinations may work, but are not tested.</para>
+</sect1>
+<sect1 id="index_1autotoc_md19">
+<title>On Linux</title><para>The suggested build steps are:</para>
+<para><itemizedlist>
+<listitem><para>create a build directory and enter into it</para>
+</listitem><listitem><para>execute cmake with applicable options</para>
+</listitem><listitem><para>execute build</para>
+</listitem><listitem><para>install build</para>
+</listitem><listitem><para>run tests</para>
+</listitem></itemizedlist>
+</para>
+<para>For example:</para>
+<para><programlisting><codeline><highlight class="normal">cmake<sp/>--preset<sp/>Release<sp/>-DCMAKE_INSTALL_PREFIX=&lt;some<sp/>install<sp/>path&gt;</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/Release<sp/>-j16<sp/></highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/Release<sp/>--target<sp/>test</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/Release<sp/>--target<sp/>install</highlight></codeline>
+<codeline><highlight class="normal">build/Release/examples/ace-axi/ace_axi_example</highlight></codeline>
+<codeline><highlight class="normal">build/Release/examples/axi-axi/axi_axi_example</highlight></codeline>
+</programlisting></para>
+<para><blockquote><para><bold><emphasis>NOTE:</emphasis></bold> <bold>Do not install SCC in the same installation directory as SystemC.</bold> SCC follows the convention of mapping C++ namespaces directly into the directory hierarchy. As many SCC components are related to TLM 2.0, a significant portion of the SCC code resides in the <computeroutput><ref refid="namespacetlm" kindref="compound">tlm</ref></computeroutput> namespace, which results in the creation of a <computeroutput><ref refid="namespacetlm" kindref="compound">tlm</ref></computeroutput> directory under SCC&apos;s <computeroutput>include</computeroutput> folder. The SystemC itself also provides a <computeroutput><ref refid="namespacetlm" kindref="compound">tlm</ref></computeroutput> header file (or directory) in its own include path. If SCC and SystemC are installed into the same prefix, this results in a clash to create a directory where a file or another directory already exists—causing installation errors. Install SCC and SystemC into separate directories. </para>
+</blockquote></para>
+</sect1>
+<sect1 id="index_1autotoc_md20">
+<title>On Windows</title><para><programlisting><codeline><highlight class="normal">cmake<sp/>--preset<sp/>Release<sp/>-DBUILD_SHARED_LIBS=OFF<sp/>-DCMAKE_INSTALL_PREFIX=&lt;some<sp/>install<sp/>path&gt;</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/Release<sp/>--config<sp/>Release<sp/>--target<sp/>install</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="index_1autotoc_md21">
+<title>Build instructions using install script</title><para>SCC comes with an install script which installs SCC and all needed libraries incl. Boost and SystemC in one go:</para>
+<para><programlisting><codeline><highlight class="normal">curl<sp/>-s<sp/>https://raw.githubusercontent.com/Minres/SystemC-Components/develop/contrib/install_wo_conan.sh<sp/>|<sp/>INSTALL_ROOT=&lt;install<sp/>dir&gt;<sp/>bash</highlight></codeline>
+</programlisting></para>
+<para>The script can also be downloaded and run with the install dir as argument:</para>
+<para><programlisting><codeline><highlight class="normal">curl<sp/>https://raw.githubusercontent.com/Minres/SystemC-Components/develop/contrib/install_wo_conan.sh<sp/>&gt;install_wo_conan.sh</highlight></codeline>
+<codeline><highlight class="normal">bash<sp/>install_wo_conan.sh<sp/>&lt;install<sp/>dir&gt;</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="index_1autotoc_md22">
+<title>Building and installing SCC for Cadence Xcelium</title><para>You need to setup your environment and make Xcelium available. This means ncroot and ncsc need to be found by the shell.</para>
+<para><programlisting><codeline><highlight class="normal">cmake<sp/>--preset<sp/>NCSC_RelWithDebInfo<sp/>-DCMAKE_INSTALL_PREFIX=&lt;some<sp/>install<sp/>path&gt;</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/NCSC_RelWithDebInfo<sp/>--parallel<sp/>--target<sp/>install</highlight></codeline>
+</programlisting></para>
+<para>If the used version of Xcelium supports SystemC 3.x the commands become:</para>
+<para><programlisting><codeline><highlight class="normal">cmake<sp/>--preset<sp/>NCSC3_RelWithDebInfo<sp/>-DCMAKE_INSTALL_PREFIX=&lt;some<sp/>install<sp/>path&gt;</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/NCSC3_RelWithDebInfo<sp/>--parallel<sp/>--target<sp/>install</highlight></codeline>
+</programlisting></para>
+<para>Building the library for 32bit (the Xcelium default - sic!) works atm only for a standalone build as there is no mechanism to tell conan to build in 32bit. The following commands might help in non-conan builds:</para>
+<para><programlisting><codeline><highlight class="normal">CXXFLAGS=&quot;-m32&quot;<sp/>CFLAGS=&quot;-m32&quot;<sp/>LDFLAGS=&quot;-m32&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>cmake<sp/>-S<sp/>.<sp/>-B<sp/>build/NCSC_RelWithDebInfo<sp/>-Wno-dev<sp/>-DCMAKE_INSTALL_PREFIX=&lt;scc<sp/>install<sp/>dir&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-DCMAKE_BUILD_TYPE=RelWithDebInfo<sp/>-DBUILD_SHARED_LIBS=OFF<sp/>-DBUILD_SCC_LIB_ONLY=ON<sp/>-DCMAKE_CXX_STANDARD=17<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-DBoost_NO_SYSTEM_PATHS=TRUE<sp/>-DBOOST_ROOT=&lt;boost<sp/>install<sp/>dir&gt;<sp/>-DBoost_NO_WARN_NEW_VERSIONS=ON<sp/></highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/NCSC_RelWithDebInfo<sp/>--parallel<sp/>--target<sp/>install</highlight></codeline>
+</programlisting> </para>
+</sect1>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/README.md"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structtlm_1_1scc_1_1tlm__unmanaged__extension" kind="struct" language="C++" prot="public">
+    <compoundname>tlm::scc::tlm_unmanaged_extension</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_extension&lt; T &gt;</basecompoundref>
+    <includes refid="tlm__extensions_8h" local="no">tlm_extensions.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structtlm_1_1scc_1_1tlm__unmanaged__extension_1a065a206f2fb42aa6f112db0e85bef987" prot="public" static="no">
+        <type>T</type>
+        <definition>using tlm::scc::tlm_unmanaged_extension&lt; T &gt;::type =  T</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>tlm::scc::tlm_unmanaged_extension::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" line="39" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__unmanaged__extension_1a420beb2d9fab26aac3b10218c46554a8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm_extension_base *</type>
+        <definition>tlm_extension_base * tlm::scc::tlm_unmanaged_extension&lt; T &gt;::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <qualifiedname>tlm::scc::tlm_unmanaged_extension::clone</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" line="41" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__unmanaged__extension_1a9954d65ab5d48a4746f83ca1f443c83c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tlm::scc::tlm_unmanaged_extension&lt; T &gt;::copy_from</definition>
+        <argsstring>(tlm_extension_base const &amp;other) override</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>tlm::scc::tlm_unmanaged_extension::copy_from</qualifiedname>
+        <param>
+          <type>tlm_extension_base const &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" line="43" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="structtlm_1_1scc_1_1tlm__unmanaged__extension_1a0b1e59478071a2a89e539cc7d1accdbc" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tlm::scc::tlm_unmanaged_extension&lt; T &gt;::tlm_unmanaged_extension</definition>
+        <argsstring>()</argsstring>
+        <name>tlm_unmanaged_extension</name>
+        <qualifiedname>tlm::scc::tlm_unmanaged_extension::tlm_unmanaged_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" line="46" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A unmanaged extension for TLM transactions. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides a basic implementation of an unmanaged TLM extension.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the extension. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>tlm::scc::tlm_unmanaged_extension&lt; T &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__unmanaged__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; T &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>tlm::scc::tlm_unmanaged_extension&lt; T &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__unmanaged__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; T &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" line="38" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/tlm_extensions.h" bodystart="38" bodyend="47"/>
+    <listofallmembers>
+      <member refid="structtlm_1_1scc_1_1tlm__unmanaged__extension_1a420beb2d9fab26aac3b10218c46554a8" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_unmanaged_extension</scope><name>clone</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__unmanaged__extension_1a9954d65ab5d48a4746f83ca1f443c83c" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_unmanaged_extension</scope><name>copy_from</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__unmanaged__extension_1a0b1e59478071a2a89e539cc7d1accdbc" prot="protected" virt="non-virtual"><scope>tlm::scc::tlm_unmanaged_extension</scope><name>tlm_unmanaged_extension</name></member>
+      <member refid="structtlm_1_1scc_1_1tlm__unmanaged__extension_1a065a206f2fb42aa6f112db0e85bef987" prot="public" virt="non-virtual"><scope>tlm::scc::tlm_unmanaged_extension</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

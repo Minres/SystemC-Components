@@ -1,0 +1,733 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1tcp4tlm__server" kind="struct" language="C++" prot="public">
+    <compoundname>scc::tcp4tlm_server</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref refid="classscc_1_1tcp4tlm_1_1server" prot="protected" virt="non-virtual">scc::tcp4tlm::server&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;</basecompoundref>
+    <innerclass refid="structscc_1_1tcp4tlm__server_1_1timed__task" prot="protected">scc::tcp4tlm_server::timed_task</innerclass>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm__server_1a58f3ca91778715767740ed22e121f6c4" prot="public" static="no">
+        <type><ref refid="classscc_1_1tcp4tlm_1_1connection" kindref="compound">tcp4tlm::connection</ref>&lt; tcp4tlm::response_message, tcp4tlm::request_message &gt;</type>
+        <definition>typedef tcp4tlm::connection&lt;tcp4tlm::response_message, tcp4tlm::request_message&gt; scc::tcp4tlm_server::connection_type</definition>
+        <argsstring></argsstring>
+        <name>connection_type</name>
+        <qualifiedname>scc::tcp4tlm_server::connection_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="56" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm__server_1ab4edcf56164ea2a856999b563ec4917b" prot="public" static="no">
+        <type>std::shared_ptr&lt; connection_type &gt;</type>
+        <definition>typedef std::shared_ptr&lt;connection_type&gt; scc::tcp4tlm_server::con_ptr</definition>
+        <argsstring></argsstring>
+        <name>con_ptr</name>
+        <qualifiedname>scc::tcp4tlm_server::con_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="57" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-type">
+      <memberdef kind="typedef" id="structscc_1_1tcp4tlm__server_1a7796a751a604c0a7d778992467e4bdc8" prot="protected" static="no">
+        <type>std::packaged_task&lt; bool(void)&gt;</type>
+        <definition>using scc::tcp4tlm_server::callback_task =  std::packaged_task&lt;bool(void)&gt;</definition>
+        <argsstring></argsstring>
+        <name>callback_task</name>
+        <qualifiedname>scc::tcp4tlm_server::callback_task</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="85" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1ad8c06dafeb3def1de2c8b1ac39dfe99b" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; unsigned &gt;</type>
+        <definition>cci::cci_param&lt;unsigned&gt; scc::tcp4tlm_server::this_host_port</definition>
+        <argsstring></argsstring>
+        <name>this_host_port</name>
+        <qualifiedname>scc::tcp4tlm_server::this_host_port</qualifiedname>
+        <initializer>{&quot;this_host_port&quot;, 32000u}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="43" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1ac7ae5f7a6442095a759f286e0126a42d" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; scc::tcp4tlm_server::wall_time_simulation_speed</definition>
+        <argsstring></argsstring>
+        <name>wall_time_simulation_speed</name>
+        <qualifiedname>scc::tcp4tlm_server::wall_time_simulation_speed</qualifiedname>
+        <initializer>{&quot;wall_time_simulation_speed&quot;, false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="44" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1a54b6bb9420452e109b9bb0a8932479bb" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; scc::tcp4tlm_server::write_no_response</definition>
+        <argsstring></argsstring>
+        <name>write_no_response</name>
+        <qualifiedname>scc::tcp4tlm_server::write_no_response</qualifiedname>
+        <initializer>{&quot;write_no_response&quot;, false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="45" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1a0427412c992c336143c00907c640d793" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; bool &gt;</type>
+        <definition>cci::cci_param&lt;bool&gt; scc::tcp4tlm_server::no_systemc_sync</definition>
+        <argsstring></argsstring>
+        <name>no_systemc_sync</name>
+        <qualifiedname>scc::tcp4tlm_server::no_systemc_sync</qualifiedname>
+        <initializer>{&quot;no_systemc_sync&quot;, false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="46" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1a2898b1f4e8d86b90c57caeb73eefc07c" prot="public" static="no" mutable="no">
+        <type>tlm_utils::simple_initiator_socket&lt; tcp4tlm_server, ::scc::LT &gt;</type>
+        <definition>tlm_utils::simple_initiator_socket&lt;tcp4tlm_server, ::scc::LT&gt; scc::tcp4tlm_server::isckt</definition>
+        <argsstring></argsstring>
+        <name>isckt</name>
+        <qualifiedname>scc::tcp4tlm_server::isckt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="48" column="40" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1aa441dc147a3e65bf217bce1d2b005105" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_vector&lt; sc_core::sc_out&lt; bool &gt; &gt;</type>
+        <definition>sc_core::sc_vector&lt;sc_core::sc_out&lt;bool&gt; &gt; scc::tcp4tlm_server::signals</definition>
+        <argsstring></argsstring>
+        <name>signals</name>
+        <qualifiedname>scc::tcp4tlm_server::signals</qualifiedname>
+        <initializer>{&quot;signals&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="50" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="50" bodyend="50"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1adb7f8026151d1f6a688ba1a05a9d70ee" prot="protected" static="no" mutable="no">
+        <type><ref refid="structscc_1_1async__queue" kindref="compound">scc::async_queue</ref>&lt; <ref refid="structscc_1_1tcp4tlm__server_1_1timed__task" kindref="compound">timed_task</ref> &gt;</type>
+        <definition>scc::async_queue&lt;timed_task&gt; scc::tcp4tlm_server::task_que</definition>
+        <argsstring></argsstring>
+        <name>task_que</name>
+        <qualifiedname>scc::tcp4tlm_server::task_que</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="90" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1a2c813328e42ad2988a67f60cc3a4ec20" prot="protected" static="no" mutable="no">
+        <type><ref refid="structscc_1_1peq" kindref="compound">scc::peq</ref>&lt; callback_task &gt;</type>
+        <definition>scc::peq&lt;callback_task&gt; scc::tcp4tlm_server::timed_task_que</definition>
+        <argsstring></argsstring>
+        <name>timed_task_que</name>
+        <qualifiedname>scc::tcp4tlm_server::timed_task_que</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="91" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1ace299cd9b6068823d3da5f7ab0af8248" prot="protected" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex scc::tcp4tlm_server::con_est_mtx</definition>
+        <argsstring></argsstring>
+        <name>con_est_mtx</name>
+        <qualifiedname>scc::tcp4tlm_server::con_est_mtx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="92" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1a01eb0fc719ed5fa4650da00c27c22a8e" prot="protected" static="no" mutable="no">
+        <type>std::condition_variable</type>
+        <definition>std::condition_variable scc::tcp4tlm_server::con_est_sig</definition>
+        <argsstring></argsstring>
+        <name>con_est_sig</name>
+        <qualifiedname>scc::tcp4tlm_server::con_est_sig</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="93" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1abfd10bc61bd246e345b782c9188093a9" prot="protected" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; scc::tcp4tlm_server::con_est</definition>
+        <argsstring></argsstring>
+        <name>con_est</name>
+        <qualifiedname>scc::tcp4tlm_server::con_est</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="94" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="94" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1a57afaf64eb83d8bc486b693fc9521603" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event scc::tcp4tlm_server::shutdown_evt</definition>
+        <argsstring></argsstring>
+        <name>shutdown_evt</name>
+        <qualifiedname>scc::tcp4tlm_server::shutdown_evt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="95" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1afe81a345f8915688879ade05654acb32" prot="protected" static="no" mutable="no">
+        <type><ref refid="classrigtorp_1_1SPSCQueue" kindref="compound">rigtorp::SPSCQueue</ref>&lt; sc_core::sc_time &gt;</type>
+        <definition>rigtorp::SPSCQueue&lt;sc_core::sc_time&gt; scc::tcp4tlm_server::next_time_stamp</definition>
+        <argsstring></argsstring>
+        <name>next_time_stamp</name>
+        <qualifiedname>scc::tcp4tlm_server::next_time_stamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="96" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1ace0b2d5fa0f560701c49884d947dd003" prot="protected" static="no" mutable="no">
+        <type>unsigned long long</type>
+        <definition>unsigned long long scc::tcp4tlm_server::sync</definition>
+        <argsstring></argsstring>
+        <name>sync</name>
+        <qualifiedname>scc::tcp4tlm_server::sync</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="97" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1abe19c91b71ddd7f454df4d865345f032" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; tcp4tlm::response_message &gt;</type>
+        <definition>std::shared_ptr&lt;tcp4tlm::response_message&gt; scc::tcp4tlm_server::resp_msg</definition>
+        <argsstring></argsstring>
+        <name>resp_msg</name>
+        <qualifiedname>scc::tcp4tlm_server::resp_msg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="103" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1ab09436117aee41383c46e38c47b356ab" prot="protected" static="no" mutable="no">
+        <type>tlm_utils::tlm_quantumkeeper</type>
+        <definition>tlm_utils::tlm_quantumkeeper scc::tcp4tlm_server::quantumkeeper</definition>
+        <argsstring></argsstring>
+        <name>quantumkeeper</name>
+        <qualifiedname>scc::tcp4tlm_server::quantumkeeper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="104" column="34" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1tcp4tlm__server_1ad3e15fa684abad9d6d979295080a2f14" prot="protected" static="no" mutable="no">
+        <type><ref refid="structtlm_1_1scc_1_1tlm__mm" kindref="compound">tlm::scc::tlm_mm</ref>&lt; tlm::tlm_base_protocol_types, false &gt;</type>
+        <definition>tlm::scc::tlm_mm&lt;tlm::tlm_base_protocol_types, false&gt; scc::tcp4tlm_server::mm</definition>
+        <argsstring></argsstring>
+        <name>mm</name>
+        <qualifiedname>scc::tcp4tlm_server::mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="105" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__server_1ae07f997d0e54344552cad966147d16b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::tcp4tlm_server::SC_HAS_PROCESS</definition>
+        <argsstring>(tcp4tlm_server)</argsstring>
+        <name>SC_HAS_PROCESS</name>
+        <qualifiedname>scc::tcp4tlm_server::SC_HAS_PROCESS</qualifiedname>
+        <param>
+          <type>tcp4tlm_server</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="41" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__server_1ad034e9e336ca7d2a1efbc5d60780e6de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::tcp4tlm_server::tcp4tlm_server</definition>
+        <argsstring>(sc_core::sc_module_name name, size_t no_of_ports=0)</argsstring>
+        <name>tcp4tlm_server</name>
+        <qualifiedname>scc::tcp4tlm_server::tcp4tlm_server</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>no_of_ports</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="52" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.cpp" bodystart="38" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__server_1a55e0994fe248120e67d337dde81cfc16" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>scc::tcp4tlm_server::~tcp4tlm_server</definition>
+        <argsstring>()</argsstring>
+        <name>~tcp4tlm_server</name>
+        <qualifiedname>scc::tcp4tlm_server::~tcp4tlm_server</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="54" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.cpp" bodystart="86" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__server_1a45430e0dc05089d0f642b8479b87ed21" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_server::server_send_completed</definition>
+        <argsstring>(con_ptr &amp;con, bool established=false) override</argsstring>
+        <name>server_send_completed</name>
+        <qualifiedname>scc::tcp4tlm_server::server_send_completed</qualifiedname>
+        <param>
+          <type>con_ptr &amp;</type>
+          <declname>con</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>established</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="59" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="59" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__server_1a599e18b0669599290c9ae50d2fabf00b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_server::server_receive_completed</definition>
+        <argsstring>(con_ptr &amp;con, const tcp4tlm::request_message *const result) override</argsstring>
+        <name>server_receive_completed</name>
+        <qualifiedname>scc::tcp4tlm_server::server_receive_completed</qualifiedname>
+        <param>
+          <type>con_ptr &amp;</type>
+          <declname>con</declname>
+        </param>
+        <param>
+          <type>const tcp4tlm::request_message *const</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="65" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.cpp" bodystart="210" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__server_1aee077a900c4e99953f6222974bacda83" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_server::start_server</definition>
+        <argsstring>()</argsstring>
+        <name>start_server</name>
+        <qualifiedname>scc::tcp4tlm_server::start_server</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="67" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="67" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__server_1af7f1ab4dd9b9431c6d6579a39fce69dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_server::wait4connection</definition>
+        <argsstring>()</argsstring>
+        <name>wait4connection</name>
+        <qualifiedname>scc::tcp4tlm_server::wait4connection</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="72" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="72" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__server_1a82c9cabc18835d73d60720c4e2a2b794" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm_server::is_connection_established</definition>
+        <argsstring>()</argsstring>
+        <name>is_connection_established</name>
+        <qualifiedname>scc::tcp4tlm_server::is_connection_established</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="80" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__server_1a4e8e771eb77a5b9a4c65c687bfec4827" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>sc_core::sc_event const &amp;</type>
+        <definition>sc_core::sc_event const  &amp; scc::tcp4tlm_server::get_shutdown_event</definition>
+        <argsstring>() const</argsstring>
+        <name>get_shutdown_event</name>
+        <qualifiedname>scc::tcp4tlm_server::get_shutdown_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="82" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="82" bodyend="82"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__server_1ad9c25d52cca1a82d5216e7d54400aa52" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_server::timing_thread</definition>
+        <argsstring>()</argsstring>
+        <name>timing_thread</name>
+        <qualifiedname>scc::tcp4tlm_server::timing_thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="98" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.cpp" bodystart="139" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__server_1a5dd97ab9d64da6a4e8299c16aef4b383" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_server::process_task_que</definition>
+        <argsstring>()</argsstring>
+        <name>process_task_que</name>
+        <qualifiedname>scc::tcp4tlm_server::process_task_que</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="99" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.cpp" bodystart="313" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__server_1af5f13d08cb9b6f1cc042377e3cea97c4" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_server::process_timed_task_que</definition>
+        <argsstring>()</argsstring>
+        <name>process_timed_task_que</name>
+        <qualifiedname>scc::tcp4tlm_server::process_timed_task_que</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="100" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.cpp" bodystart="329" bodyend="336"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__server_1a342929fc1b5f4814c4334868f59569f3" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_server::start_of_simulation</definition>
+        <argsstring>() override</argsstring>
+        <name>start_of_simulation</name>
+        <qualifiedname>scc::tcp4tlm_server::start_of_simulation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="101" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.cpp" bodystart="88" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__server_1a7cc5cdd6c255097d8f3f1fe5be668bff" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm_server::end_of_simulation</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_simulation</name>
+        <qualifiedname>scc::tcp4tlm_server::end_of_simulation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="102" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.cpp" bodystart="93" bodyend="127"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__server_1a5ea8c160f721f64d874c288e6f763ede" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::scc::tlm_gp_shared_ptr</type>
+        <definition>tlm::scc::tlm_gp_shared_ptr scc::tcp4tlm_server::init_gp</definition>
+        <argsstring>(const tcp4tlm::BusOpMsg *const msg)</argsstring>
+        <name>init_gp</name>
+        <qualifiedname>scc::tcp4tlm_server::init_gp</qualifiedname>
+        <param>
+          <type>const tcp4tlm::BusOpMsg *const</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="108" column="33" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.cpp" bodystart="192" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1tcp4tlm__server_1ab2b34a6282ba7cf126ce459810ba5ad9" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>tcp4tlm::request_message</type>
+        <definition>tcp4tlm::request_message scc::tcp4tlm_server::get_notify_endpoint_msg</definition>
+        <argsstring>(boost::asio::ip::tcp::endpoint &amp;ep)</argsstring>
+        <name>get_notify_endpoint_msg</name>
+        <qualifiedname>scc::tcp4tlm_server::get_notify_endpoint_msg</qualifiedname>
+        <param>
+          <type>boost::asio::ip::tcp::endpoint &amp;</type>
+          <declname>ep</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="114" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="114" bodyend="117"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="4">
+        <label>scc::tcp4tlm::i_server&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;</label>
+        <link refid="structscc_1_1tcp4tlm_1_1i__server"/>
+      </node>
+      <node id="3">
+        <label>scc::tcp4tlm::server&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;</label>
+        <link refid="classscc_1_1tcp4tlm_1_1server"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>scc::tcp4tlm_server</label>
+        <link refid="structscc_1_1tcp4tlm__server"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="protected-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="11">
+        <label>rigtorp::SPSCQueue&lt; sc_core::sc_time &gt;</label>
+        <link refid="classrigtorp_1_1SPSCQueue"/>
+      </node>
+      <node id="8">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="10">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="6">
+        <label>sc_core::sc_prim_channel</label>
+      </node>
+      <node id="5">
+        <label>scc::async_queue&lt; scc::tcp4tlm_server::timed_task &gt;</label>
+        <link refid="structscc_1_1async__queue"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>scc::async_source_if&lt; scc::tcp4tlm_server::timed_task &gt;</label>
+        <link refid="structscc_1_1async__source__if"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>scc::peq&lt; callback_task &gt;</label>
+        <link refid="structscc_1_1peq"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>scc::tcp4tlm::i_server&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;</label>
+        <link refid="structscc_1_1tcp4tlm_1_1i__server"/>
+      </node>
+      <node id="3">
+        <label>scc::tcp4tlm::server&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;</label>
+        <link refid="classscc_1_1tcp4tlm_1_1server"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>scc::tcp4tlm_server</label>
+        <link refid="structscc_1_1tcp4tlm__server"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="protected-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>task_que</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>timed_task_que</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>next_time_stamp</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>mm</edgelabel>
+        </childnode>
+      </node>
+      <node id="14">
+        <label>std::conditional&lt; std::is_base_of&lt; tlm::tlm_generic_payload, tlm::tlm_base_protocol_types::tlm_payload_type &gt;::value, tlm::tlm_mm_interface, tlm_mm_traits&lt; tlm::tlm_base_protocol_types &gt;::mm_if_type &gt;::type</label>
+      </node>
+      <node id="12">
+        <label>tlm::scc::tlm_mm&lt; tlm::tlm_base_protocol_types, false &gt;</label>
+        <link refid="structtlm_1_1scc_1_1tlm__mm"/>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>tlm::scc::tlm_mm_t&lt; tlm::tlm_base_protocol_types, CLEANUP_DATA, std::conditional&lt; std::is_base_of&lt; tlm::tlm_generic_payload, tlm::tlm_base_protocol_types::tlm_payload_type &gt;::value, tlm::tlm_mm_interface, tlm_mm_traits&lt; tlm::tlm_base_protocol_types &gt;::mm_if_type &gt;::type &gt;</label>
+        <link refid="classtlm_1_1scc_1_1tlm__mm__t"/>
+        <childnode refid="14" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" line="40" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm_server.h" bodystart="40" bodyend="140"/>
+    <listofallmembers>
+      <member refid="structscc_1_1tcp4tlm__server_1a7796a751a604c0a7d778992467e4bdc8" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>callback_task</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1abfd10bc61bd246e345b782c9188093a9" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>con_est</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1ace299cd9b6068823d3da5f7ab0af8248" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>con_est_mtx</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1a01eb0fc719ed5fa4650da00c27c22a8e" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>con_est_sig</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1ab4edcf56164ea2a856999b563ec4917b" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>con_ptr</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1a58f3ca91778715767740ed22e121f6c4" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>connection_type</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1a4394ae5d2ce57876523df722bea58a95" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>create_new_session</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1a7cc5cdd6c255097d8f3f1fe5be668bff" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>end_of_simulation</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1aafca7dcfa8bb84717c034c912922bfca" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>get_acceptor</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1a894b80061e6cdb3525d3e9e4318727d5" prot="protected" virt="virtual"><scope>scc::tcp4tlm_server</scope><name>get_io_service</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1ab2b34a6282ba7cf126ce459810ba5ad9" prot="private" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>get_notify_endpoint_msg</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1a4e8e771eb77a5b9a4c65c687bfec4827" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>get_shutdown_event</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1a5ea8c160f721f64d874c288e6f763ede" prot="private" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>init_gp</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1a82c9cabc18835d73d60720c4e2a2b794" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>is_connection_established</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1ae9a3cd755a19529748af708b44dec85b" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>is_server_running</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1af9765ffeeb4c4d713da4d5fe89ed41c6" prot="protected" virt="virtual"><scope>scc::tcp4tlm_server</scope><name>is_shutdown_requested</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1a2898b1f4e8d86b90c57caeb73eefc07c" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>isckt</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1ad3e15fa684abad9d6d979295080a2f14" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>mm</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1afe81a345f8915688879ade05654acb32" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>next_time_stamp</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1a0427412c992c336143c00907c640d793" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>no_systemc_sync</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1a5dd97ab9d64da6a4e8299c16aef4b383" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>process_task_que</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1af5f13d08cb9b6f1cc042377e3cea97c4" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>process_timed_task_que</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1ab09436117aee41383c46e38c47b356ab" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>quantumkeeper</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1a442a7254485b3a19f4b150bdeb1385c4" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>request_shutdown</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1abe19c91b71ddd7f454df4d865345f032" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>resp_msg</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1ae07f997d0e54344552cad966147d16b9" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1a83674e8f19a01b1290dc3ec89017df68" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>server</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1a599e18b0669599290c9ae50d2fabf00b" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>server_receive_completed</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1i__server_1a8ad78c8673bc3ddb342d144ca3066826" prot="protected" virt="pure-virtual" ambiguityscope="scc::tcp4tlm::server&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;::"><scope>scc::tcp4tlm_server</scope><name>server_receive_completed</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1a45430e0dc05089d0f642b8479b87ed21" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>server_send_completed</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1i__server_1a1b3c1ff55f25aa46afd5ae27fedac09a" prot="protected" virt="pure-virtual" ambiguityscope="scc::tcp4tlm::server&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;::"><scope>scc::tcp4tlm_server</scope><name>server_send_completed</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1ae9ed35716ff1d3ab31c8402a7bbf181e" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>set_acceptor_endpoint</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1a57afaf64eb83d8bc486b693fc9521603" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>shutdown_evt</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1af35979d5b42442afab6f02e412f7b464" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>shutdown_server</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1aa441dc147a3e65bf217bce1d2b005105" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>signals</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1a342929fc1b5f4814c4334868f59569f3" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>start_of_simulation</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1aee077a900c4e99953f6222974bacda83" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>start_server</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1acbe854c9bd5063190f62cd9a58418302" prot="protected" virt="non-virtual" ambiguityscope="scc::tcp4tlm::server&lt; tcp4tlm::request_message, tcp4tlm::response_message &gt;::"><scope>scc::tcp4tlm_server</scope><name>start_server</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1ace0b2d5fa0f560701c49884d947dd003" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>sync</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1adb7f8026151d1f6a688ba1a05a9d70ee" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>task_que</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1ad034e9e336ca7d2a1efbc5d60780e6de" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>tcp4tlm_server</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1ad8c06dafeb3def1de2c8b1ac39dfe99b" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>this_host_port</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1a2c813328e42ad2988a67f60cc3a4ec20" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>timed_task_que</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1ad9c25d52cca1a82d5216e7d54400aa52" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>timing_thread</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1af7f1ab4dd9b9431c6d6579a39fce69dc" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>wait4connection</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1ac7ae5f7a6442095a759f286e0126a42d" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>wall_time_simulation_speed</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1a54b6bb9420452e109b9bb0a8932479bb" prot="public" virt="non-virtual"><scope>scc::tcp4tlm_server</scope><name>write_no_response</name></member>
+      <member refid="structscc_1_1tcp4tlm_1_1i__server_1ae1af04685ba43e452e8da974358e5e9c" prot="protected" virt="virtual"><scope>scc::tcp4tlm_server</scope><name>~i_server</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1server_1a11f8a7a15a15a2b48b0c975f9d3deb9d" prot="protected" virt="virtual"><scope>scc::tcp4tlm_server</scope><name>~server</name></member>
+      <member refid="structscc_1_1tcp4tlm__server_1a55e0994fe248120e67d337dde81cfc16" prot="public" virt="virtual"><scope>scc::tcp4tlm_server</scope><name>~tcp4tlm_server</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

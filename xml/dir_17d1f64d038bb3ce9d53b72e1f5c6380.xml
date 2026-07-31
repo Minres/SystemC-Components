@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_17d1f64d038bb3ce9d53b72e1f5c6380" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr</compoundname>
+    <innerfile refid="lwtr4tlm2_8h">lwtr4tlm2.h</innerfile>
+    <innerfile refid="lwtr4tlm2__extension__registry_8h">lwtr4tlm2_extension_registry.h</innerfile>
+    <innerfile refid="tlm2__lwtr_8cpp">tlm2_lwtr.cpp</innerfile>
+    <innerfile refid="tlm2__lwtr_8h">tlm2_lwtr.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/scc/lwtr/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacechi_1_1pe" kind="namespace" language="C++">
+    <compoundname>chi::pe</compoundname>
+    <innerclass refid="classchi_1_1pe_1_1chi__rn__initiator__b" prot="public">chi::pe::chi_rn_initiator_b</innerclass>
+    <innerclass refid="classchi_1_1pe_1_1chi__rn__initiator" prot="public">chi::pe::chi_rn_initiator</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="chi__rn__initiator_8h_1a006b6f0cc0369b1fc52e11f62985f1bd" prot="public" static="no" strong="no">
+        <type></type>
+        <name>channel_e</name>
+        <qualifiedname>chi::pe::channel_e</qualifiedname>
+        <enumvalue id="chi__rn__initiator_8h_1a006b6f0cc0369b1fc52e11f62985f1bda941c130d545fb68757a9b919f773de1c" prot="public">
+          <name>REQ</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="chi__rn__initiator_8h_1a006b6f0cc0369b1fc52e11f62985f1bdaec9881d132c4d4610bb95a322cc65bc9" prot="public">
+          <name>WDAT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="chi__rn__initiator_8h_1a006b6f0cc0369b1fc52e11f62985f1bdac4819c5d333af88143fae2612d3cb887" prot="public">
+          <name>SRSP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="chi__rn__initiator_8h_1a006b6f0cc0369b1fc52e11f62985f1bda4a28c0b7c2c0926985429264da92ca13" prot="public">
+          <name>CRSP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="chi__rn__initiator_8h_1a006b6f0cc0369b1fc52e11f62985f1bda3c670f100c4cd5f413a19c774de0df99" prot="public">
+          <name>RDAT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="chi__rn__initiator_8h_1a006b6f0cc0369b1fc52e11f62985f1bda23bed8889fa9ac905c735d498deb4cc8" prot="public">
+          <name>SNP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="chi__rn__initiator_8h_1a006b6f0cc0369b1fc52e11f62985f1bdab0a32c7fadb5217d1f01397601cb50e1" prot="public">
+          <name>CH_CNT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" line="33" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" bodystart="33" bodyend="33"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/pe/chi_rn_initiator.h" line="31" column="1"/>
+  </compounddef>
+</doxygen>

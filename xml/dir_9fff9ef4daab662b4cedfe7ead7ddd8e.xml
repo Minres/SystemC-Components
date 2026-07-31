@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_9fff9ef4daab662b4cedfe7ead7ddd8e" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe</compoundname>
+    <innerfile refid="ahb__initiator_8cpp">ahb_initiator.cpp</innerfile>
+    <innerfile refid="ahb__initiator_8h">ahb_initiator.h</innerfile>
+    <innerfile refid="ahb__target_8cpp">ahb_target.cpp</innerfile>
+    <innerfile refid="ahb__target_8h">ahb_target.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/ahb/pe/"/>
+  </compounddef>
+</doxygen>

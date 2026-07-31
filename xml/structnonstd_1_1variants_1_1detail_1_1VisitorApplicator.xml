@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1detail_1_1VisitorApplicator" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::detail::VisitorApplicator</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename R</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1VisitorApplicator_1a7e1439129e09d011f9236fd54cb422ed" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Visitor</type>
+          </param>
+          <param>
+            <type>typename V1</type>
+          </param>
+        </templateparamlist>
+        <type>R</type>
+        <definition>static R nonstd::variants::detail::VisitorApplicator&lt; R &gt;::apply</definition>
+        <argsstring>(const Visitor &amp;v, const V1 &amp;arg)</argsstring>
+        <name>apply</name>
+        <qualifiedname>nonstd::variants::detail::VisitorApplicator::apply</qualifiedname>
+        <param>
+          <type>const Visitor &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>const V1 &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2466" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2466" bodyend="2505"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1VisitorApplicator_1a8b189a6bd8550590dcb7e07da2581195" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>size_t</type>
+            <declname>Idx</declname>
+            <defname>Idx</defname>
+          </param>
+          <param>
+            <type>typename Visitor</type>
+          </param>
+          <param>
+            <type>typename V1</type>
+          </param>
+        </templateparamlist>
+        <type>R</type>
+        <definition>static R nonstd::variants::detail::VisitorApplicator&lt; R &gt;::apply_visitor</definition>
+        <argsstring>(const Visitor &amp;v, const V1 &amp;arg)</argsstring>
+        <name>apply_visitor</name>
+        <qualifiedname>nonstd::variants::detail::VisitorApplicator::apply_visitor</qualifiedname>
+        <param>
+          <type>const Visitor &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>const V1 &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2507" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2507" bodyend="2515"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1VisitorApplicator_1a73f2104e2d9f17c9320cf19763c2d77a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Visitor</type>
+          </param>
+          <param>
+            <type>typename V1</type>
+          </param>
+          <param>
+            <type>typename V2</type>
+          </param>
+        </templateparamlist>
+        <type>R</type>
+        <definition>static R nonstd::variants::detail::VisitorApplicator&lt; R &gt;::apply</definition>
+        <argsstring>(const Visitor &amp;v, V1 const &amp;arg1, V2 const &amp;arg2)</argsstring>
+        <name>apply</name>
+        <qualifiedname>nonstd::variants::detail::VisitorApplicator::apply</qualifiedname>
+        <param>
+          <type>const Visitor &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>V1 const &amp;</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>V2 const &amp;</type>
+          <declname>arg2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2526" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2526" bodyend="2530"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1VisitorApplicator_1ac2ef0eba97bb45df30408036ae480177" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Visitor</type>
+          </param>
+          <param>
+            <type>typename V1</type>
+          </param>
+          <param>
+            <type>typename V2</type>
+          </param>
+          <param>
+            <type>typename V3</type>
+          </param>
+        </templateparamlist>
+        <type>R</type>
+        <definition>static R nonstd::variants::detail::VisitorApplicator&lt; R &gt;::apply</definition>
+        <argsstring>(const Visitor &amp;v, V1 const &amp;arg1, V2 const &amp;arg2, V3 const &amp;arg3)</argsstring>
+        <name>apply</name>
+        <qualifiedname>nonstd::variants::detail::VisitorApplicator::apply</qualifiedname>
+        <param>
+          <type>const Visitor &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>V1 const &amp;</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>V2 const &amp;</type>
+          <declname>arg2</declname>
+        </param>
+        <param>
+          <type>V3 const &amp;</type>
+          <declname>arg3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2533" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2533" bodyend="2537"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1VisitorApplicator_1a459c46f158547548e6cdc3903e85e8ff" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Visitor</type>
+          </param>
+          <param>
+            <type>typename V1</type>
+          </param>
+          <param>
+            <type>typename V2</type>
+          </param>
+          <param>
+            <type>typename V3</type>
+          </param>
+          <param>
+            <type>typename V4</type>
+          </param>
+        </templateparamlist>
+        <type>R</type>
+        <definition>static R nonstd::variants::detail::VisitorApplicator&lt; R &gt;::apply</definition>
+        <argsstring>(const Visitor &amp;v, V1 const &amp;arg1, V2 const &amp;arg2, V3 const &amp;arg3, V4 const &amp;arg4)</argsstring>
+        <name>apply</name>
+        <qualifiedname>nonstd::variants::detail::VisitorApplicator::apply</qualifiedname>
+        <param>
+          <type>const Visitor &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>V1 const &amp;</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>V2 const &amp;</type>
+          <declname>arg2</declname>
+        </param>
+        <param>
+          <type>V3 const &amp;</type>
+          <declname>arg3</declname>
+        </param>
+        <param>
+          <type>V4 const &amp;</type>
+          <declname>arg4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2540" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2540" bodyend="2544"/>
+      </memberdef>
+      <memberdef kind="function" id="structnonstd_1_1variants_1_1detail_1_1VisitorApplicator_1aa3b319afc346e3787e7318e2e98b135b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Visitor</type>
+          </param>
+          <param>
+            <type>typename V1</type>
+          </param>
+          <param>
+            <type>typename V2</type>
+          </param>
+          <param>
+            <type>typename V3</type>
+          </param>
+          <param>
+            <type>typename V4</type>
+          </param>
+          <param>
+            <type>typename V5</type>
+          </param>
+        </templateparamlist>
+        <type>R</type>
+        <definition>static R nonstd::variants::detail::VisitorApplicator&lt; R &gt;::apply</definition>
+        <argsstring>(const Visitor &amp;v, V1 const &amp;arg1, V2 const &amp;arg2, V3 const &amp;arg3, V4 const &amp;arg4, V5 const &amp;arg5)</argsstring>
+        <name>apply</name>
+        <qualifiedname>nonstd::variants::detail::VisitorApplicator::apply</qualifiedname>
+        <param>
+          <type>const Visitor &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>V1 const &amp;</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>V2 const &amp;</type>
+          <declname>arg2</declname>
+        </param>
+        <param>
+          <type>V3 const &amp;</type>
+          <declname>arg3</declname>
+        </param>
+        <param>
+          <type>V4 const &amp;</type>
+          <declname>arg4</declname>
+        </param>
+        <param>
+          <type>V5 const &amp;</type>
+          <declname>arg5</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2547" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2547" bodyend="2551"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="2465" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="2465" bodyend="2554"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1VisitorApplicator_1a7e1439129e09d011f9236fd54cb422ed" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::VisitorApplicator</scope><name>apply</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1VisitorApplicator_1a73f2104e2d9f17c9320cf19763c2d77a" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::VisitorApplicator</scope><name>apply</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1VisitorApplicator_1ac2ef0eba97bb45df30408036ae480177" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::VisitorApplicator</scope><name>apply</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1VisitorApplicator_1a459c46f158547548e6cdc3903e85e8ff" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::VisitorApplicator</scope><name>apply</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1VisitorApplicator_1aa3b319afc346e3787e7318e2e98b135b" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::VisitorApplicator</scope><name>apply</name></member>
+      <member refid="structnonstd_1_1variants_1_1detail_1_1VisitorApplicator_1a8b189a6bd8550590dcb7e07da2581195" prot="public" virt="non-virtual"><scope>nonstd::variants::detail::VisitorApplicator</scope><name>apply_visitor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

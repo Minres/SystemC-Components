@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classaxi_1_1bw__blocking__transport__if" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>axi::bw_blocking_transport_if</compoundname>
+    <basecompoundref prot="public" virt="virtual">sc_core::sc_interface</basecompoundref>
+    <derivedcompoundref refid="classaxi_1_1ace__bw__transport__if" prot="public" virt="virtual">axi::ace_bw_transport_if&lt; TYPES &gt;</derivedcompoundref>
+    <includes refid="axi__tlm_8h" local="no">axi_tlm.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TRANS</type>
+        <defval>tlm::tlm_generic_payload</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classaxi_1_1bw__blocking__transport__if_1ad2bf9e98fe605c100629654745b444e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void axi::bw_blocking_transport_if&lt; TRANS &gt;::b_snoop</definition>
+        <argsstring>(TRANS &amp;trans, sc_core::sc_time &amp;t)=0</argsstring>
+        <name>b_snoop</name>
+        <qualifiedname>axi::bw_blocking_transport_if::b_snoop</qualifiedname>
+        <reimplementedby refid="classaxi_1_1pe_1_1axi__initiator__b_1a0a6da696a8fb31d82bf9e3d510f11d3a">b_snoop</reimplementedby>
+        <reimplementedby refid="classaxi_1_1pe_1_1simple__ace__initiator_1a314d74532ca0afbdefcf433b8d5f17a9">b_snoop</reimplementedby>
+        <reimplementedby refid="structaxi_1_1pin_1_1ace__target_1a230f34c53d582bd3de44cbe1e7159248">b_snoop</reimplementedby>
+        <param>
+          <type>TRANS &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>snoop access to a snooped master </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the payload </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>annotated delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="948" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>interface definition for the blocking backward interface. This is need to allow snoop accesses in blocking mode </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>axi::ace_bw_transport_if&lt; TYPES &gt;</label>
+        <link refid="classaxi_1_1ace__bw__transport__if"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>axi::bw_blocking_transport_if&lt; TRANS &gt;</label>
+        <link refid="classaxi_1_1bw__blocking__transport__if"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_interface</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::bw_blocking_transport_if&lt; TRANS &gt;</label>
+        <link refid="classaxi_1_1bw__blocking__transport__if"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_interface</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" line="941" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/axi_tlm.h" bodystart="941" bodyend="949"/>
+    <listofallmembers>
+      <member refid="classaxi_1_1bw__blocking__transport__if_1ad2bf9e98fe605c100629654745b444e8" prot="public" virt="pure-virtual"><scope>axi::bw_blocking_transport_if</scope><name>b_snoop</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

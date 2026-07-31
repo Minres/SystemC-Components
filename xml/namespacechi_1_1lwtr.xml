@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacechi_1_1lwtr" kind="namespace" language="C++">
+    <compoundname>chi::lwtr</compoundname>
+    <innerclass refid="classchi_1_1lwtr_1_1tlm__id__ext__recording" prot="public">chi::lwtr::tlm_id_ext_recording</innerclass>
+    <innerclass refid="classchi_1_1lwtr_1_1chi__ctrl__ext__recording" prot="public">chi::lwtr::chi_ctrl_ext_recording</innerclass>
+    <innerclass refid="classchi_1_1lwtr_1_1chi__data__ext__recording" prot="public">chi::lwtr::chi_data_ext_recording</innerclass>
+    <innerclass refid="classchi_1_1lwtr_1_1chi__snp__ext__recording" prot="public">chi::lwtr::chi_snp_ext_recording</innerclass>
+    <innerclass refid="classchi_1_1lwtr_1_1chi__credit__ext__recording" prot="public">chi::lwtr::chi_credit_ext_recording</innerclass>
+    <innerclass refid="structchi_1_1lwtr_1_1nb__chi__rec__entry" prot="public">chi::lwtr::nb_chi_rec_entry</innerclass>
+    <innerclass refid="classchi_1_1lwtr_1_1chi__lwtr" prot="public">chi::lwtr::chi_lwtr</innerclass>
+    <innerclass refid="classchi_1_1lwtr_1_1chi__lwtr__recorder" prot="public">chi::lwtr::chi_lwtr_recorder</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="chi__lwtr_8h_1a5b2b72b03ee437cd07a202027b1cd408" prot="public" static="no">
+        <type>::lwtr::tx_db</type>
+        <definition>using chi::lwtr::tx_db =  ::lwtr::tx_db</definition>
+        <argsstring></argsstring>
+        <name>tx_db</name>
+        <qualifiedname>chi::lwtr::tx_db</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" line="45" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="chi__lwtr_8h_1a1d4cba80f8d70129b0af650853f64845" prot="public" static="no">
+        <type>::lwtr::tx_fiber</type>
+        <definition>using chi::lwtr::tx_fiber =  ::lwtr::tx_fiber</definition>
+        <argsstring></argsstring>
+        <name>tx_fiber</name>
+        <qualifiedname>chi::lwtr::tx_fiber</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" line="46" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="chi__lwtr_8h_1afffe2a8153355528cfb8c9f03bad526d" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename BEGIN</type>
+            <defval>::lwtr::no_data</defval>
+          </param>
+          <param>
+            <type>typename END</type>
+            <defval>::lwtr::no_data</defval>
+          </param>
+        </templateparamlist>
+        <type>::lwtr::tx_generator&lt; BEGIN, END &gt;</type>
+        <definition>using chi::lwtr::tx_generator =  ::lwtr::tx_generator&lt;BEGIN, END&gt;</definition>
+        <argsstring></argsstring>
+        <name>tx_generator</name>
+        <qualifiedname>chi::lwtr::tx_generator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" line="47" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="chi__lwtr_8h_1a71f6d7ea02504d6aa894f950d7feeb0c" prot="public" static="no">
+        <type>::lwtr::tx_handle</type>
+        <definition>using chi::lwtr::tx_handle =  ::lwtr::tx_handle</definition>
+        <argsstring></argsstring>
+        <name>tx_handle</name>
+        <qualifiedname>chi::lwtr::tx_handle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" line="48" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="chi__lwtr_8h_1a04ef834e841c4c909180fc03711249b1" prot="public" static="no">
+        <type><ref refid="structtlm_1_1scc_1_1tlm__mm" kindref="compound">tlm::scc::tlm_mm</ref>&lt;&gt;</type>
+        <definition>using chi::lwtr::mm =  tlm::scc::tlm_mm&lt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>mm</name>
+        <qualifiedname>chi::lwtr::mm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" line="49" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="chi__lwtr_8cpp_1afdc5b7260d15727a3e229c5598329ba5" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool chi::lwtr::registered</definition>
+        <argsstring></argsstring>
+        <name>registered</name>
+        <qualifiedname>chi::lwtr::registered</qualifiedname>
+        <initializer>= register_extensions()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" line="221" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" bodystart="221" bodyend="-1" declfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.h" declline="61" declcolumn="13"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="chi__lwtr_8cpp_1aff4826ecf8a040861513138e2aabc182" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool chi::lwtr::register_extensions</definition>
+        <argsstring>()</argsstring>
+        <name>register_extensions</name>
+        <qualifiedname>chi::lwtr::register_extensions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" line="197" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" bodystart="197" bodyend="220"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/chi/lwtr/chi_lwtr.cpp" line="137" column="1"/>
+  </compounddef>
+</doxygen>

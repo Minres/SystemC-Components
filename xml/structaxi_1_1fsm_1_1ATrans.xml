@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1fsm_1_1ATrans" kind="struct" language="C++" prot="public">
+    <compoundname>axi::fsm::ATrans</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">bsc::state&lt; ATrans, AxiProtocolFsm &gt;</basecompoundref>
+    <includes refid="protocol__fsm_8h" local="no">protocol_fsm.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structaxi_1_1fsm_1_1ATrans_1a3ca68a4287c36d5ef0b15a0bfe1b30ac" prot="public" static="no">
+        <type>mpl::list&lt; bsc::transition&lt; <ref refid="structaxi_1_1fsm_1_1BegPartReq" kindref="compound">BegPartReq</ref>, <ref refid="structaxi_1_1fsm_1_1PartialRequest" kindref="compound">PartialRequest</ref> &gt;, bsc::transition&lt; <ref refid="structaxi_1_1fsm_1_1BegReq" kindref="compound">BegReq</ref>, <ref refid="structaxi_1_1fsm_1_1Request" kindref="compound">Request</ref> &gt; &gt;</type>
+        <definition>typedef mpl::list&lt;bsc::transition&lt;BegPartReq, PartialRequest&gt;, bsc::transition&lt;BegReq, Request&gt; &gt; axi::fsm::ATrans::reactions</definition>
+        <argsstring></argsstring>
+        <name>reactions</name>
+        <qualifiedname>axi::fsm::ATrans::reactions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="99" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1ATrans_1a2cd9381ebfd870f6c3a77ad310fb24b5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::fsm::ATrans::ATrans</definition>
+        <argsstring>(my_context ctx)</argsstring>
+        <name>ATrans</name>
+        <qualifiedname>axi::fsm::ATrans::ATrans</qualifiedname>
+        <param>
+          <type>my_context</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="90" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="90" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1ATrans_1aa0ff702eec9a0a0c9f2331c6a5d004ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>axi::fsm::ATrans::~ATrans</definition>
+        <argsstring>()</argsstring>
+        <name>~ATrans</name>
+        <qualifiedname>axi::fsm::ATrans::~ATrans</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="95" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="95" bodyend="98"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>special state to map AWREADY/WDATA of SNPS to AXI protocol </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::fsm::ATrans</label>
+        <link refid="structaxi_1_1fsm_1_1ATrans"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>bsc::state&lt; ATrans, AxiProtocolFsm &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::fsm::ATrans</label>
+        <link refid="structaxi_1_1fsm_1_1ATrans"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>bsc::state&lt; ATrans, AxiProtocolFsm &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="89" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="89" bodyend="100"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1fsm_1_1ATrans_1a2cd9381ebfd870f6c3a77ad310fb24b5" prot="public" virt="non-virtual"><scope>axi::fsm::ATrans</scope><name>ATrans</name></member>
+      <member refid="structaxi_1_1fsm_1_1ATrans_1a3ca68a4287c36d5ef0b15a0bfe1b30ac" prot="public" virt="non-virtual"><scope>axi::fsm::ATrans</scope><name>reactions</name></member>
+      <member refid="structaxi_1_1fsm_1_1ATrans_1aa0ff702eec9a0a0c9f2331c6a5d004ab" prot="public" virt="non-virtual"><scope>axi::fsm::ATrans</scope><name>~ATrans</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

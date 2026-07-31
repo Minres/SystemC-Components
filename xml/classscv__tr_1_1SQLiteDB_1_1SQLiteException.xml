@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscv__tr_1_1SQLiteDB_1_1SQLiteException" kind="class" language="C++" prot="public">
+    <compoundname>scv_tr::SQLiteDB::SQLiteException</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">runtime_error</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classscv__tr_1_1SQLiteDB_1_1SQLiteException_1ad08af7c95792e7c86def41d2cdea489d" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int scv_tr::SQLiteDB::SQLiteException::mnErrCode</definition>
+        <argsstring></argsstring>
+        <name>mnErrCode</name>
+        <qualifiedname>scv_tr::SQLiteDB::SQLiteException::mnErrCode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="51" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscv__tr_1_1SQLiteDB_1_1SQLiteException_1a525c12f9a3c50d5d5e37bbd3cdc63528" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scv_tr::SQLiteDB::SQLiteException::SQLiteException</definition>
+        <argsstring>(const int nErrCode, const char *msg, bool doFree=true)</argsstring>
+        <name>SQLiteException</name>
+        <qualifiedname>scv_tr::SQLiteDB::SQLiteException::SQLiteException</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>nErrCode</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>doFree</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="41" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="41" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classscv__tr_1_1SQLiteDB_1_1SQLiteException_1a5ae5bbf9291ae21a3d4d463700e4522b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const int</type>
+        <definition>const int scv_tr::SQLiteDB::SQLiteException::errorCode</definition>
+        <argsstring>()</argsstring>
+        <name>errorCode</name>
+        <qualifiedname>scv_tr::SQLiteDB::SQLiteException::errorCode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="47" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classscv__tr_1_1SQLiteDB_1_1SQLiteException_1aa2ffe555c0d5afa461633303aa6df5c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * scv_tr::SQLiteDB::SQLiteException::errorMessage</definition>
+        <argsstring>()</argsstring>
+        <name>errorMessage</name>
+        <qualifiedname>scv_tr::SQLiteDB::SQLiteException::errorMessage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="48" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="48" bodyend="48"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>runtime_error</label>
+      </node>
+      <node id="1">
+        <label>scv_tr::SQLiteDB::SQLiteException</label>
+        <link refid="classscv__tr_1_1SQLiteDB_1_1SQLiteException"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>runtime_error</label>
+      </node>
+      <node id="1">
+        <label>scv_tr::SQLiteDB::SQLiteException</label>
+        <link refid="classscv__tr_1_1SQLiteDB_1_1SQLiteException"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" line="39" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/scv/scv_tr_sqlite.cpp" bodystart="39" bodyend="52"/>
+    <listofallmembers>
+      <member refid="classscv__tr_1_1SQLiteDB_1_1SQLiteException_1a5ae5bbf9291ae21a3d4d463700e4522b" prot="public" virt="non-virtual"><scope>scv_tr::SQLiteDB::SQLiteException</scope><name>errorCode</name></member>
+      <member refid="classscv__tr_1_1SQLiteDB_1_1SQLiteException_1aa2ffe555c0d5afa461633303aa6df5c8" prot="public" virt="non-virtual"><scope>scv_tr::SQLiteDB::SQLiteException</scope><name>errorMessage</name></member>
+      <member refid="classscv__tr_1_1SQLiteDB_1_1SQLiteException_1ad08af7c95792e7c86def41d2cdea489d" prot="private" virt="non-virtual"><scope>scv_tr::SQLiteDB::SQLiteException</scope><name>mnErrCode</name></member>
+      <member refid="classscv__tr_1_1SQLiteDB_1_1SQLiteException_1a525c12f9a3c50d5d5e37bbd3cdc63528" prot="public" virt="non-virtual"><scope>scv_tr::SQLiteDB::SQLiteException</scope><name>SQLiteException</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

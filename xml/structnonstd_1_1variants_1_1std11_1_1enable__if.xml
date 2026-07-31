@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1std11_1_1enable__if" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::std11::enable_if</compoundname>
+    <templateparamlist>
+      <param>
+        <type>bool</type>
+        <declname>B</declname>
+        <defname>B</defname>
+      </param>
+      <param>
+        <type>class T</type>
+        <defval>void</defval>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="483" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="483" bodyend="483"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

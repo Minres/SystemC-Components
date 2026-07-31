@@ -24,7 +24,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">scc<span id="projectnumber">&#160;2025.09</span>
+   <div id="projectname">scc<span id="projectnumber">&#160;2026.07</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -85,15 +85,15 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abc6382e77270f22b5ff8db7bfbc17fb3" id="r_abc6382e77270f22b5ff8db7bfbc17fb3"><td class="memItemLeft" align="right" valign="top">TCB_SPAN_CONSTEXPR11&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc6382e77270f22b5ff8db7bfbc17fb3">span</a> (pointer ptr, size_type count)</td></tr>
 <tr class="memitem:a6cbb255fba48cdd60d1ec999afed2efa" id="r_a6cbb255fba48cdd60d1ec999afed2efa"><td class="memItemLeft" align="right" valign="top">TCB_SPAN_CONSTEXPR11&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6cbb255fba48cdd60d1ec999afed2efa">span</a> (pointer first_elem, pointer last_elem)</td></tr>
-<tr class="memitem:aa27909bb735d366f815fff3abad16ef6" id="r_aa27909bb735d366f815fff3abad16ef6"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t E = Extent, typename std::enable_if&lt;(E==dynamic_extent||N==E) &amp;&amp;<a class="el" href="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container__element__type__compatible.html">detail::is_container_element_type_compatible</a>&lt; element_type(&amp;)[N], ElementType &gt;::value, int &gt;::type = 0&gt; </td></tr>
+<tr class="memitem:aa27909bb735d366f815fff3abad16ef6" id="r_aa27909bb735d366f815fff3abad16ef6"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t E = Extent, typename std::enable_if&lt;(E==dynamic_extent||N==E) &amp;&amp;::nonstd::detail::is_container_element_type_compatible&lt; element_type(&amp;)[N], ElementType &gt;::value, int &gt;::type = 0&gt; </td></tr>
 <tr class="memitem:aa27909bb735d366f815fff3abad16ef6 template"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa27909bb735d366f815fff3abad16ef6">span</a> (element_type(&amp;arr)[N]) noexcept</td></tr>
-<tr class="memitem:aa39ed96e5905556f387518f673bc0181" id="r_aa39ed96e5905556f387518f673bc0181"><td class="memTemplParams" colspan="2">template&lt;typename T, std::size_t N, std::size_t E = Extent, typename std::enable_if&lt;(E==dynamic_extent||N==E) &amp;&amp;<a class="el" href="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container__element__type__compatible.html">detail::is_container_element_type_compatible</a>&lt; std::array&lt; T, N &gt; &amp;, ElementType &gt;::value, int &gt;::type = 0&gt; </td></tr>
+<tr class="memitem:aa39ed96e5905556f387518f673bc0181" id="r_aa39ed96e5905556f387518f673bc0181"><td class="memTemplParams" colspan="2">template&lt;typename T, std::size_t N, std::size_t E = Extent, typename std::enable_if&lt;(E==dynamic_extent||N==E) &amp;&amp;::nonstd::detail::is_container_element_type_compatible&lt; std::array&lt; T, N &gt; &amp;, ElementType &gt;::value, int &gt;::type = 0&gt; </td></tr>
 <tr class="memitem:aa39ed96e5905556f387518f673bc0181 template"><td class="memItemLeft" align="right" valign="top">TCB_SPAN_ARRAY_CONSTEXPR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa39ed96e5905556f387518f673bc0181">span</a> (std::array&lt; T, N &gt; &amp;arr) noexcept</td></tr>
-<tr class="memitem:aa55ebf55417bbd237dd36673f9ad5a6f" id="r_aa55ebf55417bbd237dd36673f9ad5a6f"><td class="memTemplParams" colspan="2">template&lt;typename T, std::size_t N, std::size_t E = Extent, typename std::enable_if&lt;(E==dynamic_extent||N==E) &amp;&amp;<a class="el" href="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container__element__type__compatible.html">detail::is_container_element_type_compatible</a>&lt; const std::array&lt; T, N &gt; &amp;, ElementType &gt;::value, int &gt;::type = 0&gt; </td></tr>
+<tr class="memitem:aa55ebf55417bbd237dd36673f9ad5a6f" id="r_aa55ebf55417bbd237dd36673f9ad5a6f"><td class="memTemplParams" colspan="2">template&lt;typename T, std::size_t N, std::size_t E = Extent, typename std::enable_if&lt;(E==dynamic_extent||N==E) &amp;&amp;::nonstd::detail::is_container_element_type_compatible&lt; const std::array&lt; T, N &gt; &amp;, ElementType &gt;::value, int &gt;::type = 0&gt; </td></tr>
 <tr class="memitem:aa55ebf55417bbd237dd36673f9ad5a6f template"><td class="memItemLeft" align="right" valign="top">TCB_SPAN_ARRAY_CONSTEXPR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa55ebf55417bbd237dd36673f9ad5a6f">span</a> (const std::array&lt; T, N &gt; &amp;arr) noexcept</td></tr>
-<tr class="memitem:a174b0d1054824a3be51552bbc252d344" id="r_a174b0d1054824a3be51552bbc252d344"><td class="memTemplParams" colspan="2">template&lt;typename Container, std::size_t E = Extent, typename std::enable_if&lt; E==dynamic_extent &amp;&amp;<a class="el" href="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container.html">detail::is_container</a>&lt; Container &gt;::value &amp;&amp;<a class="el" href="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container__element__type__compatible.html">detail::is_container_element_type_compatible</a>&lt; Container &amp;, ElementType &gt;::value, int &gt;::type = 0&gt; </td></tr>
+<tr class="memitem:a174b0d1054824a3be51552bbc252d344" id="r_a174b0d1054824a3be51552bbc252d344"><td class="memTemplParams" colspan="2">template&lt;typename Container, std::size_t E = Extent, typename std::enable_if&lt; E==dynamic_extent &amp;&amp;::nonstd::detail::is_container&lt; Container &gt;::value &amp;&amp;::nonstd::detail::is_container_element_type_compatible&lt; Container &amp;, ElementType &gt;::value, int &gt;::type = 0&gt; </td></tr>
 <tr class="memitem:a174b0d1054824a3be51552bbc252d344 template"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a174b0d1054824a3be51552bbc252d344">span</a> (Container &amp;cont)</td></tr>
-<tr class="memitem:a4c69c0137a4d3fb694e46c79c44de77a" id="r_a4c69c0137a4d3fb694e46c79c44de77a"><td class="memTemplParams" colspan="2">template&lt;typename Container, std::size_t E = Extent, typename std::enable_if&lt; E==dynamic_extent &amp;&amp;<a class="el" href="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container.html">detail::is_container</a>&lt; Container &gt;::value &amp;&amp;<a class="el" href="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container__element__type__compatible.html">detail::is_container_element_type_compatible</a>&lt; const Container &amp;, ElementType &gt;::value, int &gt;::type = 0&gt; </td></tr>
+<tr class="memitem:a4c69c0137a4d3fb694e46c79c44de77a" id="r_a4c69c0137a4d3fb694e46c79c44de77a"><td class="memTemplParams" colspan="2">template&lt;typename Container, std::size_t E = Extent, typename std::enable_if&lt; E==dynamic_extent &amp;&amp;::nonstd::detail::is_container&lt; Container &gt;::value &amp;&amp;::nonstd::detail::is_container_element_type_compatible&lt; const Container &amp;, ElementType &gt;::value, int &gt;::type = 0&gt; </td></tr>
 <tr class="memitem:a4c69c0137a4d3fb694e46c79c44de77a template"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c69c0137a4d3fb694e46c79c44de77a">span</a> (const Container &amp;cont)</td></tr>
 <tr class="memitem:a72badb933c7daf84985d9d5289858a00" id="r_a72badb933c7daf84985d9d5289858a00"><td class="memItemLeft" align="right" valign="top"><a id="a72badb933c7daf84985d9d5289858a00" name="a72badb933c7daf84985d9d5289858a00"></a>
 constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>span</b> (const span &amp;other) noexcept=default</td></tr>
@@ -129,7 +129,7 @@ Static Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename ElementType, std::size_t Extent&gt;<br />
 class TCB_SPAN_NAMESPACE_NAME::span&lt; ElementType, Extent &gt;</div>
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00246">246</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00248">248</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
 <a id="a70a6ee7ca957bfc9cde6e8dd8c81c7cc" name="a70a6ee7ca957bfc9cde6e8dd8c81c7cc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a70a6ee7ca957bfc9cde6e8dd8c81c7cc">&#9670;&#160;</a></span>const_pointer</h2>
@@ -145,7 +145,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00262">262</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00264">264</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -163,7 +163,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00264">264</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00266">266</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -181,7 +181,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00260">260</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00262">262</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -199,7 +199,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00257">257</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00259">259</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -217,7 +217,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00265">265</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00267">267</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -235,7 +235,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00261">261</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00263">263</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -253,7 +253,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00263">263</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00265">265</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -271,7 +271,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00266">266</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00268">268</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -289,7 +289,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00259">259</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00261">261</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -311,7 +311,7 @@ template&lt;std::size_t Offset, std::size_t Count = dynamic_extent&gt; </div>
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
 <div class="line">        span&lt;ElementType, Count != dynamic_extent ? Count : (Extent != dynamic_extent ? Extent - Offset : dynamic_extent)&gt;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00343">343</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00345">345</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -329,7 +329,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00258">258</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00260">260</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -361,7 +361,7 @@ template&lt;std::size_t E = Extent, typename std::enable_if&lt;(E==dynamic_exten
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00271">271</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00273">273</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -394,7 +394,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00273">273</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00275">275</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -427,7 +427,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00278">278</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00280">280</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -439,7 +439,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 <div class="memtemplate">
 template&lt;typename ElementType, std::size_t Extent&gt; </div>
 <div class="memtemplate">
-template&lt;std::size_t N, std::size_t E = Extent, typename std::enable_if&lt;(E==dynamic_extent||N==E) &amp;&amp;<a class="el" href="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container__element__type__compatible.html">detail::is_container_element_type_compatible</a>&lt; element_type(&amp;)[N], ElementType &gt;::value, int &gt;::type = 0&gt; </div>
+template&lt;std::size_t N, std::size_t E = Extent, typename std::enable_if&lt;(E==dynamic_extent||N==E) &amp;&amp;::nonstd::detail::is_container_element_type_compatible&lt; element_type(&amp;)[N], ElementType &gt;::value, int &gt;::type = 0&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -458,7 +458,7 @@ template&lt;std::size_t N, std::size_t E = Extent, typename std::enable_if&lt;(E
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00287">287</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00289">289</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -470,7 +470,7 @@ template&lt;std::size_t N, std::size_t E = Extent, typename std::enable_if&lt;(E
 <div class="memtemplate">
 template&lt;typename ElementType, std::size_t Extent&gt; </div>
 <div class="memtemplate">
-template&lt;typename T, std::size_t N, std::size_t E = Extent, typename std::enable_if&lt;(E==dynamic_extent||N==E) &amp;&amp;<a class="el" href="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container__element__type__compatible.html">detail::is_container_element_type_compatible</a>&lt; std::array&lt; T, N &gt; &amp;, ElementType &gt;::value, int &gt;::type = 0&gt; </div>
+template&lt;typename T, std::size_t N, std::size_t E = Extent, typename std::enable_if&lt;(E==dynamic_extent||N==E) &amp;&amp;::nonstd::detail::is_container_element_type_compatible&lt; std::array&lt; T, N &gt; &amp;, ElementType &gt;::value, int &gt;::type = 0&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -489,7 +489,7 @@ template&lt;typename T, std::size_t N, std::size_t E = Extent, typename std::ena
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00294">294</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00296">296</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -501,7 +501,7 @@ template&lt;typename T, std::size_t N, std::size_t E = Extent, typename std::ena
 <div class="memtemplate">
 template&lt;typename ElementType, std::size_t Extent&gt; </div>
 <div class="memtemplate">
-template&lt;typename T, std::size_t N, std::size_t E = Extent, typename std::enable_if&lt;(E==dynamic_extent||N==E) &amp;&amp;<a class="el" href="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container__element__type__compatible.html">detail::is_container_element_type_compatible</a>&lt; const std::array&lt; T, N &gt; &amp;, ElementType &gt;::value, int &gt;::type = 0&gt; </div>
+template&lt;typename T, std::size_t N, std::size_t E = Extent, typename std::enable_if&lt;(E==dynamic_extent||N==E) &amp;&amp;::nonstd::detail::is_container_element_type_compatible&lt; const std::array&lt; T, N &gt; &amp;, ElementType &gt;::value, int &gt;::type = 0&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -520,7 +520,7 @@ template&lt;typename T, std::size_t N, std::size_t E = Extent, typename std::ena
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00301">301</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00303">303</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -532,7 +532,7 @@ template&lt;typename T, std::size_t N, std::size_t E = Extent, typename std::ena
 <div class="memtemplate">
 template&lt;typename ElementType, std::size_t Extent&gt; </div>
 <div class="memtemplate">
-template&lt;typename Container, std::size_t E = Extent, typename std::enable_if&lt; E==dynamic_extent &amp;&amp;<a class="el" href="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container.html">detail::is_container</a>&lt; Container &gt;::value &amp;&amp;<a class="el" href="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container__element__type__compatible.html">detail::is_container_element_type_compatible</a>&lt; Container &amp;, ElementType &gt;::value, int &gt;::type = 0&gt; </div>
+template&lt;typename Container, std::size_t E = Extent, typename std::enable_if&lt; E==dynamic_extent &amp;&amp;::nonstd::detail::is_container&lt; Container &gt;::value &amp;&amp;::nonstd::detail::is_container_element_type_compatible&lt; Container &amp;, ElementType &gt;::value, int &gt;::type = 0&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -551,7 +551,7 @@ template&lt;typename Container, std::size_t E = Extent, typename std::enable_if&
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00308">308</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00310">310</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -563,7 +563,7 @@ template&lt;typename Container, std::size_t E = Extent, typename std::enable_if&
 <div class="memtemplate">
 template&lt;typename ElementType, std::size_t Extent&gt; </div>
 <div class="memtemplate">
-template&lt;typename Container, std::size_t E = Extent, typename std::enable_if&lt; E==dynamic_extent &amp;&amp;<a class="el" href="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container.html">detail::is_container</a>&lt; Container &gt;::value &amp;&amp;<a class="el" href="structTCB__SPAN__NAMESPACE__NAME_1_1detail_1_1is__container__element__type__compatible.html">detail::is_container_element_type_compatible</a>&lt; const Container &amp;, ElementType &gt;::value, int &gt;::type = 0&gt; </div>
+template&lt;typename Container, std::size_t E = Extent, typename std::enable_if&lt; E==dynamic_extent &amp;&amp;::nonstd::detail::is_container&lt; Container &gt;::value &amp;&amp;::nonstd::detail::is_container_element_type_compatible&lt; const Container &amp;, ElementType &gt;::value, int &gt;::type = 0&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -582,7 +582,7 @@ template&lt;typename Container, std::size_t E = Extent, typename std::enable_if&
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00315">315</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00317">317</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -613,7 +613,7 @@ template&lt;typename OtherElementType, std::size_t OtherExtent, typename std::en
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00324">324</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00326">326</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -643,7 +643,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00384">384</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00386">386</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -672,7 +672,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00392">392</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00394">394</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -701,7 +701,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00389">389</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00391">391</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -730,7 +730,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00371">371</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00373">373</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -759,7 +759,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00394">394</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00396">396</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -790,7 +790,7 @@ template&lt;std::size_t Count&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00332">332</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00334">334</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -819,7 +819,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00351">351</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00353">353</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -848,7 +848,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00379">379</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00381">381</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -879,7 +879,7 @@ template&lt;std::size_t Count&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00337">337</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00339">339</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -908,7 +908,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00356">356</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00358">358</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -937,7 +937,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00374">374</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00376">376</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -966,7 +966,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00396">396</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00398">398</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -995,7 +995,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00398">398</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00400">400</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -1024,7 +1024,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00367">367</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00369">369</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -1053,7 +1053,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00369">369</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00371">371</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -1084,7 +1084,7 @@ template&lt;std::size_t Offset, std::size_t Count = dynamic_extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00346">346</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00348">348</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -1117,7 +1117,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00361">361</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00363">363</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>
@@ -1144,7 +1144,7 @@ template&lt;typename ElementType, std::size_t Extent&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00268">268</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="span_8h_source.html#l00270">270</a> of file <a class="el" href="span_8h_source.html">span.h</a>.</p>
 
 </div>
 </div>

@@ -2,6 +2,7 @@ var classscc_1_1impl_1_1sc__register =
 [
     [ "sc_register", "classscc_1_1impl_1_1sc__register.html#a673c37201da32119a56659d1056dec39", null ],
     [ "~sc_register", "classscc_1_1impl_1_1sc__register.html#ab74f9ddb4519bc2cf98f636a7482c0fa", null ],
+    [ "full_name", "classscc_1_1impl_1_1sc__register.html#abcecef76ec622d0f5e7e8f99d40bf470", null ],
     [ "get", "classscc_1_1impl_1_1sc__register.html#a2b1a13df7e0f33841fa77eb23c6ff594", null ],
     [ "is_trace_enabled", "classscc_1_1impl_1_1sc__register.html#a66984eca71ad32bd856248091994b57b", null ],
     [ "operator DATATYPE", "classscc_1_1impl_1_1sc__register.html#a50508164da9c84f83135fb5c11e4675c", null ],

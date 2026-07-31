@@ -1,0 +1,578 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1tcp4tlm_1_1connection" kind="class" language="C++" prot="public">
+    <compoundname>scc::tcp4tlm::connection</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; connection&lt; TSEND, TREC &gt; &gt;</basecompoundref>
+    <includes refid="serialized__connection_8h" local="no">serialized_connection.h</includes>
+    <innerclass refid="structscc_1_1tcp4tlm_1_1connection_1_1async__listener" prot="public">scc::tcp4tlm::connection::async_listener</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename TSEND</type>
+      </param>
+      <param>
+        <type>typename TREC</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classscc_1_1tcp4tlm_1_1connection_1a77f0a6a5f6e6177dd482b0b7f75d922e" prot="private" static="no" strong="no">
+        <type></type>
+        <name></name>
+        <qualifiedname>scc::tcp4tlm::connection</qualifiedname>
+        <enumvalue id="classscc_1_1tcp4tlm_1_1connection_1a77f0a6a5f6e6177dd482b0b7f75d922ea0d54d0ebcca3af7a1350b0e8d21c778f" prot="private">
+          <name>header_length</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="238" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="238" bodyend="238"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classscc_1_1tcp4tlm_1_1connection_1a88dfaae696d2435c0d28f1d126e54c9d" prot="public" static="no">
+        <type>boost::asio::ip::tcp::socket</type>
+        <definition>typedef boost::asio::ip::tcp::socket scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::socket_t</definition>
+        <argsstring></argsstring>
+        <name>socket_t</name>
+        <qualifiedname>scc::tcp4tlm::connection::socket_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="49" column="42" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1tcp4tlm_1_1connection_1ae2907cb128c194b0fb24cd581604df29" prot="public" static="no">
+        <type>boost::asio::ip::tcp::endpoint</type>
+        <definition>typedef boost::asio::ip::tcp::endpoint scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::endpoint_t</definition>
+        <argsstring></argsstring>
+        <name>endpoint_t</name>
+        <qualifiedname>scc::tcp4tlm::connection::endpoint_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="50" column="44" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1tcp4tlm_1_1connection_1ab6c9267ae3557ea5b29e2f007fbcc3c9" prot="public" static="no">
+        <type>boost::asio::ip::tcp::acceptor</type>
+        <definition>typedef boost::asio::ip::tcp::acceptor scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::acceptor_t</definition>
+        <argsstring></argsstring>
+        <name>acceptor_t</name>
+        <qualifiedname>scc::tcp4tlm::connection::acceptor_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="51" column="44" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1tcp4tlm_1_1connection_1acf8029420ae3dc5eccebd3ca8adbff68" prot="public" static="no">
+        <type>std::shared_ptr&lt; connection&lt; TSEND, TREC &gt; &gt;</type>
+        <definition>typedef std::shared_ptr&lt;connection&lt;TSEND, TREC&gt; &gt; scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::ptr</definition>
+        <argsstring></argsstring>
+        <name>ptr</name>
+        <qualifiedname>scc::tcp4tlm::connection::ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="53" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classscc_1_1tcp4tlm_1_1connection_1a218ea43554673f3e69e7dc597030978d" prot="private" static="no" mutable="no">
+        <type>socket_t</type>
+        <definition>socket_t scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::socket_</definition>
+        <argsstring></argsstring>
+        <name>socket_</name>
+        <qualifiedname>scc::tcp4tlm::connection::socket_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="237" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="237" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1tcp4tlm_1_1connection_1a8542f38e2911cca1e67a59f2b4c9e5b4" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::outbound_header_</definition>
+        <argsstring></argsstring>
+        <name>outbound_header_</name>
+        <qualifiedname>scc::tcp4tlm::connection::outbound_header_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="239" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1tcp4tlm_1_1connection_1a7e38bd1b63b68ba88c916f5f29d68dbb" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::outbound_data_</definition>
+        <argsstring></argsstring>
+        <name>outbound_data_</name>
+        <qualifiedname>scc::tcp4tlm::connection::outbound_data_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="240" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1tcp4tlm_1_1connection_1a8e715d11de5c48cbf7d9376be726ce7e" prot="private" static="no" mutable="no">
+        <type>char</type>
+        <definition>char scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::inbound_header_[header_length]</definition>
+        <argsstring>[header_length]</argsstring>
+        <name>inbound_header_</name>
+        <qualifiedname>scc::tcp4tlm::connection::inbound_header_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="241" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1tcp4tlm_1_1connection_1a82249fce35362a4c3d1ae5b1dda3c2fa" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; uint8_t &gt;</type>
+        <definition>std::vector&lt;uint8_t&gt; scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::inbound_data_</definition>
+        <argsstring></argsstring>
+        <name>inbound_data_</name>
+        <qualifiedname>scc::tcp4tlm::connection::inbound_data_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="242" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1tcp4tlm_1_1connection_1ae82d1ef58fced86bdfc39f770a4b2bbe" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="structscc_1_1tcp4tlm_1_1connection_1_1async__listener" kindref="compound">async_listener</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;async_listener&gt; scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::listener</definition>
+        <argsstring></argsstring>
+        <name>listener</name>
+        <qualifiedname>scc::tcp4tlm::connection::listener</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="243" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="243" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1a17b17529b72f0a8ff6cd330469ec1705" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::connection</definition>
+        <argsstring>(boost::asio::io_context &amp;io_context)</argsstring>
+        <name>connection</name>
+        <qualifiedname>scc::tcp4tlm::connection::connection</qualifiedname>
+        <param>
+          <type>boost::asio::io_context &amp;</type>
+          <declname>io_context</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="60" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="60" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1a2e3d0b4aebf9b0b224eaa5dc6d931379" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>socket_t &amp;</type>
+        <definition>socket_t &amp; scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::socket</definition>
+        <argsstring>()</argsstring>
+        <name>socket</name>
+        <qualifiedname>scc::tcp4tlm::connection::socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="63" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1a2b95108780d5bb811eafda0be972af3f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::add_listener</definition>
+        <argsstring>(std::shared_ptr&lt; async_listener &gt; l)</argsstring>
+        <name>add_listener</name>
+        <qualifiedname>scc::tcp4tlm::connection::add_listener</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="structscc_1_1tcp4tlm_1_1connection_1_1async__listener" kindref="compound">async_listener</ref> &gt;</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="64" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="64" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1abb1dcc8b0df4dc943b54ef69ad184068" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::async_write</definition>
+        <argsstring>(TSEND &amp;t)</argsstring>
+        <name>async_write</name>
+        <qualifiedname>scc::tcp4tlm::connection::async_write</qualifiedname>
+        <param>
+          <type>TSEND &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="66" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="66" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1a151573b3ccf59266b2f2af5fe64d94cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::async_write</definition>
+        <argsstring>(TSEND *t)</argsstring>
+        <name>async_write</name>
+        <qualifiedname>scc::tcp4tlm::connection::async_write</qualifiedname>
+        <param>
+          <type>TSEND *</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="68" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="68" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1a90fdc59958cbe5d99bd5db618096f1ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::async_read</definition>
+        <argsstring>()</argsstring>
+        <name>async_read</name>
+        <qualifiedname>scc::tcp4tlm::connection::async_read</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="92" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="92" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1a437dd64d83793ff0c32f5ca2c3473f3d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::write_data</definition>
+        <argsstring>(std::shared_ptr&lt; TSEND &gt; &amp;t)</argsstring>
+        <name>write_data</name>
+        <qualifiedname>scc::tcp4tlm::connection::write_data</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; TSEND &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="144" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="144" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1a98b8a8c4b44c8ed0284fc30de0f19785" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::write_data</definition>
+        <argsstring>(TSEND &amp;t)</argsstring>
+        <name>write_data</name>
+        <qualifiedname>scc::tcp4tlm::connection::write_data</qualifiedname>
+        <param>
+          <type>TSEND &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="146" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="146" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1a9dc35e1b8cd441fb8e0ff25c37a7d029" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::write_data</definition>
+        <argsstring>(TSEND *t)</argsstring>
+        <name>write_data</name>
+        <qualifiedname>scc::tcp4tlm::connection::write_data</qualifiedname>
+        <param>
+          <type>TSEND *</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="148" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="148" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1a91116057cb4918f570dfeb1bcd810c43" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::write_data</definition>
+        <argsstring>(TSEND *t, boost::system::error_code &amp;ec)</argsstring>
+        <name>write_data</name>
+        <qualifiedname>scc::tcp4tlm::connection::write_data</qualifiedname>
+        <param>
+          <type>TSEND *</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>boost::system::error_code &amp;</type>
+          <declname>ec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="154" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="154" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1a46d08c7789290896f04a4b3f1267e64d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::read_data_available</definition>
+        <argsstring>()</argsstring>
+        <name>read_data_available</name>
+        <qualifiedname>scc::tcp4tlm::connection::read_data_available</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="168" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="168" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1a842b678fdb2a23284562aa521128df35" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::read_data</definition>
+        <argsstring>(std::shared_ptr&lt; TREC &gt; &amp;msg)</argsstring>
+        <name>read_data</name>
+        <qualifiedname>scc::tcp4tlm::connection::read_data</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; TREC &gt; &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="175" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="175" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1ab2df716d68058d42330043c1fe3080c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::read_data</definition>
+        <argsstring>(TREC *&amp;t)</argsstring>
+        <name>read_data</name>
+        <qualifiedname>scc::tcp4tlm::connection::read_data</qualifiedname>
+        <param>
+          <type>TREC *&amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="181" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="181" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1af212f2b1e5c6e10635739654798ebebc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::read_data</definition>
+        <argsstring>(TREC *&amp;t, boost::system::error_code &amp;ec)</argsstring>
+        <name>read_data</name>
+        <qualifiedname>scc::tcp4tlm::connection::read_data</qualifiedname>
+        <param>
+          <type>TREC *&amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>boost::system::error_code &amp;</type>
+          <declname>ec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="187" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="187" bodyend="209"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1a7ba23eb35a535543c5e9600847aaacaf" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::handle_async_write</definition>
+        <argsstring>(const boost::system::error_code &amp;err, size_t)</argsstring>
+        <name>handle_async_write</name>
+        <qualifiedname>scc::tcp4tlm::connection::handle_async_write</qualifiedname>
+        <param>
+          <type>const boost::system::error_code &amp;</type>
+          <declname>err</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="86" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="86" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1ab9278c2d5d84b24c77d631ca28bf7f5a" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::async_read_header</definition>
+        <argsstring>(const boost::system::error_code &amp;e)</argsstring>
+        <name>async_read_header</name>
+        <qualifiedname>scc::tcp4tlm::connection::async_read_header</qualifiedname>
+        <param>
+          <type>const boost::system::error_code &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="99" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="99" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1a8cb08e94415832799916dc95ec90e5b8" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::async_read_data</definition>
+        <argsstring>(const boost::system::error_code &amp;e)</argsstring>
+        <name>async_read_data</name>
+        <qualifiedname>scc::tcp4tlm::connection::async_read_data</qualifiedname>
+        <param>
+          <type>const boost::system::error_code &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="121" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="121" bodyend="141"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classscc_1_1tcp4tlm_1_1connection_1a40aff6d6472ea988b7f7228e3db643d5" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::tcp4tlm::connection&lt; TSEND, TREC &gt;::prepare_outbound_data</definition>
+        <argsstring>(TSEND *t)</argsstring>
+        <name>prepare_outbound_data</name>
+        <qualifiedname>scc::tcp4tlm::connection::prepare_outbound_data</qualifiedname>
+        <param>
+          <type>TSEND *</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="219" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="219" bodyend="235"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The connection class provides FlatBuffers framing primitives on top of a socket. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Each message sent using this class consists of: <itemizedlist>
+<listitem><para>An 8-byte header containing the length of the serialized data in hexadecimal. </para>
+</listitem>
+<listitem><para>The serialized FlatBuffer payload. </para>
+</listitem>
+</itemizedlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>scc::tcp4tlm::connection&lt; TSEND, TREC &gt;</label>
+        <link refid="classscc_1_1tcp4tlm_1_1connection"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; connection&lt; TSEND, TREC &gt; &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>scc::tcp4tlm::connection&lt; TSEND, TREC &gt;</label>
+        <link refid="classscc_1_1tcp4tlm_1_1connection"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; connection&lt; TSEND, TREC &gt; &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" line="38" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm/serialized_connection.h" bodystart="38" bodyend="244"/>
+    <listofallmembers>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1ab6c9267ae3557ea5b29e2f007fbcc3c9" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>acceptor_t</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a2b95108780d5bb811eafda0be972af3f" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>add_listener</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a90fdc59958cbe5d99bd5db618096f1ce" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>async_read</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a8cb08e94415832799916dc95ec90e5b8" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>async_read_data</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1ab9278c2d5d84b24c77d631ca28bf7f5a" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>async_read_header</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1abb1dcc8b0df4dc943b54ef69ad184068" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>async_write</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a151573b3ccf59266b2f2af5fe64d94cf" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>async_write</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a17b17529b72f0a8ff6cd330469ec1705" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>connection</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1ae2907cb128c194b0fb24cd581604df29" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>endpoint_t</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a7ba23eb35a535543c5e9600847aaacaf" prot="protected" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>handle_async_write</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a77f0a6a5f6e6177dd482b0b7f75d922ea0d54d0ebcca3af7a1350b0e8d21c778f" prot="private" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>header_length</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a82249fce35362a4c3d1ae5b1dda3c2fa" prot="private" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>inbound_data_</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a8e715d11de5c48cbf7d9376be726ce7e" prot="private" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>inbound_header_</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1ae82d1ef58fced86bdfc39f770a4b2bbe" prot="private" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>listener</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a7e38bd1b63b68ba88c916f5f29d68dbb" prot="private" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>outbound_data_</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a8542f38e2911cca1e67a59f2b4c9e5b4" prot="private" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>outbound_header_</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a40aff6d6472ea988b7f7228e3db643d5" prot="private" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>prepare_outbound_data</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1acf8029420ae3dc5eccebd3ca8adbff68" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>ptr</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a842b678fdb2a23284562aa521128df35" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>read_data</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1ab2df716d68058d42330043c1fe3080c8" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>read_data</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1af212f2b1e5c6e10635739654798ebebc" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>read_data</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a46d08c7789290896f04a4b3f1267e64d" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>read_data_available</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a2e3d0b4aebf9b0b224eaa5dc6d931379" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>socket</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a218ea43554673f3e69e7dc597030978d" prot="private" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>socket_</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a88dfaae696d2435c0d28f1d126e54c9d" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>socket_t</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a437dd64d83793ff0c32f5ca2c3473f3d" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>write_data</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a98b8a8c4b44c8ed0284fc30de0f19785" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>write_data</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a9dc35e1b8cd441fb8e0ff25c37a7d029" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>write_data</name></member>
+      <member refid="classscc_1_1tcp4tlm_1_1connection_1a91116057cb4918f570dfeb1bcd810c43" prot="public" virt="non-virtual"><scope>scc::tcp4tlm::connection</scope><name>write_data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

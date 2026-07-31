@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1nullopt__t" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::nullopt_t</compoundname>
+    <includes refid="optional_8hpp" local="no">optional.hpp</includes>
+    <innerclass refid="structnonstd_1_1nullopt__t_1_1do__not__use" prot="public">nonstd::nullopt_t::do_not_use</innerclass>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structnonstd_1_1nullopt__t_1a9281e853035a8cbcab874c6042bb063e" prot="public" static="no" constexpr="yes" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>nonstd::nullopt_t::nullopt_t</definition>
+        <argsstring>(do_not_use, do_not_use) noexcept</argsstring>
+        <name>nullopt_t</name>
+        <qualifiedname>nonstd::nullopt_t::nullopt_t</qualifiedname>
+        <param>
+          <type><ref refid="structnonstd_1_1nullopt__t_1_1do__not__use" kindref="compound">do_not_use</ref></type>
+        </param>
+        <param>
+          <type><ref refid="structnonstd_1_1nullopt__t_1_1do__not__use" kindref="compound">do_not_use</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="559" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="559" bodyend="559"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A tag type to represent an empty optional. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="557" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="557" bodyend="560"/>
+    <listofallmembers>
+      <member refid="structnonstd_1_1nullopt__t_1a9281e853035a8cbcab874c6042bb063e" prot="public" virt="non-virtual"><scope>nonstd::nullopt_t</scope><name>nullopt_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

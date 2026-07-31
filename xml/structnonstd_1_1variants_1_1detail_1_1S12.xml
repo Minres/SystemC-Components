@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structnonstd_1_1variants_1_1detail_1_1S12" kind="struct" language="C++" prot="public">
+    <compoundname>nonstd::variants::detail::S12</compoundname>
+    <derivedcompoundref refid="structnonstd_1_1variants_1_1detail_1_1TX" prot="public" virt="non-virtual">nonstd::variants::detail::TX&lt; S12 &gt;</derivedcompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>nonstd::variants::detail::S12</label>
+        <link refid="structnonstd_1_1variants_1_1detail_1_1S12"/>
+      </node>
+      <node id="2">
+        <label>nonstd::variants::detail::TX&lt; S12 &gt;</label>
+        <link refid="structnonstd_1_1variants_1_1detail_1_1TX"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="651" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="651" bodyend="651"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

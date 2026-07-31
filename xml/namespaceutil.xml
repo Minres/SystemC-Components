@@ -1,0 +1,1086 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceutil" kind="namespace" language="C++">
+    <compoundname>util</compoundname>
+    <innerclass refid="structutil_1_1BitFieldMember" prot="public">util::BitFieldMember</innerclass>
+    <innerclass refid="classutil_1_1BitFieldArray" prot="public">util::BitFieldArray</innerclass>
+    <innerclass refid="classutil_1_1bzip2__streambuf" prot="public">util::bzip2_streambuf</innerclass>
+    <innerclass refid="classutil_1_1bzip2__stream" prot="public">util::bzip2_stream</innerclass>
+    <innerclass refid="classutil_1_1delegate" prot="public">util::delegate</innerclass>
+    <innerclass refid="classutil_1_1delegate_3_01R_07A_8_8_8_08_4" prot="public">util::delegate&lt; R(A...)&gt;</innerclass>
+    <innerclass refid="classutil_1_1gzip__streambuf" prot="public">util::gzip_streambuf</innerclass>
+    <innerclass refid="classutil_1_1gzip__stream" prot="public">util::gzip_stream</innerclass>
+    <innerclass refid="structutil_1_1LoggerDelegate" prot="public">util::LoggerDelegate</innerclass>
+    <innerclass refid="classutil_1_1InstanceLogger" prot="public">util::InstanceLogger</innerclass>
+    <innerclass refid="classutil_1_1IoRedirector" prot="public">util::IoRedirector</innerclass>
+    <innerclass refid="classutil_1_1lz4c__steambuf" prot="public">util::lz4c_steambuf</innerclass>
+    <innerclass refid="classutil_1_1lz4d__streambuf" prot="public">util::lz4d_streambuf</innerclass>
+    <innerclass refid="classutil_1_1MT19937" prot="public">util::MT19937</innerclass>
+    <innerclass refid="classutil_1_1pool__allocator" prot="public">util::pool_allocator</innerclass>
+    <innerclass refid="classutil_1_1stl__pool__allocator" prot="public">util::stl_pool_allocator</innerclass>
+    <innerclass refid="classutil_1_1range__lut" prot="public">util::range_lut</innerclass>
+    <innerclass refid="classutil_1_1ring__buffer" prot="public">util::ring_buffer</innerclass>
+    <innerclass refid="classutil_1_1sparse__array" prot="public">util::sparse_array</innerclass>
+    <innerclass refid="structutil_1_1thread__pool" prot="public">util::thread_pool</innerclass>
+    <innerclass refid="classutil_1_1thread__syncronizer" prot="public">util::thread_syncronizer</innerclass>
+    <innerclass refid="classutil_1_1watchdog" prot="public">util::watchdog</innerclass>
+    <innerclass refid="classutil_1_1xz__streambuf" prot="public">util::xz_streambuf</innerclass>
+    <innerclass refid="classutil_1_1xz__stream" prot="public">util::xz_stream</innerclass>
+    <innerclass refid="classutil_1_1zstd__streambuf" prot="public">util::zstd_streambuf</innerclass>
+    <innerclass refid="classutil_1_1zstd__stream" prot="public">util::zstd_stream</innerclass>
+    <innernamespace refid="namespaceutil_1_1ihex">util::ihex</innernamespace>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceutil_1a7d3d34f24ff1154ef24890f725abc7b4" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>file_type_e</name>
+        <qualifiedname>util::file_type_e</qualifiedname>
+        <enumvalue id="namespaceutil_1a7d3d34f24ff1154ef24890f725abc7b4af62eb0bf5e5c72e80983fbbac1cb70e5" prot="public">
+          <name>PLAIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceutil_1a7d3d34f24ff1154ef24890f725abc7b4af1cd28417b03cfab3a8e16d66e34e18a" prot="public">
+          <name>GZIP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceutil_1a7d3d34f24ff1154ef24890f725abc7b4a800edd55a1e18b397e3d5d826f85ce34" prot="public">
+          <name>BZIP2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceutil_1a7d3d34f24ff1154ef24890f725abc7b4a27db3b98d01e664c17a6620b222c6469" prot="public">
+          <name>XZ</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceutil_1a7d3d34f24ff1154ef24890f725abc7b4a8406cc2302e19183037b61249546b234" prot="public">
+          <name>ZSTD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="550" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="550" bodyend="550"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceutil_1a30b7ad02583d49737e12c9600032c3d1" prot="public" static="yes" mutable="no">
+        <type>std::array&lt; const int, 32 &gt;</type>
+        <definition>std::array&lt;const int, 32&gt; util::MultiplyDeBruijnBitPosition</definition>
+        <argsstring></argsstring>
+        <name>MultiplyDeBruijnBitPosition</name>
+        <qualifiedname>util::MultiplyDeBruijnBitPosition</qualifiedname>
+        <initializer>= {
+    {0, 1, 28, 2, 29, 14, 24, 3, 30, 22, 20, 15, 25, 17, 4, 8, 31, 27, 13, 23, 21, 19, 16, 7, 26, 12, 18, 6, 11, 5, 10, 9}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="206" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="206" bodyend="207"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceutil_1a31e7af13543992efc4d145087c8036ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t util::load_elf_file</definition>
+        <argsstring>(std::string const &amp;name, std::function&lt; bool(uint64_t, uint64_t, const uint8_t *)&gt; cb, uint8_t expected_elf_class, uint16_t expected_elf_machine)</argsstring>
+        <name>load_elf_file</name>
+        <qualifiedname>util::load_elf_file</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::function&lt; bool(uint64_t, uint64_t, const uint8_t *)&gt;</type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>expected_elf_class</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>expected_elf_machine</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/elf.cpp" line="7" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/elf.cpp" bodystart="7" bodyend="35" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/elf.h" declline="9" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1a88e8150247a1280984be5a53cdeb3e88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unordered_map&lt; std::string, uint64_t &gt;</type>
+        <definition>std::unordered_map&lt; std::string, uint64_t &gt; util::read_elf_symbols</definition>
+        <argsstring>(std::string const &amp;name, uint8_t expected_elf_class, uint16_t expected_elf_machine)</argsstring>
+        <name>read_elf_symbols</name>
+        <qualifiedname>util::read_elf_symbols</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>expected_elf_class</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>expected_elf_machine</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/elf.cpp" line="37" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/elf.cpp" bodystart="37" bodyend="71" declfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/elf.h" declline="11" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1a91a0b4670d6f9d2f2324139bd7766643" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>std::unique_ptr&lt; T &gt;</type>
+        <definition>std::unique_ptr&lt; T &gt; util::make_unique</definition>
+        <argsstring>(Args &amp;&amp;... args)</argsstring>
+        <name>make_unique</name>
+        <qualifiedname>util::make_unique</qualifiedname>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="196" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="196" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1a933e6a16d3e5d5dedb415477c0fbe27a" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+        </templateparamlist>
+        <type>size_t</type>
+        <definition>size_t util::find_first</definition>
+        <argsstring>(std::bitset&lt; N &gt; &amp;bits)</argsstring>
+        <name>find_first</name>
+        <qualifiedname>util::find_first</qualifiedname>
+        <param>
+          <type>std::bitset&lt; N &gt; &amp;</type>
+          <declname>bits</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="208" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="208" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1a270143ed1c7c56bc65d912f538cdd137" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T util::leftmost_one</definition>
+        <argsstring>(T n)</argsstring>
+        <name>leftmost_one</name>
+        <qualifiedname>util::leftmost_one</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="212" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="212" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1ace31c7bb3cbd705f7c6a8bbfaf0ad2da" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t util::uCount</definition>
+        <argsstring>(uint32_t u)</argsstring>
+        <name>uCount</name>
+        <qualifiedname>util::uCount</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="224" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="224" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1ab2d7b33fa661ba324fbc535b30d34802" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t util::bit_count</definition>
+        <argsstring>(uint32_t u)</argsstring>
+        <name>bit_count</name>
+        <qualifiedname>util::bit_count</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="225" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="225" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1a7a9fc29df8642c5eafd7db24cb332b4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>CONSTEXPR std::enable_if&lt; std::is_integral&lt; T &gt;::value, T &gt;::type</type>
+        <definition>CONSTEXPR std::enable_if&lt; std::is_integral&lt; T &gt;::value, T &gt;::type util::rotl</definition>
+        <argsstring>(T n, unsigned int c)</argsstring>
+        <name>rotl</name>
+        <qualifiedname>util::rotl</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="233" column="55" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="233" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1a54c390f9fd5579d629dff54ac59cf986" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>CONSTEXPR std::enable_if&lt; std::is_integral&lt; T &gt;::value, T &gt;::type</type>
+        <definition>CONSTEXPR std::enable_if&lt; std::is_integral&lt; T &gt;::value, T &gt;::type util::rotr</definition>
+        <argsstring>(T n, unsigned int c)</argsstring>
+        <name>rotr</name>
+        <qualifiedname>util::rotr</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="240" column="55" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="240" bodyend="245"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1a9d5ba13409e657c9e2ae1283530d5bcb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>CONSTEXPR unsigned</type>
+        <definition>CONSTEXPR unsigned util::ilog2</definition>
+        <argsstring>(uint32_t val)</argsstring>
+        <name>ilog2</name>
+        <qualifiedname>util::ilog2</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the log2 value fo an integer</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the number of bit needed to hold the value val </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="252" column="27" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="252" bodyend="267"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1af5a52e954d54636bdeabe22acf0ac1e4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>CONSTEXPR bool</type>
+        <definition>CONSTEXPR bool util::hasOddParity</definition>
+        <argsstring>(uint32_t u)</argsstring>
+        <name>hasOddParity</name>
+        <qualifiedname>util::hasOddParity</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="272" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="272" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1a9a08dde0ab48fdc5605734229a0cfcba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; util::split</definition>
+        <argsstring>(const std::string &amp;s, char separator)</argsstring>
+        <name>split</name>
+        <qualifiedname>util::split</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>separator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>split a given string using specified separator</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to split </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>separator</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the separator char </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>vector of splitted strings </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="281" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="281" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1ac50b7daec151059e1ae7c7ab03b3f10d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Range</type>
+          </param>
+          <param>
+            <type>typename Value</type>
+            <defval>typename Range::value_type</defval>
+          </param>
+        </templateparamlist>
+        <type>std::string</type>
+        <definition>std::string util::join</definition>
+        <argsstring>(Range const &amp;elements, char const *const delimiter)</argsstring>
+        <name>join</name>
+        <qualifiedname>util::join</qualifiedname>
+        <param>
+          <type>Range const &amp;</type>
+          <declname>elements</declname>
+        </param>
+        <param>
+          <type>char const *const</type>
+          <declname>delimiter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>note: delimiter cannot contain NUL characters </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="306" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="306" bodyend="317"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1a0b82e8bc738efe6f022eed57d21f647c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Input</type>
+          </param>
+          <param>
+            <type>typename Output</type>
+          </param>
+          <param>
+            <type>typename Value</type>
+            <defval>typename Output::value_type</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void util::split</definition>
+        <argsstring>(char delimiter, Output &amp;output, Input const &amp;input)</argsstring>
+        <name>split</name>
+        <qualifiedname>util::split</qualifiedname>
+        <param>
+          <type>char</type>
+          <declname>delimiter</declname>
+        </param>
+        <param>
+          <type>Output &amp;</type>
+          <declname>output</declname>
+        </param>
+        <param>
+          <type>Input const &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>note: imput is assumed to not contain NUL characters </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="322" column="6" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="322" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1a649ee9006ac726487e4e1f57c9eaeec1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string &amp;</type>
+        <definition>std::string &amp; util::ltrim</definition>
+        <argsstring>(std::string &amp;str, const std::string &amp;chars=&quot;\t\n\v\f\r &quot;)</argsstring>
+        <name>ltrim</name>
+        <qualifiedname>util::ltrim</qualifiedname>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>chars</declname>
+          <defval>&quot;\t\n\v\f\r &quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>trim the left side of a given string <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to trim </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>chars</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set of chars to trim away </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="338" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="338" bodyend="341"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1aa09375d834d6d79e615a00671afe77c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string &amp;</type>
+        <definition>std::string &amp; util::rtrim</definition>
+        <argsstring>(std::string &amp;str, const std::string &amp;chars=&quot;\t\n\v\f\r &quot;)</argsstring>
+        <name>rtrim</name>
+        <qualifiedname>util::rtrim</qualifiedname>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>chars</declname>
+          <defval>&quot;\t\n\v\f\r &quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>trim the right side of a given string <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to trim </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>chars</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set of chars to trim away </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="348" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="348" bodyend="351"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1ac6ed6819c2f0fd3b787aeb358f46b612" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string &amp;</type>
+        <definition>std::string &amp; util::trim</definition>
+        <argsstring>(std::string &amp;str, const std::string &amp;chars=&quot;\t\n\v\f\r &quot;)</argsstring>
+        <name>trim</name>
+        <qualifiedname>util::trim</qualifiedname>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>chars</declname>
+          <defval>&quot;\t\n\v\f\r &quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>trim the both sides of a given string <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to trim </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>chars</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set of chars to trim away </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="358" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="358" bodyend="358"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1a4a9bda6d8c94ceebb8a59e0a424d15ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string util::str_tolower</definition>
+        <argsstring>(std::string str)</argsstring>
+        <name>str_tolower</name>
+        <qualifiedname>util::str_tolower</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>convert string to lower case <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to convert </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="364" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="364" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1af7dfc664bb8c940ec51640da8139352f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string util::str_toupper</definition>
+        <argsstring>(std::string str)</argsstring>
+        <name>str_toupper</name>
+        <qualifiedname>util::str_toupper</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>convert string to upper case <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to convert </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="373" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="373" bodyend="376"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1aacef5c7f4209048b30e63faef7925013" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool util::iequals</definition>
+        <argsstring>(const std::string &amp;a, const std::string &amp;b)</argsstring>
+        <name>iequals</name>
+        <qualifiedname>util::iequals</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>compare two string ignoring case </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string a to compare </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string b to compare </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the are equal otherwise false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="385" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="385" bodyend="397"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1aa2477abe41bd3ce59a76baf65da1e7a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool util::ends_with</definition>
+        <argsstring>(std::string const &amp;value, std::string const &amp;ending)</argsstring>
+        <name>ends_with</name>
+        <qualifiedname>util::ends_with</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>ending</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="399" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="399" bodyend="403"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1a7a239a65cdd904257f4d8208a88ff104" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string util::padded</definition>
+        <argsstring>(std::string str, size_t width, bool show_ellipsis=true)</argsstring>
+        <name>padded</name>
+        <qualifiedname>util::padded</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>show_ellipsis</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>pad a string to a given length by either cutting of the overflow or inserting an ellipsis </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string to adjust </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of the targeted field </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>show_ellipsis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>use ellipsis (...) when shortening </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>string with the given length </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="413" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="413" bodyend="425"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1ac45479054364f35d457990cc7deab724" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool util::file_exists</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>file_exists</name>
+        <qualifiedname>util::file_exists</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>checks if a file exists <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the file name </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if file exists and can be opened </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="431" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="431" bodyend="434"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1ac7c86d22733f7e5913f863d13962a7e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T util::dir_name</definition>
+        <argsstring>(T const &amp;path, T const &amp;delims=&quot;/\\&quot;)</argsstring>
+        <name>dir_name</name>
+        <qualifiedname>util::dir_name</qualifiedname>
+        <param>
+          <type>T const &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>T const &amp;</type>
+          <declname>delims</declname>
+          <defval>&quot;/\\&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return directory name portion of a given path (as string) <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delims</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the path delimiters to use </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="441" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="441" bodyend="444"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1aeda0346a95dd86507525a9b92a83cb76" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T util::base_name</definition>
+        <argsstring>(T const &amp;path, T const &amp;delims=&quot;/\\&quot;)</argsstring>
+        <name>base_name</name>
+        <qualifiedname>util::base_name</qualifiedname>
+        <param>
+          <type>T const &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>T const &amp;</type>
+          <declname>delims</declname>
+          <defval>&quot;/\\&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return file name portion of a given path (as string) <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delims</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the path delimiters to use </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="451" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="451" bodyend="454"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1a82e9717e2747247d58f0e443f0012f2f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T util::remove_ext</definition>
+        <argsstring>(T const &amp;filename)</argsstring>
+        <name>remove_ext</name>
+        <qualifiedname>util::remove_ext</qualifiedname>
+        <param>
+          <type>T const &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return the base name (without extension) of a file name (as string) <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="460" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="460" bodyend="463"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1a4953d4c20314b6f70219367e7df7ecdb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string util::glob_to_regex</definition>
+        <argsstring>(std::string val)</argsstring>
+        <name>glob_to_regex</name>
+        <qualifiedname>util::glob_to_regex</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>converts a globbing string into a regular expression</para>
+<para>The globbing supports ?,*,**, and character classes ([a-z] as well as [!a-z]). &apos;.&apos; acts as hierarchy delimiter and is only matched with ** Regular expression must start with a carret (&apos;^&apos;) so that it can be identified as regex.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="474" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="474" bodyend="544"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1a92ed5e6c56ced05e9e7b0f72c7f43bdc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>file_type_e</type>
+        <definition>file_type_e util::detect_file_type</definition>
+        <argsstring>(const std::string &amp;path)</argsstring>
+        <name>detect_file_type</name>
+        <qualifiedname>util::detect_file_type</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" line="552" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/ities.h" bodystart="552" bodyend="572"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1ab2eb88f6fdfbbec39604be27514aa191" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; util::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, range_lut&lt; T &gt; &amp;lut)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>util::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type><ref refid="classutil_1_1range__lut" kindref="compound">range_lut</ref>&lt; T &gt; &amp;</type>
+          <declname>lut</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>overloaded stream operator</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>os</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lut</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the lookup table to print </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" line="130" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/range_lut.h" bodystart="130" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceutil_1a21daaf5c20308c280a887f7a5cc91a79" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string util::strprintf</definition>
+        <argsstring>(const std::string format,...)</argsstring>
+        <name>strprintf</name>
+        <qualifiedname>util::strprintf</qualifiedname>
+        <param>
+          <type>const std::string</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+<para>allocate and print to a string buffer </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/strprintf.h" line="35" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/strprintf.h" bodystart="35" bodyend="45"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>SCC common utilities. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The SystemC Components library (SCC) common utilities.</para>
+<para>SCC common utilities </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/bit_field.h" line="30" column="1"/>
+  </compounddef>
+</doxygen>

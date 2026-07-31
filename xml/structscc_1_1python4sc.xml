@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1python4sc" kind="struct" language="C++" prot="public">
+    <compoundname>scc::python4sc</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1python4sc_1a1ecf7d4f9617b6811e094f9f98edc236" prot="public" static="no" mutable="no">
+        <type>cci::cci_param&lt; std::string &gt;</type>
+        <definition>cci::cci_param&lt;std::string&gt; scc::python4sc::input_file_name</definition>
+        <argsstring></argsstring>
+        <name>input_file_name</name>
+        <qualifiedname>scc::python4sc::input_file_name</qualifiedname>
+        <initializer>{&quot;input_file_name&quot;, &quot;&quot;, &quot;the name of the python file to be executed by the interpreter&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.h" line="41" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1python4sc_1aac2a91e704d1f4feb351d501715467bd" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, pybind11::module_ &gt;</type>
+        <definition>std::unordered_map&lt;std::string, pybind11::module_&gt; scc::python4sc::mods</definition>
+        <argsstring></argsstring>
+        <name>mods</name>
+        <qualifiedname>scc::python4sc::mods</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.h" line="56" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1python4sc_1a731567cf74a01921f32a7ef2640b626e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::python4sc::SC_HAS_PROCESS</definition>
+        <argsstring>(python4sc)</argsstring>
+        <name>SC_HAS_PROCESS</name>
+        <qualifiedname>scc::python4sc::SC_HAS_PROCESS</qualifiedname>
+        <param>
+          <type><ref refid="structscc_1_1python4sc_1af15e8eb4b2ba33a363cdaafe2792dbc5" kindref="member">python4sc</ref></type>
+        </param>
+        <briefdescription>
+<para>yes, we have processes </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.h" line="39" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1python4sc_1af15e8eb4b2ba33a363cdaafe2792dbc5" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::python4sc::python4sc</definition>
+        <argsstring>(sc_core::sc_module_name nm)</argsstring>
+        <name>python4sc</name>
+        <qualifiedname>scc::python4sc::python4sc</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>nm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the constructor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the name </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.h" line="47" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.h" bodystart="47" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1python4sc_1ae92d3d6ba7a15c20fc83344d8a66dfae" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::python4sc::register_module</definition>
+        <argsstring>(std::string const &amp;name, pybind11::module_ &amp;&amp;mod)</argsstring>
+        <name>register_module</name>
+        <qualifiedname>scc::python4sc::register_module</qualifiedname>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>pybind11::module_ &amp;&amp;</type>
+          <declname>mod</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.h" line="52" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.h" bodystart="52" bodyend="52"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structscc_1_1python4sc_1a2b168706172c796b1b70babbece7442b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::python4sc::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <qualifiedname>scc::python4sc::run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.h" line="55" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.cpp" bodystart="66" bodyend="98"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::python4sc</label>
+        <link refid="structscc_1_1python4sc"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="1">
+        <label>scc::python4sc</label>
+        <link refid="structscc_1_1python4sc"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.h" line="36" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/python4sc.h" bodystart="36" bodyend="57"/>
+    <listofallmembers>
+      <member refid="structscc_1_1python4sc_1a1ecf7d4f9617b6811e094f9f98edc236" prot="public" virt="non-virtual"><scope>scc::python4sc</scope><name>input_file_name</name></member>
+      <member refid="structscc_1_1python4sc_1aac2a91e704d1f4feb351d501715467bd" prot="private" virt="non-virtual"><scope>scc::python4sc</scope><name>mods</name></member>
+      <member refid="structscc_1_1python4sc_1af15e8eb4b2ba33a363cdaafe2792dbc5" prot="public" virt="non-virtual"><scope>scc::python4sc</scope><name>python4sc</name></member>
+      <member refid="structscc_1_1python4sc_1ae92d3d6ba7a15c20fc83344d8a66dfae" prot="public" virt="non-virtual"><scope>scc::python4sc</scope><name>register_module</name></member>
+      <member refid="structscc_1_1python4sc_1a2b168706172c796b1b70babbece7442b" prot="private" virt="non-virtual"><scope>scc::python4sc</scope><name>run</name></member>
+      <member refid="structscc_1_1python4sc_1a731567cf74a01921f32a7ef2640b626e" prot="public" virt="non-virtual"><scope>scc::python4sc</scope><name>SC_HAS_PROCESS</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

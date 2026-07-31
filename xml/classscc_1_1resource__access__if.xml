@@ -1,0 +1,364 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1resource__access__if" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>scc::resource_access_if</compoundname>
+    <derivedcompoundref refid="classscc_1_1impl_1_1sc__register" prot="public" virt="non-virtual">scc::impl::sc_register&lt; typename impl::helper&lt; DATATYPE &gt;::Type &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classscc_1_1bitfield__register" prot="public" virt="non-virtual">scc::bitfield_register&lt; datatype_t &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classscc_1_1impl_1_1sc__register" prot="public" virt="non-virtual">scc::impl::sc_register&lt; DATATYPE &gt;</derivedcompoundref>
+    <includes refid="resource__access__if_8h" local="no">resource_access_if.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1resource__access__if_1a11e3e1ab0e5f4ccfd156149fa77a7eed" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual scc::resource_access_if::~resource_access_if</definition>
+        <argsstring>()=default</argsstring>
+        <name>~resource_access_if</name>
+        <qualifiedname>scc::resource_access_if::~resource_access_if</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resource_access_if.h" line="32" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1resource__access__if_1ab84e9879450aa4146de9983d2245ddce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>char const *</type>
+        <definition>virtual char const  * scc::resource_access_if::full_name</definition>
+        <argsstring>() const =0</argsstring>
+        <name>full_name</name>
+        <qualifiedname>scc::resource_access_if::full_name</qualifiedname>
+        <reimplementedby refid="classscc_1_1bitfield__register_1a53025a4faf810398fdc81de12ff13a30">full_name</reimplementedby>
+        <reimplementedby refid="classscc_1_1impl_1_1sc__register_1abcecef76ec622d0f5e7e8f99d40bf470">full_name</reimplementedby>
+        <reimplementedby refid="classscc_1_1impl_1_1sc__register_1abcecef76ec622d0f5e7e8f99d40bf470">full_name</reimplementedby>
+        <briefdescription>
+<para>return the name of the resource </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the name </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resource_access_if.h" line="38" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1resource__access__if_1a4b1353d979e7ce465dba34f05e10710e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::size_t</type>
+        <definition>virtual std::size_t scc::resource_access_if::size</definition>
+        <argsstring>() const =0</argsstring>
+        <name>size</name>
+        <qualifiedname>scc::resource_access_if::size</qualifiedname>
+        <reimplementedby refid="classscc_1_1bitfield__register_1a648f082879bf572e7ce41b39b750c5ca">size</reimplementedby>
+        <reimplementedby refid="classscc_1_1impl_1_1sc__register_1ae4bd59511313c06e5b91ea67ff26774a">size</reimplementedby>
+        <reimplementedby refid="classscc_1_1impl_1_1sc__register_1ae4bd59511313c06e5b91ea67ff26774a">size</reimplementedby>
+        <briefdescription>
+<para>return the size of the resource </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the size </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resource_access_if.h" line="44" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1resource__access__if_1a94f5dba6b42b12379254975b72a475d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void scc::resource_access_if::reset</definition>
+        <argsstring>()=0</argsstring>
+        <name>reset</name>
+        <qualifiedname>scc::resource_access_if::reset</qualifiedname>
+        <reimplementedby refid="classscc_1_1bitfield__register_1a42ba983ea8228973c81996031225c084">reset</reimplementedby>
+        <reimplementedby refid="classscc_1_1impl_1_1sc__register_1a04b4f9e28ccfb5f005bcf300df1152cc">reset</reimplementedby>
+        <reimplementedby refid="classscc_1_1impl_1_1sc__register_1a04b4f9e28ccfb5f005bcf300df1152cc">reset</reimplementedby>
+        <briefdescription>
+<para>reset the resource </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resource_access_if.h" line="50" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1resource__access__if_1a422ba53aebac338f82b95969e4115e26" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool scc::resource_access_if::write</definition>
+        <argsstring>(const uint8_t *data, std::size_t length, uint64_t offset, sc_core::sc_time &amp;d)=0</argsstring>
+        <name>write</name>
+        <qualifiedname>scc::resource_access_if::write</qualifiedname>
+        <reimplementedby refid="classscc_1_1bitfield__register_1a1721bd204fd8aa28516aed265d1adc6a">write</reimplementedby>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resource_access_if.h" line="61" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1resource__access__if_1a43d5c525222211b9b7a586a352282cdc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::resource_access_if::write</definition>
+        <argsstring>(const uint8_t *data, std::size_t length, uint64_t offset=0)</argsstring>
+        <name>write</name>
+        <qualifiedname>scc::resource_access_if::write</qualifiedname>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resource_access_if.h" line="62" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resource_access_if.h" bodystart="62" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1resource__access__if_1aff9a8c6c68d5aa91a6278b8ae3f6c30a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool scc::resource_access_if::read</definition>
+        <argsstring>(uint8_t *data, std::size_t length, uint64_t offset, sc_core::sc_time &amp;d) const =0</argsstring>
+        <name>read</name>
+        <qualifiedname>scc::resource_access_if::read</qualifiedname>
+        <reimplementedby refid="classscc_1_1bitfield__register_1a3d467b0ccc7d7e514103d6028b71b45e">read</reimplementedby>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resource_access_if.h" line="76" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1resource__access__if_1afba178290da5121755e18cdb44a06568" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::resource_access_if::read</definition>
+        <argsstring>(uint8_t *data, std::size_t length, uint64_t offset=0) const</argsstring>
+        <name>read</name>
+        <qualifiedname>scc::resource_access_if::read</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resource_access_if.h" line="77" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resource_access_if.h" bodystart="77" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1resource__access__if_1ad9d368dd1a31310e1f147d019daa326c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool scc::resource_access_if::write_dbg</definition>
+        <argsstring>(const uint8_t *data, std::size_t length, uint64_t offset=0)=0</argsstring>
+        <name>write_dbg</name>
+        <qualifiedname>scc::resource_access_if::write_dbg</qualifiedname>
+        <reimplementedby refid="classscc_1_1bitfield__register_1a2d1bc4059c09327a21d9539dca879a07">write_dbg</reimplementedby>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>debug write to the resource </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of data to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of the data to write </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true it the access is successful </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resource_access_if.h" line="91" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1resource__access__if_1a81f86119c44d699f70b8980e12e97717" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool scc::resource_access_if::read_dbg</definition>
+        <argsstring>(uint8_t *data, std::size_t length, uint64_t offset=0) const =0</argsstring>
+        <name>read_dbg</name>
+        <qualifiedname>scc::resource_access_if::read_dbg</qualifiedname>
+        <reimplementedby refid="classscc_1_1bitfield__register_1a847ea7fff0ba047c4cb5bd79a773e077">read_dbg</reimplementedby>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>offset</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>debug read the data from the resource </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>buffer to read the data into </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>length of data to read </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>offset of the data to read </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true it the access is successful </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resource_access_if.h" line="101" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>interface defining access to a resource e.g. a register </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>scc::bitfield_register&lt; datatype_t &gt;</label>
+        <link refid="classscc_1_1bitfield__register"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>scc::impl::sc_register&lt; DATATYPE &gt;</label>
+        <link refid="classscc_1_1impl_1_1sc__register"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>scc::impl::sc_register&lt; typename impl::helper&lt; DATATYPE &gt;::Type &gt;</label>
+        <link refid="classscc_1_1impl_1_1sc__register"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>scc::resource_access_if</label>
+        <link refid="classscc_1_1resource__access__if"/>
+      </node>
+      <node id="5">
+        <label>scc::sc_register_masked&lt; DATATYPE, WRMASK, RDMASK &gt;</label>
+        <link refid="classscc_1_1sc__register__masked"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resource_access_if.h" line="30" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/resource_access_if.h" bodystart="30" bodyend="102"/>
+    <listofallmembers>
+      <member refid="classscc_1_1resource__access__if_1ab84e9879450aa4146de9983d2245ddce" prot="public" virt="pure-virtual"><scope>scc::resource_access_if</scope><name>full_name</name></member>
+      <member refid="classscc_1_1resource__access__if_1aff9a8c6c68d5aa91a6278b8ae3f6c30a" prot="public" virt="pure-virtual"><scope>scc::resource_access_if</scope><name>read</name></member>
+      <member refid="classscc_1_1resource__access__if_1afba178290da5121755e18cdb44a06568" prot="public" virt="non-virtual"><scope>scc::resource_access_if</scope><name>read</name></member>
+      <member refid="classscc_1_1resource__access__if_1a81f86119c44d699f70b8980e12e97717" prot="public" virt="pure-virtual"><scope>scc::resource_access_if</scope><name>read_dbg</name></member>
+      <member refid="classscc_1_1resource__access__if_1a94f5dba6b42b12379254975b72a475d6" prot="public" virt="pure-virtual"><scope>scc::resource_access_if</scope><name>reset</name></member>
+      <member refid="classscc_1_1resource__access__if_1a4b1353d979e7ce465dba34f05e10710e" prot="public" virt="pure-virtual"><scope>scc::resource_access_if</scope><name>size</name></member>
+      <member refid="classscc_1_1resource__access__if_1a422ba53aebac338f82b95969e4115e26" prot="public" virt="pure-virtual"><scope>scc::resource_access_if</scope><name>write</name></member>
+      <member refid="classscc_1_1resource__access__if_1a43d5c525222211b9b7a586a352282cdc" prot="public" virt="non-virtual"><scope>scc::resource_access_if</scope><name>write</name></member>
+      <member refid="classscc_1_1resource__access__if_1ad9d368dd1a31310e1f147d019daa326c" prot="public" virt="pure-virtual"><scope>scc::resource_access_if</scope><name>write_dbg</name></member>
+      <member refid="classscc_1_1resource__access__if_1a11e3e1ab0e5f4ccfd156149fa77a7eed" prot="public" virt="virtual"><scope>scc::resource_access_if</scope><name>~resource_access_if</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

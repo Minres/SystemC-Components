@@ -1,0 +1,636 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespacenonstd_1_1variants_1_1detail" kind="namespace" language="C++">
+    <compoundname>nonstd::variants::detail</compoundname>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1index__tag__t" prot="public">nonstd::variants::detail::index_tag_t</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1TX" prot="public">nonstd::variants::detail::TX</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1S0" prot="public">nonstd::variants::detail::S0</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1S1" prot="public">nonstd::variants::detail::S1</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1S2" prot="public">nonstd::variants::detail::S2</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1S3" prot="public">nonstd::variants::detail::S3</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1S4" prot="public">nonstd::variants::detail::S4</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1S5" prot="public">nonstd::variants::detail::S5</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1S6" prot="public">nonstd::variants::detail::S6</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1S7" prot="public">nonstd::variants::detail::S7</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1S8" prot="public">nonstd::variants::detail::S8</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1S9" prot="public">nonstd::variants::detail::S9</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1S10" prot="public">nonstd::variants::detail::S10</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1S11" prot="public">nonstd::variants::detail::S11</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1S12" prot="public">nonstd::variants::detail::S12</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1S13" prot="public">nonstd::variants::detail::S13</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1S14" prot="public">nonstd::variants::detail::S14</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1S15" prot="public">nonstd::variants::detail::S15</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1nulltype" prot="public">nonstd::variants::detail::nulltype</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist" prot="public">nonstd::variants::detail::typelist</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__max" prot="public">nonstd::variants::detail::typelist_max</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01nulltype_01_4" prot="public">nonstd::variants::detail::typelist_max&lt; nulltype &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__max_3_01typelist_3_01Head_00_01Tail_01_4_01_4" prot="public">nonstd::variants::detail::typelist_max&lt; typelist&lt; Head, Tail &gt; &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size" prot="public">nonstd::variants::detail::typelist_size</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T0_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; T0 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T1_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; T1 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T2_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; T2 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T3_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; T3 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T4_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; T4 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T5_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; T5 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T6_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; T6 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T7_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; T7 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T8_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; T8 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T9_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; T9 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T10_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; T10 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T11_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; T11 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T12_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; T12 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T13_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; T13 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T14_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; T14 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01T15_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; T15 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01nulltype_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; nulltype &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__size_3_01typelist_3_01Head_00_01Tail_01_4_01_4" prot="public">nonstd::variants::detail::typelist_size&lt; typelist&lt; Head, Tail &gt; &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__index__of" prot="public">nonstd::variants::detail::typelist_index_of</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__index__of_3_01nulltype_00_01T_01_4" prot="public">nonstd::variants::detail::typelist_index_of&lt; nulltype, T &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__index__of_3_01typelist_3_01T_00_01Tail_01_4_00_01T_01_4" prot="public">nonstd::variants::detail::typelist_index_of&lt; typelist&lt; T, Tail &gt;, T &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__index__of_3_01typelist_3_01Head_00_01Tail_01_4_00_01T_01_4" prot="public">nonstd::variants::detail::typelist_index_of&lt; typelist&lt; Head, Tail &gt;, T &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__type__at" prot="public">nonstd::variants::detail::typelist_type_at</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__type__at_3_01typelist_3_01Head_00_01Tail_01_4_00_010_01_4" prot="public">nonstd::variants::detail::typelist_type_at&lt; typelist&lt; Head, Tail &gt;, 0 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__type__at_3_01typelist_3_01Head_00_01Tail_01_4_00_01i_01_4" prot="public">nonstd::variants::detail::typelist_type_at&lt; typelist&lt; Head, Tail &gt;, i &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__type__is__unique" prot="public">nonstd::variants::detail::typelist_type_is_unique</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__type__is__unique_3_01List_00_01CmpIndex_00_010_01_4" prot="public">nonstd::variants::detail::typelist_type_is_unique&lt; List, CmpIndex, 0 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1typelist__contains__unique__type" prot="public">nonstd::variants::detail::typelist_contains_unique_type</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1alignment__of" prot="public">nonstd::variants::detail::alignment_of</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1alignment__of__hack" prot="public">nonstd::variants::detail::alignment_of_hack</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1alignment__logic" prot="public">nonstd::variants::detail::alignment_logic</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1type__of__size" prot="public">nonstd::variants::detail::type_of_size</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1type__of__size_3_01nulltype_00_01N_01_4" prot="public">nonstd::variants::detail::type_of_size&lt; nulltype, N &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1struct__t" prot="public">nonstd::variants::detail::struct_t</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1helper" prot="public">nonstd::variants::detail::helper</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1VisitorApplicatorImpl" prot="public">nonstd::variants::detail::VisitorApplicatorImpl</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1VisitorApplicatorImpl_3_01R_00_01TX_3_01VT_01_4_01_4" prot="public">nonstd::variants::detail::VisitorApplicatorImpl&lt; R, TX&lt; VT &gt; &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1VisitorApplicator" prot="public">nonstd::variants::detail::VisitorApplicator</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1VisitorUnwrapper" prot="public">nonstd::variants::detail::VisitorUnwrapper</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper" prot="public">nonstd::variants::detail::TypedVisitorUnwrapper</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_012_00_01R_00_01Visitor_00_01T2_01_4" prot="public">nonstd::variants::detail::TypedVisitorUnwrapper&lt; 2, R, Visitor, T2 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_013_00_01R_00_01Visitor_00_01T2_00_01T3_01_4" prot="public">nonstd::variants::detail::TypedVisitorUnwrapper&lt; 3, R, Visitor, T2, T3 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_014_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_01_4" prot="public">nonstd::variants::detail::TypedVisitorUnwrapper&lt; 4, R, Visitor, T2, T3, T4 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1TypedVisitorUnwrapper_3_015_00_01R_00_01Visitor_00_01T2_00_01T3_00_01T4_00_01T5_01_4" prot="public">nonstd::variants::detail::TypedVisitorUnwrapper&lt; 5, R, Visitor, T2, T3, T4, T5 &gt;</innerclass>
+    <innerclass refid="structnonstd_1_1variants_1_1detail_1_1Comparator" prot="public">nonstd::variants::detail::Comparator</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="variant_8hpp_1a908b5199d29f3eba776c90cda2492e51" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1TX" kindref="compound">TX</ref>&lt; <ref refid="structnonstd_1_1variants_1_1detail_1_1S0" kindref="compound">S0</ref> &gt;</type>
+        <definition>typedef TX&lt;S0&gt; nonstd::variants::detail::T0</definition>
+        <argsstring></argsstring>
+        <name>T0</name>
+        <qualifiedname>nonstd::variants::detail::T0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="628" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="628" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="variant_8hpp_1a2bd5d1143ae8f780a39d4ead922bf552" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1TX" kindref="compound">TX</ref>&lt; <ref refid="structnonstd_1_1variants_1_1detail_1_1S1" kindref="compound">S1</ref> &gt;</type>
+        <definition>typedef TX&lt;S1&gt; nonstd::variants::detail::T1</definition>
+        <argsstring></argsstring>
+        <name>T1</name>
+        <qualifiedname>nonstd::variants::detail::T1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="630" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="630" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="variant_8hpp_1adc0ce121975cea52ef5882dae37cbdfa" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1TX" kindref="compound">TX</ref>&lt; <ref refid="structnonstd_1_1variants_1_1detail_1_1S2" kindref="compound">S2</ref> &gt;</type>
+        <definition>typedef TX&lt;S2&gt; nonstd::variants::detail::T2</definition>
+        <argsstring></argsstring>
+        <name>T2</name>
+        <qualifiedname>nonstd::variants::detail::T2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="632" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="632" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="variant_8hpp_1a9729f080166cfe2f33158e5a42baea35" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1TX" kindref="compound">TX</ref>&lt; <ref refid="structnonstd_1_1variants_1_1detail_1_1S3" kindref="compound">S3</ref> &gt;</type>
+        <definition>typedef TX&lt;S3&gt; nonstd::variants::detail::T3</definition>
+        <argsstring></argsstring>
+        <name>T3</name>
+        <qualifiedname>nonstd::variants::detail::T3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="634" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="634" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="variant_8hpp_1a94d73557327ebd12ee28c83847a96e0f" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1TX" kindref="compound">TX</ref>&lt; <ref refid="structnonstd_1_1variants_1_1detail_1_1S4" kindref="compound">S4</ref> &gt;</type>
+        <definition>typedef TX&lt;S4&gt; nonstd::variants::detail::T4</definition>
+        <argsstring></argsstring>
+        <name>T4</name>
+        <qualifiedname>nonstd::variants::detail::T4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="636" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="636" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="variant_8hpp_1a559b306a8f13dcc1d7c14a53da784f53" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1TX" kindref="compound">TX</ref>&lt; <ref refid="structnonstd_1_1variants_1_1detail_1_1S5" kindref="compound">S5</ref> &gt;</type>
+        <definition>typedef TX&lt;S5&gt; nonstd::variants::detail::T5</definition>
+        <argsstring></argsstring>
+        <name>T5</name>
+        <qualifiedname>nonstd::variants::detail::T5</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="638" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="638" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="variant_8hpp_1afcfcad311b9d3e0c1ee0e9e092bf9a78" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1TX" kindref="compound">TX</ref>&lt; <ref refid="structnonstd_1_1variants_1_1detail_1_1S6" kindref="compound">S6</ref> &gt;</type>
+        <definition>typedef TX&lt;S6&gt; nonstd::variants::detail::T6</definition>
+        <argsstring></argsstring>
+        <name>T6</name>
+        <qualifiedname>nonstd::variants::detail::T6</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="640" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="640" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="variant_8hpp_1a9e11edfd2c844db2718e81dcdbedf4ea" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1TX" kindref="compound">TX</ref>&lt; <ref refid="structnonstd_1_1variants_1_1detail_1_1S7" kindref="compound">S7</ref> &gt;</type>
+        <definition>typedef TX&lt;S7&gt; nonstd::variants::detail::T7</definition>
+        <argsstring></argsstring>
+        <name>T7</name>
+        <qualifiedname>nonstd::variants::detail::T7</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="642" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="642" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="variant_8hpp_1a4f6c42a5ede6f9d03789684e6210e4d7" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1TX" kindref="compound">TX</ref>&lt; <ref refid="structnonstd_1_1variants_1_1detail_1_1S8" kindref="compound">S8</ref> &gt;</type>
+        <definition>typedef TX&lt;S8&gt; nonstd::variants::detail::T8</definition>
+        <argsstring></argsstring>
+        <name>T8</name>
+        <qualifiedname>nonstd::variants::detail::T8</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="644" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="644" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="variant_8hpp_1afbff8faab023490ba2a4a99dfd94dfdf" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1TX" kindref="compound">TX</ref>&lt; <ref refid="structnonstd_1_1variants_1_1detail_1_1S9" kindref="compound">S9</ref> &gt;</type>
+        <definition>typedef TX&lt;S9&gt; nonstd::variants::detail::T9</definition>
+        <argsstring></argsstring>
+        <name>T9</name>
+        <qualifiedname>nonstd::variants::detail::T9</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="646" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="646" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="variant_8hpp_1a4960033e3ea102601e424679e97b30c1" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1TX" kindref="compound">TX</ref>&lt; <ref refid="structnonstd_1_1variants_1_1detail_1_1S10" kindref="compound">S10</ref> &gt;</type>
+        <definition>typedef TX&lt;S10&gt; nonstd::variants::detail::T10</definition>
+        <argsstring></argsstring>
+        <name>T10</name>
+        <qualifiedname>nonstd::variants::detail::T10</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="648" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="648" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="variant_8hpp_1a7d6f1362d45a312595ca3ccdc88f2359" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1TX" kindref="compound">TX</ref>&lt; <ref refid="structnonstd_1_1variants_1_1detail_1_1S11" kindref="compound">S11</ref> &gt;</type>
+        <definition>typedef TX&lt;S11&gt; nonstd::variants::detail::T11</definition>
+        <argsstring></argsstring>
+        <name>T11</name>
+        <qualifiedname>nonstd::variants::detail::T11</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="650" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="650" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="variant_8hpp_1ac12535ef9a023bd4557dff3a9f71f0dd" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1TX" kindref="compound">TX</ref>&lt; <ref refid="structnonstd_1_1variants_1_1detail_1_1S12" kindref="compound">S12</ref> &gt;</type>
+        <definition>typedef TX&lt;S12&gt; nonstd::variants::detail::T12</definition>
+        <argsstring></argsstring>
+        <name>T12</name>
+        <qualifiedname>nonstd::variants::detail::T12</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="652" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="652" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="variant_8hpp_1ab382ff5e34293743d234f692bc42db7e" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1TX" kindref="compound">TX</ref>&lt; <ref refid="structnonstd_1_1variants_1_1detail_1_1S13" kindref="compound">S13</ref> &gt;</type>
+        <definition>typedef TX&lt;S13&gt; nonstd::variants::detail::T13</definition>
+        <argsstring></argsstring>
+        <name>T13</name>
+        <qualifiedname>nonstd::variants::detail::T13</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="654" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="654" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="variant_8hpp_1a54ab16c68f8ac02ff31107c558c9096c" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1TX" kindref="compound">TX</ref>&lt; <ref refid="structnonstd_1_1variants_1_1detail_1_1S14" kindref="compound">S14</ref> &gt;</type>
+        <definition>typedef TX&lt;S14&gt; nonstd::variants::detail::T14</definition>
+        <argsstring></argsstring>
+        <name>T14</name>
+        <qualifiedname>nonstd::variants::detail::T14</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="656" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="656" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="variant_8hpp_1ad80846a98144144d196c557f569c135f" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1TX" kindref="compound">TX</ref>&lt; <ref refid="structnonstd_1_1variants_1_1detail_1_1S15" kindref="compound">S15</ref> &gt;</type>
+        <definition>typedef TX&lt;S15&gt; nonstd::variants::detail::T15</definition>
+        <argsstring></argsstring>
+        <name>T15</name>
+        <qualifiedname>nonstd::variants::detail::T15</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="658" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="658" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="variant_8hpp_1a8217ab69b42989dfdf867ccab05f1a5a" prot="public" static="no">
+        <type><ref refid="structnonstd_1_1variants_1_1detail_1_1nulltype" kindref="compound">nulltype</ref></type>
+        <definition>typedef nulltype nonstd::variants::detail::alignment_types</definition>
+        <argsstring></argsstring>
+        <name>alignment_types</name>
+        <qualifiedname>nonstd::variants::detail::alignment_types</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="922" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="922" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="variant_8hpp_1a6ff53135a6d7dc8134170594838b43a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>std::size_t</type>
+            <declname>K</declname>
+            <defname>K</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void nonstd::variants::detail::index_tag</definition>
+        <argsstring>(index_tag_t&lt; K &gt;=index_tag_t&lt; K &gt;())</argsstring>
+        <name>index_tag</name>
+        <qualifiedname>nonstd::variants::detail::index_tag</qualifiedname>
+        <param>
+          <type><ref refid="structnonstd_1_1variants_1_1detail_1_1index__tag__t" kindref="compound">index_tag_t</ref>&lt; K &gt;</type>
+          <defval><ref refid="structnonstd_1_1variants_1_1detail_1_1index__tag__t" kindref="compound">index_tag_t</ref>&lt; K &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="188" column="25" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" bodystart="188" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a82a246476846828a9242f0dbe753d6c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(char)</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>char</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="914" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a588da8264813b5c5b1dc5927c6197b1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(short)</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>short</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="914" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a3f9fda3b74d1e41e017c36eab19de92d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(int)</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="914" column="47"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1ab1d7eae4670bb2a47597f4bdd197704d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(long)</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>long</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="914" column="66"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a441a80d90cb91e24f819b518a17232db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(float)</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>float</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="914" column="85"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1aa437f8861b859c5add051dcd677f59b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(double)</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>double</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="915" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a5dceba1e9462bbdfb4f04dac641ca57c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(long double)</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>long double</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="915" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a265ca7e1e879f1b30ac9e222da3e4bc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(char *)</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>char *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="917" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a1ea56aa0d57b202e904fdb4409a1a685" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(short *)</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>short *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="917" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a4f3b5d9d4b98e913804633a41de76c46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(int *)</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>int *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="917" column="43"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1acea33fec2ca2d27c45c2a3574db35d22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(long *)</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>long *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="917" column="62"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1af29c93ca207a00fffb54f7c4bd3e58f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(float *)</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>float *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="917" column="81"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1ad6c14aa21c47d573a8b4f39cf248c59f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(double *)</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>double *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="918" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1a746e67dabd8321dbd47011df546e47bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(long double *)</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>long double *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="918" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1af6b4b588454f97f4773dfb2712be957a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(Unknown(*)(Unknown))</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>Unknown(*)(Unknown)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="920" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1ad7aa9995238bf4607fd446d276134649" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(Unknown *Unknown::*)</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>Unknown *Unknown::*</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="920" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8hpp_1aa4e39fb9fdf3946f859ce4317acae92c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef nonstd::variants::detail::variant_ALIGN_TYPE</definition>
+        <argsstring>(Unknown(Unknown::*)(Unknown))</argsstring>
+        <name>variant_ALIGN_TYPE</name>
+        <qualifiedname>nonstd::variants::detail::variant_ALIGN_TYPE</qualifiedname>
+        <param>
+          <type>Unknown(Unknown::*)(Unknown)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="920" column="45"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/variant.hpp" line="184" column="1"/>
+  </compounddef>
+</doxygen>

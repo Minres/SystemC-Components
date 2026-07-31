@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1tlm__target__bfs" kind="class" language="C++" prot="public">
+    <compoundname>scc::tlm_target_bfs</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_module</basecompoundref>
+    <basecompoundref refid="classscc_1_1tlm__target__bfs__base" prot="public" virt="non-virtual">scc::tlm_target_bfs_base&lt; owner_t &gt;</basecompoundref>
+    <basecompoundref refid="classscc_1_1tlm__target" prot="public" virt="non-virtual">scc::tlm_target&lt;&gt;</basecompoundref>
+    <includes refid="tlm__target__bfs_8h" local="no">tlm_target_bfs.h</includes>
+    <innerclass refid="classscc_1_1tlm__target__bfs_1_1socket__accessor" prot="public">scc::tlm_target_bfs::socket_accessor</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename regs_t</type>
+      </param>
+      <param>
+        <type>typename owner_t</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classscc_1_1tlm__target__bfs_1ab33137a247b5ef17f1fa7df7e925de47" prot="public" static="no" mutable="no">
+        <type><ref refid="classscc_1_1tlm__target__bfs_1_1socket__accessor" kindref="compound">socket_accessor</ref></type>
+        <definition>socket_accessor scc::tlm_target_bfs&lt; regs_t, owner_t &gt;::sock_t_</definition>
+        <argsstring></argsstring>
+        <name>sock_t_</name>
+        <qualifiedname>scc::tlm_target_bfs::sock_t_</qualifiedname>
+        <initializer>{*this}</initializer>
+        <briefdescription>
+<para>The socket to access the memory mapped registers of this target. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Use sock_t_.get() to access a pointer to tlm::tlm_target_socket&lt;&gt; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="125" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="125" bodyend="125"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classscc_1_1tlm__target__bfs_1a035050cd36638492f976e63dd7469028" prot="protected" static="no" mutable="no">
+        <type>std::unique_ptr&lt; regs_t &gt;</type>
+        <definition>std::unique_ptr&lt;regs_t&gt; scc::tlm_target_bfs&lt; regs_t, owner_t &gt;::regs</definition>
+        <argsstring></argsstring>
+        <name>regs</name>
+        <qualifiedname>scc::tlm_target_bfs::regs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="128" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classscc_1_1tlm__target__bfs_1a510a1be0a479c70843d7f583e79652bd" prot="protected" static="no" mutable="no">
+        <type>sc_core::sc_time</type>
+        <definition>sc_core::sc_time scc::tlm_target_bfs&lt; regs_t, owner_t &gt;::clk</definition>
+        <argsstring></argsstring>
+        <name>clk</name>
+        <qualifiedname>scc::tlm_target_bfs::clk</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="129" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classscc_1_1tlm__target__bfs_1a6e12c9f361ed25c9ec110a38f44a7584" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::tlm_target_bfs&lt; regs_t, owner_t &gt;::SC_HAS_PROCESS</definition>
+        <argsstring>(tlm_target_bfs)</argsstring>
+        <name>SC_HAS_PROCESS</name>
+        <qualifiedname>scc::tlm_target_bfs::SC_HAS_PROCESS</qualifiedname>
+        <param>
+          <type>tlm_target_bfs</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="92" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1tlm__target__bfs_1a5e6ede3f3c38c9c219354d8a9ae6dbb9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::tlm_target_bfs&lt; regs_t, owner_t &gt;::tlm_target_bfs</definition>
+        <argsstring>(sc_core::sc_module_name name, tlm_target_bfs_params_t &amp;&amp;params, owner_t *owner=nullptr)</argsstring>
+        <name>tlm_target_bfs</name>
+        <qualifiedname>scc::tlm_target_bfs::tlm_target_bfs</qualifiedname>
+        <param>
+          <type>sc_core::sc_module_name</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>tlm_target_bfs_params_t &amp;&amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>owner_t *</type>
+          <declname>owner</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="110" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="110" bodyend="118"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classscc_1_1tlm__target__bfs_1a6d87f7f32fe676b99b1ce4930b718961" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::tlm_target_bfs&lt; regs_t, owner_t &gt;::reset_cb</definition>
+        <argsstring>()</argsstring>
+        <name>reset_cb</name>
+        <qualifiedname>scc::tlm_target_bfs::reset_cb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="131" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="131" bodyend="136"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Peripheral base class using <ref refid="classscc_1_1tlm__target" kindref="compound">scc::tlm_target</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>regs_t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Subclass of <ref refid="classscc_1_1tlm__target__bfs__register__base" kindref="compound">tlm_target_bfs_register_base</ref> that contains the register definitions. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>owner_t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the owner pointer </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="4">
+        <label>scc::tlm_target&lt; BUSWIDTH, ADDR_UNIT_BITWIDTH &gt;</label>
+        <link refid="classscc_1_1tlm__target"/>
+      </node>
+      <node id="1">
+        <label>scc::tlm_target_bfs&lt; regs_t, owner_t &gt;</label>
+        <link refid="classscc_1_1tlm__target__bfs"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scc::tlm_target_bfs_base&lt; owner_t &gt;</label>
+        <link refid="classscc_1_1tlm__target__bfs__base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_module</label>
+      </node>
+      <node id="5">
+        <label>scc::tlm_target&lt; BUSWIDTH, ADDR_UNIT_BITWIDTH &gt;</label>
+        <link refid="classscc_1_1tlm__target"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>socket</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>socket_map</edgelabel>
+        </childnode>
+      </node>
+      <node id="13">
+        <label>scc::tlm_target_bfs&lt; regs_t, owner_t &gt;::socket_accessor</label>
+        <link refid="classscc_1_1tlm__target__bfs_1_1socket__accessor"/>
+      </node>
+      <node id="1">
+        <label>scc::tlm_target_bfs&lt; regs_t, owner_t &gt;</label>
+        <link refid="classscc_1_1tlm__target__bfs"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>sock_t_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scc::tlm_target_bfs_base&lt; owner_t &gt;</label>
+        <link refid="classscc_1_1tlm__target__bfs__base"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>params_</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>scc::tlm_target_bfs_params</label>
+        <link refid="structscc_1_1tlm__target__bfs__params"/>
+      </node>
+      <node id="7">
+        <label>tlm::scc::scv::tlm_rec_target_socket&lt; LT &gt;</label>
+        <link refid="classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>recorder</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>tlm::scc::scv::tlm_recorder&lt; tlm::tlm_base_protocol_types &gt;</label>
+        <link refid="classtlm_1_1scc_1_1scv_1_1tlm__recorder"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>tlm::scc::target_mixin&lt; tlm::scc::scv::tlm_rec_target_socket&lt; LT &gt; &gt;</label>
+        <link refid="classtlm_1_1scc_1_1target__mixin"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+      <node id="10">
+        <label>tlm::tlm_fw_transport_if&lt; tlm::tlm_base_protocol_types &gt;</label>
+      </node>
+      <node id="8">
+        <label>tlm::tlm_target_socket&lt; BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ONE_OR_MORE_BOUND &gt;</label>
+      </node>
+      <node id="12">
+        <label>util::range_lut&lt; resource_access_t &gt;</label>
+        <link refid="classutil_1_1range__lut"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" line="91" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tlm_target_bfs.h" bodystart="91" bodyend="137"/>
+    <listofallmembers>
+      <member refid="classscc_1_1tlm__target_1a8afaa2a7f59441bdb979b162b1d719f8" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>addResource</name></member>
+      <member refid="classscc_1_1tlm__target_1ab62970ee753d9b8850ca1001d4046474" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>addResource</name></member>
+      <member refid="classscc_1_1tlm__target_1a1362ce5ffea24f28ff06119094eb7ea4" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>b_tranport_cb</name></member>
+      <member refid="classscc_1_1tlm__target__bfs__base_1a1c3610f0875ef60c79a28be508d1bdfd" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>bindIRQ</name></member>
+      <member refid="classscc_1_1tlm__target__bfs_1a510a1be0a479c70843d7f583e79652bd" prot="protected" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>clk</name></member>
+      <member refid="classscc_1_1tlm__target_1aaf14d6a9daf90495ed1332b32c54226e" prot="protected" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>get_payload_extension</name></member>
+      <member refid="classscc_1_1tlm__target_1a5019c62d054b355e0a12066b3c636756" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>get_size</name></member>
+      <member refid="classscc_1_1tlm__target__bfs__base_1a345a94f503929e5d04f2632f11982729" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>getOwner</name></member>
+      <member refid="classscc_1_1tlm__target__bfs__base_1ae691cd901feed43f04dfc1486990e378" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>irq_out_</name></member>
+      <member refid="classscc_1_1tlm__target__bfs__base_1a7b92d29573a6a6865b03d48a5173297c" prot="protected" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>owner_</name></member>
+      <member refid="classscc_1_1tlm__target__bfs__base_1a1bf1b42fd66a8bdeb4b8b0ce94be3dc2" prot="protected" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>params_</name></member>
+      <member refid="classscc_1_1tlm__target__bfs_1a035050cd36638492f976e63dd7469028" prot="protected" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>regs</name></member>
+      <member refid="classscc_1_1tlm__target__bfs_1a6d87f7f32fe676b99b1ce4930b718961" prot="protected" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>reset_cb</name></member>
+      <member refid="classscc_1_1tlm__target_1ad8245def6cefbcebf39d7081653fec26" prot="protected" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>resource_access_t</name></member>
+      <member refid="classscc_1_1tlm__target__bfs__base_1a6e175013cec592932985b472af2e36ca" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>rst_in_</name></member>
+      <member refid="classscc_1_1tlm__target__bfs_1a6e12c9f361ed25c9ec110a38f44a7584" prot="private" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>SC_HAS_PROCESS</name></member>
+      <member refid="classscc_1_1tlm__target__bfs_1ab33137a247b5ef17f1fa7df7e925de47" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>sock_t_</name></member>
+      <member refid="classscc_1_1tlm__target_1a75b25d87c86ba3c787405369994b8038" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>socket</name></member>
+      <member refid="classscc_1_1tlm__target_1a9882e476ca4728b812ce09bb6d09764d" prot="protected" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>socket_map</name></member>
+      <member refid="classscc_1_1tlm__target_1a02ad669c63d2cb793552e75765d8bb50" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>this_type</name></member>
+      <member refid="classscc_1_1tlm__target_1ac116fffbea832e2ae7aef91886e9eb8f" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>tlm_target</name></member>
+      <member refid="classscc_1_1tlm__target__bfs_1a5e6ede3f3c38c9c219354d8a9ae6dbb9" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>tlm_target_bfs</name></member>
+      <member refid="classscc_1_1tlm__target__bfs__base_1a82aa508fcc77d505d3228b3d7295491c" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>tlm_target_bfs_base</name></member>
+      <member refid="classscc_1_1tlm__target_1a9357cca0258b1f1b2412ce4b6fee0723" prot="public" virt="non-virtual"><scope>scc::tlm_target_bfs</scope><name>tranport_dbg_cb</name></member>
+      <member refid="classscc_1_1tlm__target__bfs__base_1a0821d4d7bde7f154594e2fba16f42326" prot="public" virt="virtual"><scope>scc::tlm_target_bfs</scope><name>~tlm_target_bfs_base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

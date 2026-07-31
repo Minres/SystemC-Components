@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1MT19937" kind="class" language="C++" prot="public">
+    <compoundname>scc::MT19937</compoundname>
+    <includes refid="sysc_2scc_2mt19937__rng_8h" local="no">mt19937_rng.h</includes>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classscc_1_1MT19937_1ab26369d16719adf873abba2a7bf6d316" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::MT19937::seed</definition>
+        <argsstring>(uint64_t new_seed=std::mt19937_64::default_seed)</argsstring>
+        <name>seed</name>
+        <qualifiedname>scc::MT19937::seed</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>new_seed</declname>
+          <defval>std::mt19937_64::default_seed</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Seeds the mersenne twister PRNG with the given value</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>new_seed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.h" line="45" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.cpp" bodystart="62" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1MT19937_1a54788093e5b30c1d8ab38b67df905efc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::MT19937::enable_global_seed</definition>
+        <argsstring>(bool enable)</argsstring>
+        <name>enable_global_seed</name>
+        <qualifiedname>scc::MT19937::enable_global_seed</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>By default each SystemC process has its own MT rng with a modified seed based on the process name. If set to true each MT rng gets exactly the same seed thus producing the same sequence.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>use the same seed for all MT rng instances </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.h" line="53" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.cpp" bodystart="69" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1MT19937_1a7ea1c4d7480170eebe650fdd3985083c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>static uint64_t scc::MT19937::uniform</definition>
+        <argsstring>()</argsstring>
+        <name>uniform</name>
+        <qualifiedname>scc::MT19937::uniform</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generates the next random integer number with uniform distribution (similar to rand() )</para>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.h" line="60" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.h" bodystart="60" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1MT19937_1a99bf8e3d754a7b984e1407fe0a41780c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>static T scc::MT19937::uniform</definition>
+        <argsstring>()</argsstring>
+        <name>uniform</name>
+        <qualifiedname>scc::MT19937::uniform</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generates the next random integer number with uniform distribution in the range of the given type</para>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.h" line="69" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.h" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1MT19937_1a79da2a2af048aea0843e1900bf28aaa1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>static uint64_t scc::MT19937::uniform</definition>
+        <argsstring>(uint64_t min, uint64_t max)</argsstring>
+        <name>uniform</name>
+        <qualifiedname>scc::MT19937::uniform</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generates the next random integer number with uniform distribution between (and including) min and max</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>min</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the lower limit of the interval </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the upper limit of the interval </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.h" line="80" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.h" bodystart="80" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1MT19937_1a3050b87faa906c39cac21d9d8a1cc564" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>static double scc::MT19937::normal</definition>
+        <argsstring>()</argsstring>
+        <name>normal</name>
+        <qualifiedname>scc::MT19937::normal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generates the next random double precision float number with normal distribution (similar to rand() )</para>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.h" line="90" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.h" bodystart="90" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1MT19937_1a34a9d8629ffd4c8b19b820eee5eecbbf" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>static double scc::MT19937::lognormal</definition>
+        <argsstring>()</argsstring>
+        <name>lognormal</name>
+        <qualifiedname>scc::MT19937::lognormal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generates the next random integer number with log normal distribution (similar to rand() )</para>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.h" line="99" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.h" bodystart="99" bodyend="102"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classscc_1_1MT19937_1a3877189c1d050efef8eb9744304b40a7" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::mt19937_64 &amp;</type>
+        <definition>static std::mt19937_64 &amp; scc::MT19937::inst</definition>
+        <argsstring>()</argsstring>
+        <name>inst</name>
+        <qualifiedname>scc::MT19937::inst</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.h" line="105" column="28"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>a mersenne-twister based random number generator </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This random number generator provides various distribution of random numbers being specific to the SystemC process invoking the generator function. This makes the generator independent of the order of invocation in a delta cycle and allows to replay with the same seed </para>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.h" line="38" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/mt19937_rng.h" bodystart="38" bodyend="106"/>
+    <listofallmembers>
+      <member refid="classscc_1_1MT19937_1a54788093e5b30c1d8ab38b67df905efc" prot="public" virt="non-virtual"><scope>scc::MT19937</scope><name>enable_global_seed</name></member>
+      <member refid="classscc_1_1MT19937_1a3877189c1d050efef8eb9744304b40a7" prot="private" virt="non-virtual"><scope>scc::MT19937</scope><name>inst</name></member>
+      <member refid="classscc_1_1MT19937_1a34a9d8629ffd4c8b19b820eee5eecbbf" prot="public" virt="non-virtual"><scope>scc::MT19937</scope><name>lognormal</name></member>
+      <member refid="classscc_1_1MT19937_1a3050b87faa906c39cac21d9d8a1cc564" prot="public" virt="non-virtual"><scope>scc::MT19937</scope><name>normal</name></member>
+      <member refid="classscc_1_1MT19937_1ab26369d16719adf873abba2a7bf6d316" prot="public" virt="non-virtual"><scope>scc::MT19937</scope><name>seed</name></member>
+      <member refid="classscc_1_1MT19937_1a7ea1c4d7480170eebe650fdd3985083c" prot="public" virt="non-virtual"><scope>scc::MT19937</scope><name>uniform</name></member>
+      <member refid="classscc_1_1MT19937_1a99bf8e3d754a7b984e1407fe0a41780c" prot="public" virt="non-virtual"><scope>scc::MT19937</scope><name>uniform</name></member>
+      <member refid="classscc_1_1MT19937_1a79da2a2af048aea0843e1900bf28aaa1" prot="public" virt="non-virtual"><scope>scc::MT19937</scope><name>uniform</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="namespaceUtil" kind="namespace" language="C++">
+    <compoundname>Util</compoundname>
+    <innerclass refid="structUtil_1_1TagClassForLambda" prot="public">Util::TagClassForLambda</innerclass>
+    <innerclass refid="structUtil_1_1CallOnScopeExit" prot="public">Util::CallOnScopeExit</innerclass>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="defer_8h_1a0bce8b4e9e6159f2b0fd80cea537f15a" prot="public" static="no" constexpr="yes" mutable="no">
+        <type><ref refid="structUtil_1_1TagClassForLambda" kindref="compound">TagClassForLambda</ref></type>
+        <definition>TagClassForLambda Util::tagClassForLambda</definition>
+        <argsstring></argsstring>
+        <name>tagClassForLambda</name>
+        <qualifiedname>Util::tagClassForLambda</qualifiedname>
+        <briefdescription>
+<para>Use this &quot;instance&quot; to trigger overloaded operator -&gt;*. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The trick with tagClassForLambda is needed to infer the type of the lambda </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" line="55" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="defer_8h_1a1825cb1ff08d68a468a20567d7111f77" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Lambda</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structUtil_1_1CallOnScopeExit" kindref="compound">CallOnScopeExit</ref>&lt; Lambda &gt;</type>
+        <definition>CallOnScopeExit&lt; Lambda &gt; Util::operator-&gt;*</definition>
+        <argsstring>(const TagClassForLambda &amp;, Lambda lambda)</argsstring>
+        <name>operator-&gt;*</name>
+        <qualifiedname>Util::operator-&gt;*</qualifiedname>
+        <param>
+          <type>const <ref refid="structUtil_1_1TagClassForLambda" kindref="compound">TagClassForLambda</ref> &amp;</type>
+        </param>
+        <param>
+          <type>Lambda</type>
+          <declname>lambda</declname>
+        </param>
+        <briefdescription>
+<para>Helper operator to easy catch lambda for DEFER macro. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Use template to avoid slow std::function (raw lambda is copied/stored here) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" line="91" column="39" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" bodystart="91" bodyend="93"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" line="47" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1637 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classnonstd_1_1optional_3_01T_01_6_01_4" kind="class" language="C++" prot="public">
+    <compoundname>nonstd::optional&lt; T &amp; &gt;</compoundname>
+    <basecompoundref refid="structnonstd_1_1detail_1_1optional__move__assign__base" prot="private" virt="non-virtual">nonstd::detail::optional_move_assign_base&lt; T &gt;</basecompoundref>
+    <basecompoundref refid="structnonstd_1_1detail_1_1optional__delete__ctor__base" prot="private" virt="non-virtual">nonstd::detail::optional_delete_ctor_base&lt; T &gt;</basecompoundref>
+    <basecompoundref refid="structnonstd_1_1detail_1_1optional__delete__assign__base" prot="private" virt="non-virtual">nonstd::detail::optional_delete_assign_base&lt; T &gt;</basecompoundref>
+    <includes refid="optional_8hpp" local="no">optional.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a1583b5364b4eadc999a4fb556c7b3be1" prot="public" static="no">
+        <type>T &amp;</type>
+        <definition>using nonstd::optional&lt; T &amp; &gt;::value_type =  T&amp;</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1518" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1518" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classnonstd_1_1optional_3_01T_01_6_01_4_1ab275a0976199baafeabb93df7dad19bb" prot="private" static="no" mutable="no">
+        <type>T *</type>
+        <definition>T* nonstd::optional&lt; T &amp; &gt;::m_value</definition>
+        <argsstring></argsstring>
+        <name>m_value</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::m_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1635" column="7" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1635" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1aa5d34fa686c899ff3e11f54c257050e6" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type>TL_OPTIONAL_11_CONSTEXPR detail::invoke_result_t&lt; F, T &amp; &gt;</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR detail::invoke_result_t&lt; F, T &amp; &gt; nonstd::optional&lt; T &amp; &gt;::and_then</definition>
+        <argsstring>(F &amp;&amp;f) &amp;</argsstring>
+        <name>and_then</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::and_then</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Carries out some operation which returns an optional on the stored object if there is one. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1289" column="66" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1289" bodyend="1294"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1aeef96c0ff17f5470d2378d9609ed46d6" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type>TL_OPTIONAL_11_CONSTEXPR detail::invoke_result_t&lt; F, T &amp; &gt;</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR detail::invoke_result_t&lt; F, T &amp; &gt; nonstd::optional&lt; T &amp; &gt;::and_then</definition>
+        <argsstring>(F &amp;&amp;f) &amp;&amp;</argsstring>
+        <name>and_then</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::and_then</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1296" column="66" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1296" bodyend="1301"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1ab7da1a4ce3f96223e2030737a32141ec" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type>detail::invoke_result_t&lt; F, const T &amp; &gt;</type>
+        <definition>detail::invoke_result_t&lt; F, const T &amp; &gt; nonstd::optional&lt; T &amp; &gt;::and_then</definition>
+        <argsstring>(F &amp;&amp;f) const &amp;</argsstring>
+        <name>and_then</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::and_then</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1303" column="51" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1303" bodyend="1308"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a287dc3ba2d7f4065c41365aaaa29728c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type>detail::invoke_result_t&lt; F, const T &amp; &gt;</type>
+        <definition>detail::invoke_result_t&lt; F, const T &amp; &gt; nonstd::optional&lt; T &amp; &gt;::and_then</definition>
+        <argsstring>(F &amp;&amp;f) const &amp;&amp;</argsstring>
+        <name>and_then</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::and_then</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1311" column="51" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1311" bodyend="1316"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a77ea481de7311ceb053ae029992507f2" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type>TL_OPTIONAL_11_CONSTEXPR decltype(detail::optional_map_impl(std::declval&lt; <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp; &gt;(), std::declval&lt; F &amp;&amp; &gt;()))</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR decltype(detail::optional_map_impl(std::declval&lt; optional &amp; &gt;(), std::declval&lt; F &amp;&amp; &gt;())) nonstd::optional&lt; T &amp; &gt;::map</definition>
+        <argsstring>(F &amp;&amp;f) &amp;</argsstring>
+        <name>map</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::map</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>Carries out some operation on the stored object if there is one. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1334" column="39" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1334" bodyend="1336"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a78a611e3c10961c585b85610fe433f41" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type>TL_OPTIONAL_11_CONSTEXPR decltype(detail::optional_map_impl(std::declval&lt; <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;&amp; &gt;(), std::declval&lt; F &amp;&amp; &gt;()))</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR decltype(detail::optional_map_impl(std::declval&lt; optional &amp;&amp; &gt;(), std::declval&lt; F &amp;&amp; &gt;())) nonstd::optional&lt; T &amp; &gt;::map</definition>
+        <argsstring>(F &amp;&amp;f) &amp;&amp;</argsstring>
+        <name>map</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::map</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1339" column="39" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1339" bodyend="1341"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1ab5b04d6fedaf09deef7ea2de8b9fae76" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type>decltype(detail::optional_map_impl(std::declval&lt; const <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp; &gt;(), std::declval&lt; F &amp;&amp; &gt;()))</type>
+        <definition>decltype(detail::optional_map_impl(std::declval&lt; const optional &amp; &gt;(), std::declval&lt; F &amp;&amp; &gt;())) nonstd::optional&lt; T &amp; &gt;::map</definition>
+        <argsstring>(F &amp;&amp;f) const &amp;</argsstring>
+        <name>map</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::map</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1344" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1344" bodyend="1346"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a98836486369c2859c755b705063655ec" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type>decltype(detail::optional_map_impl(std::declval&lt; const <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;&amp; &gt;(), std::declval&lt; F &amp;&amp; &gt;()))</type>
+        <definition>decltype(detail::optional_map_impl(std::declval&lt; const optional &amp;&amp; &gt;(), std::declval&lt; F &amp;&amp; &gt;())) nonstd::optional&lt; T &amp; &gt;::map</definition>
+        <argsstring>(F &amp;&amp;f) const &amp;&amp;</argsstring>
+        <name>map</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::map</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1350" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1350" bodyend="1352"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a63b7decb0acdc07abe0a22780b09fa90" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type>TL_OPTIONAL_11_CONSTEXPR decltype(detail::optional_map_impl(std::declval&lt; <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp; &gt;(), std::declval&lt; F &amp;&amp; &gt;()))</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR decltype(detail::optional_map_impl(std::declval&lt; optional &amp; &gt;(), std::declval&lt; F &amp;&amp; &gt;())) nonstd::optional&lt; T &amp; &gt;::transform</definition>
+        <argsstring>(F &amp;&amp;f) &amp;</argsstring>
+        <name>transform</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::transform</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>Carries out some operation on the stored object if there is one. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1370" column="39" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1370" bodyend="1372"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a5314146288925974280acd8d6c0ef616" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type>TL_OPTIONAL_11_CONSTEXPR decltype(detail::optional_map_impl(std::declval&lt; <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;&amp; &gt;(), std::declval&lt; F &amp;&amp; &gt;()))</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR decltype(detail::optional_map_impl(std::declval&lt; optional &amp;&amp; &gt;(), std::declval&lt; F &amp;&amp; &gt;())) nonstd::optional&lt; T &amp; &gt;::transform</definition>
+        <argsstring>(F &amp;&amp;f) &amp;&amp;</argsstring>
+        <name>transform</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::transform</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>\group map \synopsis template &lt;class F&gt; auto transform(F &amp;&amp;f) &amp;&amp;; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1377" column="39" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1377" bodyend="1379"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a9d1b1dabfbf80790bf38de65346bca73" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type>decltype(detail::optional_map_impl(std::declval&lt; const <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp; &gt;(), std::declval&lt; F &amp;&amp; &gt;()))</type>
+        <definition>decltype(detail::optional_map_impl(std::declval&lt; const optional &amp; &gt;(), std::declval&lt; F &amp;&amp; &gt;())) nonstd::optional&lt; T &amp; &gt;::transform</definition>
+        <argsstring>(F &amp;&amp;f) const &amp;</argsstring>
+        <name>transform</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::transform</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1382" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1382" bodyend="1384"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a4e1e290b12035f4feace69d93b930db3" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type>decltype(detail::optional_map_impl(std::declval&lt; const <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;&amp; &gt;(), std::declval&lt; F &amp;&amp; &gt;()))</type>
+        <definition>decltype(detail::optional_map_impl(std::declval&lt; const optional &amp;&amp; &gt;(), std::declval&lt; F &amp;&amp; &gt;())) nonstd::optional&lt; T &amp; &gt;::transform</definition>
+        <argsstring>(F &amp;&amp;f) const &amp;&amp;</argsstring>
+        <name>transform</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::transform</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1388" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1388" bodyend="1390"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a09d842d27b21a39da8a0f941cafbbfe9" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>detail::enable_if_ret_void&lt; F &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref>&lt; T &gt; TL_OPTIONAL_11_CONSTEXPR</type>
+        <definition>optional&lt; T &gt; TL_OPTIONAL_11_CONSTEXPR nonstd::optional&lt; T &amp; &gt;::or_else</definition>
+        <argsstring>(F &amp;&amp;f) &amp;</argsstring>
+        <name>or_else</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::or_else</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>Calls <computeroutput>f</computeroutput> if the optional is empty. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1395" column="54" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1395" bodyend="1401"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a09d842d27b21a39da8a0f941cafbbfe9" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>detail::disable_if_ret_void&lt; F &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref>&lt; T &gt; TL_OPTIONAL_11_CONSTEXPR</type>
+        <definition>optional&lt; T &gt; TL_OPTIONAL_11_CONSTEXPR nonstd::optional&lt; T &amp; &gt;::or_else</definition>
+        <argsstring>(F &amp;&amp;f) &amp;</argsstring>
+        <name>or_else</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::or_else</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1403" column="54" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1403" bodyend="1405"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a804f0bc2f76e78940fbd6f45879980e3" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>detail::enable_if_ret_void&lt; F &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref>&lt; T &gt;</type>
+        <definition>optional&lt; T &gt; nonstd::optional&lt; T &amp; &gt;::or_else</definition>
+        <argsstring>(F &amp;&amp;f) &amp;&amp;</argsstring>
+        <name>or_else</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::or_else</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1407" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1407" bodyend="1413"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a17a86c632612de72d423f30740ae2db2" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>detail::disable_if_ret_void&lt; F &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref>&lt; T &gt; TL_OPTIONAL_11_CONSTEXPR</type>
+        <definition>optional&lt; T &gt; TL_OPTIONAL_11_CONSTEXPR nonstd::optional&lt; T &amp; &gt;::or_else</definition>
+        <argsstring>(F &amp;&amp;f) &amp;&amp;</argsstring>
+        <name>or_else</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::or_else</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1415" column="54" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1415" bodyend="1417"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a3ac189cc88e92d6e73f502fb2e5b7071" prot="public" static="no" const="yes" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>detail::enable_if_ret_void&lt; F &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref>&lt; T &gt;</type>
+        <definition>optional&lt; T &gt; nonstd::optional&lt; T &amp; &gt;::or_else</definition>
+        <argsstring>(F &amp;&amp;f) const &amp;</argsstring>
+        <name>or_else</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::or_else</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1419" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1419" bodyend="1425"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a4b0ccb6fd55ba13f64e031556fcc645e" prot="public" static="no" const="yes" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>detail::disable_if_ret_void&lt; F &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref>&lt; T &gt; TL_OPTIONAL_11_CONSTEXPR</type>
+        <definition>optional&lt; T &gt; TL_OPTIONAL_11_CONSTEXPR nonstd::optional&lt; T &amp; &gt;::or_else</definition>
+        <argsstring>(F &amp;&amp;f) const &amp;</argsstring>
+        <name>or_else</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::or_else</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1427" column="54" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1427" bodyend="1429"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a0691c114e90d59d389cb008efb49d9c8" prot="public" static="no" const="yes" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>detail::enable_if_ret_void&lt; F &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref>&lt; T &gt;</type>
+        <definition>optional&lt; T &gt; nonstd::optional&lt; T &amp; &gt;::or_else</definition>
+        <argsstring>(F &amp;&amp;f) const &amp;&amp;</argsstring>
+        <name>or_else</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::or_else</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1432" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1432" bodyend="1438"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a0691c114e90d59d389cb008efb49d9c8" prot="public" static="no" const="yes" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>detail::disable_if_ret_void&lt; F &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref>&lt; T &gt;</type>
+        <definition>optional&lt; T &gt; nonstd::optional&lt; T &amp; &gt;::or_else</definition>
+        <argsstring>(F &amp;&amp;f) const &amp;&amp;</argsstring>
+        <name>or_else</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::or_else</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1440" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1440" bodyend="1442"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1ac6db5ad81ade6a3d043a30de341c3838" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>U</type>
+        <definition>U nonstd::optional&lt; T &amp; &gt;::map_or</definition>
+        <argsstring>(F &amp;&amp;f, U &amp;&amp;u) &amp;</argsstring>
+        <name>map_or</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::map_or</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>U &amp;&amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+<para>Maps the stored value with <computeroutput>f</computeroutput> if there is one, otherwise returns <computeroutput>u</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1446" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1446" bodyend="1448"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1aa6689b602aaf6184ee34e0fc24e4d13b" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>U</type>
+        <definition>U nonstd::optional&lt; T &amp; &gt;::map_or</definition>
+        <argsstring>(F &amp;&amp;f, U &amp;&amp;u) &amp;&amp;</argsstring>
+        <name>map_or</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::map_or</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>U &amp;&amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1450" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1450" bodyend="1452"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a899d6201de72e91d4cd9c340bab6717c" prot="public" static="no" const="yes" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>U</type>
+        <definition>U nonstd::optional&lt; T &amp; &gt;::map_or</definition>
+        <argsstring>(F &amp;&amp;f, U &amp;&amp;u) const &amp;</argsstring>
+        <name>map_or</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::map_or</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>U &amp;&amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1454" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1454" bodyend="1456"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a91e2d398dae71d1dd7368871d511d8a9" prot="public" static="no" const="yes" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>U</type>
+        <definition>U nonstd::optional&lt; T &amp; &gt;::map_or</definition>
+        <argsstring>(F &amp;&amp;f, U &amp;&amp;u) const &amp;&amp;</argsstring>
+        <name>map_or</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::map_or</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>U &amp;&amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1459" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1459" bodyend="1461"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a2b15d4168cf97a458667356eb5b5f7c3" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>detail::invoke_result_t&lt; U &gt;</type>
+        <definition>detail::invoke_result_t&lt; U &gt; nonstd::optional&lt; T &amp; &gt;::map_or_else</definition>
+        <argsstring>(F &amp;&amp;f, U &amp;&amp;u) &amp;</argsstring>
+        <name>map_or_else</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::map_or_else</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>U &amp;&amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Maps the stored value with <computeroutput>f</computeroutput> if there is one, otherwise calls <computeroutput>u</computeroutput> and returns the result. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1466" column="43" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1466" bodyend="1468"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a731c36deff4574a1ca9686eab4026675" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>detail::invoke_result_t&lt; U &gt;</type>
+        <definition>detail::invoke_result_t&lt; U &gt; nonstd::optional&lt; T &amp; &gt;::map_or_else</definition>
+        <argsstring>(F &amp;&amp;f, U &amp;&amp;u) &amp;&amp;</argsstring>
+        <name>map_or_else</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::map_or_else</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>U &amp;&amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1470" column="43" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1470" bodyend="1472"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1aed4ea514c7f3a1b47342a247a6251754" prot="public" static="no" const="yes" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>detail::invoke_result_t&lt; U &gt;</type>
+        <definition>detail::invoke_result_t&lt; U &gt; nonstd::optional&lt; T &amp; &gt;::map_or_else</definition>
+        <argsstring>(F &amp;&amp;f, U &amp;&amp;u) const &amp;</argsstring>
+        <name>map_or_else</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::map_or_else</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>U &amp;&amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1474" column="43" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1474" bodyend="1476"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a755a5bc888d1059433647783034cd08e" prot="public" static="no" const="yes" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>detail::invoke_result_t&lt; U &gt;</type>
+        <definition>detail::invoke_result_t&lt; U &gt; nonstd::optional&lt; T &amp; &gt;::map_or_else</definition>
+        <argsstring>(F &amp;&amp;f, U &amp;&amp;u) const &amp;&amp;</argsstring>
+        <name>map_or_else</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::map_or_else</qualifiedname>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>U &amp;&amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1479" column="43" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1479" bodyend="1481"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a6f7206d36dd4fe1feaa8a79b30c758fc" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref>&lt; typename std::decay&lt; U &gt;::type &gt;</type>
+        <definition>optional&lt; typename std::decay&lt; U &gt;::type &gt; nonstd::optional&lt; T &amp; &gt;::conjunction</definition>
+        <argsstring>(U &amp;&amp;u) const</argsstring>
+        <name>conjunction</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::conjunction</qualifiedname>
+        <param>
+          <type>U &amp;&amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+<para>Returns <computeroutput>u</computeroutput> if <computeroutput>*this</computeroutput> has a value, otherwise an empty optional. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1485" column="37" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1485" bodyend="1488"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a4d5028540c8322eccfe63ac4538ac874" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <type>TL_OPTIONAL_11_CONSTEXPR <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref></type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR optional nonstd::optional&lt; T &amp; &gt;::disjunction</definition>
+        <argsstring>(const optional &amp;rhs) &amp;</argsstring>
+        <name>disjunction</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::disjunction</qualifiedname>
+        <param>
+          <type>const <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Returns <computeroutput>rhs</computeroutput> if <computeroutput>*this</computeroutput> is empty, otherwise the current value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1491" column="39" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1491" bodyend="1491"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a60d607cf728f7557a3555c0098583912" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref></type>
+        <definition>optional nonstd::optional&lt; T &amp; &gt;::disjunction</definition>
+        <argsstring>(const optional &amp;rhs) const &amp;</argsstring>
+        <name>disjunction</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::disjunction</qualifiedname>
+        <param>
+          <type>const <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1493" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1493" bodyend="1493"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a2edfed11e206889dd3bf12beafb9932b" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <type>TL_OPTIONAL_11_CONSTEXPR <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref></type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR optional nonstd::optional&lt; T &amp; &gt;::disjunction</definition>
+        <argsstring>(const optional &amp;rhs) &amp;&amp;</argsstring>
+        <name>disjunction</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::disjunction</qualifiedname>
+        <param>
+          <type>const <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1495" column="39" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1495" bodyend="1495"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a4789280e41e22f62135ed964d9277ea3" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref></type>
+        <definition>optional nonstd::optional&lt; T &amp; &gt;::disjunction</definition>
+        <argsstring>(const optional &amp;rhs) const &amp;&amp;</argsstring>
+        <name>disjunction</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::disjunction</qualifiedname>
+        <param>
+          <type>const <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1498" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1498" bodyend="1498"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a40bfc74913d074b3a189e46f14117149" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <type>TL_OPTIONAL_11_CONSTEXPR <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref></type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR optional nonstd::optional&lt; T &amp; &gt;::disjunction</definition>
+        <argsstring>(optional &amp;&amp;rhs) &amp;</argsstring>
+        <name>disjunction</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::disjunction</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1501" column="39" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1501" bodyend="1501"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a463251726bd453ed6b6bd17a7f265e3d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref></type>
+        <definition>optional nonstd::optional&lt; T &amp; &gt;::disjunction</definition>
+        <argsstring>(optional &amp;&amp;rhs) const &amp;</argsstring>
+        <name>disjunction</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::disjunction</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1503" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1503" bodyend="1503"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1af20c08cca6501707d310c6f60f0cb269" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <type>TL_OPTIONAL_11_CONSTEXPR <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref></type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR optional nonstd::optional&lt; T &amp; &gt;::disjunction</definition>
+        <argsstring>(optional &amp;&amp;rhs) &amp;&amp;</argsstring>
+        <name>disjunction</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::disjunction</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1505" column="39" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1505" bodyend="1505"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a5f6c73d3ba10a984dc31b356664c29fa" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref></type>
+        <definition>optional nonstd::optional&lt; T &amp; &gt;::disjunction</definition>
+        <argsstring>(optional &amp;&amp;rhs) const &amp;&amp;</argsstring>
+        <name>disjunction</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::disjunction</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1508" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1508" bodyend="1508"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1aa6c35bce48562bd7c02b273441d69d1b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref></type>
+        <definition>optional nonstd::optional&lt; T &amp; &gt;::take</definition>
+        <argsstring>()</argsstring>
+        <name>take</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::take</qualifiedname>
+        <briefdescription>
+<para>Takes the value out of the optional, leaving it empty. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1512" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1512" bodyend="1516"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>nonstd::optional&lt; T &amp; &gt;::optional</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>optional</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::optional</qualifiedname>
+        <briefdescription>
+<para>Constructs an optional that does not contain a value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1521" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1521" bodyend="1522"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a24b1c674b9510638b4b487b50f6db33b" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>nonstd::optional&lt; T &amp; &gt;::optional</definition>
+        <argsstring>(nullopt_t) noexcept</argsstring>
+        <name>optional</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::optional</qualifiedname>
+        <param>
+          <type><ref refid="structnonstd_1_1nullopt__t" kindref="compound">nullopt_t</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1524" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1524" bodyend="1525"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1af3c715463c96ca1fd609ebd96d2f7efc" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>TL_OPTIONAL_11_CONSTEXPR</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR nonstd::optional&lt; T &amp; &gt;::optional</definition>
+        <argsstring>(const optional &amp;rhs) noexcept=default</argsstring>
+        <name>optional</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::optional</qualifiedname>
+        <param>
+          <type>const optional &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy constructor</para>
+<para>If <computeroutput>rhs</computeroutput> contains a value, the stored value is direct-initialized with it. Otherwise, the constructed optional is empty. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1531" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a72c5d22f034d6edd35d9ed5915de7ec8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>TL_OPTIONAL_11_CONSTEXPR</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR nonstd::optional&lt; T &amp; &gt;::optional</definition>
+        <argsstring>(optional &amp;&amp;rhs)=default</argsstring>
+        <name>optional</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::optional</qualifiedname>
+        <param>
+          <type>optional &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Move constructor</para>
+<para>If <computeroutput>rhs</computeroutput> contains a value, the stored value is direct-initialized with it. Otherwise, the constructed optional is empty. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1537" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a828ffb26096fe3dc16f434de149e230b" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class U</type>
+            <defval>T</defval>
+          </param>
+          <param>
+            <type>detail::enable_if_t&lt;!detail::is_optional&lt; detail::decay_t&lt; U &gt; &gt;<ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a03c9344f0e15fd58176203880a5729f3" kindref="member">::value</ref> &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr</type>
+        <definition>nonstd::optional&lt; T &amp; &gt;::optional</definition>
+        <argsstring>(U &amp;&amp;u) noexcept</argsstring>
+        <name>optional</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::optional</qualifiedname>
+        <param>
+          <type>U &amp;&amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+<para>Constructs the stored value with <computeroutput>u</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1541" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1541" bodyend="1544"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1aa2ddbf7b3d313684365f81ad5b1d53a2" prot="public" static="no" constexpr="yes" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr</type>
+        <definition>nonstd::optional&lt; T &amp; &gt;::optional</definition>
+        <argsstring>(const optional&lt; U &gt; &amp;rhs) noexcept</argsstring>
+        <name>optional</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::optional</qualifiedname>
+        <param>
+          <type>const optional&lt; U &gt; &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1547" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1547" bodyend="1548"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1ab300f9a216c11ac32a89974aa4f8d1c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>nonstd::optional&lt; T &amp; &gt;::~optional</definition>
+        <argsstring>()=default</argsstring>
+        <name>~optional</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::~optional</qualifiedname>
+        <briefdescription>
+<para>No-op. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1551" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a0ec7edd1129d75faa7c12bc449c97397" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;</type>
+        <definition>optional &amp; nonstd::optional&lt; T &amp; &gt;::operator=</definition>
+        <argsstring>(nullopt_t) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::operator=</qualifiedname>
+        <param>
+          <type><ref refid="structnonstd_1_1nullopt__t" kindref="compound">nullopt_t</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Assignment to empty.</para>
+<para>Destroys the current value if there is one. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1556" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1556" bodyend="1559"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a6fdb3f7405aa3cabb0821d14afd78a34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;</type>
+        <definition>optional &amp; nonstd::optional&lt; T &amp; &gt;::operator=</definition>
+        <argsstring>(const optional &amp;rhs)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy assignment.</para>
+<para>Rebinds this optional to the referee of <computeroutput>rhs</computeroutput> if there is one. Otherwise resets the stored value in <computeroutput>*this</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1565" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a493cda04e1d5300bf65d63c91aaeca52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class U</type>
+            <defval>T</defval>
+          </param>
+          <param>
+            <type>detail::enable_if_t&lt;!detail::is_optional&lt; detail::decay_t&lt; U &gt; &gt;<ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a03c9344f0e15fd58176203880a5729f3" kindref="member">::value</ref> &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;</type>
+        <definition>optional &amp; nonstd::optional&lt; T &amp; &gt;::operator=</definition>
+        <argsstring>(U &amp;&amp;u)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::operator=</qualifiedname>
+        <param>
+          <type>U &amp;&amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+<para>Rebinds this optional to <computeroutput>u</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1568" column="31" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1568" bodyend="1572"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a3c0ff39869a3be6e6b0b335051109318" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;</type>
+        <definition>optional &amp; nonstd::optional&lt; T &amp; &gt;::operator=</definition>
+        <argsstring>(const optional&lt; U &gt; &amp;rhs) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref>&lt; U &gt; &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Converting copy assignment operator.</para>
+<para>Rebinds this optional to the referee of <computeroutput>rhs</computeroutput> if there is one. Otherwise resets the stored value in <computeroutput>*this</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1578" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1578" bodyend="1581"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1acf41ddfec082eb592ee52692b9e3e3ca" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class U</type>
+            <defval>T</defval>
+          </param>
+          <param>
+            <type>detail::enable_if_t&lt;!detail::is_optional&lt; detail::decay_t&lt; U &gt; &gt;<ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a03c9344f0e15fd58176203880a5729f3" kindref="member">::value</ref> &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;</type>
+        <definition>optional &amp; nonstd::optional&lt; T &amp; &gt;::emplace</definition>
+        <argsstring>(U &amp;&amp;u) noexcept</argsstring>
+        <name>emplace</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::emplace</qualifiedname>
+        <param>
+          <type>U &amp;&amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+<para>Rebinds this optional to <computeroutput>u</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1585" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1585" bodyend="1587"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a659cb43d4e1a8409d9e2e7060a5b3cdd" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void nonstd::optional&lt; T &amp; &gt;::swap</definition>
+        <argsstring>(optional &amp;rhs) noexcept</argsstring>
+        <name>swap</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::swap</qualifiedname>
+        <param>
+          <type><ref refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" kindref="member">optional</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1589" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1589" bodyend="1589"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a5d1d58c4ccc17d7d32e93cac95da57fd" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const T *</type>
+        <definition>const T * nonstd::optional&lt; T &amp; &gt;::operator-&gt;</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator-&gt;</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::operator-&gt;</qualifiedname>
+        <briefdescription>
+<para>Returns a pointer to the stored value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1592" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1592" bodyend="1592"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a10738377c5bb29ca29dfabd89e13c82a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>TL_OPTIONAL_11_CONSTEXPR T *</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR T * nonstd::optional&lt; T &amp; &gt;::operator-&gt;</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>operator-&gt;</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::operator-&gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1594" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1594" bodyend="1594"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a8580add7a17991b28a52e16e038d8970" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>TL_OPTIONAL_11_CONSTEXPR T &amp;</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR T &amp; nonstd::optional&lt; T &amp; &gt;::operator*</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>operator*</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::operator*</qualifiedname>
+        <briefdescription>
+<para>Returns the stored value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1597" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1597" bodyend="1597"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1afffb39b728728a7b80cd8e44842433a0" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const T &amp;</type>
+        <definition>const T &amp; nonstd::optional&lt; T &amp; &gt;::operator*</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator*</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::operator*</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1599" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1599" bodyend="1599"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1aa4152bb85ea60b1e3c9c1f3375545648" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool nonstd::optional&lt; T &amp; &gt;::has_value</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>has_value</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::has_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1601" column="20" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1601" bodyend="1601"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a10021dd1045cc256d7140eb32c640495" prot="public" static="no" constexpr="yes" const="yes" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>nonstd::optional&lt; T &amp; &gt;::operator bool</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::operator bool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1603" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1603" bodyend="1603"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a03c9344f0e15fd58176203880a5729f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TL_OPTIONAL_11_CONSTEXPR T &amp;</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR T &amp; nonstd::optional&lt; T &amp; &gt;::value</definition>
+        <argsstring>()</argsstring>
+        <name>value</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::value</qualifiedname>
+        <briefdescription>
+<para>Returns the contained value if there is one, otherwise throws <ref refid="classnonstd_1_1bad__optional__access" kindref="compound">bad_optional_access</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1606" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1606" bodyend="1610"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1aa7ce535ff07f3776b7a4e435d1a6fab4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>TL_OPTIONAL_11_CONSTEXPR const T &amp;</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR const T &amp; nonstd::optional&lt; T &amp; &gt;::value</definition>
+        <argsstring>() const</argsstring>
+        <name>value</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1611" column="38" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1611" bodyend="1615"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a988e72c09716726f8bcbf2fa49fe5fe6" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" refqual="lvalue" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T nonstd::optional&lt; T &amp; &gt;::value_or</definition>
+        <argsstring>(U &amp;&amp;u) const &amp;noexcept</argsstring>
+        <name>value_or</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::value_or</qualifiedname>
+        <param>
+          <type>U &amp;&amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+<para>Returns the stored value if there is one, otherwise returns <computeroutput>u</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1618" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1618" bodyend="1622"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1a1753b39ac05dd04556567e6c67fec66f" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="rvalue" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>TL_OPTIONAL_11_CONSTEXPR T</type>
+        <definition>TL_OPTIONAL_11_CONSTEXPR T nonstd::optional&lt; T &amp; &gt;::value_or</definition>
+        <argsstring>(U &amp;&amp;u) &amp;&amp;noexcept</argsstring>
+        <name>value_or</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::value_or</qualifiedname>
+        <param>
+          <type>U &amp;&amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+<para>\group value_or </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1625" column="44" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1625" bodyend="1629"/>
+      </memberdef>
+      <memberdef kind="function" id="classnonstd_1_1optional_3_01T_01_6_01_4_1aebdb9500fd44051e4df2b32d01ac79dd" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void nonstd::optional&lt; T &amp; &gt;::reset</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>reset</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::reset</qualifiedname>
+        <briefdescription>
+<para>Destroys the stored value if one exists, making the optional empty. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1632" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1632" bodyend="1632"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classnonstd_1_1optional_1a1ac22f0e1d7cc44a8fcfb6ac39e35336" prot="private" static="no">
+        <type><ref refid="structnonstd_1_1detail_1_1optional__move__assign__base" kindref="compound">detail::optional_move_assign_base</ref>&lt; T &gt;</type>
+        <definition>using nonstd::optional&lt; T &gt;::base = </definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <qualifiedname>nonstd::optional&lt; T &amp; &gt;::base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="580" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="580" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Specialization for when <computeroutput>T</computeroutput> is a reference. <computeroutput><ref refid="classnonstd_1_1optional" kindref="compound">optional</ref>&lt;T&amp;&gt;</computeroutput> acts similarly to a <computeroutput>T*</computeroutput>, but provides more operations and shows intent more clearly. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>nonstd::detail::optional_copy_assign_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__copy__assign__base"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>nonstd::detail::optional_copy_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__copy__base"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>nonstd::detail::optional_delete_assign_base&lt; T, EnableCopy, EnableMove &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__delete__assign__base"/>
+      </node>
+      <node id="8">
+        <label>nonstd::detail::optional_delete_ctor_base&lt; T, EnableCopy, EnableMove &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__delete__ctor__base"/>
+      </node>
+      <node id="2">
+        <label>nonstd::detail::optional_move_assign_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__move__assign__base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>nonstd::detail::optional_move_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__move__base"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>nonstd::detail::optional_operations_base&lt; T &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__operations__base"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>nonstd::detail::optional_storage_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__storage__base"/>
+      </node>
+      <node id="1">
+        <label>nonstd::optional&lt; T &amp; &gt;</label>
+        <link refid="classnonstd_1_1optional_3_01T_01_6_01_4"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="8" relation="private-inheritance">
+        </childnode>
+        <childnode refid="9" relation="private-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>nonstd::detail::optional_copy_assign_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__copy__assign__base"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>nonstd::detail::optional_copy_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__copy__base"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>nonstd::detail::optional_delete_assign_base&lt; T, EnableCopy, EnableMove &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__delete__assign__base"/>
+      </node>
+      <node id="9">
+        <label>nonstd::detail::optional_delete_ctor_base&lt; T, EnableCopy, EnableMove &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__delete__ctor__base"/>
+      </node>
+      <node id="2">
+        <label>nonstd::detail::optional_move_assign_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__move__assign__base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>nonstd::detail::optional_move_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__move__base"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>nonstd::detail::optional_operations_base&lt; T &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__operations__base"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>nonstd::detail::optional_storage_base&lt; T, bool &gt;::dummy</label>
+        <link refid="structnonstd_1_1detail_1_1optional__storage__base_1_1dummy"/>
+      </node>
+      <node id="7">
+        <label>nonstd::detail::optional_storage_base&lt; T, bool &gt;</label>
+        <link refid="structnonstd_1_1detail_1_1optional__storage__base"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>m_dummy</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>nonstd::optional&lt; T &amp; &gt;</label>
+        <link refid="classnonstd_1_1optional_3_01T_01_6_01_4"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+        <childnode refid="9" relation="private-inheritance">
+        </childnode>
+        <childnode refid="10" relation="private-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" line="1247" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/nonstd/optional.hpp" bodystart="1247" bodyend="1636"/>
+    <listofallmembers>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1aa5d34fa686c899ff3e11f54c257050e6" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>and_then</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1aeef96c0ff17f5470d2378d9609ed46d6" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>and_then</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ab7da1a4ce3f96223e2030737a32141ec" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>and_then</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a287dc3ba2d7f4065c41365aaaa29728c" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>and_then</name></member>
+      <member refid="classnonstd_1_1optional_1a1ac22f0e1d7cc44a8fcfb6ac39e35336" prot="private" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>base</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a6f7206d36dd4fe1feaa8a79b30c758fc" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>conjunction</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a4d5028540c8322eccfe63ac4538ac874" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>disjunction</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a60d607cf728f7557a3555c0098583912" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>disjunction</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a2edfed11e206889dd3bf12beafb9932b" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>disjunction</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a4789280e41e22f62135ed964d9277ea3" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>disjunction</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a40bfc74913d074b3a189e46f14117149" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>disjunction</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a463251726bd453ed6b6bd17a7f265e3d" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>disjunction</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1af20c08cca6501707d310c6f60f0cb269" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>disjunction</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a5f6c73d3ba10a984dc31b356664c29fa" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>disjunction</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1acf41ddfec082eb592ee52692b9e3e3ca" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>emplace</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1aa4152bb85ea60b1e3c9c1f3375545648" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>has_value</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ab275a0976199baafeabb93df7dad19bb" prot="private" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>m_value</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a77ea481de7311ceb053ae029992507f2" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>map</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a78a611e3c10961c585b85610fe433f41" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>map</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ab5b04d6fedaf09deef7ea2de8b9fae76" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>map</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a98836486369c2859c755b705063655ec" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>map</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ac6db5ad81ade6a3d043a30de341c3838" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>map_or</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1aa6689b602aaf6184ee34e0fc24e4d13b" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>map_or</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a899d6201de72e91d4cd9c340bab6717c" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>map_or</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a91e2d398dae71d1dd7368871d511d8a9" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>map_or</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a2b15d4168cf97a458667356eb5b5f7c3" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>map_or_else</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a731c36deff4574a1ca9686eab4026675" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>map_or_else</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1aed4ea514c7f3a1b47342a247a6251754" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>map_or_else</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a755a5bc888d1059433647783034cd08e" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>map_or_else</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a10021dd1045cc256d7140eb32c640495" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>operator bool</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a8580add7a17991b28a52e16e038d8970" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>operator*</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1afffb39b728728a7b80cd8e44842433a0" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>operator*</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a5d1d58c4ccc17d7d32e93cac95da57fd" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>operator-&gt;</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a10738377c5bb29ca29dfabd89e13c82a" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>operator-&gt;</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a0ec7edd1129d75faa7c12bc449c97397" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>operator=</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a6fdb3f7405aa3cabb0821d14afd78a34" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>operator=</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a493cda04e1d5300bf65d63c91aaeca52" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>operator=</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a3c0ff39869a3be6e6b0b335051109318" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>operator=</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__delete__ctor__base_1ac3589d179a0525eb069288c27b9b9bca" prot="private" virt="non-virtual" ambiguityscope="nonstd::detail::optional_delete_ctor_base::"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>operator=</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__delete__ctor__base_1adf1ae36bfe6c16829337edfced201ba3" prot="private" virt="non-virtual" ambiguityscope="nonstd::detail::optional_delete_ctor_base::"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>operator=</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__delete__assign__base_1a502cc02ef258d76293a42b87a6f467fb" prot="private" virt="non-virtual" ambiguityscope="nonstd::detail::optional_delete_assign_base::"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>operator=</name></member>
+      <member refid="structnonstd_1_1detail_1_1optional__delete__assign__base_1a14c8476e6c7001dd4f4bd4862e52915c" prot="private" virt="non-virtual" ambiguityscope="nonstd::detail::optional_delete_assign_base::"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>operator=</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ad495e7eb8b4d1ad67c931e51ef127206" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>optional</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a24b1c674b9510638b4b487b50f6db33b" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>optional</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1af3c715463c96ca1fd609ebd96d2f7efc" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>optional</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a72c5d22f034d6edd35d9ed5915de7ec8" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>optional</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a828ffb26096fe3dc16f434de149e230b" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>optional</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1aa2ddbf7b3d313684365f81ad5b1d53a2" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>optional</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a09d842d27b21a39da8a0f941cafbbfe9" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>or_else</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a09d842d27b21a39da8a0f941cafbbfe9" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>or_else</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a804f0bc2f76e78940fbd6f45879980e3" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>or_else</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a17a86c632612de72d423f30740ae2db2" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>or_else</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a3ac189cc88e92d6e73f502fb2e5b7071" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>or_else</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a4b0ccb6fd55ba13f64e031556fcc645e" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>or_else</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a0691c114e90d59d389cb008efb49d9c8" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>or_else</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a0691c114e90d59d389cb008efb49d9c8" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>or_else</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1aebdb9500fd44051e4df2b32d01ac79dd" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>reset</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a659cb43d4e1a8409d9e2e7060a5b3cdd" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>swap</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1aa6c35bce48562bd7c02b273441d69d1b" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>take</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a63b7decb0acdc07abe0a22780b09fa90" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>transform</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a5314146288925974280acd8d6c0ef616" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>transform</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a9d1b1dabfbf80790bf38de65346bca73" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>transform</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a4e1e290b12035f4feace69d93b930db3" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>transform</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a03c9344f0e15fd58176203880a5729f3" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>value</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1aa7ce535ff07f3776b7a4e435d1a6fab4" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>value</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a988e72c09716726f8bcbf2fa49fe5fe6" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>value_or</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a1753b39ac05dd04556567e6c67fec66f" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>value_or</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1a1583b5364b4eadc999a4fb556c7b3be1" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>value_type</name></member>
+      <member refid="classnonstd_1_1optional_3_01T_01_6_01_4_1ab300f9a216c11ac32a89974aa4f8d1c8" prot="public" virt="non-virtual"><scope>nonstd::optional&lt; T &amp; &gt;</scope><name>~optional</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_9515dfed6db8f8b82639dcc500aa5d7f" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv</compoundname>
+    <innerfile refid="nw_2scv_2tlm__recorder_8cpp">tlm_recorder.cpp</innerfile>
+    <innerfile refid="nw_2scv_2tlm__recorder_8h">tlm_recorder.h</innerfile>
+    <innerfile refid="sysc_2tlm_2nw_2scv_2tlm__recorder__module_8h">tlm_recorder_module.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/tlm/nw/scv/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1async__queue" kind="struct" language="C++" prot="public">
+    <compoundname>scc::async_queue</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_prim_channel</basecompoundref>
+    <basecompoundref refid="structscc_1_1async__source__if" prot="public" virt="non-virtual">scc::async_source_if&lt; T &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1async__queue_1a467aae4dec0e3a009bccefbe2feaf1f1" prot="private" static="no" mutable="no">
+        <type><ref refid="classrigtorp_1_1SPSCQueue" kindref="compound">rigtorp::SPSCQueue</ref>&lt; T &gt;</type>
+        <definition>rigtorp::SPSCQueue&lt;T&gt; scc::async_queue&lt; T &gt;::que</definition>
+        <argsstring></argsstring>
+        <name>que</name>
+        <qualifiedname>scc::async_queue::que</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" line="52" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1async__queue_1ae35abbd44d85c5b5d337cbe5fba68266" prot="private" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event scc::async_queue&lt; T &gt;::ev_</definition>
+        <argsstring></argsstring>
+        <name>ev_</name>
+        <qualifiedname>scc::async_queue::ev_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" line="53" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structscc_1_1async__queue_1ab49f799f0624a2f3a8c6a3343106eb98" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; scc::async_queue&lt; T &gt;::pending_update</definition>
+        <argsstring></argsstring>
+        <name>pending_update</name>
+        <qualifiedname>scc::async_queue::pending_update</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" line="54" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" bodystart="54" bodyend="54"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1async__queue_1a86bc57c1d3539e5df388316150f2b3d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::async_queue&lt; T &gt;::async_queue</definition>
+        <argsstring>(unsigned size=16)</argsstring>
+        <name>async_queue</name>
+        <qualifiedname>scc::async_queue::async_queue</qualifiedname>
+        <param>
+          <type>unsigned</type>
+          <declname>size</declname>
+          <defval>16</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" line="15" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" bodystart="15" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1async__queue_1a9bbc186b1076d57b0b60454ee8f4079d" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::async_queue&lt; T &gt;::async_queue</definition>
+        <argsstring>(const char *nm, unsigned size=16)</argsstring>
+        <name>async_queue</name>
+        <qualifiedname>scc::async_queue::async_queue</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>nm</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>size</declname>
+          <defval>16</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" line="18" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" bodystart="18" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1async__queue_1a820ef7b9b6cedeb57c1525e729f13bed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::async_queue&lt; T &gt;::push</definition>
+        <argsstring>(T const &amp;v)</argsstring>
+        <name>push</name>
+        <qualifiedname>scc::async_queue::push</qualifiedname>
+        <param>
+          <type>T const &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" line="22" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" bodystart="22" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1async__queue_1a132e7e6091a03e094955bef690adc48d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::async_queue&lt; T &gt;::emplace</definition>
+        <argsstring>(T &amp;&amp;v)</argsstring>
+        <name>emplace</name>
+        <qualifiedname>scc::async_queue::emplace</qualifiedname>
+        <param>
+          <type>T &amp;&amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" line="28" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" bodystart="28" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1async__queue_1a6fa8bd9b3c6c7e9b0f8df1999fda731d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool scc::async_queue&lt; T &gt;::try_get</definition>
+        <argsstring>(T &amp;v) override</argsstring>
+        <name>try_get</name>
+        <qualifiedname>scc::async_queue::try_get</qualifiedname>
+        <reimplements refid="structscc_1_1async__source__if_1a721b9568212f5897690c5181df00679c">try_get</reimplements>
+        <param>
+          <type>T &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" line="34" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" bodystart="34" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1async__queue_1adf97d7490da876d88211c727df547391" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const sc_core::sc_event &amp;</type>
+        <definition>const sc_core::sc_event &amp; scc::async_queue&lt; T &gt;::data_event</definition>
+        <argsstring>() const override</argsstring>
+        <name>data_event</name>
+        <qualifiedname>scc::async_queue::data_event</qualifiedname>
+        <reimplements refid="structscc_1_1async__source__if_1a3e3ca0349a9b69891c9bac56fc6f0f21">data_event</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" line="45" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structscc_1_1async__queue_1a0f83a9b206a417baf16c9f7c5fc56c92" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::async_queue&lt; T &gt;::update</definition>
+        <argsstring>() override</argsstring>
+        <name>update</name>
+        <qualifiedname>scc::async_queue::update</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" line="48" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" bodystart="48" bodyend="51"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_prim_channel</label>
+      </node>
+      <node id="1">
+        <label>scc::async_queue&lt; T &gt;</label>
+        <link refid="structscc_1_1async__queue"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scc::async_source_if&lt; T &gt;</label>
+        <link refid="structscc_1_1async__source__if"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>sc_core::sc_interface</label>
+      </node>
+      <node id="2">
+        <label>sc_core::sc_prim_channel</label>
+      </node>
+      <node id="1">
+        <label>scc::async_queue&lt; T &gt;</label>
+        <link refid="structscc_1_1async__queue"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scc::async_source_if&lt; T &gt;</label>
+        <link refid="structscc_1_1async__source__if"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" line="13" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/async_queue.h" bodystart="13" bodyend="55"/>
+    <listofallmembers>
+      <member refid="structscc_1_1async__queue_1a86bc57c1d3539e5df388316150f2b3d0" prot="public" virt="non-virtual"><scope>scc::async_queue</scope><name>async_queue</name></member>
+      <member refid="structscc_1_1async__queue_1a9bbc186b1076d57b0b60454ee8f4079d" prot="public" virt="non-virtual"><scope>scc::async_queue</scope><name>async_queue</name></member>
+      <member refid="structscc_1_1async__queue_1adf97d7490da876d88211c727df547391" prot="public" virt="virtual"><scope>scc::async_queue</scope><name>data_event</name></member>
+      <member refid="structscc_1_1async__queue_1a132e7e6091a03e094955bef690adc48d" prot="public" virt="non-virtual"><scope>scc::async_queue</scope><name>emplace</name></member>
+      <member refid="structscc_1_1async__queue_1ae35abbd44d85c5b5d337cbe5fba68266" prot="private" virt="non-virtual"><scope>scc::async_queue</scope><name>ev_</name></member>
+      <member refid="structscc_1_1async__queue_1ab49f799f0624a2f3a8c6a3343106eb98" prot="private" virt="non-virtual"><scope>scc::async_queue</scope><name>pending_update</name></member>
+      <member refid="structscc_1_1async__queue_1a820ef7b9b6cedeb57c1525e729f13bed" prot="public" virt="non-virtual"><scope>scc::async_queue</scope><name>push</name></member>
+      <member refid="structscc_1_1async__queue_1a467aae4dec0e3a009bccefbe2feaf1f1" prot="private" virt="non-virtual"><scope>scc::async_queue</scope><name>que</name></member>
+      <member refid="structscc_1_1async__queue_1a6fa8bd9b3c6c7e9b0f8df1999fda731d" prot="public" virt="virtual"><scope>scc::async_queue</scope><name>try_get</name></member>
+      <member refid="structscc_1_1async__queue_1a0f83a9b206a417baf16c9f7c5fc56c92" prot="private" virt="non-virtual"><scope>scc::async_queue</scope><name>update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

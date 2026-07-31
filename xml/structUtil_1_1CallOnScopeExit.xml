@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structUtil_1_1CallOnScopeExit" kind="struct" language="C++" prot="public">
+    <compoundname>Util::CallOnScopeExit</compoundname>
+    <includes refid="defer_8h" local="no">defer.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class Lambda</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structUtil_1_1CallOnScopeExit_1acfd288a8c070a90464fd2d9e1c070bd6" prot="private" static="no" mutable="no">
+        <type>const Lambda</type>
+        <definition>const Lambda Util::CallOnScopeExit&lt; Lambda &gt;::lambda</definition>
+        <argsstring></argsstring>
+        <name>lambda</name>
+        <qualifiedname>Util::CallOnScopeExit::lambda</qualifiedname>
+        <briefdescription>
+<para>Hold lambda, avoid slow std::function here. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" line="84" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structUtil_1_1CallOnScopeExit_1ab3d1e393c5a11ff3b86a7e201ea42dd5" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Util::CallOnScopeExit&lt; Lambda &gt;::isOwner</definition>
+        <argsstring></argsstring>
+        <name>isOwner</name>
+        <qualifiedname>Util::CallOnScopeExit::isOwner</qualifiedname>
+        <briefdescription>
+<para>Ensure 100% lambda is called only one time. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" line="85" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structUtil_1_1CallOnScopeExit_1a8e24ac5152a7cdf0674948a9d4831ace" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>Util::CallOnScopeExit&lt; Lambda &gt;::CallOnScopeExit</definition>
+        <argsstring>(Lambda initialLambda)</argsstring>
+        <name>CallOnScopeExit</name>
+        <qualifiedname>Util::CallOnScopeExit::CallOnScopeExit</qualifiedname>
+        <param>
+          <type>Lambda</type>
+          <declname>initialLambda</declname>
+        </param>
+        <briefdescription>
+<para>Create RAII wrapper around Lambda. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Using Lambda directly, optimizer takes case due to [&amp;]() in front </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" line="61" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" bodystart="61" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="structUtil_1_1CallOnScopeExit_1a65862889c72505f5f9e072fb9b2d27b5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Util::CallOnScopeExit&lt; Lambda &gt;::CallOnScopeExit</definition>
+        <argsstring>(CallOnScopeExit &amp;&amp;other)</argsstring>
+        <name>CallOnScopeExit</name>
+        <qualifiedname>Util::CallOnScopeExit::CallOnScopeExit</qualifiedname>
+        <param>
+          <type>CallOnScopeExit &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Usually optimized away due to RVO. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" line="66" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" bodystart="66" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="structUtil_1_1CallOnScopeExit_1a6288bc2cc47c56edecd30b45da43dae7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Util::CallOnScopeExit&lt; Lambda &gt;::CallOnScopeExit</definition>
+        <argsstring>(const CallOnScopeExit &amp;other)=delete</argsstring>
+        <name>CallOnScopeExit</name>
+        <qualifiedname>Util::CallOnScopeExit::CallOnScopeExit</qualifiedname>
+        <param>
+          <type>const CallOnScopeExit &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" line="73" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structUtil_1_1CallOnScopeExit_1a19d4d941ddfdad8207dcf547c181a04b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structUtil_1_1CallOnScopeExit_1a8e24ac5152a7cdf0674948a9d4831ace" kindref="member">CallOnScopeExit</ref> &amp;</type>
+        <definition>CallOnScopeExit &amp; Util::CallOnScopeExit&lt; Lambda &gt;::operator=</definition>
+        <argsstring>(const CallOnScopeExit &amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Util::CallOnScopeExit::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="structUtil_1_1CallOnScopeExit_1a8e24ac5152a7cdf0674948a9d4831ace" kindref="member">CallOnScopeExit</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" line="74" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="structUtil_1_1CallOnScopeExit_1ad3c9a7b9e35923247ea3ad0345bba97a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Util::CallOnScopeExit&lt; Lambda &gt;::~CallOnScopeExit</definition>
+        <argsstring>()</argsstring>
+        <name>~CallOnScopeExit</name>
+        <qualifiedname>Util::CallOnScopeExit::~CallOnScopeExit</qualifiedname>
+        <briefdescription>
+<para>Actual lambda call once <ref refid="structUtil_1_1CallOnScopeExit" kindref="compound">CallOnScopeExit</ref> goes out of scope. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" line="77" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" bodystart="77" bodyend="81"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>RAII for implementing DEFER behavior. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" line="58" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/defer.h" bodystart="58" bodyend="86"/>
+    <listofallmembers>
+      <member refid="structUtil_1_1CallOnScopeExit_1a8e24ac5152a7cdf0674948a9d4831ace" prot="public" virt="non-virtual"><scope>Util::CallOnScopeExit</scope><name>CallOnScopeExit</name></member>
+      <member refid="structUtil_1_1CallOnScopeExit_1a65862889c72505f5f9e072fb9b2d27b5" prot="public" virt="non-virtual"><scope>Util::CallOnScopeExit</scope><name>CallOnScopeExit</name></member>
+      <member refid="structUtil_1_1CallOnScopeExit_1a6288bc2cc47c56edecd30b45da43dae7" prot="public" virt="non-virtual"><scope>Util::CallOnScopeExit</scope><name>CallOnScopeExit</name></member>
+      <member refid="structUtil_1_1CallOnScopeExit_1ab3d1e393c5a11ff3b86a7e201ea42dd5" prot="private" virt="non-virtual"><scope>Util::CallOnScopeExit</scope><name>isOwner</name></member>
+      <member refid="structUtil_1_1CallOnScopeExit_1acfd288a8c070a90464fd2d9e1c070bd6" prot="private" virt="non-virtual"><scope>Util::CallOnScopeExit</scope><name>lambda</name></member>
+      <member refid="structUtil_1_1CallOnScopeExit_1a19d4d941ddfdad8207dcf547c181a04b" prot="public" virt="non-virtual"><scope>Util::CallOnScopeExit</scope><name>operator=</name></member>
+      <member refid="structUtil_1_1CallOnScopeExit_1ad3c9a7b9e35923247ea3ad0345bba97a" prot="public" virt="non-virtual"><scope>Util::CallOnScopeExit</scope><name>~CallOnScopeExit</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

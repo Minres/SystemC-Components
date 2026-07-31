@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="dir_4b4439fcc6b4628cd8783772fc9df8bf" kind="dir">
+    <compoundname>/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc</compoundname>
+    <innerdir refid="dir_c5f3a60db2d5a61d49bdf2995fbb374d">/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/tcp4tlm</innerdir>
+    <innerfile refid="clock__if__mixins_8h">clock_if_mixins.h</innerfile>
+    <innerfile refid="dmi__mgr_8h">dmi_mgr.h</innerfile>
+    <innerfile refid="memory_8h">memory.h</innerfile>
+    <innerfile refid="register_8h">register.h</innerfile>
+    <innerfile refid="resetable_8h">resetable.h</innerfile>
+    <innerfile refid="resource__access__if_8h">resource_access_if.h</innerfile>
+    <innerfile refid="router_8h">router.h</innerfile>
+    <innerfile refid="socket__width__adapter_8h">socket_width_adapter.h</innerfile>
+    <innerfile refid="tcp4tlm__bridge_8cpp">tcp4tlm_bridge.cpp</innerfile>
+    <innerfile refid="tcp4tlm__bridge_8h">tcp4tlm_bridge.h</innerfile>
+    <innerfile refid="tcp4tlm__client_8cpp">tcp4tlm_client.cpp</innerfile>
+    <innerfile refid="tcp4tlm__client_8h">tcp4tlm_client.h</innerfile>
+    <innerfile refid="tcp4tlm__server_8cpp">tcp4tlm_server.cpp</innerfile>
+    <innerfile refid="tcp4tlm__server_8h">tcp4tlm_server.h</innerfile>
+    <innerfile refid="tlm__target_8h">tlm_target.h</innerfile>
+    <innerfile refid="tlm__target__bfs_8h">tlm_target_bfs.h</innerfile>
+    <innerfile refid="tlm__target__bfs__register__base_8h">tlm_target_bfs_register_base.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/"/>
+  </compounddef>
+</doxygen>

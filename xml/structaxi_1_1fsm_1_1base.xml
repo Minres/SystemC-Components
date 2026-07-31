@@ -1,0 +1,880 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1fsm_1_1base" kind="struct" language="C++" prot="public" abstract="yes">
+    <compoundname>axi::fsm::base</compoundname>
+    <derivedcompoundref refid="classaxi_1_1pe_1_1ace__target__pe" prot="protected" virt="non-virtual">axi::pe::ace_target_pe</derivedcompoundref>
+    <derivedcompoundref refid="classaxi_1_1pe_1_1axi__target__pe" prot="protected" virt="non-virtual">axi::pe::axi_target_pe</derivedcompoundref>
+    <derivedcompoundref refid="classaxi_1_1pe_1_1simple__initiator__b" prot="protected" virt="non-virtual">axi::pe::simple_initiator_b</derivedcompoundref>
+    <derivedcompoundref refid="structaxi_1_1pin_1_1ace__initiator" prot="protected" virt="non-virtual">axi::pin::ace_initiator&lt; CFG &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structaxi_1_1pin_1_1ace__lite__initiator" prot="protected" virt="non-virtual">axi::pin::ace_lite_initiator&lt; CFG &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structaxi_1_1pin_1_1ace__lite__target" prot="protected" virt="non-virtual">axi::pin::ace_lite_target&lt; CFG &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structaxi_1_1pin_1_1ace__target" prot="protected" virt="non-virtual">axi::pin::ace_target&lt; CFG &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structaxi_1_1pin_1_1axi4__initiator" prot="protected" virt="non-virtual">axi::pin::axi4_initiator&lt; CFG &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structaxi_1_1pin_1_1axi4__target" prot="protected" virt="non-virtual">axi::pin::axi4_target&lt; CFG &gt;</derivedcompoundref>
+    <includes refid="base_8h" local="no">base.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" prot="public" static="no">
+        <type>axi::axi_protocol_types::tlm_payload_type</type>
+        <definition>using axi::fsm::base::payload_type =  axi::axi_protocol_types::tlm_payload_type</definition>
+        <argsstring></argsstring>
+        <name>payload_type</name>
+        <qualifiedname>axi::fsm::base::payload_type</qualifiedname>
+        <briefdescription>
+<para>aliases used in the class </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="42" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structaxi_1_1fsm_1_1base_1a4a3e96380c08ad7226a3ac664601e503" prot="public" static="no">
+        <type>axi::axi_protocol_types::tlm_phase_type</type>
+        <definition>using axi::fsm::base::phase_type =  axi::axi_protocol_types::tlm_phase_type</definition>
+        <argsstring></argsstring>
+        <name>phase_type</name>
+        <qualifiedname>axi::fsm::base::phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="43" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1base_1ab862ab3c3a27111c3306d55dc25bda1c" prot="public" static="no" mutable="no">
+        <type><ref refid="structscc_1_1peq" kindref="compound">::scc::peq</ref>&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, <ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref> *, bool &gt; &gt;</type>
+        <definition>::scc::peq&lt;std::tuple&lt;axi::fsm::protocol_time_point_e, payload_type*, bool&gt; &gt; axi::fsm::base::fsm_event_queue</definition>
+        <argsstring></argsstring>
+        <name>fsm_event_queue</name>
+        <qualifiedname>axi::fsm::base::fsm_event_queue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="141" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1base_1a662f1439252c193f513e614831da6f3b" prot="public" static="no" mutable="no">
+        <type><ref refid="classscc_1_1fifo__w__cb" kindref="compound">::scc::fifo_w_cb</ref>&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, <ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref> *, unsigned &gt; &gt;</type>
+        <definition>::scc::fifo_w_cb&lt;std::tuple&lt;axi::fsm::protocol_time_point_e, payload_type*, unsigned&gt; &gt; axi::fsm::base::fsm_clk_queue</definition>
+        <argsstring></argsstring>
+        <name>fsm_clk_queue</name>
+        <qualifiedname>axi::fsm::base::fsm_clk_queue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="143" column="22" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1base_1ae5fa6d0bd2bd2c4dbec5e2dba6f34a6a" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_process_handle</type>
+        <definition>sc_core::sc_process_handle axi::fsm::base::fsm_clk_queue_hndl</definition>
+        <argsstring></argsstring>
+        <name>fsm_clk_queue_hndl</name>
+        <qualifiedname>axi::fsm::base::fsm_clk_queue_hndl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="145" column="32" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1base_1a28172804f41063e840fccf773226b3b9" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t axi::fsm::base::transfer_width_in_bytes</definition>
+        <argsstring></argsstring>
+        <name>transfer_width_in_bytes</name>
+        <qualifiedname>axi::fsm::base::transfer_width_in_bytes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="147" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1base_1ac12cd09ae23b2e56cdc02d5082cd4749" prot="public" static="no" mutable="no">
+        <type>const axi::fsm::protocol_time_point_e</type>
+        <definition>const axi::fsm::protocol_time_point_e axi::fsm::base::wr_start</definition>
+        <argsstring></argsstring>
+        <name>wr_start</name>
+        <qualifiedname>axi::fsm::base::wr_start</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="149" column="43" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1base_1a8d399a441a1ae9cc6c732996fd1fa830" prot="public" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool axi::fsm::base::coherent</definition>
+        <argsstring></argsstring>
+        <name>coherent</name>
+        <qualifiedname>axi::fsm::base::coherent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="151" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1base_1a9f8a0baea1c0902aaf912878a3b4c54d" prot="public" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref> *, <ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">axi::fsm::fsm_handle</ref> * &gt;</type>
+        <definition>std::unordered_map&lt;payload_type*, axi::fsm::fsm_handle*&gt; axi::fsm::base::active_fsm</definition>
+        <argsstring></argsstring>
+        <name>active_fsm</name>
+        <qualifiedname>axi::fsm::base::active_fsm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="153" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1base_1aaee9a51eb0bc73681d2236596280a1b0" prot="public" static="no" mutable="no">
+        <type>std::deque&lt; <ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">axi::fsm::fsm_handle</ref> * &gt;</type>
+        <definition>std::deque&lt;axi::fsm::fsm_handle*&gt; axi::fsm::base::idle_fsm</definition>
+        <argsstring></argsstring>
+        <name>idle_fsm</name>
+        <qualifiedname>axi::fsm::base::idle_fsm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="155" column="16" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1base_1ae2bf3d861dde32b4ec50571afac4ba26" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">axi::fsm::fsm_handle</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::unique_ptr&lt;axi::fsm::fsm_handle&gt; &gt; axi::fsm::base::allocated_fsm</definition>
+        <argsstring></argsstring>
+        <name>allocated_fsm</name>
+        <qualifiedname>axi::fsm::base::allocated_fsm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="157" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1base_1a8fcaaeaf43ee5cc5f57fba0924786705" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string axi::fsm::base::instance_name</definition>
+        <argsstring></argsstring>
+        <name>instance_name</name>
+        <qualifiedname>axi::fsm::base::instance_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="159" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaxi_1_1fsm_1_1base_1a5efb7aee4d1a624d320f61b83b663604" prot="public" static="no" mutable="no">
+        <type>sc_core::sc_event</type>
+        <definition>sc_core::sc_event axi::fsm::base::finish_evt</definition>
+        <argsstring></argsstring>
+        <name>finish_evt</name>
+        <qualifiedname>axi::fsm::base::finish_evt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="161" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1base_1a59d8b6978f975d7e748555c5e6699962" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>axi::fsm::base::base</definition>
+        <argsstring>(size_t transfer_width, bool coherent=false, axi::fsm::protocol_time_point_e wr_start=axi::fsm::RequestPhaseBeg)</argsstring>
+        <name>base</name>
+        <qualifiedname>axi::fsm::base::base</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>transfer_width</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>coherent</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>axi::fsm::protocol_time_point_e</type>
+          <declname>wr_start</declname>
+          <defval>axi::fsm::RequestPhaseBeg</defval>
+        </param>
+        <briefdescription>
+<para>the constructor </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>transfer_width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the bus width in bytes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wr_start</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the phase to start a write access </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="49" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp" bodystart="44" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1base_1aa412c197ef069b63df64cc5eef07d6e8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual axi::fsm::base::~base</definition>
+        <argsstring>()</argsstring>
+        <name>~base</name>
+        <qualifiedname>axi::fsm::base::~base</qualifiedname>
+        <briefdescription>
+<para>the destructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="53" column="13" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1base_1a2f69b9b543de0409a982e194e7ee84d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm_sync_enum axi::fsm::base::nb_fw</definition>
+        <argsstring>(payload_type &amp;trans, phase_type const &amp;phase, sc_core::sc_time &amp;t)</argsstring>
+        <name>nb_fw</name>
+        <qualifiedname>axi::fsm::base::nb_fw</qualifiedname>
+        <param>
+          <type><ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref> &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type const &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>triggers the FSM based on TLM phases in the forward path. Should be called from np_transport_fw of the respective derived class </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the tlm generic payload </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>phase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the protocol phase </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the annotated time for LT environments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the sync enum denoting if the transaction has been updated or just accepted </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="62" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp" bodystart="189" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1base_1a87dbb07802109ff958c86cd08f8aaaaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>tlm::tlm_sync_enum</type>
+        <definition>tlm_sync_enum axi::fsm::base::nb_bw</definition>
+        <argsstring>(payload_type &amp;trans, phase_type const &amp;phase, sc_core::sc_time &amp;t)</argsstring>
+        <name>nb_bw</name>
+        <qualifiedname>axi::fsm::base::nb_bw</qualifiedname>
+        <param>
+          <type><ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref> &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>phase_type const &amp;</type>
+          <declname>phase</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>triggers the FSM based on TLM phases in the backward path. Should be called from np_transport_bw of the respective derived class </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the tlm generic payload </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>phase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the protocol phase </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the annotated time for LT environments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the sync enum denoting if the transaction has been updated or just accepted </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="71" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp" bodystart="234" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1base_1aa22ba0281d929364938d62b0d3930b7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">axi::fsm::fsm_handle</ref> *</type>
+        <definition>fsm_handle * axi::fsm::base::find_or_create</definition>
+        <argsstring>(payload_type *gp=nullptr, bool ace=false)</argsstring>
+        <name>find_or_create</name>
+        <qualifiedname>axi::fsm::base::find_or_create</qualifiedname>
+        <param>
+          <type><ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref> *</type>
+          <declname>gp</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>ace</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>retrieve the FSM handle based on the transaction passed. If non exist one will be created </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>gp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the pointer to the payload </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ace</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>flag indicating if the ACE protocaol has to be supported </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>handle to the FSM </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="78" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp" bodystart="66" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1base_1a36fd237711e396d96e8d146bf11d13eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">axi::fsm::fsm_handle</ref> *</type>
+        <definition>virtual axi::fsm::fsm_handle * axi::fsm::base::create_fsm_handle</definition>
+        <argsstring>()=0</argsstring>
+        <name>create_fsm_handle</name>
+        <qualifiedname>axi::fsm::base::create_fsm_handle</qualifiedname>
+        <reimplementedby refid="classaxi_1_1pe_1_1ace__target__pe_1a3ea7193538db51859e6389130e185686">create_fsm_handle</reimplementedby>
+        <reimplementedby refid="classaxi_1_1pe_1_1axi__target__pe_1a65b2ed868c9138f2daf58ff98e227362">create_fsm_handle</reimplementedby>
+        <reimplementedby refid="classaxi_1_1pe_1_1simple__initiator__b_1a60862673e77795fa935abdce552597cd">create_fsm_handle</reimplementedby>
+        <reimplementedby refid="structaxi_1_1pin_1_1ace__initiator_1a03afc5d4409607eb9984cfa5de8dde72">create_fsm_handle</reimplementedby>
+        <reimplementedby refid="structaxi_1_1pin_1_1ace__lite__initiator_1a32814c4022d91ce9ce4784b7825e6440">create_fsm_handle</reimplementedby>
+        <reimplementedby refid="structaxi_1_1pin_1_1ace__lite__target_1ab19ccc03aa5c1b0e849b1ecb0689893a">create_fsm_handle</reimplementedby>
+        <reimplementedby refid="structaxi_1_1pin_1_1ace__target_1a545640b2e99db903dc0b448488e71a6f">create_fsm_handle</reimplementedby>
+        <reimplementedby refid="structaxi_1_1pin_1_1axi4__initiator_1a85dfac17136c80a55980fa7a4e7aec28">create_fsm_handle</reimplementedby>
+        <reimplementedby refid="structaxi_1_1pin_1_1axi4__target_1aec162f259beeba69c3178372ab3bfd05">create_fsm_handle</reimplementedby>
+        <briefdescription>
+<para>function to create a <ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">fsm_handle</ref>. Needs to be implemented by the derived class </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="83" column="34"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1base_1a531305a4a623f70f41f2249028dbedde" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void axi::fsm::base::setup_callbacks</definition>
+        <argsstring>(axi::fsm::fsm_handle *)=0</argsstring>
+        <name>setup_callbacks</name>
+        <qualifiedname>axi::fsm::base::setup_callbacks</qualifiedname>
+        <reimplementedby refid="classaxi_1_1pe_1_1ace__target__pe_1ac9b5d454f505690180c63254a5bb96f7">setup_callbacks</reimplementedby>
+        <reimplementedby refid="classaxi_1_1pe_1_1axi__target__pe_1ad04a28ca7bc14793d87243ab5d187f73">setup_callbacks</reimplementedby>
+        <reimplementedby refid="classaxi_1_1pe_1_1simple__initiator__b_1a05d04cf8381f6c221197f012cf944e05">setup_callbacks</reimplementedby>
+        <reimplementedby refid="structaxi_1_1pin_1_1ace__initiator_1a3e38ab81c818666279a69a008f41b659">setup_callbacks</reimplementedby>
+        <reimplementedby refid="structaxi_1_1pin_1_1ace__lite__initiator_1a39c5c540c45f16ec0fdb0d23fb0a7ee4">setup_callbacks</reimplementedby>
+        <reimplementedby refid="structaxi_1_1pin_1_1ace__lite__target_1aff5e20fca3a16665a0b454b528b19284">setup_callbacks</reimplementedby>
+        <reimplementedby refid="structaxi_1_1pin_1_1ace__target_1a6ea693bf1d6ea1e9854ff1ec7b36ac32">setup_callbacks</reimplementedby>
+        <reimplementedby refid="structaxi_1_1pin_1_1axi4__initiator_1ab62f38f0d34dea783076becf874c8e64">setup_callbacks</reimplementedby>
+        <reimplementedby refid="structaxi_1_1pin_1_1axi4__target_1af092c7b59071235407041cc012de4fdd">setup_callbacks</reimplementedby>
+        <param>
+          <type><ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">axi::fsm::fsm_handle</ref> *</type>
+        </param>
+        <briefdescription>
+<para>this function is called to add the callbacks to the fsm handle during creation. Needs to be implemented by the derived classes describing reactions upon entering and leaving a state </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>handle of the active fsm </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="89" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1base_1ab0c33b46e6d313a33ce1a356ccc596af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::fsm::base::process_fsm_event</definition>
+        <argsstring>()</argsstring>
+        <name>process_fsm_event</name>
+        <qualifiedname>axi::fsm::base::process_fsm_event</qualifiedname>
+        <briefdescription>
+<para>processes the fsm_event_queue and triggers FSM aligned </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="93" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp" bodystart="98" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1base_1a61c01b63aa94fc6e2a5ec6ee6f4e06c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::fsm::base::process_fsm_clk_queue</definition>
+        <argsstring>()</argsstring>
+        <name>process_fsm_clk_queue</name>
+        <qualifiedname>axi::fsm::base::process_fsm_clk_queue</qualifiedname>
+        <briefdescription>
+<para>processes the fsm_clk_queue and triggers the FSM accordingly. Should be registered as rising-edge clock callback </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="98" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp" bodystart="108" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::fsm::base::schedule</definition>
+        <argsstring>(axi::fsm::protocol_time_point_e e, tlm::scc::tlm_gp_shared_ptr &amp;gp, unsigned cycles)</argsstring>
+        <name>schedule</name>
+        <qualifiedname>axi::fsm::base::schedule</qualifiedname>
+        <param>
+          <type>axi::fsm::protocol_time_point_e</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>tlm::scc::tlm_gp_shared_ptr &amp;</type>
+          <declname>gp</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>cycles</declname>
+        </param>
+        <briefdescription>
+<para>processes the fsm_sched_queue and propagates events to fsm_clk_queue. Should be registered as falling-edge clock callback </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="103" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="103" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1base_1a21466537400fe3927c25a4be159cfbf5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::fsm::base::schedule</definition>
+        <argsstring>(axi::fsm::protocol_time_point_e e, payload_type *gp, unsigned cycles)</argsstring>
+        <name>schedule</name>
+        <qualifiedname>axi::fsm::base::schedule</qualifiedname>
+        <param>
+          <type>axi::fsm::protocol_time_point_e</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type><ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref> *</type>
+          <declname>gp</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>cycles</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="106" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="106" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1base_1a31caedc7c2d747f44ae4a358d7af9e50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::fsm::base::schedule</definition>
+        <argsstring>(axi::fsm::protocol_time_point_e e, tlm::scc::tlm_gp_shared_ptr &amp;gp, sc_core::sc_time delay, bool syncronize=false)</argsstring>
+        <name>schedule</name>
+        <qualifiedname>axi::fsm::base::schedule</qualifiedname>
+        <param>
+          <type>axi::fsm::protocol_time_point_e</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>tlm::scc::tlm_gp_shared_ptr &amp;</type>
+          <declname>gp</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time</type>
+          <declname>delay</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>syncronize</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>processes the fsm_sched_queue and propagates events to fsm_clk_queue. Should be registered as falling-edge clock callback </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="114" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="114" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1base_1aa1f39886572097dfe418cdc9d27d06a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::fsm::base::schedule</definition>
+        <argsstring>(axi::fsm::protocol_time_point_e e, payload_type *gp, sc_core::sc_time delay, bool syncronize=false)</argsstring>
+        <name>schedule</name>
+        <qualifiedname>axi::fsm::base::schedule</qualifiedname>
+        <param>
+          <type>axi::fsm::protocol_time_point_e</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type><ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref> *</type>
+          <declname>gp</declname>
+        </param>
+        <param>
+          <type>sc_core::sc_time</type>
+          <declname>delay</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>syncronize</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="118" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="118" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::fsm::base::react</definition>
+        <argsstring>(axi::fsm::protocol_time_point_e event, tlm::scc::tlm_gp_shared_ptr &amp;trans)</argsstring>
+        <name>react</name>
+        <qualifiedname>axi::fsm::base::react</qualifiedname>
+        <param>
+          <type>axi::fsm::protocol_time_point_e</type>
+          <declname>event</declname>
+        </param>
+        <param>
+          <type>tlm::scc::tlm_gp_shared_ptr &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+<para>triggers the FSM with event and given transaction </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>event</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the event triggering the FSM </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the AXITLM transaction the event belongs to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="127" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="127" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1base_1ac067ba8265ddbc5ab2b3119fdd1d0948" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::fsm::base::react</definition>
+        <argsstring>(axi::fsm::protocol_time_point_e event, payload_type *trans)</argsstring>
+        <name>react</name>
+        <qualifiedname>axi::fsm::base::react</qualifiedname>
+        <param>
+          <type>axi::fsm::protocol_time_point_e</type>
+          <declname>event</declname>
+        </param>
+        <param>
+          <type><ref refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" kindref="member">payload_type</ref> *</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="129" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="129" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="structaxi_1_1fsm_1_1base_1a21970b4e0aa35d499495d71efd3dd6f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void axi::fsm::base::react</definition>
+        <argsstring>(axi::fsm::protocol_time_point_e, axi::fsm::fsm_handle *)</argsstring>
+        <name>react</name>
+        <qualifiedname>axi::fsm::base::react</qualifiedname>
+        <param>
+          <type>axi::fsm::protocol_time_point_e</type>
+          <defname>event</defname>
+        </param>
+        <param>
+          <type><ref refid="structaxi_1_1fsm_1_1fsm__handle" kindref="compound">axi::fsm::fsm_handle</ref> *</type>
+          <defname>fsm_hndl</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="139" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.cpp" bodystart="128" bodyend="187"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>base class of all AXITLM based adapters and interfaces. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::fsm::base</label>
+        <link refid="structaxi_1_1fsm_1_1base"/>
+      </node>
+      <node id="2">
+        <label>axi::pe::ace_target_pe</label>
+        <link refid="classaxi_1_1pe_1_1ace__target__pe"/>
+        <childnode refid="1" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>axi::pe::axi_target_pe</label>
+        <link refid="classaxi_1_1pe_1_1axi__target__pe"/>
+        <childnode refid="1" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>axi::pe::simple_ace_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classaxi_1_1pe_1_1simple__ace__initiator"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>axi::pe::simple_ace_target&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classaxi_1_1pe_1_1simple__ace__target"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>axi::pe::simple_axi_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classaxi_1_1pe_1_1simple__axi__initiator"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>axi::pe::simple_axi_initiator&lt; 32 &gt;</label>
+        <link refid="classaxi_1_1pe_1_1simple__axi__initiator"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>axi::pe::simple_initiator_b</label>
+        <link refid="classaxi_1_1pe_1_1simple__initiator__b"/>
+        <childnode refid="1" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>axi::pe::simple_target&lt; BUSWIDTH, TYPES, N, POL &gt;</label>
+        <link refid="classaxi_1_1pe_1_1simple__target"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>axi::pe::simple_target&lt; 32 &gt;</label>
+        <link refid="classaxi_1_1pe_1_1simple__target"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>axi::pin::ace_initiator&lt; CFG &gt;</label>
+        <link refid="structaxi_1_1pin_1_1ace__initiator"/>
+        <childnode refid="1" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>axi::pin::ace_lite_initiator&lt; CFG &gt;</label>
+        <link refid="structaxi_1_1pin_1_1ace__lite__initiator"/>
+        <childnode refid="1" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>axi::pin::ace_lite_target&lt; CFG &gt;</label>
+        <link refid="structaxi_1_1pin_1_1ace__lite__target"/>
+        <childnode refid="1" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>axi::pin::ace_target&lt; CFG &gt;</label>
+        <link refid="structaxi_1_1pin_1_1ace__target"/>
+        <childnode refid="1" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>axi::pin::axi4_initiator&lt; CFG &gt;</label>
+        <link refid="structaxi_1_1pin_1_1axi4__initiator"/>
+        <childnode refid="1" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>axi::pin::axi4_target&lt; CFG &gt;</label>
+        <link refid="structaxi_1_1pin_1_1axi4__target"/>
+        <childnode refid="1" relation="protected-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::fsm::base</label>
+        <link refid="structaxi_1_1fsm_1_1base"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>fsm_event_queue</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>fsm_clk_queue</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>sc_core::sc_object</label>
+      </node>
+      <node id="5">
+        <label>sc_core::sc_prim_channel</label>
+      </node>
+      <node id="4">
+        <label>scc::fifo_w_cb&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, payload_type *, unsigned &gt; &gt;</label>
+        <link refid="classscc_1_1fifo__w__cb"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>scc::peq&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, payload_type *, bool &gt; &gt;</label>
+        <link refid="structscc_1_1peq"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" line="40" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/base.h" bodystart="40" bodyend="162"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1fsm_1_1base_1a9f8a0baea1c0902aaf912878a3b4c54d" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>active_fsm</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1ae2bf3d861dde32b4ec50571afac4ba26" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>allocated_fsm</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a59d8b6978f975d7e748555c5e6699962" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>base</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a8d399a441a1ae9cc6c732996fd1fa830" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>coherent</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a36fd237711e396d96e8d146bf11d13eb" prot="public" virt="pure-virtual"><scope>axi::fsm::base</scope><name>create_fsm_handle</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1aa22ba0281d929364938d62b0d3930b7b" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>find_or_create</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a5efb7aee4d1a624d320f61b83b663604" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>finish_evt</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a662f1439252c193f513e614831da6f3b" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>fsm_clk_queue</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1ae5fa6d0bd2bd2c4dbec5e2dba6f34a6a" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>fsm_clk_queue_hndl</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1ab862ab3c3a27111c3306d55dc25bda1c" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>fsm_event_queue</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1aaee9a51eb0bc73681d2236596280a1b0" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>idle_fsm</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a8fcaaeaf43ee5cc5f57fba0924786705" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>instance_name</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a87dbb07802109ff958c86cd08f8aaaaf" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>nb_bw</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a2f69b9b543de0409a982e194e7ee84d1" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>nb_fw</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1ae24538a027d8084cc5a6b0172acd22eb" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>payload_type</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a4a3e96380c08ad7226a3ac664601e503" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>phase_type</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a61c01b63aa94fc6e2a5ec6ee6f4e06c4" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>process_fsm_clk_queue</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1ab0c33b46e6d313a33ce1a356ccc596af" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>process_fsm_event</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a26d7f15c1c5092f6db3251d38368dbbd" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>react</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1ac067ba8265ddbc5ab2b3119fdd1d0948" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>react</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a21970b4e0aa35d499495d71efd3dd6f9" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>react</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a6050ee3f1e95179293902dc3ef9381ee" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>schedule</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a21466537400fe3927c25a4be159cfbf5" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>schedule</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a31caedc7c2d747f44ae4a358d7af9e50" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>schedule</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1aa1f39886572097dfe418cdc9d27d06a6" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>schedule</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a531305a4a623f70f41f2249028dbedde" prot="public" virt="pure-virtual"><scope>axi::fsm::base</scope><name>setup_callbacks</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1a28172804f41063e840fccf773226b3b9" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>transfer_width_in_bytes</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1ac12cd09ae23b2e56cdc02d5082cd4749" prot="public" virt="non-virtual"><scope>axi::fsm::base</scope><name>wr_start</name></member>
+      <member refid="structaxi_1_1fsm_1_1base_1aa412c197ef069b63df64cc5eef07d6e8" prot="public" virt="virtual"><scope>axi::fsm::base</scope><name>~base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

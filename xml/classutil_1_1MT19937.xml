@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classutil_1_1MT19937" kind="class" language="C++" prot="public">
+    <compoundname>util::MT19937</compoundname>
+    <includes refid="common_2util_2mt19937__rng_8h" local="no">mt19937_rng.h</includes>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classutil_1_1MT19937_1a0ba3f8ab3c0701d9722a87696c9c5674" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void util::MT19937::seed</definition>
+        <argsstring>(uint64_t new_seed=std::mt19937_64::default_seed)</argsstring>
+        <name>seed</name>
+        <qualifiedname>util::MT19937::seed</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>new_seed</declname>
+          <defval>std::mt19937_64::default_seed</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Seeds the mersenne twister PRNG with the given value <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>new_seed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/mt19937_rng.h" line="37" column="17" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/mt19937_rng.h" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1MT19937_1a47c1909a34ec10f75399cf1ae91ad595" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>static uint64_t util::MT19937::uniform</definition>
+        <argsstring>()</argsstring>
+        <name>uniform</name>
+        <qualifiedname>util::MT19937::uniform</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generates the next random integer number with uniform distribution (similar to rand() ) <simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/mt19937_rng.h" line="42" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/mt19937_rng.h" bodystart="42" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1MT19937_1a025841762a15de258f36ba000720e02b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>static T util::MT19937::uniform</definition>
+        <argsstring>()</argsstring>
+        <name>uniform</name>
+        <qualifiedname>util::MT19937::uniform</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generates the next random integer number with uniform distribution in the range of the given type <simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/mt19937_rng.h" line="50" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/mt19937_rng.h" bodystart="50" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1MT19937_1abd99a81df7660046a521ea9928b194df" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>static uint64_t util::MT19937::uniform</definition>
+        <argsstring>(uint64_t min, uint64_t max)</argsstring>
+        <name>uniform</name>
+        <qualifiedname>util::MT19937::uniform</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generates the next random integer number with uniform distribution between (and including) min and max <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>min</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the lower limit of the interval </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the upper limit of the interval </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/mt19937_rng.h" line="60" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/mt19937_rng.h" bodystart="60" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1MT19937_1ab44e8c365138bdabae4581f93aca58f9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>static double util::MT19937::normal</definition>
+        <argsstring>()</argsstring>
+        <name>normal</name>
+        <qualifiedname>util::MT19937::normal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generates the next random double precision float number with normal distribution (similar to rand() ) <simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/mt19937_rng.h" line="69" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/mt19937_rng.h" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classutil_1_1MT19937_1a460317f85f6d611ca79457302b574e5b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>static double util::MT19937::lognormal</definition>
+        <argsstring>()</argsstring>
+        <name>lognormal</name>
+        <qualifiedname>util::MT19937::lognormal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generates the next random integer number with log normal distribution (similar to rand() ) <simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/mt19937_rng.h" line="77" column="19" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/mt19937_rng.h" bodystart="77" bodyend="80"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classutil_1_1MT19937_1aa42f10885b868eb6f4371ee617e1c70f" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::mt19937_64 &amp;</type>
+        <definition>static std::mt19937_64 &amp; util::MT19937::inst</definition>
+        <argsstring>()</argsstring>
+        <name>inst</name>
+        <qualifiedname>util::MT19937::inst</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/mt19937_rng.h" line="83" column="28" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/mt19937_rng.h" bodystart="83" bodyend="86"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>a Mersenne-Twister pseudo random number generator </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/mt19937_rng.h" line="31" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/common/util/mt19937_rng.h" bodystart="31" bodyend="87"/>
+    <listofallmembers>
+      <member refid="classutil_1_1MT19937_1aa42f10885b868eb6f4371ee617e1c70f" prot="private" virt="non-virtual"><scope>util::MT19937</scope><name>inst</name></member>
+      <member refid="classutil_1_1MT19937_1a460317f85f6d611ca79457302b574e5b" prot="public" virt="non-virtual"><scope>util::MT19937</scope><name>lognormal</name></member>
+      <member refid="classutil_1_1MT19937_1ab44e8c365138bdabae4581f93aca58f9" prot="public" virt="non-virtual"><scope>util::MT19937</scope><name>normal</name></member>
+      <member refid="classutil_1_1MT19937_1a0ba3f8ab3c0701d9722a87696c9c5674" prot="public" virt="non-virtual"><scope>util::MT19937</scope><name>seed</name></member>
+      <member refid="classutil_1_1MT19937_1a47c1909a34ec10f75399cf1ae91ad595" prot="public" virt="non-virtual"><scope>util::MT19937</scope><name>uniform</name></member>
+      <member refid="classutil_1_1MT19937_1a025841762a15de258f36ba000720e02b" prot="public" virt="non-virtual"><scope>util::MT19937</scope><name>uniform</name></member>
+      <member refid="classutil_1_1MT19937_1abd99a81df7660046a521ea9928b194df" prot="public" virt="non-virtual"><scope>util::MT19937</scope><name>uniform</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

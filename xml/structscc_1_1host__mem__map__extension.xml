@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1host__mem__map__extension" kind="struct" language="C++" prot="public">
+    <compoundname>scc::host_mem_map_extension</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">tlm::tlm_extension&lt; host_mem_map_extension &gt;</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structscc_1_1host__mem__map__extension_1a6823a6f4be95c665198d71042b120167" prot="public" static="no" mutable="no">
+        <type>nonstd::span&lt; uint8_t &gt;</type>
+        <definition>nonstd::span&lt;uint8_t&gt; scc::host_mem_map_extension::range</definition>
+        <argsstring></argsstring>
+        <name>range</name>
+        <qualifiedname>scc::host_mem_map_extension::range</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="196" column="18" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="196" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1host__mem__map__extension_1a547b7a9d31ead886575aa3380c132a3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>tlm_extension_base *</type>
+        <definition>tlm_extension_base * scc::host_mem_map_extension::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <qualifiedname>scc::host_mem_map_extension::clone</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="188" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="188" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1host__mem__map__extension_1aee91efbb8bf65f8fc2b9a57787b2bc76" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::host_mem_map_extension::copy_from</definition>
+        <argsstring>(tlm_extension_base const &amp;ext) override</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>scc::host_mem_map_extension::copy_from</qualifiedname>
+        <param>
+          <type>tlm_extension_base const &amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="189" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="189" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1host__mem__map__extension_1a2d693cda573236eefe9da4358cfe5090" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::host_mem_map_extension::host_mem_map_extension</definition>
+        <argsstring>(uint8_t *data, size_t size)</argsstring>
+        <name>host_mem_map_extension</name>
+        <qualifiedname>scc::host_mem_map_extension::host_mem_map_extension</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="190" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="190" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1host__mem__map__extension_1a57553b6c05de03e712756d512beac7f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::host_mem_map_extension::host_mem_map_extension</definition>
+        <argsstring>(size_t size)</argsstring>
+        <name>host_mem_map_extension</name>
+        <qualifiedname>scc::host_mem_map_extension::host_mem_map_extension</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="192" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="192" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1host__mem__map__extension_1ae5870f20fc8ce15de949e55b4d9f4df8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::host_mem_map_extension::host_mem_map_extension</definition>
+        <argsstring>()=default</argsstring>
+        <name>host_mem_map_extension</name>
+        <qualifiedname>scc::host_mem_map_extension::host_mem_map_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="194" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1host__mem__map__extension_1a8f690c638e9e6716b42ad9e33ae72eab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::host_mem_map_extension::~host_mem_map_extension</definition>
+        <argsstring>()</argsstring>
+        <name>~host_mem_map_extension</name>
+        <qualifiedname>scc::host_mem_map_extension::~host_mem_map_extension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="195" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="195" bodyend="195"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>scc::host_mem_map_extension</label>
+        <link refid="structscc_1_1host__mem__map__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; host_mem_map_extension &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>scc::host_mem_map_extension</label>
+        <link refid="structscc_1_1host__mem__map__extension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tlm::tlm_extension&lt; host_mem_map_extension &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" line="187" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/components/scc/memory.h" bodystart="187" bodyend="197"/>
+    <listofallmembers>
+      <member refid="structscc_1_1host__mem__map__extension_1a547b7a9d31ead886575aa3380c132a3d" prot="public" virt="non-virtual"><scope>scc::host_mem_map_extension</scope><name>clone</name></member>
+      <member refid="structscc_1_1host__mem__map__extension_1aee91efbb8bf65f8fc2b9a57787b2bc76" prot="public" virt="non-virtual"><scope>scc::host_mem_map_extension</scope><name>copy_from</name></member>
+      <member refid="structscc_1_1host__mem__map__extension_1a2d693cda573236eefe9da4358cfe5090" prot="public" virt="non-virtual"><scope>scc::host_mem_map_extension</scope><name>host_mem_map_extension</name></member>
+      <member refid="structscc_1_1host__mem__map__extension_1a57553b6c05de03e712756d512beac7f9" prot="public" virt="non-virtual"><scope>scc::host_mem_map_extension</scope><name>host_mem_map_extension</name></member>
+      <member refid="structscc_1_1host__mem__map__extension_1ae5870f20fc8ce15de949e55b4d9f4df8" prot="public" virt="non-virtual"><scope>scc::host_mem_map_extension</scope><name>host_mem_map_extension</name></member>
+      <member refid="structscc_1_1host__mem__map__extension_1a6823a6f4be95c665198d71042b120167" prot="public" virt="non-virtual"><scope>scc::host_mem_map_extension</scope><name>range</name></member>
+      <member refid="structscc_1_1host__mem__map__extension_1a8f690c638e9e6716b42ad9e33ae72eab" prot="public" virt="non-virtual"><scope>scc::host_mem_map_extension</scope><name>~host_mem_map_extension</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

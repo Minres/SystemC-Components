@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structcxs_1_1cxs__packet__types" kind="struct" language="C++" prot="public">
+    <compoundname>cxs::cxs_packet_types</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structcxs_1_1cxs__packet__types_1a0e3e3771b294e967e6aa07bacb93afd8" prot="public" static="no">
+        <type><ref refid="structcxs_1_1cxs__packet__payload" kindref="compound">cxs_packet_payload</ref></type>
+        <definition>using cxs::cxs_packet_types::tlm_payload_type =  cxs_packet_payload</definition>
+        <argsstring></argsstring>
+        <name>tlm_payload_type</name>
+        <qualifiedname>cxs::cxs_packet_types::tlm_payload_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="73" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structcxs_1_1cxs__packet__types_1ace14152430f68fa99d8c303fdbb4f75b" prot="public" static="no">
+        <type>::tlm::tlm_phase</type>
+        <definition>using cxs::cxs_packet_types::tlm_phase_type =  ::tlm::tlm_phase</definition>
+        <argsstring></argsstring>
+        <name>tlm_phase_type</name>
+        <qualifiedname>cxs::cxs_packet_types::tlm_phase_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="74" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" line="72" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/interfaces/cxs/cxs_tlm.h" bodystart="72" bodyend="75"/>
+    <listofallmembers>
+      <member refid="structcxs_1_1cxs__packet__types_1a0e3e3771b294e967e6aa07bacb93afd8" prot="public" virt="non-virtual"><scope>cxs::cxs_packet_types</scope><name>tlm_payload_type</name></member>
+      <member refid="structcxs_1_1cxs__packet__types_1ace14152430f68fa99d8c303fdbb4f75b" prot="public" virt="non-virtual"><scope>cxs::cxs_packet_types</scope><name>tlm_phase_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structaxi_1_1fsm_1_1ReadIdle" kind="struct" language="C++" prot="public">
+    <compoundname>axi::fsm::ReadIdle</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">bsc::simple_state&lt; ReadIdle, AxiProtocolFsm &gt;</basecompoundref>
+    <includes refid="protocol__fsm_8h" local="no">protocol_fsm.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structaxi_1_1fsm_1_1ReadIdle_1aa7559c9749b3a8a659d20e1a34b00597" prot="public" static="no">
+        <type>mpl::list&lt; bsc::transition&lt; <ref refid="structaxi_1_1fsm_1_1BegPartResp" kindref="compound">BegPartResp</ref>, <ref refid="structaxi_1_1fsm_1_1PartialResponse" kindref="compound">PartialResponse</ref> &gt;, bsc::transition&lt; <ref refid="structaxi_1_1fsm_1_1BegResp" kindref="compound">BegResp</ref>, <ref refid="structaxi_1_1fsm_1_1Response" kindref="compound">Response</ref> &gt; &gt;</type>
+        <definition>typedef mpl::list&lt;bsc::transition&lt;BegPartResp, PartialResponse&gt;, bsc::transition&lt;BegResp, Response&gt; &gt; axi::fsm::ReadIdle::reactions</definition>
+        <argsstring></argsstring>
+        <name>reactions</name>
+        <qualifiedname>axi::fsm::ReadIdle::reactions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="159" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the phase between 2 read burst response beats </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>axi::fsm::ReadIdle</label>
+        <link refid="structaxi_1_1fsm_1_1ReadIdle"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>bsc::simple_state&lt; ReadIdle, AxiProtocolFsm &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>axi::fsm::ReadIdle</label>
+        <link refid="structaxi_1_1fsm_1_1ReadIdle"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>bsc::simple_state&lt; ReadIdle, AxiProtocolFsm &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" line="158" column="1" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/third_party/axi_chi/axi/fsm/protocol_fsm.h" bodystart="158" bodyend="160"/>
+    <listofallmembers>
+      <member refid="structaxi_1_1fsm_1_1ReadIdle_1aa7559c9749b3a8a659d20e1a34b00597" prot="public" virt="non-virtual"><scope>axi::fsm::ReadIdle</scope><name>reactions</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

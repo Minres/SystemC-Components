@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structscc_1_1sc__variable_1_1creator" kind="struct" language="C++" prot="public">
+    <compoundname>scc::sc_variable::creator</compoundname>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structscc_1_1sc__variable_1_1creator_1a67bfd9f83e422e44c770ebb6671c7adb" prot="private" static="no" mutable="no">
+        <type>T</type>
+        <definition>T scc::sc_variable&lt; T &gt;::creator::default_val</definition>
+        <argsstring></argsstring>
+        <name>default_val</name>
+        <qualifiedname>scc::sc_variable::creator::default_val</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="286" column="11" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="286" bodyend="286"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structscc_1_1sc__variable_1_1creator_1a67399a69fb1fa8586652a9aeab07bca7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_variable&lt; T &gt;::creator::creator</definition>
+        <argsstring>(T const &amp;default_val)</argsstring>
+        <name>creator</name>
+        <qualifiedname>scc::sc_variable::creator::creator</qualifiedname>
+        <param>
+          <type>T const &amp;</type>
+          <declname>default_val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="281" column="9" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="281" bodyend="282"/>
+      </memberdef>
+      <memberdef kind="function" id="structscc_1_1sc__variable_1_1creator_1af1679b01de609c5604c0309584019638" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structscc_1_1sc__variable_1ad07cca01fd53527bd24d79d1b3059b0f" kindref="member">sc_variable</ref>&lt; T &gt; *</type>
+        <definition>sc_variable&lt; T &gt; * scc::sc_variable&lt; T &gt;::creator::operator()</definition>
+        <argsstring>(const char *n, size_t i)</argsstring>
+        <name>operator()</name>
+        <qualifiedname>scc::sc_variable::creator::operator()</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="283" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="283" bodyend="283"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" line="280" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/sc_variable.h" bodystart="280" bodyend="287"/>
+    <listofallmembers>
+      <member refid="structscc_1_1sc__variable_1_1creator_1a67399a69fb1fa8586652a9aeab07bca7" prot="public" virt="non-virtual"><scope>scc::sc_variable::creator</scope><name>creator</name></member>
+      <member refid="structscc_1_1sc__variable_1_1creator_1a67bfd9f83e422e44c770ebb6671c7adb" prot="private" virt="non-virtual"><scope>scc::sc_variable::creator</scope><name>default_val</name></member>
+      <member refid="structscc_1_1sc__variable_1_1creator_1af1679b01de609c5604c0309584019638" prot="public" virt="non-virtual"><scope>scc::sc_variable::creator</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

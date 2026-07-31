@@ -1,0 +1,657 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classscc_1_1sc__inout__opt" kind="class" language="C++" prot="public">
+    <compoundname>scc::sc_inout_opt</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sc_core::sc_port&lt; sc_core::sc_signal_inout_if&lt; T &gt;, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</basecompoundref>
+    <derivedcompoundref refid="classscc_1_1sc__out__opt" prot="public" virt="non-virtual">scc::sc_out_opt&lt; T &gt;</derivedcompoundref>
+    <includes refid="signal__opt__ports_8h" local="no">signal_opt_ports.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classscc_1_1sc__inout__opt_1a41430f6efc502149b8e3b6ad695769d8" prot="public" static="no">
+        <type>T</type>
+        <definition>typedef T scc::sc_inout_opt&lt; T &gt;::data_type</definition>
+        <argsstring></argsstring>
+        <name>data_type</name>
+        <qualifiedname>scc::sc_inout_opt::data_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="337" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="337" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__inout__opt_1a234939be32081957f5c5c1cf8322ba36" prot="public" static="no">
+        <type>sc_core::sc_signal_inout_if&lt; data_type &gt;</type>
+        <definition>typedef sc_core::sc_signal_inout_if&lt;data_type&gt; scc::sc_inout_opt&lt; T &gt;::if_type</definition>
+        <argsstring></argsstring>
+        <name>if_type</name>
+        <qualifiedname>scc::sc_inout_opt::if_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="339" column="41" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="339" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__inout__opt_1af285a031936bae6f608ba67e6a7ef77d" prot="public" static="no">
+        <type>sc_core::sc_port&lt; if_type, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</type>
+        <definition>typedef sc_core::sc_port&lt;if_type, 1, sc_core::SC_ZERO_OR_MORE_BOUND&gt; scc::sc_inout_opt&lt; T &gt;::base_type</definition>
+        <argsstring></argsstring>
+        <name>base_type</name>
+        <qualifiedname>scc::sc_inout_opt::base_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="340" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="340" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__inout__opt_1ac8a108aca04c2c503fce90e62c949047" prot="public" static="no">
+        <type>sc_inout_opt&lt; data_type &gt;</type>
+        <definition>typedef sc_inout_opt&lt;data_type&gt; scc::sc_inout_opt&lt; T &gt;::this_type</definition>
+        <argsstring></argsstring>
+        <name>this_type</name>
+        <qualifiedname>scc::sc_inout_opt::this_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="341" column="26" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="341" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__inout__opt_1a0b7dd44918a468585d66285430dac129" prot="public" static="no">
+        <type>sc_core::sc_signal_in_if&lt; data_type &gt;</type>
+        <definition>typedef sc_core::sc_signal_in_if&lt;data_type&gt; scc::sc_inout_opt&lt; T &gt;::in_if_type</definition>
+        <argsstring></argsstring>
+        <name>in_if_type</name>
+        <qualifiedname>scc::sc_inout_opt::in_if_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="343" column="38" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="343" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__inout__opt_1a3f18aa4eae4da8c3fe3c826fd0433db3" prot="public" static="no">
+        <type>sc_core::sc_port&lt; in_if_type, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</type>
+        <definition>typedef sc_core::sc_port&lt;in_if_type, 1, sc_core::SC_ZERO_OR_MORE_BOUND&gt; scc::sc_inout_opt&lt; T &gt;::in_port_type</definition>
+        <argsstring></argsstring>
+        <name>in_port_type</name>
+        <qualifiedname>scc::sc_inout_opt::in_port_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="344" column="30" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="344" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__inout__opt_1ab5a054fa7031d4e50e3dbd37e9cb3448" prot="public" static="no">
+        <type>if_type</type>
+        <definition>typedef if_type scc::sc_inout_opt&lt; T &gt;::inout_if_type</definition>
+        <argsstring></argsstring>
+        <name>inout_if_type</name>
+        <qualifiedname>scc::sc_inout_opt::inout_if_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="345" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="345" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classscc_1_1sc__inout__opt_1a64ca3502a5534eec3a5e70056744771a" prot="public" static="no">
+        <type>base_type</type>
+        <definition>typedef base_type scc::sc_inout_opt&lt; T &gt;::inout_port_type</definition>
+        <argsstring></argsstring>
+        <name>inout_port_type</name>
+        <qualifiedname>scc::sc_inout_opt::inout_port_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="346" column="23" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="346" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classscc_1_1sc__inout__opt_1a34955da8b061b2f331387a394ab2fc3c" prot="protected" static="no" mutable="no">
+        <type>data_type *</type>
+        <definition>data_type* scc::sc_inout_opt&lt; T &gt;::m_init_val</definition>
+        <argsstring></argsstring>
+        <name>m_init_val</name>
+        <qualifiedname>scc::sc_inout_opt::m_init_val</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="431" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="431" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1a7716f1859642b4c01f27247284ac3cc3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_inout_opt&lt; T &gt;::sc_inout_opt</definition>
+        <argsstring>()</argsstring>
+        <name>sc_inout_opt</name>
+        <qualifiedname>scc::sc_inout_opt::sc_inout_opt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="349" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="349" bodyend="351"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1a526b55a33226798050ef7ad82ac03aef" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_inout_opt&lt; T &gt;::sc_inout_opt</definition>
+        <argsstring>(const char *name_)</argsstring>
+        <name>sc_inout_opt</name>
+        <qualifiedname>scc::sc_inout_opt::sc_inout_opt</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="353" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="353" bodyend="355"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1a969eda7bc3a02031664302a2907e0245" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_inout_opt&lt; T &gt;::sc_inout_opt</definition>
+        <argsstring>(inout_if_type &amp;interface_)</argsstring>
+        <name>sc_inout_opt</name>
+        <qualifiedname>scc::sc_inout_opt::sc_inout_opt</qualifiedname>
+        <param>
+          <type>inout_if_type &amp;</type>
+          <declname>interface_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="357" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="357" bodyend="359"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1afe1b6d6446f231b8eda67ae187225882" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_inout_opt&lt; T &gt;::sc_inout_opt</definition>
+        <argsstring>(const char *name_, inout_if_type &amp;interface_)</argsstring>
+        <name>sc_inout_opt</name>
+        <qualifiedname>scc::sc_inout_opt::sc_inout_opt</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name_</declname>
+        </param>
+        <param>
+          <type>inout_if_type &amp;</type>
+          <declname>interface_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="361" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="361" bodyend="363"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1a2738d7d28fbe0f1e1c0f64e4ac0daa6c" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_inout_opt&lt; T &gt;::sc_inout_opt</definition>
+        <argsstring>(inout_port_type &amp;parent_)</argsstring>
+        <name>sc_inout_opt</name>
+        <qualifiedname>scc::sc_inout_opt::sc_inout_opt</qualifiedname>
+        <param>
+          <type>inout_port_type &amp;</type>
+          <declname>parent_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="365" column="14" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="365" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1a5c1281be3833562e106094a5df25735b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_inout_opt&lt; T &gt;::sc_inout_opt</definition>
+        <argsstring>(const char *name_, inout_port_type &amp;parent_)</argsstring>
+        <name>sc_inout_opt</name>
+        <qualifiedname>scc::sc_inout_opt::sc_inout_opt</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name_</declname>
+        </param>
+        <param>
+          <type>inout_port_type &amp;</type>
+          <declname>parent_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="369" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="369" bodyend="371"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1aeeb235f7fc678d4915d7033fff4f0c2d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_inout_opt&lt; T &gt;::sc_inout_opt</definition>
+        <argsstring>(this_type &amp;parent_)</argsstring>
+        <name>sc_inout_opt</name>
+        <qualifiedname>scc::sc_inout_opt::sc_inout_opt</qualifiedname>
+        <param>
+          <type>this_type &amp;</type>
+          <declname>parent_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="373" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="373" bodyend="375"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1a7f4fc6310bded783c228c552889d33ac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_inout_opt&lt; T &gt;::sc_inout_opt</definition>
+        <argsstring>(const char *name_, this_type &amp;parent_)</argsstring>
+        <name>sc_inout_opt</name>
+        <qualifiedname>scc::sc_inout_opt::sc_inout_opt</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name_</declname>
+        </param>
+        <param>
+          <type>this_type &amp;</type>
+          <declname>parent_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="377" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="377" bodyend="379"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1a45e14b3ab30dee3a39fc692d5a567841" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_inout_opt&lt; T &gt;::sc_inout_opt</definition>
+        <argsstring>(const this_type &amp;)=delete</argsstring>
+        <name>sc_inout_opt</name>
+        <qualifiedname>scc::sc_inout_opt::sc_inout_opt</qualifiedname>
+        <param>
+          <type>const this_type &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="381" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1a81b73209c4283d2e47e42eee0f762843" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual scc::sc_inout_opt&lt; T &gt;::~sc_inout_opt</definition>
+        <argsstring>()=default</argsstring>
+        <name>~sc_inout_opt</name>
+        <qualifiedname>scc::sc_inout_opt::~sc_inout_opt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="383" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1ac806378705fa9715ebc6e9b246a0af39" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const sc_core::sc_event &amp;</type>
+        <definition>const sc_core::sc_event &amp; scc::sc_inout_opt&lt; T &gt;::default_event</definition>
+        <argsstring>() const</argsstring>
+        <name>default_event</name>
+        <qualifiedname>scc::sc_inout_opt::default_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="385" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="385" bodyend="385"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1a0630439ced906db4677ec32df1ce9622" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const sc_core::sc_event &amp;</type>
+        <definition>const sc_core::sc_event &amp; scc::sc_inout_opt&lt; T &gt;::value_changed_event</definition>
+        <argsstring>() const</argsstring>
+        <name>value_changed_event</name>
+        <qualifiedname>scc::sc_inout_opt::value_changed_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="387" column="29" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="387" bodyend="387"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1afdac61d0ea89069197fc046a0bbf4393" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const data_type &amp;</type>
+        <definition>const data_type &amp; scc::sc_inout_opt&lt; T &gt;::read</definition>
+        <argsstring>() const</argsstring>
+        <name>read</name>
+        <qualifiedname>scc::sc_inout_opt::read</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="389" column="21" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="389" bodyend="389"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1af47b867524b650867fc41b411ca4ee04" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>scc::sc_inout_opt&lt; T &gt;::operator const data_type &amp;</definition>
+        <argsstring>() const</argsstring>
+        <name>operator const data_type &amp;</name>
+        <qualifiedname>scc::sc_inout_opt::operator const data_type &amp;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="391" column="5" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="391" bodyend="391"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1ab0b1fba3844d25d347e2b2be552940ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool scc::sc_inout_opt&lt; T &gt;::event</definition>
+        <argsstring>() const</argsstring>
+        <name>event</name>
+        <qualifiedname>scc::sc_inout_opt::event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="393" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="393" bodyend="393"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1ac39bc6165ff428d942619b5853d8df9a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_inout_opt&lt; T &gt;::write</definition>
+        <argsstring>(const data_type &amp;value_)</argsstring>
+        <name>write</name>
+        <qualifiedname>scc::sc_inout_opt::write</qualifiedname>
+        <param>
+          <type>const data_type &amp;</type>
+          <declname>value_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="395" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="395" bodyend="395"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1a5ceba88f3ec6d2d0c4719601c8dc04ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>this_type &amp;</type>
+        <definition>this_type &amp; scc::sc_inout_opt&lt; T &gt;::operator=</definition>
+        <argsstring>(const data_type &amp;value_)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::sc_inout_opt::operator=</qualifiedname>
+        <param>
+          <type>const data_type &amp;</type>
+          <declname>value_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="397" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="397" bodyend="400"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1a3ced617fd98e9020610c8eb44c391a23" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>this_type &amp;</type>
+        <definition>this_type &amp; scc::sc_inout_opt&lt; T &gt;::operator=</definition>
+        <argsstring>(const in_if_type &amp;interface_)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::sc_inout_opt::operator=</qualifiedname>
+        <param>
+          <type>const in_if_type &amp;</type>
+          <declname>interface_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="402" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="402" bodyend="405"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1a4df4f47c46ba5e5ecbc4b37da573c55d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>this_type &amp;</type>
+        <definition>this_type &amp; scc::sc_inout_opt&lt; T &gt;::operator=</definition>
+        <argsstring>(const in_port_type &amp;port_)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::sc_inout_opt::operator=</qualifiedname>
+        <param>
+          <type>const in_port_type &amp;</type>
+          <declname>port_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="407" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="407" bodyend="410"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1a11555778d8246c0612de5a7426cbde4b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>this_type &amp;</type>
+        <definition>this_type &amp; scc::sc_inout_opt&lt; T &gt;::operator=</definition>
+        <argsstring>(const inout_port_type &amp;port_)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::sc_inout_opt::operator=</qualifiedname>
+        <param>
+          <type>const inout_port_type &amp;</type>
+          <declname>port_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="412" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="412" bodyend="415"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1a0d5bb9c2a21fd33798e62786987e379b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>this_type &amp;</type>
+        <definition>this_type &amp; scc::sc_inout_opt&lt; T &gt;::operator=</definition>
+        <argsstring>(const this_type &amp;port_)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>scc::sc_inout_opt::operator=</qualifiedname>
+        <param>
+          <type>const this_type &amp;</type>
+          <declname>port_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="417" column="15" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="417" bodyend="420"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1a1f044189e16aab8bf98de880b638a68c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_inout_opt&lt; T &gt;::initialize</definition>
+        <argsstring>(const data_type &amp;value_)</argsstring>
+        <name>initialize</name>
+        <qualifiedname>scc::sc_inout_opt::initialize</qualifiedname>
+        <param>
+          <type>const data_type &amp;</type>
+          <declname>value_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="422" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="436" bodyend="446"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1ab1a6aef6ad5a51c82723a74c24b3b0b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_inout_opt&lt; T &gt;::initialize</definition>
+        <argsstring>(const in_if_type &amp;interface_)</argsstring>
+        <name>initialize</name>
+        <qualifiedname>scc::sc_inout_opt::initialize</qualifiedname>
+        <param>
+          <type>const in_if_type &amp;</type>
+          <declname>interface_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="424" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="424" bodyend="424"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1a016fa8a6fc5e187aa52fb609f14889a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void scc::sc_inout_opt&lt; T &gt;::end_of_elaboration</definition>
+        <argsstring>() override</argsstring>
+        <name>end_of_elaboration</name>
+        <qualifiedname>scc::sc_inout_opt::end_of_elaboration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="426" column="10" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="448" bodyend="454"/>
+      </memberdef>
+      <memberdef kind="function" id="classscc_1_1sc__inout__opt_1ac602368275ac139c15bf33bdfe42542b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>virtual const char * scc::sc_inout_opt&lt; T &gt;::kind</definition>
+        <argsstring>() const override</argsstring>
+        <name>kind</name>
+        <qualifiedname>scc::sc_inout_opt::kind</qualifiedname>
+        <reimplementedby refid="classscc_1_1sc__out__opt_1ab87c4a5c4a6a57adca5dd216ee5c95f6">kind</reimplementedby>
+        <reimplementedby refid="classscc_1_1sc__out__opt_1ab87c4a5c4a6a57adca5dd216ee5c95f6">kind</reimplementedby>
+        <reimplementedby refid="classscc_1_1sc__out__opt_1ab87c4a5c4a6a57adca5dd216ee5c95f6">kind</reimplementedby>
+        <reimplementedby refid="classscc_1_1sc__out__opt_1ab87c4a5c4a6a57adca5dd216ee5c95f6">kind</reimplementedby>
+        <reimplementedby refid="classscc_1_1sc__out__opt_1ab87c4a5c4a6a57adca5dd216ee5c95f6">kind</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="428" column="24" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="428" bodyend="428"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A template class for an optional input port with optimized binding. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classscc_1_1sc__inout__opt" kindref="compound">sc_inout_opt</ref> class is a specialization of sc_core::sc_inout that allows optional binding of 1 port or signal at max.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data type of the input port. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sc_core::sc_port&lt; sc_core::sc_signal_inout_if&lt; T &gt;, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_inout_opt&lt; T &gt;</label>
+        <link refid="classscc_1_1sc__inout__opt"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>scc::sc_out_opt&lt; T &gt;</label>
+        <link refid="classscc_1_1sc__out__opt"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>sc_core::sc_port&lt; sc_core::sc_signal_inout_if&lt; T &gt;, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</label>
+      </node>
+      <node id="1">
+        <label>scc::sc_inout_opt&lt; T &gt;</label>
+        <link refid="classscc_1_1sc__inout__opt"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" line="335" column="12" bodyfile="/home/eyck/Projects/MINRES/SystemC-Components/src/sysc/scc/signal_opt_ports.h" bodystart="335" bodyend="432"/>
+    <listofallmembers>
+      <member refid="classscc_1_1sc__inout__opt_1af285a031936bae6f608ba67e6a7ef77d" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>base_type</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a41430f6efc502149b8e3b6ad695769d8" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>data_type</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1ac806378705fa9715ebc6e9b246a0af39" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>default_event</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a016fa8a6fc5e187aa52fb609f14889a3" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>end_of_elaboration</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1ab0b1fba3844d25d347e2b2be552940ec" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>event</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a234939be32081957f5c5c1cf8322ba36" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>if_type</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a0b7dd44918a468585d66285430dac129" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>in_if_type</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a3f18aa4eae4da8c3fe3c826fd0433db3" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>in_port_type</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a1f044189e16aab8bf98de880b638a68c" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>initialize</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1ab1a6aef6ad5a51c82723a74c24b3b0b0" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>initialize</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1ab5a054fa7031d4e50e3dbd37e9cb3448" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>inout_if_type</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a64ca3502a5534eec3a5e70056744771a" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>inout_port_type</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1ac602368275ac139c15bf33bdfe42542b" prot="public" virt="virtual"><scope>scc::sc_inout_opt</scope><name>kind</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a34955da8b061b2f331387a394ab2fc3c" prot="protected" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>m_init_val</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1af47b867524b650867fc41b411ca4ee04" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>operator const data_type &amp;</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a5ceba88f3ec6d2d0c4719601c8dc04ad" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>operator=</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a3ced617fd98e9020610c8eb44c391a23" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>operator=</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a4df4f47c46ba5e5ecbc4b37da573c55d" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>operator=</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a11555778d8246c0612de5a7426cbde4b" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>operator=</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a0d5bb9c2a21fd33798e62786987e379b" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>operator=</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1afdac61d0ea89069197fc046a0bbf4393" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>read</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a7716f1859642b4c01f27247284ac3cc3" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>sc_inout_opt</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a526b55a33226798050ef7ad82ac03aef" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>sc_inout_opt</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a969eda7bc3a02031664302a2907e0245" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>sc_inout_opt</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1afe1b6d6446f231b8eda67ae187225882" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>sc_inout_opt</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a2738d7d28fbe0f1e1c0f64e4ac0daa6c" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>sc_inout_opt</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a5c1281be3833562e106094a5df25735b" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>sc_inout_opt</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1aeeb235f7fc678d4915d7033fff4f0c2d" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>sc_inout_opt</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a7f4fc6310bded783c228c552889d33ac" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>sc_inout_opt</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a45e14b3ab30dee3a39fc692d5a567841" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>sc_inout_opt</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1ac8a108aca04c2c503fce90e62c949047" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>this_type</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a0630439ced906db4677ec32df1ce9622" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>value_changed_event</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1ac39bc6165ff428d942619b5853d8df9a" prot="public" virt="non-virtual"><scope>scc::sc_inout_opt</scope><name>write</name></member>
+      <member refid="classscc_1_1sc__inout__opt_1a81b73209c4283d2e47e42eee0f762843" prot="public" virt="virtual"><scope>scc::sc_inout_opt</scope><name>~sc_inout_opt</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
