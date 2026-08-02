@@ -126,11 +126,11 @@ inline void ocp::pin::target<DATA_WIDTH, ADDR_WIDTH, BUSWIDTH>::req() {
             // we assume consecutive and aligned byte enable signals
             for(size_t i = 0; i < DATA_WIDTH / 8; ++i) {
                 auto be = strb[i] ? 0xff : 0;
-                if (be) {
+                if(be) {
                     *dptr = data((i << 3) + 7, i << 3).to_uint();
                     ++dptr;
                     ++len;
-                } else if (!len) {
+                } else if(!len) {
                     ++addr;
                 }
             }
@@ -142,9 +142,9 @@ inline void ocp::pin::target<DATA_WIDTH, ADDR_WIDTH, BUSWIDTH>::req() {
             // we assume consecutive and aligned byte enable signals
             for(size_t i = 0; i < DATA_WIDTH / 8; ++i) {
                 auto be = strb[i];
-                if (be) {
+                if(be) {
                     ++len;
-                } else if (!len) {
+                } else if(!len) {
                     ++addr;
                 }
             }
@@ -152,7 +152,7 @@ inline void ocp::pin::target<DATA_WIDTH, ADDR_WIDTH, BUSWIDTH>::req() {
         default:
             SCCFATAL(SCMOD) << "not supported";
         }
-        if(addr%(DATA_WIDTH/8))
+        if(addr % (DATA_WIDTH / 8))
             gp->set_address(addr);
         gp->set_streaming_width(len);
         gp->set_data_length(len);
@@ -184,12 +184,12 @@ inline void ocp::pin::target<DATA_WIDTH, ADDR_WIDTH, BUSWIDTH>::resp() {
             this->SResp.write(static_cast<unsigned>(ocp::resp_e::DVA));
             if(gp->is_read()) {
                 auto data = gp->get_data_ptr();
-                std::array<uint8_t, DATA_WIDTH/8> d;
+                std::array<uint8_t, DATA_WIDTH / 8> d;
                 auto len = gp->get_data_length();
-                auto idx = gp->get_address()%(DATA_WIDTH/8);
-                for(auto i=0; i<len; ++i, ++data)
-                    d[idx+i] = *data;
-                if(DATA_WIDTH==32)
+                auto idx = gp->get_address() % (DATA_WIDTH / 8);
+                for(auto i = 0; i < len; ++i, ++data)
+                    d[idx + i] = *data;
+                if(DATA_WIDTH == 32)
                     this->SData.write(bit_comb<uint32_t>(d[0], d[1], d[2], d[3]));
                 else
                     this->SData.write(bit_comb<uint64_t>(d[0], d[1], d[2], d[3], d[4], d[5], d[6], d[7]));
