@@ -43,14 +43,14 @@ struct target : public sc_core::sc_module, public tlm::tlm_bw_transport_if<tlm::
     sc_core::sc_in<bool> clk_i{"clk_i"};
     sc_core::sc_in<bool> reset{""};
 
-    sc_core::sc_in<sc_uint<3>> MCmd{"MCmd"};
-    sc_core::sc_in<sc_uint<ADDR_WIDTH>> MAddr{"MAddr"};
-    sc_core::sc_in<sc_uint<DATA_WIDTH>> MData{"MData"};
-    sc_core::sc_in<sc_uint<DATA_WIDTH / 8>> MByteEn{"MByteEn"};
+    sc_core::sc_in<sc_dt::sc_uint<3>> MCmd{"MCmd"};
+    sc_core::sc_in<sc_dt::sc_uint<ADDR_WIDTH>> MAddr{"MAddr"};
+    sc_core::sc_in<sc_dt::sc_uint<DATA_WIDTH>> MData{"MData"};
+    sc_core::sc_in<sc_dt::sc_uint<DATA_WIDTH / 8>> MByteEn{"MByteEn"};
     sc_core::sc_out<bool> SCmdAccept{"SCmdAccept"};
 
-    sc_core::sc_out<sc_uint<2>> SResp{"SResp"};
-    sc_core::sc_out<sc_uint<DATA_WIDTH>> SData{"SData"};
+    sc_core::sc_out<sc_dt::sc_uint<2>> SResp{"SResp"};
+    sc_core::sc_out<sc_dt::sc_uint<DATA_WIDTH>> SData{"SData"};
     sc_core::sc_in<bool> MRespAccept{"MRespAccept"};
 
     tlm::tlm_initiator_socket<BUSWIDTH> isckt{"isckt"};
@@ -112,41 +112,50 @@ inline void ocp::pin::target<DATA_WIDTH, ADDR_WIDTH, BUSWIDTH>::req() {
         }
         auto cmd = static_cast<ocp::cmd_e>(this->MCmd.read().to_uint());
         auto gp = tlm::scc::tlm_mm<>::get().allocate<ocp::ocp_extension>(DATA_WIDTH / 8);
-        gp->set_streaming_width(DATA_WIDTH / 8);
-        gp->set_data_length(DATA_WIDTH / 8);
         auto addr = this->MAddr.read().to_uint64();
+        auto strb = this->MByteEn.read();
         gp->set_address(addr);
+        auto len = 0;
         switch(cmd) {
         case cmd_e::WRITE:
         case cmd_e::WRITE_CONDITIONAL:
         case cmd_e::WRITE_NON_POSTED: {
             gp->set_command(tlm::TLM_WRITE_COMMAND);
             auto data = this->MData.read();
-            auto strb = this->MByteEn.read();
             auto dptr = gp->get_data_ptr();
-            auto len = 0;
+            // we assume consecutive and aligned byte enable signals
             for(size_t i = 0; i < DATA_WIDTH / 8; ++i) {
                 auto be = strb[i] ? 0xff : 0;
-                if(!len && !be) {
-                    addr++;
-                } else if(be) {
+                if (be) {
                     *dptr = data((i << 3) + 7, i << 3).to_uint();
                     ++dptr;
                     ++len;
+                } else if (!len) {
+                    ++addr;
                 }
             }
-            gp->set_address(addr);
-            gp->set_streaming_width(len);
-            gp->set_data_length(len);
         } break;
         case cmd_e::READ:
         case cmd_e::READEX:
         case cmd_e::READ_LINKED:
             gp->set_command(tlm::TLM_READ_COMMAND);
+            // we assume consecutive and aligned byte enable signals
+            for(size_t i = 0; i < DATA_WIDTH / 8; ++i) {
+                auto be = strb[i];
+                if (be) {
+                    ++len;
+                } else if (!len) {
+                    ++addr;
+                }
+            }
             break;
         default:
             SCCFATAL(SCMOD) << "not supported";
         }
+        if(addr%(DATA_WIDTH/8))
+            gp->set_address(addr);
+        gp->set_streaming_width(len);
+        gp->set_data_length(len);
         auto ext = gp->get_extension<ocp::ocp_extension>();
         ext->set_mcmd(cmd);
         SCCDEBUG(SCMOD) << "received OCP bus transaction req " << *gp;
@@ -174,8 +183,16 @@ inline void ocp::pin::target<DATA_WIDTH, ADDR_WIDTH, BUSWIDTH>::resp() {
             SCCDEBUG(SCMOD) << "received OCP bus transaction resp " << *gp;
             this->SResp.write(static_cast<unsigned>(ocp::resp_e::DVA));
             if(gp->is_read()) {
-                auto d = gp->get_data_ptr();
-                this->SData.write(bit_comb<uint32_t>(d[0], d[1], d[2], d[3]));
+                auto data = gp->get_data_ptr();
+                std::array<uint8_t, DATA_WIDTH/8> d;
+                auto len = gp->get_data_length();
+                auto idx = gp->get_address()%(DATA_WIDTH/8);
+                for(auto i=0; i<len; ++i, ++data)
+                    d[idx+i] = *data;
+                if(DATA_WIDTH==32)
+                    this->SData.write(bit_comb<uint32_t>(d[0], d[1], d[2], d[3]));
+                else
+                    this->SData.write(bit_comb<uint64_t>(d[0], d[1], d[2], d[3], d[4], d[5], d[6], d[7]));
             }
             do {
                 wait(this->MRespAccept.default_event() | clk_delayed);
