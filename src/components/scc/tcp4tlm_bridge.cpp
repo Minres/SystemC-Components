@@ -17,6 +17,7 @@
 #include "tcp4tlm_bridge.h"
 #include "scc/report.h"
 #include "scc/tcp4tlm/messages.h"
+#include "scc/wall_time_speed_limiter.h"
 #include "tlm/scc/tlm_extensions.h"
 #include "tlm/scc/tlm_gp_shared.h"
 #include <algorithm>
@@ -98,6 +99,10 @@ tcp4tlm_bridge::~tcp4tlm_bridge() {
     }
 }
 
+void tcp4tlm_bridge::before_end_of_elaboration() {
+    if(wall_time_simulation_speed.get_value())
+        scc::wall_time_speed_limiter::get(); // initialize module
+}
 void tcp4tlm_bridge::end_of_elaboration() {
     client::host = other_host_name.get_value();
     client::port = other_host_port.get_value();
@@ -270,28 +275,13 @@ void tcp4tlm_bridge::timing_thread() {
     const auto usecs_to_sleep = 1000LL;
 #if defined __x86_64__
     if(!is_connection_server.get_value()) {
-        while(true) {
-            wait(1_ms);
-            auto smsg = tcp4tlm::make_sync_msg(sc_core::sc_time_stamp().value());
-            client_connection().write_data(smsg);
-        }
-    } else if(wall_time_simulation_speed.get_value()) {
-        SCCDEBUG(SCMOD) << "Running in wall time mode";
-        auto duration = usecs_to_sleep;
-        auto checkpoint_us = get_time_of_day_us();
-        while(true) {
-            wait(usecs_to_sleep, sc_core::SC_US);
-            auto act_us = get_time_of_day_us();
-            auto consumed = act_us - checkpoint_us;
-            if(consumed > 0 && duration > consumed) {
-                struct timespec tv;
-                tv.tv_sec = static_cast<time_t>(duration - consumed) / 1000000;
-                tv.tv_nsec = static_cast<decltype(tv.tv_nsec)>((duration - consumed) * 1000);
-                nanosleep(&tv, &tv);
+        if(!no_systemc_sync.get_value())
+            while(true) {
+                wait(1_ms);
+                auto smsg = tcp4tlm::make_sync_msg(sc_core::sc_time_stamp().value());
+                client_connection().write_data(smsg);
             }
-            checkpoint_us = get_time_of_day_us();
-        }
-    } else {
+    } else if(!wall_time_simulation_speed.get_value()) {
         SCCDEBUG(SCMOD) << "Running in simulated time mode";
         while(true) {
             while(next_time_stamp.empty()) {
@@ -395,18 +385,20 @@ void tcp4tlm_bridge::server_receive_completed(con_ptr& con, const tcp4tlm::reque
         std::future<bool> fut = task.get_future();
         timed_task tup{std::move(task), time_point};
         task_que.emplace(std::move(tup));
-        next_time_stamp.push(time_point);
+        if(wall_time_simulation_speed.get_value())
+            next_time_stamp.push(time_point);
         fut.wait();
         fut.get();
     } break;
     case tcp4tlm::RequestPayload_SyncMsg: {
         SCCTRACE(SCMOD) << "Got SyncMsg";
         if(is_connection_server.get_value()) {
-            const auto* msg = request->payload_as_SyncMsg();
-            auto time_point = sc_core::sc_time::from_value(msg->time_stamp());
-            next_time_stamp.push(time_point);
+            if(wall_time_simulation_speed.get_value()) {
+                const auto* msg = request->payload_as_SyncMsg();
+                auto time_point = sc_core::sc_time::from_value(msg->time_stamp());
+                next_time_stamp.push(time_point);
+            }
         }
-        // con->async_write(okmsg);
     } break;
     case tcp4tlm::RequestPayload_SigOpMsg: {
         SCCTRACE(SCMOD) << "Got SigOpMsg";
@@ -458,8 +450,8 @@ void tcp4tlm_bridge::process_task_que() {
     timed_task res;
     while(true) {
         while(task_que.try_get(res)) {
-            SCCTRACEALL(SCMOD) << "Got a task @" << res.timepoint;
-            if(no_systemc_sync.get_value() || sc_core::sc_time_stamp() > res.timepoint) {
+            SCCTRACEALL(SCMOD) << "Got a task for time " << res.timepoint;
+            if(wall_time_simulation_speed.get_value() || sc_core::sc_time_stamp() > res.timepoint) {
                 res.t();
             } else {
                 auto time_point = res.timepoint - sc_core::sc_time_stamp();

@@ -143,6 +143,7 @@ protected:
     void timing_thread();
     void process_task_que();
     void process_timed_task_que();
+    void before_end_of_elaboration() override;
     void end_of_elaboration() override;
     void start_of_simulation() override;
     void end_of_simulation() override;

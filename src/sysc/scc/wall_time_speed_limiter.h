@@ -20,6 +20,7 @@
 #include "report.h"
 #include <sys/time.h>
 #include <sysc/kernel/sc_module.h>
+#include <sysc/kernel/sc_simcontext.h>
 
 /** \ingroup scc-sysc
  *  @{
@@ -57,19 +58,19 @@ private:
 
     void main_thread() {
         SCCDEBUG(SCMOD) << "Limiting simulation speed to wall time mode";
-        const auto interval = 1000LL;
+        const auto interval = 1000LL; // us
 #if defined(__x86_64__) || 1
-        auto checkpoint_us = get_time_of_day_us();
+        auto time_stamp = get_time_of_day_us();
         while(true) {
             wait(interval, sc_core::SC_US);
-            auto consumed = get_time_of_day_us() - checkpoint_us;
+            auto consumed = get_time_of_day_us() - time_stamp;
             if(consumed > 0 && interval > consumed) {
                 struct timespec tv;
                 tv.tv_sec = static_cast<time_t>(interval - consumed) / 1000000;
                 tv.tv_nsec = static_cast<decltype(tv.tv_nsec)>((interval - consumed) * 1000);
                 nanosleep(&tv, &tv);
             }
-            checkpoint_us = get_time_of_day_us();
+            time_stamp = get_time_of_day_us();
         }
 #else
         boost::posix_time::ptime checkpoint = std::posix_time::microsec_clock::local_time();
