@@ -15,20 +15,21 @@
  *******************************************************************************/
 
 #include "tcp4tlm_server.h"
-#include "scc/report.h"
-#include "scc/tcp4tlm/messages.h"
-#include "tlm/scc/tlm_extensions.h"
-#include "tlm/scc/tlm_gp_shared.h"
 #include <algorithm>
 #include <atomic>
 #include <boost/asio.hpp>
 #include <cstdint>
 #include <cstring>
 #include <ctime>
+#include <scc/report.h>
+#include <scc/tcp4tlm/messages.h>
+#include <scc/wall_time_speed_limiter.h>
 #include <sysc/kernel/sc_module.h>
 #include <sysc/kernel/sc_simcontext.h>
 #include <sysc/kernel/sc_time.h>
 #include <thread>
+#include <tlm/scc/tlm_extensions.h>
+#include <tlm/scc/tlm_gp_shared.h>
 
 #define GETCLOCK(X) clock_gettime(CLOCK_REALTIME, X)
 namespace scc {
@@ -83,7 +84,17 @@ void tcp4tlm_server::statistics::updateStat(unsigned long rt) {
 }
 #endif
 
-tcp4tlm_server::~tcp4tlm_server() { shutdown_server(); }
+tcp4tlm_server::~tcp4tlm_server() {
+    if(is_server_running()) {
+        SCCTRACE(SCMOD) << "[" << __FUNCTION__ << "] shutting down server";
+        shutdown_server();
+    }
+}
+
+void tcp4tlm_server::before_end_of_elaboration() {
+    if(wall_time_simulation_speed.get_value())
+        scc::wall_time_speed_limiter::get(); // initialize module
+}
 
 void tcp4tlm_server::start_of_simulation() {
     SCCINFO(SCMOD) << "starting server on port " << this_host_port.get_value();
@@ -92,6 +103,7 @@ void tcp4tlm_server::start_of_simulation() {
 
 void tcp4tlm_server::end_of_simulation() {
     if(is_server_running()) {
+        SCCTRACE(SCMOD) << "[" << __FUNCTION__ << "] shutting down server";
         request_shutdown();
     }
 #ifdef GENERATE_STATISTICS
@@ -142,37 +154,7 @@ void tcp4tlm_server::timing_thread() {
     // would (potentially) block the server start of other bridges
     wait4connection();
     // now deal with the timing
-    const auto usecs_to_sleep = 1000LL;
-    if(wall_time_simulation_speed.get_value()) {
-        SCCDEBUG(SCMOD) << "Running in wall time mode";
-#if defined __x86_64__
-        auto duration = usecs_to_sleep;
-        auto checkpoint_us = get_time_of_day_us();
-        while(true) {
-            wait(usecs_to_sleep, sc_core::SC_US);
-            auto act_us = get_time_of_day_us();
-            auto consumed = act_us - checkpoint_us;
-            if(consumed > 0 && duration > consumed) {
-                struct timespec tv;
-                tv.tv_sec = static_cast<time_t>(duration - consumed) / 1000000;
-                tv.tv_nsec = static_cast<decltype(tv.tv_nsec)>((duration - consumed) * 1000);
-                nanosleep(&tv, &tv);
-            }
-            checkpoint_us = get_time_of_day_us();
-        }
-#else
-        std::posix_time::time_duration duration = std::posix_time::microsec(usecsToSleep);
-        std::posix_time::ptime checkpoint = std::posix_time::microsec_clock::local_time();
-        while(true) {
-            wait(usecsToSleep, sc_core::SC_US);
-            std::posix_time::time_duration consumed = std::posix_time::microsec_clock::local_time() - checkpoint;
-            if(duration > consumed) {
-                std::this_thread::sleep(duration - consumed);
-            }
-            checkpoint = std::posix_time::microsec_clock::local_time();
-        }
-#endif
-    } else {
+    if(!wall_time_simulation_speed.get_value()) {
         SCCDEBUG(SCMOD) << "Running in simulated time mode";
         while(true) {
             while(next_time_stamp.empty()) {
@@ -203,6 +185,11 @@ tlm::scc::tlm_gp_shared_ptr tcp4tlm_server::init_gp(const tcp4tlm::BusOpMsg* con
     } else {
         gp->set_command(tlm::TLM_WRITE_COMMAND);
         std::memcpy(gp->get_data_ptr(), msg->data()->Data(), gp->get_data_length());
+    }
+    if(msg->byte_enable() != nullptr && msg->byte_enable()->size() > 0) {
+        gp->set_byte_enable_length(msg->byte_enable()->size());
+        gp->set_byte_enable_ptr(new uint8_t[msg->byte_enable()->size()]); // TODO: this might result in a memeory leak
+        std::memcpy(gp->get_byte_enable_ptr(), msg->data()->Data(), gp->get_data_length());
     }
     return gp;
 }
@@ -237,7 +224,14 @@ void tcp4tlm_server::server_receive_completed(con_ptr& con, const tcp4tlm::reque
         callback_task task([this, msg, con]() {
             auto gp = init_gp(msg);
             auto delay = sc_core::sc_time::from_value(msg->time_offset());
-            isckt->b_transport(*gp, delay);
+            if(msg->type() == scc::tcp4tlm::BusAccessType::BusAccessType_DEBUG_ACC)
+                isckt->transport_dbg(*gp);
+            else
+                isckt->b_transport(*gp, delay);
+            if(gp->get_byte_enable_ptr()) {
+                delete[] gp->get_byte_enable_ptr();
+                gp->set_byte_enable_ptr(nullptr);
+            }
             if(gp->is_read()) {
                 auto* ext = gp->get_extension<tlm::scc::data_buffer>();
                 auto dmsg = tcp4tlm::make_bus_data_msg(msg->id(), ext->data(),
@@ -255,15 +249,18 @@ void tcp4tlm_server::server_receive_completed(con_ptr& con, const tcp4tlm::reque
         std::future<bool> fut = task.get_future();
         timed_task tup{std::move(task), time_point};
         task_que.emplace(std::move(tup));
-        next_time_stamp.push(time_point);
+        if(!wall_time_simulation_speed.get_value())
+            next_time_stamp.push(time_point);
         fut.wait();
         fut.get();
     } break;
     case tcp4tlm::RequestPayload_SyncMsg: {
         SCCTRACE(SCMOD) << "Got SyncMsg";
-        const auto* msg = request->payload_as_SyncMsg();
-        auto time_point = sc_core::sc_time::from_value(msg->time_stamp());
-        next_time_stamp.push(time_point);
+        if(!wall_time_simulation_speed.get_value()) {
+            const auto* msg = request->payload_as_SyncMsg();
+            auto time_point = sc_core::sc_time::from_value(msg->time_stamp());
+            next_time_stamp.push(time_point);
+        }
         // no response
     } break;
     case tcp4tlm::RequestPayload_SigOpMsg: {
@@ -315,7 +312,7 @@ void tcp4tlm_server::process_task_que() {
     while(true) {
         while(task_que.try_get(res)) {
             SCCTRACEALL(SCMOD) << "Got a task @" << res.timepoint;
-            if(no_systemc_sync.get_value() || sc_core::sc_time_stamp() > res.timepoint) {
+            if(wall_time_simulation_speed.get_value() || sc_core::sc_time_stamp() >= res.timepoint) {
                 res.t();
             } else {
                 auto time_point = res.timepoint - sc_core::sc_time_stamp();
