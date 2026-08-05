@@ -228,6 +228,8 @@ inline long long int get_time_of_day_us() {
 }
 
 void tcp4tlm_client::timing_thread() {
+    if(no_systemc_sync.get_value())
+        return;
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
         wait(1_ms);

@@ -15,11 +15,6 @@
  *******************************************************************************/
 
 #include "tcp4tlm_bridge.h"
-#include "scc/report.h"
-#include "scc/tcp4tlm/messages.h"
-#include "scc/wall_time_speed_limiter.h"
-#include "tlm/scc/tlm_extensions.h"
-#include "tlm/scc/tlm_gp_shared.h"
 #include <algorithm>
 #include <atomic>
 #include <boost/asio.hpp>
@@ -28,10 +23,15 @@
 #include <cstring>
 #include <ctime>
 #include <mutex>
+#include <scc/report.h>
+#include <scc/tcp4tlm/messages.h>
+#include <scc/wall_time_speed_limiter.h>
 #include <sysc/kernel/sc_module.h>
 #include <sysc/kernel/sc_simcontext.h>
 #include <sysc/kernel/sc_time.h>
 #include <thread>
+#include <tlm/scc/tlm_extensions.h>
+#include <tlm/scc/tlm_gp_shared.h>
 
 #define GETCLOCK(X) clock_gettime(CLOCK_REALTIME, X)
 namespace scc {
@@ -102,8 +102,6 @@ tcp4tlm_bridge::~tcp4tlm_bridge() {
 void tcp4tlm_bridge::before_end_of_elaboration() {
     if(wall_time_simulation_speed.get_value())
         scc::wall_time_speed_limiter::get(); // initialize module
-}
-void tcp4tlm_bridge::end_of_elaboration() {
     client::host = other_host_name.get_value();
     client::port = other_host_port.get_value();
 }
@@ -273,7 +271,6 @@ void tcp4tlm_bridge::timing_thread() {
         wait4connection();
     // now deal with the timing
     const auto usecs_to_sleep = 1000LL;
-#if defined __x86_64__
     if(!is_connection_server.get_value()) {
         if(!no_systemc_sync.get_value())
             while(true) {
@@ -296,20 +293,6 @@ void tcp4tlm_bridge::timing_thread() {
             }
         }
     }
-#else
-    std::posix_time::ptime checkpoint = std::posix_time::microsec_clock::local_time();
-    std::posix_time::time_duration duration = std::posix_time::microsec(usecsToSleep);
-    if(!is_connection_server.get_value() || !limit_simulation_speed.get_value())
-        return;
-    while(true) {
-        wait(usecsToSleep, sc_core::SC_US);
-        std::posix_time::time_duration consumed = std::posix_time::microsec_clock::local_time() - checkpoint;
-        if(duration > consumed) {
-            std::this_thread::sleep(duration - consumed);
-        }
-        checkpoint = std::posix_time::microsec_clock::local_time();
-    }
-#endif
 }
 
 tlm::scc::tlm_gp_shared_ptr tcp4tlm_bridge::init_gp(const tcp4tlm::BusOpMsg* const msg) {
@@ -326,6 +309,11 @@ tlm::scc::tlm_gp_shared_ptr tcp4tlm_bridge::init_gp(const tcp4tlm::BusOpMsg* con
     } else {
         gp->set_command(tlm::TLM_WRITE_COMMAND);
         std::memcpy(gp->get_data_ptr(), msg->data()->Data(), gp->get_data_length());
+    }
+    if(msg->byte_enable() != nullptr && msg->byte_enable()->size() > 0) {
+        gp->set_byte_enable_length(msg->byte_enable()->size());
+        gp->set_byte_enable_ptr(new uint8_t[msg->byte_enable()->size()]); // TODO: this might result in a memeory leak
+        std::memcpy(gp->get_byte_enable_ptr(), msg->data()->Data(), gp->get_data_length());
     }
     return gp;
 }
@@ -367,7 +355,14 @@ void tcp4tlm_bridge::server_receive_completed(con_ptr& con, const tcp4tlm::reque
         callback_task task([this, msg, con]() {
             auto gp = init_gp(msg);
             auto delay = sc_core::sc_time::from_value(msg->time_offset());
-            isckt->b_transport(*gp, delay);
+            if(msg->type() == scc::tcp4tlm::BusAccessType::BusAccessType_DEBUG_ACC)
+                isckt->transport_dbg(*gp);
+            else
+                isckt->b_transport(*gp, delay);
+            if(gp->get_byte_enable_ptr()) {
+                delete[] gp->get_byte_enable_ptr();
+                gp->set_byte_enable_ptr(nullptr);
+            }
             if(gp->is_read()) {
                 auto* ext = gp->get_extension<tlm::scc::data_buffer>();
                 auto dmsg = tcp4tlm::make_bus_data_msg(msg->id(), ext->data(),
@@ -393,7 +388,7 @@ void tcp4tlm_bridge::server_receive_completed(con_ptr& con, const tcp4tlm::reque
     case tcp4tlm::RequestPayload_SyncMsg: {
         SCCTRACE(SCMOD) << "Got SyncMsg";
         if(is_connection_server.get_value()) {
-            if(wall_time_simulation_speed.get_value()) {
+            if(!wall_time_simulation_speed.get_value()) {
                 const auto* msg = request->payload_as_SyncMsg();
                 auto time_point = sc_core::sc_time::from_value(msg->time_stamp());
                 next_time_stamp.push(time_point);

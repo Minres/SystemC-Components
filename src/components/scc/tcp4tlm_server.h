@@ -43,7 +43,6 @@ struct tcp4tlm_server : public sc_core::sc_module, protected tcp4tlm::server<tcp
     cci::cci_param<unsigned> this_host_port{"this_host_port", 32000u};
     cci::cci_param<bool> wall_time_simulation_speed{"wall_time_simulation_speed", false};
     cci::cci_param<bool> write_no_response{"write_no_response", false};
-    cci::cci_param<bool> no_systemc_sync{"no_systemc_sync", false};
 
     tlm_utils::simple_initiator_socket<tcp4tlm_server, ::scc::LT> isckt;
 
@@ -98,6 +97,7 @@ protected:
     void timing_thread();
     void process_task_que();
     void process_timed_task_que();
+    void before_end_of_elaboration() override;
     void start_of_simulation() override;
     void end_of_simulation() override;
     std::shared_ptr<tcp4tlm::response_message> resp_msg;
