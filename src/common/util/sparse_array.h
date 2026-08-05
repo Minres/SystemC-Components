@@ -42,7 +42,7 @@ public:
 
     static constexpr uint64_t page_size = (1 << PAGE_ADDR_BITS);
 
-    static constexpr unsigned page_count = (SIZE + page_size - 1) / page_size;
+    static constexpr uint64_t page_count = (SIZE + page_size - 1) / page_size;
 
     static constexpr uint64_t page_addr_width = PAGE_ADDR_BITS;
 
