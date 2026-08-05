@@ -385,7 +385,7 @@ void tcp4tlm_bridge::server_receive_completed(con_ptr& con, const tcp4tlm::reque
         std::future<bool> fut = task.get_future();
         timed_task tup{std::move(task), time_point};
         task_que.emplace(std::move(tup));
-        if(wall_time_simulation_speed.get_value())
+        if(!wall_time_simulation_speed.get_value())
             next_time_stamp.push(time_point);
         fut.wait();
         fut.get();
@@ -451,7 +451,7 @@ void tcp4tlm_bridge::process_task_que() {
     while(true) {
         while(task_que.try_get(res)) {
             SCCTRACEALL(SCMOD) << "Got a task for time " << res.timepoint;
-            if(wall_time_simulation_speed.get_value() || sc_core::sc_time_stamp() > res.timepoint) {
+            if(wall_time_simulation_speed.get_value() || sc_core::sc_time_stamp() >= res.timepoint) {
                 res.t();
             } else {
                 auto time_point = res.timepoint - sc_core::sc_time_stamp();

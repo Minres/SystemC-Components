@@ -30,7 +30,7 @@ int sc_main(int argc, char* argv[]) {
     desc.add_options()
         ("help,h", "Print help message")
         ("no-systemc-sync", "Disable SystemC synchronization")
-        ("remote-host", po::value<std::string>(&other_host_name), "Host name to connect to")
+        ("remote-host", po::value<std::string>(&other_host_name)->default_value("localhost"), "Host name to connect to")
         ("remote-port", po::value<unsigned>(&other_port_nr), "Port to connect to")
         ("local-port", po::value<unsigned>(&port_nr)->default_value(port_nr), "Local host port")
         ("num-clients", po::value<unsigned>(&num_clients)->default_value(num_clients), "Local host port")
@@ -54,7 +54,7 @@ int sc_main(int argc, char* argv[]) {
     LOGGER(DEFAULT)::set_reporting_level(logging::TRACEALL);
 
     std::unique_ptr<sc_core::sc_module> tb;
-    if(other_host_name.empty()) {
+    if(!other_port_nr) {
         auto* srv = new tcp4tlm_bridge::top_server("top_srv", num_clients, port_nr);
         tb.reset(srv);
     } else {
