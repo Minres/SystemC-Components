@@ -77,7 +77,7 @@ public:
      * @param page_nr the page number ot fetch
      * @return reference to page
      */
-    page_type& operator()(uint32_t page_nr) {
+    page_type& operator()(uint64_t page_nr) {
         assert(page_nr < page_count);
         if(arr[page_nr] == nullptr)
             arr.at(page_nr) = new page_type();
@@ -89,9 +89,9 @@ public:
      * @param addr the address to check
      * @return true if the page is allocated
      */
-    bool is_allocated(uint32_t addr) {
+    bool is_allocated(uint64_t addr) {
         assert(addr < SIZE);
-        T nr = addr >> PAGE_ADDR_BITS;
+        uint64_t nr = addr >> PAGE_ADDR_BITS;
         return arr.at(nr) != nullptr;
     }
     /**
