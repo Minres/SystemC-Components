@@ -45,9 +45,14 @@ write_no_response
 no_systemc_sync
 ```
 
+`wall_time_simulation_speed` initializes the shared wall-time speed limiter
+during elaboration and changes how received tasks are scheduled. In this bridge
+implementation, `no_systemc_sync` only disables periodic outgoing `SyncMsg`
+messages on the non-server side.
+
 ## Connection Setup
 
-During `end_of_elaboration()`, the bridge copies `other_host_name` and
+During `before_end_of_elaboration()`, the bridge copies `other_host_name` and
 `other_host_port` into the TCP client base class.
 
 During `start_of_simulation()`, connection setup depends on
@@ -60,8 +65,8 @@ During `start_of_simulation()`, connection setup depends on
   its local listening endpoint, and waits for an OK response.
 
 When a bridge receives `NotifyEndpointMsg`, it stores the peer host and port,
-creates the reverse client connection, sends an OK response, and marks the
-connection as established.
+creates the reverse clientconnection, queues an OK response in SystemC context, 
+and marks the connection as established.
 
 This handshake creates a bidirectional link: each bridge has a server side for
 receiving requests and a client side for sending requests.
@@ -80,7 +85,7 @@ Both callbacks delegate to `do_access()`.
 For a read transaction, `do_access()`:
 
 1. Creates a `BusOpMsg` containing the current SystemC timestamp, delay,
-   address, data length, access type, and byte enables.
+   address, data length, access type, and copied byte-enable data.
 2. Sends the message through the client connection.
 3. Waits for a `BusDataMsg` response.
 4. Verifies that the response status is OK and that the response belongs to the
@@ -90,14 +95,17 @@ For a read transaction, `do_access()`:
 
 For a write transaction, `do_access()`:
 
-1. Copies the payload data into a `BusOpMsg`.
+1. Creates a `BusOpMsg` containing the current SystemC timestamp, delay,
+   address, data length, access type, payload data and byte-enable data.
 2. Sends the message through the client connection.
 3. If `write_no_response` is enabled, marks the transaction as successful after
    sending.
 4. Otherwise waits for a response and sets the TLM response status according to
    the received status.
 
-Debug transport is represented as a `BusOpMsg` with debug access type.
+Debug transport is represented on the wire as a `BusOpMsg` with debug access
+type. On the receiving side the implementation reconstructs a normal
+generic payload and executes it with `transport_dbg()`.
 
 ## Handling Remote Messages
 
@@ -121,10 +129,16 @@ When `server_receive_completed()` receives a `BusOpMsg`, it:
 1. Converts the message into a `tlm_generic_payload` using `init_gp()`.
 2. Builds a SystemC time point from the message timestamp.
 3. Places a callback task into the asynchronous task queue.
-4. Schedules the task for immediate execution or for the requested simulation
-   time.
-5. Executes the transaction through `isckt->b_transport(*gp, delay)`.
-6. Sends a response back to the peer.
+4. Pushes the timestamp into `next_time_stamp` when wall-time mode is disabled.
+5. Waits until the queued task has completed.
+6. Executes the transaction through either `isckt->b_transport(*gp, delay)` or `isckt->transport_dbr(*gp)`.
+7. Sends a response back to the peer.
+
+`init_gp()` sets the address, size, streaming width, command, response status,
+and data buffer. A `BusOpMsg` without data is treated as a read; a message with
+data is treated as a write and its data is copied into the payload buffer. If 
+the `BusOpMsg` carries byte-enable data, the implementation applies incoming 
+byte-enable data to the reconstructed generic payload.
 
 Read requests return `BusDataMsg` with the data read from the local target.
 Write requests return an OK or failure response unless the message requested no
@@ -143,16 +157,19 @@ process_timed_task_que()
 `timing_thread()` coordinates simulation time between peers:
 
 - On the non-server side, it periodically sends `SyncMsg` messages containing
-  the current SystemC timestamp.
-- On the server side in simulated-time mode, it consumes remote timestamps from
-  `next_time_stamp` and advances local SystemC time toward them.
-- On the server side in wall-time mode, it paces simulation against elapsed wall
-  clock time.
+  the current SystemC timestamp every millisecond, unless `no_systemc_sync` is
+  enabled.
+- On the server side, after the peer connection is established, simulated-time
+  mode consumes timestamps from `next_time_stamp` and advances local SystemC time
+  toward them.
+- On the server side with `wall_time_simulation_speed` enabled, the simulated
+  timestamp advancement loop is skipped. Received tasks are executed immediately
+  by `process_task_que()`.
 
 `process_task_que()` moves received network tasks into SystemC execution
-context. If `no_systemc_sync` is enabled, or if the requested time point has
-already passed, tasks run immediately. Otherwise they are scheduled through the
-payload event queue.
+context. If `wall_time_simulation_speed` is enabled, or if the requested time
+point has already passed, tasks run immediately. Otherwise they are scheduled
+through the payload event queue relative to the current SystemC time.
 
 `process_timed_task_que()` executes tasks when their scheduled SystemC event
 fires.
@@ -160,9 +177,9 @@ fires.
 ## Signal Messages
 
 `SigOpMsg` updates entries in the `signals` vector. If the message index is
-valid, the bridge schedules a SystemC task that writes the requested boolean
-value and then sends an OK response. If the index is out of range, it sends a
-declined response.
+valid, the bridge schedules a SystemC task at zero time, waits for it to write
+the requested boolean value, and then sends an OK response. If the index is out
+of range, it sends a declined response.
 
 ## Shutdown
 
@@ -177,7 +194,10 @@ When `NotifyShutdownMsg` is received, the bridge:
 4. Notifies `shutdown_evt` inside SystemC context.
 
 The destructor and `end_of_simulation()` both ensure that the server is shut
-down and that an orderly shutdown message is sent when appropriate.
+down or requested to shut down and that an orderly shutdown message is sent when
+appropriate. `end_of_simulation()` sends the shutdown message from the
+non-server side when it is connected, then requests server shutdown; the
+destructor sends it if needed and shuts the server down directly.
 
 ## Summary
 

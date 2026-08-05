@@ -17,20 +17,20 @@
 #ifndef TLM_SCC_TCP4TLM_CLIENT_H_
 #define TLM_SCC_TCP4TLM_CLIENT_H_
 
-#include "rigtorp/SPSCQueue.h"
-#include "scc/async_queue.h"
-#include "scc/peq.h"
 #include "tcp4tlm/client.h"
 #include "tcp4tlm/messages.h"
 #include "tcp4tlm/server.h"
-#include "tlm/scc/tlm_gp_shared.h"
-#include "tlm/scc/tlm_mm.h"
 #include <atomic>
 #include <boost/asio.hpp>
 #include <cci_configuration>
+#include <rigtorp/SPSCQueue.h>
+#include <scc/async_queue.h>
+#include <scc/peq.h>
 #include <scc/report.h>
 #include <scc/utilities.h>
 #include <systemc>
+#include <tlm/scc/tlm_gp_shared.h>
+#include <tlm/scc/tlm_mm.h>
 #include <tlm>
 #include <tlm_utils/simple_initiator_socket.h>
 #include <tlm_utils/simple_target_socket.h>
@@ -44,8 +44,8 @@ struct tcp4tlm_client : public sc_core::sc_module, protected tcp4tlm::client<tcp
     cci::cci_param<std::string> other_host_name{"other_host_name", ""};
     cci::cci_param<unsigned> other_host_port{"other_host_port", 0};
     cci::cci_param<unsigned> this_host_port{"this_host_port", 32000u};
-    cci::cci_param<bool> wall_time_simulation_speed{"wall_time_simulation_speed", false};
     cci::cci_param<bool> write_no_response{"write_no_response", false};
+    cci::cci_param<bool> no_systemc_sync{"no_systemc_sync", false};
 
     tlm_utils::simple_target_socket<tcp4tlm_client, ::scc::LT> tsckt;
 
