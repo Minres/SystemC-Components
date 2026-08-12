@@ -22,8 +22,6 @@
 #include <limits>
 #include <map>
 #include <systemc>
-#include <type_traits>
-#include <vector>
 
 /** \ingroup scc-sysc
  *  @{

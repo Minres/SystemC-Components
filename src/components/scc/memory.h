@@ -36,7 +36,6 @@
 #include <scc/utilities.h>
 #include <tlm.h>
 #include <tlm/scc/target_mixin.h>
-#include <type_traits>
 #include <util/range_lut.h>
 #include <util/sparse_array.h>
 
