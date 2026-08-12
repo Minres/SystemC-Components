@@ -17,7 +17,10 @@
 #ifndef _SYSC_ROUTER_H_
 #define _SYSC_ROUTER_H_
 
+#include "at_router/nb_router.h"
+#include "scc/at_router/types.h"
 #include <limits>
+#include <memory>
 #include <scc/report.h>
 #include <scc/utilities.h>
 #include <sysc/utils/sc_vector.h>
@@ -27,6 +30,8 @@
 #include <tlm/scc/scv/tlm_rec_target_socket.h>
 #include <tlm/scc/target_mixin.h>
 #include <tlm>
+#include <tlm_core/tlm_2/tlm_2_interfaces/tlm_fw_bw_ifs.h>
+#include <tlm_core/tlm_2/tlm_generic_payload/tlm_phase.h>
 #include <unordered_map>
 #include <util/range_lut.h>
 
@@ -179,10 +184,20 @@ template <unsigned BUSWIDTH = LT, typename TARGET_SOCKET_TYPE = tlm::tlm_target_
     void invalidate_direct_mem_ptr(int id, ::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range);
 
     /**
+     * @fn void before_end_of_elaboration()
+     * @brief tagged end of construction callback.
+     */
+    void before_end_of_elaboration() override;
+
+    /**
      * @fn void end_of_elaboration()
      * @brief tagged end of elaboration callback.
      */
     void end_of_elaboration() override;
+
+    util::range_lut<unsigned> const& get_address_decoder() { return addr_decoder; }
+
+    void set_at_architecture(at_router::creator_fct<> creator) { this->creator = creator; }
 
 protected:
     struct range_entry {
@@ -197,6 +212,9 @@ protected:
     std::unordered_map<std::string, size_t> target_name_lut;
     bool check_overlap_on_add_target;
     bool warn_on_address_error{false};
+    at_router::creator_fct<> creator;
+    std::vector<at_router::i_port_bw_adapter<tlm::tlm_base_protocol_types>> i_port_bw_adapt;
+    std::unique_ptr<at_router::nb_router<>> rt;
 };
 
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
@@ -243,7 +261,7 @@ template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
 void router<BUSWIDTH, TARGET_SOCKET_TYPE>::add_target_range(std::string name, uint64_t base, uint64_t size, bool remap) {
     auto it = target_name_lut.find(name);
 #ifndef NDEBUG
-#if(SYSTEMC_VERSION >= 20171012)
+#if (SYSTEMC_VERSION >= 20171012)
     if(it == target_name_lut.end()) {
         std::stringstream ss;
         ss << "No target index entry for '" << name << "' found ";
@@ -389,6 +407,31 @@ void router<BUSWIDTH, TARGET_SOCKET_TYPE>::invalidate_direct_mem_ptr(int id, ::s
         target[i]->invalidate_direct_mem_ptr(bw_start_range - ibases[i], bw_end_range - ibases[i]);
     }
 }
+
+template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE> void router<BUSWIDTH, TARGET_SOCKET_TYPE>::before_end_of_elaboration() {
+    if(creator) {
+        rt = creator(BUSWIDTH, target.size(), initiator.size(), addr_decoder);
+        for(auto i = 0u; i < target.size(); ++i) {
+            auto& igress = rt->igress[i];
+            target[i].register_nb_transport_fw(
+                [&igress](tlm::tlm_generic_payload& trans, tlm::tlm_phase& phase, sc_core::sc_time& t) -> tlm::tlm_sync_enum {
+                    return igress.fw->nb_transport_fw(trans, phase, t);
+                });
+            auto& p = target[i].get_base_port();
+            i_port_bw_adapt.emplace_back(p);
+            igress.bw(i_port_bw_adapt.back());
+        }
+        for(auto i = 0u; i < initiator.size(); ++i) {
+            auto& egress = rt->egress[i];
+            initiator[i].register_nb_transport_bw(
+                [&egress](tlm::tlm_generic_payload& trans, tlm::tlm_phase& phase, sc_core::sc_time& t) -> tlm::tlm_sync_enum {
+                    return egress.bw->nb_transport_bw(trans, phase, t);
+                });
+            egress.fw(*initiator[i].operator->());
+        }
+    }
+}
+
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE> void router<BUSWIDTH, TARGET_SOCKET_TYPE>::end_of_elaboration() {
     addr_decoder.validate();
 }
