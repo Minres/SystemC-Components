@@ -17,7 +17,6 @@
 #ifndef _TLM_SCC_INITIATOR_MIXIN_H_
 #define _TLM_SCC_INITIATOR_MIXIN_H_
 
-#include "scc/utilities.h"
 #include <functional>
 #include <sstream>
 #include <tlm>

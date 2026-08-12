@@ -18,7 +18,6 @@
 #define TLM_SCC_TCP4TLM_BRIDGE_H_
 
 #include "rigtorp/SPSCQueue.h"
-#include "scc/async_event.h"
 #include "scc/async_queue.h"
 #include "scc/peq.h"
 #include "tcp4tlm/client.h"

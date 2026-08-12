@@ -20,7 +20,6 @@
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #endif
 
-#include "scc/utilities.h"
 #include <functional>
 #include <sstream>
 #include <tlm>
@@ -34,9 +33,6 @@ namespace scc {
  * an target socket mixin adding default implementation of callback functions similar to tlm::simple_target_socket
  */
 template <typename BASE_TYPE, typename TYPES = tlm::tlm_base_protocol_types> class target_mixin : public BASE_TYPE {
-    //    friend class fw_process;
-    //    friend class bw_process;
-
 public:
     using transaction_type = typename TYPES::tlm_payload_type;
     using phase_type = typename TYPES::tlm_phase_type;
