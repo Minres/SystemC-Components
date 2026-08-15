@@ -32,6 +32,8 @@ int sc_main(int argc, char* argv[]) {
     // create tracer if environment variable SCC_TEST_TRACE is defined
     std::unique_ptr<scc::tracer> tracer;
     if(auto* test_trace = getenv("SCC_TEST_TRACE")) {
+        if(strncmp(test_trace, "LWTR", 4) == 0)
+            cfg.set_value("scc_tracer.tx_trace_type", static_cast<unsigned>(scc::tracer::LWCFTR));
         tracer = std::make_unique<scc::tracer>(my_name, scc::tracer::ENABLE, scc::tracer::ENABLE);
         cfg.set_value("scc_tracer.default_trace_enable", true);
     }
