@@ -27,6 +27,7 @@
 #include <tlm/scc/lwtr/lwtr4tlm2_extension_registry.h>
 #include <tlm/scc/tlm_gp_shared.h>
 #include <tlm/scc/tlm_mm.h>
+#include <tlm_core/tlm_2/tlm_generic_payload/tlm_phase.h>
 #include <unordered_map>
 
 /**
@@ -158,11 +159,6 @@ public:
     , full_name(full_name)
     , nb_timed_peq()
     , m_db(tr_db) {
-        sc_core::sc_spawn_options opts;
-        opts.spawn_method();
-        opts.dont_initialize();
-        opts.set_sensitivity(&nb_timed_peq.event());
-        sc_core::sc_spawn([this]() { nbtx_cb(); }, nullptr, &opts);
         initialize_streams();
     }
 
@@ -267,11 +263,9 @@ private:
     std::string const full_name;
     //! event queue to hold time points of non-blocking transactions
     ::scc::peq<nb_rec_entry> nb_timed_peq;
-    /*! \brief The thread processing the non-blocking requests with their
-     * annotated times
-     * to generate the timed view of non-blocking tx
-     */
-    void nbtx_cb();
+    void record_nb_tx(typename TYPES::tlm_payload_type& trans, const typename TYPES::tlm_phase_type& phase, sc_core::sc_time delay,
+                      lwtr::tx_handle parent);
+
     //! transaction recording database
     tx_db* m_db{nullptr};
     //! the relationship name handles
@@ -297,7 +291,8 @@ private:
     std::array<tx_generator<>*, 2> nb_trTimedHandle{{nullptr, nullptr}};
     std::unordered_map<uint64_t, tx_handle> nbtx_req_handle_map;
     std::unordered_map<uint64_t, tx_handle> nbtx_last_req_handle_map;
-
+    std::unordered_map<uint64_t, tx_handle> nbtx_resp_handle_map;
+    std::unordered_map<uint64_t, tx_handle> nbtx_last_resp_handle_map;
     //! dmi transaction recording stream handle
     tx_fiber* dmi_streamHandle{nullptr};
     //! transaction generator handle for DMI transactions
@@ -468,9 +463,7 @@ tlm::tlm_sync_enum tlm2_lwtr<TYPES>::nb_transport_fw(typename TYPES::tlm_payload
      * do the timed notification
      *************************************************************************/
     if(nb_streamHandleTimed) {
-        nb_rec_entry rec{mm::get().allocate(), phase, reinterpret_cast<uint64_t>(&trans), h};
-        rec.tr->deep_copy_from(trans);
-        nb_timed_peq.notify(rec, delay);
+        record_nb_tx(trans, phase, delay, h);
     }
     /*************************************************************************
      * do the access
@@ -499,14 +492,10 @@ tlm::tlm_sync_enum tlm2_lwtr<TYPES>::nb_transport_fw(typename TYPES::tlm_payload
          * do the timed notification if req. finished here
          *************************************************************************/
         if(nb_streamHandleTimed) {
-            nb_rec_entry rec{mm::get().allocate(), phase, reinterpret_cast<uint64_t>(&trans), h};
-            rec.tr->deep_copy_from(trans);
-            nb_timed_peq.notify(rec, delay);
+            record_nb_tx(trans, phase, delay, h);
         }
     } else if(nb_streamHandleTimed && status == tlm::TLM_UPDATED) {
-        nb_rec_entry rec{mm::get().allocate(), phase, reinterpret_cast<uint64_t>(&trans), h};
-        rec.tr->deep_copy_from(trans);
-        nb_timed_peq.notify(rec, delay);
+        record_nb_tx(trans, phase, delay, h);
     }
     // End the transaction
     nb_trHandle[FW]->end_tx(h, phase2string(phase));
@@ -540,9 +529,7 @@ tlm::tlm_sync_enum tlm2_lwtr<TYPES>::nb_transport_bw(typename TYPES::tlm_payload
      * do the timed notification
      *************************************************************************/
     if(nb_streamHandleTimed) {
-        nb_rec_entry rec{mm::get().allocate(), phase, reinterpret_cast<uint64_t>(&trans), h};
-        rec.tr->deep_copy_from(trans);
-        nb_timed_peq.notify(rec, delay);
+        record_nb_tx(trans, phase, delay, h);
     }
     /*************************************************************************
      * do the access
@@ -558,8 +545,6 @@ tlm::tlm_sync_enum tlm2_lwtr<TYPES>::nb_transport_bw(typename TYPES::tlm_payload
         for(auto& extensionRecording : lwtr4tlm2_extension_registry<TYPES>::inst().get())
             if(extensionRecording)
                 extensionRecording->recordEndTx(h, trans);
-    // End the transaction
-    nb_trHandle[BW]->end_tx(h, phase2string(phase));
     // get the extension and free the memory if it was mine
     if(status == tlm::TLM_COMPLETED || (status == tlm::TLM_UPDATED && phase == tlm::END_RESP)) {
         // the transaction is finished
@@ -574,65 +559,68 @@ tlm::tlm_sync_enum tlm2_lwtr<TYPES>::nb_transport_bw(typename TYPES::tlm_payload
          * do the timed notification if req. finished here
          *************************************************************************/
         if(nb_streamHandleTimed) {
-            nb_rec_entry rec{mm::get().allocate(), phase, reinterpret_cast<uint64_t>(&trans), h};
-            rec.tr->deep_copy_from(trans);
-            nb_timed_peq.notify(rec, delay);
+            record_nb_tx(trans, phase, delay, h);
         }
+    } else if(nb_streamHandleTimed && status == tlm::TLM_UPDATED) {
+        record_nb_tx(trans, phase, delay, h);
     }
+    // End the transaction
+    nb_trHandle[BW]->end_tx(h, phase2string(phase));
     return status;
 }
-
-template <typename TYPES> void tlm2_lwtr<TYPES>::nbtx_cb() {
-    auto opt = nb_timed_peq.get_next();
-    if(opt) {
-        auto& e = opt.get();
-        tx_handle h;
-        switch(e.ph) { // Now process outstanding recordings
-        case tlm::BEGIN_REQ:
-            h = nb_trTimedHandle[REQ]->begin_tx(par_chld_hndl, e.parent);
-            nbtx_req_handle_map[e.id] = h;
-            break;
-        case tlm::END_REQ: {
-            auto it = nbtx_req_handle_map.find(e.id);
-            sc_assert(it != nbtx_req_handle_map.end());
+template <typename TYPES>
+void tlm2_lwtr<TYPES>::record_nb_tx(typename TYPES::tlm_payload_type& trans, const typename TYPES::tlm_phase_type& phase,
+                                    sc_core::sc_time delay, lwtr::tx_handle parent) {
+    lwtr::tx_handle h;
+    // Now process outstanding recordings
+    auto t = sc_core::sc_time_stamp() + delay;
+    auto id = reinterpret_cast<uintptr_t>(&trans);
+    if(phase == tlm::BEGIN_REQ) {
+        h = nb_trTimedHandle[REQ]->begin_tx_delayed(t, par_chld_hndl, parent);
+        h.record_attribute("trans", trans);
+        nbtx_req_handle_map[id] = h;
+    } else if(phase == tlm::END_REQ) {
+        auto it = nbtx_req_handle_map.find(id);
+        if(it != nbtx_req_handle_map.end()) {
             h = it->second;
             nbtx_req_handle_map.erase(it);
-            h.record_attribute("trans", *e.tr);
-            h.end_tx();
-            nbtx_last_req_handle_map[e.id] = h;
-        } break;
-        case tlm::BEGIN_RESP: {
-            auto it = nbtx_req_handle_map.find(e.id);
-            if(it != nbtx_req_handle_map.end()) {
-                h = it->second;
-                nbtx_req_handle_map.erase(it);
-                h.record_attribute("trans", *e.tr);
-                h.end_tx();
-                nbtx_last_req_handle_map[e.id] = h;
-            }
-            h = nb_trTimedHandle[RESP]->begin_tx(par_chld_hndl, e.parent);
-            nbtx_req_handle_map[e.id] = h;
-            it = nbtx_last_req_handle_map.find(e.id);
-            if(it != nbtx_last_req_handle_map.end()) {
-                tx_handle pred = it->second;
-                nbtx_last_req_handle_map.erase(it);
-                h.add_relation(pred_succ_hndl, pred);
-            }
-        } break;
-        case tlm::END_RESP: {
-            auto it = nbtx_req_handle_map.find(e.id);
-            if(it != nbtx_req_handle_map.end()) {
-                h = it->second;
-                nbtx_req_handle_map.erase(it);
-                h.record_attribute("trans", *e.tr);
-                h.end_tx();
-            }
-        } break;
-        default:
-            // sc_assert(!"phase not supported!");
-            break;
+            h.record_attribute("trans", trans);
+            h.end_tx_delayed(t);
+            nbtx_last_req_handle_map[id] = h;
         }
-    }
+    } else if(phase == tlm::BEGIN_RESP) {
+        auto it = nbtx_req_handle_map.find(id);
+        if(it != nbtx_req_handle_map.end()) {
+            h = it->second;
+            nbtx_req_handle_map.erase(it);
+            h.end_tx_delayed(t);
+            nbtx_last_req_handle_map[id] = h;
+        }
+        h = nb_trTimedHandle[RESP]->begin_tx_delayed(t, par_chld_hndl, parent);
+        h.record_attribute("trans", trans);
+        nbtx_resp_handle_map[id] = h;
+        it = nbtx_last_req_handle_map.find(id);
+        if(it != nbtx_last_req_handle_map.end()) {
+            auto& pred = it->second;
+            h.add_relation(pred_succ_hndl, pred);
+            nbtx_last_req_handle_map.erase(it);
+        } else {
+            it = nbtx_last_resp_handle_map.find(id);
+            if(it != nbtx_last_resp_handle_map.end()) {
+                auto& pred = it->second;
+                h.add_relation(pred_succ_hndl, pred);
+                nbtx_last_resp_handle_map.erase(it);
+            }
+        }
+    } else if(phase == tlm::END_RESP) {
+        auto it = nbtx_resp_handle_map.find(id);
+        if(it != nbtx_resp_handle_map.end()) {
+            h = it->second;
+            nbtx_resp_handle_map.erase(it);
+            h.end_tx_delayed(t);
+        }
+    } else
+        sc_assert(!"phase not supported!");
     return;
 }
 
