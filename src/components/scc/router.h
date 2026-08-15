@@ -19,10 +19,12 @@
 
 #include "at_router/nb_router.h"
 #include "scc/at_router/types.h"
+#include "scc/signal_opt_ports.h"
 #include <limits>
 #include <memory>
 #include <scc/report.h>
 #include <scc/utilities.h>
+#include <sysc/kernel/sc_spawn_options.h>
 #include <sysc/utils/sc_vector.h>
 #include <tlm/scc/initiator_mixin.h>
 #include <tlm/scc/memory_map_collector.h>
@@ -47,6 +49,8 @@ namespace scc {
 template <unsigned BUSWIDTH = LT, typename TARGET_SOCKET_TYPE = tlm::tlm_target_socket<BUSWIDTH>> struct router : sc_core::sc_module {
     using intor_sckt = tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<BUSWIDTH>>;
     using target_sckt = tlm::scc::target_mixin<TARGET_SOCKET_TYPE>;
+    //! the optional clock input
+    scc::sc_in_opt<sc_core::sc_time> clk_i{"clk_i"};
     //! \brief the array of target sockets
     sc_core::sc_vector<target_sckt> target;
     //! \brief  the array of initiator sockets
@@ -213,8 +217,10 @@ protected:
     bool check_overlap_on_add_target;
     bool warn_on_address_error{false};
     at_router::creator_fct<> creator;
-    std::vector<at_router::i_port_bw_adapter<tlm::tlm_base_protocol_types>> i_port_bw_adapt;
+    std::deque<at_router::t_port_bw_adapter<tlm::tlm_base_protocol_types>> t_port_bw_adapt;
+    std::deque<at_router::i_port_fw_adapter<tlm::tlm_base_protocol_types>> i_port_bw_adapt;
     std::unique_ptr<at_router::nb_router<>> rt;
+    sc_core::sc_time clk_period;
 };
 
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
@@ -410,16 +416,15 @@ void router<BUSWIDTH, TARGET_SOCKET_TYPE>::invalidate_direct_mem_ptr(int id, ::s
 
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE> void router<BUSWIDTH, TARGET_SOCKET_TYPE>::before_end_of_elaboration() {
     if(creator) {
-        rt = creator(BUSWIDTH, target.size(), initiator.size(), addr_decoder);
+        rt = creator(BUSWIDTH, target.size(), initiator.size(), addr_decoder, clk_period);
         for(auto i = 0u; i < target.size(); ++i) {
             auto& igress = rt->igress[i];
             target[i].register_nb_transport_fw(
                 [&igress](tlm::tlm_generic_payload& trans, tlm::tlm_phase& phase, sc_core::sc_time& t) -> tlm::tlm_sync_enum {
                     return igress.fw->nb_transport_fw(trans, phase, t);
                 });
-            auto& p = target[i].get_base_port();
-            i_port_bw_adapt.emplace_back(p);
-            igress.bw(i_port_bw_adapt.back());
+            t_port_bw_adapt.emplace_back(target[i].get_base_port());
+            igress.bw(t_port_bw_adapt.back());
         }
         for(auto i = 0u; i < initiator.size(); ++i) {
             auto& egress = rt->egress[i];
@@ -427,13 +432,18 @@ template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE> void router<BUSWIDTH, 
                 [&egress](tlm::tlm_generic_payload& trans, tlm::tlm_phase& phase, sc_core::sc_time& t) -> tlm::tlm_sync_enum {
                     return egress.bw->nb_transport_bw(trans, phase, t);
                 });
-            egress.fw(*initiator[i].operator->());
+            i_port_bw_adapt.emplace_back(initiator[i].get_base_port());
+            egress.fw(i_port_bw_adapt.back());
         }
     }
 }
 
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE> void router<BUSWIDTH, TARGET_SOCKET_TYPE>::end_of_elaboration() {
     addr_decoder.validate();
+    if(rt && !clk_i.get_interface()) {
+        SCCFATAL(SCMOD) << "When using a AT router implementation, the clock input of the router needs to be connected!";
+    }
+    rt->set_clock_if(clk_i.get_interface(0));
 }
 
 } // namespace scc

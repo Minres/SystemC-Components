@@ -6,25 +6,25 @@ namespace at_router {
 
 namespace crossbar {
 template <>
-std::unique_ptr<nb_router<tlm::tlm_base_protocol_types>> create<tlm::tlm_base_protocol_types>(unsigned bus_width, unsigned igress_cnt,
-                                                                                              unsigned egress_cnt,
-                                                                                              util::range_lut<unsigned> const& decoder) {
-    auto rt = std::make_unique<nb_router<tlm::tlm_base_protocol_types>>();
+std::unique_ptr<nb_router<tlm::tlm_base_protocol_types>>
+create<tlm::tlm_base_protocol_types>(unsigned bus_width, unsigned igress_cnt, unsigned egress_cnt, util::range_lut<unsigned> const& decoder,
+                                     sc_core::sc_time const& clk_period) {
+    auto rt = std::make_unique<nb_router<tlm::tlm_base_protocol_types>>(clk_period);
     rt->igress.init(igress_cnt);
     rt->egress.init(egress_cnt);
     // create the decoders and size the iport vector
-    rt->decoder.init(igress_cnt,
-                     [&decoder](char const* name, size_t) { return new nb_decoder<tlm::tlm_base_protocol_types>(name, decoder); });
+    rt->decoder.init(igress_cnt, [&decoder, egress_cnt](char const* name, size_t) {
+        return new nb_decoder<tlm::tlm_base_protocol_types>(name, egress_cnt, decoder);
+    });
     for(auto i = 0u; i < igress_cnt; ++i) {
-        rt->decoder[i].iport.init(egress_cnt);
         rt->igress[i].fw(rt->decoder[i].tport.fw);
         rt->decoder[i].tport.bw(rt->igress[i].bw);
     }
     // create the arbiter and size the tport vector
-    rt->arbiter.init(egress_cnt,
-                     [bus_width](char const* name, size_t) { return new nb_arbiter<tlm::tlm_base_protocol_types>(name, bus_width); });
+    rt->arbiter.init(egress_cnt, [bus_width, igress_cnt](char const* name, size_t) {
+        return new nb_arbiter<tlm::tlm_base_protocol_types>(name, bus_width, igress_cnt);
+    });
     for(auto i = 0u; i < egress_cnt; ++i) {
-        rt->arbiter[i].tport.init(igress_cnt);
         rt->arbiter[i].iport.fw(rt->egress[i].fw);
         rt->egress[i].bw(rt->arbiter[i].iport.bw);
     }
