@@ -45,13 +45,13 @@ template <bool USE_CYCLES> struct delay_spec_type;
 template <> struct delay_spec_type<true> {
     using type = unsigned;
     static inline unsigned get_default_val() { return 0; };
-    static inline sc_core::sc_time get_effective_value(unsigned cycles, sc_core::sc_time period) { return cycles * period; }
+    static inline sc_core::sc_time get_effective_value(unsigned cycles, sc_core::sc_time const& period) { return cycles * period; }
 };
 
 template <> struct delay_spec_type<false> {
     using type = sc_core::sc_time;
     static inline sc_core::sc_time get_default_val() { return sc_core::SC_ZERO_TIME; };
-    static inline sc_core::sc_time get_effective_value(sc_core::sc_time delay, sc_core::sc_time period) { return delay; }
+    static inline sc_core::sc_time get_effective_value(sc_core::sc_time const& delay, sc_core::sc_time const& period) { return delay; }
 };
 
 /**
@@ -163,7 +163,12 @@ protected:
     };
     util::range_lut<host_map_entry> host_mem_lut{host_map_entry{nullptr, 0, 0}};
 
-    void set_clock_period(sc_core::sc_time period) { clk_period = period; }
+    void set_clock_period(sc_core::sc_time period) {
+        clk_period = period;
+        target.wr_resp_accept_delay_per_beat = period;
+        target.rd_resp_accept_delay_per_beat = period;
+    }
+
     sc_core::sc_time clk_period;
 
 public:
