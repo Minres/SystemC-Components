@@ -140,11 +140,12 @@ private:
                     // TODO: add response-accept delay?
                     it->second->notify(t);
                     m_owner->m_pending_trans.erase(it);
-                    if(trans.is_read()) {
-                        auto bus_width = m_owner->get_bus_width();
-                        t += (trans.get_data_length() * 8 + bus_width - 1) / bus_width * m_owner->rd_resp_accept_delay_per_beat;
-                    } else if(trans.is_write())
-                        t += m_owner->wr_resp_accept_delay_per_beat;
+                    if(auto bus_width = m_owner->get_bus_width()) {
+                        if(trans.is_read())
+                            t += (trans.get_data_length() * 8 + bus_width - 1) / bus_width * m_owner->rd_resp_accept_delay_per_beat;
+                        else if(trans.is_write())
+                            t += m_owner->wr_resp_accept_delay_per_beat;
+                    }
                     phase = tlm::END_RESP;
                     return tlm::TLM_COMPLETED;
                 } else {
@@ -227,11 +228,11 @@ private:
                 return m_nb_transport_ptr(trans, phase, t);
             } else if(m_b_transport_ptr) {
                 if(phase == tlm::BEGIN_REQ) {
-                    if(trans.is_read())
-                        t += m_owner->rd_resp_accept_delay_per_beat;
-                    else if(trans.is_write()) {
-                        auto bus_width = m_owner->get_bus_width();
-                        t += (trans.get_data_length() * 8 + bus_width - 1) / bus_width * m_owner->wr_resp_accept_delay_per_beat;
+                    if(auto bus_width = m_owner->get_bus_width()) {
+                        if(trans.is_read())
+                            t += m_owner->rd_resp_accept_delay_per_beat;
+                        else if(trans.is_write())
+                            t += (trans.get_data_length() * 8 + bus_width - 1) / bus_width * m_owner->wr_resp_accept_delay_per_beat;
                     }
                     // prepare thread to do blocking call
                     process_handle_class* ph = m_process_handle.get_handle(&trans);

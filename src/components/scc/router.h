@@ -440,10 +440,12 @@ template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE> void router<BUSWIDTH, 
 
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE> void router<BUSWIDTH, TARGET_SOCKET_TYPE>::end_of_elaboration() {
     addr_decoder.validate();
-    if(rt && !clk_i.get_interface()) {
-        SCCFATAL(SCMOD) << "When using a AT router implementation, the clock input of the router needs to be connected!";
+    if(rt) {
+        if(!clk_i.get_interface()) {
+            SCCFATAL(SCMOD) << "When using a AT router implementation, the clock input of the router needs to be connected!";
+        }
+        rt->set_clock_if(clk_i.get_interface(0));
     }
-    rt->set_clock_if(clk_i.get_interface(0));
 }
 
 } // namespace scc
