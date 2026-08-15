@@ -377,13 +377,11 @@ private:
                 sc_core::sc_time t = sc_core::SC_ZERO_TIME;
                 // forward call
                 m_b_transport_ptr(*trans, t);
-                // TODO: check if it can be omitted
                 sc_core::wait(t);
                 // return path
                 while(m_response_in_progress) {
                     sc_core::wait(m_end_response);
                 }
-                // TODO: check if it can be omitted
                 t = sc_core::SC_ZERO_TIME;
                 phase_type phase = tlm::BEGIN_RESP;
                 sync_enum_type sync = m_owner->bw_nb_transport(*trans, phase, t);

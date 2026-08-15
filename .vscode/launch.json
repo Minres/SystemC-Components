@@ -1,0 +1,79 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "test: memory_subsys scattered_access",
+            "program": "${workspaceFolder}/build/Debug/tests/memory_subsys/memory_subsys",
+            "arguments": "scattered_access"
+        },
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "test: tlm_memory",
+            "program": "${workspaceFolder}/build/Debug/tests/tlm_memory/tlm_memory",
+            "environment": {
+                "SCC_TEST_TRACE": "1"
+            }
+        },
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "gdb launch",
+            "program": "${workspaceFolder}/${command:askProgramPath}"
+        },
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "tcp4tlm_bridge server",
+            "program": "${workspaceFolder}/build/Debug/tests/tcp4tlm_bridge/tcp4tlm_bridge",
+            "arguments": "--local-port 33001 --num-clients 1"
+        },
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "tcp4tlm_bridge client",
+            "program": "${workspaceFolder}/build/Debug/tests/tcp4tlm_bridge/tcp4tlm_bridge",
+            "arguments": "--remote-host localhost --remote-port 33001"
+        },
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "at router",
+            "program": "${workspaceFolder}/build/Debug/tests/at_router/at_router"
+        },
+        {
+            "type": "cppdbg",
+            "name": "at router II",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}/build/Debug/tests/at_router/at_router",
+            "environment": [
+                {
+                    "name": "SCC_TEST_VERBOSE",
+                    "value": "7"
+                },
+                {
+                    "name": "SCC_TEST_TRACE",
+                    "value": "LWTR"
+                }
+            ],
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}

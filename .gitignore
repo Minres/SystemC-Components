@@ -1,6 +1,8 @@
 /Debug/
 /*.txlog
 /*.txdb
+/*.ftr
+/*.fst
 /my_db.vcd
 /.project
 /build/
