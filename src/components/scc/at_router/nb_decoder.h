@@ -31,15 +31,16 @@ struct nb_decoder : public tlm::tlm_fw_nonblocking_transport_if<typename TYPES::
     using tlm_generic_payload = typename TYPES::tlm_payload_type;
     using tlm_phase = typename TYPES::tlm_phase_type;
 
-    t_port<TYPES> tport{"tport"};
-
+    t_port<TYPES> tport;
     sc_core::sc_vector<i_port<TYPES>> iport;
 
-    nb_decoder(char const* name, util::range_lut<unsigned> const& decoder)
-    : tport(name)
-    , iport((std::string(name) + "_iport").c_str())
+    nb_decoder(char const* name, unsigned egress_cnt, util::range_lut<unsigned> const& decoder)
+    : tport((std::string(name) + "_tport").c_str())
+    , iport((std::string(name) + "_iport").c_str(), egress_cnt)
     , decoder(decoder) {
         tport.fw.bind(*this);
+        for(auto& p : iport)
+            p.bw.bind(*this);
     }
     tlm::tlm_sync_enum nb_transport_fw(tlm_generic_payload& trans, tlm_phase& phase, sc_core::sc_time& t) override {
         auto addr = trans.get_address();

@@ -37,6 +37,22 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct t_port {
         this->bw.bind(o.bw);
     }
 };
+
+template <typename TYPES> struct t_port_bw_adapter : public at_router::t_port<TYPES>::bw_if {
+    sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& p;
+    t_port_bw_adapter(sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& p)
+    : p(p) {}
+    t_port_bw_adapter(t_port_bw_adapter const&) = default;
+    t_port_bw_adapter(t_port_bw_adapter&&) = default;
+    t_port_bw_adapter& operator=(t_port_bw_adapter const&) = default;
+    t_port_bw_adapter& operator=(t_port_bw_adapter&&) = default;
+
+    tlm::tlm_sync_enum nb_transport_bw(typename TYPES::tlm_payload_type& trans, typename TYPES::tlm_phase_type& phase,
+                                       sc_core::sc_time& t) override {
+        return p->nb_transport_bw(trans, phase, t);
+    }
+};
+
 template <typename TYPES = tlm::tlm_base_protocol_types> struct i_port {
     using fw_if = tlm::tlm_fw_nonblocking_transport_if<typename TYPES::tlm_payload_type, typename TYPES::tlm_phase_type>;
     using bw_if = tlm::tlm_bw_nonblocking_transport_if<typename TYPES::tlm_payload_type, typename TYPES::tlm_phase_type>;
@@ -57,18 +73,19 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct i_port {
         this->bw.bind(o.bw);
     }
 };
-template <typename TYPES> struct i_port_bw_adapter : public at_router::i_port<TYPES>::bw_if {
-    sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& p;
-    i_port_bw_adapter(sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& p)
-    : p(p) {}
-    i_port_bw_adapter(i_port_bw_adapter const&) = default;
-    i_port_bw_adapter(i_port_bw_adapter&&) = default;
-    i_port_bw_adapter& operator=(i_port_bw_adapter const&) = default;
-    i_port_bw_adapter& operator=(i_port_bw_adapter&&) = default;
 
-    tlm::tlm_sync_enum nb_transport_bw(typename TYPES::tlm_payload_type& trans, typename TYPES::tlm_phase_type& phase,
+template <typename TYPES> struct i_port_fw_adapter : public at_router::i_port<TYPES>::fw_if {
+    sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& p;
+    i_port_fw_adapter(sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& p)
+    : p(p) {}
+    i_port_fw_adapter(i_port_fw_adapter const&) = default;
+    i_port_fw_adapter(i_port_fw_adapter&&) = default;
+    i_port_fw_adapter& operator=(i_port_fw_adapter const&) = default;
+    i_port_fw_adapter& operator=(i_port_fw_adapter&&) = default;
+
+    tlm::tlm_sync_enum nb_transport_fw(typename TYPES::tlm_payload_type& trans, typename TYPES::tlm_phase_type& phase,
                                        sc_core::sc_time& t) override {
-        return p->nb_transport_bw(trans, phase, t);
+        return p->nb_transport_fw(trans, phase, t);
     }
 };
 
