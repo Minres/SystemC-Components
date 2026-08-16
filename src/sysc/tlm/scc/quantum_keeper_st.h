@@ -15,14 +15,17 @@ struct quantumkeeper_st : public tlm_utils::tlm_quantumkeeper {
     quantumkeeper_st() {}
 
     virtual ~quantumkeeper_st() {}
-
+    //! resets quantum keeper to local time 0
     void reset() override { tlm_utils::tlm_quantumkeeper::reset(); }
-
+    //! resets the quantum keeper to the given absolute local time
     inline void reset(sc_core::sc_time const& t) {
-        m_local_time = t - sc_core::sc_time_stamp();
-        m_next_sync_point = t + compute_local_quantum();
+        auto now = sc_core::sc_time_stamp();
+        if(t > now) {
+            m_local_time = t - now;
+            m_next_sync_point = t + compute_local_quantum();
+        }
     }
-
+    //! increases local time by the given amount and syncs with SystemC kernel if local time is larger than quantum
     inline void check_and_sync(sc_core::sc_time core_inc) {
         // devirtualized inc()
         m_local_time += core_inc;
@@ -39,7 +42,7 @@ struct quantumkeeper_st : public tlm_utils::tlm_quantumkeeper {
      *
      * @param fct the function to execute
      */
-    inline void execute_on_sysc(std::function<void(void)> fct) { execute_on_sysc(fct, sc_core::sc_time_stamp()); }
+    inline void execute_on_sysc(std::function<void(void)> fct) { fct(); }
     /**
      * @brief execute the given function in the SystemC thread at a given point in time
      *
