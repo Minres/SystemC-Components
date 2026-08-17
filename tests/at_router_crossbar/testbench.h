@@ -43,8 +43,7 @@ struct testbench : public sc_core::sc_module {
     tlm::scc::lwtr::tlm2_lwtr_recorder<32> mem2_rec{"mem2_rec"};
     tlm::scc::lwtr::tlm2_lwtr_recorder<32> mem3_rec{"mem3_rec"};
 #endif
-    tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<32>> isck0{"isck0"};
-    tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<32>> isck1{"isck1"};
+    sc_core::sc_vector<tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<32>>> isck{"isck", 2};
     scc::b2nb_adapter<32> b2nb0{"b2nb0"};
     scc::b2nb_adapter<32> b2nb1{"b2nb1"};
     scc::router<32> router{"router", 4, 2};
@@ -64,8 +63,8 @@ struct testbench : public sc_core::sc_module {
 
     testbench(sc_core::sc_module_name const& nm)
     : sc_module(nm) {
-        isck0(b2nb0.tsck);
-        isck1(b2nb1.tsck);
+        isck[0](b2nb0.tsck);
+        isck[1](b2nb1.tsck);
 #ifdef WITH_TRACING
         b2nb0.isck(isck0_rec.ts);
         isck0_rec.is(router.target[0]);

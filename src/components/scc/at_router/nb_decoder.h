@@ -19,6 +19,7 @@
 
 #include "types.h"
 #include <scc/report.h>
+#include <scc/router_types.h>
 #include <tlm>
 #include <util/range_lut.h>
 
@@ -34,10 +35,11 @@ struct nb_decoder : public tlm::tlm_fw_nonblocking_transport_if<typename TYPES::
     t_port<TYPES> tport;
     sc_core::sc_vector<i_port<TYPES>> iport;
 
-    nb_decoder(char const* name, unsigned egress_cnt, util::range_lut<unsigned> const& decoder)
+    nb_decoder(char const* name, unsigned egress_cnt, util::range_lut<unsigned> const& decoder, std::vector<range_entry> const& tranges)
     : tport((std::string(name) + "_tport").c_str())
     , iport((std::string(name) + "_iport").c_str(), egress_cnt)
-    , decoder(decoder) {
+    , decoder(decoder)
+    , tranges(tranges) {
         tport.fw.bind(*this);
         for(auto& p : iport)
             p.bw.bind(*this);
@@ -50,6 +52,8 @@ struct nb_decoder : public tlm::tlm_fw_nonblocking_transport_if<typename TYPES::
             if(phase == tlm::BEGIN_REQ)
                 phase = tlm::END_RESP;
             return tlm::TLM_COMPLETED;
+        } else if(tranges[idx].remap) {
+            trans.set_address(trans.get_address() - (tranges[idx].remap ? tranges[idx].base : 0));
         }
         return iport[idx].fw->nb_transport_fw(trans, phase, t);
     }
@@ -67,6 +71,7 @@ private:
     }
 
     util::range_lut<unsigned> const& decoder;
+    std::vector<range_entry> const& tranges;
 };
 } // namespace at_router
 } // namespace scc

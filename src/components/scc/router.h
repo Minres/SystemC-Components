@@ -18,6 +18,7 @@
 #define _SYSC_ROUTER_H_
 
 #include "at_router/nb_router.h"
+#include "router_types.h"
 #include "scc/at_router/types.h"
 #include "scc/signal_opt_ports.h"
 #include <limits>
@@ -35,7 +36,6 @@
 #include <tlm_core/tlm_2/tlm_2_interfaces/tlm_fw_bw_ifs.h>
 #include <tlm_core/tlm_2/tlm_generic_payload/tlm_phase.h>
 #include <unordered_map>
-#include <util/range_lut.h>
 
 namespace scc {
 /**
@@ -204,16 +204,12 @@ template <unsigned BUSWIDTH = LT, typename TARGET_SOCKET_TYPE = tlm::tlm_target_
     void set_at_architecture(at_router::creator_fct<> creator) { this->creator = creator; }
 
 protected:
-    struct range_entry {
-        uint64_t base, size;
-        bool remap;
-    };
-    size_t default_idx = std::numeric_limits<size_t>::max();
+    util::range_lut<unsigned> addr_decoder;
     std::vector<uint64_t> ibases;
     std::vector<range_entry> tranges;
     std::vector<sc_core::sc_mutex> mutexes;
-    util::range_lut<unsigned> addr_decoder;
     std::unordered_map<std::string, size_t> target_name_lut;
+    size_t default_idx = std::numeric_limits<size_t>::max();
     bool check_overlap_on_add_target;
     bool warn_on_address_error{false};
     at_router::creator_fct<> creator;
@@ -416,7 +412,7 @@ void router<BUSWIDTH, TARGET_SOCKET_TYPE>::invalidate_direct_mem_ptr(int id, ::s
 
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE> void router<BUSWIDTH, TARGET_SOCKET_TYPE>::before_end_of_elaboration() {
     if(creator) {
-        rt = creator(BUSWIDTH, target.size(), initiator.size(), addr_decoder, clk_period);
+        rt = creator(BUSWIDTH, target.size(), initiator.size(), addr_decoder, tranges, clk_period);
         for(auto i = 0u; i < target.size(); ++i) {
             auto& igress = rt->igress[i];
             target[i].register_nb_transport_fw(

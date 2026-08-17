@@ -16,9 +16,11 @@
 
 #ifndef _SYSC_NB_ROUTER_NB_ARBITTER_H_
 #define _SYSC_NB_ROUTER_NB_ARBITTER_H_
+#include <algorithm>
 #include <cstdint>
 #include <limits>
 #include <memory>
+#include <sysc/kernel/sc_time.h>
 #include <systemc>
 #include <tlm_core/tlm_2/tlm_2_interfaces/tlm_fw_bw_ifs.h>
 #include <tlm_core/tlm_2/tlm_generic_payload/tlm_phase.h>
@@ -52,7 +54,8 @@ struct nb_arbiter : public tlm::tlm_bw_nonblocking_transport_if<typename TYPES::
     nb_arbiter(char const* name, unsigned buswidth, unsigned igress_cnt)
     : tport((std::string(name) + "_tport").c_str(), igress_cnt)
     , iport((std::string(name) + "_iport").c_str())
-    , buswidth(buswidth) {
+    , buswidth(buswidth)
+    , name(name) {
         sc_core::sc_spawn([this]() { arbitrate(); }, nullptr, nullptr);
         iport.bw.bind(*this);
         for(auto idx = 0u; idx < tport.size(); ++idx) {
@@ -73,7 +76,7 @@ struct nb_arbiter : public tlm::tlm_bw_nonblocking_transport_if<typename TYPES::
                 return res;
             phase = tlm::END_RESP;
             auto cycles = trans.is_read() ? (trans.get_data_length() * 8 + buswidth - 1) / buswidth : 1;
-            t = t + (cycles * clk_if->read()) - 1_ps;
+            t = t + (cycles * clk_if->read()); // - 1_ps;
             source_by_tx.erase(reinterpret_cast<uintptr_t>(&trans));
             return tlm::TLM_COMPLETED;
         }
@@ -86,7 +89,7 @@ struct nb_arbiter : public tlm::tlm_bw_nonblocking_transport_if<typename TYPES::
                 que.notify(tlm::scc::tlm_gp_shared_ptr(&trans), t);
                 phase = tlm::END_REQ;
                 auto cycles = trans.is_write() ? (trans.get_data_length() * 8 + owner->buswidth - 1) / owner->buswidth : 1;
-                t = t + (cycles * owner->clk_if->read()) - 1_ps;
+                t = t + (cycles * owner->clk_if->read()); // - 1_ps;
                 return tlm::TLM_UPDATED;
             } else if(phase == tlm::END_RESP) {
                 owner->source_by_tx.erase(reinterpret_cast<uintptr_t>(&trans));
@@ -108,11 +111,15 @@ struct nb_arbiter : public tlm::tlm_bw_nonblocking_transport_if<typename TYPES::
 
 private:
     const unsigned buswidth;
+    const std::string name;
+    sc_core::sc_event retrigger;
+
     void arbitrate() {
         wait(sc_core::SC_ZERO_TIME);
         sc_core::sc_event_or_list evt;
         for(auto& a : actors)
             evt |= a->que.event();
+        evt |= retrigger;
         while(true) {
             if(clk_if->read() == sc_core::SC_ZERO_TIME) {
                 do
@@ -120,21 +127,39 @@ private:
                 while(clk_if->read() == sc_core::SC_ZERO_TIME);
             } else {
                 wait(evt);
-                auto cycles = sc_core::sc_time_stamp() / clk_if->read();
+                SCCTRACEALL(name) << "[" << __FUNCTION__ << "]:"
+                                  << "got que_event, last_selected=" << last_selected;
+                auto clk_period = clk_if->read();
+                sc_core::sc_time t;
                 for(size_t i = 0; i < actors.size(); ++i) {
                     last_selected = (last_selected + 1) % actors.size();
                     auto& a = actors[last_selected];
                     if(a->que.has_next()) {
+                        SCCTRACEALL(name) << "[" << __FUNCTION__ << "]:"
+                                          << "serving request from que " << last_selected;
                         auto trans = a->que.get();
                         source_by_tx[reinterpret_cast<uintptr_t>(trans.get())] = last_selected;
                         tlm::tlm_phase phase = tlm::BEGIN_REQ;
-                        sc_core::sc_time t;
                         auto status = iport.fw->nb_transport_fw(*trans, phase, t);
+                        if(t.value() % clk_period.value()) {
+                            auto cycles = static_cast<unsigned>(t / clk_period);
+                            wait((cycles + 1) * clk_period);
+                        } else
+                            wait(t);
                         if(status == tlm::TLM_UPDATED && (phase == tlm::BEGIN_RESP || phase == tlm::END_RESP)) {
-                            tport[i].bw->nb_transport_bw(*trans, phase, t);
+                            auto t_resp = sc_core::SC_ZERO_TIME;
+                            tport[i].bw->nb_transport_bw(*trans, phase, t_resp);
                         }
                         break;
                     }
+                }
+                // we need to retrigger in case there is another transaction waiting to be served
+                auto pending_transaction =
+                    std::any_of(actors.begin(), actors.end(), [](std::unique_ptr<fw_actor> const& a) { return a->que.has_next(); });
+                if(pending_transaction) {
+                    SCCTRACEALL(name) << "[" << __FUNCTION__ << "]:"
+                                      << " retriggering arbitration";
+                    retrigger.notify(sc_core::SC_ZERO_TIME);
                 }
             }
         }

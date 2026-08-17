@@ -21,6 +21,7 @@
 #include "nb_decoder.h"
 #include "types.h"
 #include <memory>
+#include <scc/router_types.h>
 #include <sysc/communication/sc_export.h>
 #include <tlm>
 
@@ -46,17 +47,17 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct nb_router {
 
 template <typename TYPES = tlm::tlm_base_protocol_types>
 using creator_fct = std::function<std::unique_ptr<nb_router<TYPES>>(unsigned, unsigned, unsigned, util::range_lut<unsigned> const&,
-                                                                    sc_core::sc_time const&)>;
+                                                                    std::vector<range_entry> const& tranges, sc_core::sc_time const&)>;
 
 namespace hub {
 template <typename TYPES = tlm::tlm_base_protocol_types>
 std::unique_ptr<nb_router<TYPES>> create(unsigned bus_width, unsigned igress_cnt, unsigned egress_cnt, util::range_lut<unsigned> const&,
-                                         sc_core::sc_time const&);
+                                         std::vector<range_entry> const& tranges, sc_core::sc_time const&);
 }
 namespace crossbar {
 template <typename TYPES = tlm::tlm_base_protocol_types>
 std::unique_ptr<nb_router<TYPES>> create(unsigned bus_width, unsigned igress_cnt, unsigned egress_cnt, util::range_lut<unsigned> const&,
-                                         sc_core::sc_time const&);
+                                         std::vector<range_entry> const& tranges, sc_core::sc_time const&);
 }
 } // namespace at_router
 } // namespace scc

@@ -1,4 +1,4 @@
-project(at_router)
+project(at_router_crossbar)
 add_executable(${PROJECT_NAME}
     at_router_test.cpp
     ${test_util_SOURCE_DIR}/sc_main.cpp
