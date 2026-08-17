@@ -70,7 +70,7 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct i_port {
 
     void bind(t_port<TYPES>& o) {
         this->fw.bind(o.fw);
-        this->bw.bind(o.bw);
+        o.bw.bind(this->bw);
     }
 };
 
