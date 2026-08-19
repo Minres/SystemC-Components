@@ -75,7 +75,9 @@ struct nb_arbiter : public tlm::tlm_bw_nonblocking_transport_if<typename TYPES::
             if(res != tlm::TLM_ACCEPTED)
                 return res;
             phase = tlm::END_RESP;
-            auto cycles = trans.is_read() ? (trans.get_data_length() * 8 + buswidth - 1) / buswidth : 1;
+            // support SCC::LT template parameter for buswidth (otherwise divide by zero)
+            const unsigned width = buswidth ? buswidth : 64u;
+            auto cycles = trans.is_read() ? (trans.get_data_length() * 8 + width - 1) / width : 1;
             t = t + (cycles * clk_if->read()); // - 1_ps;
             source_by_tx.erase(reinterpret_cast<uintptr_t>(&trans));
             return tlm::TLM_COMPLETED;
@@ -88,7 +90,9 @@ struct nb_arbiter : public tlm::tlm_bw_nonblocking_transport_if<typename TYPES::
             if(phase == tlm::BEGIN_REQ) {
                 que.notify(tlm::scc::tlm_gp_shared_ptr(&trans), t);
                 phase = tlm::END_REQ;
-                auto cycles = trans.is_write() ? (trans.get_data_length() * 8 + owner->buswidth - 1) / owner->buswidth : 1;
+                // support SCC::LT template paramter for buswidth (otherwise divide by zero)
+                const unsigned width = owner->buswidth ? owner->buswidth : 64u;
+                auto cycles = trans.is_write() ? (trans.get_data_length() * 8 + width - 1) / width : 1;
                 t = t + (cycles * owner->clk_if->read()); // - 1_ps;
                 return tlm::TLM_UPDATED;
             } else if(phase == tlm::END_RESP) {
@@ -146,9 +150,12 @@ private:
                             wait((cycles + 1) * clk_period);
                         } else
                             wait(t);
-                        if(status == tlm::TLM_UPDATED && (phase == tlm::BEGIN_RESP || phase == tlm::END_RESP)) {
+                        if(status == tlm::TLM_COMPLETED || (status == tlm::TLM_UPDATED && (phase == tlm::BEGIN_RESP || phase == tlm::END_RESP))) {
                             auto t_resp = sc_core::SC_ZERO_TIME;
-                            tport[i].bw->nb_transport_bw(*trans, phase, t_resp);
+                            if(status == tlm::TLM_COMPLETED) {
+                                phase = tlm::BEGIN_RESP;
+                            }
+                            tport[last_selected].bw->nb_transport_bw(*trans, phase, t_resp);
                         }
                         break;
                     }
