@@ -43,6 +43,11 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct nb_router {
         for(auto& a : arbiter)
             a.clk_if = clk_if;
     }
+
+    void set_default_target(size_t idx) {
+        for(auto& d : decoder)
+            d.set_default_target(idx);
+    }
 };
 
 template <typename TYPES = tlm::tlm_base_protocol_types>
