@@ -17,8 +17,8 @@
 #ifndef SC_COMPONENTS_INCL_TLM_TLM_EXTENSIONS_H_
 #define SC_COMPONENTS_INCL_TLM_TLM_EXTENSIONS_H_
 
-#include <tlm>
 #include "tlm_gp_shared.h"
+#include <tlm>
 
 //! @brief SystemC TLM
 namespace tlm {

@@ -18,10 +18,10 @@
 #define _TLM_NW_TLM_NETWROK_GP_H_
 
 #include "tlm_array.h"
-#include <deque>
-#include <vector>
-#include <tlm>
 #include <cstdint>
+#include <deque>
+#include <tlm>
+#include <vector>
 
 /**
  * @brief The SystemC Transaction Level Model (TLM) Network TLM utilities.
