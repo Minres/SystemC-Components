@@ -413,6 +413,7 @@ void router<BUSWIDTH, TARGET_SOCKET_TYPE>::invalidate_direct_mem_ptr(int id, ::s
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE> void router<BUSWIDTH, TARGET_SOCKET_TYPE>::before_end_of_elaboration() {
     if(creator) {
         rt = creator(BUSWIDTH, target.size(), initiator.size(), addr_decoder, tranges, clk_period);
+        rt->set_default_target(default_idx);
         for(auto i = 0u; i < target.size(); ++i) {
             auto& igress = rt->igress[i];
             target[i].register_nb_transport_fw(
