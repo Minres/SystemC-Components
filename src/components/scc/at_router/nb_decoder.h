@@ -48,10 +48,12 @@ struct nb_decoder : public tlm::tlm_fw_nonblocking_transport_if<typename TYPES::
         auto addr = trans.get_address();
         auto idx = decoder.getEntry(addr);
         if(idx == decoder.null_entry) {
-            trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
-            if(phase == tlm::BEGIN_REQ)
-                phase = tlm::END_RESP;
-            return tlm::TLM_COMPLETED;
+            if(default_idx == std::numeric_limits<size_t>::max()) {
+                trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
+                if(phase == tlm::BEGIN_REQ)
+                    phase = tlm::END_RESP;
+                return tlm::TLM_COMPLETED;
+            }
         } else if(tranges[idx].remap) {
             trans.set_address(trans.get_address() - (tranges[idx].remap ? tranges[idx].base : 0));
         }
@@ -61,6 +63,8 @@ struct nb_decoder : public tlm::tlm_fw_nonblocking_transport_if<typename TYPES::
     tlm::tlm_sync_enum nb_transport_bw(tlm_generic_payload& trans, tlm_phase& phase, sc_core::sc_time& t) override {
         return tport.bw->nb_transport_bw(trans, phase, t);
     }
+
+    void set_default_target(size_t idx) { default_idx = idx; }
 
 private:
     i_port<TYPES>& add_isckt() {
@@ -72,6 +76,8 @@ private:
 
     util::range_lut<unsigned> const& decoder;
     std::vector<range_entry> const& tranges;
+
+    size_t default_idx = std::numeric_limits<size_t>::max();
 };
 } // namespace at_router
 } // namespace scc
