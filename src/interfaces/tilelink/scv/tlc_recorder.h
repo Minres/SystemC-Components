@@ -16,7 +16,6 @@
 
 #pragma once
 
-#include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
 #ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #endif

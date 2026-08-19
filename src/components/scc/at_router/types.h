@@ -17,8 +17,7 @@
 #ifndef _SYSC_NB_ROUTER_TYPES_H_
 #define _SYSC_NB_ROUTER_TYPES_H_
 
-#include <sysc/communication/sc_export.h>
-#include <tlm_core/tlm_2/tlm_2_interfaces/tlm_fw_bw_ifs.h>
+#include <tlm>
 
 namespace scc {
 namespace at_router {

@@ -33,8 +33,6 @@
 #include <tlm/scc/scv/tlm_rec_target_socket.h>
 #include <tlm/scc/target_mixin.h>
 #include <tlm>
-#include <tlm_core/tlm_2/tlm_2_interfaces/tlm_fw_bw_ifs.h>
-#include <tlm_core/tlm_2/tlm_generic_payload/tlm_phase.h>
 #include <unordered_map>
 
 namespace scc {

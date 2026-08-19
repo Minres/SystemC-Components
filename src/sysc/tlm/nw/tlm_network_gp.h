@@ -20,11 +20,7 @@
 #include "tlm_array.h"
 #include <deque>
 #include <vector>
-#ifdef CWR_SYSTEMC
-#include <tlm_h/tlm_generic_payload/tlm_gp.h>
-#else
-#include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
-#endif
+#include <tlm>
 #include <cstdint>
 
 /**

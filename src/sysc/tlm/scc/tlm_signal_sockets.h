@@ -17,15 +17,10 @@
 #ifndef _TLM_TLM_SIGNAL_SOCKETS_H_
 #define _TLM_TLM_SIGNAL_SOCKETS_H_
 
-#include "scc/report.h"
+#include <scc/report.h>
 
 #include <sysc/kernel/sc_object.h>
-#ifdef CWR_SYSTEMC
-#include <tlm_h/tlm_sockets/tlm_initiator_socket.h>
-#include <tlm_h/tlm_sockets/tlm_target_socket.h>
-#else
-#include <tlm_core/tlm_2/tlm_sockets/tlm_initiator_socket.h>
-#include <tlm_core/tlm_2/tlm_sockets/tlm_target_socket.h>
+#include <tlm>
 #endif
 
 //! @brief SystemC TLM
