@@ -27,7 +27,6 @@
 #include <tlm/scc/lwtr/lwtr4tlm2_extension_registry.h>
 #include <tlm/scc/tlm_gp_shared.h>
 #include <tlm/scc/tlm_mm.h>
-#include <tlm_core/tlm_2/tlm_generic_payload/tlm_phase.h>
 #include <unordered_map>
 
 /**
