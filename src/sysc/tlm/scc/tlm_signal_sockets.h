@@ -21,7 +21,6 @@
 
 #include <sysc/kernel/sc_object.h>
 #include <tlm>
-#endif
 
 //! @brief SystemC TLM
 namespace tlm {
