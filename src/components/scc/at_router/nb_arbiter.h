@@ -148,7 +148,8 @@ private:
                             wait((cycles + 1) * clk_period);
                         } else
                             wait(t);
-                        if(status == tlm::TLM_COMPLETED || (status == tlm::TLM_UPDATED && (phase == tlm::BEGIN_RESP || phase == tlm::END_RESP))) {
+                        if(status == tlm::TLM_COMPLETED || 
+                           (status == tlm::TLM_UPDATED && (phase == tlm::BEGIN_RESP || phase == tlm::END_RESP))) {
                             auto t_resp = sc_core::SC_ZERO_TIME;
                             if(status == tlm::TLM_COMPLETED) {
                                 phase = tlm::BEGIN_RESP;
