@@ -22,8 +22,6 @@
 #include <memory>
 #include <sysc/kernel/sc_time.h>
 #include <systemc>
-#include <tlm_core/tlm_2/tlm_2_interfaces/tlm_fw_bw_ifs.h>
-#include <tlm_core/tlm_2/tlm_generic_payload/tlm_phase.h>
 #include <unordered_map>
 #ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES

@@ -18,11 +18,7 @@
 #define _TLM_TLM_SIGNAL_GP_H_
 
 #include <deque>
-#ifdef CWR_SYSTEMC
-#include <tlm_h/tlm_generic_payload/tlm_gp.h>
-#else
-#include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
-#endif
+#include <tlm>
 
 //! @brief SystemC TLM
 namespace tlm {

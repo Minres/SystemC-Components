@@ -17,11 +17,7 @@
 #ifndef SC_COMPONENTS_INCL_TLM_TLM_EXTENSIONS_H_
 #define SC_COMPONENTS_INCL_TLM_TLM_EXTENSIONS_H_
 
-#ifdef CWR_SYSTEMC
-#include <tlm_h/tlm_generic_payload/tlm_gp.h>
-#else
-#include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
-#endif
+#include <tlm>
 #include "tlm_gp_shared.h"
 
 //! @brief SystemC TLM

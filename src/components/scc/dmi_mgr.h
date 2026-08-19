@@ -12,7 +12,6 @@
 #include <scv-tr/scv_tr.h>
 #include <sysc/communication/sc_port.h>
 #include <tlm>
-#include <tlm_core/tlm_2/tlm_2_interfaces/tlm_dmi.h>
 #include <tlm_utils/tlm_quantumkeeper.h>
 #include <util/range_lut.h>
 

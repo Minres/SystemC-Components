@@ -22,7 +22,6 @@
 #include <tlm/scc/memory_map_collector.h>
 #include <tlm/scc/scv/tlm_rec_target_socket.h>
 #include <tlm/scc/target_mixin.h>
-#include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
 #include <util/range_lut.h>
 
 namespace scc {

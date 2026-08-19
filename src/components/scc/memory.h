@@ -20,7 +20,6 @@
 // Needed for the simple_target_socket
 #include <nonstd/span.h>
 #include <tlm/scc/memory_map_collector.h>
-#include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
 #include <util/ities.h>
 #ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
@@ -34,7 +33,7 @@
 #include <scc/report.h>
 #include <scc/signal_opt_ports.h>
 #include <scc/utilities.h>
-#include <tlm.h>
+#include <tlm>
 #include <tlm/scc/target_mixin.h>
 #include <util/range_lut.h>
 #include <util/sparse_array.h>
