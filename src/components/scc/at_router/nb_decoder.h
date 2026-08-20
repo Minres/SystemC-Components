@@ -54,6 +54,7 @@ struct nb_decoder : public tlm::tlm_fw_nonblocking_transport_if<typename TYPES::
                     phase = tlm::END_RESP;
                 return tlm::TLM_COMPLETED;
             }
+            idx = default_idx;
         } else if(tranges[idx].remap) {
             trans.set_address(trans.get_address() - (tranges[idx].remap ? tranges[idx].base : 0));
         }
