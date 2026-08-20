@@ -71,12 +71,10 @@ public:
         isck.register_nb_transport_bw([this](tlm_payload_type& trans, tlm_phase_type& phase, sc_core::sc_time& t) -> tlm::tlm_sync_enum {
             return tsck->nb_transport_bw(trans, phase, t);
         });
-        tsck.register_get_direct_mem_ptr([this](tlm_payload_type& trans, tlm::tlm_dmi& dmi) -> bool {
-            return isck->get_direct_mem_ptr(trans, dmi);
-        });
-        isck.register_invalidate_direct_mem_ptr([this](sc_dt::uint64 start, sc_dt::uint64 end) {
-            tsck->invalidate_direct_mem_ptr(start, end);
-        });
+        tsck.register_get_direct_mem_ptr(
+            [this](tlm_payload_type& trans, tlm::tlm_dmi& dmi) -> bool { return isck->get_direct_mem_ptr(trans, dmi); });
+        isck.register_invalidate_direct_mem_ptr(
+            [this](sc_dt::uint64 start, sc_dt::uint64 end) { tsck->invalidate_direct_mem_ptr(start, end); });
     }
 
     b2nb_adapter() = delete;
