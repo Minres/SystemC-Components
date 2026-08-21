@@ -117,7 +117,7 @@ private:
     sc_core::sc_event retrigger;
 
     void arbitrate() {
-        wait(sc_core::SC_ZERO_TIME);
+        sc_core::wait(sc_core::SC_ZERO_TIME);
         sc_core::sc_event_or_list evt;
         for(auto& a : actors)
             evt |= a->que.event();
@@ -125,10 +125,10 @@ private:
         while(true) {
             if(clk_if->read() == sc_core::SC_ZERO_TIME) {
                 do
-                    wait(clk_if->value_changed_event());
+                    sc_core::wait(clk_if->value_changed_event());
                 while(clk_if->read() == sc_core::SC_ZERO_TIME);
             } else {
-                wait(evt);
+                sc_core::wait(evt);
                 SCCTRACEALL(name) << "[" << __FUNCTION__ << "]:"
                                   << "got que_event, last_selected=" << last_selected;
                 auto clk_period = clk_if->read();
@@ -145,9 +145,9 @@ private:
                         auto status = iport.fw->nb_transport_fw(*trans, phase, t);
                         if(t.value() % clk_period.value()) {
                             auto cycles = static_cast<unsigned>(t / clk_period);
-                            wait((cycles + 1) * clk_period);
+                            sc_core::wait((cycles + 1) * clk_period);
                         } else
-                            wait(t);
+                            sc_core::wait(t);
                         if(status == tlm::TLM_COMPLETED ||
                            (status == tlm::TLM_UPDATED && (phase == tlm::BEGIN_RESP || phase == tlm::END_RESP))) {
                             auto t_resp = sc_core::SC_ZERO_TIME;
