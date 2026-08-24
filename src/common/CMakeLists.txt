@@ -26,10 +26,10 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
 )
-if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    # rigtorp/SPSCQueue.h uses std::hardware_destructive_interference_size which is HW dependend. GCC>14  warns about it
-    target_compile_options(${PROJECT_NAME} PUBLIC $<$<COMPILE_LANGUAGE:CXX>:-Wno-interference-size>)
-endif()
+#if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+#    # rigtorp/SPSCQueue.h uses std::hardware_destructive_interference_size which is HW dependend. GCC>14  warns about it
+#    target_compile_options(${PROJECT_NAME} PUBLIC $<$<COMPILE_LANGUAGE:CXX>:-Wno-interference-size>)
+#endif()
 if(TARGET lz4::lz4)
     target_link_libraries(${PROJECT_NAME} PUBLIC lz4::lz4)
 endif()
