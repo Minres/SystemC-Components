@@ -31,6 +31,9 @@
 #include <sys/stat.h>
 #include <type_traits>
 #include <vector>
+#if __cplusplus >= 202002L
+#include <bit>
+#endif
 
 #if defined(__GNUC__)
 #ifndef LIKELY
@@ -104,11 +107,11 @@ template <typename T> struct bit_slice {
     explicit bit_slice(T& value, unsigned base, unsigned width)
     : value(value)
     , base(base)
-    , width(width){};
+    , width(width) {};
     explicit bit_slice(T& value, unsigned index)
     : value(value)
     , base(index)
-    , width(1){};
+    , width(1) {};
     operator T() const { return bit_sub(value, base, width); }
 
     bit_slice<T>& operator=(T v) {
@@ -429,7 +432,7 @@ inline std::string padded(std::string str, size_t width, bool show_ellipsis = tr
  * @return true if file exists and can be opened
  */
 inline bool file_exists(const std::string& name) {
-    struct stat buffer {};
+    struct stat buffer{};
     return (stat(name.c_str(), &buffer) == 0);
 }
 /**
@@ -570,7 +573,20 @@ inline file_type_e detect_file_type(const std::string& path) {
         return file_type_e::ZSTD;
     return file_type_e::PLAIN;
 }
-
+namespace endian {
+constexpr bool little =
+#if __cplusplus >= 202002L
+    std::endian::native == std::endian::little;
+#elif defined(_WIN32)
+    true;
+#elif defined(__BYTE_ORDER__) && (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__)
+    true;
+#elif defined(__BYTE_ORDER__) && (__BYTE_ORDER__ == __ORDER_BIG_ENDIAN__)
+    false;
+#else
+#error "Unable to determine endianness"
+#endif
+} // namespace endian
 } // namespace util
 /** @} */
 #endif /* _UTIL_ITIES_H_ */
