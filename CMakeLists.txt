@@ -96,6 +96,7 @@ if(ENABLE_CLANG_TIDY)
 endif()
 
 find_package(Boost REQUIRED QUIET COMPONENTS date_time) # header only libraries must not be added here
+find_package(Boost QUIET COMPONENTS stacktrace_backtrace)
 find_package(fmt REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(yaml-cpp REQUIRED)
