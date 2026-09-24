@@ -18,14 +18,29 @@
 #define _UTIL_POOL_ALLOCATOR_H_
 
 #include "ities.h"
-#include <algorithm>
 #include <array>
+#include <cstring>
 #include <deque>
-#include <mutex>
 #include <unordered_map>
 #include <vector>
 #ifdef HAVE_GETENV
 #include <cstdlib>
+#endif
+#if defined(__has_include)
+#if __has_include(<valgrind/memcheck.h>)
+#include <valgrind/memcheck.h>
+#define SCC_POOL_ALLOCATOR_CREATE(pool) VALGRIND_CREATE_MEMPOOL(pool, 0, 0)
+#define SCC_POOL_ALLOCATOR_DESTROY(pool) VALGRIND_DESTROY_MEMPOOL(pool)
+#define SCC_POOL_ALLOCATOR_ALLOC(pool, addr, size) VALGRIND_MEMPOOL_ALLOC(pool, addr, size)
+#define SCC_POOL_ALLOCATOR_FREE(pool, addr) VALGRIND_MEMPOOL_FREE(pool, addr)
+#endif
+#endif
+
+#ifndef SCC_POOL_ALLOCATOR_CREATE
+#define SCC_POOL_ALLOCATOR_CREATE(pool) ((void)0)
+#define SCC_POOL_ALLOCATOR_DESTROY(pool) ((void)0)
+#define SCC_POOL_ALLOCATOR_ALLOC(pool, addr, size) ((void)0)
+#define SCC_POOL_ALLOCATOR_FREE(pool, addr) ((void)0)
 #endif
 
 #if defined(_MSC_VER) || defined(__APPLE__)
@@ -80,7 +95,7 @@ public:
     size_t get_free_entries_count();
 
 private:
-    pool_allocator() = default;
+    pool_allocator() { SCC_POOL_ALLOCATOR_CREATE(this); }
     using chunk_type = uint8_t[ELEM_SIZE];
     std::vector<std::array<chunk_type, CHUNK_SIZE>*> chunks{};
     std::deque<void*> free_list{};
@@ -102,7 +117,9 @@ public:
     typedef std::size_t size_type;
     typedef std::ptrdiff_t difference_type;
     //    convert an allocator<T> to allocator<U> e.g. for std::map from A to _Node<A>
-    template <typename U> struct rebind { typedef stl_pool_allocator<U> other; };
+    template <typename U> struct rebind {
+        typedef stl_pool_allocator<U> other;
+    };
 
     stl_pool_allocator() = default;
 
@@ -222,6 +239,7 @@ template <size_t ELEM_SIZE, unsigned CHUNK_SIZE> pool_allocator<ELEM_SIZE, CHUNK
         }
     }
 #endif
+    SCC_POOL_ALLOCATOR_DESTROY(this);
     for(auto p : chunks)
         delete p;
 }
@@ -231,6 +249,7 @@ template <size_t ELEM_SIZE, unsigned CHUNK_SIZE> inline void* pool_allocator<ELE
         resize();
     auto ret = free_list.back();
     free_list.pop_back();
+    SCC_POOL_ALLOCATOR_ALLOC(this, ret, ELEM_SIZE);
     memset(ret, 0, ELEM_SIZE);
     if(debug_memory)
         used_blocks.insert({ret, id});
@@ -239,6 +258,7 @@ template <size_t ELEM_SIZE, unsigned CHUNK_SIZE> inline void* pool_allocator<ELE
 
 template <size_t ELEM_SIZE, unsigned CHUNK_SIZE> inline void pool_allocator<ELEM_SIZE, CHUNK_SIZE>::free(void* p) {
     if(p) {
+        SCC_POOL_ALLOCATOR_FREE(this, p);
         free_list.push_back(p);
         if(debug_memory)
             used_blocks.erase(p);
