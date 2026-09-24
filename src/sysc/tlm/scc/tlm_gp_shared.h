@@ -55,11 +55,14 @@ public:
     }
     /// @brief Copy assignment operator.
     tlm_payload_shared_ptr& operator=(tlm_payload_shared_ptr const& p) noexcept {
+        if(this == &p)
+            return *this;
+        T* new_ptr = p.ptr;
+        if(new_ptr && new_ptr->has_mm())
+            new_ptr->acquire();
         if(ptr && ptr->has_mm())
             ptr->release();
-        ptr = p.ptr;
-        if(ptr && ptr->has_mm())
-            ptr->acquire();
+        ptr = new_ptr;
         return *this;
     }
     /// @brief Move assignment operator.
@@ -70,14 +73,15 @@ public:
         p.ptr = nullptr;
         return *this;
     }
-
     /// @brief raw pointer assignment operator.
     tlm_payload_shared_ptr& operator=(T* p) noexcept {
+        if(ptr == p)
+            return *this;
+        if(p && p->has_mm())
+            p->acquire();
         if(ptr && ptr->has_mm())
             ptr->release();
         ptr = p;
-        if(ptr && ptr->has_mm())
-            ptr->acquire();
         return *this;
     }
 
