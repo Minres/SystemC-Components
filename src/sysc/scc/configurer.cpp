@@ -637,7 +637,8 @@ void mirror_sc_attributes(configurer::broker_t& broker, configurer::cci_param_cl
                 std::string hier_name = fmt::format("{}.{}", mod->name(), base_attr->name());
                 mirror_sc_attribute(broker, params, cci_originator, hier_name, base_attr, update);
             }
-            mirror_sc_attributes(broker, params, cci_originator, mod, update);
+            if(mod != topobj)
+                mirror_sc_attributes(broker, params, cci_originator, mod, update);
         }
     }
 }
