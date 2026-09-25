@@ -1,18 +1,19 @@
 project(interfaces VERSION ${scc_VERSION} LANGUAGES CXX)
 
 set(LIB_SOURCES
-	apb/apb_tlm.cpp
-	ahb/ahb_tlm.cpp
+    apb/apb_tlm.cpp
+    ahb/ahb_tlm.cpp
     ahb/pe/ahb_initiator.cpp
     ahb/pe/ahb_target.cpp
     apb/pe/apb_initiator.cpp
     apb/pe/apb_target.cpp
     axi/axi_initiator.cpp
     axi/axi_target.cpp
-	ocp/ocp_tlm.cpp
+    ocp/ocp_tlm.cpp
     tilelink/tl_tlm.cpp
     cxs/cxs_tlm.cpp
     eth/eth_tlm.cpp
+    bp/pe/bp_initiator.cpp
 )
 
 add_library(${PROJECT_NAME} ${LIB_SOURCES})
@@ -28,8 +29,8 @@ target_link_libraries(${PROJECT_NAME} PUBLIC tlm-interfaces)
 target_link_libraries(${PROJECT_NAME} PRIVATE scc-sysc)
 
 if(CLANG_TIDY_EXE)
-    set_target_properties(${PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}" )
-endif() 
+    set_target_properties(${PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}")
+endif()
 set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${PROJECT_VERSION}
     FRAMEWORK FALSE
@@ -37,21 +38,21 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 )
 
 install(TARGETS ${PROJECT_NAME} COMPONENT busses EXPORT ${PROJECT_NAME}-targets
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-        )
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
 
 install(EXPORT ${PROJECT_NAME}-targets
-        DESTINATION ${SCC_CMAKE_CONFIG_DIR}
-        NAMESPACE scc::
-        )
+    DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+    NAMESPACE scc::
+)
 
 foreach(dir IN ITEMS ahb apb axi cxs obi ocp spi tilelink)
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${dir} COMPONENT busses
+    install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${dir} COMPONENT busses
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
         FILES_MATCHING # install only matched files
         PATTERN "*.h" # select header files
-        )
-endforeach()        
+    )
+endforeach()
