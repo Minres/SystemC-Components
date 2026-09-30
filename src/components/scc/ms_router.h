@@ -26,6 +26,8 @@
 #include <scc/report.h>
 #include <scc/utilities.h>
 #include <sstream>
+#include <sysc/kernel/sc_object.h>
+#include <sysc/kernel/sc_simcontext.h>
 #include <sysc/kernel/sc_spawn_options.h>
 #include <sysc/utils/sc_vector.h>
 #include <tlm/scc/initiator_mixin.h>
@@ -38,19 +40,47 @@
 #include <unordered_map>
 #include <variant>
 
+#include <sysc/kernel/sc_ver.h>
+
 namespace scc {
 struct clocked_target_socket {
-    std::variant<std::monostate, tlm::scc::target_mixin<tlm::tlm_target_socket<32>>, tlm::scc::target_mixin<tlm::tlm_target_socket<64>>,
-                 tlm::scc::target_mixin<tlm::tlm_target_socket<128>>, tlm::scc::target_mixin<tlm::tlm_target_socket<256>>,
-                 tlm::scc::target_mixin<tlm::tlm_target_socket<512>>>
-        sckt;
+    // clang-format off
+    std::variant<
+        std::monostate,
+        tlm::scc::target_mixin<tlm::tlm_target_socket<0>>,
+        tlm::scc::target_mixin<tlm::tlm_target_socket<32>>,
+        tlm::scc::target_mixin<tlm::tlm_target_socket<64>>,
+        tlm::scc::target_mixin<tlm::tlm_target_socket<128>>,
+        tlm::scc::target_mixin<tlm::tlm_target_socket<256>>,
+        tlm::scc::target_mixin<tlm::tlm_target_socket<512>>,
+        tlm::scc::target_mixin<tlm::tlm_target_socket<0, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
+        tlm::scc::target_mixin<tlm::tlm_target_socket<32, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
+        tlm::scc::target_mixin<tlm::tlm_target_socket<64, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
+        tlm::scc::target_mixin<tlm::tlm_target_socket<128, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
+        tlm::scc::target_mixin<tlm::tlm_target_socket<256, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
+        tlm::scc::target_mixin<tlm::tlm_target_socket<512, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>
+        > sckt;
+    // clang-format on
     scc::sc_in_opt<sc_core::sc_time> clk;
 };
 struct clocked_initiator_socket {
-    std::variant<std::monostate, tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<32>>,
-                 tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<64>>, tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<128>>,
-                 tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<256>>, tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<512>>>
-        sckt;
+    // clang-format off
+    std::variant<
+        std::monostate,
+        tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<0>>,
+        tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<32>>,
+        tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<64>>,
+        tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<128>>,
+        tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<256>>,
+        tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<512>>,
+        tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<0, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
+        tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<32, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
+        tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<64, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
+        tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<128, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
+        tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<256, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
+        tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<512, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>
+        > sckt;
+    // clang-format on
     scc::sc_in_opt<sc_core::sc_time> clk;
 };
 /**
@@ -85,7 +115,8 @@ struct ms_router : sc_core::sc_module {
         if(std::holds_alternative<std::monostate>(targets[idx].sckt)) {
             std::ostringstream os;
             os << "tsckt_" << idx;
-            auto& sckt = targets[idx].sckt.template emplace<tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>>>(os.str().c_str());
+            auto& sckt = targets[idx].sckt.template emplace<tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>>>(
+                sc_core::sc_gen_unique_name(os.str().c_str(), false));
             sckt.register_b_transport(
                 [this, idx](tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) -> void { this->b_transport(idx, trans, delay); });
             sckt.register_get_direct_mem_ptr([this, idx](tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data) -> bool {
@@ -100,8 +131,8 @@ struct ms_router : sc_core::sc_module {
         if(std::holds_alternative<std::monostate>(initiators[idx].sckt)) {
             std::ostringstream os;
             os << "tsckt_" << idx;
-            auto& sckt =
-                initiators[idx].sckt.template emplace<tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<BUSWIDTH>>>(os.str().c_str());
+            auto& sckt = initiators[idx].sckt.template emplace<tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<BUSWIDTH>>>(
+                sc_core::sc_gen_unique_name(os.str().c_str(), false));
             sckt.register_invalidate_direct_mem_ptr([this, idx](::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range) -> void {
                 this->invalidate_direct_mem_ptr(idx, start_range, end_range);
             });
@@ -121,11 +152,39 @@ struct ms_router : sc_core::sc_module {
      */
     template <unsigned BUSWIDTH>
     void bind(tlm::tlm_target_socket<BUSWIDTH>& socket, size_t idx, uint64_t base, uint64_t size, bool remap = true) {
-        bind_internal<tlm::tlm_target_socket<BUSWIDTH>, BUSWIDTH>(socket, idx, base, size, remap);
+        set_target_range(idx, base, size, remap);
+        initiator_socket<BUSWIDTH>(idx).bind(socket);
     }
     template <unsigned BUSWIDTH>
     void bind(tlm::tlm_initiator_socket<BUSWIDTH>& socket, size_t idx, uint64_t base, uint64_t size, bool remap = true) {
-        bind_internal<tlm::tlm_initiator_socket<BUSWIDTH>, BUSWIDTH>(socket, idx, base, size, remap);
+        set_target_range(idx, base, size, remap);
+        initiator_socket<BUSWIDTH>(idx).bind(socket);
+    }
+    template <unsigned BUSWIDTH>
+    void bind(tlm::tlm_target_socket<BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>& socket, size_t idx,
+              uint64_t base, uint64_t size, bool remap = true) {
+        set_target_range(idx, base, size, remap);
+        initiator_socket<BUSWIDTH>(idx).bind(socket);
+    }
+    template <unsigned BUSWIDTH>
+    void bind(tlm::tlm_initiator_socket<BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>& socket, size_t idx,
+              uint64_t base, uint64_t size, bool remap = true) {
+        set_target_range(idx, base, size, remap);
+        initiator_socket<BUSWIDTH>(idx).bind(socket);
+    }
+    template <unsigned BUSWIDTH> void bind(tlm::tlm_target_socket<BUSWIDTH>& socket, size_t idx) {
+        initiator_socket<BUSWIDTH>(idx).bind(socket);
+    }
+    template <unsigned BUSWIDTH> void bind(tlm::tlm_initiator_socket<BUSWIDTH>& socket, size_t idx) {
+        initiator_socket<BUSWIDTH>(idx).bind(socket);
+    }
+    template <unsigned BUSWIDTH>
+    void bind(tlm::tlm_target_socket<BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>& socket, size_t idx) {
+        initiator_socket<BUSWIDTH>(idx).bind(socket);
+    }
+    template <unsigned BUSWIDTH>
+    void bind(tlm::tlm_initiator_socket<BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>& socket, size_t idx) {
+        initiator_socket<BUSWIDTH>(idx).bind(socket);
     }
     /**
      * @fn void set_initiator_base(size_t, uint64_t)
@@ -218,20 +277,6 @@ struct ms_router : sc_core::sc_module {
     void set_at_architecture(at_router::creator_fct<> creator) { this->creator = creator; }
 
 protected:
-    template <typename T, unsigned BUSWIDTH> void bind_internal(T& socket, size_t idx, uint64_t base, uint64_t size, bool remap = true) {
-        set_target_range(idx, base, size, remap);
-        if(std::holds_alternative<std::monostate>(initiators[idx].sckt)) {
-            std::ostringstream os;
-            os << "isckt_" << idx;
-            auto& sckt =
-                initiators[idx].sckt.template emplace<tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<BUSWIDTH>>>(os.str().c_str());
-            sckt.register_invalidate_direct_mem_ptr([this, idx](::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range) -> void {
-                this->invalidate_direct_mem_ptr(idx, start_range, end_range);
-            });
-        }
-        std::get<tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<BUSWIDTH>>>(initiators[idx].sckt).bind(socket);
-    }
-
     util::range_lut<unsigned> addr_decoder;
     std::vector<uint64_t> ibases;
     std::vector<range_entry> tranges;
