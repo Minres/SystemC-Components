@@ -345,7 +345,7 @@ void tcp4tlm_bridge::server_receive_completed(con_ptr& con, const tcp4tlm::reque
         });
         timed_task tup{std::move(task), sc_core::SC_ZERO_TIME};
         task_que.emplace(std::move(tup));
-        con_est.store(true, std::memory_order_acq_rel);
+        con_est.store(true, std::memory_order_release);
         con_est_sig.notify_all();
     } break;
     case tcp4tlm::RequestPayload_BusOpMsg: {
