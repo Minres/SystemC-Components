@@ -50,7 +50,7 @@ void execute(testbench& dut, std::queue<config>& jobs) {
         prepare_trans(gp, tlm::TLM_WRITE_COMMAND, cfg.addr + i * cfg.len, 42u, cfg.len);
         auto t = sc_core::SC_ZERO_TIME;
         dut.isck[cfg.socket_nr]->b_transport(gp, t);
-        std::cout << "Finished access to 0x" << std::hex << gp.get_address() << "!\n";
+        SCCDEBUG(dut.name()) << "Finished access to 0x" << std::hex << gp.get_address() << "!\n";
     }
     delete[] gp.get_data_ptr();
 }
