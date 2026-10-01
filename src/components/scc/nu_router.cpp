@@ -1,9 +1,9 @@
-#include "ms_router.h"
+#include "nu_router.h"
 #include <stdexcept>
 #include <variant>
 
 namespace scc {
-ms_router::ms_router(const sc_core::sc_module_name& nm, size_t slave_cnt, size_t master_cnt, bool check_overlap_on_add_target)
+nu_router::nu_router(const sc_core::sc_module_name& nm, size_t slave_cnt, size_t master_cnt, bool check_overlap_on_add_target)
 : sc_module(nm)
 , targets(master_cnt)
 , initiators(slave_cnt)
@@ -20,7 +20,7 @@ ms_router::ms_router(const sc_core::sc_module_name& nm, size_t slave_cnt, size_t
     }
 }
 
-void ms_router::set_target_range(size_t idx, uint64_t base, uint64_t size, bool remap) {
+void nu_router::set_target_range(size_t idx, uint64_t base, uint64_t size, bool remap) {
     tranges[idx].base = base;
     tranges[idx].size = size;
     tranges[idx].remap = remap;
@@ -29,7 +29,7 @@ void ms_router::set_target_range(size_t idx, uint64_t base, uint64_t size, bool 
         addr_decoder.validate();
 }
 
-void ms_router::b_transport(int i, tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
+void nu_router::b_transport(int i, tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
     ::sc_dt::uint64 address = trans.get_address();
     if(ibases[i]) {
         address += ibases[i];
@@ -62,7 +62,7 @@ void ms_router::b_transport(int i, tlm::tlm_generic_payload& trans, sc_core::sc_
         initiators[idx].sckt);
 }
 
-bool ms_router::get_direct_mem_ptr(int i, tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data) {
+bool nu_router::get_direct_mem_ptr(int i, tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data) {
     ::sc_dt::uint64 address = trans.get_address();
     if(ibases[i]) {
         address += ibases[i];
@@ -107,7 +107,7 @@ bool ms_router::get_direct_mem_ptr(int i, tlm::tlm_generic_payload& trans, tlm::
     return status;
 }
 
-unsigned ms_router::transport_dbg(int i, tlm::tlm_generic_payload& trans) {
+unsigned nu_router::transport_dbg(int i, tlm::tlm_generic_payload& trans) {
     if(trans.get_command() == tlm::TLM_IGNORE_COMMAND) {
         if(auto ext = trans.get_extension<tlm::scc::memory_map_extension>()) {
             ext->node.name = name();
@@ -179,7 +179,7 @@ unsigned ms_router::transport_dbg(int i, tlm::tlm_generic_payload& trans) {
     return res;
 }
 
-void ms_router::invalidate_direct_mem_ptr(int id, ::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range) {
+void nu_router::invalidate_direct_mem_ptr(int id, ::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range) {
     // Reconstruct address range in system memory map
     ::sc_dt::uint64 bw_start_range = start_range;
     if(tranges[id].remap)
@@ -201,7 +201,7 @@ void ms_router::invalidate_direct_mem_ptr(int id, ::sc_dt::uint64 start_range, :
     }
 }
 
-void ms_router::before_end_of_elaboration() {
+void nu_router::before_end_of_elaboration() {
     if(creator) {
         rt = creator(64, targets.size(), initiators.size(), addr_decoder, tranges, clk_period);
         rt->set_default_target(default_idx);
@@ -244,11 +244,11 @@ void ms_router::before_end_of_elaboration() {
     }
 }
 
-void ms_router::end_of_elaboration() {
+void nu_router::end_of_elaboration() {
     addr_decoder.validate();
     if(rt) {
         if(!clk_i.get_interface()) {
-            SCCFATAL(SCMOD) << "When using a AT ms_router implementation, the clock input of the dyn_router needs to be connected!";
+            SCCFATAL(SCMOD) << "When using a AT nu_router implementation, the clock input of the dyn_router needs to be connected!";
         }
         rt->set_clock_if(clk_i.get_interface(0));
     }

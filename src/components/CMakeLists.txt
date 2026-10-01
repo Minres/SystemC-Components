@@ -3,7 +3,7 @@ project(components VERSION ${scc_VERSION} LANGUAGES CXX)
 find_package(flatbuffers CONFIG QUIET)
 
 if(CMAKE_CXX_STANDARD GREATER_EQUAL 17)
-    add_library(${PROJECT_NAME} scc/at_router/nb_router.cpp scc/ms_router.cpp)
+    add_library(${PROJECT_NAME} scc/at_router/nb_router.cpp scc/nu_router.cpp)
     add_library(scc::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
     target_include_directories(${PROJECT_NAME} PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building

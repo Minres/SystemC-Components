@@ -85,13 +85,12 @@ struct clocked_initiator_socket {
 };
 /**
  * @class ms_router
- * @brief a TLM2.0 multi-socket router for loosly-timed (LT) and approcimately-timed (AT) models
+ * @brief a TLM2.0 non-uniform router for loosly-timed (LT) and approcimately-timed (AT) models
  *
- * It uses the tlm::scc::scv::tlm_rec_initiator_socket so that incoming and outgoing accesses can be traced using SCV
+ * Other than \ref scc::router, this router supports the use of tTLM sockets with different widths for target and initiator sockets
  *
- * @tparam BUSWIDTH the width of the bus
  */
-struct ms_router : sc_core::sc_module {
+struct nu_router : sc_core::sc_module {
     //! the optional clock input
     scc::sc_in_opt<sc_core::sc_time> clk_i{"clk_i"};
     //! \brief the array of target sockets
@@ -107,9 +106,9 @@ struct ms_router : sc_core::sc_module {
      * @param master_cnt number of masters to be connected
      * @param check_overlap_on_add_target if true this enables validation of overlaps when adding or setting the target range.
      */
-    ms_router(const sc_core::sc_module_name& nm, size_t slave_cnt = 1, size_t master_cnt = 1, bool check_overlap_on_add_target = false);
+    nu_router(const sc_core::sc_module_name& nm, size_t slave_cnt = 1, size_t master_cnt = 1, bool check_overlap_on_add_target = false);
 
-    ~ms_router() = default;
+    ~nu_router() = default;
 
     template <unsigned BUSWIDTH> tlm::tlm_target_socket<BUSWIDTH>& target_socket(size_t idx) {
         if(std::holds_alternative<std::monostate>(targets[idx].sckt)) {

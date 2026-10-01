@@ -7,7 +7,7 @@
 #include <scc/cci_util.h>
 #include <scc/configurer.h>
 #include <scc/memory.h>
-#include <scc/ms_router.h>
+#include <scc/nu_router.h>
 #include <scc/observer.h>
 #include <scc/router.h>
 #include <scc/sc_variable.h>
@@ -47,7 +47,7 @@ struct testbench : public sc_core::sc_module {
     tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<64>> isck_1{"isck_1"};
     scc::b2nb_adapter<256> b2nb0{"b2nb0"};
     scc::b2nb_adapter<64> b2nb1{"b2nb1"};
-    scc::ms_router router{"router", 4, 2};
+    scc::nu_router router{"router", 4, 2};
     scc::memory_tl<1_kB, 64, 20> mem0{"mem0"};
     scc::memory_tl<1_kB, 32, 20> mem1{"mem1"};
     scc::memory_tl<1_kB, 64, 20> mem2{"mem2"};
