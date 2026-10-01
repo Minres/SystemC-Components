@@ -67,7 +67,7 @@ void execute(testbench& dut, std::queue<config>& jobs) {
     delete[] gp.get_data_ptr();
 }
 
-TEST_CASE("multi-socket 1-x-n", "[ms-router][tlm-level]") {
+TEST_CASE("non-uniform 1-x-n", "[ms-router][tlm-level]") {
     auto& dut = factory::get<testbench>();
     std::queue<config> jobs;
     unsigned cycles{0};
@@ -90,7 +90,7 @@ TEST_CASE("multi-socket 1-x-n", "[ms-router][tlm-level]") {
     REQUIRE(cycles < 270);
 }
 
-TEST_CASE("multi-socket m-x-1", "[router][tlm-level]") {
+TEST_CASE("non-uniform m-x-1", "[router][tlm-level]") {
     auto& dut = factory::get<testbench>();
     std::queue<config> jobs;
     unsigned cycles{0};
@@ -111,7 +111,7 @@ TEST_CASE("multi-socket m-x-1", "[router][tlm-level]") {
     REQUIRE(cycles < 430);
 }
 
-TEST_CASE("multi-socket m-x-n", "[router][tlm-level]") {
+TEST_CASE("non-uniform m-x-n", "[router][tlm-level]") {
     auto& dut = factory::get<testbench>();
     std::queue<config> jobs;
     unsigned cycles{0};
