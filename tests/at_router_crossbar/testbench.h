@@ -54,8 +54,8 @@ struct testbench : public sc_core::sc_module {
 
     inline void configure_memory(scc::memory_tl<1_kB, 32, 20>& m) {
         m.clk_i(clk);
-        m.rd_resp_delay.set_value(30_ns);
-        m.wr_resp_delay.set_value(500_ns);
+        m.rd_resp_delay.set_value(3);
+        m.wr_resp_delay.set_value(50);
     }
 
     testbench()

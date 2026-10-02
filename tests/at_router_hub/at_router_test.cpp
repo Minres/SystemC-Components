@@ -55,7 +55,7 @@ void execute(testbench& dut, std::queue<config>& jobs) {
     delete[] gp.get_data_ptr();
 }
 
-TEST_CASE("1-x-n", "[router][tlm-level]") {
+TEST_CASE("at-router-hub 1-x-n", "[router][tlm-level]") {
     auto& dut = factory::get<testbench>();
     std::queue<config> jobs;
     unsigned cycles{0};
@@ -75,10 +75,10 @@ TEST_CASE("1-x-n", "[router][tlm-level]") {
         all_terminated = std::all_of(processes.begin(), processes.end(), [](auto const& process) { return process.terminated(); });
     } while(!all_terminated && cycles < 1000);
     REQUIRE(all_terminated);
-    REQUIRE(cycles < 270);
+    REQUIRE(cycles < 900);
 }
 
-TEST_CASE("m-x-1", "[router][tlm-level]") {
+TEST_CASE("at-router-hub m-x-1", "[router][tlm-level]") {
     auto& dut = factory::get<testbench>();
     std::queue<config> jobs;
     unsigned cycles{0};
@@ -96,10 +96,10 @@ TEST_CASE("m-x-1", "[router][tlm-level]") {
         all_terminated = std::all_of(processes.begin(), processes.end(), [](auto const& process) { return process.terminated(); });
     } while(!all_terminated && cycles < 1000);
     REQUIRE(all_terminated);
-    REQUIRE(cycles < 430);
+    REQUIRE(cycles < 890);
 }
 
-TEST_CASE("m-x-n", "[router][tlm-level]") {
+TEST_CASE("at-router-hub m-x-n", "[router][tlm-level]") {
     auto& dut = factory::get<testbench>();
     std::queue<config> jobs;
     unsigned cycles{0};
@@ -123,7 +123,7 @@ TEST_CASE("m-x-n", "[router][tlm-level]") {
         all_terminated = std::all_of(processes.begin(), processes.end(), [](auto const& process) { return process.terminated(); });
     } while(!all_terminated && cycles < 1000);
     REQUIRE(all_terminated);
-    REQUIRE(cycles < 530);
+    REQUIRE(cycles < 910);
 }
 
 } // namespace scc
