@@ -180,7 +180,7 @@ public:
 };
 
 template <unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24>
-using memory_tl = tickless_clock<memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, false>>;
+using memory_tl = tickless_clock<memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, true>>;
 template <unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24>
 using memory_tc = ticking_clock<memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, true>>;
 
@@ -293,7 +293,7 @@ int memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES>::handle_operation(tlm::tl
             }
         }
     } else if(cmd == tlm::TLM_WRITE_COMMAND) {
-        delay += delay_spec_type<USE_CYCLES>::get_effective_value(clk_period, wr_resp_delay);
+        delay += delay_spec_type<USE_CYCLES>::get_effective_value(wr_resp_delay, clk_period);
         if(UNLIKELY(hm_entry.ptr)) {
             auto hm_start_offs = adr - hm_entry.base;
             auto hm_end_offs = adr + len - hm_entry.base;
@@ -353,8 +353,8 @@ inline bool memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES>::handle_dmi(tlm::
             dmi_data.set_dmi_ptr(p.data());
         }
         dmi_data.set_granted_access(tlm::tlm_dmi::DMI_ACCESS_READ_WRITE);
-        dmi_data.set_read_latency(delay_spec_type<USE_CYCLES>::get_effective_value(clk_period, rd_resp_delay));
-        dmi_data.set_write_latency(delay_spec_type<USE_CYCLES>::get_effective_value(clk_period, wr_resp_delay));
+        dmi_data.set_read_latency(delay_spec_type<USE_CYCLES>::get_effective_value(rd_resp_delay, clk_period));
+        dmi_data.set_write_latency(delay_spec_type<USE_CYCLES>::get_effective_value(wr_resp_delay, clk_period));
     }
     return allow_dmi.get_value();
 }
