@@ -26,6 +26,7 @@
 #include <scc/report.h>
 #include <scc/utilities.h>
 #include <sstream>
+#include <stdexcept>
 #include <sysc/kernel/sc_object.h>
 #include <sysc/kernel/sc_simcontext.h>
 #include <sysc/kernel/sc_spawn_options.h>
@@ -126,6 +127,12 @@ struct nu_router : sc_core::sc_module {
         }
         return std::get<tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>>>(targets[idx].sckt);
     }
+    scc::sc_in_opt<sc_core::sc_time>& target_clock(size_t idx) {
+        if(std::holds_alternative<std::monostate>(targets[idx].sckt)) {
+            throw std::runtime_error("Initiator socket not initialized");
+        }
+        return targets[idx].clk;
+    }
     template <unsigned BUSWIDTH> tlm::tlm_initiator_socket<BUSWIDTH>& initiator_socket(size_t idx) {
         if(std::holds_alternative<std::monostate>(initiators[idx].sckt)) {
             std::ostringstream os;
@@ -137,6 +144,12 @@ struct nu_router : sc_core::sc_module {
             });
         }
         return std::get<tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<BUSWIDTH>>>(initiators[idx].sckt);
+    }
+    scc::sc_in_opt<sc_core::sc_time>& initiator_clock(size_t idx) {
+        if(std::holds_alternative<std::monostate>(initiators[idx].sckt)) {
+            throw std::runtime_error("Initiator socket not initialized");
+        }
+        return initiators[idx].clk;
     }
     /**
      * @fn void bind_target(TYPE&, size_t, uint64_t, uint64_t, bool=true)
@@ -150,40 +163,54 @@ struct nu_router : sc_core::sc_module {
      * @param remap if true address will be rewritten in accesses to be 0-based at the target
      */
     template <unsigned BUSWIDTH>
-    void bind(tlm::tlm_target_socket<BUSWIDTH>& socket, size_t idx, uint64_t base, uint64_t size, bool remap = true) {
+    scc::sc_in_opt<sc_core::sc_time>& bind(tlm::tlm_target_socket<BUSWIDTH>& socket, size_t idx, uint64_t base, uint64_t size,
+                                           bool remap = true) {
         set_target_range(idx, base, size, remap);
         initiator_socket<BUSWIDTH>(idx).bind(socket);
+        return initiator_clock(idx);
     }
     template <unsigned BUSWIDTH>
-    void bind(tlm::tlm_initiator_socket<BUSWIDTH>& socket, size_t idx, uint64_t base, uint64_t size, bool remap = true) {
+    scc::sc_in_opt<sc_core::sc_time>& bind(tlm::tlm_initiator_socket<BUSWIDTH>& socket, size_t idx, uint64_t base, uint64_t size,
+                                           bool remap = true) {
         set_target_range(idx, base, size, remap);
         initiator_socket<BUSWIDTH>(idx).bind(socket);
+        return initiator_clock(idx);
     }
     template <unsigned BUSWIDTH>
-    void bind(tlm::tlm_target_socket<BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>& socket, size_t idx,
-              uint64_t base, uint64_t size, bool remap = true) {
+    scc::sc_in_opt<sc_core::sc_time>&
+    bind(tlm::tlm_target_socket<BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>& socket, size_t idx,
+         uint64_t base, uint64_t size, bool remap = true) {
         set_target_range(idx, base, size, remap);
         initiator_socket<BUSWIDTH>(idx).bind(socket);
+        return initiator_clock(idx);
     }
     template <unsigned BUSWIDTH>
-    void bind(tlm::tlm_initiator_socket<BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>& socket, size_t idx,
-              uint64_t base, uint64_t size, bool remap = true) {
+    scc::sc_in_opt<sc_core::sc_time>&
+    bind(tlm::tlm_initiator_socket<BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>& socket, size_t idx,
+         uint64_t base, uint64_t size, bool remap = true) {
         set_target_range(idx, base, size, remap);
         initiator_socket<BUSWIDTH>(idx).bind(socket);
+        return initiator_clock(idx);
     }
-    template <unsigned BUSWIDTH> void bind(tlm::tlm_target_socket<BUSWIDTH>& socket, size_t idx) {
+    template <unsigned BUSWIDTH> scc::sc_in_opt<sc_core::sc_time>& bind(tlm::tlm_target_socket<BUSWIDTH>& socket, size_t idx) {
         initiator_socket<BUSWIDTH>(idx).bind(socket);
+        return initiator_clock(idx);
     }
-    template <unsigned BUSWIDTH> void bind(tlm::tlm_initiator_socket<BUSWIDTH>& socket, size_t idx) {
+    template <unsigned BUSWIDTH> scc::sc_in_opt<sc_core::sc_time>& bind(tlm::tlm_initiator_socket<BUSWIDTH>& socket, size_t idx) {
         initiator_socket<BUSWIDTH>(idx).bind(socket);
+        return initiator_clock(idx);
     }
     template <unsigned BUSWIDTH>
-    void bind(tlm::tlm_target_socket<BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>& socket, size_t idx) {
+    scc::sc_in_opt<sc_core::sc_time>&
+    bind(tlm::tlm_target_socket<BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>& socket, size_t idx) {
         initiator_socket<BUSWIDTH>(idx).bind(socket);
+        return initiator_clock(idx);
     }
     template <unsigned BUSWIDTH>
-    void bind(tlm::tlm_initiator_socket<BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>& socket, size_t idx) {
+    scc::sc_in_opt<sc_core::sc_time>&
+    bind(tlm::tlm_initiator_socket<BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>& socket, size_t idx) {
         initiator_socket<BUSWIDTH>(idx).bind(socket);
+        return initiator_clock(idx);
     }
     /**
      * @fn void set_initiator_base(size_t, uint64_t)
@@ -288,7 +315,6 @@ protected:
     std::deque<at_router::t_port_bw_adapter<tlm::tlm_base_protocol_types>> t_port_bw_adapt;
     std::deque<at_router::i_port_fw_adapter<tlm::tlm_base_protocol_types>> i_port_bw_adapt;
     std::unique_ptr<at_router::nb_router<>> rt;
-    sc_core::sc_time clk_period;
 };
 
 } // namespace scc

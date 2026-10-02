@@ -214,7 +214,6 @@ protected:
     std::deque<at_router::t_port_bw_adapter<tlm::tlm_base_protocol_types>> t_port_bw_adapt;
     std::deque<at_router::i_port_fw_adapter<tlm::tlm_base_protocol_types>> i_port_bw_adapt;
     std::unique_ptr<at_router::nb_router<>> rt;
-    sc_core::sc_time clk_period;
 };
 
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
@@ -261,7 +260,7 @@ template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
 void router<BUSWIDTH, TARGET_SOCKET_TYPE>::add_target_range(std::string name, uint64_t base, uint64_t size, bool remap) {
     auto it = target_name_lut.find(name);
 #ifndef NDEBUG
-#if(SYSTEMC_VERSION >= 20171012)
+#if (SYSTEMC_VERSION >= 20171012)
     if(it == target_name_lut.end()) {
         std::stringstream ss;
         ss << "No target index entry for '" << name << "' found ";
@@ -410,7 +409,7 @@ void router<BUSWIDTH, TARGET_SOCKET_TYPE>::invalidate_direct_mem_ptr(int id, ::s
 
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE> void router<BUSWIDTH, TARGET_SOCKET_TYPE>::before_end_of_elaboration() {
     if(creator) {
-        rt = creator(BUSWIDTH, target.size(), initiator.size(), addr_decoder, tranges, clk_period);
+        rt = creator(BUSWIDTH, target.size(), initiator.size(), addr_decoder, tranges);
         rt->set_default_target(default_idx);
         for(auto i = 0u; i < target.size(); ++i) {
             auto& igress = rt->igress[i];

@@ -30,18 +30,18 @@ namespace at_router {
 
 template <typename TYPES = tlm::tlm_base_protocol_types> struct nb_router {
 
-    sc_core::sc_time const& clk_period;
     sc_core::sc_vector<t_port<TYPES>> igress{"igress"};
     sc_core::sc_vector<i_port<TYPES>> egress{"egress"};
 
     sc_core::sc_vector<nb_decoder<TYPES>> decoder{"decoder"};
     sc_core::sc_vector<nb_arbiter<TYPES>> arbiter{"arbiter"};
-    nb_router(sc_core::sc_time const& clk_period)
-    : clk_period(clk_period) {}
+    nb_router() = default;
 
     void set_clock_if(sc_core::sc_signal_in_if<sc_core::sc_time>* clk_if) {
         for(auto& a : arbiter)
             a.clk_if = clk_if;
+        for(auto& d : decoder)
+            d.clk_if = clk_if;
     }
 
     void set_default_target(size_t idx) {
@@ -52,17 +52,17 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct nb_router {
 
 template <typename TYPES = tlm::tlm_base_protocol_types>
 using creator_fct = std::function<std::unique_ptr<nb_router<TYPES>>(unsigned, unsigned, unsigned, util::range_lut<unsigned> const&,
-                                                                    std::vector<range_entry> const& tranges, sc_core::sc_time const&)>;
+                                                                    std::vector<range_entry> const& tranges)>;
 
 namespace hub {
 template <typename TYPES = tlm::tlm_base_protocol_types>
 std::unique_ptr<nb_router<TYPES>> create(unsigned bus_width, unsigned igress_cnt, unsigned egress_cnt, util::range_lut<unsigned> const&,
-                                         std::vector<range_entry> const& tranges, sc_core::sc_time const&);
+                                         std::vector<range_entry> const& tranges);
 }
 namespace crossbar {
 template <typename TYPES = tlm::tlm_base_protocol_types>
 std::unique_ptr<nb_router<TYPES>> create(unsigned bus_width, unsigned igress_cnt, unsigned egress_cnt, util::range_lut<unsigned> const&,
-                                         std::vector<range_entry> const& tranges, sc_core::sc_time const&);
+                                         std::vector<range_entry> const& tranges);
 }
 } // namespace at_router
 } // namespace scc

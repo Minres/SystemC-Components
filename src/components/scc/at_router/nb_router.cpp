@@ -8,8 +8,8 @@ namespace crossbar {
 template <>
 std::unique_ptr<nb_router<tlm::tlm_base_protocol_types>>
 create<tlm::tlm_base_protocol_types>(unsigned bus_width, unsigned igress_cnt, unsigned egress_cnt, util::range_lut<unsigned> const& decoder,
-                                     std::vector<range_entry> const& tranges, sc_core::sc_time const& clk_period) {
-    auto rt = std::make_unique<nb_router<tlm::tlm_base_protocol_types>>(clk_period);
+                                     std::vector<range_entry> const& tranges) {
+    auto rt = std::make_unique<nb_router<tlm::tlm_base_protocol_types>>();
     rt->igress.init(igress_cnt);
     rt->egress.init(egress_cnt);
     // create the decoders and size the iport vector
@@ -19,12 +19,14 @@ create<tlm::tlm_base_protocol_types>(unsigned bus_width, unsigned igress_cnt, un
     for(auto i = 0u; i < igress_cnt; ++i) {
         rt->igress[i].fw(rt->decoder[i].tport.fw);
         rt->decoder[i].tport.bw(rt->igress[i].bw);
+        rt->decoder[i].tport.clk(rt->igress[i].clk);
     }
     // create the arbiter and size the tport vector
     rt->arbiter.init(egress_cnt, [bus_width, igress_cnt](char const* name, size_t) {
         return new nb_arbiter<tlm::tlm_base_protocol_types>(name, bus_width, igress_cnt);
     });
     for(auto i = 0u; i < egress_cnt; ++i) {
+        rt->arbiter[i].iport.clk(rt->egress[i].clk);
         rt->arbiter[i].iport.fw(rt->egress[i].fw);
         rt->egress[i].bw(rt->arbiter[i].iport.bw);
     }
@@ -44,8 +46,8 @@ namespace hub {
 template <>
 std::unique_ptr<nb_router<tlm::tlm_base_protocol_types>>
 create<tlm::tlm_base_protocol_types>(unsigned bus_width, unsigned igress_cnt, unsigned egress_cnt, util::range_lut<unsigned> const& decoder,
-                                     std::vector<range_entry> const& tranges, sc_core::sc_time const& clk_period) {
-    auto rt = std::make_unique<nb_router<tlm::tlm_base_protocol_types>>(clk_period);
+                                     std::vector<range_entry> const& tranges) {
+    auto rt = std::make_unique<nb_router<tlm::tlm_base_protocol_types>>();
     rt->igress.init(igress_cnt);
     rt->egress.init(egress_cnt);
     // create the decoders and size the iport vector
