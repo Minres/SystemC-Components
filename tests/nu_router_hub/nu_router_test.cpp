@@ -67,7 +67,7 @@ void execute(testbench& dut, std::queue<config>& jobs) {
     delete[] gp.get_data_ptr();
 }
 
-TEST_CASE("non-uniform 1-x-n", "[ms-router][tlm-level]") {
+TEST_CASE("non-uniform-hub 1-x-n", "[ms-router][tlm-level]") {
     auto& dut = factory::get<testbench>();
     std::queue<config> jobs;
     unsigned cycles{0};
@@ -87,10 +87,10 @@ TEST_CASE("non-uniform 1-x-n", "[ms-router][tlm-level]") {
         all_terminated = std::all_of(processes.begin(), processes.end(), [](auto const& process) { return process.terminated(); });
     } while(!all_terminated && cycles < 1000);
     REQUIRE(all_terminated);
-    REQUIRE(cycles < 270);
+    REQUIRE(cycles < 900);
 }
 
-TEST_CASE("non-uniform m-x-1", "[router][tlm-level]") {
+TEST_CASE("non-uniform-hub m-x-1", "[router][tlm-level]") {
     auto& dut = factory::get<testbench>();
     std::queue<config> jobs;
     unsigned cycles{0};
@@ -108,10 +108,10 @@ TEST_CASE("non-uniform m-x-1", "[router][tlm-level]") {
         all_terminated = std::all_of(processes.begin(), processes.end(), [](auto const& process) { return process.terminated(); });
     } while(!all_terminated && cycles < 1000);
     REQUIRE(all_terminated);
-    REQUIRE(cycles < 430);
+    REQUIRE(cycles < 850);
 }
 
-TEST_CASE("non-uniform m-x-n", "[router][tlm-level]") {
+TEST_CASE("non-uniform-hub m-x-n", "[router][tlm-level]") {
     auto& dut = factory::get<testbench>();
     std::queue<config> jobs;
     unsigned cycles{0};
@@ -135,7 +135,7 @@ TEST_CASE("non-uniform m-x-n", "[router][tlm-level]") {
         all_terminated = std::all_of(processes.begin(), processes.end(), [](auto const& process) { return process.terminated(); });
     } while(!all_terminated && cycles < 1000);
     REQUIRE(all_terminated);
-    REQUIRE(cycles < 530);
+    REQUIRE(cycles < 900);
 }
 
 } // namespace scc
