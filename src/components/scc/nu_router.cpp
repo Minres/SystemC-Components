@@ -203,10 +203,11 @@ void nu_router::invalidate_direct_mem_ptr(int id, ::sc_dt::uint64 start_range, :
 
 void nu_router::before_end_of_elaboration() {
     if(creator) {
-        rt = creator(64, targets.size(), initiators.size(), addr_decoder, tranges, clk_period);
+        rt = creator(64, targets.size(), initiators.size(), addr_decoder, tranges);
         rt->set_default_target(default_idx);
         for(auto i = 0u; i < targets.size(); ++i) {
             auto& igress = rt->igress[i];
+            auto& tgt = targets[i];
             std::visit(
                 [this, &igress](auto& sckt) {
                     using T = std::decay_t<decltype(sckt)>;
@@ -220,11 +221,13 @@ void nu_router::before_end_of_elaboration() {
                         t_port_bw_adapt.emplace_back(sckt.get_base_port());
                     }
                 },
-                targets[i].sckt);
+                tgt.sckt);
             igress.bw(t_port_bw_adapt.back());
+            igress.clk(tgt.clk);
         }
         for(auto i = 0u; i < initiators.size(); ++i) {
             auto& egress = rt->egress[i];
+            auto& intor = initiators[i];
             std::visit(
                 [this, &egress](auto& sckt) {
                     using T = std::decay_t<decltype(sckt)>;
@@ -238,8 +241,9 @@ void nu_router::before_end_of_elaboration() {
                         i_port_bw_adapt.emplace_back(sckt.get_base_port());
                     }
                 },
-                initiators[i].sckt);
+                intor.sckt);
             egress.fw(i_port_bw_adapt.back());
+            egress.clk(intor.clk);
         }
     }
 }

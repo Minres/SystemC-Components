@@ -17,6 +17,7 @@
 #ifndef _SYSC_NB_ROUTER_TYPES_H_
 #define _SYSC_NB_ROUTER_TYPES_H_
 
+#include "scc/signal_opt_ports.h"
 #include <tlm>
 
 namespace scc {
@@ -27,6 +28,7 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct t_port {
 
     sc_core::sc_export<fw_if> fw;
     sc_core::sc_port<bw_if> bw;
+    scc::sc_in_opt<sc_core::sc_time> clk;
     t_port(char const* name)
     : fw((std::string(name) + "_fw").c_str())
     , bw((std::string(name) + "_bw").c_str()) {}
@@ -58,6 +60,7 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct i_port {
 
     sc_core::sc_port<fw_if> fw;
     sc_core::sc_export<bw_if> bw;
+    scc::sc_in_opt<sc_core::sc_time> clk;
     i_port(char const* name)
     : fw((std::string(name) + "_fw").c_str())
     , bw((std::string(name) + "_bw").c_str()) {}

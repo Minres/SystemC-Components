@@ -20,6 +20,7 @@
 #include <cstdint>
 #include <limits>
 #include <memory>
+#include <sysc/kernel/sc_simcontext.h>
 #include <sysc/kernel/sc_time.h>
 #include <systemc>
 #include <unordered_map>
@@ -62,22 +63,27 @@ struct nb_arbiter : public tlm::tlm_bw_nonblocking_transport_if<typename TYPES::
         }
     }
 
+    sc_core::sc_time const& get_clk_period() {
+        return iport.clk.get_interface() ? iport.clk->read() : (clk_if ? clk_if->read() : sc_core::SC_ZERO_TIME);
+    }
+
     tlm::tlm_sync_enum nb_transport_bw(tlm_generic_payload& trans, tlm_phase& phase, sc_core::sc_time& t) override {
-        if(!source_by_tx.count(reinterpret_cast<uintptr_t>(&trans))) {
+        if(!source_by_tx.count(&trans)) {
             SCCFATAL("nb_arbitter") << __FUNCTION__ << ": missing source_id extension in backward path";
             trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
             return tlm::TLM_COMPLETED;
         }
         if(phase == tlm::BEGIN_RESP) {
-            auto res = tport[source_by_tx[reinterpret_cast<uintptr_t>(&trans)]].bw->nb_transport_bw(trans, phase, t);
+            t += sc_core::sc_time_stamp() % get_clk_period();
+            auto res = tport[source_by_tx[&trans]].bw->nb_transport_bw(trans, phase, t);
             if(res != tlm::TLM_ACCEPTED)
                 return res;
             phase = tlm::END_RESP;
             // support SCC::LT template parameter for buswidth (otherwise divide by zero)
             const unsigned width = buswidth ? buswidth : 64u;
             auto cycles = trans.is_read() ? (trans.get_data_length() * 8 + width - 1) / width : 1;
-            t = t + (cycles * clk_if->read()); // - 1_ps;
-            source_by_tx.erase(reinterpret_cast<uintptr_t>(&trans));
+            t = t + (cycles * get_clk_period()); // - 1_ps;
+            source_by_tx.erase(&trans);
             return tlm::TLM_COMPLETED;
         }
         return tlm::TLM_ACCEPTED;
@@ -91,10 +97,10 @@ struct nb_arbiter : public tlm::tlm_bw_nonblocking_transport_if<typename TYPES::
                 // support SCC::LT template paramter for buswidth (otherwise divide by zero)
                 const unsigned width = owner->buswidth ? owner->buswidth : 64u;
                 auto cycles = trans.is_write() ? (trans.get_data_length() * 8 + width - 1) / width : 1;
-                t = t + (cycles * owner->clk_if->read()); // - 1_ps;
+                t = t + (cycles * owner->get_clk_period()); // - 1_ps;
                 return tlm::TLM_UPDATED;
             } else if(phase == tlm::END_RESP) {
-                owner->source_by_tx.erase(reinterpret_cast<uintptr_t>(&trans));
+                owner->source_by_tx.erase(&trans);
                 return tlm::TLM_COMPLETED;
             } else {
                 SCCFATAL("nb_arbitter") << __FUNCTION__ << ": illegal phase received: " << phase.get_name();
@@ -123,15 +129,15 @@ private:
             evt |= a->que.event();
         evt |= retrigger;
         while(true) {
-            if(clk_if->read() == sc_core::SC_ZERO_TIME) {
+            if(get_clk_period() == sc_core::SC_ZERO_TIME) {
                 do
-                    sc_core::wait(clk_if->value_changed_event());
-                while(clk_if->read() == sc_core::SC_ZERO_TIME);
+                    sc_core::wait(iport.clk.get_interface() ? iport.clk.value_changed_event() : clk_if->value_changed_event());
+                while(get_clk_period() == sc_core::SC_ZERO_TIME);
             } else {
                 sc_core::wait(evt);
                 SCCTRACEALL(name) << "[" << __FUNCTION__ << "]:"
                                   << "got que_event, last_selected=" << last_selected;
-                auto clk_period = clk_if->read();
+                auto clk_period = get_clk_period();
                 sc_core::sc_time t;
                 for(size_t i = 0; i < actors.size(); ++i) {
                     last_selected = (last_selected + 1) % actors.size();
@@ -140,17 +146,17 @@ private:
                         SCCTRACEALL(name) << "[" << __FUNCTION__ << "]:"
                                           << "serving request from que " << last_selected;
                         auto trans = a->que.get();
-                        source_by_tx[reinterpret_cast<uintptr_t>(trans.get())] = last_selected;
+                        source_by_tx[trans.get()] = last_selected;
                         tlm::tlm_phase phase = tlm::BEGIN_REQ;
                         auto status = iport.fw->nb_transport_fw(*trans, phase, t);
-                        if(t.value() % clk_period.value()) {
+                        if(clk_period.value() && t.value() % clk_period.value()) {
                             auto cycles = static_cast<unsigned>(t / clk_period);
                             sc_core::wait((cycles + 1) * clk_period);
                         } else
                             sc_core::wait(t);
                         if(status == tlm::TLM_COMPLETED ||
                            (status == tlm::TLM_UPDATED && (phase == tlm::BEGIN_RESP || phase == tlm::END_RESP))) {
-                            auto t_resp = sc_core::SC_ZERO_TIME;
+                            auto t_resp = clk_period.value() ? sc_core::sc_time_stamp() % clk_period : sc_core::SC_ZERO_TIME;
                             if(status == tlm::TLM_COMPLETED) {
                                 phase = tlm::BEGIN_RESP;
                             }
@@ -172,7 +178,7 @@ private:
     }
     size_t last_selected = std::numeric_limits<size_t>::max();
     std::vector<std::unique_ptr<fw_actor>> actors;
-    std::unordered_map<uintptr_t, unsigned> source_by_tx;
+    std::unordered_map<void*, unsigned> source_by_tx;
 };
 
 } // namespace at_router

@@ -20,6 +20,7 @@
 #include "types.h"
 #include <scc/report.h>
 #include <scc/router_types.h>
+#include <sysc/kernel/sc_simcontext.h>
 #include <tlm>
 #include <util/range_lut.h>
 
@@ -31,6 +32,8 @@ struct nb_decoder : public tlm::tlm_fw_nonblocking_transport_if<typename TYPES::
     using this_class = nb_decoder<TYPES>;
     using tlm_generic_payload = typename TYPES::tlm_payload_type;
     using tlm_phase = typename TYPES::tlm_phase_type;
+
+    sc_core::sc_signal_in_if<sc_core::sc_time>* clk_if;
 
     t_port<TYPES> tport;
     sc_core::sc_vector<i_port<TYPES>> iport;
@@ -44,6 +47,11 @@ struct nb_decoder : public tlm::tlm_fw_nonblocking_transport_if<typename TYPES::
         for(auto& p : iport)
             p.bw.bind(*this);
     }
+
+    sc_core::sc_time const& get_clk_period() {
+        return tport.clk.get_interface() ? tport.clk->read() : (clk_if ? clk_if->read() : sc_core::SC_ZERO_TIME);
+    }
+
     tlm::tlm_sync_enum nb_transport_fw(tlm_generic_payload& trans, tlm_phase& phase, sc_core::sc_time& t) override {
         auto addr = trans.get_address();
         auto idx = decoder.getEntry(addr);
@@ -58,6 +66,9 @@ struct nb_decoder : public tlm::tlm_fw_nonblocking_transport_if<typename TYPES::
         } else if(tranges[idx].remap) {
             trans.set_address(trans.get_address() - (tranges[idx].remap ? tranges[idx].base : 0));
         }
+        auto clk_period = get_clk_period();
+        if(clk_period.value())
+            t += sc_core::sc_time_stamp() % clk_period;
         return iport[idx].fw->nb_transport_fw(trans, phase, t);
     }
 
