@@ -32,7 +32,9 @@ struct testbench : public sc_core::sc_module {
     static constexpr uint64_t high_range_size = 4_kB;
     static constexpr uint64_t high_range_base = std::numeric_limits<uint64_t>::max() - (high_range_size - 1);
 
-    sc_core::sc_signal<sc_core::sc_time> clk{"clk"};
+    sc_core::sc_signal<sc_core::sc_time> clk_100{"clk_100"};
+    sc_core::sc_signal<sc_core::sc_time> clk_66{"clk_66"};
+    sc_core::sc_signal<sc_core::sc_time> clk_50{"clk_50"};
     sc_core::sc_signal<bool> rst{"rst"};
 
 #ifdef WITH_TRACING
@@ -53,10 +55,11 @@ struct testbench : public sc_core::sc_module {
     scc::memory_tl<1_kB, 64, 20> mem2{"mem2"};
     scc::memory_tl<1_kB, 128, 20> mem3{"mem3"};
 
-    template <unsigned BUSWIDTH> inline void configure_memory(scc::memory_tl<1_kB, BUSWIDTH, 20>& m) {
+    template <unsigned BUSWIDTH>
+    inline void configure_memory(scc::memory_tl<1_kB, BUSWIDTH, 20>& m, sc_core::sc_signal<sc_core::sc_time>& clk) {
         m.clk_i(clk);
-        m.rd_resp_delay.set_value(30_ns);
-        m.wr_resp_delay.set_value(500_ns);
+        m.rd_resp_delay.set_value(3);
+        m.wr_resp_delay.set_value(5);
     }
 
     testbench()
@@ -69,12 +72,14 @@ struct testbench : public sc_core::sc_module {
 #ifdef WITH_TRACING
         b2nb0.isck(isck0_rec.ts);
         isck0_rec.is(router.target_socket<256>(0));
+        router.target_clock(0)(clk_66);
         b2nb1.isck(isck1_rec.ts);
         isck1_rec.is(router.target_socket<64>(1));
-        router.bind(mem0_rec.ts, 0, 0, 1_kB);
-        router.bind(mem1_rec.ts, 1, 1_kB, 1_kB);
-        router.bind(mem2_rec.ts, 2, 2_kB, 1_kB);
-        router.bind(mem3_rec.ts, 3, 3_kB, 1_kB);
+        router.target_clock(1)(clk_100);
+        router.bind(mem0_rec.ts, 0, 0, 1_kB)(clk_50);
+        router.bind(mem1_rec.ts, 1, 1_kB, 1_kB)(clk_66);
+        router.bind(mem2_rec.ts, 2, 2_kB, 1_kB)(clk_100);
+        router.bind(mem3_rec.ts, 3, 3_kB, 1_kB)(clk_50);
         mem0_rec.is(mem0.target);
         mem1_rec.is(mem1.target);
         mem2_rec.is(mem2.target);
@@ -88,18 +93,22 @@ struct testbench : public sc_core::sc_module {
         router.bind_target(mem3.target, 3, 3_kB, 1_kB);
 #endif
         router.set_initiator_base(1, 1_MB);
-        router.set_at_architecture(scc::at_router::hub::create<>);
-        router.clk_i(clk);
-        configure_memory(mem0);
-        configure_memory(mem1);
-        configure_memory(mem2);
-        configure_memory(mem3);
+        router.set_at_architecture(scc::at_router::crossbar::create<>);
+        router.clk_i(clk_100);
+        configure_memory(mem0, clk_50);
+        configure_memory(mem1, clk_66);
+        configure_memory(mem2, clk_100);
+        configure_memory(mem3, clk_50);
         b2nb0.tsck.wr_resp_accept_delay_per_beat = 10_ns;
         b2nb0.tsck.rd_resp_accept_delay_per_beat = 10_ns;
         b2nb1.tsck.wr_resp_accept_delay_per_beat = 10_ns;
         b2nb1.tsck.rd_resp_accept_delay_per_beat = 10_ns;
     }
-    void start_of_simulation() { clk = 10_ns; }
+    void start_of_simulation() {
+        clk_100 = 10_ns;
+        clk_66 = 15_ns;
+        clk_50 = 20_ns;
+    }
 };
 } // namespace scc
 #endif // _TESTBENCH_H_

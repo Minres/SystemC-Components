@@ -1,4 +1,4 @@
-project(nu_router)
+project(nu_router_hub)
 add_executable(${PROJECT_NAME}
     nu_router_test.cpp
     ${test_util_SOURCE_DIR}/sc_main.cpp
