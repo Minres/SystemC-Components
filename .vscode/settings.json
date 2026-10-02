@@ -23,7 +23,11 @@
         },
         "build": {
             "statusBarVisibility": "visible"
+        },
+        "ctest": {
+            "statusBarVisibility": "visible"
         }
     },
-    "cmake.buildBeforeRun": false
+    "cmake.buildBeforeRun": false,
+    "cmake.ctest.neverDebugTestsWithLaunchConfiguration": true
 }
