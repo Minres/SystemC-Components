@@ -300,7 +300,10 @@ struct nu_router : sc_core::sc_module {
 
     util::range_lut<unsigned> const& get_address_decoder() { return addr_decoder; }
 
-    void set_at_architecture(at_router::creator_fct<> creator) { this->creator = creator; }
+    void set_at_architecture(at_router::creator_fct<> creator, unsigned internal_buswidth) {
+        this->creator = creator;
+        this->internal_buswidth = internal_buswidth;
+    }
 
 protected:
     util::range_lut<unsigned> addr_decoder;
@@ -312,6 +315,7 @@ protected:
     bool check_overlap_on_add_target;
     bool warn_on_address_error{false};
     at_router::creator_fct<> creator;
+    unsigned internal_buswidth;
     std::deque<at_router::t_port_bw_adapter<tlm::tlm_base_protocol_types>> t_port_bw_adapt;
     std::deque<at_router::i_port_fw_adapter<tlm::tlm_base_protocol_types>> i_port_bw_adapt;
     std::unique_ptr<at_router::nb_router<>> rt;

@@ -16,25 +16,22 @@
 
 #ifndef _SYSC_NB_ROUTER_NB_ARBITTER_H_
 #define _SYSC_NB_ROUTER_NB_ARBITTER_H_
-#include <algorithm>
-#include <cstdint>
-#include <limits>
-#include <memory>
-#include <sysc/kernel/sc_simcontext.h>
-#include <sysc/kernel/sc_time.h>
-#include <systemc>
-#include <unordered_map>
 #ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #endif
 
 #include "types.h"
+#include <algorithm>
+#include <limits>
+#include <memory>
 #include <scc/peq.h>
 #include <scc/report.h>
-#include <stdexcept>
+#include <sysc/kernel/sc_simcontext.h>
+#include <sysc/kernel/sc_time.h>
 #include <systemc>
 #include <tlm/scc/tlm_gp_shared.h>
 #include <tlm>
+#include <unordered_map>
 #include <util/range_lut.h>
 
 namespace scc {
@@ -57,6 +54,7 @@ struct nb_arbiter : public tlm::tlm_bw_nonblocking_transport_if<typename TYPES::
     , name(name) {
         sc_core::sc_spawn([this]() { arbitrate(); }, nullptr, nullptr);
         iport.bw.bind(*this);
+        iport.set_width = [this](unsigned width) { this->buswidth = width; };
         for(auto idx = 0u; idx < tport.size(); ++idx) {
             actors.emplace_back(std::make_unique<fw_actor>(this, idx));
             tport[idx].fw.bind(*actors.back());
@@ -82,7 +80,7 @@ struct nb_arbiter : public tlm::tlm_bw_nonblocking_transport_if<typename TYPES::
             // support SCC::LT template parameter for buswidth (otherwise divide by zero)
             const unsigned width = buswidth ? buswidth : 64u;
             auto cycles = trans.is_read() ? (trans.get_data_length() * 8 + width - 1) / width : 1;
-            t = t + (cycles * get_clk_period()); // - 1_ps;
+            t += (cycles * get_clk_period()) - 1_ps;
             source_by_tx.erase(&trans);
             return tlm::TLM_COMPLETED;
         }
@@ -97,7 +95,7 @@ struct nb_arbiter : public tlm::tlm_bw_nonblocking_transport_if<typename TYPES::
                 // support SCC::LT template paramter for buswidth (otherwise divide by zero)
                 const unsigned width = owner->buswidth ? owner->buswidth : 64u;
                 auto cycles = trans.is_write() ? (trans.get_data_length() * 8 + width - 1) / width : 1;
-                t = t + (cycles * owner->get_clk_period()); // - 1_ps;
+                t += (cycles * owner->get_clk_period()) - 1_ps;
                 return tlm::TLM_UPDATED;
             } else if(phase == tlm::END_RESP) {
                 owner->source_by_tx.erase(&trans);
@@ -118,7 +116,7 @@ struct nb_arbiter : public tlm::tlm_bw_nonblocking_transport_if<typename TYPES::
     };
 
 private:
-    const unsigned buswidth;
+    unsigned buswidth;
     const std::string name;
     sc_core::sc_event retrigger;
 

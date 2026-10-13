@@ -203,13 +203,14 @@ void nu_router::invalidate_direct_mem_ptr(int id, ::sc_dt::uint64 start_range, :
 
 void nu_router::before_end_of_elaboration() {
     if(creator) {
-        rt = creator(64, targets.size(), initiators.size(), addr_decoder, tranges);
+        rt = creator(internal_buswidth, targets.size(), initiators.size(), addr_decoder, tranges);
         rt->set_default_target(default_idx);
         for(auto i = 0u; i < targets.size(); ++i) {
             auto& igress = rt->igress[i];
             auto& tgt = targets[i];
+            unsigned bus_width = 0;
             std::visit(
-                [this, &igress](auto& sckt) {
+                [this, &igress, &bus_width](auto& sckt) {
                     using T = std::decay_t<decltype(sckt)>;
                     if constexpr(std::is_same_v<T, std::monostate>) {
                         throw std::runtime_error("uninitialized initiator");
@@ -219,17 +220,21 @@ void nu_router::before_end_of_elaboration() {
                                 return igress.fw->nb_transport_fw(trans, phase, t);
                             });
                         t_port_bw_adapt.emplace_back(sckt.get_base_port());
+                        bus_width = sckt.get_bus_width();
                     }
                 },
                 tgt.sckt);
             igress.bw(t_port_bw_adapt.back());
             igress.clk(tgt.clk);
+            // if(igress.set_width)
+            //     igress.set_width(bus_width);
         }
         for(auto i = 0u; i < initiators.size(); ++i) {
             auto& egress = rt->egress[i];
             auto& intor = initiators[i];
+            unsigned bus_width = 0;
             std::visit(
-                [this, &egress](auto& sckt) {
+                [this, &egress, &bus_width](auto& sckt) {
                     using T = std::decay_t<decltype(sckt)>;
                     if constexpr(std::is_same_v<T, std::monostate>) {
                         throw std::runtime_error("uninitialized initiator");
@@ -239,11 +244,14 @@ void nu_router::before_end_of_elaboration() {
                                 return egress.bw->nb_transport_bw(trans, phase, t);
                             });
                         i_port_bw_adapt.emplace_back(sckt.get_base_port());
+                        bus_width = sckt.get_bus_width();
                     }
                 },
                 intor.sckt);
             egress.fw(i_port_bw_adapt.back());
             egress.clk(intor.clk);
+            // if(egress.set_width)
+            //     egress.set_width(bus_width);
         }
     }
 }

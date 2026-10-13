@@ -44,8 +44,8 @@ struct testbench : public sc_core::sc_module {
     tlm::scc::lwtr::tlm2_lwtr_recorder<32> mem3_rec{"mem3_rec"};
 #endif
     sc_core::sc_vector<tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<32>>> isck{"isck", 2};
-    scc::b2nb_adapter<32> b2nb0{"b2nb0"};
-    scc::b2nb_adapter<32> b2nb1{"b2nb1"};
+    scc::tl_b2nb_adapter<32> b2nb0{"b2nb0"};
+    scc::tl_b2nb_adapter<32> b2nb1{"b2nb1"};
     scc::router<32> router{"router", 4, 2};
     scc::memory_tl<1_kB, 32, 20> mem0{"mem0"};
     scc::memory_tl<1_kB, 32, 20> mem1{"mem1"};
@@ -53,7 +53,6 @@ struct testbench : public sc_core::sc_module {
     scc::memory_tl<1_kB, 32, 20> mem3{"mem3"};
 
     inline void configure_memory(scc::memory_tl<1_kB, 32, 20>& m) {
-        m.clk_i(clk);
         m.rd_resp_delay.set_value(3);
         m.wr_resp_delay.set_value(50);
     }
@@ -88,15 +87,17 @@ struct testbench : public sc_core::sc_module {
 #endif
         router.set_initiator_base(1, 1_MB);
         router.set_at_architecture(scc::at_router::hub::create<>);
+        b2nb0.clk_i(clk);
+        b2nb1.clk_i(clk);
         router.clk_i(clk);
+        mem0.clk_i(clk);
+        mem1.clk_i(clk);
+        mem2.clk_i(clk);
+        mem3.clk_i(clk);
         configure_memory(mem0);
         configure_memory(mem1);
         configure_memory(mem2);
         configure_memory(mem3);
-        b2nb0.tsck.wr_resp_accept_delay_per_beat = 10_ns;
-        b2nb0.tsck.rd_resp_accept_delay_per_beat = 10_ns;
-        b2nb1.tsck.wr_resp_accept_delay_per_beat = 10_ns;
-        b2nb1.tsck.rd_resp_accept_delay_per_beat = 10_ns;
     }
     void start_of_simulation() { clk = 10_ns; }
 };
