@@ -17,8 +17,10 @@
 #ifndef _SCC_SOCKET_WIDTH_ADAPTER_H_
 #define _SCC_SOCKET_WIDTH_ADAPTER_H_
 
-#include "tlm/scc/initiator_mixin.h"
-#include "tlm/scc/target_mixin.h"
+#include <scc/clock_if_mixins.h>
+#include <scc/signal_opt_ports.h>
+#include <tlm/scc/initiator_mixin.h>
+#include <tlm/scc/target_mixin.h>
 #include <tlm>
 
 //! @brief SCC TLM utilities
@@ -37,8 +39,6 @@ namespace scc {
  *
  * @note The socket_width_adapter class is a part of the SystemC Component (SCC) library.
  *
- * @author Your Name
- * @date YYYY-MM-DD
  */
 template <unsigned int BUSWIDTH, typename TYPES = tlm::tlm_base_protocol_types> class b2nb_adapter : public sc_core::sc_module {
 public:
@@ -69,7 +69,11 @@ public:
             return isck->nb_transport_fw(trans, phase, t);
         });
         isck.register_nb_transport_bw([this](tlm_payload_type& trans, tlm_phase_type& phase, sc_core::sc_time& t) -> tlm::tlm_sync_enum {
-            return tsck->nb_transport_bw(trans, phase, t);
+            auto res = tsck->nb_transport_bw(trans, phase, t);
+            const unsigned width = BUSWIDTH ? BUSWIDTH : 64u;
+            auto cycles = trans.is_read() ? (trans.get_data_length() * 8 + width - 1) / width : 1;
+            t = t + ((cycles * clock_period) - 1_ps);
+            return res;
         });
         tsck.register_get_direct_mem_ptr(
             [this](tlm_payload_type& trans, tlm::tlm_dmi& dmi) -> bool { return isck->get_direct_mem_ptr(trans, dmi); });
@@ -86,6 +90,15 @@ public:
      * @brief Virtual destructor for the socket_width_adapter class.
      */
     virtual ~b2nb_adapter() = default;
+
+protected:
+    void set_clock_period(sc_core::sc_time const& t) {
+        clock_period = t;
+        tsck.clock_period = t;
+    }
+    sc_core::sc_time clock_period = sc_core::SC_ZERO_TIME;
 };
+template <unsigned int BUSWIDTH, typename TYPES = tlm::tlm_base_protocol_types>
+using tl_b2nb_adapter = tickless_clock<b2nb_adapter<BUSWIDTH, TYPES>>;
 } // namespace scc
 #endif // _SCC_SOCKET_WIDTH_ADAPTER_H_

@@ -104,6 +104,8 @@ public:
         m_fw_process.set_get_direct_mem_ptr(cb);
     }
 
+    sc_core::sc_time clock_period{sc_core::SC_ZERO_TIME};
+
     sc_core::sc_time rd_resp_accept_delay_per_beat{sc_core::SC_ZERO_TIME};
 
     sc_core::sc_time wr_resp_accept_delay_per_beat{sc_core::SC_ZERO_TIME};
@@ -137,15 +139,18 @@ private:
                     if(m_owner->m_current_transaction == &trans) {
                         m_owner->m_end_request.notify(sc_core::SC_ZERO_TIME);
                     }
-                    // TODO: add response-accept delay?
+                    if(auto bus_width = m_owner->get_bus_width()) {
+                        if(trans.is_read()) {
+                            auto delay = m_owner->rd_resp_accept_delay_per_beat.value() ? m_owner->rd_resp_accept_delay_per_beat
+                                                                                        : m_owner->clock_period;
+                            t += (trans.get_data_length() * 8 + bus_width - 1) / bus_width * delay;
+                        } else if(trans.is_write()) {
+                            t += m_owner->wr_resp_accept_delay_per_beat.value() ? m_owner->wr_resp_accept_delay_per_beat
+                                                                                : m_owner->clock_period;
+                        }
+                    }
                     it->second->notify(t);
                     m_owner->m_pending_trans.erase(it);
-                    if(auto bus_width = m_owner->get_bus_width()) {
-                        if(trans.is_read())
-                            t += (trans.get_data_length() * 8 + bus_width - 1) / bus_width * m_owner->rd_resp_accept_delay_per_beat;
-                        else if(trans.is_write())
-                            t += m_owner->wr_resp_accept_delay_per_beat;
-                    }
                     phase = tlm::END_RESP;
                     return tlm::TLM_COMPLETED;
                 } else {
@@ -229,10 +234,14 @@ private:
             } else if(m_b_transport_ptr) {
                 if(phase == tlm::BEGIN_REQ) {
                     if(auto bus_width = m_owner->get_bus_width()) {
-                        if(trans.is_read())
-                            t += m_owner->rd_resp_accept_delay_per_beat;
-                        else if(trans.is_write())
-                            t += (trans.get_data_length() * 8 + bus_width - 1) / bus_width * m_owner->wr_resp_accept_delay_per_beat;
+                        if(trans.is_read()) {
+                            t += m_owner->rd_resp_accept_delay_per_beat.value() ? m_owner->rd_resp_accept_delay_per_beat
+                                                                                : m_owner->clock_period;
+                        } else if(trans.is_write()) {
+                            auto delay = m_owner->wr_resp_accept_delay_per_beat.value() ? m_owner->wr_resp_accept_delay_per_beat
+                                                                                        : m_owner->clock_period;
+                            t += (trans.get_data_length() * 8 + bus_width - 1) / bus_width * delay;
+                        }
                     }
                     // prepare thread to do blocking call
                     process_handle_class* ph = m_process_handle.get_handle(&trans);
@@ -291,7 +300,7 @@ private:
                     if(trans.get_ref_count()) {
                         sc_core::wait(mm_ext.done);
                     }
-                    trans.set_mm(0);
+                    trans.set_mm(nullptr);
                 }
 
             } else {
@@ -425,6 +434,11 @@ private:
                             break;
 
                         case tlm::END_REQ:
+                            if(auto clk_period = m_owner->clock_period.value()) {
+                                if(auto offset = t.value() % clk_period) {
+                                    t += sc_core::sc_time::from_value(clk_period - offset); // align to next clock edge
+                                }
+                            }
                             sc_core::wait(t);
                             break;
 
