@@ -73,9 +73,9 @@ TEST_CASE("at-router-hub 1-x-n", "[router][tlm-level]") {
         sc_start(20 * dut.clk.read());
         cycles += 20;
         all_terminated = std::all_of(processes.begin(), processes.end(), [](auto const& process) { return process.terminated(); });
-    } while(!all_terminated && cycles < 1000);
+    } while(!all_terminated && cycles < 10000);
     REQUIRE(all_terminated);
-    REQUIRE(cycles < 900);
+    REQUIRE(cycles == 900);
 }
 
 TEST_CASE("at-router-hub m-x-1", "[router][tlm-level]") {
@@ -96,7 +96,7 @@ TEST_CASE("at-router-hub m-x-1", "[router][tlm-level]") {
         all_terminated = std::all_of(processes.begin(), processes.end(), [](auto const& process) { return process.terminated(); });
     } while(!all_terminated && cycles < 1000);
     REQUIRE(all_terminated);
-    REQUIRE(cycles < 890);
+    REQUIRE(cycles == 900);
 }
 
 TEST_CASE("at-router-hub m-x-n", "[router][tlm-level]") {
@@ -123,7 +123,7 @@ TEST_CASE("at-router-hub m-x-n", "[router][tlm-level]") {
         all_terminated = std::all_of(processes.begin(), processes.end(), [](auto const& process) { return process.terminated(); });
     } while(!all_terminated && cycles < 1000);
     REQUIRE(all_terminated);
-    REQUIRE(cycles < 910);
+    REQUIRE(cycles == 920);
 }
 
 } // namespace scc

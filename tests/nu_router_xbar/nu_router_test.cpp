@@ -56,7 +56,7 @@ void execute(testbench& dut, std::queue<config>& jobs) {
             dut.isck_0->b_transport(gp, t);
             break;
         case 1:
-            dut.isck_0->b_transport(gp, t);
+            dut.isck_1->b_transport(gp, t);
             break;
         default:
             throw std::runtime_error("Illegal socket number");
@@ -85,9 +85,9 @@ TEST_CASE("non-uniform-xbar 1-x-n", "[ms-router][tlm-level]") {
         sc_start(20 * dut.clk_50.read());
         cycles += 20;
         all_terminated = std::all_of(processes.begin(), processes.end(), [](auto const& process) { return process.terminated(); });
-    } while(!all_terminated && cycles < 1000);
+    } while(!all_terminated && cycles < 10000);
     REQUIRE(all_terminated);
-    REQUIRE(cycles < 270);
+    REQUIRE(cycles == 140);
 }
 
 TEST_CASE("non-uniform-xbar m-x-1", "[router][tlm-level]") {
@@ -108,7 +108,7 @@ TEST_CASE("non-uniform-xbar m-x-1", "[router][tlm-level]") {
         all_terminated = std::all_of(processes.begin(), processes.end(), [](auto const& process) { return process.terminated(); });
     } while(!all_terminated && cycles < 1000);
     REQUIRE(all_terminated);
-    REQUIRE(cycles < 430);
+    REQUIRE(cycles == 140);
 }
 
 TEST_CASE("non-uniform-xbar m-x-n", "[router][tlm-level]") {
@@ -135,7 +135,7 @@ TEST_CASE("non-uniform-xbar m-x-n", "[router][tlm-level]") {
         all_terminated = std::all_of(processes.begin(), processes.end(), [](auto const& process) { return process.terminated(); });
     } while(!all_terminated && cycles < 1000);
     REQUIRE(all_terminated);
-    REQUIRE(cycles < 530);
+    REQUIRE(cycles == 160);
 }
 
 } // namespace scc

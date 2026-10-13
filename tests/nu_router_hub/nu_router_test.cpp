@@ -56,7 +56,7 @@ void execute(testbench& dut, std::queue<config>& jobs) {
             dut.isck_0->b_transport(gp, t);
             break;
         case 1:
-            dut.isck_0->b_transport(gp, t);
+            dut.isck_1->b_transport(gp, t);
             break;
         default:
             throw std::runtime_error("Illegal socket number");
@@ -71,7 +71,7 @@ TEST_CASE("non-uniform-hub 1-x-n", "[ms-router][tlm-level]") {
     auto& dut = factory::get<testbench>();
     std::queue<config> jobs;
     unsigned cycles{0};
-    sc_start(10 * dut.clk.read());
+    sc_start(10 * dut.clk_50.read());
     jobs.emplace(0x0, 16, 0);
     jobs.emplace(0x400, 16, 0);
     jobs.emplace(0x800, 16, 0);
@@ -82,19 +82,19 @@ TEST_CASE("non-uniform-hub 1-x-n", "[ms-router][tlm-level]") {
     }
     auto all_terminated = false;
     do {
-        sc_start(20 * dut.clk.read());
+        sc_start(20 * dut.clk_50.read());
         cycles += 20;
         all_terminated = std::all_of(processes.begin(), processes.end(), [](auto const& process) { return process.terminated(); });
     } while(!all_terminated && cycles < 1000);
     REQUIRE(all_terminated);
-    REQUIRE(cycles < 900);
+    REQUIRE(cycles == 140);
 }
 
 TEST_CASE("non-uniform-hub m-x-1", "[router][tlm-level]") {
     auto& dut = factory::get<testbench>();
     std::queue<config> jobs;
     unsigned cycles{0};
-    sc_start(10 * dut.clk.read());
+    sc_start(10 * dut.clk_50.read());
     jobs.emplace(0x0, 16, 0);
     jobs.emplace(0x0, 16, 1);
     std::vector<sc_core::sc_process_handle> processes;
@@ -103,19 +103,19 @@ TEST_CASE("non-uniform-hub m-x-1", "[router][tlm-level]") {
     }
     auto all_terminated = false;
     do {
-        sc_start(20 * dut.clk.read());
+        sc_start(20 * dut.clk_50.read());
         cycles += 20;
         all_terminated = std::all_of(processes.begin(), processes.end(), [](auto const& process) { return process.terminated(); });
     } while(!all_terminated && cycles < 1000);
     REQUIRE(all_terminated);
-    REQUIRE(cycles < 850);
+    REQUIRE(cycles == 140);
 }
 
 TEST_CASE("non-uniform-hub m-x-n", "[router][tlm-level]") {
     auto& dut = factory::get<testbench>();
     std::queue<config> jobs;
     unsigned cycles{0};
-    sc_start(10 * dut.clk.read());
+    sc_start(10 * dut.clk_50.read());
     jobs.emplace(0x0, 16, 0);
     jobs.emplace(0x400, 16, 0);
     jobs.emplace(0x800, 16, 0);
@@ -130,12 +130,12 @@ TEST_CASE("non-uniform-hub m-x-n", "[router][tlm-level]") {
     }
     auto all_terminated = false;
     do {
-        sc_start(20 * dut.clk.read());
+        sc_start(20 * dut.clk_50.read());
         cycles += 20;
         all_terminated = std::all_of(processes.begin(), processes.end(), [](auto const& process) { return process.terminated(); });
     } while(!all_terminated && cycles < 1000);
     REQUIRE(all_terminated);
-    REQUIRE(cycles < 900);
+    REQUIRE(cycles == 240);
 }
 
 } // namespace scc
