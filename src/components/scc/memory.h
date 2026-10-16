@@ -17,24 +17,20 @@
 #ifndef _SYSC_MEMORY_H_
 #define _SYSC_MEMORY_H_
 
-// Needed for the simple_target_socket
-#include <nonstd/span.h>
-#include <tlm/scc/memory_map_collector.h>
-#include <util/ities.h>
-#ifndef SC_INCLUDE_DYNAMIC_PROCESSES
-#define SC_INCLUDE_DYNAMIC_PROCESSES
-#endif
-
 #include "clock_if_mixins.h"
 #include <cci_configuration>
 #include <cstdint>
+#include <nonstd/span.h>
 #include <numeric>
 #include <scc/mt19937_rng.h>
 #include <scc/report.h>
 #include <scc/signal_opt_ports.h>
 #include <scc/utilities.h>
+#include <tlm/scc/lwtr/tlm_rec_target_socket.h>
+#include <tlm/scc/memory_map_collector.h>
 #include <tlm/scc/target_mixin.h>
 #include <tlm>
+#include <util/ities.h>
 #include <util/range_lut.h>
 #include <util/sparse_array.h>
 
@@ -67,14 +63,15 @@ template <> struct delay_spec_type<false> {
  * @tparam SIZE size of the memery
  * @tparam BUSWIDTH bus width of the socket
  */
-template <unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24, bool USE_CYCLES = false>
+template <unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24, bool USE_CYCLES = false,
+          typename SOCKET_TYPE = tlm::tlm_target_socket<BUSWIDTH>>
 class memory : public sc_core::sc_module {
 public:
     using delay_type = typename delay_spec_type<USE_CYCLES>::type;
-    using this_class = memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES>;
+    using this_class = memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES, SOCKET_TYPE>;
 
     //! the target socket to connect to TLM
-    tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target{"ts"};
+    tlm::scc::target_mixin<SOCKET_TYPE> target{"ts"};
     /**
      * constructor with explicit instance name
      *
@@ -180,9 +177,13 @@ public:
 };
 
 template <unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24>
-using memory_tl = tickless_clock<memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, true>>;
+using tl_memory = tickless_clock<memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, true>>;
 template <unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24>
-using memory_tc = ticking_clock<memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, true>>;
+using tc_memory = ticking_clock<memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, true>>;
+template <unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24>
+using tl_memory_trc = tickless_clock<memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, true, ::tlm::scc::lwtr::tlm_rec_target_socket<BUSWIDTH>>>;
+template <unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24>
+using tc_memory_trc = ticking_clock<memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, true, ::tlm::scc::lwtr::tlm_rec_target_socket<BUSWIDTH>>>;
 
 template <unsigned long long SIZE, unsigned BUSWIDTH = LT>
 int handle_operation(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, sc_core::sc_time& delay);
@@ -202,8 +203,8 @@ struct host_mem_map_extension : public tlm::tlm_extension<host_mem_map_extension
 ///////////////////////////////////////////////////////////////////////////////
 /// implementation details
 /// ///////////////////////////////////////////////////////////////////////////
-template <unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS, bool USE_CYCLES>
-memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES>::memory(const sc_core::sc_module_name& nm)
+template <unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS, bool USE_CYCLES, typename SOCKET_TYPE>
+memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES, SOCKET_TYPE>::memory(const sc_core::sc_module_name& nm)
 : sc_module(nm) {
     // Register callback for incoming b_transport interface method call
     target.register_b_transport([this](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void {
@@ -231,8 +232,9 @@ memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES>::memory(const sc_core::sc_mod
     });
 }
 
-template <unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS, bool USE_CYCLES>
-int memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES>::handle_operation(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
+template <unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS, bool USE_CYCLES, typename SOCKET_TYPE>
+int memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES, SOCKET_TYPE>::handle_operation(tlm::tlm_generic_payload& trans,
+                                                                                      sc_core::sc_time& delay) {
     uint64_t adr = trans.get_address();
     uint8_t* ptr = trans.get_data_ptr();
     unsigned len = trans.get_data_length();
@@ -336,8 +338,9 @@ int memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES>::handle_operation(tlm::tl
     return len;
 }
 
-template <unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS, bool USE_CYCLES>
-inline bool memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES>::handle_dmi(tlm::tlm_generic_payload& gp, tlm::tlm_dmi& dmi_data) {
+template <unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS, bool USE_CYCLES, typename SOCKET_TYPE>
+inline bool memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES, SOCKET_TYPE>::handle_dmi(tlm::tlm_generic_payload& gp,
+                                                                                        tlm::tlm_dmi& dmi_data) {
     if(allow_dmi.get_value()) {
         auto hm_entry = host_mem_lut.getEntry(gp.get_address());
         if(hm_entry.ptr) {

@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include "cci/core/cci_core_types.h"
 #include "lwtr4tlm2.h"
 #include <array>
 #include <cci_configuration>
@@ -124,10 +125,10 @@ public:
     cci::cci_param<bool> enableNbTracing;
 
     //! \brief the attribute to selectively enable/disable timed recording
-    cci::cci_param<bool> enableTimedTracing{"enableTimedTracing", true};
+    cci::cci_param<bool> enableTimedTracing;
 
     //! \brief the attribute to selectively enable/disable DMI recording
-    cci::cci_param<bool> enableDmiTracing{"enableDmiTracing", false};
+    cci::cci_param<bool> enableDmiTracing;
 
     /**
      * @fn  tlm2_lwtr(bool=true, tr_db*=tr_db::get_default_db())
@@ -152,10 +153,16 @@ public:
      *        If this database is not initialized (e.g. by not calling
      * lwtr::tr_db::set_default_db() ) recording is disabled.
      */
-    tlm2_lwtr(const char* full_name, bool recording_enabled = true, tx_db* tr_db = tx_db::get_default_db())
-    : enableBlTracing("enableBlTracing", recording_enabled)
-    , enableNbTracing("enableNbTracing", recording_enabled)
+    tlm2_lwtr(const char* full_name, sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw,
+              sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw, bool recording_enabled = true,
+              tx_db* tr_db = tx_db::get_default_db())
+    : enableBlTracing(std::string(full_name) + ".enableBlTracing", recording_enabled, "", cci::CCI_ABSOLUTE_NAME)
+    , enableNbTracing(std::string(full_name) + ".enableNbTracing", recording_enabled, "", cci::CCI_ABSOLUTE_NAME)
+    , enableTimedTracing(std::string(full_name) + ".enableTimedTracing", true, "", cci::CCI_ABSOLUTE_NAME)
+    , enableDmiTracing(std::string(full_name) + ".enableDmiTracing", false, "", cci::CCI_ABSOLUTE_NAME)
     , full_name(full_name)
+    , fw_port(fw)
+    , bw_port(bw)
     , nb_timed_peq()
     , m_db(tr_db) {
         initialize_streams();
@@ -253,10 +260,9 @@ public:
 
 protected:
     //! \brief the port where fw accesses are forwarded to
-    sc_core::sc_port<tlm::tlm_fw_transport_if<TYPES>> fw_port{"fw_port"};
-
+    sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw_port;
     //! \brief the port where bw accesses are forwarded to
-    sc_core::sc_port<tlm::tlm_bw_transport_if<TYPES>> bw_port{"bw_port"};
+    sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port;
 
 private:
     std::string const full_name;
@@ -354,12 +360,19 @@ public:
 
     tlm2_lwtr_recorder(sc_core::sc_module_name nm, bool recording_enabled = true, tx_db* tr_db = tx_db::get_default_db())
     : sc_core::sc_module(nm)
-    , tlm2_lwtr<TYPES>(name(), recording_enabled, tr_db) {
+    , tlm2_lwtr<TYPES>(name(), is.get_base_port(), ts.get_base_port(), recording_enabled, tr_db) {
         is(*this);
         ts(*this);
-        this->bw_port(ts.get_base_port());
-        this->fw_port(is.get_base_port());
     }
+};
+
+template <typename TYPES = tlm::tlm_base_protocol_types> class tlm2_lwtr_obj : public sc_core::sc_object, public tlm2_lwtr<TYPES> {
+public:
+    tlm2_lwtr_obj(const char* nm, sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw,
+                  sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw, bool recording_enabled = true,
+                  tx_db* tr_db = tx_db::get_default_db())
+    : sc_core::sc_object(nm)
+    , tlm2_lwtr<TYPES>(name(), fw, bw, recording_enabled, tr_db) {}
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

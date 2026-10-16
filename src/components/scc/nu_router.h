@@ -21,6 +21,9 @@
 #include "router_types.h"
 #include "scc/at_router/types.h"
 #include "scc/signal_opt_ports.h"
+#include "tlm/scc/lwtr/tlm_rec_target_socket.h"
+#include <cstring>
+#include <fmt/format.h>
 #include <limits>
 #include <memory>
 #include <scc/report.h>
@@ -59,7 +62,19 @@ struct clocked_target_socket {
         tlm::scc::target_mixin<tlm::tlm_target_socket<64, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
         tlm::scc::target_mixin<tlm::tlm_target_socket<128, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
         tlm::scc::target_mixin<tlm::tlm_target_socket<256, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
-        tlm::scc::target_mixin<tlm::tlm_target_socket<512, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>
+        tlm::scc::target_mixin<tlm::tlm_target_socket<512, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
+        tlm::scc::target_mixin<tlm::scc::lwtr::tlm_rec_target_socket<0>>,
+        tlm::scc::target_mixin<tlm::scc::lwtr::tlm_rec_target_socket<32>>,
+        tlm::scc::target_mixin<tlm::scc::lwtr::tlm_rec_target_socket<64>>,
+        tlm::scc::target_mixin<tlm::scc::lwtr::tlm_rec_target_socket<128>>,
+        tlm::scc::target_mixin<tlm::scc::lwtr::tlm_rec_target_socket<256>>,
+        tlm::scc::target_mixin<tlm::scc::lwtr::tlm_rec_target_socket<512>>,
+        tlm::scc::target_mixin<tlm::scc::lwtr::tlm_rec_target_socket<0, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
+        tlm::scc::target_mixin<tlm::scc::lwtr::tlm_rec_target_socket<32, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
+        tlm::scc::target_mixin<tlm::scc::lwtr::tlm_rec_target_socket<64, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
+        tlm::scc::target_mixin<tlm::scc::lwtr::tlm_rec_target_socket<128, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
+        tlm::scc::target_mixin<tlm::scc::lwtr::tlm_rec_target_socket<256, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>,
+        tlm::scc::target_mixin<tlm::scc::lwtr::tlm_rec_target_socket<512, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>>
         > sckt;
     // clang-format on
     scc::sc_in_opt<sc_core::sc_time> clk;
@@ -111,28 +126,57 @@ struct nu_router : sc_core::sc_module {
 
     ~nu_router() = default;
 
+    /**
+     * @brief Configure transaction recording for subsequently initialized target sockets.
+     *
+     * Sets en_tracing to select LWTR recording sockets when target_socket() initializes a socket.
+     * Call before creating target sockets; existing sockets are unaffected.
+     * @param enable true to enable transaction recording, false to use ordinary TLM sockets.
+     */
+    void enable_tracing(bool enable) { en_tracing = enable; }
+    /**
+     * @brief Return the target socket at the given index, initializing it on first access.
+     *
+     * @tparam BUSWIDTH socket bus width in bits.
+     * @param idx index of the target socket; must be less than targets.size().
+     * @return reference to the target socket with the requested bus width.
+     * @throws std::bad_variant_access if the stored socket type does not match the requested type.
+     */
     template <unsigned BUSWIDTH> tlm::tlm_target_socket<BUSWIDTH>& target_socket(size_t idx) {
         if(std::holds_alternative<std::monostate>(targets[idx].sckt)) {
-            std::ostringstream os;
-            os << "tsckt_" << idx;
-            auto& sckt = targets[idx].sckt.template emplace<tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>>>(
-                sc_core::sc_gen_unique_name(os.str().c_str(), false));
-            sckt.register_b_transport(
-                [this, idx](tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) -> void { this->b_transport(idx, trans, delay); });
-            sckt.register_get_direct_mem_ptr([this, idx](tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data) -> bool {
-                return this->get_direct_mem_ptr(idx, trans, dmi_data);
-            });
-            sckt.register_transport_dbg(
-                [this, idx](tlm::tlm_generic_payload& trans) -> unsigned { return this->transport_dbg(idx, trans); });
+            // we need to make a copy since the call tree invokes sc_gen_unique_name which kills the returned charachter buffer
+            auto sckt_name = std::string(sc_core::sc_gen_unique_name(fmt::format("{}_tsckt_{}", basename(), idx).c_str(), true));
+            if(en_tracing)
+                initialize_target_socket<tlm::scc::target_mixin<tlm::scc::lwtr::tlm_rec_target_socket<BUSWIDTH>>>(idx, sckt_name.c_str());
+            else
+                initialize_target_socket<tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>>>(idx, sckt_name.c_str());
         }
-        return std::get<tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>>>(targets[idx].sckt);
+        if(en_tracing)
+            return std::get<tlm::scc::target_mixin<tlm::scc::lwtr::tlm_rec_target_socket<BUSWIDTH>>>(targets[idx].sckt);
+        else
+            return std::get<tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>>>(targets[idx].sckt);
     }
+    /**
+     * @brief Return the optional clock input for an initialized target socket.
+     *
+     * @param idx index of the target socket; must be less than targets.size().
+     * @return reference to the target socket's optional clock input.
+     * @throws std::runtime_error if the target socket has not been initialized.
+     */
     scc::sc_in_opt<sc_core::sc_time>& target_clock(size_t idx) {
         if(std::holds_alternative<std::monostate>(targets[idx].sckt)) {
             throw std::runtime_error("Initiator socket not initialized");
         }
         return targets[idx].clk;
     }
+    /**
+     * @brief Return the initiator socket at the given index, initializing it on first access.
+     *
+     * @tparam BUSWIDTH socket bus width in bits.
+     * @param idx index of the initiator socket; must be less than initiators.size().
+     * @return reference to the initiator socket with the requested bus width.
+     * @throws std::bad_variant_access if the stored socket type does not match the requested type.
+     */
     template <unsigned BUSWIDTH> tlm::tlm_initiator_socket<BUSWIDTH>& initiator_socket(size_t idx) {
         if(std::holds_alternative<std::monostate>(initiators[idx].sckt)) {
             std::ostringstream os;
@@ -145,6 +189,13 @@ struct nu_router : sc_core::sc_module {
         }
         return std::get<tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<BUSWIDTH>>>(initiators[idx].sckt);
     }
+    /**
+     * @brief Return the optional clock input for an initialized initiator socket.
+     *
+     * @param idx index of the initiator socket; must be less than initiators.size().
+     * @return reference to the initiator socket's optional clock input.
+     * @throws std::runtime_error if the initiator socket has not been initialized.
+     */
     scc::sc_in_opt<sc_core::sc_time>& initiator_clock(size_t idx) {
         if(std::holds_alternative<std::monostate>(initiators[idx].sckt)) {
             throw std::runtime_error("Initiator socket not initialized");
@@ -169,6 +220,17 @@ struct nu_router : sc_core::sc_module {
         initiator_socket<BUSWIDTH>(idx).bind(socket);
         return initiator_clock(idx);
     }
+    /**
+     * @brief Hierarchically bind a router initiator socket and configure its target address range.
+     *
+     * @tparam BUSWIDTH socket bus width in bits.
+     * @param socket the initiator socket to bind to.
+     * @param idx index of the router initiator socket; must be less than initiators.size().
+     * @param base base address of the target range.
+     * @param size size in bytes of the target range.
+     * @param remap true to subtract the base address from accesses forwarded to the target.
+     * @return reference to the router initiator socket's optional clock input.
+     */
     template <unsigned BUSWIDTH>
     scc::sc_in_opt<sc_core::sc_time>& bind(tlm::tlm_initiator_socket<BUSWIDTH>& socket, size_t idx, uint64_t base, uint64_t size,
                                            bool remap = true) {
@@ -176,6 +238,17 @@ struct nu_router : sc_core::sc_module {
         initiator_socket<BUSWIDTH>(idx).bind(socket);
         return initiator_clock(idx);
     }
+    /**
+     * @brief Bind a router initiator socket to an optional target socket and configure its address range.
+     *
+     * @tparam BUSWIDTH socket bus width in bits.
+     * @param socket the target socket with SC_ZERO_OR_MORE_BOUND binding policy to bind to.
+     * @param idx index of the router initiator socket; must be less than initiators.size().
+     * @param base base address of the target range.
+     * @param size size in bytes of the target range.
+     * @param remap true to subtract the base address from accesses forwarded to the target.
+     * @return reference to the router initiator socket's optional clock input.
+     */
     template <unsigned BUSWIDTH>
     scc::sc_in_opt<sc_core::sc_time>&
     bind(tlm::tlm_target_socket<BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>& socket, size_t idx,
@@ -184,6 +257,17 @@ struct nu_router : sc_core::sc_module {
         initiator_socket<BUSWIDTH>(idx).bind(socket);
         return initiator_clock(idx);
     }
+    /**
+     * @brief Hierarchically bind a router initiator socket to an optional initiator socket and configure its target address range.
+     *
+     * @tparam BUSWIDTH socket bus width in bits.
+     * @param socket the initiator socket with SC_ZERO_OR_MORE_BOUND binding policy to bind to.
+     * @param idx index of the router initiator socket; must be less than initiators.size().
+     * @param base base address of the target range.
+     * @param size size in bytes of the target range.
+     * @param remap true to subtract the base address from accesses forwarded to the target.
+     * @return reference to the router initiator socket's optional clock input.
+     */
     template <unsigned BUSWIDTH>
     scc::sc_in_opt<sc_core::sc_time>&
     bind(tlm::tlm_initiator_socket<BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>& socket, size_t idx,
@@ -192,20 +276,52 @@ struct nu_router : sc_core::sc_module {
         initiator_socket<BUSWIDTH>(idx).bind(socket);
         return initiator_clock(idx);
     }
+    /**
+     * @brief Bind a router initiator socket to a target socket without changing its address mapping.
+     *
+     * @tparam BUSWIDTH socket bus width in bits.
+     * @param socket the target socket to bind to.
+     * @param idx index of the router initiator socket; must be less than initiators.size().
+     * @return reference to the router initiator socket's optional clock input.
+     */
     template <unsigned BUSWIDTH> scc::sc_in_opt<sc_core::sc_time>& bind(tlm::tlm_target_socket<BUSWIDTH>& socket, size_t idx) {
         initiator_socket<BUSWIDTH>(idx).bind(socket);
         return initiator_clock(idx);
     }
+    /**
+     * @brief Hierarchically bind a router initiator socket without changing its target address mapping.
+     *
+     * @tparam BUSWIDTH socket bus width in bits.
+     * @param socket the initiator socket to bind to.
+     * @param idx index of the router initiator socket; must be less than initiators.size().
+     * @return reference to the router initiator socket's optional clock input.
+     */
     template <unsigned BUSWIDTH> scc::sc_in_opt<sc_core::sc_time>& bind(tlm::tlm_initiator_socket<BUSWIDTH>& socket, size_t idx) {
         initiator_socket<BUSWIDTH>(idx).bind(socket);
         return initiator_clock(idx);
     }
+    /**
+     * @brief Bind a router initiator socket to an optional target socket without changing its address mapping.
+     *
+     * @tparam BUSWIDTH socket bus width in bits.
+     * @param socket the target socket with SC_ZERO_OR_MORE_BOUND binding policy to bind to.
+     * @param idx index of the router initiator socket; must be less than initiators.size().
+     * @return reference to the router initiator socket's optional clock input.
+     */
     template <unsigned BUSWIDTH>
     scc::sc_in_opt<sc_core::sc_time>&
     bind(tlm::tlm_target_socket<BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>& socket, size_t idx) {
         initiator_socket<BUSWIDTH>(idx).bind(socket);
         return initiator_clock(idx);
     }
+    /**
+     * @brief Hierarchically bind a router initiator socket to an optional initiator socket without changing its target address mapping.
+     *
+     * @tparam BUSWIDTH socket bus width in bits.
+     * @param socket the initiator socket with SC_ZERO_OR_MORE_BOUND binding policy to bind to.
+     * @param idx index of the router initiator socket; must be less than initiators.size().
+     * @return reference to the router initiator socket's optional clock input.
+     */
     template <unsigned BUSWIDTH>
     scc::sc_in_opt<sc_core::sc_time>&
     bind(tlm::tlm_initiator_socket<BUSWIDTH, tlm::tlm_base_protocol_types, 1, sc_core::SC_ZERO_OR_MORE_BOUND>& socket, size_t idx) {
@@ -306,6 +422,18 @@ struct nu_router : sc_core::sc_module {
     }
 
 protected:
+    template <typename SOCKET_TYPE> void initialize_target_socket(size_t idx, const char* name) {
+        auto& sckt = targets[idx].sckt.template emplace<SOCKET_TYPE>(name);
+        sckt.register_b_transport(
+            [this, idx](tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) -> void { this->b_transport(idx, trans, delay); });
+        sckt.register_get_direct_mem_ptr([this, idx](tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data) -> bool {
+            return this->get_direct_mem_ptr(idx, trans, dmi_data);
+        });
+        sckt.register_transport_dbg([this, idx](tlm::tlm_generic_payload& trans) -> unsigned { return this->transport_dbg(idx, trans); });
+    }
+
+    //! Select LWTR recording for new target sockets; disabled by default.
+    bool en_tracing{false};
     util::range_lut<unsigned> addr_decoder;
     std::vector<uint64_t> ibases;
     std::vector<range_entry> tranges;
@@ -316,8 +444,8 @@ protected:
     bool warn_on_address_error{false};
     at_router::creator_fct<> creator;
     unsigned internal_buswidth;
-    std::deque<at_router::t_port_bw_adapter<tlm::tlm_base_protocol_types>> t_port_bw_adapt;
-    std::deque<at_router::i_port_fw_adapter<tlm::tlm_base_protocol_types>> i_port_bw_adapt;
+    std::deque<std::unique_ptr<at_router::bw_if<tlm::tlm_base_protocol_types>>> t_port_bw_adapt;
+    std::deque<std::unique_ptr<at_router::i_port_fw_adapter<tlm::tlm_base_protocol_types>>> i_port_bw_adapt;
     std::unique_ptr<at_router::nb_router<>> rt;
 };
 

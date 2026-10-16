@@ -45,6 +45,7 @@ struct nb_arbiter : public tlm::tlm_bw_nonblocking_transport_if<typename TYPES::
     sc_core::sc_signal_in_if<sc_core::sc_time>* clk_if;
 
     sc_core::sc_vector<t_port<TYPES>> tport;
+
     i_port<TYPES> iport;
 
     nb_arbiter(char const* name, unsigned buswidth, unsigned igress_cnt)

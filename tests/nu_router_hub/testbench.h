@@ -50,13 +50,13 @@ struct testbench : public sc_core::sc_module {
     scc::tl_b2nb_adapter<256> b2nb0{"b2nb0"};
     scc::tl_b2nb_adapter<64> b2nb1{"b2nb1"};
     scc::nu_router router{"router", 4, 2};
-    scc::memory_tl<1_kB, 64, 20> mem0{"mem0"};
-    scc::memory_tl<1_kB, 32, 20> mem1{"mem1"};
-    scc::memory_tl<1_kB, 64, 20> mem2{"mem2"};
-    scc::memory_tl<1_kB, 128, 20> mem3{"mem3"};
+    scc::tl_memory<1_kB, 64, 20> mem0{"mem0"};
+    scc::tl_memory<1_kB, 32, 20> mem1{"mem1"};
+    scc::tl_memory<1_kB, 64, 20> mem2{"mem2"};
+    scc::tl_memory<1_kB, 128, 20> mem3{"mem3"};
 
     template <unsigned BUSWIDTH>
-    inline void configure_memory(scc::memory_tl<1_kB, BUSWIDTH, 20>& m, sc_core::sc_signal<sc_core::sc_time>& clk) {
+    inline void configure_memory(scc::tl_memory<1_kB, BUSWIDTH, 20>& m, sc_core::sc_signal<sc_core::sc_time>& clk) {
         m.clk_i(clk);
         m.rd_resp_delay.set_value(3);
         m.wr_resp_delay.set_value(5);

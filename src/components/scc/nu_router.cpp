@@ -219,12 +219,12 @@ void nu_router::before_end_of_elaboration() {
                             [&igress](tlm::tlm_generic_payload& trans, tlm::tlm_phase& phase, sc_core::sc_time& t) -> tlm::tlm_sync_enum {
                                 return igress.fw->nb_transport_fw(trans, phase, t);
                             });
-                        t_port_bw_adapt.emplace_back(sckt.get_base_port());
+                        t_port_bw_adapt.emplace_back(std::make_unique<at_router::t_port_bw_adapter<T>>(sckt));
                         bus_width = sckt.get_bus_width();
                     }
                 },
                 tgt.sckt);
-            igress.bw(t_port_bw_adapt.back());
+            igress.bw(*t_port_bw_adapt.back());
             igress.clk(tgt.clk);
             // if(igress.set_width)
             //     igress.set_width(bus_width);
@@ -243,12 +243,13 @@ void nu_router::before_end_of_elaboration() {
                             [&egress](tlm::tlm_generic_payload& trans, tlm::tlm_phase& phase, sc_core::sc_time& t) -> tlm::tlm_sync_enum {
                                 return egress.bw->nb_transport_bw(trans, phase, t);
                             });
-                        i_port_bw_adapt.emplace_back(sckt.get_base_port());
+                        i_port_bw_adapt.emplace_back(
+                            std::make_unique<at_router::i_port_fw_adapter<tlm::tlm_base_protocol_types>>(sckt.get_base_port()));
                         bus_width = sckt.get_bus_width();
                     }
                 },
                 intor.sckt);
-            egress.fw(i_port_bw_adapt.back());
+            egress.fw(*i_port_bw_adapt.back());
             egress.clk(intor.clk);
             // if(egress.set_width)
             //     egress.set_width(bus_width);

@@ -47,12 +47,12 @@ struct testbench : public sc_core::sc_module {
     scc::tl_b2nb_adapter<32> b2nb0{"b2nb0"};
     scc::tl_b2nb_adapter<32> b2nb1{"b2nb1"};
     scc::router<32> router{"router", 4, 2};
-    scc::memory_tl<1_kB, 32, 20> mem0{"mem0"};
-    scc::memory_tl<1_kB, 32, 20> mem1{"mem1"};
-    scc::memory_tl<1_kB, 32, 20> mem2{"mem2"};
-    scc::memory_tl<1_kB, 32, 20> mem3{"mem3"};
+    scc::tl_memory<1_kB, 32, 20> mem0{"mem0"};
+    scc::tl_memory<1_kB, 32, 20> mem1{"mem1"};
+    scc::tl_memory<1_kB, 32, 20> mem2{"mem2"};
+    scc::tl_memory<1_kB, 32, 20> mem3{"mem3"};
 
-    inline void configure_memory(scc::memory_tl<1_kB, 32, 20>& m) {
+    inline void configure_memory(scc::tl_memory<1_kB, 32, 20>& m) {
         m.rd_resp_delay.set_value(3);
         m.wr_resp_delay.set_value(50);
     }

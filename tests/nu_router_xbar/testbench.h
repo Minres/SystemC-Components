@@ -37,26 +37,18 @@ struct testbench : public sc_core::sc_module {
     sc_core::sc_signal<sc_core::sc_time> clk_50{"clk_50"};
     sc_core::sc_signal<bool> rst{"rst"};
 
-#ifdef WITH_TRACING
-    tlm::scc::lwtr::tlm2_lwtr_recorder<256> isck0_rec{"isck0_rec"};
-    tlm::scc::lwtr::tlm2_lwtr_recorder<64> isck1_rec{"isck1_rec"};
-    tlm::scc::lwtr::tlm2_lwtr_recorder<64> mem0_rec{"mem0_rec"};
-    tlm::scc::lwtr::tlm2_lwtr_recorder<32> mem1_rec{"mem1_rec"};
-    tlm::scc::lwtr::tlm2_lwtr_recorder<64> mem2_rec{"mem2_rec"};
-    tlm::scc::lwtr::tlm2_lwtr_recorder<128> mem3_rec{"mem3_rec"};
-#endif
     tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<256>> isck_0{"isck_0"};
     tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<64>> isck_1{"isck_1"};
-    scc::tl_b2nb_adapter<256> b2nb0{"b2nb0"};
-    scc::tl_b2nb_adapter<64> b2nb1{"b2nb1"};
+    scc::tl_b2nb_adapter_trc<256> b2nb0{"b2nb0"};
+    scc::tl_b2nb_adapter_trc<64> b2nb1{"b2nb1"};
     scc::nu_router router{"router", 4, 2};
-    scc::memory_tl<1_kB, 64, 20> mem0{"mem0"};
-    scc::memory_tl<1_kB, 32, 20> mem1{"mem1"};
-    scc::memory_tl<1_kB, 64, 20> mem2{"mem2"};
-    scc::memory_tl<1_kB, 128, 20> mem3{"mem3"};
+    scc::tl_memory_trc<1_kB, 64, 20> mem0{"mem0"};
+    scc::tl_memory_trc<1_kB, 32, 20> mem1{"mem1"};
+    scc::tl_memory_trc<1_kB, 64, 20> mem2{"mem2"};
+    scc::tl_memory_trc<1_kB, 128, 20> mem3{"mem3"};
 
     template <unsigned BUSWIDTH>
-    inline void configure_memory(scc::memory_tl<1_kB, BUSWIDTH, 20>& m, sc_core::sc_signal<sc_core::sc_time>& clk) {
+    inline void configure_memory(scc::tl_memory_trc<1_kB, BUSWIDTH, 20>& m, sc_core::sc_signal<sc_core::sc_time>& clk) {
         m.clk_i(clk);
         m.rd_resp_delay.set_value(3);
         m.wr_resp_delay.set_value(5);
@@ -67,31 +59,17 @@ struct testbench : public sc_core::sc_module {
 
     testbench(sc_core::sc_module_name const& nm)
     : sc_module(nm) {
+        router.enable_tracing(true);
         isck_0(b2nb0.tsck);
         isck_1(b2nb1.tsck);
-#ifdef WITH_TRACING
-        b2nb0.isck(isck0_rec.ts);
-        isck0_rec.is(router.target_socket<256>(0));
+        b2nb0.isck(router.target_socket<256>(0));
         router.target_clock(0)(clk_66);
-        b2nb1.isck(isck1_rec.ts);
-        isck1_rec.is(router.target_socket<64>(1));
+        b2nb1.isck(router.target_socket<64>(1));
         router.target_clock(1)(clk_100);
-        router.bind(mem0_rec.ts, 0, 0, 1_kB)(clk_50);
-        router.bind(mem1_rec.ts, 1, 1_kB, 1_kB)(clk_66);
-        router.bind(mem2_rec.ts, 2, 2_kB, 1_kB)(clk_100);
-        router.bind(mem3_rec.ts, 3, 3_kB, 1_kB)(clk_50);
-        mem0_rec.is(mem0.target);
-        mem1_rec.is(mem1.target);
-        mem2_rec.is(mem2.target);
-        mem3_rec.is(mem3.target);
-#else
-        b2nb0.isck(router.target[0]);
-        b2nb1.isck(router.target[1]);
-        router.bind_target(mem0.target, 0, 0, 1_kB);
-        router.bind_target(mem1.target, 1, 1_kB, 1_kB);
-        router.bind_target(mem2.target, 2, 2_kB, 1_kB);
-        router.bind_target(mem3.target, 3, 3_kB, 1_kB);
-#endif
+        router.bind(mem0.target, 0, 0, 1_kB)(clk_50);
+        router.bind(mem1.target, 1, 1_kB, 1_kB)(clk_66);
+        router.bind(mem2.target, 2, 2_kB, 1_kB)(clk_100);
+        router.bind(mem3.target, 3, 3_kB, 1_kB)(clk_50);
         router.set_initiator_base(1, 1_MB);
         router.set_at_architecture(scc::at_router::crossbar::create<>, 0);
         router.clk_i(clk_100);
@@ -102,6 +80,7 @@ struct testbench : public sc_core::sc_module {
         b2nb0.clk_i(clk_66);
         b2nb1.clk_i(clk_100);
     }
+
     void start_of_simulation() {
         clk_100 = 10_ns;
         clk_66 = 15_ns;

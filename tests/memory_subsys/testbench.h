@@ -59,11 +59,11 @@ struct testbench : public sc_core::sc_module {
     tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<scc::LT>> isck1{"isck1"};
 
     scc::router<scc::LT> router{"router", 7, 2};
-    scc::memory_tl<1_kB, scc::LT> mem0{"mem0"};
-    scc::memory_tl<1_kB, scc::LT> mem1{"mem1"};
-    scc::memory_tl<18_MB, scc::LT> mem2{"mem2"};
-    scc::memory_tl<24_MB, scc::LT> mem3{"mem3"};
-    scc::memory_tl<88_MB, scc::LT> mem4{"mem4"};
+    scc::tl_memory<1_kB, scc::LT> mem0{"mem0"};
+    scc::tl_memory<1_kB, scc::LT> mem1{"mem1"};
+    scc::tl_memory<18_MB, scc::LT> mem2{"mem2"};
+    scc::tl_memory<24_MB, scc::LT> mem3{"mem3"};
+    scc::tl_memory<88_MB, scc::LT> mem4{"mem4"};
     scc::memory<4_GB> mem5{"mem5"};
     dmi_probe_target dmi_probe{"dmi_probe"};
 

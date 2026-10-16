@@ -211,8 +211,8 @@ protected:
     bool check_overlap_on_add_target;
     bool warn_on_address_error{false};
     at_router::creator_fct<> creator;
-    std::deque<at_router::t_port_bw_adapter<tlm::tlm_base_protocol_types>> t_port_bw_adapt;
-    std::deque<at_router::i_port_fw_adapter<tlm::tlm_base_protocol_types>> i_port_bw_adapt;
+    std::deque<std::unique_ptr<at_router::bw_if<tlm::tlm_base_protocol_types>>> t_port_bw_adapt;
+    std::deque<std::unique_ptr<at_router::i_port_fw_adapter<tlm::tlm_base_protocol_types>>> i_port_bw_adapt;
     std::unique_ptr<at_router::nb_router<>> rt;
 };
 
@@ -417,8 +417,8 @@ template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE> void router<BUSWIDTH, 
                 [&igress](tlm::tlm_generic_payload& trans, tlm::tlm_phase& phase, sc_core::sc_time& t) -> tlm::tlm_sync_enum {
                     return igress.fw->nb_transport_fw(trans, phase, t);
                 });
-            t_port_bw_adapt.emplace_back(target[i].get_base_port());
-            igress.bw(t_port_bw_adapt.back());
+            t_port_bw_adapt.emplace_back(std::make_unique<at_router::t_port_bw_adapter<TARGET_SOCKET_TYPE>>(target[i]));
+            igress.bw(*t_port_bw_adapt.back());
         }
         for(auto i = 0u; i < initiator.size(); ++i) {
             auto& egress = rt->egress[i];
@@ -426,8 +426,9 @@ template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE> void router<BUSWIDTH, 
                 [&egress](tlm::tlm_generic_payload& trans, tlm::tlm_phase& phase, sc_core::sc_time& t) -> tlm::tlm_sync_enum {
                     return egress.bw->nb_transport_bw(trans, phase, t);
                 });
-            i_port_bw_adapt.emplace_back(initiator[i].get_base_port());
-            egress.fw(i_port_bw_adapt.back());
+            i_port_bw_adapt.emplace_back(
+                std::make_unique<at_router::i_port_fw_adapter<tlm::tlm_base_protocol_types>>(initiator[i].get_base_port()));
+            egress.fw(*i_port_bw_adapt.back());
         }
     }
 }
