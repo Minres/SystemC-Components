@@ -17,6 +17,7 @@
 #define _TLM_SCC_TARGET_MIXIN_H_
 
 #include <sysc/kernel/sc_time.h>
+#include <tlm_core/tlm_2/tlm_2_interfaces/tlm_fw_bw_ifs.h>
 #ifndef SC_INCLUDE_DYNAMIC_PROCESSES // needed for sc_spawn
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #endif
@@ -395,8 +396,13 @@ private:
                 t = sc_core::SC_ZERO_TIME;
                 phase_type phase = tlm::BEGIN_RESP;
                 sync_enum_type sync = m_owner->bw_nb_transport(*trans, phase, t);
-                if(!(sync == tlm::TLM_COMPLETED || (sync == tlm::TLM_UPDATED && phase == tlm::END_RESP))) {
+                if(!(sync == tlm::TLM_COMPLETED || (sync == tlm::TLM_UPDATED && phase == tlm::END_RESP && t == sc_core::SC_ZERO_TIME))) {
                     m_response_in_progress = true;
+                    if(sync != tlm::TLM_ACCEPTED && t != sc_core::SC_ZERO_TIME) {
+                        sc_core::wait(t);
+                        m_end_response.notify();
+                        m_response_in_progress = false;
+                    }
                 }
                 // suspend until next transaction
                 h->m_suspend = true;
