@@ -19,15 +19,20 @@
 
 #include "scc/signal_opt_ports.h"
 #include <tlm>
+#include <tlm_core/tlm_2/tlm_2_interfaces/tlm_fw_bw_ifs.h>
+#include <tlm_core/tlm_2/tlm_sockets/tlm_target_socket.h>
 
 namespace scc {
 namespace at_router {
-template <typename TYPES = tlm::tlm_base_protocol_types> struct t_port {
-    using fw_if = tlm::tlm_fw_nonblocking_transport_if<typename TYPES::tlm_payload_type, typename TYPES::tlm_phase_type>;
-    using bw_if = tlm::tlm_bw_nonblocking_transport_if<typename TYPES::tlm_payload_type, typename TYPES::tlm_phase_type>;
+template <typename TYPES = tlm::tlm_base_protocol_types>
+using fw_if = tlm::tlm_fw_nonblocking_transport_if<typename TYPES::tlm_payload_type, typename TYPES::tlm_phase_type>;
+template <typename TYPES = tlm::tlm_base_protocol_types>
+using bw_if = tlm::tlm_bw_nonblocking_transport_if<typename TYPES::tlm_payload_type, typename TYPES::tlm_phase_type>;
 
-    sc_core::sc_export<fw_if> fw;
-    sc_core::sc_port<bw_if> bw;
+template <typename TYPES = tlm::tlm_base_protocol_types> struct t_port {
+
+    sc_core::sc_export<fw_if<TYPES>> fw;
+    sc_core::sc_port<bw_if<TYPES>> bw;
     scc::sc_in_opt<sc_core::sc_time> clk;
 
     std::function<void(unsigned)> set_width;
@@ -38,17 +43,17 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct t_port {
     , clk((std::string(name) + "_clk").c_str()) {}
 };
 
-template <typename TYPES> struct t_port_bw_adapter : public at_router::t_port<TYPES>::bw_if {
-    sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& p;
-    t_port_bw_adapter(sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& p)
+template <typename TARGET_SOCKET_TYPE> struct t_port_bw_adapter : public at_router::bw_if<tlm::tlm_base_protocol_types> {
+    TARGET_SOCKET_TYPE& p;
+    t_port_bw_adapter(TARGET_SOCKET_TYPE& p)
     : p(p) {}
     t_port_bw_adapter(t_port_bw_adapter const&) = default;
     t_port_bw_adapter(t_port_bw_adapter&&) = default;
     t_port_bw_adapter& operator=(t_port_bw_adapter const&) = default;
     t_port_bw_adapter& operator=(t_port_bw_adapter&&) = default;
 
-    tlm::tlm_sync_enum nb_transport_bw(typename TYPES::tlm_payload_type& trans, typename TYPES::tlm_phase_type& phase,
-                                       sc_core::sc_time& t) override {
+    tlm::tlm_sync_enum nb_transport_bw(typename tlm::tlm_base_protocol_types::tlm_payload_type& trans,
+                                       typename tlm::tlm_base_protocol_types::tlm_phase_type& phase, sc_core::sc_time& t) override {
         return p->nb_transport_bw(trans, phase, t);
     }
 };

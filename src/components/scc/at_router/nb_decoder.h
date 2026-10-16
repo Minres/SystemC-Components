@@ -41,6 +41,7 @@ struct nb_decoder : public tlm::tlm_fw_nonblocking_transport_if<typename TYPES::
     sc_core::sc_signal_in_if<sc_core::sc_time>* clk_if;
 
     t_port<TYPES> tport;
+
     sc_core::sc_vector<i_port<TYPES>> iport;
 
     nb_decoder(char const* name, unsigned bus_width, unsigned egress_cnt, util::range_lut<unsigned> const& decoder,

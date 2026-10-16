@@ -14,12 +14,13 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef _SCC_SOCKET_WIDTH_ADAPTER_H_
-#define _SCC_SOCKET_WIDTH_ADAPTER_H_
+#ifndef _SCC_B2NB_ADAPTER_H_
+#define _SCC_B2NB_ADAPTER_H_
 
 #include <scc/clock_if_mixins.h>
 #include <scc/signal_opt_ports.h>
 #include <tlm/scc/initiator_mixin.h>
+#include <tlm/scc/lwtr/tlm_rec_target_socket.h>
 #include <tlm/scc/target_mixin.h>
 #include <tlm>
 
@@ -40,7 +41,9 @@ namespace scc {
  * @note The socket_width_adapter class is a part of the SystemC Component (SCC) library.
  *
  */
-template <unsigned int BUSWIDTH, typename TYPES = tlm::tlm_base_protocol_types> class b2nb_adapter : public sc_core::sc_module {
+template <unsigned int BUSWIDTH, typename TYPES = tlm::tlm_base_protocol_types,
+          typename SOCKET_TYPE = tlm::tlm_target_socket<BUSWIDTH, TYPES>>
+class b2nb_adapter : public sc_core::sc_module {
 public:
     using tlm_payload_type = typename TYPES::tlm_payload_type;
     using tlm_phase_type = typename TYPES::tlm_phase_type;
@@ -100,5 +103,7 @@ protected:
 };
 template <unsigned int BUSWIDTH, typename TYPES = tlm::tlm_base_protocol_types>
 using tl_b2nb_adapter = tickless_clock<b2nb_adapter<BUSWIDTH, TYPES>>;
+template <unsigned int BUSWIDTH, typename TYPES = tlm::tlm_base_protocol_types>
+using tl_b2nb_adapter_trc = tickless_clock<b2nb_adapter<BUSWIDTH, TYPES, ::tlm::scc::lwtr::tlm_rec_target_socket<BUSWIDTH>>>;
 } // namespace scc
-#endif // _SCC_SOCKET_WIDTH_ADAPTER_H_
+#endif // _SCC_B2NB_ADAPTER_H_

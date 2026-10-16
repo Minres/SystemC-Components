@@ -28,7 +28,7 @@ struct testbench : public sc_core::sc_module {
     sc_core::sc_signal<bool> rst{"rst"};
     tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<scc::LT>> isck{"isck"};
     tlm::scc::scv::tlm_recorder_module<scc::LT> rec{"rec"};
-    scc::memory_tl<1_kB, scc::LT> mem{"mem"};
+    scc::tl_memory<1_kB, scc::LT> mem{"mem"};
 
     testbench()
     : testbench(sc_core::sc_gen_unique_name("testbench", false)) {}
