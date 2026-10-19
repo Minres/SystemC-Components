@@ -155,6 +155,7 @@ void ahb_initiator_b::transport(payload_type& trans, bool blocking) {
         SCCTRACE(SCMOD) << "finished non-blocking protocol";
         txs->active_tx = nullptr;
         any_tx_finished.notify(SC_ZERO_TIME);
+        delete timing_e;
     }
     SCCTRACE(SCMOD) << "finished transport req for id=" << &trans;
 }

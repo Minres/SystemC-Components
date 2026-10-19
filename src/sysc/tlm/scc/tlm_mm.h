@@ -233,6 +233,7 @@ public:
      * @param trans the returning transaction
      */
     void free(payload_base* trans) {
+        trans->free_all_extensions();
         trans->~payload_base();
         allocator.free(trans);
     }
