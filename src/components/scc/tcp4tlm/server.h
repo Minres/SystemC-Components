@@ -41,7 +41,6 @@ template <typename REQ, typename RESP> class server : public i_server<REQ, RESP>
         bool start() {
             std::shared_ptr<con_listener> ptr = std::enable_shared_from_this<con_listener>::shared_from_this();
             conn_shptr->add_listener(ptr);
-            typename connection<RESP, REQ>::endpoint_t endpoint = conn_shptr->socket().remote_endpoint();
             CPPLOG(TRACE, "tcp4tlm::server") << "forward_session::start(), got connected";
             server_instance->server_send_completed(conn_shptr, true);
             return server_instance->is_shutdown_requested();

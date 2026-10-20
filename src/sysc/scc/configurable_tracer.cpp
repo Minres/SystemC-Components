@@ -55,7 +55,6 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
                 descend(o, trace);
         return;
     } else if(kind == "sc_module") {
-        auto module_name = obj->name();
         auto trace_enable = get_trace_enabled(obj, default_trace_enable_handle.get_cci_value().get<bool>());
         if(trace_enable)
             obj->trace(trf);

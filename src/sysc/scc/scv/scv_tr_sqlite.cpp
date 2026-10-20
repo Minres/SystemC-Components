@@ -147,7 +147,6 @@ using data_type = scv_extensions_if::data_type;
 #define TX_RELATION_TABLE "ScvTxRelation"
 
 static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason, void* data) {
-    char* tail = nullptr;
     // This is called from the scv_tr_db ctor.
     static string fName("DEFAULT_scv_tr_sqlite");
     switch(reason) {

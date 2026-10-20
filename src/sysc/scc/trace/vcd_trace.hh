@@ -93,7 +93,6 @@ private:
         }
     }
     void print_variable_declaration_line(FPTR os, const char* scoped_name, T* trc) {
-        char buf[2000];
         switch(trc->bits) {
         case 0: {
             std::stringstream ss;
@@ -133,7 +132,7 @@ struct vcd_trace {
 
     virtual uintptr_t get_hash() = 0;
 
-    virtual ~vcd_trace(){};
+    virtual ~vcd_trace() {};
 
     const std::string name;
     std::string trc_hndl{};
@@ -167,8 +166,8 @@ struct vcd_trace_enum : public vcd_trace {
 
     void record(FPTR os) override { vcdEmitValueChange64(os, trc_hndl, bits, old_val); }
 
-    unsigned int old_val;
     const unsigned int& act_val;
+    unsigned int old_val;
     const char** literals;
 };
 
@@ -186,8 +185,8 @@ template <typename T, typename OT = T> struct vcd_trace_t : public vcd_trace {
 
     void record(FPTR os) override;
 
-    OT old_val;
     const T& act_val;
+    OT old_val;
 };
 
 template <typename T, typename OT> void vcd_trace_t<T, OT>::record(FPTR os) {

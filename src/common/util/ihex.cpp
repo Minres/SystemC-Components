@@ -162,7 +162,7 @@ bool parse(std::istream& is, std::function<bool(uint64_t, uint64_t, const uint8_
             ++state;
             break;
         case CHECKSUM_1_STATE:
-            if((byte_count << 1) != data_size_in_nibble) // Check whether byte count field match the data size
+            if(static_cast<unsigned>(byte_count << 1) != data_size_in_nibble) // Check whether byte count field match the data size
                 return false;
             if(calculated_cs != 0x00)
                 return false;

@@ -21,6 +21,13 @@ add_library(scc::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 add_library(busses ALIAS ${PROJECT_NAME})
 #TODO: remove alias
 add_library(scc::busses ALIAS ${PROJECT_NAME})
+
+if(MSVC)
+    target_compile_options(${PROJECT_NAME} PRIVATE /W4)
+elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
+    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wno-long-long -pedantic)
+endif()
+
 target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode

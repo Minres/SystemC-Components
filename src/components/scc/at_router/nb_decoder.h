@@ -116,7 +116,6 @@ struct nb_decoder : public tlm::tlm_fw_nonblocking_transport_if<typename TYPES::
             // support SCC::LT template paramter for buswidth (otherwise divide by zero)
             const unsigned width = buswidth ? buswidth : 64u;
             auto cycles = trans.is_read() ? (trans.get_data_length() * 8 + width - 1) / width : 1;
-            auto clk_period = get_clk_period();
             t += (cycles * get_clk_period()) - 1_ps;
             return tlm::TLM_UPDATED;
         } else if(phase == tlm::END_REQ) {
@@ -134,7 +133,7 @@ struct nb_decoder : public tlm::tlm_fw_nonblocking_transport_if<typename TYPES::
             tlm_phase phase = tlm::BEGIN_RESP;
             sc_core::sc_time t;
             auto res = tport.bw->nb_transport_bw(*trans, phase, t);
-            if(res == tlm::TLM_UPDATED && phase == tlm::END_RESP || res == tlm::TLM_COMPLETED) {
+            if((res == tlm::TLM_UPDATED && phase == tlm::END_RESP) || res == tlm::TLM_COMPLETED) {
                 adjust_to_clock_edge(t);
                 sc_core::next_trigger(t);
                 SCCTRACE(name) << "next_trigger @+" << t;

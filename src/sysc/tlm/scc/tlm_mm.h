@@ -90,7 +90,7 @@ protected:
     tlm_gp_mm_t(size_t sz)
     : tlm_gp_mm(sz, data, BE ? be : nullptr) {}
     uint8_t data[SZ];
-    uint8_t be[BE ? SZ : 0];
+    uint8_t be[BE ? SZ : 1]; // ISO C++ forbids zero-size array
 };
 
 struct tlm_gp_mm_v : public tlm_gp_mm {
@@ -185,7 +185,9 @@ protected:
     tlm_ext_mm(Args... args)
     : EXT(args...) {}
 };
-template <typename TYPES> struct tlm_mm_traits { using mm_if_type = tlm::tlm_mm_interface; };
+template <typename TYPES> struct tlm_mm_traits {
+    using mm_if_type = tlm::tlm_mm_interface;
+};
 /**
  * @class tlm_mm
  * @brief a tlm memory manager

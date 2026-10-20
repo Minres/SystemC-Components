@@ -270,7 +270,6 @@ void tcp4tlm_bridge::timing_thread() {
     if(is_connection_server.get_value())
         wait4connection();
     // now deal with the timing
-    const auto usecs_to_sleep = 1000LL;
     if(!is_connection_server.get_value()) {
         if(!no_systemc_sync.get_value())
             while(true) {

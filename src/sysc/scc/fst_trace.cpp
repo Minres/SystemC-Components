@@ -56,7 +56,7 @@ struct fst_trace {
 
     virtual uintptr_t get_hash() = 0;
 
-    virtual ~fst_trace(){};
+    virtual ~fst_trace() {};
 
     const std::string name;
     fstHandle fst_hndl{0};
@@ -86,8 +86,8 @@ struct fst_trace_enum : public fst_trace {
         record(os);
     };
 
-    unsigned int old_val;
     const unsigned int& act_val;
+    unsigned int old_val;
     const char** literals;
 };
 
@@ -110,8 +110,8 @@ template <typename T, typename OT = T> struct fst_trace_t : public fst_trace {
         record(m_fst);
     };
 
-    OT old_val;
     const T& act_val;
+    OT old_val;
 };
 
 template <typename T, typename OT> inline void fst_trace_t<T, OT>::record(void* m_fst) {
@@ -138,7 +138,7 @@ template <> void fst_trace_t<float, float>::record(void* m_fst) {
 template <> void fst_trace_t<double, double>::record(void* m_fst) { fstWriterEmitValueChange(m_fst, fst_hndl, &old_val); }
 template <> void fst_trace_t<sc_dt::sc_int_base, sc_dt::sc_int_base>::record(void* m_fst) {
     static std::vector<char> rawdata(1024);
-    if(rawdata.size() < old_val.length() + 1)
+    if(rawdata.size() < static_cast<unsigned>(old_val.length() + 1))
         rawdata.resize(old_val.length() + 1);
     char* rawdata_ptr = &rawdata[0];
     for(int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex)
@@ -148,7 +148,7 @@ template <> void fst_trace_t<sc_dt::sc_int_base, sc_dt::sc_int_base>::record(voi
 }
 template <> void fst_trace_t<sc_dt::sc_uint_base, sc_dt::sc_uint_base>::record(void* m_fst) {
     static std::vector<char> rawdata(1024);
-    if(rawdata.size() < old_val.length() + 1)
+    if(rawdata.size() < static_cast<unsigned>(old_val.length() + 1))
         rawdata.resize(old_val.length() + 1);
     char* rawdata_ptr = &rawdata[0];
     for(int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex)
@@ -158,7 +158,7 @@ template <> void fst_trace_t<sc_dt::sc_uint_base, sc_dt::sc_uint_base>::record(v
 }
 template <> void fst_trace_t<sc_dt::sc_signed, sc_dt::sc_signed>::record(void* m_fst) {
     static std::vector<char> rawdata(1024);
-    if(rawdata.size() < old_val.length() + 1)
+    if(rawdata.size() < static_cast<unsigned>(old_val.length() + 1))
         rawdata.resize(old_val.length() + 1);
     char* rawdata_ptr = &rawdata[0];
     for(int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex)
@@ -168,7 +168,7 @@ template <> void fst_trace_t<sc_dt::sc_signed, sc_dt::sc_signed>::record(void* m
 }
 template <> void fst_trace_t<sc_dt::sc_unsigned, sc_dt::sc_unsigned>::record(void* m_fst) {
     static std::vector<char> rawdata(1024);
-    if(rawdata.size() < old_val.length() + 1)
+    if(rawdata.size() < static_cast<unsigned>(old_val.length() + 1))
         rawdata.resize(old_val.length() + 1);
     char* rawdata_ptr = &rawdata[0];
     for(int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex)
@@ -276,7 +276,7 @@ template <typename T, typename OT = T> bool changed(trace::fst_trace* trace) {
         all_traces.emplace_back(this, &changed<tp, tpo>, new trace::fst_trace_t<tp, tpo>(object, name));                                   \
     }
 
-#if(SYSTEMC_VERSION >= 20171012) || defined(NCSC)
+#if (SYSTEMC_VERSION >= 20171012) || defined(NCSC)
 void fst_trace_file::trace(const sc_core::sc_event& object, const std::string& name) {}
 void fst_trace_file::trace(const sc_core::sc_time& object, const std::string& name) {}
 #endif
@@ -333,7 +333,7 @@ void fst_trace_file::trace(const unsigned int& object, const std::string& name, 
         return &all_traces.back();                                                                                                         \
     }
 
-#if(SYSTEMC_VERSION >= 20171012)
+#if (SYSTEMC_VERSION >= 20171012)
 observer::notification_handle* fst_trace_file::observe(const sc_core::sc_event& object, const std::string& name) { return nullptr; }
 observer::notification_handle* fst_trace_file::observe(const sc_core::sc_time& object, const std::string& name) { return nullptr; }
 #endif
