@@ -247,7 +247,7 @@ template <> void vcd_trace_t<sc_dt::sc_unsigned, sc_dt::sc_unsigned>::record(FPT
     int bitindex = old_val.length() - 1;
     *rawdata_ptr++ = '0' + old_val[bitindex--].value();
     for(; bitindex >= 0; --bitindex) {
-        auto c = '0' + old_val[bitindex].value();
+        char c = '0' + old_val[bitindex].value();
         if(is_started)
             *rawdata_ptr++ = c;
         else if(c == '1' || *(rawdata_ptr - 1) != c) {
