@@ -16,7 +16,6 @@
 
 #pragma once
 
-#include "cci/core/cci_core_types.h"
 #include "lwtr4tlm2.h"
 #include <array>
 #include <cci_configuration>
