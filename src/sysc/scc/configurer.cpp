@@ -785,7 +785,7 @@ void configurer::set_value_from_str(const std::string& hier_name, const std::str
     auto ull = std::strtoull(int_str.c_str(), &end_str, int_base);
     if((!errno && end_str - int_str.c_str()) == static_cast<long>(int_str.length())) {
         if(sign < 0) {
-            if(ull <= std::numeric_limits<int64_t>::max()) {
+            if(ull <= static_cast<unsigned long long>(std::numeric_limits<int64_t>::max())) {
                 int64_t ll = sign * ull;
                 if(ll >= std::numeric_limits<int>::min()) {
                     set_value(hier_name, static_cast<int>(ll));
@@ -801,15 +801,15 @@ void configurer::set_value_from_str(const std::string& hier_name, const std::str
                 }
             }
         } else {
-            if(ull <= std::numeric_limits<int>::max()) {
+            if(ull <= static_cast<unsigned long long>(std::numeric_limits<int>::max())) {
                 set_value(hier_name, static_cast<int>(ull));
                 return;
             }
-            if(ull <= std::numeric_limits<unsigned int>::max()) {
+            if(ull <= static_cast<unsigned long long>(std::numeric_limits<unsigned int>::max())) {
                 set_value(hier_name, static_cast<unsigned int>(ull));
                 return;
             }
-            if(ull <= std::numeric_limits<long>::max()) {
+            if(ull <= static_cast<unsigned long long>(std::numeric_limits<long>::max())) {
                 set_value(hier_name, static_cast<long>(ull));
                 return;
             }
@@ -817,7 +817,7 @@ void configurer::set_value_from_str(const std::string& hier_name, const std::str
                 set_value(hier_name, static_cast<unsigned long>(ull));
                 return;
             }
-            if(ull <= std::numeric_limits<long long>::max()) {
+            if(ull <= static_cast<unsigned long long>(std::numeric_limits<long long>::max())) {
                 set_value(hier_name, static_cast<long long>(ull));
                 return;
             }

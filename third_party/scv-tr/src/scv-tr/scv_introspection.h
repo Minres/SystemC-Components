@@ -317,7 +317,7 @@ inline const char* _scv_ext_util_get_name(const char* format, const char* name) 
     _SCV_COMPONENT(sc_dt::sc_int_base);                                                                                                    \
     _SCV_COMPONENT(sc_dt::sc_uint_base);                                                                                                   \
     _SCV_COMPONENT(sc_dt::sc_lv_base);                                                                                                     \
-    _SCV_COMPONENT(sc_dt::sc_bv_base);
+    _SCV_COMPONENT(sc_dt::sc_bv_base)
 
 // SCV_COMPONENT_N(tag,sc_fixed);
 // SCV_COMPONENT_N(tag,sc_ufixed);
@@ -558,7 +558,7 @@ protected: // fast version of the introspection interface (non-virtual)
     template <> class scv_extension_util<basic_type> : public _scv_extension_util {                                    \
     public:                                                                                                            \
         virtual ~scv_extension_util() {}                                                                               \
-    };
+    }
 
 #define _SCV_COMPONENT_1(basic_type) _SCV_COMPONENT(basic_type)
 
@@ -566,7 +566,7 @@ protected: // fast version of the introspection interface (non-virtual)
     template <int N> class scv_extension_util<basic_type<N>> : public _scv_extension_util {                            \
     public:                                                                                                            \
         virtual ~scv_extension_util() {}                                                                               \
-    };
+    }
 
 _SCV_BASIC_TYPE_SPECIALIZATION();
 
@@ -758,7 +758,7 @@ public:
     public:                                                                                                            \
         scv_extension_type() {}                                                                                        \
         virtual ~scv_extension_type() {}                                                                               \
-    };
+    }
 
 #define _SCV_EXT_TYPE_1_FC_D(type_name, type_id) _SCV_EXT_TYPE_FC_D(type_name, type_id)
 
@@ -788,7 +788,7 @@ public:
         }                                                                                                              \
         virtual scv_extension_type_if::data_type get_type() const { return scv_extensions_if::id; }                    \
         virtual int get_bitwidth() const { return N; }                                                                 \
-    };
+    }
 
 #define _SCV_EXT_TYPE_D_FC_D(type_name, type_id)                                                                       \
     class _scv_extension_type_##type_id : public scv_extension_util<type_name> {                                       \
@@ -820,7 +820,7 @@ public:
     public:                                                                                                            \
         scv_extension_type() {}                                                                                        \
         virtual ~scv_extension_type() {}                                                                               \
-    };
+    }
 
 _SCV_EXT_TYPE_FC_D(bool, bool);
 _SCV_EXT_TYPE_FC_D(char, char);
@@ -3520,14 +3520,14 @@ scv_extensions<T> scv_get_extensions(T& d) {
     e._set_instance((T*)&d);
     e=d;
     return e;
-};
+}
 
 template <typename T, typename std::enable_if<!std::is_pointer<T>::value, T>::type* = nullptr>
 scv_extensions<T> scv_get_extensions(T& d) {
     scv_extensions<T> e;
     e._set_instance(&d);
     return e;
-};
+}
 
 template <typename T, typename std::enable_if<std::is_pointer<T>::value, T>::type* = nullptr>
 const scv_extensions<T> scv_get_const_extensions(const T& d) {
@@ -3535,13 +3535,13 @@ const scv_extensions<T> scv_get_const_extensions(const T& d) {
     e._set_instance((T*)&d);
     e._set_instance_core_wrap(nullptr);
     return e;
-};
+}
 
 template <typename T, typename std::enable_if<!std::is_pointer<T>::value, T>::type* = nullptr>
 const scv_extensions<T> scv_get_const_extensions(const T& d) {
     scv_extensions<T> e;
     e._set_instance((T*)&d);
     return e;
-};
+}
 } // namespace scv_tr
 #endif

@@ -28,7 +28,7 @@ struct {
 } rng;
 
 bool debug_randomization = getenv("SCC_DEBUG_RANDOMIZATION") != nullptr;
-}; // namespace
+} // namespace
 
 auto scc::MT19937::inst() -> std::mt19937_64& {
 #ifndef NCSC

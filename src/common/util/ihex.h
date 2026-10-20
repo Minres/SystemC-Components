@@ -55,6 +55,6 @@ enum { IHEX_DATA_SIZE = 255 };
 bool parse(std::istream&, std::function<bool(uint64_t, uint64_t, const uint8_t*)>);
 
 void dump(std::ostream&, nonstd::span<uint8_t> const&, uint32_t = 0, uint32_t = 16);
-}; // namespace ihex
+} // namespace ihex
 } // namespace util
 #endif
