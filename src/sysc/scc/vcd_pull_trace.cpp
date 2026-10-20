@@ -45,8 +45,8 @@ namespace scc {
  *
  *******************************************************************************************************/
 vcd_pull_trace_file::vcd_pull_trace_file(const char* name, std::function<bool()>& enable)
-: name(name)
-, check_enabled(enable) {
+: check_enabled(enable)
+, name(name) {
     vcd_out = fopen(fmt::format("{}.vcd", name).c_str(), "w");
 
 #if SC_VERSION_MAJOR < 3
