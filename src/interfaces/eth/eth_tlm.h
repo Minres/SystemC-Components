@@ -49,8 +49,8 @@ struct vlan_tag_8021Q {
 };
 #pragma pack(pop)
 
-static_assert(sizeof(ethernet_header) == 14);
-static_assert(sizeof(vlan_tag_8021Q) == 4);
+static_assert(sizeof(ethernet_header) == 14, "struct ethernet_header has wrong size, check your compiler and settings");
+static_assert(sizeof(vlan_tag_8021Q) == 4, "struct vlan_tag_8021Q has wrong size, check your compiler and settings");
 
 enum class ether_kind { ETHER_TYPE, LENGTH_8023 };
 

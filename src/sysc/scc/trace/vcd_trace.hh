@@ -154,8 +154,8 @@ inline unsigned get_bits(const char** literals) {
 struct vcd_trace_enum : public vcd_trace {
     vcd_trace_enum(const unsigned int& object_, const std::string& name, const char** literals)
     : vcd_trace(name, trace::WIRE, get_bits(literals))
-    , act_val(object_)
     , old_val(object_)
+    , act_val(object_)
     , literals{literals} {}
 
     uintptr_t get_hash() override { return reinterpret_cast<uintptr_t>(&act_val); }
@@ -166,16 +166,16 @@ struct vcd_trace_enum : public vcd_trace {
 
     void record(FPTR os) override { vcdEmitValueChange64(os, trc_hndl, bits, old_val); }
 
-    const unsigned int& act_val;
     unsigned int old_val;
+    const unsigned int& act_val;
     const char** literals;
 };
 
 template <typename T, typename OT = T> struct vcd_trace_t : public vcd_trace {
     vcd_trace_t(const T& object_, const std::string& name)
     : vcd_trace(name, trace::traits<T>::get_type(), trace::traits<T>::get_bits(object_))
-    , act_val(object_)
-    , old_val(object_) {}
+    , old_val(object_)
+    , act_val(object_) {}
 
     uintptr_t get_hash() override { return reinterpret_cast<uintptr_t>(&act_val); }
 
@@ -185,8 +185,8 @@ template <typename T, typename OT = T> struct vcd_trace_t : public vcd_trace {
 
     void record(FPTR os) override;
 
-    const T& act_val;
     OT old_val;
+    const T& act_val;
 };
 
 template <typename T, typename OT> void vcd_trace_t<T, OT>::record(FPTR os) {

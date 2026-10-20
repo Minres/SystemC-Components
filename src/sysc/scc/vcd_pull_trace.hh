@@ -103,7 +103,6 @@ private:
     void init();
     std::string prune_name(std::string const& name);
     std::string obtain_name();
-    std::string name;
     std::function<bool()> check_enabled;
 
     FILE* vcd_out{nullptr};
@@ -119,6 +118,7 @@ private:
 
     bool initialized{false};
     unsigned vcd_name_index{0};
+    std::string name;
 };
 
 } // namespace scc
