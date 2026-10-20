@@ -31,7 +31,7 @@ watchdog::watchdog(system_clock::duration timeout, std::function<void(void)> ala
 }
 
 watchdog::watchdog(system_clock::duration timeout, std::function<void(void)> alarm)
-: watchdog(timeout, alarm, timeout / 10){}
+: watchdog(timeout, alarm, timeout / 10) {}
 
 watchdog::~watchdog() {
     live.store(false);
