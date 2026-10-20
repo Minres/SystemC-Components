@@ -73,9 +73,9 @@ public:
     bp_initiator_b& operator=(bp_initiator_b&&) = delete;
 
 protected:
-    const size_t transfer_width_in_bytes;
-
     sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& socket_fw;
+
+    const size_t transfer_width_in_bytes;
 
     scc::peq<std::tuple<payload_type*, tlm::tlm_phase>> peq;
 

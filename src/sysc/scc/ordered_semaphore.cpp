@@ -114,7 +114,7 @@ auto ordered_semaphore::trywait() -> int {
 // unlock (give) the semaphore
 
 auto ordered_semaphore::post() -> int {
-    if(capacity && value == capacity) {
+    if(capacity && value == static_cast<int>(capacity)) {
         SCCWARN(SCMOD) << "post() called on entirely free semaphore!";
     } else {
         ++value;

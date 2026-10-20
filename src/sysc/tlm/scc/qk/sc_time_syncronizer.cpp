@@ -17,7 +17,6 @@ sc_time_syncronizer::sc_time_syncronizer(global_time_keeper& gtk)
 }
 
 bool sc_time_syncronizer::process_pending_tasks() {
-    auto res = this->gtk.get_sc_time_ticks();
     auto& pending_tasks = this->gtk.pending_tasks;
     if(pending_tasks.size()) {
         while(pending_tasks.size()) {

@@ -123,7 +123,7 @@ public:
     // static void set_debug(int) { ... }
 
     // destructor (does nothing)
-    virtual ~scv_object_if(){};
+    virtual ~scv_object_if() {};
 };
 
 // ----------------------------------------
@@ -365,13 +365,13 @@ public:
 
     // extension "util"
     bool has_valid_extensions() const override;
-    ;
+    
     bool is_dynamic() const override;
-    ;
+    
     std::string get_short_name() const override;
-    ;
+    
     void set_name(const char* s) override;
-    ;
+    
     virtual void _set_name(const std::string& s);
 
 public: // non-virtual for fast execution

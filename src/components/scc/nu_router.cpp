@@ -7,10 +7,10 @@ nu_router::nu_router(const sc_core::sc_module_name& nm, size_t slave_cnt, size_t
 : sc_module(nm)
 , targets(master_cnt)
 , initiators(slave_cnt)
+, addr_decoder(std::numeric_limits<unsigned>::max())
 , ibases(master_cnt)
 , tranges(slave_cnt)
 , mutexes(slave_cnt)
-, addr_decoder(std::numeric_limits<unsigned>::max())
 , check_overlap_on_add_target(check_overlap_on_add_target) {
     for(size_t i = 0; i < targets.size(); ++i) {
         ibases[i] = 0ULL;
@@ -52,7 +52,7 @@ void nu_router::b_transport(int i, tlm::tlm_generic_payload& trans, sc_core::sc_
     }
     // Forward transaction to appropriate target
     std::visit(
-        [this, &trans, &delay](auto& initiator) {
+        [&trans, &delay](auto& initiator) {
             using T = std::decay_t<decltype(initiator)>;
             if constexpr(std::is_same_v<T, std::monostate>) {
                 throw std::runtime_error("uninitialized initiator");
@@ -85,7 +85,7 @@ bool nu_router::get_direct_mem_ptr(int i, tlm::tlm_generic_payload& trans, tlm::
     trans.set_address(address - offset);
     bool status = false; // initiator[idx]->
     std::visit(
-        [this, &trans, &dmi_data, &status](auto& sckt) {
+        [&trans, &dmi_data, &status](auto& sckt) {
             using T = std::decay_t<decltype(sckt)>;
             if constexpr(std::is_same_v<T, std::monostate>) {
                 throw std::runtime_error("uninitialized initiator");

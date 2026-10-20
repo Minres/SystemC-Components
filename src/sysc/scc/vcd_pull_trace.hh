@@ -45,7 +45,7 @@ protected:
 #define DECL_TRACE_METHOD_A(tp) void trace(const tp& object, const std::string& name) override;
 #define DECL_TRACE_METHOD_B(tp) void trace(const tp& object, const std::string& name, int width) override;
 
-#if(SYSTEMC_VERSION >= 20171012) || defined(NCSC)
+#if (SYSTEMC_VERSION >= 20171012) || defined(NCSC)
     DECL_TRACE_METHOD_A(sc_core::sc_event)
     DECL_TRACE_METHOD_A(sc_core::sc_time)
 #endif
@@ -103,6 +103,7 @@ private:
     void init();
     std::string prune_name(std::string const& name);
     std::string obtain_name();
+    std::string name;
     std::function<bool()> check_enabled;
 
     FILE* vcd_out{nullptr};
@@ -115,10 +116,9 @@ private:
     };
     std::vector<trace_entry> all_traces, active_traces;
     std::vector<trace::vcd_trace*> changed_traces;
-    ;
+
     bool initialized{false};
     unsigned vcd_name_index{0};
-    std::string name;
 };
 
 } // namespace scc

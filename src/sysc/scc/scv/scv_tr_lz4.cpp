@@ -340,7 +340,6 @@ template <typename DB> void transactionCb(const scv_tr_handle& t, scv_tr_handle:
         return;
 
     uint64_t id = t.get_id();
-    vector<uint64_t>::size_type concurrencyIdx;
     const scv_extensions_if* my_exts_p;
     switch(reason) {
     case scv_tr_handle::BEGIN: {

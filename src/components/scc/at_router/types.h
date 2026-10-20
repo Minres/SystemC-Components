@@ -17,10 +17,8 @@
 #ifndef _SYSC_NB_ROUTER_TYPES_H_
 #define _SYSC_NB_ROUTER_TYPES_H_
 
-#include "scc/signal_opt_ports.h"
+#include <scc/signal_opt_ports.h>
 #include <tlm>
-#include <tlm_core/tlm_2/tlm_2_interfaces/tlm_fw_bw_ifs.h>
-#include <tlm_core/tlm_2/tlm_sockets/tlm_target_socket.h>
 
 namespace scc {
 namespace at_router {

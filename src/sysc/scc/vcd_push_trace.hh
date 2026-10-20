@@ -45,7 +45,7 @@ struct vcd_push_trace_file : public sc_core::sc_trace_file, public observer {
 protected:
 #define DECL_TRACE_METHOD_A(tp) void trace(const tp& object, const std::string& name) override;
 #define DECL_TRACE_METHOD_B(tp) void trace(const tp& object, const std::string& name, int width) override;
-#if(SYSTEMC_VERSION >= 20171012) || defined(NCSC)
+#if (SYSTEMC_VERSION >= 20171012) || defined(NCSC)
     DECL_TRACE_METHOD_A(sc_core::sc_event)
     DECL_TRACE_METHOD_A(sc_core::sc_time)
 #endif
@@ -83,7 +83,7 @@ protected:
     void trace(const unsigned int& object, const std::string& name, const char** enum_literals) override;
 
 #define DECL_REGISTER_METHOD_A(tp) observer::notification_handle* observe(tp const& o, std::string const& nm) override;
-#if(SYSTEMC_VERSION >= 20171012)
+#if (SYSTEMC_VERSION >= 20171012)
     DECL_REGISTER_METHOD_A(sc_core::sc_event)
     DECL_REGISTER_METHOD_A(sc_core::sc_time)
 #endif
@@ -135,6 +135,7 @@ private:
     void init();
     std::string prune_name(std::string const& name);
     std::string obtain_name();
+    std::string name;
     std::function<bool()> check_enabled;
 
     FILE* vcd_out{nullptr};
@@ -155,7 +156,6 @@ private:
     std::vector<trace::vcd_trace*> triggered_traces;
     uint64_t last_emitted_ts{std::numeric_limits<uint64_t>::max()};
     unsigned vcd_name_index{0};
-    std::string name;
 };
 
 } // namespace scc

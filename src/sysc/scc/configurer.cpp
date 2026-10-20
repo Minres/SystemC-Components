@@ -349,7 +349,6 @@ struct yaml_config_dumper {
         auto basename = std::string(obj->basename());
         if(basename.substr(0, 3) == "$$$" || std::find(std::begin(stop_list), std::end(stop_list), obj->name()) != std::end(stop_list))
             return;
-        auto obj_started = false;
         auto log_lvl_set = false;
         auto it = lut.find(obj->name());
         YAML::Node this_node;
@@ -784,7 +783,7 @@ void configurer::set_value_from_str(const std::string& hier_name, const std::str
     char* end_str;
     errno = 0;
     auto ull = std::strtoull(int_str.c_str(), &end_str, int_base);
-    if((end_str - int_str.c_str()) == int_str.length() && !errno) {
+    if((!errno && end_str - int_str.c_str()) == static_cast<long>(int_str.length())) {
         if(sign < 0) {
             if(ull <= std::numeric_limits<int64_t>::max()) {
                 int64_t ll = sign * ull;
@@ -830,12 +829,12 @@ void configurer::set_value_from_str(const std::string& hier_name, const std::str
     }
     errno = 0;
     auto f = std::strtof(int_str.c_str(), &end_str);
-    if(!errno && (end_str - int_str.c_str()) == int_str.length()) {
+    if(!errno && (end_str - int_str.c_str()) == static_cast<long>(int_str.length())) {
         set_value(hier_name, f);
         return;
     }
     auto d = std::strtod(int_str.c_str(), &end_str);
-    if(!errno && (end_str - int_str.c_str()) == int_str.length()) {
+    if(!errno && (end_str - int_str.c_str()) == static_cast<long>(int_str.length())) {
         set_value(hier_name, d);
         return;
     }

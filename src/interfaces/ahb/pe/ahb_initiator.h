@@ -90,11 +90,11 @@ protected:
         return p.get_data_length() < transfer_width_in_bytes ? 1 : p.get_data_length() / transfer_width_in_bytes;
     }
 
+    sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& socket_fw;
+
     const size_t transfer_width_in_bytes;
 
     const bool coherent;
-
-    sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& socket_fw;
 
     struct tx_state {
         payload_type* active_tx{nullptr};

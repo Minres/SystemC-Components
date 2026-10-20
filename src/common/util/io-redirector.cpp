@@ -143,7 +143,6 @@ auto IoRedirector::get_output(bool blocking) -> std::string {
 
 auto IoRedirector::copy_fd(int fd) -> int {
     int ret = -1;
-    bool fd_blocked = false;
     do {
         ret = dup(fd);
         if(ret < 0 && (errno == EINTR || errno == EBUSY))

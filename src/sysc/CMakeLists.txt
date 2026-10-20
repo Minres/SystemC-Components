@@ -113,6 +113,13 @@ endif()
 
 add_library(${PROJECT_NAME} ${LIB_SOURCES})
 add_library(scc::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+
+if(MSVC)
+    target_compile_options(${PROJECT_NAME} PRIVATE /W4)
+elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
+    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wno-long-long -Wno-unused-function -pedantic)
+endif()
+
 if(DISABLE_QKD_WARNING)
     target_compile_definitions(${PROJECT_NAME} PUBLIC NO_MTQK)
 endif()
