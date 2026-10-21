@@ -308,7 +308,7 @@ struct cxs_receiver : public sc_core::sc_module,
 #if IEEE_1666_SYSTEMC < 202301L
         SC_HAS_PROCESS(cxs_receiver);
 #endif
-       SC_METHOD(clock);
+        SC_METHOD(clock);
         sensitive << clk_i.pos();
         dont_initialize();
         SC_METHOD(handle_received_credits);

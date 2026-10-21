@@ -43,7 +43,7 @@ private:
     wall_time_speed_limiter(sc_core::sc_module_name const& nm)
     : sc_module(nm) {
 #if IEEE_1666_SYSTEMC < 202301L
-       SC_HAS_PROCESS(wall_time_speed_limiter);
+        SC_HAS_PROCESS(wall_time_speed_limiter);
 #endif
         SC_THREAD(main_thread);
     }
