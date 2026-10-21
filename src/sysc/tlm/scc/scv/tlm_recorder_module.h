@@ -39,7 +39,9 @@ namespace scv {
  */
 template <unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types> class tlm_recorder_module : public sc_core::sc_module {
 public:
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(tlm_recorder_module); // NOLINT
+#endif
     //! The target socket of the recorder to be bound to the initiator
     tlm::tlm_target_socket<BUSWIDTH, TYPES, 1> ts{"ts"};
     //! The initiator to be bound to the target socket

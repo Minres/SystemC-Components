@@ -87,8 +87,9 @@ public:
     using mm = tlm::scc::tlm_mm<recording_types>;
     using tlm_recording_payload = impl::tlc_recording_payload<TYPES>;
 
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(tlc_recorder<TYPES>); // NOLINT
-
+#endif
     //! \brief the attribute to selectively enable/disable recording of blocking protocol tx
     sc_core::sc_attribute<bool> enableBlTracing;
 
@@ -343,7 +344,9 @@ template <unsigned int BUSWIDTH, typename TYPES = tilelink::tl_protocol_types>
 class tlc_recorder_module : public sc_core::sc_module, public tlc_recorder<TYPES> {
 public:
     using BASE = tlc_recorder<TYPES>;
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(axitlm_recorder_module); // NOLINT
+#endif
     //! The target socket of the recorder to be bound to the initiator
     typename BASE::template target_socket_type<BUSWIDTH> ts{"ts"};
     //! The initiator to be bound to the target socket

@@ -42,9 +42,9 @@ class target : public sc_core::sc_module {
 public:
     using payload_type = tlm::tlm_base_protocol_types::tlm_payload_type;
     using phase_type = tlm::tlm_base_protocol_types::tlm_phase_type;
-
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(target);
-
+#endif
     target(sc_core::sc_module_name nm);
 
     tlm::scc::initiator_mixin<tlm::scc::scv::tlm_rec_initiator_socket<0>> isckt{"isckt"};

@@ -32,7 +32,7 @@ namespace scc {
  */
 struct time2tick : public sc_core::sc_module {
     //! yes, we have processes
-#if SYSTEMC_VERSION < 20250221
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(time2tick); // NOLINT
 #endif
     //! the clock input

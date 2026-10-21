@@ -77,6 +77,8 @@ struct sc_variable_b : sc_core::sc_object {
      */
     virtual std::string to_string() const { return ""; };
 
+    using sc_core::sc_object::trace;
+
     virtual void trace(observer* obs) const = 0;
 };
 /**

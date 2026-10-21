@@ -38,8 +38,9 @@
 namespace scc {
 
 struct tcp4tlm_server : public sc_core::sc_module, protected tcp4tlm::server<tcp4tlm::request_message, tcp4tlm::response_message> {
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(tcp4tlm_server);
-
+#endif
     cci::cci_param<unsigned> this_host_port{"this_host_port", 32000u};
     cci::cci_param<bool> wall_time_simulation_speed{"wall_time_simulation_speed", false};
     cci::cci_param<bool> write_no_response{"write_no_response", false};

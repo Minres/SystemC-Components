@@ -39,7 +39,9 @@ namespace scv {
  */
 template <typename CMDENUM, unsigned int FLIT_WITH, typename TYPES> class tlm_recorder_module : public sc_core::sc_module {
 public:
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(tlm_recorder_module); // NOLINT
+#endif
     //! The target socket of the recorder to be bound to the initiator
     tlm::nw::tlm_network_target_socket<FLIT_WITH, CMDENUM, TYPES> ts{"ts"};
     //! The initiator to be bound to the target socket

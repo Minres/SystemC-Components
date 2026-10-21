@@ -31,7 +31,7 @@ class bp_initiator_b : public sc_core::sc_module,
                        public tlm::tlm_bw_transport_if<tlm::tlm_base_protocol_types>,
                        public tlm::scc::pe::intor_fw_b {
 public:
-#if SYSTEMC_VERSION < 20250221
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(bp_initiator_b);
 #endif
     using payload_type = tlm::tlm_generic_payload;

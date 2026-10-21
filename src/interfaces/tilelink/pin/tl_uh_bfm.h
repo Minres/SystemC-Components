@@ -41,8 +41,9 @@ namespace sysc {
 
 class tl_uh_bfm : public sc_core::sc_module {
 public:
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(tl_uh_bfm); // NOLINT
-
+#endif
     enum { Get = 4, AccessAckData = 1, PutFullData = 0, PutPartialData = 1, AccessAck = 0 };
 
     tlm::scc::target_mixin<tlm::scc::scv::tlm_rec_target_socket<32>> socket;

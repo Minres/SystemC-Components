@@ -48,8 +48,9 @@ struct ace_initiator : public sc_core::sc_module,
 
                        protected axi::fsm::base,
                        public axi::ace_fw_transport_if<axi::axi_protocol_types> {
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(ace_initiator);
-
+#endif
     enum { CACHELINE_SZ = 64 };
 
     using payload_type = axi::axi_protocol_types::tlm_payload_type;

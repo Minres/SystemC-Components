@@ -30,7 +30,7 @@ namespace pe {
  */
 class apb_target_b : public sc_core::sc_module, public tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types> {
 public:
-#if SYSTEMC_VERSION < 20250221
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(apb_target_b);
 #endif
     using payload_type = tlm::tlm_base_protocol_types::tlm_payload_type;

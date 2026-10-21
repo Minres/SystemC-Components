@@ -39,8 +39,9 @@
 namespace scc {
 
 struct tcp4tlm_client : public sc_core::sc_module, protected tcp4tlm::client<tcp4tlm::request_message, tcp4tlm::response_message> {
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(tcp4tlm_client);
-
+#endif
     cci::cci_param<std::string> other_host_name{"other_host_name", ""};
     cci::cci_param<unsigned> other_host_port{"other_host_port", 0};
     cci::cci_param<unsigned> this_host_port{"this_host_port", 32000u};

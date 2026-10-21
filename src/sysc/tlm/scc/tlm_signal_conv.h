@@ -34,7 +34,9 @@ struct tlm_signal2sc_signal : public sc_core::sc_module, public tlm_signal_fw_tr
     using payload_type = typename protocol_types::tlm_payload_type;
     using phase_type = typename protocol_types::tlm_phase_type;
 
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(tlm_signal2sc_signal); // NOLINT
+#endif
 
     tlm_signal_target_socket<TYPE> t_i{"t_i"};
 
@@ -67,7 +69,9 @@ struct sc_signal2tlm_signal : public sc_core::sc_module, public tlm_signal_bw_tr
     using payload_type = typename protocol_types::tlm_payload_type;
     using phase_type = typename protocol_types::tlm_phase_type;
 
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(sc_signal2tlm_signal); // NOLINT
+#endif
 
     sc_core::sc_in<TYPE> s_i{"s_i"};
 

@@ -80,7 +80,9 @@ private:
 template <unsigned DATA_WIDTH, unsigned ADDR_WIDTH>
 target<DATA_WIDTH, ADDR_WIDTH>::target(const sc_core::sc_module_name& nm)
 : sc_module(nm) {
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(target);
+#endif
     SC_THREAD(bus_addr_task);
     SC_THREAD(bus_data_task);
     isckt.register_nb_transport_bw([this](tlm::tlm_generic_payload& gp, tlm::tlm_phase& phase, sc_core::sc_time& delay) {

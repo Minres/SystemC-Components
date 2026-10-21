@@ -16,8 +16,6 @@
 #ifndef _TLM_SCC_TARGET_MIXIN_H_
 #define _TLM_SCC_TARGET_MIXIN_H_
 
-#include <sysc/kernel/sc_time.h>
-#include <tlm_core/tlm_2/tlm_2_interfaces/tlm_fw_bw_ifs.h>
 #ifndef SC_INCLUDE_DYNAMIC_PROCESSES // needed for sc_spawn
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #endif

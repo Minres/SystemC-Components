@@ -25,8 +25,6 @@
 #include <sysc/kernel/sc_wait.h>
 #include <tlm/scc/tlm_gp_shared.h>
 #include <tlm>
-#include <tlm_core/tlm_2/tlm_2_interfaces/tlm_fw_bw_ifs.h>
-#include <tlm_core/tlm_2/tlm_generic_payload/tlm_phase.h>
 #include <util/range_lut.h>
 
 namespace scc {
