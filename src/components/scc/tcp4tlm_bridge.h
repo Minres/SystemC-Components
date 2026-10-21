@@ -68,8 +68,9 @@ namespace scc {
 struct tcp4tlm_bridge : public sc_core::sc_module,
                         protected tcp4tlm::server<tcp4tlm::request_message, tcp4tlm::response_message>,
                         protected tcp4tlm::client<tcp4tlm::request_message, tcp4tlm::response_message> {
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(tcp4tlm_bridge);
-
+#endif
     /*! this governs the sequence of connection:
      * - if false: it first starts the server, connects to remote and sends a NotifyEndpointMsg
      * - if true:  it starts the server, waits for a NotifyEndpointMsg and then connects the client

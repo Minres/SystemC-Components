@@ -34,7 +34,7 @@
 namespace scc {
 using namespace sc_core;
 
-#if SYSTEMC_VERSION < 20250221
+#if IEEE_1666_SYSTEMC < 202301L
 SC_HAS_PROCESS(perf_estimator);
 #endif
 perf_estimator::perf_estimator(const sc_module_name& nm, sc_time beat_delay_)

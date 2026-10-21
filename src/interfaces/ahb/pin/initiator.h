@@ -76,7 +76,9 @@ private:
 template <unsigned DATA_WIDTH, unsigned ADDR_WIDTH>
 initiator<DATA_WIDTH, ADDR_WIDTH>::initiator(const sc_core::sc_module_name& nm)
 : sc_module(nm) {
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(initiator);
+#endif
     SC_THREAD(bus_addr_task);
     SC_THREAD(bus_data_task);
 

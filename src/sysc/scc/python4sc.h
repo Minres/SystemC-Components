@@ -35,7 +35,7 @@ namespace scc {
  */
 struct python4sc : public sc_core::sc_module {
     //! yes, we have processes
-#if SYSTEMC_VERSION < 20250221
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(python4sc); // NOLINT
 #endif
     cci::cci_param<std::string> input_file_name{"input_file_name", "", "the name of the python file to be executed by the interpreter"};

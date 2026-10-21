@@ -149,7 +149,9 @@ struct cxs_transmitter : public sc_core::sc_module,
         register_extensions();
         tsck(*this);
         isck(*this);
+#if IEEE_1666_SYSTEMC < 202301L
         SC_HAS_PROCESS(cxs_transmitter);
+#endif
         SC_METHOD(clock);
         sensitive << clk_i.pos();
         SC_METHOD(handle_received_credits);
@@ -303,8 +305,10 @@ struct cxs_receiver : public sc_core::sc_module,
         register_extensions();
         tsck(*this);
         isck(*this);
+#if IEEE_1666_SYSTEMC < 202301L
         SC_HAS_PROCESS(cxs_receiver);
-        SC_METHOD(clock);
+#endif
+       SC_METHOD(clock);
         sensitive << clk_i.pos();
         dont_initialize();
         SC_METHOD(handle_received_credits);
@@ -407,7 +411,9 @@ struct cxs_channel : public sc_core::sc_module,
     : sc_core::sc_module(nm) {
         isck(*this);
         tsck(*this);
+#if IEEE_1666_SYSTEMC < 202301L
         SC_HAS_PROCESS(cxs_channel);
+#endif
         SC_METHOD(fw);
         SC_METHOD(bw);
     }

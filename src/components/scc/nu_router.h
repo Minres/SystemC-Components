@@ -19,9 +19,9 @@
 
 #include "at_router/nb_router.h"
 #include "router_types.h"
-#include "scc/at_router/types.h"
-#include "scc/signal_opt_ports.h"
-#include "tlm/scc/lwtr/tlm_rec_target_socket.h"
+#include <scc/at_router/types.h>
+#include <scc/signal_opt_ports.h>
+#include <tlm/scc/lwtr/tlm_rec_target_socket.h>
 #include <cstring>
 #include <fmt/format.h>
 #include <limits>
@@ -40,7 +40,6 @@
 #include <tlm/scc/scv/tlm_rec_target_socket.h>
 #include <tlm/scc/target_mixin.h>
 #include <tlm>
-#include <tlm_core/tlm_2/tlm_sockets/tlm_target_socket.h>
 #include <unordered_map>
 #include <variant>
 

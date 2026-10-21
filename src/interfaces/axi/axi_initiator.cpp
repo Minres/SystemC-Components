@@ -27,7 +27,7 @@ axi_initiator_base::axi_initiator_base(const sc_core::sc_module_name& nm, axi::p
 : sc_module(nm)
 , pe(pe)
 , buswidth(width) {
-#if SYSTEMC_VERSION < 20250221
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(axi_initiator_base);
 #endif
     // Register callback for incoming b_transport interface method call

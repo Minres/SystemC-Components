@@ -41,8 +41,9 @@ struct ace_lite_target : public sc_core::sc_module,
                          public rresp_ace_lite<CFG, typename CFG::slave_types>,
                          protected axi::fsm::base,
                          public axi::axi_bw_transport_if<axi::axi_protocol_types> {
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(ace_lite_target);
-
+#endif
     using payload_type = axi::axi_protocol_types::tlm_payload_type;
     using phase_type = axi::axi_protocol_types::tlm_phase_type;
 

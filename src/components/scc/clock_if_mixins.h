@@ -114,7 +114,7 @@ public:
      */
     tickless_clock(sc_core::sc_module_name const& nm)
     : BASE(nm) {
-#if SYSTEMC_VERSION < 20250221
+#if IEEE_1666_SYSTEMC < 202301L
         SC_HAS_PROCESS(tickless_clock<BASE>);
 #endif
         SC_METHOD(clock_cb);
@@ -129,7 +129,7 @@ public:
     template <typename... Args>
     tickless_clock(sc_core::sc_module_name const& nm, Args&&... args)
     : BASE(nm, std::forward<Args>(args)...) {
-#if SYSTEMC_VERSION < 20250221
+#if IEEE_1666_SYSTEMC < 202301L
         SC_HAS_PROCESS(tickless_clock<BASE>);
 #endif
         SC_METHOD(clock_cb);

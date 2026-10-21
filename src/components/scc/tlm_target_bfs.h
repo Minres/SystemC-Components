@@ -89,8 +89,9 @@ protected:
  */
 template <typename regs_t, typename owner_t>
 class tlm_target_bfs : public sc_core::sc_module, public tlm_target_bfs_base<owner_t>, public scc::tlm_target<> {
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(tlm_target_bfs);
-
+#endif
 public:
     class socket_accessor {
     public:

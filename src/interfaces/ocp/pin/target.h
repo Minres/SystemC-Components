@@ -35,8 +35,9 @@ namespace pin {
 
 template <unsigned DATA_WIDTH, unsigned ADDR_WIDTH, unsigned BUSWIDTH = DATA_WIDTH>
 struct target : public sc_core::sc_module, public tlm::tlm_bw_transport_if<tlm::tlm_base_protocol_types> {
+#if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(target);
-
+#endif
     using payload_type = tlm::tlm_base_protocol_types::tlm_payload_type;
     using phase_type = tlm::tlm_base_protocol_types::tlm_phase_type;
 

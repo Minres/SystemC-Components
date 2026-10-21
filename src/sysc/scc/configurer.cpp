@@ -438,31 +438,30 @@ struct yaml_config_reader : public config_reader {
 
     void configure_cci_hierarchical(YAML::Node const& value, std::string const& prefix) {
         if(value.IsMap()) {
-            for(auto it = value.begin(); it != value.end(); ++it) {
-                auto key_name = it->first.as<std::string>();
-                YAML::Node const& val = it->second;
+            for(auto const& e:value) {
+                auto key_name = e.first.as<std::string>();
                 auto hier_name = prefix.size() ? prefix + "." + key_name : key_name;
-                if(!val.IsDefined() || val.IsSequence())
+                if(!e.second.IsDefined() || e.second.IsSequence())
                     return;
-                else if(val.IsMap())
-                    configure_cci_hierarchical(val, hier_name);
-                else if(val.IsScalar()) {
-                    auto& tag = val.Tag();
+                else if(e.second.IsMap())
+                    configure_cci_hierarchical(e.second, hier_name);
+                else if(e.second.IsScalar()) {
+                    auto tag = e.second.Tag();
                     if(tag == "!include") {
                         yaml_config_reader sub_reader(broker);
-                        std::ifstream ifs(find_in_include_path(val.as<std::string>()));
+                        std::ifstream ifs(find_in_include_path(e.second.as<std::string>()));
                         if(ifs.is_open()) {
                             sub_reader.parse(ifs);
                             if(sub_reader.valid) {
                                 sub_reader.configure_cci_hierarchical(sub_reader.document, hier_name);
                             } else {
                                 std::ostringstream os;
-                                os << "Could not parse include file " << val.as<std::string>();
+                                os << "Could not parse include file " << e.second.as<std::string>();
                                 throw std::runtime_error(os.str());
                             }
                         } else {
                             std::ostringstream os;
-                            os << "Could not open include file " << val.as<std::string>();
+                            os << "Could not open include file " << e.second.as<std::string>();
                             throw std::runtime_error(os.str());
                         }
                     } else if(tag.size() && tag[0] == '?') {
@@ -470,34 +469,34 @@ struct yaml_config_reader : public config_reader {
                         if(param_handle.is_valid()) {
                             auto param = param_handle.get_cci_value();
                             if(param.is_bool()) {
-                                param.set_bool(val.as<bool>());
+                                param.set_bool(e.second.as<bool>());
                             } else if(param.is_int()) {
-                                param.set_int(val.as<int>());
+                                param.set_int(e.second.as<int>());
                             } else if(param.is_uint()) {
-                                param.set_uint(val.as<unsigned>());
+                                param.set_uint(e.second.as<unsigned>());
                             } else if(param.is_int64()) {
-                                param.set_int64(val.as<int64_t>());
+                                param.set_int64(e.second.as<int64_t>());
                             } else if(param.is_uint64()) {
-                                param.set_uint64(val.as<uint64_t>());
+                                param.set_uint64(e.second.as<uint64_t>());
                             } else if(param.is_double()) {
-                                param.set_double(val.as<double>());
+                                param.set_double(e.second.as<double>());
                             } else if(param.is_string()) {
-                                param.set_string(val.as<std::string>());
+                                param.set_string(e.second.as<std::string>());
                             }
                         } else {
-                            if(auto res = YAML::as_if<bool, optional<bool>>(val)()) {
+                            if(auto res = YAML::as_if<bool, optional<bool>>(e.second)()) {
                                 broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-                            } else if(auto res = YAML::as_if<int, optional<int>>(val)()) {
+                            } else if(auto res = YAML::as_if<int, optional<int>>(e.second)()) {
                                 broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-                            } else if(auto res = YAML::as_if<int64_t, optional<int64_t>>(val)()) {
+                            } else if(auto res = YAML::as_if<int64_t, optional<int64_t>>(e.second)()) {
                                 broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-                            } else if(auto res = YAML::as_if<unsigned, optional<unsigned>>(val)()) {
+                            } else if(auto res = YAML::as_if<unsigned, optional<unsigned>>(e.second)()) {
                                 broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-                            } else if(auto res = YAML::as_if<uint64_t, optional<uint64_t>>(val)()) {
+                            } else if(auto res = YAML::as_if<uint64_t, optional<uint64_t>>(e.second)()) {
                                 broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-                            } else if(auto res = YAML::as_if<double, optional<double>>(val)()) {
+                            } else if(auto res = YAML::as_if<double, optional<double>>(e.second)()) {
                                 broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-                            } else if(auto res = YAML::as_if<std::string, optional<std::string>>(val)()) {
+                            } else if(auto res = YAML::as_if<std::string, optional<std::string>>(e.second)()) {
                                 broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
                             }
                         }
@@ -506,10 +505,10 @@ struct yaml_config_reader : public config_reader {
                         if(param_handle.is_valid()) {
                             auto param = param_handle.get_cci_value();
                             if(param.is_string()) {
-                                param.set_string(val.as<std::string>());
+                                param.set_string(e.second.as<std::string>());
                             }
                         } else {
-                            if(auto res = YAML::as_if<std::string, optional<std::string>>(val)()) {
+                            if(auto res = YAML::as_if<std::string, optional<std::string>>(e.second)()) {
                                 broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
                             }
                         }
