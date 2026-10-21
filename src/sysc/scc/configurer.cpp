@@ -438,7 +438,7 @@ struct yaml_config_reader : public config_reader {
 
     void configure_cci_hierarchical(YAML::Node const& value, std::string const& prefix) {
         if(value.IsMap()) {
-            for(auto const& e:value) {
+            for(auto const& e : value) {
                 auto key_name = e.first.as<std::string>();
                 auto hier_name = prefix.size() ? prefix + "." + key_name : key_name;
                 if(!e.second.IsDefined() || e.second.IsSequence())

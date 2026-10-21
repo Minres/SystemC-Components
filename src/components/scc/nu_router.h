@@ -19,14 +19,13 @@
 
 #include "at_router/nb_router.h"
 #include "router_types.h"
-#include <scc/at_router/types.h>
-#include <scc/signal_opt_ports.h>
-#include <tlm/scc/lwtr/tlm_rec_target_socket.h>
 #include <cstring>
 #include <fmt/format.h>
 #include <limits>
 #include <memory>
+#include <scc/at_router/types.h>
 #include <scc/report.h>
+#include <scc/signal_opt_ports.h>
 #include <scc/utilities.h>
 #include <sstream>
 #include <stdexcept>
@@ -35,6 +34,7 @@
 #include <sysc/kernel/sc_spawn_options.h>
 #include <sysc/utils/sc_vector.h>
 #include <tlm/scc/initiator_mixin.h>
+#include <tlm/scc/lwtr/tlm_rec_target_socket.h>
 #include <tlm/scc/memory_map_collector.h>
 #include <tlm/scc/scv/tlm_rec_initiator_socket.h>
 #include <tlm/scc/scv/tlm_rec_target_socket.h>
