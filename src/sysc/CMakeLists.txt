@@ -5,7 +5,7 @@ find_package(Boost REQUIRED QUIET COMPONENTS date_time filesystem)
 find_package(Boost QUIET COMPONENTS stacktrace_backtrace)
 find_package(ZLIB)
 
-option(ENABLE_SQLITE "Enable SQLite backend for SCV" ON)
+option(ENABLE_SQLITE "Enable SQLite backend for SCV" OFF)
 option(ENABLE_PYTHON4SC "Enable Python interpreter integration" OFF)
 option(DISABLE_QKD_WARNING "Disbale the warning about multi-threaded quantum keeper when using SystemC 2.3.4" OFF)
 
