@@ -67,7 +67,7 @@ std::unordered_map<std::string, uint64_t> read_elf_symbols(std::string const& na
             }
         }
     }
-    return std::move(symbol_table);
+    return symbol_table;
 };
 
 } // namespace util
