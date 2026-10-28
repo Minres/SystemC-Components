@@ -272,10 +272,10 @@ inline sc_core::sc_time parse_from_string(std::string value) noexcept {
     return sc_core::SC_ZERO_TIME;
 }
 
-inline sc_core::sc_time time_to_next_posedge(sc_core::sc_clock const* clk) {
+inline sc_core::sc_time time_to_next_posedge(sc_core::sc_clock const* clk, sc_core::sc_time const& offset = sc_core::SC_ZERO_TIME) {
     if(clk) {
         auto period = clk->period();
-        auto clk_run_time = sc_core::sc_time_stamp() - clk->start_time();
+        auto clk_run_time = (sc_core::sc_time_stamp() + offset) - clk->start_time();
         auto clk_period_point = clk_run_time % period;
         if(clk->posedge_first())
             return period - clk_period_point;
@@ -287,7 +287,7 @@ inline sc_core::sc_time time_to_next_posedge(sc_core::sc_clock const* clk) {
             return period + time_to_posedge - clk_period_point;
         }
     }
-    return sc_core::SC_ZERO_TIME;
+    return offset;
 }
 
 #if __cplusplus < 201402L
