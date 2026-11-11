@@ -84,7 +84,9 @@ template <class T, class S> struct select_if<true, T, S> { typedef T type; };
  * @tparam RUSERWDTH
  * @tparam RIDWDTH
  */
-template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int WIDWDTH = 32, unsigned int WUSERWDTH = 1, unsigned int RUSERWDTH = WUSERWDTH, unsigned int RIDWDTH = WIDWDTH> struct axi4_cfg {
+template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int WIDWDTH = 32, unsigned int WUSERWDTH = 1,
+          unsigned int RUSERWDTH = WUSERWDTH, unsigned int RIDWDTH = WIDWDTH>
+struct axi4_cfg {
     static_assert(BUSWDTH > 0, "BUSWIDTH shall be larger than 0");
     static_assert(ADDRWDTH > 0, "ADDRWDTH shall be larger than 0");
     static_assert(WIDWDTH > 0, "WIDWDTH shall be larger than 0");
@@ -104,7 +106,6 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int WI
     using master_types = ::axi::master_types;
 };
 
-
 /**
  * @struct axi5_cfg
  * @brief
@@ -115,7 +116,8 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int WI
  * @tparam WUSERWDTH
  * @tparam RUSERWDTH
  */
-template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int WIDWDTH = 32, unsigned int WUSERWDTH = 1, unsigned int RUSERWDTH = WUSERWDTH, unsigned int RIDWDTH = WIDWDTH>
+template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int WIDWDTH = 32, unsigned int WUSERWDTH = 1,
+          unsigned int RUSERWDTH = WUSERWDTH, unsigned int RIDWDTH = WIDWDTH>
 using axi5_cfg = axi4_cfg<BUSWDTH, ADDRWDTH, WIDWDTH, WUSERWDTH, RUSERWDTH, RIDWDTH>;
 
 template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lite_cfg {
