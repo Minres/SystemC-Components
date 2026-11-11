@@ -204,7 +204,6 @@ if(SystemC_FOUND)
     )
 
     if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
-        #set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all-symbols")
         add_library(scc-shared SHARED $<TARGET_OBJECTS:scc-util>
             $<TARGET_OBJECTS:scc-sysc>
             $<TARGET_OBJECTS:interfaces>
@@ -224,28 +223,30 @@ if(SystemC_FOUND)
             $<TARGET_PROPERTY:scv-tr,LINK_LIBRARIES>
             $<TARGET_PROPERTY:tlm-interfaces,LINK_LIBRARIES>
         )
-        #		set(LIB_LIST $<TARGET_PROPERTY:scc-util,INTERFACE_LINK_LIBRARIES>
-        #	                                  $<TARGET_PROPERTY:scc-sysc,INTERFACE_LINK_LIBRARIES>
-        #	                                  $<TARGET_PROPERTY:interfaces,INTERFACE_LINK_LIBRARIES>
-        #	                                  $<TARGET_PROPERTY:scv-tr,INTERFACE_LINK_LIBRARIES>
-        #	                                  $<TARGET_PROPERTY:tlm-interfaces,INTERFACE_LINK_LIBRARIES>
-        #	                                  )
-        #	                                  message("LIB_LIST=${LIB_LIST}")
-        #		 add_library(scc-shared SHARED src/scc.h)
-        #		 target_link_libraries(scc-shared PUBLIC
-        #		 -Wl,--whole-archive 
-        #									scc-util
-        #	                                scc-sysc
-        #	                                interfaces
-        #	                                scv-tr
-        #	                                tlm-interfaces
-        #	                                -Wl,--no-whole-archive
-        #	                                )
-        #	                                  
         if(TARGET Boost::stacktrace_backtrace)
             target_link_libraries(scc-shared PUBLIC Boost::stacktrace_backtrace dl)
         endif()
         add_library(scc::scc-shared ALIAS scc-shared)
+
+	    add_library(scc-static $<TARGET_OBJECTS:scc-util>
+	        $<TARGET_OBJECTS:scc-sysc>
+	        $<TARGET_OBJECTS:interfaces>
+	        $<TARGET_OBJECTS:scv-tr>
+	        $<TARGET_OBJECTS:tlm-interfaces>
+	    )
+	    target_include_directories(scc-static INTERFACE $<TARGET_PROPERTY:scc-util,INTERFACE_INCLUDE_DIRECTORIES>
+	        $<TARGET_PROPERTY:scc-sysc,INTERFACE_INCLUDE_DIRECTORIES>
+	        $<TARGET_PROPERTY:interfaces,INTERFACE_INCLUDE_DIRECTORIES>
+	        $<TARGET_PROPERTY:scv-tr,INTERFACE_INCLUDE_DIRECTORIES>
+	        $<TARGET_PROPERTY:tlm-interfaces,INTERFACE_INCLUDE_DIRECTORIES>
+	    )
+	    target_link_libraries(scc-static PUBLIC $<TARGET_PROPERTY:scc-util,LINK_LIBRARIES>
+	        $<TARGET_PROPERTY:scc-sysc,LINK_LIBRARIES>
+	        $<TARGET_PROPERTY:interfaces,LINK_LIBRARIES>
+	        $<TARGET_PROPERTY:scv-tr,LINK_LIBRARIES>
+	        $<TARGET_PROPERTY:tlm-interfaces,LINK_LIBRARIES>
+	    )
+        add_library(scc::scc-static ALIAS scc-static)
     endif()
 
     install(TARGETS scc
@@ -270,6 +271,18 @@ if(SystemC_FOUND)
         )
         install(EXPORT scc-shared-targets
             FILE scc-shared-targets.cmake
+            DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+            NAMESPACE scc::
+        )
+        install(TARGETS scc-static
+            EXPORT scc-static-targets
+            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
+            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
+            PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        )
+        install(EXPORT scc-static-targets
+            FILE scc-static-targets.cmake
             DESTINATION ${SCC_CMAKE_CONFIG_DIR}
             NAMESPACE scc::
         )
