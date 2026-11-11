@@ -54,6 +54,14 @@
             }
         },
         {
+            "name": "RelWithDebInfo_ReleasedSC",
+            "inherits": "Base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "USE_LATEST_ACCELLERA_SYSTEMC": "ON"
+            }
+        },
+        {
             "name": "Release",
             "inherits": "Base",
             "cacheVariables": {

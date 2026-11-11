@@ -10,6 +10,7 @@
 
 #include "packet.h"
 #include <array>
+#include <scc/peq.h>
 #include <scc/sc_owning_signal.h>
 #include <systemc>
 #include <tlm/scc/tagged_initiator_mixin.h>
@@ -29,7 +30,7 @@ private:
     void output_cb(unsigned);
     tlm::tlm_sync_enum nb_fw(unsigned, tlm::tlm_generic_payload&, tlm::tlm_phase&, sc_core::sc_time&);
     tlm::tlm_sync_enum nb_bw(unsigned, tlm::tlm_generic_payload&, tlm::tlm_phase&, sc_core::sc_time&);
-    sc_core::sc_vector<scc::sc_owning_signal<tlm::tlm_generic_payload>> in_tx{"in_sig", 4};
+    sc_core::sc_vector<scc::peq<tlm::tlm_generic_payload*>> in_tx{"in_sig", 4};
     sc_core::sc_vector<sc_core::sc_fifo<tlm::tlm_generic_payload*>> out_fifo{"out_peq", 4};
     std::array<unsigned, 4> last_sel_inp{NONE, NONE, NONE, NONE};
 };

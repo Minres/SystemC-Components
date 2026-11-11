@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+##
+
+set -euo pipefail
+
+[ -d build/Config ] || cmake --preset Config
+exec cmaake --build build/Config --target format-check

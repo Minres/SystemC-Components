@@ -17,19 +17,19 @@
 #ifndef TLM_SCC_TCP4TLM_SERVER_H_
 #define TLM_SCC_TCP4TLM_SERVER_H_
 
-#include "rigtorp/SPSCQueue.h"
-#include "scc/async_queue.h"
-#include "scc/peq.h"
 #include "tcp4tlm/messages.h"
 #include "tcp4tlm/server.h"
-#include "tlm/scc/tlm_gp_shared.h"
-#include "tlm/scc/tlm_mm.h"
 #include <atomic>
 #include <boost/asio.hpp>
 #include <cci_configuration>
+#include <rigtorp/SPSCQueue.h>
+#include <scc/async_queue.h>
+#include <scc/peq.h>
 #include <scc/report.h>
 #include <scc/utilities.h>
 #include <systemc>
+#include <tlm/scc/tlm_gp_shared.h>
+#include <tlm/scc/tlm_mm.h>
 #include <tlm>
 #include <tlm_utils/simple_initiator_socket.h>
 #include <tlm_utils/simple_target_socket.h>

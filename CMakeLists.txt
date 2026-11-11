@@ -7,6 +7,7 @@ project(scc VERSION 2026.07 LANGUAGES CXX C)
 option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
 option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
 option(USE_NCSC_SYSTEMC3 "Cadence Xcelium SystemC version 3.0" OFF)
+option(USE_LATEST_ACCELLERA_SYSTEMC "build against latest release of Accellera SystemC" OFF)
 option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
 option(FULL_TRACE_TYPE_LIST "Test for extended set of templated datatypes" OFF)
 #Note: this needs to match the SystemC kernel build options
@@ -123,7 +124,24 @@ if(MSVC)
     add_compile_options(/vmg /MP /W3 /wd4244 /wd4267 /wd4996 -DNOMINMAX /EHsc)
     link_directories(${Boost_LIBRARY_DIRS})
 endif()
-include(SystemCPackage)
+if(USE_LATEST_ACCELLERA_SYSTEMC)
+    include(FetchContent)
+    FetchContent_Declare(
+        systemc
+        GIT_REPOSITORY https://github.com/accellera-official/systemc.git
+        GIT_TAG 3.0.2
+        GIT_SHALLOW TRUE
+        OVERRIDE_FIND_PACKAGE
+    )
+    FetchContent_MakeAvailable(systemc)
+    find_package(SystemCLanguage QUIET)
+
+    # set(SystemC_FOUND TRUE)
+    # set(SystemC_LIBRARIES SystemC::systemc)
+    # get_target_property(SystemC_INCLUDE_DIRS SystemC::systemc INTERFACE_INCLUDE_DIRECTORIES)
+else()
+    include(SystemCPackage)
+endif()
 
 include(CheckSymbolExists)
 # Check for function getenv()

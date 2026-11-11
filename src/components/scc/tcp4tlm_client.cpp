@@ -15,21 +15,19 @@
  *******************************************************************************/
 
 #include "tcp4tlm_client.h"
-#include "scc/report.h"
-#include "scc/tcp4tlm/messages.h"
-#include "tlm/scc/tlm_extensions.h"
-#include "tlm/scc/tlm_gp_shared.h"
 #include <algorithm>
-#include <atomic>
 #include <boost/asio.hpp>
 #include <cstdint>
 #include <cstring>
 #include <ctime>
 #include <limits>
+#include <scc/report.h>
+#include <scc/tcp4tlm/messages.h>
 #include <sysc/kernel/sc_module.h>
 #include <sysc/kernel/sc_simcontext.h>
 #include <sysc/kernel/sc_time.h>
-#include <thread>
+#include <tlm/scc/tlm_extensions.h>
+#include <tlm/scc/tlm_gp_shared.h>
 
 #define GETCLOCK(X) clock_gettime(CLOCK_REALTIME, X)
 namespace scc {

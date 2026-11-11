@@ -569,7 +569,8 @@ public:
 #if __cplusplus >= 201703L
     [[nodiscard]]
 #endif
-    bool empty() const noexcept {
+    bool
+    empty() const noexcept {
         return c_.keys.empty();
     }
     size_type size() const noexcept { return c_.keys.size(); }

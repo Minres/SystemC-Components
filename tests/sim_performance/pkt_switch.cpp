@@ -7,6 +7,7 @@
 
 #ifndef SC_INCLUDE_DYNAMIC_PROCESSES // needed for sc_spawn
 #define SC_INCLUDE_DYNAMIC_PROCESSES
+#include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
 #endif
 #include "pkt_switch.h"
 #include "types.h"
@@ -41,7 +42,7 @@ pkt_switch::pkt_switch(const sc_core::sc_module_name& nm)
 }
 
 tlm::tlm_sync_enum pkt_switch::nb_fw(unsigned id, tlm::tlm_generic_payload& gp, tlm::tlm_phase& phase, sc_core::sc_time& delay) {
-    in_tx[id].write(&gp);
+    in_tx[id].notify(&gp);
     if(phase == tlm::BEGIN_REQ)
         phase = tlm::END_REQ;
     else
@@ -50,13 +51,14 @@ tlm::tlm_sync_enum pkt_switch::nb_fw(unsigned id, tlm::tlm_generic_payload& gp, 
 }
 
 void pkt_switch::clock_cb() {
-    std::array<std::vector<unsigned>, SIDES> routing{};
+    std::array<std::vector<std::tuple<unsigned, tlm::tlm_generic_payload*>>, SIDES> routing{};
     bool nothing_todo = true;
     for(auto i = 0U; i < SIDES; ++i) {
-        if(auto gp = in_tx[i].read()) {
+        if(in_tx[i].has_next()) {
+            auto gp = in_tx[i].get();
             auto ext = gp->get_extension<packet_ext>();
             sc_assert(ext);
-            routing[ext->routing.back()].push_back(i);
+            routing[ext->routing.back()].emplace_back(i, gp);
             nothing_todo = false;
         }
     }
@@ -64,8 +66,9 @@ void pkt_switch::clock_cb() {
         return;
     for(auto i = 0U; i < SIDES; ++i) {
         if(routing[i].size()) {
-            auto selected_input = routing[i].front();
-            auto* gp = in_tx[selected_input].read();
+            auto e = routing[i].front();
+            auto selected_input = std::get<0>(e);
+            auto gp = std::get<1>(e);
             if(out_fifo[i].nb_write(gp)) {
                 auto ext = gp->get_extension<packet_ext>();
                 ext->routing.pop_back();
