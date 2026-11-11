@@ -172,9 +172,9 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::write_ar(tlm:
         this->ar_prot.write(ext->get_prot());
         if(!CFG::IS_LITE) {
             auto id = ext->get_id();
-            if(!mask_axi_id.get_value() && id >= (1 << CFG::IDWIDTH))
-                SCCERR(SCMOD) << "ARID value larger that signal arid with width=" << CFG::IDWIDTH << " can carry";
-            this->ar_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(id));
+            if(!mask_axi_id.get_value() && id >= (1 << CFG::RIDWIDTH))
+                SCCERR(SCMOD) << "ARID value larger that signal arid with width=" << CFG::RIDWIDTH << " can carry";
+            this->ar_id->write(sc_dt::sc_uint<CFG::RIDWIDTH>(id));
             this->ar_len->write(sc_dt::sc_uint<8>(ext->get_length()));
             this->ar_size->write(sc_dt::sc_uint<3>(ext->get_size()));
             this->ar_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
@@ -194,9 +194,9 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::write_aw(tlm:
         this->aw_prot.write(ext->get_prot());
         if(!CFG::IS_LITE) {
             auto id = ext->get_id();
-            if(!mask_axi_id.get_value() && id >= (1 << CFG::IDWIDTH))
-                SCCERR(SCMOD) << "AWID value larger than signal awid with width=" << CFG::IDWIDTH << " can carry";
-            this->aw_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(id));
+            if(!mask_axi_id.get_value() && id >= (1 << CFG::WIDWIDTH))
+                SCCERR(SCMOD) << "AWID value larger than signal awid with width=" << CFG::WIDWIDTH << " can carry";
+            this->aw_id->write(sc_dt::sc_uint<CFG::WIDWIDTH>(id));
             this->aw_len->write(sc_dt::sc_uint<8>(ext->get_length()));
             this->aw_size->write(sc_dt::sc_uint<3>(ext->get_size()));
             this->aw_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
@@ -311,13 +311,15 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::setup_callbac
     };
     fsm_hndl->fsm->cb[EndReqE] = [this, fsm_hndl]() -> void {
         auto id = axi::get_axi_id(*fsm_hndl->trans);
-        if(mask_axi_id.get_value())
-            id &= (1UL << CFG::IDWIDTH) - 1;
         switch(fsm_hndl->trans->get_command()) {
         case tlm::TLM_READ_COMMAND:
+            if(mask_axi_id.get_value())
+                id &= (1UL << CFG::RIDWIDTH) - 1;
             rd_resp_by_id[id].push_back(fsm_hndl);
             break;
         case tlm::TLM_WRITE_COMMAND:
+            if(mask_axi_id.get_value())
+                id &= (1UL << CFG::WIDWIDTH) - 1;
             wr_resp_by_id[id].push_back(fsm_hndl);
             fsm_hndl->beat_count++;
         }

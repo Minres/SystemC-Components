@@ -79,18 +79,21 @@ template <class T, class S> struct select_if<true, T, S> { typedef T type; };
  *
  * @tparam BUSWDTH
  * @tparam ADDRWDTH
- * @tparam IDWDTH
+ * @tparam WIDWDTH
  * @tparam WUSERWDTH
  * @tparam RUSERWDTH
+ * @tparam RIDWDTH
  */
-template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int WUSERWDTH = 1, unsigned int RUSERWDTH = WUSERWDTH> struct axi4_cfg {
+template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int WIDWDTH = 32, unsigned int WUSERWDTH = 1, unsigned int RUSERWDTH = WUSERWDTH, unsigned int RIDWDTH = WIDWDTH> struct axi4_cfg {
     static_assert(BUSWDTH > 0, "BUSWIDTH shall be larger than 0");
     static_assert(ADDRWDTH > 0, "ADDRWDTH shall be larger than 0");
-    static_assert(IDWDTH > 0, "IDWDTH shall be larger than 0");
+    static_assert(WIDWDTH > 0, "WIDWDTH shall be larger than 0");
+    static_assert(RIDWDTH > 0, "RIDWDTH shall be larger than 0");
     constexpr static bool IS_LITE = false;
     constexpr static unsigned int BUSWIDTH = BUSWDTH;
     constexpr static unsigned int ADDRWIDTH = ADDRWDTH;
-    constexpr static unsigned int IDWIDTH = IDWDTH;
+    constexpr static unsigned int WIDWIDTH = WIDWDTH;
+    constexpr static unsigned int RIDWIDTH = RIDWDTH;
     constexpr static unsigned int WUSERWIDTH = WUSERWDTH;
     constexpr static unsigned int RUSERWIDTH = RUSERWDTH;
     using data_t = typename select_if<BUSWDTH <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
@@ -112,8 +115,8 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int ID
  * @tparam WUSERWDTH
  * @tparam RUSERWDTH
  */
-template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int WUSERWDTH = 1, unsigned int RUSERWDTH = WUSERWDTH>
-using axi5_cfg = axi4_cfg<BUSWDTH, ADDRWDTH, IDWDTH, WUSERWDTH, RUSERWDTH>;
+template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int WIDWDTH = 32, unsigned int WUSERWDTH = 1, unsigned int RUSERWDTH = WUSERWDTH, unsigned int RIDWDTH = WIDWDTH>
+using axi5_cfg = axi4_cfg<BUSWDTH, ADDRWDTH, WIDWDTH, WUSERWDTH, RUSERWDTH, RIDWDTH>;
 
 template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lite_cfg {
     static_assert(BUSWDTH > 0, "BUSWIDTH shall be larger than 0");
@@ -121,7 +124,8 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lit
     constexpr static bool IS_LITE = true;
     constexpr static unsigned int BUSWIDTH = BUSWDTH;
     constexpr static unsigned int ADDRWIDTH = ADDRWDTH;
-    constexpr static unsigned int IDWIDTH = 0;
+    constexpr static unsigned int WIDWIDTH = 0;
+    constexpr static unsigned int RIDWIDTH = 0;
     constexpr static unsigned int WUSERWIDTH = 1;
     constexpr static unsigned int RUSERWIDTH = 1;
     using data_t = typename select_if<BUSWDTH <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
@@ -138,22 +142,25 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lit
  *
  * @tparam BUSWDTH
  * @tparam ADDRWDTH
- * @tparam IDWDTH
+ * @tparam WIDWDTH
  * @tparam WUSERWDTH
  * @tparam AWSNOOPWDTH
  * @tparam RESPWDTH
  * @tparam RUSERWDTH
+ * @tparam RIDWDTH
  */
-template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int WUSERWDTH = 1,
-          unsigned int AWSNOOPWDTH = 3, unsigned int RESPWDTH = 4, unsigned int RUSERWDTH = WUSERWDTH>
+template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int WIDWDTH = 32, unsigned int WUSERWDTH = 1,
+          unsigned int AWSNOOPWDTH = 3, unsigned int RESPWDTH = 4, unsigned int RUSERWDTH = WUSERWDTH, unsigned int RIDWDTH = WIDWDTH>
 struct ace_cfg {
     static_assert(BUSWDTH > 0, "BUSWIDTH shall be larger than 0");
     static_assert(ADDRWDTH > 0, "ADDRWDTH shall be larger than 0");
-    static_assert(IDWDTH > 0, "IDWDTH shall be larger than 0");
+    static_assert(WIDWDTH > 0, "WIDWDTH shall be larger than 0");
+    static_assert(RIDWDTH > 0, "RIDWDTH shall be larger than 0");
     constexpr static bool IS_LITE = false;
     constexpr static unsigned int BUSWIDTH = BUSWDTH;
     constexpr static unsigned int ADDRWIDTH = ADDRWDTH;
-    constexpr static unsigned int IDWIDTH = IDWDTH;
+    constexpr static unsigned int WIDWIDTH = WIDWDTH;
+    constexpr static unsigned int RIDWIDTH = RIDWDTH;
     constexpr static unsigned int WUSERWIDTH = WUSERWDTH;
     constexpr static unsigned int RUSERWIDTH = RUSERWDTH;
     constexpr static unsigned int AWSNOOPWIDTH = AWSNOOPWDTH;
@@ -171,7 +178,7 @@ inline std::string concat(const char* prefix, const char* name) { return std::st
 //! Write address channel signals
 template <typename CFG, typename TYPES = master_types> struct aw_axi_lite;
 template <typename CFG, typename TYPES = master_types> struct aw_axi {
-    typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> aw_id{"aw_id"};
+    typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::WIDWIDTH>> aw_id{"aw_id"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>> aw_addr{"aw_addr"};
     typename TYPES::template s2m_t<bool> aw_ready{"aw_ready"};
     typename TYPES::template m2s_full_t<bool> aw_lock{"aw_lock"}; // AXI3 has 2 bits while AXI4 has 1 bit
@@ -225,7 +232,7 @@ template <typename CFG, typename TYPES = master_types> struct aw_axi {
 //! write data channel signals
 template <typename CFG, typename TYPES = master_types> struct wdata_axi_lite;
 template <typename CFG, typename TYPES = master_types> struct wdata_axi {
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::IDWIDTH>> w_id{"w_id"};
+    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::WIDWIDTH>> w_id{"w_id"};
     typename TYPES::template m2s_t<typename CFG::data_t> w_data{"w_data"};
     typename TYPES::template m2s_t<typename CFG::strb_t> w_strb{"w_strb"};
     typename TYPES::template m2s_full_t<bool> w_last{"w_last"};
@@ -268,7 +275,7 @@ template <typename CFG, typename TYPES = master_types> struct b_axi_lite;
 template <typename CFG, typename TYPES = master_types> struct b_axi {
     typename TYPES::template s2m_t<bool> b_valid{"b_valid"};
     typename TYPES::template m2s_t<bool> b_ready{"b_ready"};
-    typename TYPES::template s2m_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> b_id{"b_id"};
+    typename TYPES::template s2m_full_t<sc_dt::sc_uint<CFG::WIDWIDTH>> b_id{"b_id"};
     typename TYPES::template s2m_t<sc_dt::sc_uint<2>> b_resp{"b_resp"};
     typename TYPES::template s2m_opt_t<typename CFG::wuser_t> b_user{"b_user"};
     typename TYPES::template s2m_opt_t<bool> b_trace{"b_trace"};
@@ -296,7 +303,7 @@ template <typename CFG, typename TYPES = master_types> struct b_axi {
 //! read address channel signals
 template <typename CFG, typename TYPES = master_types> struct ar_axi_lite;
 template <typename CFG, typename TYPES = master_types> struct ar_axi {
-    typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> ar_id{"ar_id"};
+    typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::RIDWIDTH>> ar_id{"ar_id"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>> ar_addr{"ar_addr"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<8>> ar_len{"ar_len"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<3>> ar_size{"ar_size"};
@@ -347,7 +354,7 @@ template <typename CFG, typename TYPES = master_types> struct ar_axi {
 //! Read data channel signals
 template <typename CFG, typename TYPES = master_types> struct rresp_axi_lite;
 template <typename CFG, typename TYPES = master_types> struct rresp_axi {
-    typename TYPES::template s2m_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> r_id{"r_id"};
+    typename TYPES::template s2m_full_t<sc_dt::sc_uint<CFG::RIDWIDTH>> r_id{"r_id"};
     typename TYPES::template s2m_t<typename CFG::data_t> r_data{"r_data"};
     typename TYPES::template s2m_t<sc_dt::sc_uint<2>> r_resp{"r_resp"};
     typename TYPES::template s2m_full_t<bool> r_last{"r_last"};
@@ -383,7 +390,7 @@ template <typename CFG, typename TYPES = master_types> struct rresp_axi {
 };
 
 template <typename CFG, typename TYPES = master_types> struct rresp_ace {
-    typename TYPES::template s2m_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> r_id{"r_id"};
+    typename TYPES::template s2m_full_t<sc_dt::sc_uint<CFG::RIDWIDTH>> r_id{"r_id"};
     typename TYPES::template s2m_t<typename CFG::data_t> r_data{"r_data"};
     typename TYPES::template s2m_t<sc_dt::sc_uint<CFG::RESPWIDTH>> r_resp{"r_resp"}; // ACE5-Lite has only 2
     typename TYPES::template s2m_full_t<bool> r_last{"r_last"};
@@ -527,7 +534,7 @@ template <typename CFG, typename TYPES> struct rresp_axi_lite {
 };
 
 template <typename CFG, typename TYPES = master_types> struct ar_ace {
-    typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> ar_id{"ar_id"};
+    typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::RIDWIDTH>> ar_id{"ar_id"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>> ar_addr{"ar_addr"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<8>> ar_len{"ar_len"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<3>> ar_size{"ar_size"};
@@ -589,7 +596,7 @@ template <typename CFG, typename TYPES = master_types> struct ar_ace {
 };
 
 template <typename CFG, typename TYPES = master_types> struct aw_ace {
-    typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> aw_id{"aw_id"};
+    typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::WIDWIDTH>> aw_id{"aw_id"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>> aw_addr{"aw_addr"};
     typename TYPES::template s2m_t<bool> aw_ready{"aw_ready"};
     typename TYPES::template m2s_t<bool> aw_lock{"aw_lock"};
