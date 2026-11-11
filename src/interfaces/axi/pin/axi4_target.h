@@ -386,7 +386,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
                 ext->set_region(awd.region);
                 ext->set_exclusive(awd.lock);
                 ext->set_atop(awd.atop);
-                if(CFG::USERWIDTH)
+                if(CFG::WUSERWIDTH)
                     ext->set_user(axi::common::id_type::CTRL, awd.user);
 
                 active_req_beat[tlm::TLM_WRITE_COMMAND] = find_or_create(gp);
