@@ -495,7 +495,7 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::wdata_t() {
                 ext->set_barrier(axi::into<axi::bar_e>(awd.bar));
                 ext->set_unique(awd.unique);
                 ext->set_exclusive(awd.lock);
-                if(CFG::USERWIDTH)
+                if(CFG::WUSERWIDTH)
                     ext->set_user(axi::common::id_type::CTRL, awd.user);
 
                 active_req_beat[tlm::TLM_WRITE_COMMAND] = find_or_create(gp);
