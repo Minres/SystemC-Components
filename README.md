@@ -1,4 +1,4 @@
-[![CI C++ Std compliance](https://github.com/Minres/SystemC-Components/actions/workflows/ci-compliance.yml/badge.svg)](https://github.com/Minres/SystemC-Components/actions/workflows/ci-compliance.yml) [![CI Unit Tests](https://github.com/Minres/SystemC-Components/actions/workflows/ci-unit-tests.yml/badge.svg)](https://github.com/Minres/SystemC-Components/actions/workflows/ci-unit-tests.yml)
+[![CI C++ Std compliance](https://github.com/Minres/SystemC-Components/actions/workflows/ci-cppstd.yml/badge.svg)](https://github.com/Minres/SystemC-Components/actions/workflows/ci-cppstd.yml) [[![CI Unit Tests](https://github.com/Minres/SystemC-Components/actions/workflows/ci-unit-tests.yml/badge.svg)](https://github.com/Minres/SystemC-Components/actions/workflows/ci-unit-tests.yml)
 
 SystemC-Components (SCC)
 ========================
