@@ -34,16 +34,22 @@ namespace scc {
 
 using namespace std::chrono_literals;
 
-tcp4tlm_client::tcp4tlm_client(sc_core::sc_module_name name, size_t no_of_ports)
+tcp4tlm_client::tcp4tlm_client(sc_core::sc_module_name name, size_t no_of_tlm_ports, size_t no_of_sig_ports)
 : sc_core::sc_module(name)
+, tsckt{"isckt", no_of_tlm_ports}
+, signals{"signals", no_of_sig_ports}
 #ifdef GENERATE_STATISTICS
 , rtto()
 , txt()
 , rxt()
 #endif
 {
-    tsckt.register_b_transport(this, &tcp4tlm_client::btransport_cb);
-    tsckt.register_transport_dbg(this, &tcp4tlm_client::transport_dbg_cb);
+    int id = 0;
+    for(auto& t : tsckt) {
+        t.register_b_transport(this, &tcp4tlm_client::btransport_cb, id);
+        t.register_transport_dbg(this, &tcp4tlm_client::transport_dbg_cb, id);
+        id++;
+    }
     SC_THREAD(timing_thread);
 #ifdef GENERATE_STATISTICS
     rtto.reserve(100000);
@@ -131,15 +137,15 @@ void tcp4tlm_client::end_of_simulation() {
 #endif
 }
 
-unsigned tcp4tlm_client::transport_dbg_cb(tlm::tlm_generic_payload& gp) {
+unsigned tcp4tlm_client::transport_dbg_cb(int id, tlm::tlm_generic_payload& gp) {
     sc_core::sc_time delay(sc_core::SC_ZERO_TIME);
-    do_access(gp, delay, true);
+    do_access(id, gp, delay, true);
     return gp.get_response_status() == tlm::TLM_OK_RESPONSE ? gp.get_data_length() : 0;
 }
 
-void tcp4tlm_client::btransport_cb(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) { do_access(gp, delay); }
+void tcp4tlm_client::btransport_cb(int id, tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) { do_access(id, gp, delay); }
 
-void tcp4tlm_client::do_access(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay, bool debug) {
+void tcp4tlm_client::do_access(int index, tlm::tlm_generic_payload& gp, sc_core::sc_time& delay, bool debug) {
 #ifdef GENERATE_STATISTICS
     static timespec tstart, twser, tmid, tend;
 #endif
@@ -161,8 +167,8 @@ void tcp4tlm_client::do_access(tlm::tlm_generic_payload& gp, sc_core::sc_time& d
     case tlm::TLM_READ_COMMAND: {
         SCCTRACE(SCMOD) << "Requesting a read @" << sc_core::sc_time_stamp();
         auto bmsg =
-            tcp4tlm::make_bus_op_msg(sc_core::sc_time_stamp().value(), delay.value(), debug ? tcp4tlm::debug_acc : tcp4tlm::normal_acc, 0,
-                                     gp.get_address(), gp.get_data_length(), false, {}, byte_enable);
+            tcp4tlm::make_bus_op_msg(sc_core::sc_time_stamp().value(), delay.value(), debug ? tcp4tlm::debug_acc : tcp4tlm::normal_acc,
+                                     index, gp.get_address(), gp.get_data_length(), false, {}, byte_enable);
         client_connection().write_data(bmsg);
 #ifdef GENERATE_STATISTICS
         twser = connection_type::get_t_stamp();
@@ -186,8 +192,8 @@ void tcp4tlm_client::do_access(tlm::tlm_generic_payload& gp, sc_core::sc_time& d
         std::vector<uint8_t> data(gp.get_data_length());
         std::copy(gp.get_data_ptr(), gp.get_data_ptr() + gp.get_data_length(), data.begin());
         auto bmsg =
-            tcp4tlm::make_bus_op_msg(sc_core::sc_time_stamp().value(), delay.value(), debug ? tcp4tlm::debug_acc : tcp4tlm::normal_acc, 0,
-                                     gp.get_address(), gp.get_data_length(), write_no_response.get_value(), data, byte_enable);
+            tcp4tlm::make_bus_op_msg(sc_core::sc_time_stamp().value(), delay.value(), debug ? tcp4tlm::debug_acc : tcp4tlm::normal_acc,
+                                     index, gp.get_address(), gp.get_data_length(), write_no_response.get_value(), data, byte_enable);
         client_connection().write_data(bmsg);
 #ifdef GENERATE_STATISTICS
         twser = connection_type::get_t_stamp();

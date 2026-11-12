@@ -38,10 +38,14 @@ namespace scc {
 
 using namespace std::chrono_literals;
 
-tcp4tlm_bridge::tcp4tlm_bridge(sc_core::sc_module_name name, size_t no_of_ports)
+tcp4tlm_bridge::tcp4tlm_bridge(sc_core::sc_module_name name, size_t no_of_tlm_tports, size_t no_of_tlm_iports, size_t no_of_sig_iports,
+                               size_t no_of_sig_oports)
 : sc_core::sc_module(name)
 , tcp4tlm::server<tcp4tlm::request_message, tcp4tlm::response_message>(2)
-, signals{"signals", no_of_ports}
+, tsckt("tsckt", no_of_tlm_tports)
+, isckt("isckt", no_of_tlm_iports)
+, sigs_i{"sigs_i", no_of_sig_iports}
+, sigs_o{"sigs_o", no_of_sig_oports}
 , next_time_stamp(16)
 #ifdef GENERATE_STATISTICS
 , rtto()
@@ -49,8 +53,11 @@ tcp4tlm_bridge::tcp4tlm_bridge(sc_core::sc_module_name name, size_t no_of_ports)
 , rxt()
 #endif
 {
-    tsckt.register_b_transport(this, &tcp4tlm_bridge::btransport_cb);
-    tsckt.register_transport_dbg(this, &tcp4tlm_bridge::transport_dbg_cb);
+    int idx = 0;
+    for(auto& t : tsckt) {
+        t.register_b_transport(this, &tcp4tlm_bridge::btransport_cb, idx);
+        t.register_transport_dbg(this, &tcp4tlm_bridge::transport_dbg_cb, idx);
+    }
     SC_THREAD(timing_thread);
     SC_THREAD(process_task_que);
     SC_THREAD(process_timed_task_que);
@@ -169,15 +176,15 @@ void tcp4tlm_bridge::end_of_simulation() {
 #endif
 }
 
-unsigned tcp4tlm_bridge::transport_dbg_cb(tlm::tlm_generic_payload& gp) {
+unsigned tcp4tlm_bridge::transport_dbg_cb(int idx, tlm::tlm_generic_payload& gp) {
     sc_core::sc_time delay(sc_core::SC_ZERO_TIME);
     do_access(gp, delay, true);
     return gp.get_response_status() == tlm::TLM_OK_RESPONSE ? gp.get_data_length() : 0;
 }
 
-void tcp4tlm_bridge::btransport_cb(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) { do_access(gp, delay); }
+void tcp4tlm_bridge::btransport_cb(int idx, tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) { do_access(gp, delay, idx); }
 
-void tcp4tlm_bridge::do_access(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay, bool debug) {
+void tcp4tlm_bridge::do_access(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay, int sckt_idx, bool debug) {
 #ifdef GENERATE_STATISTICS
     static timespec tstart, twser, tmid, tend;
 #endif
@@ -199,8 +206,8 @@ void tcp4tlm_bridge::do_access(tlm::tlm_generic_payload& gp, sc_core::sc_time& d
     case tlm::TLM_READ_COMMAND: {
         SCCTRACE(SCMOD) << "Requesting a read @" << sc_core::sc_time_stamp();
         auto bmsg =
-            tcp4tlm::make_bus_op_msg(sc_core::sc_time_stamp().value(), delay.value(), debug ? tcp4tlm::debug_acc : tcp4tlm::normal_acc, 0,
-                                     gp.get_address(), gp.get_data_length(), false, {}, byte_enable);
+            tcp4tlm::make_bus_op_msg(sc_core::sc_time_stamp().value(), delay.value(), debug ? tcp4tlm::debug_acc : tcp4tlm::normal_acc,
+                                     sckt_idx, gp.get_address(), gp.get_data_length(), false, {}, byte_enable);
         client_connection().write_data(bmsg);
 #ifdef GENERATE_STATISTICS
         twser = connection_type::get_t_stamp();
@@ -224,8 +231,8 @@ void tcp4tlm_bridge::do_access(tlm::tlm_generic_payload& gp, sc_core::sc_time& d
         std::vector<uint8_t> data(gp.get_data_length());
         std::copy(gp.get_data_ptr(), gp.get_data_ptr() + gp.get_data_length(), data.begin());
         auto bmsg =
-            tcp4tlm::make_bus_op_msg(sc_core::sc_time_stamp().value(), delay.value(), debug ? tcp4tlm::debug_acc : tcp4tlm::normal_acc, 0,
-                                     gp.get_address(), gp.get_data_length(), write_no_response.get_value(), data, byte_enable);
+            tcp4tlm::make_bus_op_msg(sc_core::sc_time_stamp().value(), delay.value(), debug ? tcp4tlm::debug_acc : tcp4tlm::normal_acc,
+                                     sckt_idx, gp.get_address(), gp.get_data_length(), write_no_response.get_value(), data, byte_enable);
         client_connection().write_data(bmsg);
 #ifdef GENERATE_STATISTICS
         twser = connection_type::get_t_stamp();
@@ -337,7 +344,7 @@ void tcp4tlm_bridge::server_receive_completed(con_ptr& con, const tcp4tlm::reque
         }
         port = msg->port();
         client_connection();
-        callback_task task([this, msg, con]() {
+        callback_task task([msg, con]() {
             auto okmsg = tcp4tlm::make_response(msg->id());
             con->async_write(okmsg);
             return true;
@@ -355,9 +362,9 @@ void tcp4tlm_bridge::server_receive_completed(con_ptr& con, const tcp4tlm::reque
             auto gp = init_gp(msg);
             auto delay = sc_core::sc_time::from_value(msg->time_offset());
             if(msg->type() == scc::tcp4tlm::BusAccessType::BusAccessType_DEBUG_ACC)
-                isckt->transport_dbg(*gp);
+                isckt[msg->index()]->transport_dbg(*gp);
             else
-                isckt->b_transport(*gp, delay);
+                isckt[msg->index()]->b_transport(*gp, delay);
             if(gp->get_byte_enable_ptr()) {
                 delete[] gp->get_byte_enable_ptr();
                 gp->set_byte_enable_ptr(nullptr);
@@ -397,9 +404,9 @@ void tcp4tlm_bridge::server_receive_completed(con_ptr& con, const tcp4tlm::reque
     case tcp4tlm::RequestPayload_SigOpMsg: {
         SCCTRACE(SCMOD) << "Got SigOpMsg";
         const auto* msg = request->payload_as_SigOpMsg();
-        if(signals.size() > msg->index()) {
+        if(sigs_o.size() > msg->index()) {
             callback_task task([this, &msg]() {
-                signals[msg->index()] = msg->value();
+                sigs_o[msg->index()] = msg->value();
                 return true;
             });
             std::future<bool> fut = task.get_future();

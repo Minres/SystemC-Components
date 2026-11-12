@@ -83,13 +83,16 @@ struct tcp4tlm_bridge : public sc_core::sc_module,
     cci::cci_param<bool> write_no_response{"write_no_response", false};
     cci::cci_param<bool> no_systemc_sync{"no_systemc_sync", false};
 
-    tlm_utils::simple_target_socket<tcp4tlm_bridge, ::scc::LT> tsckt;
+    sc_core::sc_vector<tlm_utils::simple_target_socket_tagged<tcp4tlm_bridge, ::scc::LT>> tsckt;
 
-    tlm_utils::simple_initiator_socket<tcp4tlm_bridge, ::scc::LT> isckt;
+    sc_core::sc_vector<tlm_utils::simple_initiator_socket<tcp4tlm_bridge, ::scc::LT>> isckt;
 
-    sc_core::sc_vector<sc_core::sc_out<bool>> signals{"signals"};
+    sc_core::sc_vector<sc_core::sc_in<bool>> sigs_i{"sigs_i"};
 
-    tcp4tlm_bridge(sc_core::sc_module_name name, size_t no_of_ports = 0);
+    sc_core::sc_vector<sc_core::sc_out<bool>> sigs_o{"sigs_o"};
+
+    tcp4tlm_bridge(sc_core::sc_module_name name, size_t no_of_tlm_tports = 1, size_t no_of_tlm_iports = 1, size_t no_of_sig_iports = 0,
+                   size_t no_of_sig_oports = 0);
 
     virtual ~tcp4tlm_bridge();
 
@@ -137,9 +140,9 @@ protected:
     sc_core::sc_event shutdown_evt;
     rigtorp::SPSCQueue<sc_core::sc_time> next_time_stamp;
     unsigned long long sync;
-    void btransport_cb(tlm::tlm_generic_payload&, sc_core::sc_time&);
-    unsigned transport_dbg_cb(tlm::tlm_generic_payload&);
-    virtual void do_access(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay, bool debug = false);
+    void btransport_cb(int idx, tlm::tlm_generic_payload&, sc_core::sc_time&);
+    unsigned transport_dbg_cb(int idx, tlm::tlm_generic_payload&);
+    virtual void do_access(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay, int idx, bool debug = false);
     void timing_thread();
     void process_task_que();
     void process_timed_task_que();

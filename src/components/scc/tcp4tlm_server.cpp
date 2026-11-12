@@ -36,10 +36,11 @@ namespace scc {
 
 using namespace std::chrono_literals;
 
-tcp4tlm_server::tcp4tlm_server(sc_core::sc_module_name name, size_t no_of_ports)
+tcp4tlm_server::tcp4tlm_server(sc_core::sc_module_name name, size_t no_of_tlm_ports, size_t no_of_sig_ports)
 : sc_core::sc_module(name)
 , tcp4tlm::server<tcp4tlm::request_message, tcp4tlm::response_message>(2)
-, signals{"signals", no_of_ports}
+, isckt{"isckt", no_of_tlm_ports}
+, signals{"signals", no_of_sig_ports}
 , next_time_stamp(16)
 #ifdef GENERATE_STATISTICS
 , rtto()
@@ -220,39 +221,44 @@ void tcp4tlm_server::server_receive_completed(con_ptr& con, const tcp4tlm::reque
     case tcp4tlm::RequestPayload_BusOpMsg: {
         SCCTRACE(SCMOD) << "Got BusOpMsg";
         const auto* msg = request->payload_as_BusOpMsg();
-        auto time_point = sc_core::sc_time::from_value(msg->time_stamp());
-        callback_task task([this, msg, con]() {
-            auto gp = init_gp(msg);
-            auto delay = sc_core::sc_time::from_value(msg->time_offset());
-            if(msg->type() == scc::tcp4tlm::BusAccessType::BusAccessType_DEBUG_ACC)
-                isckt->transport_dbg(*gp);
-            else
-                isckt->b_transport(*gp, delay);
-            if(gp->get_byte_enable_ptr()) {
-                delete[] gp->get_byte_enable_ptr();
-                gp->set_byte_enable_ptr(nullptr);
-            }
-            if(gp->is_read()) {
-                auto* ext = gp->get_extension<tlm::scc::data_buffer>();
-                auto dmsg = tcp4tlm::make_bus_data_msg(msg->id(), ext->data(),
-                                                       gp->get_response_status() == tlm::TLM_OK_RESPONSE ? tcp4tlm::ok : tcp4tlm::failure);
-                con->async_write(dmsg);
-            } else if(gp->get_response_status() != tlm::TLM_OK_RESPONSE) {
-                auto failmsg = tcp4tlm::make_response(msg->id(), tcp4tlm::failure);
-                con->async_write(failmsg);
-            } else if(!msg->no_response()) {
-                auto okmsg = tcp4tlm::make_response(msg->id());
-                con->async_write(okmsg);
-            }
-            return true;
-        });
-        std::future<bool> fut = task.get_future();
-        timed_task tup{std::move(task), time_point};
-        task_que.emplace(std::move(tup));
-        if(!wall_time_simulation_speed.get_value())
-            next_time_stamp.push(time_point);
-        fut.wait();
-        fut.get();
+        if(isckt.size() > msg->index()) {
+            auto time_point = sc_core::sc_time::from_value(msg->time_stamp());
+            callback_task task([this, msg, con]() {
+                auto gp = init_gp(msg);
+                auto delay = sc_core::sc_time::from_value(msg->time_offset());
+                if(msg->type() == scc::tcp4tlm::BusAccessType::BusAccessType_DEBUG_ACC)
+                    isckt[msg->index()]->transport_dbg(*gp);
+                else
+                    isckt[msg->index()]->b_transport(*gp, delay);
+                if(gp->get_byte_enable_ptr()) {
+                    delete[] gp->get_byte_enable_ptr();
+                    gp->set_byte_enable_ptr(nullptr);
+                }
+                if(gp->is_read()) {
+                    auto* ext = gp->get_extension<tlm::scc::data_buffer>();
+                    auto dmsg = tcp4tlm::make_bus_data_msg(
+                        msg->id(), ext->data(), gp->get_response_status() == tlm::TLM_OK_RESPONSE ? tcp4tlm::ok : tcp4tlm::failure);
+                    con->async_write(dmsg);
+                } else if(gp->get_response_status() != tlm::TLM_OK_RESPONSE) {
+                    auto failmsg = tcp4tlm::make_response(msg->id(), tcp4tlm::failure);
+                    con->async_write(failmsg);
+                } else if(!msg->no_response()) {
+                    auto okmsg = tcp4tlm::make_response(msg->id());
+                    con->async_write(okmsg);
+                }
+                return true;
+            });
+            std::future<bool> fut = task.get_future();
+            timed_task tup{std::move(task), time_point};
+            task_que.emplace(std::move(tup));
+            if(!wall_time_simulation_speed.get_value())
+                next_time_stamp.push(time_point);
+            fut.wait();
+            fut.get();
+        } else {
+            auto declined_msg = tcp4tlm::make_response(request, tcp4tlm::declined);
+            con->async_write(declined_msg);
+        }
     } break;
     case tcp4tlm::RequestPayload_SyncMsg: {
         SCCTRACE(SCMOD) << "Got SyncMsg";

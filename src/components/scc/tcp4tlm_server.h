@@ -45,11 +45,11 @@ struct tcp4tlm_server : public sc_core::sc_module, protected tcp4tlm::server<tcp
     cci::cci_param<bool> wall_time_simulation_speed{"wall_time_simulation_speed", false};
     cci::cci_param<bool> write_no_response{"write_no_response", false};
 
-    tlm_utils::simple_initiator_socket<tcp4tlm_server, ::scc::LT> isckt;
+    sc_core::sc_vector<tlm_utils::simple_initiator_socket_tagged<tcp4tlm_server, ::scc::LT>> isckt;
 
     sc_core::sc_vector<sc_core::sc_out<bool>> signals{"signals"};
 
-    tcp4tlm_server(sc_core::sc_module_name name, size_t no_of_ports = 0);
+    tcp4tlm_server(sc_core::sc_module_name name, size_t no_of_tlm_ports = 1, size_t no_of_sig_ports = 0);
 
     virtual ~tcp4tlm_server();
 

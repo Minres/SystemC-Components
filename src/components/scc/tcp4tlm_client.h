@@ -19,8 +19,6 @@
 
 #include "tcp4tlm/client.h"
 #include "tcp4tlm/messages.h"
-#include "tcp4tlm/server.h"
-#include <atomic>
 #include <boost/asio.hpp>
 #include <cci_configuration>
 #include <rigtorp/SPSCQueue.h>
@@ -48,11 +46,11 @@ struct tcp4tlm_client : public sc_core::sc_module, protected tcp4tlm::client<tcp
     cci::cci_param<bool> write_no_response{"write_no_response", false};
     cci::cci_param<bool> no_systemc_sync{"no_systemc_sync", false};
 
-    tlm_utils::simple_target_socket<tcp4tlm_client, ::scc::LT> tsckt;
+    sc_core::sc_vector<tlm_utils::simple_target_socket_tagged<tcp4tlm_client, ::scc::LT>> tsckt;
 
     sc_core::sc_vector<sc_core::sc_out<bool>> signals{"signals"};
 
-    tcp4tlm_client(sc_core::sc_module_name name, size_t no_of_ports = 0);
+    tcp4tlm_client(sc_core::sc_module_name name, size_t no_of_tlm_ports = 1, size_t no_of_sig_ports = 0);
 
     virtual ~tcp4tlm_client();
 
@@ -61,9 +59,9 @@ struct tcp4tlm_client : public sc_core::sc_module, protected tcp4tlm::client<tcp
     void end_connection();
 
 protected:
-    void btransport_cb(tlm::tlm_generic_payload&, sc_core::sc_time&);
-    unsigned transport_dbg_cb(tlm::tlm_generic_payload&);
-    virtual void do_access(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay, bool debug = false);
+    void btransport_cb(int id, tlm::tlm_generic_payload&, sc_core::sc_time&);
+    unsigned transport_dbg_cb(int id, tlm::tlm_generic_payload&);
+    virtual void do_access(int id, tlm::tlm_generic_payload& gp, sc_core::sc_time& delay, bool debug = false);
     void timing_thread();
     void start_of_simulation() override;
     void end_of_simulation() override;
