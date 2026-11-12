@@ -14,8 +14,8 @@ struct top_client : public sc_core::sc_module {
         bridge.is_connection_server.set_value(false);
         bridge.write_no_response.set_value(false);
         bridge.no_systemc_sync.set_value(false);
-        bridge.isckt.bind(dummy);
-        intor.isckt.bind(bridge.tsckt);
+        bridge.isckt[0].bind(dummy);
+        intor.isckt.bind(bridge.tsckt[0]);
     };
 
     tlm_utils::simple_target_socket<top_client, scc::LT> dummy;

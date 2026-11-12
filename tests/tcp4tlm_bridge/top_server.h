@@ -26,8 +26,8 @@ struct top_server : public sc_core::sc_module {
             auto& b = bridge[idx];
             b.is_connection_server.set_value(true);
             b.this_host_port.set_value(base_port_num + idx);
-            b.isckt.bind(bus.target[idx]);
-            dummy[idx].bind(b.tsckt);
+            b.isckt[0].bind(bus.target[idx]);
+            dummy[idx].bind(b.tsckt[0]);
         }
         bus.initiator[0](target.target);
         bus.set_default_target(0);
