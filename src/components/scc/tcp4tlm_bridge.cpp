@@ -44,8 +44,6 @@ tcp4tlm_bridge::tcp4tlm_bridge(sc_core::sc_module_name name, size_t no_of_tlm_tp
 , tcp4tlm::server<tcp4tlm::request_message, tcp4tlm::response_message>(2)
 , tsckt("tsckt", no_of_tlm_tports)
 , isckt("isckt", no_of_tlm_iports)
-, sigs_i{"sigs_i", no_of_sig_iports}
-, sigs_o{"sigs_o", no_of_sig_oports}
 , next_time_stamp(16)
 #ifdef GENERATE_STATISTICS
 , rtto()
@@ -260,6 +258,12 @@ void tcp4tlm_bridge::do_access(tlm::tlm_generic_payload& gp, sc_core::sc_time& d
 #endif
 }
 
+void tcp4tlm_bridge::send_value_update(size_t idx, uint64_t value) {
+    SCCTRACE(SCMOD) << "Requesting a write @" << sc_core::sc_time_stamp();
+    auto smsg = tcp4tlm::make_sig_op_msg(sc_core::sc_time_stamp().value(), idx, value);
+    client_connection().write_data(smsg);
+}
+
 inline long long int get_time_of_day_us() {
     timeval checkpoint;
 #if defined __x86_64__
@@ -402,19 +406,15 @@ void tcp4tlm_bridge::server_receive_completed(con_ptr& con, const tcp4tlm::reque
         }
     } break;
     case tcp4tlm::RequestPayload_SigOpMsg: {
-        SCCTRACE(SCMOD) << "Got SigOpMsg";
         const auto* msg = request->payload_as_SigOpMsg();
-        if(sigs_o.size() > msg->index()) {
+        if(value_change_cb.size() > msg->index()) {
+            SCCTRACE(SCMOD) << "Got SigOpMsg for index " << msg->index() << " with value 0x" << std::hex << msg->value();
             callback_task task([this, &msg]() {
-                sigs_o[msg->index()] = msg->value();
+                value_change_cb[msg->index()](msg->value());
                 return true;
             });
-            std::future<bool> fut = task.get_future();
             timed_task tup{std::move(task), sc_core::SC_ZERO_TIME};
             task_que.emplace(std::move(tup));
-            fut.wait();
-            fut.get();
-            con->async_write(okmsg);
         } else {
             auto declined_msg = tcp4tlm::make_response(request, tcp4tlm::declined);
             con->async_write(declined_msg);

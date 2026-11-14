@@ -19,20 +19,20 @@ if(CMAKE_CXX_STANDARD GREATER_EQUAL 17)
     target_link_libraries(${PROJECT_NAME} PUBLIC scc-sysc scc-util)
 
     if(TARGET flatbuffers::flatbuffers)
+        option(REGENERATE_FB_HEADERS "Enables the update of src/components/scc/tcp4tlm/messages_generated.h by the flatbuffer compiler flatc" OFF)
         find_package(Boost REQUIRED COMPONENTS thread chrono)
-        # flatbuffers scheme to be compiled by flac binary
-        set(FB_SCHEMA "${CMAKE_CURRENT_LIST_DIR}/ipc.fbs")
-        # Location of the generated files. I like to use CMAKE_CURRENT_BINARY_DIR
-        # So it will not be in the source code tree.
-        set(FB_OUTDIR "${CMAKE_CURRENT_BINARY_DIR}/fbs/")
-        # This is an utilitary function that is available in flatbuffer cmake integration
-        # fbschemas is a new target that will be created with the generated file
-        build_flatbuffers("${FB_SCHEMA}" "" scc_fbschemas "" "${FB_OUTDIR}" "" "")
+        if(REGENERATE_FB_HEADERS)
+            # Generate the FlatBuffers header alongside the TCP/TLM schema.
+            set(FB_SCHEMA "${CMAKE_CURRENT_SOURCE_DIR}/scc/tcp4tlm/messages.fbs")
+            set(FB_OUTDIR "${CMAKE_CURRENT_SOURCE_DIR}/scc/tcp4tlm")
+            build_flatbuffers("${FB_SCHEMA}" "" scc_fbschemas "" "${FB_OUTDIR}" "" "")
+            add_dependencies(${PROJECT_NAME} scc_fbschemas)
+        endif()
 
         target_sources(${PROJECT_NAME} PRIVATE scc/tcp4tlm_bridge.cpp scc/tcp4tlm_server.cpp scc/tcp4tlm_client.cpp)
         target_include_directories(${PROJECT_NAME} PRIVATE
             $<BUILD_INTERFACE:${flatbuffers_INCLUDE_DIR}> # for headers when building
-            $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR})
+            $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
         target_link_libraries(${PROJECT_NAME} PUBLIC flatbuffers::flatbuffers)
         if(TARGET Boost::thread)
             target_link_libraries(${PROJECT_NAME} PUBLIC Boost::thread Boost::chrono)

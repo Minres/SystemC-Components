@@ -60,7 +60,7 @@ table SigOpMsg {
   id:uint;
   time_stamp:ulong;
   index:uint;
-  value:ubyte;
+  value:ulong;
 }
 
 table LogMsg {

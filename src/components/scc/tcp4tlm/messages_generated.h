@@ -192,8 +192,11 @@ struct NotifyEndpointMsg FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table 
     typedef NotifyEndpointMsgBuilder Builder;
     enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE { VT_ID = 4, VT_HOSTNAME = 6, VT_PORT = 8 };
     uint32_t id() const { return GetField<uint32_t>(VT_ID, 0); }
+    bool mutate_id(uint32_t _id = 0) { return SetField<uint32_t>(VT_ID, _id, 0); }
     const ::flatbuffers::String* hostname() const { return GetPointer<const ::flatbuffers::String*>(VT_HOSTNAME); }
+    ::flatbuffers::String* mutable_hostname() { return GetPointer<::flatbuffers::String*>(VT_HOSTNAME); }
     uint16_t port() const { return GetField<uint16_t>(VT_PORT, 0); }
+    bool mutate_port(uint16_t _port = 0) { return SetField<uint16_t>(VT_PORT, _port, 0); }
     bool Verify(::flatbuffers::Verifier& verifier) const {
         return VerifyTableStart(verifier) && VerifyField<uint32_t>(verifier, VT_ID, 4) && VerifyOffset(verifier, VT_HOSTNAME) &&
                verifier.VerifyString(hostname()) && VerifyField<uint16_t>(verifier, VT_PORT, 2) && verifier.EndTable();
@@ -238,6 +241,7 @@ struct NotifyShutdownMsg FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table 
     typedef NotifyShutdownMsgBuilder Builder;
     enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE { VT_ID = 4 };
     uint32_t id() const { return GetField<uint32_t>(VT_ID, 0); }
+    bool mutate_id(uint32_t _id = 0) { return SetField<uint32_t>(VT_ID, _id, 0); }
     bool Verify(::flatbuffers::Verifier& verifier) const {
         return VerifyTableStart(verifier) && VerifyField<uint32_t>(verifier, VT_ID, 4) && verifier.EndTable();
     }
@@ -269,7 +273,9 @@ struct SyncMsg FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
     typedef SyncMsgBuilder Builder;
     enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE { VT_ID = 4, VT_TIME_STAMP = 6 };
     uint32_t id() const { return GetField<uint32_t>(VT_ID, 0); }
+    bool mutate_id(uint32_t _id = 0) { return SetField<uint32_t>(VT_ID, _id, 0); }
     uint64_t time_stamp() const { return GetField<uint64_t>(VT_TIME_STAMP, 0); }
+    bool mutate_time_stamp(uint64_t _time_stamp = 0) { return SetField<uint64_t>(VT_TIME_STAMP, _time_stamp, 0); }
     bool Verify(::flatbuffers::Verifier& verifier) const {
         return VerifyTableStart(verifier) && VerifyField<uint32_t>(verifier, VT_ID, 4) &&
                VerifyField<uint64_t>(verifier, VT_TIME_STAMP, 8) && verifier.EndTable();
@@ -315,15 +321,27 @@ struct BusOpMsg FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
         VT_BYTE_ENABLE = 22
     };
     uint32_t id() const { return GetField<uint32_t>(VT_ID, 0); }
+    bool mutate_id(uint32_t _id = 0) { return SetField<uint32_t>(VT_ID, _id, 0); }
     uint64_t time_stamp() const { return GetField<uint64_t>(VT_TIME_STAMP, 0); }
+    bool mutate_time_stamp(uint64_t _time_stamp = 0) { return SetField<uint64_t>(VT_TIME_STAMP, _time_stamp, 0); }
     uint64_t time_offset() const { return GetField<uint64_t>(VT_TIME_OFFSET, 0); }
+    bool mutate_time_offset(uint64_t _time_offset = 0) { return SetField<uint64_t>(VT_TIME_OFFSET, _time_offset, 0); }
     scc::tcp4tlm::BusAccessType type() const { return static_cast<scc::tcp4tlm::BusAccessType>(GetField<uint8_t>(VT_TYPE, 0)); }
+    bool mutate_type(scc::tcp4tlm::BusAccessType _type = static_cast<scc::tcp4tlm::BusAccessType>(0)) {
+        return SetField<uint8_t>(VT_TYPE, static_cast<uint8_t>(_type), 0);
+    }
     uint32_t index() const { return GetField<uint32_t>(VT_INDEX, 0); }
+    bool mutate_index(uint32_t _index = 0) { return SetField<uint32_t>(VT_INDEX, _index, 0); }
     uint64_t address() const { return GetField<uint64_t>(VT_ADDRESS, 0); }
+    bool mutate_address(uint64_t _address = 0) { return SetField<uint64_t>(VT_ADDRESS, _address, 0); }
     uint32_t size() const { return GetField<uint32_t>(VT_SIZE, 0); }
+    bool mutate_size(uint32_t _size = 0) { return SetField<uint32_t>(VT_SIZE, _size, 0); }
     bool no_response() const { return GetField<uint8_t>(VT_NO_RESPONSE, 0) != 0; }
+    bool mutate_no_response(bool _no_response = 0) { return SetField<uint8_t>(VT_NO_RESPONSE, static_cast<uint8_t>(_no_response), 0); }
     const ::flatbuffers::Vector<uint8_t>* data() const { return GetPointer<const ::flatbuffers::Vector<uint8_t>*>(VT_DATA); }
+    ::flatbuffers::Vector<uint8_t>* mutable_data() { return GetPointer<::flatbuffers::Vector<uint8_t>*>(VT_DATA); }
     const ::flatbuffers::Vector<uint8_t>* byte_enable() const { return GetPointer<const ::flatbuffers::Vector<uint8_t>*>(VT_BYTE_ENABLE); }
+    ::flatbuffers::Vector<uint8_t>* mutable_byte_enable() { return GetPointer<::flatbuffers::Vector<uint8_t>*>(VT_BYTE_ENABLE); }
     bool Verify(::flatbuffers::Verifier& verifier) const {
         return VerifyTableStart(verifier) && VerifyField<uint32_t>(verifier, VT_ID, 4) &&
                VerifyField<uint64_t>(verifier, VT_TIME_STAMP, 8) && VerifyField<uint64_t>(verifier, VT_TIME_OFFSET, 8) &&
@@ -396,7 +414,11 @@ struct ResponseMsg FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
     typedef ResponseMsgBuilder Builder;
     enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE { VT_STATUS = 4, VT_REQ_ID = 6 };
     scc::tcp4tlm::ResponseStatus status() const { return static_cast<scc::tcp4tlm::ResponseStatus>(GetField<uint8_t>(VT_STATUS, 0)); }
+    bool mutate_status(scc::tcp4tlm::ResponseStatus _status = static_cast<scc::tcp4tlm::ResponseStatus>(0)) {
+        return SetField<uint8_t>(VT_STATUS, static_cast<uint8_t>(_status), 0);
+    }
     uint32_t req_id() const { return GetField<uint32_t>(VT_REQ_ID, 0); }
+    bool mutate_req_id(uint32_t _req_id = 0) { return SetField<uint32_t>(VT_REQ_ID, _req_id, 0); }
     bool Verify(::flatbuffers::Verifier& verifier) const {
         return VerifyTableStart(verifier) && VerifyField<uint8_t>(verifier, VT_STATUS, 1) &&
                VerifyField<uint32_t>(verifier, VT_REQ_ID, 4) && verifier.EndTable();
@@ -435,8 +457,13 @@ struct BusDataMsg FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
     typedef BusDataMsgBuilder Builder;
     enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE { VT_STATUS = 4, VT_REQ_ID = 6, VT_DATA = 8 };
     scc::tcp4tlm::ResponseStatus status() const { return static_cast<scc::tcp4tlm::ResponseStatus>(GetField<uint8_t>(VT_STATUS, 0)); }
+    bool mutate_status(scc::tcp4tlm::ResponseStatus _status = static_cast<scc::tcp4tlm::ResponseStatus>(0)) {
+        return SetField<uint8_t>(VT_STATUS, static_cast<uint8_t>(_status), 0);
+    }
     uint32_t req_id() const { return GetField<uint32_t>(VT_REQ_ID, 0); }
+    bool mutate_req_id(uint32_t _req_id = 0) { return SetField<uint32_t>(VT_REQ_ID, _req_id, 0); }
     const ::flatbuffers::Vector<uint8_t>* data() const { return GetPointer<const ::flatbuffers::Vector<uint8_t>*>(VT_DATA); }
+    ::flatbuffers::Vector<uint8_t>* mutable_data() { return GetPointer<::flatbuffers::Vector<uint8_t>*>(VT_DATA); }
     bool Verify(::flatbuffers::Verifier& verifier) const {
         return VerifyTableStart(verifier) && VerifyField<uint8_t>(verifier, VT_STATUS, 1) &&
                VerifyField<uint32_t>(verifier, VT_REQ_ID, 4) && VerifyOffset(verifier, VT_DATA) && verifier.VerifyVector(data()) &&
@@ -486,13 +513,17 @@ struct SigOpMsg FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
     typedef SigOpMsgBuilder Builder;
     enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE { VT_ID = 4, VT_TIME_STAMP = 6, VT_INDEX = 8, VT_VALUE = 10 };
     uint32_t id() const { return GetField<uint32_t>(VT_ID, 0); }
+    bool mutate_id(uint32_t _id = 0) { return SetField<uint32_t>(VT_ID, _id, 0); }
     uint64_t time_stamp() const { return GetField<uint64_t>(VT_TIME_STAMP, 0); }
+    bool mutate_time_stamp(uint64_t _time_stamp = 0) { return SetField<uint64_t>(VT_TIME_STAMP, _time_stamp, 0); }
     uint32_t index() const { return GetField<uint32_t>(VT_INDEX, 0); }
-    uint8_t value() const { return GetField<uint8_t>(VT_VALUE, 0); }
+    bool mutate_index(uint32_t _index = 0) { return SetField<uint32_t>(VT_INDEX, _index, 0); }
+    uint64_t value() const { return GetField<uint64_t>(VT_VALUE, 0); }
+    bool mutate_value(uint64_t _value = 0) { return SetField<uint64_t>(VT_VALUE, _value, 0); }
     bool Verify(::flatbuffers::Verifier& verifier) const {
         return VerifyTableStart(verifier) && VerifyField<uint32_t>(verifier, VT_ID, 4) &&
                VerifyField<uint64_t>(verifier, VT_TIME_STAMP, 8) && VerifyField<uint32_t>(verifier, VT_INDEX, 4) &&
-               VerifyField<uint8_t>(verifier, VT_VALUE, 1) && verifier.EndTable();
+               VerifyField<uint64_t>(verifier, VT_VALUE, 8) && verifier.EndTable();
     }
 };
 
@@ -503,7 +534,7 @@ struct SigOpMsgBuilder {
     void add_id(uint32_t id) { fbb_.AddElement<uint32_t>(SigOpMsg::VT_ID, id, 0); }
     void add_time_stamp(uint64_t time_stamp) { fbb_.AddElement<uint64_t>(SigOpMsg::VT_TIME_STAMP, time_stamp, 0); }
     void add_index(uint32_t index) { fbb_.AddElement<uint32_t>(SigOpMsg::VT_INDEX, index, 0); }
-    void add_value(uint8_t value) { fbb_.AddElement<uint8_t>(SigOpMsg::VT_VALUE, value, 0); }
+    void add_value(uint64_t value) { fbb_.AddElement<uint64_t>(SigOpMsg::VT_VALUE, value, 0); }
     explicit SigOpMsgBuilder(::flatbuffers::FlatBufferBuilder& _fbb)
     : fbb_(_fbb) {
         start_ = fbb_.StartTable();
@@ -516,12 +547,12 @@ struct SigOpMsgBuilder {
 };
 
 inline ::flatbuffers::Offset<SigOpMsg> CreateSigOpMsg(::flatbuffers::FlatBufferBuilder& _fbb, uint32_t id = 0, uint64_t time_stamp = 0,
-                                                      uint32_t index = 0, uint8_t value = 0) {
+                                                      uint32_t index = 0, uint64_t value = 0) {
     SigOpMsgBuilder builder_(_fbb);
+    builder_.add_value(value);
     builder_.add_time_stamp(time_stamp);
     builder_.add_index(index);
     builder_.add_id(id);
-    builder_.add_value(value);
     return builder_.Finish();
 }
 
@@ -529,7 +560,9 @@ struct LogMsg FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
     typedef LogMsgBuilder Builder;
     enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE { VT_ID = 4, VT_MSG = 6 };
     uint32_t id() const { return GetField<uint32_t>(VT_ID, 0); }
+    bool mutate_id(uint32_t _id = 0) { return SetField<uint32_t>(VT_ID, _id, 0); }
     const ::flatbuffers::String* msg() const { return GetPointer<const ::flatbuffers::String*>(VT_MSG); }
+    ::flatbuffers::String* mutable_msg() { return GetPointer<::flatbuffers::String*>(VT_MSG); }
     bool Verify(::flatbuffers::Verifier& verifier) const {
         return VerifyTableStart(verifier) && VerifyField<uint32_t>(verifier, VT_ID, 4) && VerifyOffset(verifier, VT_MSG) &&
                verifier.VerifyString(msg()) && verifier.EndTable();
@@ -597,6 +630,7 @@ struct RequestEnvelope FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
     const scc::tcp4tlm::LogMsg* payload_as_LogMsg() const {
         return payload_type() == scc::tcp4tlm::RequestPayload_LogMsg ? static_cast<const scc::tcp4tlm::LogMsg*>(payload()) : nullptr;
     }
+    void* mutable_payload() { return GetPointer<void*>(VT_PAYLOAD); }
     bool Verify(::flatbuffers::Verifier& verifier) const {
         return VerifyTableStart(verifier) && VerifyField<uint8_t>(verifier, VT_PAYLOAD_TYPE, 1) && VerifyOffset(verifier, VT_PAYLOAD) &&
                VerifyRequestPayload(verifier, payload(), payload_type()) && verifier.EndTable();
@@ -667,6 +701,7 @@ struct ResponseEnvelope FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
         return payload_type() == scc::tcp4tlm::ResponsePayload_BusDataMsg ? static_cast<const scc::tcp4tlm::BusDataMsg*>(payload())
                                                                           : nullptr;
     }
+    void* mutable_payload() { return GetPointer<void*>(VT_PAYLOAD); }
     bool Verify(::flatbuffers::Verifier& verifier) const {
         return VerifyTableStart(verifier) && VerifyField<uint8_t>(verifier, VT_PAYLOAD_TYPE, 1) && VerifyOffset(verifier, VT_PAYLOAD) &&
                VerifyResponsePayload(verifier, payload(), payload_type()) && verifier.EndTable();

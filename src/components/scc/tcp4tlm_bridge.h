@@ -87,10 +87,6 @@ struct tcp4tlm_bridge : public sc_core::sc_module,
 
     sc_core::sc_vector<tlm_utils::simple_initiator_socket<tcp4tlm_bridge, ::scc::LT>> isckt;
 
-    sc_core::sc_vector<sc_core::sc_in<bool>> sigs_i{"sigs_i"};
-
-    sc_core::sc_vector<sc_core::sc_out<bool>> sigs_o{"sigs_o"};
-
     tcp4tlm_bridge(sc_core::sc_module_name name, size_t no_of_tlm_tports = 1, size_t no_of_tlm_iports = 1, size_t no_of_sig_iports = 0,
                    size_t no_of_sig_oports = 0);
 
@@ -126,6 +122,14 @@ struct tcp4tlm_bridge : public sc_core::sc_module,
 
     sc_core::sc_event const& get_shutdown_event() const { return shutdown_evt; }
 
+    void send_value_update(size_t idx, uint64_t value);
+
+    void set_value_change_cb(size_t idx, std::function<void(uint64_t)> const& cb) {
+        if(value_change_cb.size() <= idx)
+            value_change_cb.resize(idx + 1);
+        value_change_cb[idx] = cb;
+    };
+
 protected:
     using callback_task = std::packaged_task<bool(void)>;
     struct timed_task {
@@ -139,6 +143,7 @@ protected:
     std::atomic<bool> con_est{false};
     sc_core::sc_event shutdown_evt;
     rigtorp::SPSCQueue<sc_core::sc_time> next_time_stamp;
+    std::vector<std::function<void(uint64_t)>> value_change_cb;
     unsigned long long sync;
     void btransport_cb(int idx, tlm::tlm_generic_payload&, sc_core::sc_time&);
     unsigned transport_dbg_cb(int idx, tlm::tlm_generic_payload&);

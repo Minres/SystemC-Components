@@ -125,7 +125,7 @@ inline request_message make_bus_op_msg(uint64_t time_stamp, uint64_t time_offset
     return make_request(RequestPayload_BusOpMsg, payload.Union(), builder);
 }
 
-inline request_message make_sig_op_msg(uint64_t time_stamp, uint32_t index, uint8_t value, uint32_t id = next_request_id()) {
+inline request_message make_sig_op_msg(uint64_t time_stamp, uint32_t index, uint64_t value, uint32_t id = next_request_id()) {
     flatbuffers::FlatBufferBuilder builder;
     auto payload = CreateSigOpMsg(builder, id, time_stamp, index, value);
     return make_request(RequestPayload_SigOpMsg, payload.Union(), builder);
