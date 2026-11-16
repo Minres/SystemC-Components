@@ -15,6 +15,7 @@
  *******************************************************************************/
 
 #include "tcp4tlm_server.h"
+#include "scc/tcp4tlm/serialized_connection.h"
 #include <algorithm>
 #include <atomic>
 #include <boost/asio.hpp>
@@ -36,9 +37,10 @@ namespace scc {
 
 using namespace std::chrono_literals;
 
-tcp4tlm_server::tcp4tlm_server(sc_core::sc_module_name name, size_t no_of_tlm_ports, size_t no_of_sig_ports)
+template <tcp4tlm::connection_type CON_TYPE>
+tcp4tlm_server<CON_TYPE>::tcp4tlm_server(sc_core::sc_module_name name, size_t no_of_tlm_ports, size_t no_of_sig_ports)
 : sc_core::sc_module(name)
-, tcp4tlm::server<tcp4tlm::request_message, tcp4tlm::response_message>(2)
+, tcp4tlm::server<tcp4tlm::request_message, tcp4tlm::response_message, CON_TYPE>(2)
 , isckt{"isckt", no_of_tlm_ports}
 , signals{"signals", no_of_sig_ports}
 , next_time_stamp(16)
@@ -59,7 +61,7 @@ tcp4tlm_server::tcp4tlm_server(sc_core::sc_module_name name, size_t no_of_tlm_po
 }
 
 #ifdef GENERATE_STATISTICS
-void tcp4tlm_server::statistics::updateStat(unsigned long rt) {
+template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_server<CON_TYPE>::statistics::updateStat(unsigned long rt) {
     if(rt > max) {
         max = rt;
     }
@@ -85,27 +87,27 @@ void tcp4tlm_server::statistics::updateStat(unsigned long rt) {
 }
 #endif
 
-tcp4tlm_server::~tcp4tlm_server() {
-    if(is_server_running()) {
+template <tcp4tlm::connection_type CON_TYPE> tcp4tlm_server<CON_TYPE>::~tcp4tlm_server() {
+    if(server::is_server_running()) {
         SCCTRACE(SCMOD) << "[" << __FUNCTION__ << "] shutting down server";
-        shutdown_server();
+        server::shutdown_server();
     }
 }
 
-void tcp4tlm_server::before_end_of_elaboration() {
+template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_server<CON_TYPE>::before_end_of_elaboration() {
     if(wall_time_simulation_speed.get_value())
         scc::wall_time_speed_limiter::get(); // initialize module
 }
 
-void tcp4tlm_server::start_of_simulation() {
+template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_server<CON_TYPE>::start_of_simulation() {
     SCCINFO(SCMOD) << "starting server on port " << this_host_port.get_value();
     server::start_server(this_host_port.get_value());
 }
 
-void tcp4tlm_server::end_of_simulation() {
-    if(is_server_running()) {
+template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_server<CON_TYPE>::end_of_simulation() {
+    if(server::is_server_running()) {
         SCCTRACE(SCMOD) << "[" << __FUNCTION__ << "] shutting down server";
-        request_shutdown();
+        server::request_shutdown();
     }
 #ifdef GENERATE_STATISTICS
     const char* stream_type = typeid(get_acceptor()) == typeid(boost::asio::ip::tcp::acceptor) ? "tcp" : "stream";
@@ -149,7 +151,7 @@ inline long long int get_time_of_day_us() {
 #endif
 }
 
-void tcp4tlm_server::timing_thread() {
+template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_server<CON_TYPE>::timing_thread() {
     wait(sc_core::SC_ZERO_TIME);
     // wait until the client connects. We cannot do this in start_of_simulation as we
     // would (potentially) block the server start of other bridges
@@ -172,7 +174,8 @@ void tcp4tlm_server::timing_thread() {
     }
 }
 
-tlm::scc::tlm_gp_shared_ptr tcp4tlm_server::init_gp(const tcp4tlm::BusOpMsg* const msg) {
+template <tcp4tlm::connection_type CON_TYPE>
+tlm::scc::tlm_gp_shared_ptr tcp4tlm_server<CON_TYPE>::init_gp(const tcp4tlm::BusOpMsg* const msg) {
     tlm::scc::tlm_gp_shared_ptr gp = mm.get().allocate<tlm::scc::data_buffer>();
     auto ext = gp->get_extension<tlm::scc::data_buffer>();
     gp->set_response_status(tlm::TLM_INCOMPLETE_RESPONSE);
@@ -195,7 +198,8 @@ tlm::scc::tlm_gp_shared_ptr tcp4tlm_server::init_gp(const tcp4tlm::BusOpMsg* con
     return gp;
 }
 
-void tcp4tlm_server::server_receive_completed(con_ptr& con, const tcp4tlm::request_message* const result) {
+template <tcp4tlm::connection_type CON_TYPE>
+void tcp4tlm_server<CON_TYPE>::server_receive_completed(con_ptr& con, const tcp4tlm::request_message* const result) {
     const auto* request = result ? result->root() : nullptr;
     if(request == nullptr) {
         auto msg = tcp4tlm::make_response(uint32_t{0}, tcp4tlm::declined);
@@ -235,7 +239,7 @@ void tcp4tlm_server::server_receive_completed(con_ptr& con, const tcp4tlm::reque
                     gp->set_byte_enable_ptr(nullptr);
                 }
                 if(gp->is_read()) {
-                    auto* ext = gp->get_extension<tlm::scc::data_buffer>();
+                    auto* ext = gp->template get_extension<tlm::scc::data_buffer>();
                     auto dmsg = tcp4tlm::make_bus_data_msg(
                         msg->id(), ext->data(), gp->get_response_status() == tlm::TLM_OK_RESPONSE ? tcp4tlm::ok : tcp4tlm::failure);
                     con->async_write(dmsg);
@@ -290,8 +294,8 @@ void tcp4tlm_server::server_receive_completed(con_ptr& con, const tcp4tlm::reque
     } break;
     case tcp4tlm::RequestPayload_NotifyShutdownMsg: {
         SCCTRACE(SCMOD) << "Got NotifyShutdownMsg";
-        if(is_server_running()) {
-            request_shutdown();
+        if(server::is_server_running()) {
+            server::request_shutdown();
         }
         callback_task task([this]() {
             this->shutdown_evt.notify(sc_core::SC_ZERO_TIME);
@@ -313,7 +317,7 @@ void tcp4tlm_server::server_receive_completed(con_ptr& con, const tcp4tlm::reque
     con->async_read();
 }
 
-void tcp4tlm_server::process_task_que() {
+template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_server<CON_TYPE>::process_task_que() {
     timed_task res;
     while(true) {
         while(task_que.try_get(res)) {
@@ -329,7 +333,7 @@ void tcp4tlm_server::process_task_que() {
     }
 }
 
-void tcp4tlm_server::process_timed_task_que() {
+template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_server<CON_TYPE>::process_timed_task_que() {
     while(true) {
         wait(timed_task_que.event());
         auto task = timed_task_que.get();
@@ -337,4 +341,6 @@ void tcp4tlm_server::process_timed_task_que() {
         task();
     }
 }
+template struct tcp4tlm_server<tcp4tlm::connection_type::TCP>;
+template struct tcp4tlm_server<tcp4tlm::connection_type::UDS>;
 } // namespace scc

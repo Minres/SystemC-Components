@@ -18,6 +18,7 @@
 #define TLM_SCC_TCP4TLM_SERVER
 
 #include "i_server.h"
+#include "scc/tcp4tlm/serialized_connection.h"
 #include <boost/lexical_cast.hpp>
 #include <boost/thread.hpp>
 #include <util/logging.h>
@@ -25,14 +26,14 @@
 namespace scc {
 namespace tcp4tlm {
 
-template <typename REQ, typename RESP> class server : public i_server<REQ, RESP> {
-    typedef typename std::shared_ptr<connection<RESP, REQ>> con_ptr;
-    typedef typename connection<RESP, REQ>::async_listener con_listener;
+template <typename REQ, typename RESP, tcp4tlm::connection_type CON_TYPE> class server : public i_server<REQ, RESP, CON_TYPE> {
+    typedef typename std::shared_ptr<connection<RESP, REQ, CON_TYPE>> con_ptr;
+    typedef typename connection<RESP, REQ, CON_TYPE>::async_listener con_listener;
 
     struct forward_session : public con_listener {
-        forward_session(i_server<REQ, RESP>* server_)
+        forward_session(i_server<REQ, RESP, CON_TYPE>* server_)
         : server_instance(server_)
-        , conn_shptr(new connection<RESP, REQ>(server_instance->get_io_service())) {}
+        , conn_shptr(new connection<RESP, REQ, CON_TYPE>(server_instance->get_io_service())) {}
 
         virtual ~forward_session() {}
 
@@ -66,7 +67,7 @@ template <typename REQ, typename RESP> class server : public i_server<REQ, RESP>
         }
 
     private:
-        i_server<REQ, RESP>* server_instance;
+        i_server<REQ, RESP, CON_TYPE>* server_instance;
         con_ptr conn_shptr;
     };
 
@@ -113,7 +114,7 @@ public:
     }
 
 protected:
-    const typename connection<RESP, REQ>::acceptor_t& get_acceptor() { return *acceptor; };
+    const typename traits<CON_TYPE>::acceptor_t& get_acceptor() { return *acceptor; };
 
 private:
     void handle_accept(const boost::system::error_code& e, std::shared_ptr<forward_session> session) {
@@ -128,34 +129,35 @@ private:
     std::size_t thread_pool_size;
     boost::asio::io_context io_service;
     std::shared_ptr<boost::asio::executor_work_guard<boost::asio::io_context::executor_type>> io_service_work;
-    std::shared_ptr<typename connection<RESP, REQ>::acceptor_t> acceptor;
+    std::shared_ptr<typename traits<CON_TYPE>::acceptor_t> acceptor;
     boost::thread_group threads;
     bool server_running;
     bool shutdown_requested;
 };
 
 #ifdef BOOST_ASIO_HAS_LOCAL_SOCKETS
-template <typename REQ, typename RESP>
-long server<REQ, RESP>::set_acceptor_endpoint(std::shared_ptr<boost::asio::local::stream_protocol::acceptor>& a, unsigned short port) {
+template <typename REQ, typename RESP, connection_type CON_TYPE>
+long server<REQ, RESP, CON_TYPE>::set_acceptor_endpoint(std::shared_ptr<boost::asio::local::stream_protocol::acceptor>& a,
+                                                        unsigned short port) {
     std::string s("/tmp/server");
     s += boost::lexical_cast<std::string>(port ? port : getpid());
     boost::asio::local::stream_protocol::endpoint endpoint(s);
     std::remove(endpoint.path().c_str());
-    acceptor.reset(new typename connection<RESP, REQ>::acceptor_t(io_service));
+    acceptor.reset(new typename traits<CON_TYPE>::acceptor_t(io_service));
     acceptor->open(endpoint.protocol());
     acceptor->bind(endpoint);
     return port;
 }
 #endif
 
-template <typename REQ, typename RESP>
-long server<REQ, RESP>::set_acceptor_endpoint(std::shared_ptr<boost::asio::ip::tcp::acceptor>& a, unsigned short port) {
+template <typename REQ, typename RESP, connection_type CON_TYPE>
+long server<REQ, RESP, CON_TYPE>::set_acceptor_endpoint(std::shared_ptr<boost::asio::ip::tcp::acceptor>& a, unsigned short port) {
     unsigned short retry_count = 128;
     bool connected = false;
     do {
         try {
             boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::tcp::v4(), port);
-            acceptor.reset(new typename connection<RESP, REQ>::acceptor_t(io_service));
+            acceptor.reset(new typename traits<CON_TYPE>::acceptor_t(io_service));
             acceptor->open(endpoint.protocol());
             acceptor->set_option(boost::asio::ip::tcp::no_delay(true));
             acceptor->set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
@@ -170,7 +172,8 @@ long server<REQ, RESP>::set_acceptor_endpoint(std::shared_ptr<boost::asio::ip::t
     return connected ? port : -1;
 }
 
-template <typename REQ, typename RESP> void server<REQ, RESP>::start_server(unsigned short port, char* name) {
+template <typename REQ, typename RESP, connection_type CON_TYPE>
+void server<REQ, RESP, CON_TYPE>::start_server(unsigned short port, char* name) {
     if(server_running)
         return;
     CPPLOG(TRACE, "tcp4tlm::server") << "starting tcp server";
@@ -192,7 +195,7 @@ template <typename REQ, typename RESP> void server<REQ, RESP>::start_server(unsi
     server_running = true;
 }
 
-template <typename REQ, typename RESP> void server<REQ, RESP>::shutdown_server() {
+template <typename REQ, typename RESP, connection_type CON_TYPE> void server<REQ, RESP, CON_TYPE>::shutdown_server() {
     CPPLOG(TRACE, "tcp4tlm::server") << "shutting down tcp server";
     io_service.stop();
     io_service_work.reset();

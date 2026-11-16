@@ -25,7 +25,7 @@
 namespace scc {
 namespace tcp4tlm {
 
-template <typename REQ, typename RESP> class client {
+template <typename REQ, typename RESP, connection_type CON_TYPE> class client {
 public:
     client();
     virtual ~client();
@@ -39,7 +39,7 @@ public:
 
     bool is_remote_connected() { return is_connected; }
 
-    connection<REQ, RESP>& client_connection(unsigned short retry_count = 0) {
+    connection<REQ, RESP, CON_TYPE>& client_connection(unsigned short retry_count = 0) {
         if(!is_connected)
             connect();
         while(!is_connected && retry_count > 0) {
@@ -56,7 +56,7 @@ protected:
     unsigned short port;
     unsigned short retry_count;
     boost::asio::io_context io_service;
-    typename connection<REQ, RESP>::ptr trace_conn;
+    typename connection<REQ, RESP, CON_TYPE>::ptr trace_conn;
     std::atomic<bool> is_connected;
     bool local_connection;
 
@@ -99,26 +99,26 @@ protected:
 #endif
 };
 
-template <typename REQ, typename RESP>
-client<REQ, RESP>::client()
+template <typename REQ, typename RESP, connection_type CON_TYPE>
+client<REQ, RESP, CON_TYPE>::client()
 : host("localhost")
 , port(0)
 , retry_count(100)
 , io_service()
-, trace_conn(new connection<REQ, RESP>(io_service))
+, trace_conn(new connection<REQ, RESP, CON_TYPE>(io_service))
 , is_connected(false)
 , local_connection(false) {}
 
-template <typename REQ, typename RESP> client<REQ, RESP>::~client() {
+template <typename REQ, typename RESP, connection_type CON_TYPE> client<REQ, RESP, CON_TYPE>::~client() {
     if(trace_conn->socket().is_open()) {
         trace_conn->socket().close();
     }
 }
 
-template <typename REQ, typename RESP> void client<REQ, RESP>::connect() {
+template <typename REQ, typename RESP, connection_type CON_TYPE> void client<REQ, RESP, CON_TYPE>::connect() {
     CPPLOG(INFO, "tcp4tlm::client") << "connect for port " << port << " on host '" << host << "'";
-    typename connection<REQ, RESP>::endpoint_t ep;
-    typename connection<REQ, RESP>::socket_t& socket = trace_conn->socket();
+    typename traits<CON_TYPE>::endpoint_t ep;
+    typename traits<CON_TYPE>::socket_t& socket = trace_conn->socket();
     setup_endpoint(ep);
     boost::system::error_code ec;
     for(unsigned i = 0; i < retry_count; ++i) {
@@ -135,8 +135,10 @@ template <typename REQ, typename RESP> void client<REQ, RESP>::connect() {
         local_connection = false;
     } else {
         is_connected = true;
-        boost::asio::ip::tcp::no_delay option(true);
-        socket.set_option(option);
+        if(!traits<CON_TYPE>::is_local) {
+            boost::asio::ip::tcp::no_delay option(true);
+            socket.set_option(option);
+        }
         local_connection = is_local_socket(socket);
     }
 }

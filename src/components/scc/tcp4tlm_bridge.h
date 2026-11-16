@@ -20,6 +20,7 @@
 #include "rigtorp/SPSCQueue.h"
 #include "scc/async_queue.h"
 #include "scc/peq.h"
+#include "scc/tcp4tlm/serialized_connection.h"
 #include "tcp4tlm/client.h"
 #include "tcp4tlm/messages.h"
 #include "tcp4tlm/server.h"
@@ -65,9 +66,12 @@ namespace scc {
  * wall-time mode, the bridge can pace simulation against elapsed wall clock
  * time. The no_systemc_sync parameter bypasses timestamp-based task scheduling.
  */
+template <tcp4tlm::connection_type CON_TYPE = tcp4tlm::connection_type::TCP>
 struct tcp4tlm_bridge : public sc_core::sc_module,
-                        protected tcp4tlm::server<tcp4tlm::request_message, tcp4tlm::response_message>,
-                        protected tcp4tlm::client<tcp4tlm::request_message, tcp4tlm::response_message> {
+                        protected tcp4tlm::server<tcp4tlm::request_message, tcp4tlm::response_message, CON_TYPE>,
+                        protected tcp4tlm::client<tcp4tlm::request_message, tcp4tlm::response_message, CON_TYPE> {
+    using server = tcp4tlm::server<tcp4tlm::request_message, tcp4tlm::response_message, CON_TYPE>;
+    using client = tcp4tlm::client<tcp4tlm::request_message, tcp4tlm::response_message, CON_TYPE>;
 #if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(tcp4tlm_bridge);
 #endif
@@ -92,7 +96,7 @@ struct tcp4tlm_bridge : public sc_core::sc_module,
 
     virtual ~tcp4tlm_bridge();
 
-    typedef tcp4tlm::connection<tcp4tlm::response_message, tcp4tlm::request_message> connection_type;
+    typedef tcp4tlm::connection<tcp4tlm::response_message, tcp4tlm::request_message, CON_TYPE> connection_type;
     typedef std::shared_ptr<connection_type> con_ptr;
 
     void server_send_completed(con_ptr& con, bool established = false) override {
@@ -205,13 +209,13 @@ inline ostream& operator<<(ostream& os, const tcp4tlm_bridge::statistics& stat) 
 }
 #endif
 
-inline void tcp4tlm_bridge::end_connection() {
+template <tcp4tlm::connection_type CON_TYPE> inline void tcp4tlm_bridge<CON_TYPE>::end_connection() {
     SCCINFO(SCMOD) << "Sending shutdown message";
-    if(is_remote_connected()) {
+    if(client::is_remote_connected()) {
         auto smsg = tcp4tlm::make_sync_msg(sc_core::sc_time_stamp().value());
-        client_connection().write_data(smsg);
+        client::client_connection().write_data(smsg);
         auto msg = tcp4tlm::make_notify_shutdown_msg();
-        client_connection().write_data(msg);
+        client::client_connection().write_data(msg);
     }
 }
 
