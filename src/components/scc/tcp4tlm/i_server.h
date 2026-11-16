@@ -23,11 +23,11 @@
 namespace scc {
 namespace tcp4tlm {
 
-template <typename REQ, typename RESP> struct i_server {
+template <typename REQ, typename RESP, connection_type CON_TYPE> struct i_server {
     virtual ~i_server() {}
     virtual boost::asio::io_context& get_io_service() = 0;
-    virtual void server_send_completed(std::shared_ptr<connection<RESP, REQ>>& con, bool established = false) = 0;
-    virtual void server_receive_completed(std::shared_ptr<connection<RESP, REQ>>& con, const REQ* const result) = 0;
+    virtual void server_send_completed(std::shared_ptr<connection<RESP, REQ, CON_TYPE>>& con, bool established = false) = 0;
+    virtual void server_receive_completed(std::shared_ptr<connection<RESP, REQ, CON_TYPE>>& con, const REQ* const result) = 0;
     virtual bool is_shutdown_requested() { return false; }
 };
 

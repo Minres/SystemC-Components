@@ -28,6 +28,21 @@
 namespace scc {
 namespace tcp4tlm {
 
+enum class connection_type { TCP, UDS };
+template <connection_type T> struct traits {};
+template <> struct traits<connection_type::TCP> {
+    typedef boost::asio::ip::tcp::socket socket_t;
+    typedef boost::asio::ip::tcp::endpoint endpoint_t;
+    typedef boost::asio::ip::tcp::acceptor acceptor_t;
+    constexpr static bool is_local = false;
+};
+template <> struct traits<connection_type::UDS> {
+    typedef boost::asio::local::stream_protocol::socket socket_t;
+    typedef boost::asio::local::stream_protocol::endpoint endpoint_t;
+    typedef boost::asio::local::stream_protocol::acceptor acceptor_t;
+    constexpr static bool is_local = true;
+};
+
 /// The connection class provides FlatBuffers framing primitives on top of a socket.
 /**
  * Each message sent using this class consists of:
@@ -35,22 +50,23 @@ namespace tcp4tlm {
  * hexadecimal.
  * @li The serialized FlatBuffer payload.
  */
-template <typename TSEND, typename TREC> class connection : public std::enable_shared_from_this<connection<TSEND, TREC>> {
+template <typename TSEND, typename TREC, connection_type CON_TYPE>
+class connection : public std::enable_shared_from_this<connection<TSEND, TREC, CON_TYPE>> {
 public:
-#if defined(BOOST_ASIO_HAS_LOCAL_SOCKETS) && defined(USE_UDS)
-#warning "This build uses stream sockets and will not work across the network"
-    typedef boost::asio::local::stream_protocol::socket socket_t;
-    typedef boost::asio::local::stream_protocol::endpoint endpoint_t;
-    typedef boost::asio::local::stream_protocol::acceptor acceptor_t;
-#elif defined(USE_UDP)
-    typedef boost::asio::ip::udp::socket socket_t;
-    typedef boost::asio::ip::udp::endpoint endpoint_t;
-#else
-    typedef boost::asio::ip::tcp::socket socket_t;
-    typedef boost::asio::ip::tcp::endpoint endpoint_t;
-    typedef boost::asio::ip::tcp::acceptor acceptor_t;
-#endif
-    typedef std::shared_ptr<connection<TSEND, TREC>> ptr;
+    // #if defined(BOOST_ASIO_HAS_LOCAL_SOCKETS) && defined(USE_UDS)
+    // #warning "This build uses stream sockets and will not work across the network"
+    //     typedef boost::asio::local::stream_protocol::socket socket_t;
+    //     typedef boost::asio::local::stream_protocol::endpoint endpoint_t;
+    //     typedef boost::asio::local::stream_protocol::acceptor acceptor_t;
+    // #elif defined(USE_UDP)
+    //     typedef boost::asio::ip::udp::socket socket_t;
+    //     typedef boost::asio::ip::udp::endpoint endpoint_t;
+    // #else
+    //     typedef boost::asio::ip::tcp::socket socket_t;
+    //     typedef boost::asio::ip::tcp::endpoint endpoint_t;
+    //     typedef boost::asio::ip::tcp::acceptor acceptor_t;
+    // #endif
+    typedef std::shared_ptr<connection<TSEND, TREC, CON_TYPE>> ptr;
 
     struct async_listener : public std::enable_shared_from_this<async_listener> {
         virtual void send_completed(const boost::system::error_code& error) = 0;
@@ -60,7 +76,7 @@ public:
     connection(boost::asio::io_context& io_context)
     : socket_(io_context) {}
 
-    socket_t& socket() { return socket_; }
+    typename traits<CON_TYPE>::socket_t& socket() { return socket_; }
     void add_listener(std::shared_ptr<async_listener> l) { listener = l; }
 
     void async_write(TSEND& t) { async_write(&t); }
@@ -234,7 +250,7 @@ private:
         return true;
     }
 
-    socket_t socket_;
+    typename traits<CON_TYPE>::socket_t socket_;
     enum { header_length = 8 };
     std::string outbound_header_;
     std::string outbound_data_;

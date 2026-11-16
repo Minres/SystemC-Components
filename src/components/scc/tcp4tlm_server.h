@@ -17,6 +17,7 @@
 #ifndef TLM_SCC_TCP4TLM_SERVER_H_
 #define TLM_SCC_TCP4TLM_SERVER_H_
 
+#include "scc/tcp4tlm/serialized_connection.h"
 #include "tcp4tlm/messages.h"
 #include "tcp4tlm/server.h"
 #include <atomic>
@@ -36,8 +37,10 @@
 #include <tlm_utils/tlm_quantumkeeper.h>
 
 namespace scc {
-
-struct tcp4tlm_server : public sc_core::sc_module, protected tcp4tlm::server<tcp4tlm::request_message, tcp4tlm::response_message> {
+template <tcp4tlm::connection_type CON_TYPE>
+struct tcp4tlm_server : public sc_core::sc_module,
+                        protected tcp4tlm::server<tcp4tlm::request_message, tcp4tlm::response_message, CON_TYPE> {
+    using server = tcp4tlm::server<tcp4tlm::request_message, tcp4tlm::response_message, CON_TYPE>;
 #if IEEE_1666_SYSTEMC < 202301L
     SC_HAS_PROCESS(tcp4tlm_server);
 #endif
@@ -53,7 +56,7 @@ struct tcp4tlm_server : public sc_core::sc_module, protected tcp4tlm::server<tcp
 
     virtual ~tcp4tlm_server();
 
-    typedef tcp4tlm::connection<tcp4tlm::response_message, tcp4tlm::request_message> connection_type;
+    typedef tcp4tlm::connection<tcp4tlm::response_message, tcp4tlm::request_message, CON_TYPE> connection_type;
     typedef std::shared_ptr<connection_type> con_ptr;
 
     void server_send_completed(con_ptr& con, bool established = false) override {
