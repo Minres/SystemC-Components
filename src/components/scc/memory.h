@@ -257,7 +257,9 @@ int memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES, SOCKET_TYPE>::handle_oper
     auto scattered =
         byt ? std::accumulate(byt, byt + trans.get_byte_enable_length(), 0xff, [](uint8_t a, uint8_t b) { return a & b; }) != 0xff : false;
     tlm::tlm_command cmd = trans.get_command();
+#ifndef NDEBUG
     SCCTRACE(SCMOD) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr;
+#endif
     trans.set_dmi_allowed(allow_dmi.get_value());
     trans.set_response_status(tlm::TLM_OK_RESPONSE);
     auto hm_entry = host_mem_lut.getEntry(adr);
