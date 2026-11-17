@@ -2,6 +2,7 @@
 #define TOP_SERVER_H_
 
 #include "scc/router.h"
+#include "scc/tcp4tlm/serialized_connection.h"
 #include <scc/memory.h>
 #include <scc/tcp4tlm_bridge.h>
 #include <sysc/kernel/sc_event.h>
@@ -11,7 +12,7 @@
 
 namespace tcp4tlm_bridge {
 struct top_server : public sc_core::sc_module {
-    sc_core::sc_vector<scc::tcp4tlm_bridge> bridge{"bridge"};
+    sc_core::sc_vector<scc::tcp4tlm_bridge<scc::tcp4tlm::connection_type::UDS>> bridge{"bridge"};
     scc::router<> bus{"bus"};
     scc::memory<16_MB> target{"target"};
     SC_HAS_PROCESS(top_server);

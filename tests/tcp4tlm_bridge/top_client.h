@@ -2,11 +2,12 @@
 #define TOP_CLIENT_H_
 
 #include "initiator.h"
+#include "scc/tcp4tlm/serialized_connection.h"
 #include <scc/tcp4tlm_bridge.h>
 
 namespace tcp4tlm_bridge {
 struct top_client : public sc_core::sc_module {
-    scc::tcp4tlm_bridge bridge{"bridge"};
+    scc::tcp4tlm_bridge<scc::tcp4tlm::connection_type::UDS> bridge{"bridge"};
     initiator intor{"intor", 0};
 
     top_client(sc_core::sc_module_name name)
