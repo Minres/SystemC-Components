@@ -152,7 +152,7 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lit
  * @tparam RIDWDTH
  */
 template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int WIDWDTH = 32, unsigned int WUSERWDTH = 1,
-          unsigned int AWSNOOPWDTH = 3, unsigned int RESPWDTH = 4, unsigned int RUSERWDTH = WUSERWDTH, unsigned int RIDWDTH = WIDWDTH>
+          unsigned int RUSERWDTH = WUSERWDTH, unsigned int RIDWDTH = WIDWDTH, unsigned int AWSNOOPWDTH = 3, unsigned int RESPWDTH = 4>
 struct ace_cfg {
     static_assert(BUSWDTH > 0, "BUSWIDTH shall be larger than 0");
     static_assert(ADDRWDTH > 0, "ADDRWDTH shall be larger than 0");
