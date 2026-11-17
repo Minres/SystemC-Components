@@ -416,8 +416,10 @@ void tcp4tlm_bridge<CON_TYPE>::server_receive_completed(con_ptr& con, const tcp4
         const auto* msg = request->payload_as_SigOpMsg();
         if(value_change_cb.size() > msg->index()) {
             SCCTRACE(SCMOD) << "Got SigOpMsg for index " << msg->index() << " with value 0x" << std::hex << msg->value();
-            callback_task task([this, &msg]() {
-                value_change_cb[msg->index()](msg->value());
+            auto idx = msg->index();
+            auto value = msg->value();
+            callback_task task([this, idx, value]() {
+                value_change_cb[idx](value);
                 return true;
             });
             timed_task tup{std::move(task), sc_core::SC_ZERO_TIME};
