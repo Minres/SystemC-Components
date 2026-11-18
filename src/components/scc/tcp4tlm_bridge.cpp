@@ -56,6 +56,7 @@ tcp4tlm_bridge<CON_TYPE>::tcp4tlm_bridge(sc_core::sc_module_name name, size_t no
     for(auto& t : tsckt) {
         t.register_b_transport(this, &tcp4tlm_bridge<CON_TYPE>::btransport_cb, idx);
         t.register_transport_dbg(this, &tcp4tlm_bridge<CON_TYPE>::transport_dbg_cb, idx);
+        ++idx;
     }
     SC_THREAD(timing_thread);
     SC_THREAD(process_task_que);
@@ -114,8 +115,12 @@ template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_bridge<CON_TYPE>::befo
 
 template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_bridge<CON_TYPE>::start_of_simulation() {
     if(is_connection_server.get_value()) {
-        SCCINFO(SCMOD) << "starting server on port " << this_host_port.get_value();
-        server::start_server(this_host_port.get_value());
+        if(is_server_stub.get_value()) {
+            SCCINFO(SCMOD) << "stubbing server for port " << this_host_port.get_value();
+        } else {
+            SCCINFO(SCMOD) << "starting server on port " << this_host_port.get_value();
+            server::start_server(this_host_port.get_value());
+        }
     } else {
         client::connect();
         server::start_server(this_host_port.get_value());
@@ -136,7 +141,7 @@ template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_bridge<CON_TYPE>::star
 
 template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_bridge<CON_TYPE>::end_of_simulation() {
     if(server::is_server_running()) {
-        if(!is_connection_server.get_value() && client::is_connected) {
+        if(client::is_connected) {
             SCCTRACE(SCMOD) << "[" << __FUNCTION__ << "] shutting down connection";
             end_connection();
         }
@@ -191,8 +196,13 @@ void tcp4tlm_bridge<CON_TYPE>::do_access(tlm::tlm_generic_payload& gp, sc_core::
 #ifdef GENERATE_STATISTICS
     static timespec tstart, twser, tmid, tend;
 #endif
-    if(!client::is_remote_connected())
-        SCCFATAL(SCMOD) << "No remote connected";
+    if(!client::is_remote_connected()) {
+        if(!is_server_stub.get_value()) {
+            SCCFATAL(SCMOD) << "No remote connected";
+        } else {
+            return;
+        }
+    }
     gp.set_dmi_allowed(false);
 #ifdef GENERATE_STATISTICS
 #define TIMEDIFF(X, Y) X.tv_nsec >= Y.tv_nsec ? X.tv_nsec - Y.tv_nsec : 1000000000 + X.tv_nsec - Y.tv_nsec
@@ -200,6 +210,8 @@ void tcp4tlm_bridge<CON_TYPE>::do_access(tlm::tlm_generic_payload& gp, sc_core::
     GETCLOCK(&connection_type::get_t_stamp());
 #endif
     gp.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
+    if(!client::is_remote_connected())
+        return;
     std::vector<uint8_t> byte_enable;
     if(gp.get_byte_enable_ptr()) {
         byte_enable.resize(gp.get_byte_enable_length());
@@ -265,6 +277,13 @@ void tcp4tlm_bridge<CON_TYPE>::do_access(tlm::tlm_generic_payload& gp, sc_core::
 
 template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_bridge<CON_TYPE>::send_value_update(size_t idx, uint64_t value) {
     SCCTRACE(SCMOD) << "Requesting a write @" << sc_core::sc_time_stamp();
+    if(!client::is_remote_connected()) {
+        if(!is_server_stub.get_value()) {
+            SCCFATAL(SCMOD) << "No remote connected";
+        } else {
+            return;
+        }
+    }
     auto smsg = tcp4tlm::make_sig_op_msg(sc_core::sc_time_stamp().value(), idx, value);
     client::client_connection().write_data(smsg);
 }
@@ -283,13 +302,16 @@ template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_bridge<CON_TYPE>::timi
     wait(sc_core::SC_ZERO_TIME);
     // wait until the client connects. We cannot do this in start_of_simulation as we
     // would (potentially) block the server start of other bridges
-    if(is_connection_server.get_value())
+    if(is_connection_server.get_value()) {
+        if(is_server_stub.get_value())
+            return;
         wait4connection();
+    }
     // now deal with the timing
     if(!is_connection_server.get_value()) {
         if(!no_systemc_sync.get_value())
             while(true) {
-                wait(1_ms);
+                wait(sync_beat_interval.get_value());
                 auto smsg = tcp4tlm::make_sync_msg(sc_core::sc_time_stamp().value());
                 client::client_connection().write_data(smsg);
             }
@@ -346,7 +368,7 @@ void tcp4tlm_bridge<CON_TYPE>::server_receive_completed(con_ptr& con, const tcp4
     auto okmsg = tcp4tlm::make_response(request);
     switch(request->payload_type()) {
     case tcp4tlm::RequestPayload_NotifyEndpointMsg: {
-        SCCTRACE(SCMOD) << "Got NotifyEndpointMsg";
+        SCCTRACEALL(SCMOD) << "Got NotifyEndpointMsg";
         const auto* msg = request->payload_as_NotifyEndpointMsg();
         if(msg->hostname() != nullptr && msg->hostname()->str() == "0.0.0.0") {
             client::host = "localhost";
@@ -366,7 +388,7 @@ void tcp4tlm_bridge<CON_TYPE>::server_receive_completed(con_ptr& con, const tcp4
         con_est_sig.notify_all();
     } break;
     case tcp4tlm::RequestPayload_BusOpMsg: {
-        SCCTRACE(SCMOD) << "Got BusOpMsg";
+        SCCTRACEALL(SCMOD) << "Got BusOpMsg";
         const auto* msg = request->payload_as_BusOpMsg();
         auto time_point = sc_core::sc_time::from_value(msg->time_stamp());
         callback_task task([this, msg, con]() {
@@ -403,7 +425,7 @@ void tcp4tlm_bridge<CON_TYPE>::server_receive_completed(con_ptr& con, const tcp4
         fut.get();
     } break;
     case tcp4tlm::RequestPayload_SyncMsg: {
-        SCCTRACE(SCMOD) << "Got SyncMsg";
+        SCCTRACEALL(SCMOD) << "Got SyncMsg";
         if(is_connection_server.get_value()) {
             if(!wall_time_simulation_speed.get_value()) {
                 const auto* msg = request->payload_as_SyncMsg();
@@ -415,7 +437,7 @@ void tcp4tlm_bridge<CON_TYPE>::server_receive_completed(con_ptr& con, const tcp4
     case tcp4tlm::RequestPayload_SigOpMsg: {
         const auto* msg = request->payload_as_SigOpMsg();
         if(value_change_cb.size() > msg->index()) {
-            SCCTRACE(SCMOD) << "Got SigOpMsg for index " << msg->index() << " with value 0x" << std::hex << msg->value();
+            SCCTRACEALL(SCMOD) << "Got SigOpMsg for index " << msg->index() << " with value 0x" << std::hex << msg->value();
             auto idx = msg->index();
             auto value = msg->value();
             callback_task task([this, idx, value]() {
@@ -430,7 +452,7 @@ void tcp4tlm_bridge<CON_TYPE>::server_receive_completed(con_ptr& con, const tcp4
         }
     } break;
     case tcp4tlm::RequestPayload_NotifyShutdownMsg: {
-        SCCTRACE(SCMOD) << "Got NotifyShutdownMsg";
+        SCCTRACEALL(SCMOD) << "Got NotifyShutdownMsg";
         client::client_connection().socket().close();
         client::is_connected = false;
         if(server::is_server_running()) {

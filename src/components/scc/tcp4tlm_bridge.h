@@ -86,6 +86,8 @@ struct tcp4tlm_bridge : public sc_core::sc_module,
     cci::cci_param<bool> wall_time_simulation_speed{"wall_time_simulation_speed", false};
     cci::cci_param<bool> write_no_response{"write_no_response", false};
     cci::cci_param<bool> no_systemc_sync{"no_systemc_sync", false};
+    cci::cci_param<bool> is_server_stub{"is_server_stub", false};
+    cci::cci_param<sc_core::sc_time> sync_beat_interval{"sync_beat_interval", 1_ms};
 
     sc_core::sc_vector<tlm_utils::simple_target_socket_tagged<tcp4tlm_bridge, ::scc::LT>> tsckt;
 
