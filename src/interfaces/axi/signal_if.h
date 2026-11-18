@@ -73,6 +73,14 @@ template <bool Cond, class T, class S> struct select_if { typedef S type; };
 
 template <class T, class S> struct select_if<true, T, S> { typedef T type; };
 
+namespace axi_dt {
+// Selects sc_uint when W fits in 64 bits, sc_biguint otherwise
+template <unsigned int W> using sc_uint_t = typename select_if<(W <= 64), sc_dt::sc_uint<W>, sc_dt::sc_biguint<W>>::type;
+
+// User type: bool when width is 1, otherwise sc_uint_t
+template <unsigned int W> using user_t = typename select_if<(W == 1), bool, sc_uint_t<W>>::type;
+} // namespace axi_dt
+
 /**
  * @struct axi4_cfg
  * @brief
@@ -98,10 +106,10 @@ struct axi4_cfg {
     constexpr static unsigned int RIDWIDTH = RIDWDTH;
     constexpr static unsigned int WUSERWIDTH = WUSERWDTH;
     constexpr static unsigned int RUSERWIDTH = RUSERWDTH;
-    using data_t = typename select_if<BUSWDTH <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
-    using wuser_t = typename select_if<WUSERWIDTH <= 64, sc_dt::sc_uint<WUSERWIDTH>, sc_dt::sc_biguint<WUSERWIDTH>>::type;
-    using ruser_t = typename select_if<RUSERWIDTH <= 64, sc_dt::sc_uint<RUSERWIDTH>, sc_dt::sc_biguint<RUSERWIDTH>>::type;
-    using strb_t = typename select_if<(BUSWDTH / 8) <= 64, sc_dt::sc_uint<BUSWIDTH / 8>, sc_dt::sc_biguint<BUSWIDTH / 8>>::type;
+    using data_t = axi_dt::sc_uint_t<BUSWIDTH>;
+    using wuser_t = axi_dt::user_t<WUSERWIDTH>;
+    using ruser_t = axi_dt::user_t<RUSERWIDTH>;
+    using strb_t = axi_dt::sc_uint_t<BUSWIDTH / 8>;
     using slave_types = ::axi::slave_types;
     using master_types = ::axi::master_types;
 };
@@ -130,10 +138,10 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lit
     constexpr static unsigned int RIDWIDTH = 0;
     constexpr static unsigned int WUSERWIDTH = 1;
     constexpr static unsigned int RUSERWIDTH = 1;
-    using data_t = typename select_if<BUSWDTH <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
-    using wuser_t = typename select_if<WUSERWIDTH <= 64, sc_dt::sc_uint<WUSERWIDTH>, sc_dt::sc_biguint<WUSERWIDTH>>::type;
-    using ruser_t = typename select_if<RUSERWIDTH <= 64, sc_dt::sc_uint<RUSERWIDTH>, sc_dt::sc_biguint<RUSERWIDTH>>::type;
-    using strb_t = typename select_if<(BUSWDTH / 8) <= 64, sc_dt::sc_uint<BUSWIDTH / 8>, sc_dt::sc_biguint<BUSWIDTH / 8>>::type;
+    using data_t = axi_dt::sc_uint_t<BUSWIDTH>;
+    using wuser_t = axi_dt::user_t<WUSERWIDTH>;
+    using ruser_t = axi_dt::user_t<RUSERWIDTH>;
+    using strb_t = axi_dt::sc_uint_t<BUSWIDTH / 8>;
     using slave_types = ::axi::lite_slave_types;
     using master_types = ::axi::lite_master_types;
 };
@@ -167,10 +175,10 @@ struct ace_cfg {
     constexpr static unsigned int RUSERWIDTH = RUSERWDTH;
     constexpr static unsigned int AWSNOOPWIDTH = AWSNOOPWDTH;
     constexpr static unsigned int RESPWIDTH = RESPWDTH;
-    using data_t = typename select_if<BUSWDTH <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
-    using wuser_t = typename select_if<WUSERWIDTH <= 64, sc_dt::sc_uint<WUSERWIDTH>, sc_dt::sc_biguint<WUSERWIDTH>>::type;
-    using ruser_t = typename select_if<RUSERWIDTH <= 64, sc_dt::sc_uint<RUSERWIDTH>, sc_dt::sc_biguint<RUSERWIDTH>>::type;
-    using strb_t = typename select_if<(BUSWDTH / 8) <= 64, sc_dt::sc_uint<BUSWIDTH / 8>, sc_dt::sc_biguint<BUSWIDTH / 8>>::type;
+    using data_t = axi_dt::sc_uint_t<BUSWIDTH>;
+    using wuser_t = axi_dt::user_t<WUSERWIDTH>;
+    using ruser_t = axi_dt::user_t<RUSERWIDTH>;
+    using strb_t = axi_dt::sc_uint_t<BUSWIDTH / 8>;
     using slave_types = ::axi::slave_types;
     using master_types = ::axi::master_types;
 };
