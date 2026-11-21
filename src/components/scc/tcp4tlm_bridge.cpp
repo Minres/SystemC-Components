@@ -221,7 +221,7 @@ void tcp4tlm_bridge<CON_TYPE>::do_access(tlm::tlm_generic_payload& gp, sc_core::
         if(mresp == nullptr || mresp->data() == nullptr || mresp->data()->size() != gp.get_data_length()) {
             break;
         }
-        std::copy(mresp->data()->begin(), mresp->data()->end(), gp.get_data_ptr());
+        auto end = std::copy(mresp->data()->begin(), mresp->data()->end(), gp.get_data_ptr());
         assert(static_cast<unsigned>(end - gp.get_data_ptr()) == gp.get_data_length());
         gp.set_response_status(tlm::TLM_OK_RESPONSE);
     } break;
