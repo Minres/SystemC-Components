@@ -123,7 +123,9 @@ struct tcp4tlm_bridge : public sc_core::sc_module,
     }
 
     bool is_connection_established() { return con_est; }
-
+    //! to be called on the connection server side
+    void shutdown_server();
+    //! to be called on the client side
     void end_connection();
 
     sc_core::sc_event const& get_shutdown_event() const { return shutdown_evt; }
@@ -210,6 +212,21 @@ inline ostream& operator<<(ostream& os, const tcp4tlm_bridge::statistics& stat) 
     return os;
 }
 #endif
+
+template <tcp4tlm::connection_type CON_TYPE> inline void tcp4tlm_bridge<CON_TYPE>::shutdown_server() {
+    if(server::is_server_running() && !server::is_shutdown_requested()) {
+        if(client::is_connected) {
+            SCCTRACE(SCMOD) << "[" << __FUNCTION__ << "] sending shut down message";
+            boost::system::error_code ec;
+            auto msg = tcp4tlm::make_notify_shutdown_msg();
+            client::client_connection().write_data(&msg, ec);
+            if(ec.failed())
+                SCCERR(SCMOD) << "Error while sending shut down message: " << ec.what();
+        }
+        SCCTRACE(SCMOD) << "[" << __FUNCTION__ << "] requesting shut down of server";
+        server::request_shutdown();
+    }
+}
 
 template <tcp4tlm::connection_type CON_TYPE> inline void tcp4tlm_bridge<CON_TYPE>::end_connection() {
     SCCINFO(SCMOD) << "Sending shutdown message";

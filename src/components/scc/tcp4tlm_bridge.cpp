@@ -95,16 +95,7 @@ template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_bridge<CON_TYPE>::stat
 }
 #endif
 
-template <tcp4tlm::connection_type CON_TYPE> tcp4tlm_bridge<CON_TYPE>::~tcp4tlm_bridge() {
-    if(server::is_server_running()) {
-        if(!is_connection_server.get_value() && !server::is_shutdown_requested()) {
-            SCCTRACE(SCMOD) << "[" << __FUNCTION__ << "] shutting down connection";
-            end_connection();
-        }
-        SCCTRACE(SCMOD) << "[" << __FUNCTION__ << "] shutting down server";
-        server::shutdown_server();
-    }
-}
+template <tcp4tlm::connection_type CON_TYPE> tcp4tlm_bridge<CON_TYPE>::~tcp4tlm_bridge() { shutdown_server(); }
 
 template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_bridge<CON_TYPE>::before_end_of_elaboration() {
     if(wall_time_simulation_speed.get_value())
@@ -140,14 +131,7 @@ template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_bridge<CON_TYPE>::star
 }
 
 template <tcp4tlm::connection_type CON_TYPE> void tcp4tlm_bridge<CON_TYPE>::end_of_simulation() {
-    if(server::is_server_running()) {
-        if(client::is_connected) {
-            SCCTRACE(SCMOD) << "[" << __FUNCTION__ << "] shutting down connection";
-            end_connection();
-        }
-        SCCTRACE(SCMOD) << "[" << __FUNCTION__ << "] shutting down server";
-        server::request_shutdown();
-    }
+    shutdown_server();
 #ifdef GENERATE_STATISTICS
     const char* stream_type = typeid(get_acceptor()) == typeid(boost::asio::ip::tcp::acceptor) ? "tcp" : "stream";
     util::range_lut indexer;
@@ -237,7 +221,7 @@ void tcp4tlm_bridge<CON_TYPE>::do_access(tlm::tlm_generic_payload& gp, sc_core::
         if(mresp == nullptr || mresp->data() == nullptr || mresp->data()->size() != gp.get_data_length()) {
             break;
         }
-        unsigned char* end = std::copy(mresp->data()->begin(), mresp->data()->end(), gp.get_data_ptr());
+        std::copy(mresp->data()->begin(), mresp->data()->end(), gp.get_data_ptr());
         assert(static_cast<unsigned>(end - gp.get_data_ptr()) == gp.get_data_length());
         gp.set_response_status(tlm::TLM_OK_RESPONSE);
     } break;
